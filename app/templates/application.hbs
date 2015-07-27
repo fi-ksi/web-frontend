@@ -1,3 +1,103 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<!-- Navigation -->
+<div id="wrapper">
+    <div id="header">{{outlet header}}</div>
 
-{{outlet}}
+    <!-- Image Background Page Header -->
+    <!-- Note: The background image is set within the index.css file. -->
+    <div id="content">
+        <header class="ksi-header">
+            <div class="container">
+                <div class="text-center">
+                    <a type="button" class="btn btn-primary btn-lg" style="
+                    margin-top:270px;
+                    padding-top: 5px"
+                    href="graf.html">
+                    <h3>Začni řešit</h3>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <!-- Page Content -->
+        <section id="novinky" class="container content-section" style="text-align:justify">
+            <!-- Sekcia noviniek -->
+            <div class="jumbotron" style="background-color: transparent">
+                <div style="text-align: center; color: #39393a;"><h1>Novinky</h1></div> <!--TODO: dorobit obrazky a datum u noviniek + predelovace -->
+                <hr>
+                <!-- novinka 1 -->
+                <div class="row" style="display: table-cell; vertical-align: middle;">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <p style="color: #39393a;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vehicula ante, eu gravida libero luctus ac. Nullam varius ultricies risus, nec ultricies magna interdum in. Pellentesque scelerisque erat purus, eget iaculis libero condimentum aliquam. Nullam ac lectus efficitur, consectetur ante quis, rutrum libero. Etiam viverra euismod odio a commodo. Integer in imperdiet felis, id dictum leo. Proin fermentum ipsum quam, et sollicitudin neque gravida mattis.</p>
+                </div>
+                <hr>
+                <!-- novinka 2 -->
+                <div class="row" style="display: table-cell; vertical-align: middle;">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <p style="color: #39393a;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vehicula ante, eu gravida libero luctus ac. Nullam varius ultricies risus, nec ultricies magna interdum in. Pellentesque scelerisque erat purus, eget iaculis libero condimentum aliquam. Nullam ac lectus efficitur, consectetur ante quis, rutrum libero. Etiam viverra euismod odio a commodo. Integer in imperdiet felis, id dictum leo. Proin fermentum ipsum quam, et sollicitudin neque gravida mattis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container content-section">
+            <!-- Sekcia o ksi -->
+            <div class="jumbotron jumbotron-about"> <!-- TODO: full width -->
+                <div style="text-align: center; color: #fff; background-size: cover; "><h1>O KSI</h1></div>
+                <div style="margin: auto;">
+                    <div class="row" style="margin-top: 30px">
+                        <div class="center">
+                            <div class="col-xs-12 col-sm-4">
+                                <img src="http://placehold.it/150x150" style="width: 100%">
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <img src="http://placehold.it/150x150" style="width: 100%">
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <img src="http://placehold.it/150x150" style="width: 100%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="organizatori" class="container content-section">
+            <!-- Sekcia o ksi -->
+            <div class="jumbotron" style="background-color: #fff; "> <!-- TODO: full width -->
+                <div style="text-align: center; color: #39393a;"><h1>Organizátori</h1></div>
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <img src="http://placehold.it/150x150" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /.container -->
+    <div id="footer">{{outlet footer}}</div>
+</div/>
