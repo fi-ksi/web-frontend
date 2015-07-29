@@ -5,7 +5,7 @@ export default Ember.Controller.extend( {
 	page: 1,
 	offset: 0,
 	total: function() {
-			return this.store.metadataFor("articles").total;
+			return this.store.metadataFor("article").total;
 		}.property("model"),
 	hasPreviousPage: function() {
 			return this.get("offset") !== 0;

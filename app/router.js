@@ -13,8 +13,9 @@ Router.map(function() {
 	this.resource('forum',       { path: '/forum'});
 	this.resource('faq',         { path: '/faq'});
 	this.resource('profile',     { path: '/profile'});
-	this.resource('login',       { path: '/login'})
+	this.resource('login',       { path: '/login'});
 	this.resource('articles',    { path: '/articles'});
+	
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
