@@ -1,0 +1,12 @@
+<section id="novinky" class="container content-section" style="text-align:justify">
+
+    {{#each model as |article|}}
+    <div class="row" style="margin-top: 30px">
+        <h1 id="name" style="color: black">{{article.title}}</h1>
+    </div>
+    <div class="row" style="margin-top: 30px">
+    </div>
+    {{/each}}
+    
+    <button type="button" class="btn btn-primary">Stáhni pdf</button>
+</section>
