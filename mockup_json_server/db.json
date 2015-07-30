@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "První článek",
+      "published_at": "2014-11-11T08:40:51.620Z",
+      "intro": "Nové KSI přichází",
+      "body": "<p>Sáhodlouhý obsah. 1</p>"
+    },
+    {
+      "id": 2,
+      "title": "Druhý článek",
+      "published_at": "2014-11-11T08:40:51.620Z",
+      "intro": "Nové KSI přichází",
+      "body": "<p>Sáhodlouhý obsah. 2</p>"
+    },
+    {
+      "id": 3,
+      "title": "Třetí článek",
+      "published_at": "2014-11-11T08:40:51.620Z",
+      "intro": "Nové KSI přichází",
+      "body": "<p>Sáhodlouhý obsah. 3</p>"
+    }
+  ]
+}

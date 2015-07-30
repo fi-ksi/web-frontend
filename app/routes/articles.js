@@ -18,8 +18,8 @@ export default Ember.Route.extend( {
 		}
 
 		return this.store.findAll("article", {
-			offset: this.get("offset"),
-			limit: this.get("limit")
+			_start: this.get("offset"),
+			_limit: this.get("limit")
 		});
 	},
 
