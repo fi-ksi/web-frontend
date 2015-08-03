@@ -1,8 +1,11 @@
 //
 //basic colors definition
 //
+$ksi-color-key: 'base' !default;
+
 $ksi-colors: (
   'primary-orange': #fbb041,
+  'secondary-orange': #fb9400,
   'primary-dark': #233140,
   'secondary-dark': #2c3e50,
   'text-light': #ffffff,
@@ -15,12 +18,6 @@ $ksi-colors: (
 @function ksi-color($key: 'primary-orange') {
   @return map-get($ksi-colors, $key);
 }
-
-//
-//tint and shadow
-//
-$color-primary-orange-tinted: mix(white, ksi-color('primary-orange'), 10%);
-$color-primary-orange-shaded: mix(black, ksi-color('primary-orange'), 10%);
 
 //
 //color level settings

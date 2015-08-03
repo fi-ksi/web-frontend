@@ -1,0 +1,62 @@
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.btn-primary {
+    background: ksi-color('primary-orange');
+    color: ksi-color('text-light');
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: ksi-color('secondary-orange');
+}
+.btn-primary:active, .btn-primary.active {
+    background: ksi-color('primary-orange');
+    box-shadow: none;
+}
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid ksi-color('primary-orange');
+    color: ksi-color('primary-orange');
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: ksi-color('text-light');
+    background: ksi-color('primary-orange');
+    border-color: ksi-color('primary-orange');
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: ksi-color('primary-orange');
+    color: ksi-color('primary-orange');
+    box-shadow: none;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+//
+// start button
+//
+.the-button { margin-top:270px; padding-top: 5px }
