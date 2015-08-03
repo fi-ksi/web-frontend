@@ -1,0 +1,53 @@
+//
+//basic colors definition
+//
+$ksi-colors: (
+  'primary-orange': #fbb041,
+  'primary-dark': #233140,
+  'secondary-dark': #2c3e50,
+  'text-light': #ffffff,
+  'text-dark': #ffffff
+);
+
+//
+//color getter function
+//
+@function ksi-color($key: 'primary-orange') {
+  @return map-get($ksi-colors, $key);
+}
+
+//
+//tint and shadow
+//
+$color-primary-orange-tinted: mix(white, ksi-color('primary-orange'), 10%);
+$color-primary-orange-shaded: mix(black, ksi-color('primary-orange'), 10%);
+
+//
+//color level settings
+//
+$color-interval: 10% !global;
+
+@function ksi-color-level($color-name: 'primary-orange', $level: 0) {
+  $color: ksi-color($color-name);
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, $level * $color-interval);
+}
+
+//
+// color opacity settings
+//
+$ksi-color-opacity: (
+  'light': 0.8,
+  'dark': 0.4
+);
+
+@function ksi-color-alpha($name: 'primary-orange', $opacity: 0) {
+  $color: ksi-color($name);
+  // Get the named opacity level, if it exists
+  @if map-key-exists($ksi-color-opacity, $opacity) {
+    $opacity: map-get($ksi-color-opacity, $opacity);
+  }
+  // Use rgba() to manipulate the color's alpha level
+  @return rgba($color, $opacity);
+}
