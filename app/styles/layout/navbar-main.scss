@@ -1,10 +1,11 @@
+
 .navbar-btn{
      margin-left:10px;
 }
 .navbar-default {
     background-color: ksi-color('primary-dark');
     border-color: ksi-color('primary-dark');
-    border-bottom: 3px solid ksi-color('primary-orange');
+    border-bottom: $border-h-width solid ksi-color('primary-orange');
 }
 .navbar-default .navbar-brand {
     color: ksi-color('text-light');
@@ -50,7 +51,7 @@
     background-color: ksi-color('primary-dark');
 }
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffffff;
+    background-color: ksi-color('text-light');
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -111,5 +112,16 @@
     .navbar-nav>li>a {
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
     }
 }
