@@ -1,0 +1,9 @@
+#ksi-photo {
+    height: 600px;
+    background: url('/img/header_background.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    border-bottom: 3px solid ksi-color('primary-orange');
+}
