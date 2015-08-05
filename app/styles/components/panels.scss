@@ -1,0 +1,10 @@
+.panel-faq {
+  border-color: ksi-color-level('primary-orange',6);
+}
+
+.panel-faq > .panel-heading-faq {
+  background: ksi-color-level('primary-orange',9.5);
+  color: ksi-color('secondary-orange');
+  border-color: ksi-color-level('primary-orange',6);
+  font-weight: 600;
+}

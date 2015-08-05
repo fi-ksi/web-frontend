@@ -14,7 +14,12 @@ h6 {
     font-weight: 700;
 }
 
+#gray-text {
+  color: ksi-color-level('text-dark', 5);
+}
+
 #date-text {
   margin-left: 4px;
+  font-size:medium;
   color: ksi-color-level('text-dark', 5);
 }
