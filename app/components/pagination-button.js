@@ -5,9 +5,11 @@ export default Ember.Component.extend({
 	classNames: "btn btn-default".w(),
 	attributeBindings: ["disabled"],
 	enabled: true,
-	disabled: Ember.coputed.not("enabled"),
+	disabled: Ember.computed.not("enabled"),
 	action: null,
 	click: function() {
 		this.sendAction();
+		window.scrollTo(0, 0);
+		// this.$("html, body").animate({ scrollTop: 0 }, "slow"); ToDo: This isn't working!
 	}
 });

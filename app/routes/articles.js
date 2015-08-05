@@ -17,7 +17,7 @@ export default Ember.Route.extend( {
 			this.set('offset', (page - 1) * this.get('limit'));
 		}
 
-		return this.store.findAll("article", {
+		return this.store.query("article", {
 			_start: this.get("offset"),
 			_limit: this.get("limit")
 		});

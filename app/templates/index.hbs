@@ -12,21 +12,8 @@
     <div class="jumbotron" style="background-color: transparent">
         <div style="text-align: center; color: #39393a;"><h1>Novinky</h1></div> <!--TODO: dorobit obrazky a datum u noviniek + predelovace -->
         <hr>
-        <!-- novinka 1 -->
-        <div class="row" style="display: table-cell; vertical-align: middle;">
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <p style="color: #39393a;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vehicula ante, eu gravida libero luctus ac. Nullam varius ultricies risus, nec ultricies magna interdum in. Pellentesque scelerisque erat purus, eget iaculis libero condimentum aliquam. Nullam ac lectus efficitur, consectetur ante quis, rutrum libero. Etiam viverra euismod odio a commodo. Integer in imperdiet felis, id dictum leo. Proin fermentum ipsum quam, et sollicitudin neque gravida mattis.</p>
-        </div>
-        <hr>
-        <!-- novinka 2 -->
-        <div class="row" style="display: table-cell; vertical-align: middle;">
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <p style="color: #39393a;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vehicula ante, eu gravida libero luctus ac. Nullam varius ultricies risus, nec ultricies magna interdum in. Pellentesque scelerisque erat purus, eget iaculis libero condimentum aliquam. Nullam ac lectus efficitur, consectetur ante quis, rutrum libero. Etiam viverra euismod odio a commodo. Integer in imperdiet felis, id dictum leo. Proin fermentum ipsum quam, et sollicitudin neque gravida mattis.</p>
-        </div>
+        {{articles-list store=controller.store}}
+        {{#link-to "articles"}}Další novinky{{/link-to}}
     </div>
 </section>
 
