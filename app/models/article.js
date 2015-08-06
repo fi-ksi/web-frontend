@@ -1,5 +1,8 @@
 import DS from "ember-data";
 
+/**
+ * Simple article, news or whatever
+ */
 export default DS.Model.extend( {
 	title: DS.attr("string"),
 	published_at: DS.attr("date"),
