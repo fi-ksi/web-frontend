@@ -1,8 +1,11 @@
 {{#each model as |article|}}
     <div class="row" style="margin-top: 30px">
-        <h1 id="name" style="color: black">{{article.title}}</h1>
+        <h1 id="name" style="color: black">
+        	{{#link-to "article" article}} {{article.title}} {{/link-to}}
+        </h1>
     </div>
     <div class="row" style="margin-top: 30px">
-        {{{article.body}}}
+        {{{article.intro}}}
     </div>
+    {{#link-to "article" article}} Přečíst celé {{/link-to}}
 {{/each}}

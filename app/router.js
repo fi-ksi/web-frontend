@@ -15,6 +15,7 @@ Router.map(function() {
 	this.resource('profile',     { path: '/profile'});
 	this.resource('login',       { path: '/login'});
 	this.resource('articles',    { path: '/articles'});
+	this.resource('article',     { path: '/article/:article_id'});
 	
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
