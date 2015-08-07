@@ -24,3 +24,13 @@
   margin-top: 15px;
   margin-left: 30px;
 }
+
+.panel-profile {
+  background: ksi-color-level('primary-orange', 8);
+}
+
+.panel-profile-assignment {
+  border: 2px;
+  border-style: solid;
+  border-color: ksi-color-level('primary-dark',9);
+}

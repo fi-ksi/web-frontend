@@ -18,6 +18,24 @@ h6 {
   color: ksi-color-level('text-dark', 5);
 }
 
+#profile-text {
+  margin-right: 15px;
+  margin-left: 7px;
+  font-size:medium;
+  color: ksi-color-level('text-dark', 5);
+}
+
+#profile-points {
+  font-size:medium;
+  color: ksi-color('text-dark');
+}
+
+#profile-points-text {
+  margin-left: 4px;
+  font-size:medium;
+  color: ksi-color-level('text-dark', 5);
+}
+
 #date-text {
   margin-left: 4px;
   font-size:medium;
