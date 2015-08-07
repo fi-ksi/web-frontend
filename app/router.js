@@ -17,7 +17,7 @@ Router.map(function() {
     this.resource('registration',{ path: '/registration'});
 	this.resource('articles',    { path: '/articles'});
     this.resource('article',     { path: '/article/:article_id'});
-
+  this.resource('settings',    { path: '/settings'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
