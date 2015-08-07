@@ -8,3 +8,19 @@
   border-color: ksi-color-level('primary-orange',6);
   font-weight: 600;
 }
+
+.panel-article {
+  box-shadow: none;
+}
+
+.panel-article > .panel-heading-article {
+  color: ksi-color('text-dark');
+  border-bottom: 3px;
+  border-bottom-style: solid;
+  border-color: ksi-color-level('primary-dark',6);
+}
+
+.panel-article > .panel-body-article {
+  margin-top: 15px;
+  margin-left: 30px;
+}

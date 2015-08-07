@@ -1,11 +1,18 @@
 <section id="novinky" class="container content-section" style="text-align:justify">
-    <div class="row" style="margin-top: 30px">
-        <h1 id="name" style="color: black"> {{model.title}}</h1>
-    </div>
-    <div class="row" style="margin-top: 30px">
-        {{{model.intro}}}
-    </div>
-    <div class="row" style="margin-top: 30px">
-        {{{model.body}}}
+    <div class="panel panel-article" style="margin-top:30px">
+      <div class="panel-heading panel-heading-article">
+        <h1 id="name">
+          <img src="http://placehold.it/50x50">
+          {{model.title}}
+        </h1>
+      </div>
+      <div class="panel-body panel-body-article">
+        <div class="row" >
+            {{{model.intro}}}
+        </div>
+        <div class="row" style="margin-top: 20px">
+            {{{model.body}}}
+        </div>
+      </div>
     </div>
 </section>
