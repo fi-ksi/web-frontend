@@ -1,6 +1,7 @@
 <section id="novinky" class="container content-section" style="text-align:justify">
     {{articles-list model=model}}
-
-    {{#pagination-button action='previousPage' enabled=hasPreviousPage }}Přechozí{{/pagination-button}}
-    {{#pagination-button action='nextPage' enabled=hasNextPage }}Následující{{/pagination-button}}
+    <ul class="pager">
+      {{#pagination-button class="btn btn-primary btn-pager" action='previousPage' enabled=hasPreviousPage }}Přechozí{{/pagination-button}}
+      {{#pagination-button class="btn btn-primary btn-pager" action='nextPage' enabled=hasNextPage }}Následující{{/pagination-button}}
+    </ul>
 </section>
