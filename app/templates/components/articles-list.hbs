@@ -1,11 +1,16 @@
 {{#each model as |article|}}
-    <div class="row" style="margin-top: 30px">
-        <h1 id="name" style="color: black">
-        	{{#link-to "article" article}} {{article.title}} {{/link-to}}
-        </h1>
+  <div class="panel panel-faq" style="margin-top:30px">
+    <div class="panel-heading panel-heading-faq">
+        <h3 id="name">
+        	<img src="http://placehold.it/45x45">
+          {{#link-to "article" article}} {{article.title}} {{/link-to}}
+        </h3>
     </div>
-    <div class="row" style="margin-top: 30px">
+    <div class="panel-body">
         {{{article.intro}}}
+        <div style="margin-top:15px">
+          {{#link-to "article" article}} Přečíst celé {{/link-to}}
+        </div>
     </div>
-    {{#link-to "article" article}} Přečíst celé {{/link-to}}
+  </div>
 {{/each}}
