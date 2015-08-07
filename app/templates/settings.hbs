@@ -1,6 +1,111 @@
-<section id="assignments" class="container content-section" style="text-align:justify">
-	<!-- Sekcia noviniek -->
-	<div class="jumbotron" style="background-color: transparent">
-	    <h1>Tady budou osobní nastavení</h1>
+<section id="profile" class="container content-section" style="text-align:justify">
+	<div class="row">
+	  <div class="col-xs-5 col-md-3">
+
+			<div style="margin-top:30px">
+				<img src="http://placehold.it/250x250"> <!-- user image --> <!-- TODO default img -->
+			</div>
+
+      <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;"> <!-- TODO file button -->
+        <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+        Nahraj fotografii
+      </button>
+
+      <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:250px;"> <!-- TODO colors/styles a linky -->
+        <li class="active">
+          {{#link-to "settings"}}
+          <span class="glyphicon glyphicon-chevron-right"></span> Profil
+          {{/link-to}}
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-chevron-right"></span> Změna hesla
+          </a>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
+        Ulož změny
+      </button>
+		</div>
+
+	  <div class="col-xs-7 col-sm-7 col-md-9">
+			<div style="margin-top:30px">
+				<h4>Osobní údaje</h4>
+				<hr>
+			</div>
+
+      <div class="form-group">
+        <label for="name">Jméno:</label>
+        <input type="text" class="form-control" id="name">
+      </div>
+
+      <div class="form-group">
+        <label for="surname">Přímení:</label>
+        <input type="text" class="form-control" id="surname">
+      </div>
+
+      <div class="form-group">
+        <label for="username">Přezdívka:</label> (Takhle vás uvidí ostatní uživatelé)
+        <input type="text" class="form-control" id="username">
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="text" class="form-control" id="email">
+      </div>
+
+      <div style="margin-top:30px">
+				<h4>Adresa</h4>
+				<hr>
+			</div>
+
+      <div class="form-group">
+        <label for="street">Ulice:</label>
+        <input type="text" class="form-control" id="street">
+      </div>
+
+      <div class="form-group">
+        <label for="city">Město:</label>
+        <input type="text" class="form-control" id="city">
+      </div>
+
+      <div class="form-group">
+        <label for="psc">PSČ:</label>
+        <input type="text" class="form-control" id="psc">
+      </div>
+
+      <div class="form-group">
+        <label for="country">Krajina:</label>
+        <select class="form-control" id="country">
+          <option>Česká republika</option>
+          <option>Slovensko</option>
+        </select>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!--TODO dropdown menu ? -->
+        <input type="text" class="form-control" id="school">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Krátky popis seba:</label>
+        <textarea class="form-control" rows="5" id="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tshirt">Velikost trička:</label>
+        <select class="form-control" id="tshirt">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+        </select>
+      </div>
+		</div>
+
 	</div>
 </section>
