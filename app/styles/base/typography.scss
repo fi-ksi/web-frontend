@@ -14,8 +14,12 @@ h6 {
     font-weight: 700;
 }
 
-#gray-text {
+.gray-text {
   color: ksi-color-level('text-dark', 5);
+}
+
+.caption-text {
+  color: ksi-color('text-dark');
 }
 
 #profile-text {
