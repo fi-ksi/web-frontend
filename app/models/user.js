@@ -7,10 +7,10 @@ import Ember from "ember";
 export default DS.Model.extend( {
 	first_name: DS.attr("string"),
 	last_name: DS.attr("string"),
-	full_name: Ember.Computed("first_name", "last_name", function() {
+	full_name: Ember.computed("first_name", "last_name", function() {
     	return this.get("first_name") + ' ' + this.get("last_name");
 	}),
 	birth: DS.attr("date"),
-	school: DS.hasOne("school"),
+	school: DS.belongsTo("school", { async: true }),
 	address: DS.attr("string")
 });

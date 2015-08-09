@@ -2,19 +2,19 @@
 	<div class="row">
 	  <div class="col-xs-5 col-md-3">
 			<div style="margin-top:30px">
-				<img src="http://placehold.it/250x250"> <!-- user image --> <!-- TODO default img -->
+				<img src="{{model.profile_pic}}">
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
-				<h3>Franta řešitel</h3>	<!-- user name -->
+				<h3>{{model.name}}</h3>
 			</div>
 			<div id="name">
-				<p id="profile-text">šikovný informatik, programátor, milovník stromů a acyklických grafů</p>	<!-- user profile -->
+				<p id="profile-text">{{model.short_info}}</p>
 			</div>
 			<div class="panel panel-profile" style="margin-top:30px">
 				<div class="panel-body">
-					<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Masaryk University, Brno</h6> <!-- user school -->
+					<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
 					<br>
-					<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Česká republika</h6> <!-- user state -->
+					<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{model.country}}</h6>
 				</div>
 			</div>
 		</div>
@@ -26,31 +26,29 @@
 
 			<div class="panel panel-profile">
 				<div class="panel-body">
-					<img src="http://placehold.it/40x40"> <!-- achievementy -->
-					<img src="http://placehold.it/40x40">
-					<img src="http://placehold.it/40x40">
-					<img src="http://placehold.it/40x40">
-					<img src="http://placehold.it/40x40">
+					{{#each model.achievements as |achievement|}}
+						{{achievement-small model=achievement}}
+					{{/each}}
 				</div>
 			</div>
 
 			<div style="margin-top:30px">
-				<h5>Štatistiky</h5>
+				<h5>Statistiky</h5>
 				<hr>
 			</div>
 
 			<div class="row">
         <div class="col-sm-4">
 					<div id="profile-points-text" class="inline">Skóre: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">113</div> <!-- body -->
+					<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
 				</div>
         <div class="col-sm-4">
 					<div id="profile-points-text" class="inline">Percentil: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">87.7%</div> <!-- percentil -->
+					<div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
 				</div>
 				<div class="col-sm-4">
 					<div id="profile-points-text" class="inline">Ročníky: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">2</div> <!-- rocnik -->
+					<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
 				</div>
       </div>
 
@@ -60,8 +58,8 @@
 				Úspěšný řešitel:
 			</p>
 			<div class="progress" style="margin-top:20px">
-				<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-					60%
+				<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.successful}}%">
+					{{model.successful}}&nbsp;%
 				</div>
 			</div>
 
@@ -87,59 +85,26 @@
 				</div>
 			</div>
 
-			<!-- List -->
-			<div class="panel panel-profile-assignment">
+			{{#each model.results as |result|}}
+				<div class="panel panel-profile-assignment">
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-6">
-							<img class="inline" src="http://placehold.it/40x40"> <!-- obrazok ulohy -->
-							<label class="inline" style="margin-left:10px">První úloha</label> <!-- nazov ulohy --> <!-- TODO odkaz na ulohu -->
+							<img class="inline" src="{{result.task.pic}}">
+							<label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{result.task.title}}{{/link-to}}</label>
 						</div>
 						<div class="col-sm-4">
-							<img src="http://placehold.it/40x40"> <!-- trofej -->
-							<img src="http://placehold.it/40x40"> <!-- trofej -->
+							{{#each result.achievements as |achievement|}}
+								{{achievement-small model=achievement}}
+							{{/each}}
 						</div>
 						<div class="col-sm-2">
-							<h5 style="margin-left: 10px">10</h5> <!-- pocet bodov -->
+							<h5 style="margin-left: 10px">{{result.score}}</h5>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="panel panel-profile-assignment">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<img class="inline" src="http://placehold.it/40x40"> <!-- obrazok ulohy -->
-							<label class="inline" style="margin-left:10px">Druhá úloha</label> <!-- nazov ulohy --> <!-- TODO odkaz na ulohu -->
-						</div>
-						<div class="col-sm-4">
-							<img src="http://placehold.it/40x40"> <!-- trofej -->
-						</div>
-						<div class="col-sm-2">
-							<h5 style="margin-left: 10px">-</h5> <!-- pocet bodov -->
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="panel panel-profile-assignment">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<img class="inline" src="http://placehold.it/40x40"> <!-- obrazok ulohy -->
-							<label class="inline" style="margin-left:10px">Třetí úloha</label> <!-- nazov ulohy --> <!-- TODO odkaz na ulohu -->
-						</div>
-						<div class="col-sm-4">
-
-						</div>
-						<div class="col-sm-2">
-							<h5 style="margin-left: 10px">-</h5> <!-- pocet bodov -->
-						</div>
-					</div>
-				</div>
-			</div>
-
+			{{/each}}
 		</div>
 	</div>
 </section>

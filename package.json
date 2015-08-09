@@ -39,5 +39,9 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "grunt-sass": "^1.0.0"
+  },
+  "dependencies": {
+    "json-mock": "^0.1.0",
+    "json-server": "^0.7.25"
   }
 }

@@ -63,5 +63,104 @@
       "intro": "Nové KSI přichází",
       "body": "<p>Sáhodlouhý obsah. 3</p>"
     }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "První KSI úloha",
+      "pic": "http://placehold.it/40x40",
+      "author": 1
+    },
+    {
+      "id": 2,
+      "title": "Heňova úloha",
+      "pic": "http://placehold.it/40x40",
+      "author": 2
+    }
+  ],
+  "organisators": [
+    {
+      "id": 1,
+      "first_name": "Honza",
+      "last_name": "Mrázek",
+      "nick_name": "",
+      "profile_pic": "http://placehold.it/50x50"
+    },
+    {
+      "id": 2,
+      "first_name": "Henrich",
+      "last_name": "Lauko",
+      "nick_name": "Heňo",
+      "profile_pic": "http://placehold.it/50x50"
+    }
+  ],
+  "profile": [
+    {
+      "id": 0,
+      "signed_in": true,
+      "name": "František Řešitel",
+      "profile_pic": "http://placehold.it/250x250",
+      "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
+      "school_name": "Gymnázium Kroměříž",
+      "country": "Česká republika",
+      "achievements": [
+        1,
+        2,
+        3
+      ],
+      "percentile": 69,
+      "score": 42,
+      "seasons": 1.5,
+      "successful": 96,
+      "results": [
+        1,
+        2
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Buldozer!",
+      "pic": "http://placehold.it/40x40"
+    },
+    {
+      "id": 2,
+      "title": "Heňův mazánek",
+      "pic": "http://placehold.it/40x40"
+    },
+    {
+      "id": 3,
+      "title": "Pampeliška",
+      "pic": "http://placehold.it/40x40"
+    },
+    {
+      "id": 4,
+      "title": "Italský špagetový gurmán",
+      "pic": "http://placehold.it/40x40"
+    }
+  ],
+  "scores": [
+    {
+      "id": 1,
+      "user": 0,
+      "task": 1,
+      "reviewed_by": 2,
+      "score": 10,
+      "achievements": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "user": 0,
+      "task": 2,
+      "reviewed_by": 1,
+      "score": 8,
+      "achievements": [
+        3
+      ]
+    }
   ]
 }
