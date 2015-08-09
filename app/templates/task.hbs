@@ -5,10 +5,10 @@
     <!-- TODO: center name and image -->
     <div class="row" style="margin-top: 15px">
         <div class="col-xs-1 col-md-1">
-            <img id="org-photo" src="http://placehold.it/50x50" style="width: 50px">
+            <img id="org-photo" src="{{model.author.profile_pic}}" style="width: 50px">
         </div>
         <div class="col-xs-11 col-md-11">
-            <h4 id="org-name"  style="color: #39393a">Honza Mrázek</h4>
+            <h4 id="org-name"  style="color: #39393a">{{model.author.full_name}}</h4>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">

@@ -67,7 +67,30 @@
   "tasks": [
     {
       "id": 1,
-      "title": "První KSI úloha"
+      "title": "První KSI úloha",
+      "author": 1
+    },
+    {
+      "id": 2,
+      "title": "Heňova úloha",
+      "author": 2
     }
-  ]
+  ],
+  "organisators": [
+    {
+      "id": 1,
+      "first_name": "Honza",
+      "last_name": "Mrázek",
+      "nick_name": "",
+      "profile_pic": "http://placehold.it/50x50"
+    },
+    {
+      "id": 2,
+      "first_name": "Henrich",
+      "last_name": "Lauko",
+      "nick_name": "Heňo",
+      "profile_pic": "http://placehold.it/50x50"
+    }
+  ],
+  "organisator": []
 }
