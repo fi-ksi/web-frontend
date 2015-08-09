@@ -6,18 +6,24 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-	this.resource('index',       { path: '/'});
-	this.resource('assignment',  { path: '/assignment'});
-	this.resource('assignments', { path: '/assignments'});
-	this.resource('results',     { path: '/results'});
-	this.resource('forum',       { path: '/forum'});
-	this.resource('faq',         { path: '/faq'});
-	this.resource('profile',     { path: '/profile'});
-	this.resource('login',       { path: '/login'});
-    this.resource('registration',{ path: '/registration'});
-	this.resource('articles',    { path: '/articles'});
-    this.resource('article',     { path: '/article/:article_id'});
-  this.resource('settings',    { path: '/settings'});
+	this.route('index',       { path: '/'});
+	this.route('task',  { path: '/tasks/:task_id'}, function() {
+		this.route('statistics');
+		this.route('submission');
+		this.route('discussion');
+		this.route('solution');
+		this.route('assignment', {path: ''});
+	});
+	this.route('tasks', { path: '/tasks'});
+	this.route('results',     { path: '/results'});
+	this.route('forum',       { path: '/forum'});
+	this.route('faq',         { path: '/faq'});
+	this.route('profile',     { path: '/profile'});
+	this.route('login',       { path: '/login'});
+    this.route('registration',{ path: '/registration'});
+	this.route('articles',    { path: '/articles'});
+    this.route('article',     { path: '/articles/:article_id'});
+    this.route('settings',    { path: '/settings'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 

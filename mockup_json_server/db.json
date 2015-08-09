@@ -63,5 +63,11 @@
       "intro": "Nové KSI přichází",
       "body": "<p>Sáhodlouhý obsah. 3</p>"
     }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "První KSI úloha"
+    }
   ]
 }

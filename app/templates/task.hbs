@@ -1,0 +1,43 @@
+<section id="novinky" class="container content-section" style="text-align:justify">
+    <div class="row" style="margin-top: 30px">
+        <h2 id="name" style="color: black">{{model.title}}</h2>
+    </div>
+    <!-- TODO: center name and image -->
+    <div class="row" style="margin-top: 15px">
+        <div class="col-xs-1 col-md-1">
+            <img id="org-photo" src="http://placehold.it/50x50" style="width: 50px">
+        </div>
+        <div class="col-xs-11 col-md-11">
+            <h4 id="org-name"  style="color: #39393a">Honza Mrázek</h4>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <nav class="navbar navbar-uloha" role="navigation">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        {{#link-to "task.assignment" tagName="li"}}<a href="{{view.href}}">Zadání</a>{{/link-to}}
+                        {{#link-to "task.submission" tagName="li"}}<a href="{{view.href}}">Odevzdání</a>{{/link-to}}
+                        {{#link-to "task.statistics" tagName="li"}}<a href="{{view.href}}">Statistika</a>{{/link-to}}
+                        {{#link-to "task.discussion" tagName="li"}}<a href="{{view.href}}">Diskuze</a>{{/link-to}}
+                        {{#link-to "task.solution" tagName="li"}}<a href="{{view.href}}">Řešení</a>{{/link-to}}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <section>
+        {{outlet}}
+    </section>
+    <!-- TODO: python odovzdavanie -->
+    <!-- TODO: odovzdavaci system -->
+
+</section>
