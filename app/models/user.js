@@ -11,6 +11,6 @@ export default DS.Model.extend( {
     	return this.get("first_name") + ' ' + this.get("last_name");
 	}),
 	birth: DS.attr("date"),
-	school: DS.belongsTo("school"),
+	school: DS.belongsTo("school", { async: true }),
 	address: DS.attr("string")
 });

@@ -34,7 +34,28 @@
                 <li>
                     {{#link-to "faq"}}FAQ{{/link-to}}
                 </li>
-                {{#if false}} <!-- TODO prerobit na if not logged -->
+                {{#if model.signed_in}}
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <div style="text-align:center;">
+                        <div style="display:inline">
+                          <img src="{{model.profile_pic}}" width="50px" height="50px">
+                        </div>
+                        <div id="header-text" style=" margin-left:10px; display:inline">
+                          {{model.name}}
+                        </div>
+                        <div style=" margin-left:10px; display:inline">
+                          <span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="color:#fff"></span>
+                        </div>
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu"> <!-- TODO odkazy -->
+                      <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
+                      <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
+                      <li><a href="#">Odhlásit se</a></li>
+                    </ul>
+                  </li>
+                {{else}} 
                   <li>
                       <form action="login.html">
                           {{#link-to "login"}}
@@ -48,27 +69,6 @@
                           <button class="btn btn-primary outline navbar-btn" style="margin: 10px" role="button">Registrovat se</button>
                           {{/link-to}}
                       </form>
-                  </li>
-                {{else}}
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      <div style="text-align:center;">
-                        <div style="display:inline">
-                          <img src="http://placehold.it/50x50"> <!-- logged photo -->
-                        </div>
-                        <div id="header-text" style=" margin-left:10px; display:inline">
-                          Franta řešitel <!-- logged name -->
-                        </div>
-                        <div style=" margin-left:10px; display:inline">
-                          <span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="color:#fff"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu"> <!-- TODO odkazy -->
-                      <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
-                      <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
-                      <li><a href="#">Odhlásit se</a></li>
-                    </ul>
                   </li>
                 {{/if}}
             </ul>

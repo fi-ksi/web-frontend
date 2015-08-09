@@ -31,12 +31,29 @@ router.render = function (req, res) {
   // Handle task
   if(item == "task") {
     // Add organizator to result
-    response["organisators"] = router.db.object["organisators"].filter(function(v){ return v["id"] == res.locals.data["author"]; });
+    //response["organisators"] = router.db.object["organisators"].filter(function(v){ return v["id"] == res.locals.data["author"]; });
+  }
+
+  // Handle profile
+  if(item == "profile") {
+    /*response["achievements"] = router.db.object["achievements"].filter(function(v) {
+        return res.locals.data[0]["achievements"].indexOf(v["id"]) > -1;
+    });
+
+    response["scores"] = router.db.object["scores"].filter(function(v) {
+        return res.locals.data[0]["results"].indexOf(v["id"]) > -1;
+    });
+
+    response["tasks"] = [];
+    response["scores"].forEach(function (item) {
+      response["tasks"].push(router.db.object["tasks"].filter(function(v) {
+        return v["id"] == item["id"];
+      }));
+    });*/
   }
 
   res.jsonp(response);
 }
 
 server.use(router)
-
 server.listen(3000)
