@@ -62,6 +62,28 @@
 
 	<div style="margin:40px;">
 		<h2>Hlavní diskuse</h2>
+
+		<div>
+			<button class="btn btn-primary">Nové vlákno</button> <!-- otvori/skryje nasledujuci panel -->
+		</div>
+
+		<div style="margin-top:20px; margin-bottom:20px;">
+			<div class="panel panel-default">
+				<form class="form-horizontal" style="margin:30px">
+					<div class="controls form-inline">
+							<label for="threadName">Název:</label>
+							<input type="text" class="form-control" style="min-width: 100%" id="threadName">
+					</div>
+					<div class="controls form-inline" style="margin-top:20px">
+							<label for="threadName">Příspěvek:</label>
+							<textarea class="form-control" style="min-width: 100%" rows="3"></textarea>
+					</div>
+					<!-- TODO: textarea na http://www.tinymce.com/ -->
+					<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
+				</form>
+			</div>
+		</div>
+
 		<table class="table table-striped table-hover-forum ">
 	    <thead>
 	      <tr style="height:45px">
@@ -122,35 +144,16 @@
 	    </tbody>
 	  </table> <!-- zobrazovat max 10 vlakien? -->
 
-		<div class="text-center">
-			<ul class="pagination"> <!-- TODO colors -->
-			 <li><a href="#">1</a></li>
-			 <li class="active"><a href="#">2</a></li>
+		<div class="text-center"> <!-- TODO colors -->
+			<ul class="pagination">
+			 <li><a href="#">&laquo;</a></li>
+			 <li class="active"><a href="#">1</a></li>
+			 <li><a href="#">2</a></li>
 			 <li><a href="#">3</a></li>
 			 <li><a href="#">4</a></li>
 			 <li><a href="#">5</a></li>
+			 <li><a href="#">&raquo;</a></li>
 			</ul>
 		</div>
-
-	</div>
-
-	<div style="margin:40px;">
-		<button class="btn btn-primary" style="margin:20px">Nové vlákno</button> <!-- otvori/skryje nasledujuci panel -->
-
-		<div class="panel panel-default">
-			<form class="form-horizontal" style="margin:30px">
-        <div class="controls form-inline">
-            <label for="threadName">Název:</label>
-            <input type="text" class="form-control" style="min-width: 100%" id="threadName">
-        </div>
-				<div class="controls form-inline" style="margin-top:20px">
-						<label for="threadName">Příspěvek:</label>
-						<textarea class="form-control" style="min-width: 100%" rows="3"></textarea>
-				</div>
-				<!-- TODO: textarea na http://www.tinymce.com/ -->
-				<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
-			</form>
-		</div>
-
 	</div>
 </section>
