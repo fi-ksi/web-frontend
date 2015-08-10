@@ -6,7 +6,7 @@ server.use(jsonServer.defaults)
 
 // Returns an Express router
 var router = jsonServer.router('db.json')
-//console.log(router.db.object)
+console.log(router.db.object)
 
 router.render = function (req, res) {
   var url = req.url;

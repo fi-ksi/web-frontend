@@ -1,3 +1,12 @@
+.badge {
+  font-size: 12px;
+}
+
+.ksi-badge {
+  @extend badge;
+  background-color: ksi-color('primary-orange');
+}
+
 .badge-header {
     background-color: ksi-color('primary-orange');
 }

@@ -1,0 +1,11 @@
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.table-hover-forum {
+  @extend table-hover;
+}
+
+.table-hover-forum tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: ksi-color-level('primary-orange', 8);
+}
