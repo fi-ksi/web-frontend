@@ -14,12 +14,24 @@ h6 {
     font-weight: 700;
 }
 
+.org-caption {
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  color: ksi-color('primary-dark');
+}
+
 .gray-text {
   color: ksi-color-level('text-dark', 5);
 }
 
 .caption-text {
   color: ksi-color('text-dark');
+}
+
+.discussion-caption {
+  font-size:medium;
+  color: ksi-color-level('text-dark', 4);
 }
 
 #profile-text {
