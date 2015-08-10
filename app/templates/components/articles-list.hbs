@@ -1,4 +1,24 @@
 {{#each model as |article|}}
+    <div class="media" style="margin-top:20px">
+      <div class="media-left">
+        	<img src="http://placehold.it/250x250"> <!-- TODO obrazok link -->
+      </div>
+      <div class="media-body">
+        <h3 id="name">
+          {{#link-to "article" article}} {{article.title}} {{/link-to}}
+        </h3>
+        {{{article.intro}}}
+        <div>
+          {{#link-to "article" article}} Přečíst celé {{/link-to}}
+        </div>
+      </div>
+    </div>
+    <hr>
+{{/each}}
+
+<!-- stara verzia -->
+<!--
+{{#each model as |article|}}
   <div class="panel panel-ksi" style="margin-top:30px">
     <div class="panel-heading panel-heading-ksi">
         <h3 id="name">
@@ -14,3 +34,4 @@
     </div>
   </div>
 {{/each}}
+-->
