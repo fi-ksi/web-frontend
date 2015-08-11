@@ -1,7 +1,7 @@
 <div id="wrapper">
     <div id="header">
         {{header-component model=model}}
-        {{#if false}} <!-- admin logged -->
+        {{#if model.admin}} <!-- admin logged -->
           {{header-admin model=model}}
         {{/if}}
     </div>
