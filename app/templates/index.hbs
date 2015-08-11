@@ -21,27 +21,29 @@
     <!-- Sekcia o ksi -->
     <div class="jumbotron jumbotron-about"> <!-- TODO: full width -->
         <div style="text-align: center; color: #fff; background-size: cover; "><h1>O KSI</h1></div>
-        <div style="margin: auto;">
-            <div class="row" style="margin-top: 30px">
-                <div class="center">
-                    <div class="col-xs-12 col-sm-4">
-                        <img src="http://placehold.it/150x150" style="width: 100%">
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <img src="http://placehold.it/150x150" style="width: 100%">
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <img src="http://placehold.it/150x150" style="width: 100%">
-                    </div>
-                </div>
+            <div class="row" style="margin-top: 30px"> <!-- TODO center images -->
+              <div class="col-xs-12 col-sm-4">
+                {{#link-to "achievements"}}
+                  <img src="img/info-achievement.png" style="max-width:300px;"/>
+                {{/link-to}}
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <a href="http://ksi.fi.muni.cz/kscuk/">
+                  <img src="img/info-kscuk.png" style="max-width:300px;"/>
+              </a>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                {{#link-to "tasks"}}
+                  <img src="img/info-ksi.png" style="max-width:300px;"/>
+                {{/link-to}}
+              </div>
             </div>
-        </div>
     </div>
 </section>
 
 <section id="organizatori" class="container content-section">
     <!-- Sekcia o ksi -->
-    <div class="jumbotron" style="background-color: #fff; "> <!-- TODO: full width -->
+    <div class="jumbotron" style="background-color: #fff; ">
         <div style="text-align: center; color: #39393a;"><h1>Organizátori</h1></div>
         <div class="row" style="margin-top: 30px">
             <div class="col-xs-6 col-md-3">

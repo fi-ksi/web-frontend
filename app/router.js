@@ -24,6 +24,7 @@ Router.map(function() {
 	this.route('articles',    { path: '/articles'});
     this.route('article',     { path: '/articles/:article_id'});
     this.route('settings',    { path: '/settings'});
+    this.route('achievements',    { path: '/achievements'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
