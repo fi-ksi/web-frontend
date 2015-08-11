@@ -19,12 +19,13 @@ Router.map(function() {
 	this.route('forum',       { path: '/forum'});
 	this.route('faq',         { path: '/faq'});
 	this.route('profile',     { path: '/profile'});
+	this.route('user-profile',{ path: '/profile/:profile_id'});
 	this.route('login',       { path: '/login'});
     this.route('registration',{ path: '/registration'});
 	this.route('articles',    { path: '/articles'});
     this.route('article',     { path: '/articles/:article_id'});
     this.route('settings',    { path: '/settings'});
-    this.route('achievements',    { path: '/achievements'});
+    this.route('achievements',{ path: '/achievements'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 

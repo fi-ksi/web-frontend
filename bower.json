@@ -12,6 +12,9 @@
     "jquery": "^1.11.1",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "cytoscape": "~2.4.5",
+    "cytoscape-cxtmenu": "~2.1.6",
+    "cytoscape-qtip": "~2.2.3"
   }
 }

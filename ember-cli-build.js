@@ -19,6 +19,9 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
+  app.import(app.bowerDirectory + '/cytoscape/dist/cytoscape.min.js');
+  app.import(app.bowerDirectory + '/cytoscape-cxtmenu/cytoscape-cxtmenu.js');
+  app.import(app.bowerDirectory + '/cytoscape-qtip/cytoscape-qtip.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.css');
 
   return app.toTree();

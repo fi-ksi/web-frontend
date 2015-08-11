@@ -1,0 +1,242 @@
+{
+    "nodes": [
+      {
+        "data": {
+          "id": "v1_u1",
+          "name": "Želva",
+          "tooltip": "Popis prvej ulohy",
+          "node_type": "big"
+        },
+        "position": {
+          "x": 791.9999999999999,
+          "y": 848
+        }
+      },
+      {
+      "data": {
+          "id": "v1_b1",
+          "name": "Překvapení",
+          "tooltip": "...",
+          "node_type": "bonus"
+        },
+        "position": {
+          "x": 1200,
+          "y": 848
+        }
+      },
+      {
+        "data": {
+          "id": "v1_u2",
+          "name": "Kooperace",
+          "tooltip": "Popis druhej ulohy",
+          "node_type": "big"
+        },
+        "position": {
+          "x": 1040.779767910343,
+          "y": 848
+        }
+      },
+      {
+        "data": {
+          "id": "v1_u3",
+          "name": "Záskok",
+          "tooltip": "Popis tretej ulohy",
+          "node_type": "big"
+        },
+        "position": {
+          "x": 134.9063656819044,
+          "y": 848
+        }
+      },
+      {
+        "data": {
+          "id": "v1_u4",
+          "name": "Ksílet",
+          "tooltip": "Popis stvrtej ulohy",
+          "node_type": "big"
+        },
+        "position": {
+          "x": 452.92089949858564,
+          "y": 848
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s1",
+          "name": "Hello World",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_p"
+        },
+        "position": {
+          "x": 493.1190376027754,
+          "y": 153.7755062386966
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s2",
+          "name": "Želví grafika",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_p"
+        },
+        "position": {
+          "x": 981.5845458638744,
+          "y": 474.7869938336339
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s3",
+          "name": "Python",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_p"
+        },
+        "position": {
+          "x": 762.4154541361277,
+          "y": 249.7869938336346
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s4",
+          "name": "Hladový algoritmus",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_t"
+        },
+        "position": {
+          "x": 700.880962397226,
+          "y": 583.7755062386982
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s5",
+          "name": "Brute force",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_p"
+        },
+        "position": {
+          "x": 125.07910050141476,
+          "y": 550.0151042983707
+        }
+      },
+      {
+        "data": {
+          "id": "v1_s6",
+          "name": "Složitost",
+          "tooltip": "Popis ulohy",
+          "node_type": "small_t"
+        },
+        "position": {
+          "x": 242.09363431809464,
+          "y": 361.70790851206016
+        }
+      },
+      {
+        "data": {
+          "id": "v1_uv1",
+          "name": "Štart",
+          "tooltip": "Popis ulohy",
+          "node_type": "uvod"
+        },
+        "position": {
+          "x": 489.22023208965527,
+          "y": 7.21448711724156
+        }
+      }
+    ],
+    "edges": [
+        {
+            "data": {
+              "source": "v1_uv1",
+              "target": "v1_s1",
+              "id": "e0"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s1",
+              "target": "v1_s3",
+              "id": "e1"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s1",
+              "target": "v1_s6",
+              "id": "e2"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s3",
+              "target": "v1_s4",
+              "id": "e3"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s3",
+              "target": "v1_s5",
+              "id": "e4"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s3",
+              "target": "v1_s2",
+              "id": "e5"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s6",
+              "target": "v1_s4",
+              "id": "e6"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s6",
+              "target": "v1_s5",
+              "id": "e7"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s2",
+              "target": "v1_u1",
+              "id": "e8"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s2",
+              "target": "v1_u2",
+              "id": "e9"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s4",
+              "target": "v1_u4",
+              "id": "e10"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s5",
+              "target": "v1_u3",
+              "id": "e11"
+            }
+        },
+        {
+            "data": {
+              "source": "v1_s2",
+              "target": "v1_b1",
+              "id": "e12"
+            }
+        }
+    
+    ]
+}

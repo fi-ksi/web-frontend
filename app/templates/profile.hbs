@@ -1,12 +1,8 @@
 <section id="profile" class="container content-section" style="text-align:justify">
 	<div class="row">
-	  <div class="col-xs-5 col-md-3">
+		<div class="col-xs-5 col-md-3">
 			<div style="margin-top:30px">
-				{{#if false}} <!-- TODO have profile picture -->
-					<img src="{{model.profile_pic}}"/>
-				{{else}}
-					<img src="img/box-ksi.png" style="max-width:250px;"/>
-				{{/if}}
+				<img src="{{model.profile_pic}}" style="max-width:250px;"/>
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
 				<h3>{{model.name}}</h3>
@@ -23,7 +19,8 @@
 				</div>
 			</div>
 		</div>
-	  <div class="col-xs-7 col-sm-7 col-md-9">
+		{{#unless model.administrator}}
+		<div class="col-xs-7 col-sm-7 col-md-9">
 			<div style="margin-top:30px">
 				<h5>Trofeje</h5>
 				<hr>
@@ -32,7 +29,7 @@
 			<div class="panel panel-profile">
 				<div class="panel-body">
 					{{#each model.achievements as |achievement|}}
-						{{achievement-small model=achievement}}
+					{{achievement-small model=achievement}}
 					{{/each}}
 				</div>
 			</div>
@@ -43,11 +40,11 @@
 			</div>
 
 			<div class="row">
-        <div class="col-sm-4">
+				<div class="col-sm-4">
 					<div id="profile-points-text" class="inline">Skóre: </div>
 					<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
 				</div>
-        <div class="col-sm-4">
+				<div class="col-sm-4">
 					<div id="profile-points-text" class="inline">Percentil: </div>
 					<div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
 				</div>
@@ -55,7 +52,7 @@
 					<div id="profile-points-text" class="inline">Ročníky: </div>
 					<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
 				</div>
-      </div>
+			</div>
 
 			<hr>
 
@@ -68,48 +65,55 @@
 				</div>
 			</div>
 
-			<div style="margin-top:30px">
-				<h5>Odevzdané úkoly</h5>
-				<hr>
-			</div>
+			{{#if model.results}}
+				<div style="margin-top:30px">
+					<h5>Odevzdané úkoly</h5>
+					<hr>
+				</div>
 
-			<div class="panel" style="box-shadow: none; margin-bottom: -10px;">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-1"></div>
-						<div class="col-sm-5">
-							<h5>Název</h5>
-						</div>
-						<div class="col-sm-4">
-							<h5>Trofeje</h5>
-						</div>
-						<div class="col-sm-2">
-							<h5>Body</h5>
+				<div class="panel" style="box-shadow: none; margin-bottom: -10px;">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-5">
+								<h5>Název</h5>
+							</div>
+							<div class="col-sm-4">
+								<h5>Trofeje</h5>
+							</div>
+							<div class="col-sm-2">
+								<h5>Body</h5>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			{{#each model.results as |result|}}
+				{{#each model.results as |result|}}
 				<div class="panel panel-profile-assignment">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<img class="inline" src="{{result.task.pic}}">
-							<label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{result.task.title}}{{/link-to}}</label>
-						</div>
-						<div class="col-sm-4">
-							{{#each result.achievements as |achievement|}}
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6">
+								<img class="inline" src="{{result.task.pic}}">
+								<label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{result.task.title}}{{/link-to}}</label>
+							</div>
+							<div class="col-sm-4">
+								{{#each result.achievements as |achievement|}}
 								{{achievement-small model=achievement}}
-							{{/each}}
-						</div>
-						<div class="col-sm-2">
-							<h5 style="margin-left: 10px">{{result.score}}</h5>
+								{{/each}}
+							</div>
+							<div class="col-sm-2">
+								<h5 style="margin-left: 10px">{{result.score}}</h5>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			{{/each}}
+				{{/each}}
+			{{/if}}
 		</div>
+		{{else}}
+		<div class="col-xs-7 col-sm-7 col-md-9">
+			<p>Teď tu je organizátor, doplň mu info!</p>
+		</div>
+		{{/unless}}
 	</div>
 </section>
