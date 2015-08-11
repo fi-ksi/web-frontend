@@ -1,5 +1,4 @@
 import DS from "ember-data";
-import Ember from "ember";
 
 export default DS.Model.extend( {
 	signed_in: DS.attr("boolean"),
