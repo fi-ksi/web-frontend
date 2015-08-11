@@ -8,5 +8,6 @@ export default DS.Model.extend( {
 	published_at: DS.attr("date"),
 	last_edited_by: DS.belongsTo('user', {async: true}),
 	intro: DS.attr("string"),
+	pic: DS.attr("string"),
 	body: DS.attr("string")
 });
