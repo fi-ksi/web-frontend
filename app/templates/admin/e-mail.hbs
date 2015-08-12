@@ -1,1 +1,31 @@
-email
+<section id="admin-email" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <div class="form-group">
+    <label for="email">Od:</label>
+    <input type="email" class="form-control" id="from" value="honza@mail.abc"> <!-- mail prihlaseneho orga -->
+    (e-mail fyzické osoby, ne semináře, aby na něj mohly přijít zprávy o nedoručitelnosti či jiných problémech)
+  </div>
+  <div class="form-group">
+    <label for="email">Reply-To:</label>
+    <input type="email" class="form-control" id="reply-to" value="ksi@fi.muni.cz">
+    (sem by měli řešitelé případně odepisovat)
+  </div>
+  <div class="form-group">
+    <label for="email">Komu:</label>
+    <input type="email" class="form-control" id="to" value="ksi@fi.muni.cz">
+  </div>
+  <div class="form-group">
+    <label for="email">Slepá kopie:</label>
+    <textarea class="form-control" style="min-width: 100%" rows="3" id="copies">ucastnik@mail.abc</textarea> <!-- maily vsetkych ucastnikov -->
+  </div>
+  <div class="form-group">
+    <label for="email">Předmět:</label>
+    <input type="email" class="form-control" id="subject" value="[KSI]">
+  </div>
+  <div class="form-group">
+    <label for="email">Obsah:</label>
+    {{text-editor value=newEmailEditor}}
+  </div>
+  <div class="row" style="margin-bottom:20px; margin-left:0px">
+    <button class="btn btn-primary inline" id="send-email-button">Odeslat</button>
+  </div>
+</section>
