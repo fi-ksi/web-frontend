@@ -78,7 +78,8 @@
       "id": 1,
       "title": "První KSI úloha",
       "pic": "http://placehold.it/40x40",
-      "author": 1
+      "author": 1,
+      "assignment": 1
     },
     {
       "id": 2,
@@ -237,6 +238,13 @@
       "score": 1,
       "tasks_num": 1,
       "achievements": []
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1,
+      "body": "Tady je zadání naší úlohy!",
+      "type": "programming"
     }
   ]
 }
