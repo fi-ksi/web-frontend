@@ -1,5 +1,4 @@
 import DS from "ember-data";
-import Ember from "ember";
 
 export default DS.Model.extend( {
 	signed_in: DS.attr("boolean"),
@@ -13,5 +12,6 @@ export default DS.Model.extend( {
 	percentile: DS.attr("number"),
 	seasons: DS.attr("number"),
 	successful: DS.attr("number"),
-	results: DS.hasMany("score", {async: true})
+	results: DS.hasMany("score", {async: true}),
+	admin: DS.attr("boolean")
 });

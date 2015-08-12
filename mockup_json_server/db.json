@@ -124,7 +124,8 @@
       "results": [
         1,
         2
-      ]
+      ],
+      "admin": true
     }
   ],
   "achievements": [
