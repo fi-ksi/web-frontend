@@ -16,6 +16,7 @@
     "cytoscape": "~2.4.5",
     "cytoscape-cxtmenu": "~2.1.6",
     "cytoscape-qtip": "~2.2.3",
-    "tinymce": "~4.2.3"
+    "tinymce": "~4.2.3",
+    "qtip2": "~2.2.1"
   }
 }
