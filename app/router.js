@@ -29,6 +29,7 @@ Router.map(function() {
   this.route('achievements',{ path: '/achievements'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
+  this.route('admin/article-edit', {path: '/admin/article-edit'});
   this.route('admin/correcting', {path: '/admin/correcting'});
   this.route('admin/e-mail', {path: '/admin/e-mail'});
   this.route('admin/export', {path: '/admin/export'});
@@ -36,6 +37,8 @@ Router.map(function() {
   this.route('admin/tasks', {path: '/admin/tasks'});
   this.route('admin/users', {path: '/admin/users'});
   this.route('admin/graph', {path: '/admin/graph'});
+  this.route('admin/school-edit', {path: '/admin/school-edit'});
+  this.route('admin/user-edit', {path: '/admin/user-edit'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 

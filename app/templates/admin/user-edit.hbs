@@ -1,0 +1,26 @@
+<section id="admin-user-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Úprava uživatele Jmeno</h2>
+  {{#link-to "admin/users"}}zpět na přehled{{/link-to}}
+  <div class="alert alert-info" role="alert" style="margin-top:20px">
+    Tato sekce slouží pouze pro úpravy, které si uživatelé nemohou udělat sami.
+    Pro úpravu uživatelsky spravovatelných údajů použij funkci su. <!-- TODO su link -->
+  </div>
+
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="country">Profil:</label>
+        <select class="form-control" id="country">
+          <option>administrátor</option>
+          <option>organizátor</option>
+          <option>řešitel</option>
+        </select>
+      </div>
+
+      <div class="row" style="margin-left:0px; margin-top:20px">
+        <button class="btn btn-primary inline" id="save">Uložit</button> <!-- TODO button -->
+        <button class="btn btn-primary inline" id="delete">Smazat</button> <!-- TODO button -->
+      </div>
+    </div>
+  </div>
+</section>

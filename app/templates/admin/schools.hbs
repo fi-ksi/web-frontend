@@ -1,1 +1,29 @@
-skoly
+<section id="admin-schools" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Správa škol</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>ID</th>
+        <th>Název</th>
+        <th>Město</th>
+        <th>Ulice</th>
+        <th>Stát</th>
+        <th>Zkontrolováno</th>
+        <th title="Skrytá z nabídky škol">Skr.</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="height:45px">
+        <td>993</td> <!-- ID -->
+        <td>1. Súkromne Gymnázium v Bratislave</td> <!-- nazev -->
+        <td>Bratislava</td> <!-- mesto -->
+        <td>Bajkalská 20</td> <!-- ulice -->
+        <td>SR</td> <!-- stat -->
+        <td>ne</td> <!-- zkontrolovano -->
+        <td>ne</td> <!-- skryta za nabitky skol -->
+        <td>{{#link-to "admin/school-edit"}}upravit{{/link-to}}</td> <!-- button s konkretnou skolou -->
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,58 @@
+<section id="admin-school-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Úprava školy</h2>
+  {{#link-to "admin/schools"}}zpět na přehled{{/link-to}}
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="street">Název:</label>
+        <input type="text" class="form-control" id="street">
+      </div>
+      <div class="form-group">
+        <label for="street">Ulice:</label>
+        <input type="text" class="form-control" id="street">
+      </div>
+
+      <div class="form-group">
+        <label for="city">Město:</label>
+        <input type="text" class="form-control" id="city">
+      </div>
+
+      <div class="form-group">
+        <label for="psc">PSČ:</label>
+        <input type="text" class="form-control" id="psc">
+      </div>
+
+      <div class="form-group">
+        <label for="country">Krajina:</label>
+        <select class="form-control" id="country">
+          <option>Česká republika</option>
+          <option>Slovensko</option>
+        </select>
+      </div>
+
+      <form class="form-group">
+        <label>Zkontrolováno:</label>
+        <input type="checkbox">
+      </form>
+
+      <form class="form-group">
+        <label>Skrytá:</label>
+        <input type="checkbox">
+      </form>
+
+      <div class="form-group">
+        <label>Merge:</label>
+        <select class="form-control" id="country">
+          <option>skola</option>
+          <option>skola</option>
+        </select>
+      </div>
+      (upravovanou školu odstraní a všechny řešitele nastaví na zde vybranou)
+
+      <div class="row" style="margin-left:0px; margin-top:20px">
+        <button class="btn btn-primary inline" id="save">Uložit</button> <!-- TODO button -->
+        <button class="btn btn-primary inline" id="delete">Smazat</button> <!-- TODO button -->
+      </div>
+    </div>
+  </div>
+</section>

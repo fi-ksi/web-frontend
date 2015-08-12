@@ -1,0 +1,40 @@
+<section id="admin-article-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Úprava článku</h2>
+  {{#link-to "admin/articles"}}zpět na přehled{{/link-to}}
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Titulek:</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Obsah:</label>
+        {{text-editor value=articleEditEditor}}
+      </div>
+
+      <div class="form-group">
+        <label>Termín publikace:</label>
+        <input type="date" class="form-control">
+        (v zadaném čase se zpráva nejdříve zveřejní; může i později, viz níže)
+      </div>
+
+      <div class="form-group">
+        <label>Obrázek:</label>
+        <select>
+         <option><img src="http://placehold.it/30x30" style="width: 100%">daco.jpg</option> <!-- TODO obrazky z databaze -->
+         <option><img src="http://placehold.it/30x30" style="width: 100%">daco.jpg</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="inline" for="email">Nový obrázek:</label> <!-- TODO novy obrazok do databaze -->
+        <input class="inline" type="file">
+      </div>
+
+      <div class="row" style="margin-left:0px; margin-top:20px">
+        <button class="btn btn-primary inline" id="save">Uložit</button> <!-- TODO button -->
+        <button class="btn btn-primary inline" id="delete">Smazat</button> <!-- TODO button -->
+      </div>
+    </div>
+  </div>
+</section>
