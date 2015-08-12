@@ -1,1 +1,29 @@
-uzivatele
+<section id="admin-users" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Správa uživatelů</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Login</th>
+        <th>Jméno</th>
+        <th>Profil</th>
+        <th>E-mail</th>
+        <th>Ročník</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="height:45px">
+        <td>effa</td> <!-- login -->
+        <td>Tomáš Effenberger</td> <!-- meno -->
+        <td>administrátor</td> <!-- profil -->
+        <td>teffenberger@seznam.cz</td> <!-- email -->
+        <td>6</td>
+        <td>
+          {{#link-to "admin/user-edit"}}upravit{{/link-to}}
+          |
+          <a href="#">su</a> <!-- prihlasit sa za uzivatela -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
