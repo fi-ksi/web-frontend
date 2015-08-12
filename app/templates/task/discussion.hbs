@@ -20,11 +20,10 @@
       </div>
       <!-- button odkryje textareau: -->
       <div class="panel panel-default" style="border:none; box-shadow: none;">
-  				<div class="controls form-inline" style="margin-top:10px">
-  						<label for="threadName">Příspěvek:</label>
-  						<textarea class="form-control" style="min-width: 100%" rows="3"></textarea>
-  				</div>
-  				<!-- TODO: textarea na http://www.tinymce.com/ -->
+          <div class="controls form-inline" style="margin-top:20px">
+              <label for="threadName">Příspěvek:</label>
+              {{text-editor value=taskNewArticleEditor}}
+          </div>
   				<button class="btn btn-sm btn-primary" style="margin-top:20px">Odeslat</button>
   		</div>
       <!-- vnorena reakcia -->
