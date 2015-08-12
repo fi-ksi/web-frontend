@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-left navbar-admin">
+<nav class="navbar navbar-default navbar-fixed-top navbar-left navbar-admin" style="z-index:100">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -13,14 +13,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">E-mail</a></li>
-        <li><a href="#">Export</a></li>
-        <li><a href="#">Školy</a></li>
-        <li><a href="#">Uživatelé</a></li>
-        <li><a href="#">Úlohy</a></li>
-        <li><a href="#">Novinky</a></li>
-        <li><a href="#">Opravování</a></li>
-        <li><a href="#">Wiki</a></li>
+        <li class="navbar-admin-li">{{#link-to "admin/e-mail"}}E-mail{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/export"}}Export{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/schools"}}Školy{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/users"}}Uživatelé{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/tasks"}}Úlohy{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/articles"}}Novinky{{/link-to}}</li>
+        <li class="navbar-admin-li">{{#link-to "admin/correcting"}}Opravování{{/link-to}}</li>
+        <li class="navbar-admin-li"><a href="https://github.com/fi-ksi/seminar/wiki">Wiki</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

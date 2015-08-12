@@ -6,6 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  //base
 	this.route('index',       { path: '/'});
 	this.route('task',  { path: '/tasks/:task_id'}, function() {
 		this.route('statistics');
@@ -21,11 +22,19 @@ Router.map(function() {
 	this.route('profile',     { path: '/profile'});
 	this.route('user-profile',{ path: '/profile/:profile_id'});
 	this.route('login',       { path: '/login'});
-    this.route('registration',{ path: '/registration'});
+  this.route('registration',{ path: '/registration'});
 	this.route('articles',    { path: '/articles'});
-    this.route('article',     { path: '/articles/:article_id'});
-    this.route('settings',    { path: '/settings'});
-    this.route('achievements',{ path: '/achievements'});
+  this.route('article',     { path: '/articles/:article_id'});
+  this.route('settings',    { path: '/settings'});
+  this.route('achievements',{ path: '/achievements'});
+  //admin
+  this.route('admin/articles', {path: '/admin/articles'});
+  this.route('admin/correcting', {path: '/admin/correcting'});
+  this.route('admin/e-mail', {path: '/admin/e-mail'});
+  this.route('admin/export', {path: '/admin/export'});
+  this.route('admin/schools', {path: '/admin/schools'});
+  this.route('admin/tasks', {path: '/admin/tasks'});
+  this.route('admin/users', {path: '/admin/users'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
