@@ -6,5 +6,7 @@ import DS from "ember-data";
 export default DS.Model.extend( {
 	title: DS.attr("string"),
 	pic: DS.attr("string"),
-	author: DS.belongsTo("organisator", { async: true })
+	author: DS.belongsTo("organisator", { async: true }),
+	assignment: DS.belongsTo("assignment", {async: true}),
+	scores: DS.hasMany("score", {async: true}),
 });

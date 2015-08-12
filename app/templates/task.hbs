@@ -21,7 +21,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         {{#link-to "task.assignment" tagName="li"}}<a href="{{view.href}}">Zadání</a>{{/link-to}}
-                        {{#link-to "task.submission" tagName="li"}}<a href="{{view.href}}">Odevzdání</a>{{/link-to}}
+                        {{#unless is_quiz}}
+                            {{#link-to "task.submission" tagName="li"}}<a href="{{view.href}}">Odevzdání</a>{{/link-to}}
+                        {{/unless}}
                         {{#link-to "task.statistics" tagName="li"}}<a href="{{view.href}}">Statistika</a>{{/link-to}}
                         {{#link-to "task.discussion" tagName="li"}}<a href="{{view.href}}">Diskuze</a>{{/link-to}}
                         {{#link-to "task.solution" tagName="li"}}<a href="{{view.href}}">Řešení</a>{{/link-to}}
