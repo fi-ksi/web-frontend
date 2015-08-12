@@ -21,6 +21,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
     "broccoli-filter": "^0.2.0",
+    "cytoscape": "2.4.5",
     "ember-cli": "1.13.1",
     "ember-cli-app-version": "0.4.0",
     "ember-cli-babel": "^5.0.0",
@@ -41,7 +42,6 @@
     "grunt-sass": "^1.0.0"
   },
   "dependencies": {
-    "cytoscape": "^2.4.5",
     "json-server": "^0.7.25"
   }
 }
