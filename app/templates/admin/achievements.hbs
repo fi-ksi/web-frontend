@@ -1,0 +1,24 @@
+<section id="admin-chievement" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Správa trefejí</h2>
+  {{#link-to "admin/achievement-edit"}}nová trofej{{/link-to}}
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Název</th>
+        <th>Obrázek</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="height:45px">
+        <td>Trofej 1.</td>
+        <td><img src="http://placehold.it/30x30"></td>
+        <td>
+          {{#link-to "admin/achievement-edit"}}upravit{{/link-to}}
+          |
+          <a href="#">smazat</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

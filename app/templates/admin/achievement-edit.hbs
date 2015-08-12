@@ -1,21 +1,15 @@
-<section id="admin-article-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
-  <h2>Úprava článku</h2>
-  {{#link-to "admin/articles"}}zpět na přehled{{/link-to}}
+<section id="admin-achievement-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Úprava trofeje</h2>
+  {{#link-to "admin/achievements"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
       <div class="form-group">
-        <label>Titulek:</label>
+        <label>Název:</label>
         <input type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label>Obsah:</label>
+        <label>Popis:</label>
         {{text-editor value=articleEditEditor}}
-      </div>
-
-      <div class="form-group">
-        <label>Termín publikace:</label>
-        <input type="date" class="form-control">
-        (v zadaném čase se zpráva nejdříve zveřejní; může i později, viz níže)
       </div>
 
       <div class="form-group">

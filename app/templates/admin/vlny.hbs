@@ -1,0 +1,28 @@
+<section id="admin-vlny" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Správa vln</h2>
+  {{#link-to "admin/vlna-edit"}}nová vlna{{/link-to}}
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Vlna</th>
+        <th>Zveřejnení</th>
+        <th>Uzavření</th>
+        <th>Úlohy</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="height:45px">
+        <td>Vlna 1.</td>
+        <td>2.12.2014 16:45</td> <!-- zverejnenie -->
+        <td>2.12.2014 16:55</td> <!-- uzavrenie -->
+        <td>5</td> <!-- uzavrenie -->
+        <td>
+          {{#link-to "admin/vlna-edit"}}upravit{{/link-to}}
+          |
+          <a href="#">smazat</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

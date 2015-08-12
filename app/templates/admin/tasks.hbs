@@ -1,1 +1,36 @@
-editacia uloh
+<section id="admin-tasks" class="container content-section" style=" margin-top: 20px; text-align:justify">
+  <h2>Správa úloh</h2>
+  {{#link-to "admin/task-edit"}}nová úloha{{/link-to}}
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Název</th>
+        <th>Vlna</th>
+        <th>Typ</th>
+        <th>Typ odevzdani</th>
+        <th>Max. body</th>
+        <th>Zveřejnení</th>
+        <th>Uzavření</th>
+        <th>Zdroje</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="height:45px">
+        <td><a href="#">Uloha 1.</a></td> <!-- link na ulohu -->
+        <td>Vlna 2.</td>
+        <td>programovací</td>
+        <td>abcd moznošti</td>
+        <td>1</td>
+        <td>2.12.2014 16:45</td>
+        <td>2.12.2014 16:45</td>
+        <td><a href="#">uloha-1-1.tex</a></td>
+        <td>
+          {{#link-to "admin/task-edit"}}upravit{{/link-to}}
+          |
+          <a href="#">smazat</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
