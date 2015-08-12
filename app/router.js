@@ -29,6 +29,7 @@ Router.map(function() {
   this.route('achievements',{ path: '/achievements'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
+  this.route('admin/article-edit', {path: '/admin/article-edit'});
   this.route('admin/correcting', {path: '/admin/correcting'});
   this.route('admin/e-mail', {path: '/admin/e-mail'});
   this.route('admin/export', {path: '/admin/export'});
