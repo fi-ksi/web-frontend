@@ -36,6 +36,7 @@ Router.map(function() {
   this.route('admin/tasks', {path: '/admin/tasks'});
   this.route('admin/users', {path: '/admin/users'});
   this.route('admin/graph', {path: '/admin/graph'});
+  this.route('admin/school-edit', {path: '/admin/school-edit'});
 	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
