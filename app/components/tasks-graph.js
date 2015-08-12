@@ -151,10 +151,11 @@ export default Ember.Component.extend({
 		        var name = target.data("name");
 		        var text = target.data("tooltip") + " Pokud chcete resit ulohu kliknete pravym tlacitkem."; //TODO formatovanie textu
 
+		        alert(name);
 		        var x=event.cyPosition.x;
 		        var y=event.cyPosition.y;
 
-		        Ember.$('#' + id).get("cytoscape").qtip({
+		        Ember.$('#' + id).qtip({
 		            content: {
 		                title: name,
 		                text: text
