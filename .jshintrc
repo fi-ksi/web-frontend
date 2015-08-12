@@ -1,6 +1,8 @@
 {
   "predef": [
     "document",
+    "cytoscape",
+    "tinymce",
     "window",
     "-Promise"
   ],
