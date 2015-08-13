@@ -17,6 +17,10 @@
       justo legendos et sit, quo id epicurei interpretaris.
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Reagovat</button>
+        {{#if model.admin}}
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Smazat</button>
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Přesunout</button> <!-- TODO ako? -->
+        {{/if}}
       </div>
       <!-- button odkryje textareau: -->
       <div class="panel panel-default" style="border:none; box-shadow: none;">
@@ -44,6 +48,10 @@
           justo legendos et sit, quo id epicurei interpretaris.
           <div>
             <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Reagovat</button>
+            {{#if model.admin}}
+              <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Smazat</button>
+              <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Přesunout</button> <!-- TODO ako? -->
+            {{/if}}
           </div>
         </div>
       </li>
@@ -67,6 +75,10 @@
       justo legendos et sit, quo id epicurei interpretaris.
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Reagovat</button>
+        {{#if model.admin}}
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Smazat</button>
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Přesunout</button> <!-- TODO ako? -->
+        {{/if}}
       </div>
     </div>
   </li>
