@@ -18,9 +18,9 @@
           {{/link-to}}
         </li>
         <li>
-          <a href="#">
+          {{#link-to "change-password"}}
             <span class="glyphicon glyphicon-chevron-right"></span> Změna hesla
-          </a>
+          {{/link-to}}
         </li>
       </ul>
 
@@ -80,10 +80,57 @@
 
       <hr>
 
+			<div style="margin-top:30px">
+				<h4>Škola</h4>
+				<hr>
+			</div>
+
+			<div class="form-group">
+				<label for="street">Název:</label>
+				<input type="text" class="form-control" id="name-school">
+			</div>
+
+			<div class="form-group">
+				<label for="street">Ulice:</label>
+				<input type="text" class="form-control" id="street-school">
+			</div>
+
+			<div class="form-group">
+				<label for="city">Město:</label>
+				<input type="text" class="form-control" id="city-school">
+			</div>
+
+			<div class="form-group">
+				<label for="psc">PSČ:</label>
+				<input type="text" class="form-control" id="psc-school">
+			</div>
+
+			<div class="form-group">
+        <label for="country">Krajina:</label>
+        <select class="form-control" id="country">
+          <option>Česká republika</option>
+          <option>Slovensko</option>
+        </select>
+      </div>
+			<!--
       <div class="form-group">
-        <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!--TODO dropdown menu ? -->
+        <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->
         <input type="text" class="form-control" id="school">
       </div>
+			-->
+
+			<div class="form-group">
+        <label for="year-maturita">Rok maturity:</label>
+				<select class="form-control" id="year-maturita">
+          <option>2016</option>
+          <option>2017</option>
+        </select>
+      </div>
+
+			<div style="margin-top:30px">
+				<h4>Profil</h4>
+				<hr>
+			</div>
 
       <div class="form-group">
         <label for="description">Krátky popis seba:</label>

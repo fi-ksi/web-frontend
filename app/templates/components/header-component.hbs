@@ -18,7 +18,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse in">
-            <ul class="nav navbar-nav navbar-right" style="height: 50px">
+            <ul class="nav navbar-nav navbar-left" style="height: 50px">
                 <li>
                     {{#link-to "tasks"}}Úlohy{{/link-to}}
                 </li>
@@ -34,6 +34,8 @@
                 <li>
                     {{#link-to "faq"}}FAQ{{/link-to}}
                 </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" style="height: 50px">
                 {{#if model.signed_in}}
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -62,11 +64,7 @@
                   </li>
                 {{else}}
                   <li>
-                      <form action="login.html">
-                          {{#link-to "login"}}
-                          <button class="btn btn-primary outline navbar-btn" style="margin: 10px" role="button">Přihlásit se</button>
-                          {{/link-to}}
-                      </form>
+                    <button class="btn btn-primary outline navbar-btn" data-toggle="modal" data-target="#login-modal" role="button">Přihlásit se</button>
                   </li>
                   <li>
                       <form action="registrace.html">
@@ -82,3 +80,23 @@
     </div>
     <!-- /.container -->
 </nav>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+	 <div class="loginmodal-container">
+     <div align="center">
+		     <img src="img/karlik_color.png" style="max-width:200px; vertical-align: middle;"/>
+     </div>
+    <br>
+	  <form>
+  		<input type="text" name="user" placeholder="přihlašovací jméno">
+  		<input type="password" name="pass" placeholder="heslo">
+  		<input type="submit" name="login"  class="btn btn-primary" value="Přihlaš se">
+	  </form>
+
+	  <div class="login-help">
+      {{#link-to "registration"}}Registrovat se{{/link-to}} - {{#link-to "forgot-password"}}Zapomenuté heslo{{/link-to}} <!-- TODO toogle button -->
+	  </div>
+	 </div>
+  </div>
+</div>

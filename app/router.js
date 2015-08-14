@@ -21,12 +21,13 @@ Router.map(function() {
 	this.route('faq',         { path: '/faq'});
 	this.route('profile',     { path: '/profile'});
 	this.route('user-profile',{ path: '/profile/:profile_id'});
-	this.route('login',       { path: '/login'});
   this.route('registration',{ path: '/registration'});
 	this.route('articles',    { path: '/articles'});
   this.route('article',     { path: '/articles/:article_id'});
   this.route('settings',    { path: '/settings'});
   this.route('achievements',{ path: '/achievements'});
+  this.route('forgot-password',{ path: '/forgot-password'});
+  this.route('change-password',{ path: '/change-password'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
   this.route('admin/article-edit', {path: '/admin/article-edit'});

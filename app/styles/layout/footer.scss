@@ -25,3 +25,82 @@ footer .footer-below {
     padding: 25px 0;
     background-color: ksi-color('primary-dark');
 }
+
+/* footer */
+div.footer-placeholder {
+  visibility: hidden;
+  display: block;
+  min-height: 80px;
+  width: 100%; min-width: 300px;
+  background-color: ksi-color('secondary-dark');
+}
+
+div.footer-info {
+  float: left;
+  min-width: 250px;
+  color: ksi-color('secondary-dark');
+  padding: 10px 5% 10px 5%;
+  font-size: 80%;
+  text-align: left;
+}
+
+div.footer-logos {
+  float: right;
+  padding: 15px 5% 5px 5%;
+  min-width: 250px;
+  text-align: right;
+}
+
+.footer-logo {
+  float:right;
+  display:block;
+  height: 50px;
+  width: 50px;
+  border: none;
+  margin: 0 0 10px 10px;
+}
+
+.footer-logo:hover {
+  background-position: 50px 0;
+}
+
+.footer-logo.wide {
+  width: 75px;
+}
+
+.footer-logo.wide:hover {
+  background-position: 75px 0;
+}
+
+.footer-contact {
+  height: 40px;
+  width: 120px;
+  float: left;
+}
+
+.footer-facebook {
+  height: 40px;
+  width: 120px;
+  float: right;
+  background-image:url('/img/logos/facebook.png');
+  text-decoration:none;
+}
+
+.footer-facebook:hover {
+  background-position: 0 40px;
+}
+
+/* specific logos */
+.muni-logo { background-image:url('/img/logos/logo-mu.png'); }
+.fi-logo { background-image:url('/img/logos/logo-fi.png'); }
+.prf-logo { background-image:url('/img/logos/logo-prf.png'); }
+.brkos-logo { background-image:url('/img/logos/logo-brkos.png'); }
+.keks-logo { background-image:url('/img/logos/logo-keks.png'); }
+.ksi-logo { background-image:url('/img/logos/logo-ksi.png'); }
+.vibuch-logo { background-image:url('/img/logos/logo-vibuch.png'); }
+.interlos-logo { background-image:url('/img/logos/logo-los.png'); }
+.mam-logo { background-image:url('/img/logos/logo-mam.png'); }
+
+div.icon {
+  position: absolute; top: -65px; right: 5%;
+}
