@@ -1,11 +1,7 @@
 {{#each model as |article|}}
     <div class="media" style="margin-top:20px">
       <div class="media-left">
-        {{#if false}} <!-- TODO obrazok link -->
-          <img src="{{article.pic}}" style="width: 250px">
-        {{else}}
-          <img src="img/article-new-web.png" width="250px" height="250px"/>
-        {{/if}}
+        <img src="{{article.pic}}" style="width: 250px">
       </div>
       <div class="media-body">
         <h3 id="name">

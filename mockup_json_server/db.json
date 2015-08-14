@@ -6,7 +6,7 @@
       "published_at": "2014-11-11T08:40:51.620Z",
       "intro": "Nové KSI přichází",
       "body": "<p>Sáhodlouhý obsah. 1</p>",
-      "pic": "http://placehold.it/250x250"
+      "pic": "img/box-ksi.svg"
     },
     {
       "id": 2,
@@ -109,14 +109,15 @@
       "id": 0,
       "signed_in": true,
       "name": "František Řešitel",
-      "profile_pic": "/img/box-ksi.png",
+      "profile_pic": "/img/avatar-default.svg",
       "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
       "school_name": "Gymnázium Kroměříž",
       "country": "Česká republika",
       "achievements": [
         1,
         2,
-        3
+        3,
+        4
       ],
       "percentile": 69,
       "score": 42,
@@ -148,7 +149,7 @@
     {
       "id": 4,
       "title": "Italský špagetový gurmán",
-      "pic": "http://placehold.it/40x40"
+      "pic": "img/achievements/achievement-spagety.svg"
     }
   ],
   "scores": [
