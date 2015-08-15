@@ -19,47 +19,39 @@ export default Ember.Component.extend({
 		            style: cytoscape.stylesheet()
 		            .selector('node')
 		              .css({
-		                'width': '60px',
-		                'height': '60px',
+		                'width': '100px',
+		                'height': '100px',
 		                'border-color': 'gray',
 		                'border-width': 3,
 		                'border-opacity': 0.5
 		              })
 		            .selector('node[node_type = "uvod"]')
 		              .css({
-		                'width': '80px',
-		                'height': '80px',
-		                'background-color': '#E87184'
+										'background-image': 'img/nodes/node-start.svg',
+										'background-width': '103px',
 		              })
 		            .selector('node[node_type = "small_p"]')
 		              .css({
-		                'width': '80px',
-		                'height': '80px',
 		                'background-color': '#3885C6'
 		              })
 		            .selector('node[node_type = "small_t"]')
 		              .css({
-		                'width': '80px',
-		                'height': '80px',
 		                'background-color': '#81E877'
 		              })
 		            .selector('node[node_type = "big"]')
 		              .css({
-		                'width': '80px',
-		                'height': '80px',
 		                'background-color': '#FFCC52'
 		              })
 		            .selector('node[node_type = "bonus"]')
 		              .css({
-		                'width': '80px',
-		                'height': '80px',
 		                'background-color': '#7A80FF'
 		              })
 		            .selector('edge')
 		              .css({
-		                'width': 4,
+		                'width': 6,
+										'border-color': '#39393a',
 		                'target-arrow-shape': 'triangle',
-		                'opacity': 0.8
+		                'opacity': 1
 		              })
 		            .selector(':selected')
 		              .css({
