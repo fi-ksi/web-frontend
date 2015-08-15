@@ -1,80 +1,75 @@
 <!-- header content -->
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="z-index:150">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation" style="z-index:150;  padding: 15px 0;">
+  <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{#link-to "index" class="navbar-brand" rel="home"}}
-                <div>
-                    <img src="img/karlik_color.png" style="max-width:50px; vertical-align: middle;"/>
-                    <span style="vertical-align: middle;"> Korespondenční seminář z informatiky</span>
-                </div>
+            {{#link-to "index" class="pull-left" rel="home"}}
+                  <img src="img/karlik_color.png" class="inline" style="max-width:53px;"/>
+                  Korespondenční seminář z informatiky <!-- TODO krajsi text -->
             {{/link-to}}
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse in">
-            <ul class="nav navbar-nav navbar-left" style="height: 50px">
-                <li>
-                    {{#link-to "tasks"}}Úlohy{{/link-to}}
-                </li>
-                <li>
-                    {{#link-to "results"}}Výsledky{{/link-to}}
-                </li>
-                <li>
-                    {{#link-to "articles"}}Novinky{{/link-to}}
-                </li>
-                <li>
-                    {{#link-to "forum"}}Diskuse{{/link-to}}
-                </li>
-                <li>
-                    {{#link-to "faq"}}FAQ{{/link-to}}
-                </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right" style="height: 50px">
-                {{#if model.signed_in}}
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      <div style="text-align:center;">
-                        <div style="display:inline">
-                    				<img src="{{model.profile_pic}}" style="width:50px;"/>
-                        </div>
-                        <div id="header-text" style=" margin-left:10px; display:inline">
-                          {{model.name}}
-                        </div>
-                        <div style=" margin-left:10px; display:inline">
-                          <span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="color:#fff"></span>
-                        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapse-main">
+            <ul class="nav navbar-nav navbar-left" style="margin-left:20px">
+              <li>
+                  {{#link-to "tasks"}}Úlohy{{/link-to}}
+              </li>
+              <li>
+                  {{#link-to "results"}}Výsledky{{/link-to}}
+              </li>
+              <li>
+                  {{#link-to "articles"}}Novinky{{/link-to}}
+              </li>
+              <li>
+                  {{#link-to "forum"}}Diskuse{{/link-to}}
+              </li>
+              <li>
+                  {{#link-to "faq"}}FAQ{{/link-to}}
+              </li>
+              <li>&nbsp;</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {{#if model.signed_in}}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div style="text-align:center;">
+                      <!--<div style="display:inline">
+                          <img src="{{model.profile_pic}}" style="margin:0width:53px;"/>
+                      </div>--><!-- foto nefunguje opravim ked pridem -->
+                      <div id="header-text" style=" margin-left:10px; display:inline">
+                        {{model.name}}
                       </div>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu"> <!-- TODO odkazy -->
-                      <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
-                      <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
-                      <li class="divider"></li>
-                      <li><a href="#">Odhlásit se</a></li> <!-- TODO odhlasit -->
-                    </ul>
-                  </li>
-                {{else}}
-                  <li>
-                    <button class="btn btn-primary outline navbar-btn" data-toggle="modal" data-target="#login-modal" role="button">Přihlásit se</button>
-                  </li>
-                  <li>
-                      <form action="registrace.html">
-                          {{#link-to "registration"}}
-                          <button class="btn btn-primary outline navbar-btn" style="margin: 10px" role="button">Registrovat se</button>
-                          {{/link-to}}
-                      </form>
-                  </li>
-                {{/if}}
+                      <div style=" margin-left:10px; display:inline">
+                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="color:#fff"></span>
+                      </div>
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-main" aria-labelledby="dropdownMenu"> <!-- TODO odkazy -->
+                    <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
+                    <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
+                    <li class="divider"></li>
+                    <li><a href="#">Odhlásit se</a></li> <!-- TODO odhlasit -->
+                  </ul>
+                </li>
+            {{else}}
+              <li>
+                <p class="navbar-btn" data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
+                      <a href="#" class="btn  btn-header">Přihlásit se</a>
+                </p>
+              </li>
+              <li>
+                <p class="navbar-btn navbar-btn-main" style="margin-left:20px">
+                      {{#link-to "registration" class="btn btn-header"}}Registrovat se{{/link-to}}
+                </p>
+              </li>
+            {{/if}}
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

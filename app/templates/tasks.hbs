@@ -1,5 +1,11 @@
 <div id="content">
-	<h1>Ano, tady je náš graf!</h1>
+		{{#if true}}
+		<div class="alert alert-danger" role="alert">
+			<div style="text-align:center">
+		  	<strong>Pozor: </strong> nejsi přihlašen, aby byli tvé operace uloženy musíš se přihlásit.
+			</div>
+		</div>
+		{{/if}}
     {{tasks-graph}}
 </div>
 <section id="assignments" class="container content-section" style="text-align:justify">

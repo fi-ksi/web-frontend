@@ -1,16 +1,18 @@
-.btn {
-    padding: 14px 24px;
-    border: 0 none;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.btn-header {
+  background-color: ksi-color('primary-orange');
+  color:ksi-color('text-light');
+  border-radius: 0;
 }
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
+
+.btn-header:hover {
+  background: ksi-color('secondary-orange');
+  color:ksi-color('text-light');
 }
+
 .btn-primary {
-    background: ksi-color('primary-orange');
-    color: ksi-color('text-light');
+  background-color: ksi-color('primary-orange');
+  color:ksi-color('text-light');
+  border-width: 0;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: ksi-color('secondary-orange');
@@ -19,18 +21,10 @@
     background: ksi-color('primary-orange');
     box-shadow: none;
 }
-.btn.outline {
-    background: none;
-    padding: 12px 22px;
-}
-.btn-primary.outline {
-    border: 2px solid ksi-color('primary-orange');
-    color: ksi-color('primary-orange');
-}
+
 .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
     color: ksi-color('text-light');
     background: ksi-color('primary-orange');
-    border-color: ksi-color('primary-orange');
 }
 .btn-primary.outline:active, .btn-primary.outline.active {
     border-color: ksi-color('primary-orange');
