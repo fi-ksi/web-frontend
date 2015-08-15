@@ -15,7 +15,7 @@
       {{#each model as |user|}}
         <tr style="height:45px">
   				<td class="numbering" style="text-align: center;"></td>
-          <td>{{user.full_name}}</td> <!-- meno -->
+          <td>{{user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
           <td>
             {{#each user.achievements as |achievement|}}
     					{{achievement-small model=achievement}}

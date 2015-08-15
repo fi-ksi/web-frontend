@@ -17,24 +17,24 @@
     </div>
 </section>
 
-<section id="about" class="container content-section">
+<section id="about" class="container-fluid content-section">
     <!-- Sekcia o ksi -->
     <div class="jumbotron jumbotron-about"> <!-- TODO: full width -->
         <div style="text-align: center; color: #fff; background-size: cover; "><h1>O KSI</h1></div>
-            <div class="row" style="margin-top: 30px"> <!-- TODO center images -->
+            <div class="row" style="margin-top: 30px; max-width=50%"> <!-- TODO center images -->
               <div class="col-xs-12 col-sm-4">
                 {{#link-to "achievements"}}
-                  <img src="img/info-achievement.svg" style="max-width:300px;"/>
+                  <img src="img/info-achievement.svg" style="max-width:100%;"/>
                 {{/link-to}}
               </div>
               <div class="col-xs-12 col-sm-4">
                 <a href="http://ksi.fi.muni.cz/kscuk/">
-                  <img src="img/info-kscuk.svg" style="max-width:300px;"/>
+                  <img src="img/info-kscuk.svg" style="max-width:100%;"/>
               </a>
               </div>
               <div class="col-xs-12 col-sm-4">
                 {{#link-to "tasks"}}
-                  <img src="img/info-ksi.svg" style="max-width:300px;"/>
+                  <img src="img/info-ksi.svg" style="max-width:100%;"/>
                 {{/link-to}}
               </div>
             </div>

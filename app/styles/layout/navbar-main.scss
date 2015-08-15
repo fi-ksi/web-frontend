@@ -1,8 +1,7 @@
 .navbar-trans {
   background-color: ksi-color('primary-dark');
   color: ksi-color('text-light');
-  border-color: ksi-color('primary-orange');
-  border-bottom: 3px;
+  border-bottom: 4px solid ksi-color('primary-orange');
 }
 
 .navbar-trans .navbar-brand, .navbar-trans >.container-fluid .navbar-brand {
@@ -51,4 +50,8 @@
     color: ksi-color('text-light');
     text-decoration: none;
     background-color:  ksi-color('primary-orange');
+}
+
+@media (max-width: 877px) {
+
 }
