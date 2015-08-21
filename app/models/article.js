@@ -1,5 +1,5 @@
 import DS from "ember-data";
-import Ember from "ember"
+import Ember from "ember";
 
 export default DS.Model.extend( {
 	title: DS.attr("string"),
@@ -9,7 +9,7 @@ export default DS.Model.extend( {
 	intro: Ember.computed("body", function() {
 		var begin = this.get("body").indexOf("<p>");
 		var end = this.get("body").indexOf("</p>");
-		if(begin == -1 || end == -1) {
+		if(begin === -1 || end === -1) {
 			return "";
 		}
 

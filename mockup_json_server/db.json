@@ -82,11 +82,19 @@
       "active": true,
       "modules": [
         0,
-        1
+        1,
+        2
       ],
       "time_deadline": "2014-11-11T08:40:51.620Z",
       "time_published": "2014-11-11T08:40:51.620Z",
-      "author": 1
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
     }
   ],
   "categorys": [
@@ -113,7 +121,7 @@
     },
     {
       "id": 2,
-      "type": "text"
+      "type": "general"
     }
   ],
   "organisators": [
@@ -134,7 +142,7 @@
   ],
   "profile": [
     {
-      "id": 0,
+      "id": 1,
       "signed_in": true,
       "name": "František Řešitel",
       "profile_picture": "/img/avatar-default.svg",
@@ -183,10 +191,10 @@
   "scores": [
     {
       "id": 1,
-      "user": 0,
+      "user": 1,
       "task": 1,
       "reviewed_by": 2,
-      "score": 10,
+      "score": 12,
       "achievements": [
         1,
         2
@@ -194,10 +202,31 @@
     },
     {
       "id": 2,
-      "user": 0,
-      "task": 2,
+      "user": 2,
+      "task": 1,
       "reviewed_by": 1,
       "score": 8,
+      "comment": "Pěkná úloha, pěkná!",
+      "achievements": [
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "user": 2,
+      "task": 1,
+      "reviewed_by": 1,
+      "score": 13,
+      "achievements": [
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "user": 2,
+      "task": 1,
+      "reviewed_by": 1,
+      "score": 14,
       "achievements": [
         3
       ]

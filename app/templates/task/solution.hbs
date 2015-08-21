@@ -1,12 +1,19 @@
 <div style="margin:20px">
-  Text reseni <!-- text reseni -->
+	{{#if model.solution}}
+  		{{{model.solution}}}
+  	{{else}}
+  		Úlohu je ještě možné řešit nebo nebyla ještě opravena.
+  	{{/if}}
 </div>
 <hr>
+{{#if model.my_score}}
 <div>
+  Tvé skóre: {{model.my_score.score}}
   <div class="panel panel-ksi">
     <div class="panel-heading panel-heading-ksi">Komentář ke tvému řešení:</div>
     <div class="panel-body">
-      komentár <!-- komentar k rieseniu od orga -->
+      {{model.my_score.comment}}
     </div>
   </div>
 </div>
+{{/if}}

@@ -1,3 +1,6 @@
+{{#if model.my_score}}
+  Tvé skóre: {{model.my_score.score}}
+{{/if}}
 <table class="table table-striped">
   <thead>
     <tr style="height:45px">
@@ -6,24 +9,21 @@
       <th>Trofeje</th>
       <th style="text-align: center;">Skóre</th>
     </tr>
-  </thead>
+  </thead>  
   <tbody>
+    {{#each model.best_scores as |score|}}
     <tr style="height:45px">
-      <td style="text-align: center;">1</td>
-      <td>Katka Šikovná</td> <!-- meno -->
+      <td class="numbering" style="text-align: center;"></td>
+      <td>{{score.user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
       <td>
-        <img src="http://placehold.it/30x30"> <!-- trofeje -->
-        <img src="http://placehold.it/30x30">
-        <img src="http://placehold.it/30x30">
+        {{#each score.user.achievements as |achievement|}}
+          {{achievement-small model=achievement}}
+        {{/each}}
       </td>
-      <td style="text-align: center;">10</td> <!-- body -->
+      <td style="text-align: center;">{{score.score}}</td> <!-- body -->
     </tr>
-
-    <tr class="warning" style="height:45px">
-      <td style="text-align: center;">2</td>
-      <td>Franta Řešitel</td> <!-- meno -->
-      <td><!-- trofeje --></td>
-      <td style="text-align: center;">7</td> <!-- body -->
-    </tr>
+    {{else}}
+      Tato úloha nemá zatím žádná odevzdání
+    {{/each}}
   </tbody>
 </table>
