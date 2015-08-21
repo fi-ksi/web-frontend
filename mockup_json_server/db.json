@@ -3,89 +3,117 @@
     {
       "id": 1,
       "title": "První článek",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
+      "time_published": "2014-11-11T08:40:51.620Z",
       "body": "<p>Sáhodlouhý obsah. 1</p>",
-      "pic": "img/box-ksi.svg"
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 2,
-      "title": "Druhý článek",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 2</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 3,
-      "title": "Třetí článek",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 3</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 4,
-      "title": "4",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
       "body": "<p>Sáhodlouhý obsah. 1</p>",
-      "pic": "http://placehold.it/250x250"
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 5,
-      "title": "5",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 2</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 6,
-      "title": "6",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 3</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 7,
-      "title": "7",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
       "body": "<p>Sáhodlouhý obsah. 1</p>",
-      "pic": "http://placehold.it/250x250"
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 8,
-      "title": "8",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 2</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     },
     {
       "id": 9,
-      "title": "9",
-      "published_at": "2014-11-11T08:40:51.620Z",
-      "intro": "Nové KSI přichází",
-      "body": "<p>Sáhodlouhý obsah. 3</p>",
-      "pic": "http://placehold.it/250x250"
+      "title": "První článek",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "body": "<p>Sáhodlouhý obsah. 1</p>",
+      "picture": "img/box-ksi.svg"
     }
   ],
   "tasks": [
     {
       "id": 1,
+      "position": [
+        10,
+        10
+      ],
+      "node_parent": [],
       "title": "První KSI úloha",
-      "pic": "http://placehold.it/40x40",
-      "author": 1,
-      "assignment": 1
+      "picture": "http://placehold.it/40x40",
+      "category": 0,
+      "body": "Nakresli kolečko!",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1
+    }
+  ],
+  "categorys": [
+    {
+      "id": 0,
+      "color": "red"
+    }
+  ],
+  "threads": [
+    {
+      "id": 0,
+      "title": "První vlákno",
+      "posts": []
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "type": "programming"
+    },
+    {
+      "id": 1,
+      "type": "quiz"
     },
     {
       "id": 2,
-      "title": "Heňova úloha",
-      "pic": "http://placehold.it/40x40",
-      "author": 2
+      "type": "text"
     }
   ],
   "organisators": [
@@ -94,14 +122,14 @@
       "first_name": "Honza",
       "last_name": "Mrázek",
       "nick_name": "",
-      "profile_pic": "http://placehold.it/50x50"
+      "profile_picture": "http://placehold.it/50x50"
     },
     {
       "id": 2,
       "first_name": "Henrich",
       "last_name": "Lauko",
       "nick_name": "Heňo",
-      "profile_pic": "http://placehold.it/50x50"
+      "profile_picture": "http://placehold.it/50x50"
     }
   ],
   "profile": [
@@ -109,7 +137,7 @@
       "id": 0,
       "signed_in": true,
       "name": "František Řešitel",
-      "profile_pic": "/img/avatar-default.svg",
+      "profile_picture": "/img/avatar-default.svg",
       "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
       "school_name": "Gymnázium Kroměříž",
       "country": "Česká republika",
@@ -134,22 +162,22 @@
     {
       "id": 1,
       "title": "Buldozer!",
-      "pic": "img/achievements/achievement-buldozer.svg"
+      "picture": "img/achievements/achievement-buldozer.svg"
     },
     {
       "id": 2,
       "title": "Heňův mazánek",
-      "pic": "http://placehold.it/40x40"
+      "picture": "http://placehold.it/40x40"
     },
     {
       "id": 3,
       "title": "Pampeliška",
-      "pic": "http://placehold.it/40x40"
+      "picture": "http://placehold.it/40x40"
     },
     {
       "id": 4,
       "title": "Italský špagetový gurmán",
-      "pic": "img/achievements/achievement-spagety.svg"
+      "picture": "img/achievements/achievement-spagety.svg"
     }
   ],
   "scores": [
@@ -239,13 +267,6 @@
       "score": 1,
       "tasks_num": 1,
       "achievements": []
-    }
-  ],
-  "assignments": [
-    {
-      "id": 1,
-      "body": "Tady je zadání naší úlohy!",
-      "type": "programming"
     }
   ]
 }

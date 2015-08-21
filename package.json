@@ -43,6 +43,7 @@
     "grunt-sass": "^1.0.0"
   },
   "dependencies": {
-    "json-server": "^0.7.25"
+    "json-server": "^0.7.25",
+    "node-sass": "^3.2.0"
   }
 }
