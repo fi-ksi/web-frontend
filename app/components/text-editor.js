@@ -51,11 +51,13 @@ export default Ember.Component.extend({
   }.on('didInsertElement'),
 
   valueChanged: function () {
-    var controller = this;
     tinymce.editors.filter(function (editor) {
-      return editor.id === controller.get('editor').id;
+      if (typeof this === "undefined") {
+        return;
+      }
+      return editor.id === this.get('editor').id;
     }).forEach(function (editor) {
-      editor.setContent(controller.get('value'));
+      editor.setContent(this.get('value'));
     });
   }.observes('value')
 });

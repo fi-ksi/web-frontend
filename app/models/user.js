@@ -9,5 +9,6 @@ export default DS.Model.extend( {
 	}),
 	score: DS.attr("number"),
 	tasks_num: DS.attr("number"),
-	achievements: DS.hasMany("achievement", {async: true})
+	achievements: DS.hasMany("achievement", {async: true}),
+	profile_picture: DS.attr("string")
 });

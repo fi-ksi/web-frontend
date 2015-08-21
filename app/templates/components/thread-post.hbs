@@ -1,0 +1,31 @@
+<li class="media" style="margin-top: 15px"> <!-- pociatok prispevku -->
+    <div class="media-left">
+        <img class="media-object" src="{{model.author.profile_picture}}"> <!-- foto autora prispevku -->
+    </div>
+    <div class="media-body">
+      <div class="discussion-caption">{{model.author.full_name}}, řešitel, {{model.published_at}}</div> <!-- meno, status, cas-->
+        {{{model.body}}}
+      <div>
+        <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
+          {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}</button>
+        {{#if admin}}
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Smazat</button>
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px">Přesunout</button> <!-- TODO ako? -->
+        {{/if}}
+      </div>
+      <!-- button odkryje textareau: -->
+      {{#if is_reacting}}
+        <div class="panel panel-default" style="border:none; box-shadow: none;">
+            <div class="controls form-inline" style="margin-top:20px">
+                <label for="threadName">Příspěvek:</label>
+                {{text-editor value=taskNewArticleEditor}}
+            </div>
+    				<button class="btn btn-sm btn-primary" style="margin-top:20px">Odeslat</button>
+    		</div>
+      {{/if}}
+      <!-- vnorena reakcia -->
+      {{#each model.reaction as |react|}}
+        <!--{{thread-post model=react admin=admin}}-->
+      {{/each}}
+    </div>
+  </li>

@@ -107,7 +107,35 @@
     {
       "id": 0,
       "title": "První vlákno",
-      "posts": []
+      "root_posts": [
+        1
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "author": 1,
+      "published_at": "2015-07-07T15:55:02",
+      "body": "Příspěvek!",
+      "reaction": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "author": 1,
+      "published_at": "2015-07-07T15:55:02",
+      "body": "Příspěvek 2!",
+      "reaction": []
+    },
+    {
+      "id": 3,
+      "author": 1,
+      "published_at": "2015-07-07T15:55:02",
+      "body": "Příspěvek3!",
+      "reaction": []
     }
   ],
   "modules": [
@@ -239,6 +267,7 @@
       "last_name": "Skvělá",
       "score": 150,
       "tasks_num": 16,
+      "profile_picture": "http://placehold.it/50x50",
       "achievements": [
         1,
         2,
