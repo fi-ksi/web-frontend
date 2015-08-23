@@ -107,8 +107,19 @@
     {
       "id": 0,
       "title": "První vlákno",
+      "unread": 5,
+      "posts_count": 20,
       "root_posts": [
         1
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Druhé vlákno",
+      "unread": 8,
+      "posts_count": 10,
+      "root_posts": [
+        2
       ]
     }
   ],

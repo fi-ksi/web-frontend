@@ -1,0 +1,10 @@
+<section id="thread" class="container content-section" style="text-align:justify">
+	{{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
+	<!-- Sekcia -->
+	<div style="margin:40px;">
+		<h2>{{model.title}}!</h2>
+		{{#each model.root_posts as |post|}}
+			{{thread-post model=post}}
+		{{/each}}
+	</div>
+</section>

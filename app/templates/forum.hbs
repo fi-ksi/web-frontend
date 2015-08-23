@@ -11,25 +11,33 @@
 		</div>
 
 		<div>
-			<button class="btn btn-primary">Nové vlákno</button> <!-- otvori/skryje nasledujuci panel -->
+			<button class="btn btn-primary" {{action "new_thread"}}>
+				{{#if new_thread}}
+					Zrušit nové vlákno
+				{{else}}
+					Nové vlákno
+				{{/if}}
+			</button> <!-- otvori/skryje nasledujuci panel -->
 		</div>
 
-		<div style="margin-top:20px; margin-bottom:20px;">
-			<div class="panel panel-default">
-				<form class="form-horizontal" style="margin:30px">
-					<div class="controls form-inline">
-							<label for="threadName">Název:</label>
-							<input type="text" class="form-control" style="min-width: 100%" id="threadName">
-					</div>
-					<div class="controls form-inline" style="margin-top:20px">
-							<label for="threadName">Příspěvek:</label>
-							{{text-editor value=forumNewArticleEditor}}
-					</div>
-					<!-- TODO: textarea na http://www.tinymce.com/ -->
-					<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
-				</form>
+		{{#if new_thread}}
+			<div style="margin-top:20px; margin-bottom:20px;">
+				<div class="panel panel-default">
+					<form class="form-horizontal" style="margin:30px">
+						<div class="controls form-inline">
+								<label for="threadName">Název:</label>
+								<input type="text" class="form-control" style="min-width: 100%" id="threadName">
+						</div>
+						<div class="controls form-inline" style="margin-top:20px">
+								<label for="threadName">Příspěvek:</label>
+								{{text-editor value=forumNewArticleEditor}}
+						</div>
+						<!-- TODO: textarea na http://www.tinymce.com/ -->
+						<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
+					</form>
+				</div>
 			</div>
-		</div>
+		{{/if}}
 
 		<table class="table table-striped table-hover-forum ">
 	    <thead>
@@ -41,57 +49,28 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>
-						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
-							Problémy <!-- meno vlakna/ulohy - link na vlakno -->
-						</h5>
-					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků -->
-					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
-					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-						Jirka Jiží:  				<!- - Meno autora prispevku - ->
-						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> -->
-	      </tr>
-
-				<tr>
-	        <td>
-						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
-							FAQ <!-- meno vlakna/ulohy - link na vlakno -->
-						</h5>
-					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků -->
-					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
-					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-						Jirka Jiží:  				<!- - Meno autora prispevku - ->
-						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> -->
-	      </tr>
-
-				<tr>
-	        <td>
-						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
-							Python <!-- meno vlakna/ulohy - link na vlakno -->
-						</h5>
-					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků -->
-					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
-					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-						Jirka Jiží:  				<!- - Meno autora prispevku - ->
-						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> -->
-	      </tr>
+	    	{{#each model as |thread|}}
+			<tr>
+				<td>
+					<h5 class="caption-text">
+					<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
+						{{#link-to "thread" thread}}{{thread.title}}{{/link-to}}<!-- meno vlakna/ulohy - link na vlakno -->
+					</h5>
+				</td>
+				<td style="text-align: center;"><span class="badge">{{#link-to "thread" thread}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
+				<td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
+				<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
+				Jirka Jiží:  				<!- - Meno autora prispevku - ->
+				Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
+				<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
+				</td> -->
+			</tr>
+			{{/each}}
 	    </tbody>
 	  </table> <!-- zobrazovat max 10 vlakien? -->
 
-		<div class="text-center"> <!-- TODO colors -->
+	  	<!--
+		<div class="text-center"> <!-- TODO colors --!>
 			<ul class="pagination">
 			 <li><a href="#">&laquo;</a></li>
 			 <li class="active"><a href="#">1</a></li>
@@ -101,10 +80,11 @@
 			 <li><a href="#">5</a></li>
 			 <li><a href="#">&raquo;</a></li>
 			</ul>
-		</div>
+		</div>-->
 
 	</div>
 
+	<!-- Zatím pravděpodobně nepotřebujeme
 	<div style="margin:40px;">
 		<h2>Diskuse k úlohám</h2>
 		<table class="table table-striped table-hover-forum ">
@@ -113,45 +93,45 @@
 	        <th>Název vlákna</th>
 	        <th style="text-align: center;">Počet příspěvků</th>
 	        <th style="text-align: center;">Počet nečtených</th>
-					<!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> -->
+					<!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> --!>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr>
 	        <td>
 						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
-							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno -->
+							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
+							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
 						</h5>
 					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků -->
+	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
 					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
 					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
 						Jirka Jiží:  				<!- - Meno autora prispevku - ->
 						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
 						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> -->
+					</td> --!>
 	      </tr>
 
 				<tr>
 	        <td>
 						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy -->
-							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno -->
+							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
+							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
 						</h5>
 					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků -->
+	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
 					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
 					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
 						Jirka Jiží:  				<!- - Meno autora prispevku - ->
 						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
 						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> -->
+					</td> --!>
 	      </tr>
 	    </tbody>
-	  </table>	<!-- zobrazovat max 10 vlakien? -->
+	  </table>	<!-- zobrazovat max 10 vlakien? --!>s
 
-		<div class="text-center"> <!-- TODO colors -->
+		<div class="text-center"> <!-- TODO colors --!>
 			<ul class="pagination">
 			 <li><a href="#">&laquo;</a></li>
 			 <li class="active"><a href="#">1</a></li>
@@ -162,6 +142,6 @@
 			 <li><a href="#">&raquo;</a></li>
 			</ul>
 		</div>
-	</div>
+	</div>-->
 
 </section>
