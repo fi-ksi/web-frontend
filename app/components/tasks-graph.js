@@ -2,12 +2,45 @@ import Ember from "ember";
 
 export default Ember.Component.extend({
 	tagName: '',
+	cytoscape_data: function() {
+		var ret = {
+			nodes: [],
+			edges: []
+		};
+
+		this.get("model").forEach(function(node) {
+			ret["nodes"].push({
+				data: {
+					id: node.get("id"),
+					name: node.get("title"),
+					tooltip: node.get("intro"),
+					node_type: node.get("category").get("type")
+				},
+				position: {
+					x: node.get("position").get("x"),
+					y: node.get("position").get("y")
+				}
+			});
+			node.get("node_parent").forEach(function(parent) {
+				ret["edges"].push({
+					data: {
+						source: parent.get("id"),
+						target: node.get("id")
+					}
+				});
+			});
+		});
+
+		console.log(ret);
+
+		return ret;
+	}.property("model"),
 	didInsertElement: function() {
 		Ember.run.scheduleOnce('afterRender', this, function(){
 			this.reset_graph_panel();
 			this.cy = cytoscape({
 		        container: Ember.$('#cy')[0],
-		        elements: this.loadGraph('graf.json'), //nahranie grafu
+		        elements: this.get("cytoscape_data"),//this.loadGraph('graf.json'), //nahranie grafu
 		        zoom: 1,
 		        pan: { x: 0, y: 0 },
 		        zoomingEnabled: true,
@@ -68,8 +101,9 @@ export default Ember.Component.extend({
 		            padding: 100
 		        }
 		    });
+			this.reset_graph_panel();
 
-			function showQTip(node)
+			/*function showQTip(node)
 		    {
 		        Ember.$(node).qtip({
 		            // your options
@@ -82,7 +116,7 @@ export default Ember.Component.extend({
 		                text: 'Whatever you want to display'
 		            }
 		        }).qtip('show');
-		    }
+		    }*/
 
 		    //nastavenie kontextoveho po pravom kliknuti
 		    this.cy.cxtmenu({
@@ -180,16 +214,13 @@ export default Ember.Component.extend({
 	        });
 		});
 	},
-	init_graph: function() {
-		this.reset_graph_panel();
-	},
 	reset_graph_panel: function() {
 		var graphWidth = document.getElementById('graph-content').offsetWidth;
-		//var graphHeight = document.getElementById('graph-content').offsetHeight;
+		var graphHeight = document.getElementById('graph-content').offsetHeight;
 		var graphPanel = document.getElementById("cy");
 
-		graphPanel.style.width = graphWidth + "px";
-		graphPanel.style.height = "1000px";
+		graphPanel.style.width = "100%";
+		graphPanel.style.height = 1000 + "px";
 	},
 	loadGraph: function(file) {
         var json = null;

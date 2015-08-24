@@ -1,7 +1,7 @@
 import DS from "ember-data";
 
 export default DS.Model.extend( {
-	node_parent: DS.hasMany("task", { async: true }),
+	node_parent: DS.hasMany("task", { async: true, inverse:null}),
 	position: DS.attr("point"),
 	category: DS.belongsTo("category", { async: true }),
 	title: DS.attr("string"),

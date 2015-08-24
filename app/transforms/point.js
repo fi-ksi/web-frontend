@@ -5,6 +5,6 @@ export default DS.Transform.extend({
 		return [ value.get("x"), value.get("y") ];
 	},
 	deserialize: function(value) {
-		return Object.create({x: value[0], y: value[1]});
+		return Ember.Object.create({x: value[0], y: value[1]});
 	}
 });

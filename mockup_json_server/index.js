@@ -18,8 +18,12 @@ router.render = function (req, res) {
   var item = arr[1];
 
   // Get rid of the s
-  if(arr.length == 3 && !isNaN(arr[2]))
+  if(item == "categories") {
+    item = "category";
+  }
+  else if(arr.length == 3 && !isNaN(arr[2])) {
     item = item.substring(0, item.length - 1);
+  }
   response[item] = res.locals.data;
 
   // Add meta tags
