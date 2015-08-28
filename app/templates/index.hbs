@@ -45,29 +45,10 @@
     <!-- Sekcia o ksi -->
     <div class="jumbotron" style="background-color: #fff; ">
         <div style="text-align: center; color: #39393a;"><h1>Organizátoři</h1></div>
+            {{#each model.organisators as |org|}}
             <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
+                <img src="{{org.profile_picture}}" style="width: 100%">
             </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="http://placehold.it/150x150" style="width: 100%">
-            </div>
+            {{/each}}
     </div>
 </section>
