@@ -27,6 +27,7 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/qtip2/jquery.qtip.min.js');
   app.import(app.bowerDirectory + '/cytoscape-qtip/cytoscape-qtip.js');
   app.import(app.bowerDirectory + '/ace-builds/src-min-noconflict/ace.js');
+  app.import(app.bowerDirectory + '/HCaptions/jquery.hcaptions.js');
 
   // import the main file
   app.import('bower_components/tinymce/tinymce.min.js', {destDir: 'assets/tinymce'});
