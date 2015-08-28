@@ -8,7 +8,8 @@ export default Ember.Route.extend(ResetScroll, {
 			articles: this.store.query("article", {
 				_start: 0,
 				_limit: this.get("articles_limit")
-			})
+			}),
+			organisators: this.store.findAll("organisator")
 		});		
 	},
 });
