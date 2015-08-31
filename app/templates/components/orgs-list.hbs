@@ -1,0 +1,15 @@
+{{#each model as |org|}}
+    <div class="col-xs-6 col-md-3">
+
+        <a href="#" class="hcaption" data-target="#orgToggle">
+            <img src="{{org.profile_picture}}" style="width: 100%">
+        </a>
+        <div id="orgToggle" class="hide">
+            <span class="orgPopup">{{org.full_name}}</span>
+        </div>
+
+        {{#link-to 'user-profile' org}}
+        {{/link-to}}
+    </div>
+{{/each}}
+

@@ -7,23 +7,23 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   //base
-	this.route('index',       { path: '/'});
-	this.route('task',  { path: '/ulohy/:task_id'}, function() {
-		this.route('statistics', { path: 'statistiky'});
-		this.route('submission', { path: 'odevzdani'});
-		this.route('discussion', { path: 'diskuse'});
-		this.route('solution',   { path: 'reseni'});
-		this.route('assignment', {path: ''});
-	});
-	this.route('tasks', { path: '/ulohy'});
-	this.route('results',     { path: '/vysledky'});
-	this.route('forum',       { path: '/forum'});
+    this.route('index',       { path: '/'});
+    this.route('task',  { path: '/ulohy/:task_id'}, function() {
+        this.route('statistics', { path: 'statistiky'});
+        this.route('submission', { path: 'odevzdani'});
+        this.route('discussion', { path: 'diskuse'});
+        this.route('solution',   { path: 'reseni'});
+        this.route('assignment', {path: ''});
+    });
+  this.route('tasks', { path: '/ulohy'});
+  this.route('results',     { path: '/vysledky'});
+  this.route('forum',       { path: '/forum'});
   this.route('thread',      { path: '/forum/:thread_id'});
-	this.route('faq',         { path: '/faq'});
-	this.route('profile',     { path: '/profil'});
-	this.route('user-profile',{ path: '/profil/:profile_id'});
+  this.route('faq',         { path: '/faq'});
+  this.route('profile',     { path: '/profil'});
+  this.route('user-profile',{ path: '/profil/:profile_id'});
   this.route('registration',{ path: '/registrace'});
-	this.route('articles',    { path: '/novinky'});
+  this.route('articles',    { path: '/novinky'});
   this.route('article',     { path: '/novinky/:article_id'});
   this.route('settings',    { path: '/nastaveni'});
   this.route('achievements',{ path: '/achievementy'});
@@ -46,7 +46,7 @@ Router.map(function() {
   this.route('admin/vlna-edit', {path: '/admin/vlna-edit'});
   this.route('admin/achievements', {path: '/admin/achievements'});
   this.route('admin/achievement-edit', {path: '/admin/achievement-edit'});
-	this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
+    this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });
 
 export default Router;
