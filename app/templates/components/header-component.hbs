@@ -33,7 +33,7 @@
               <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              {{#if model.signed_in}}
+              {{#if session.isAuthenticated}}
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <div style="text-align:center;">
@@ -52,13 +52,13 @@
                     <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
                     <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
                     <li class="divider"></li>
-                    <li><a href="#">Odhlásit se</a></li> <!-- TODO odhlasit -->
+                    <li><a {{ action 'logout' }}>Odhlásit se</a></li> <!-- TODO odhlasit -->
                   </ul>
                 </li>
             {{else}}
               <li>
                 <p class="navbar-btn" data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
-                      <a href="#" class="btn  btn-header">Přihlásit se</a>
+                      <a href="#" class="btn btn-header">Přihlásit se</a>
                 </p>
               </li>
               <li>
@@ -75,14 +75,20 @@
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
 	 <div class="loginmodal-container">
+    <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px; text-align: right;">
+          <a href="#">zavřít</a>
+    </p>
      <div align="center">
 		     <img src="img/karlik_color.png" style="max-width:200px; vertical-align: middle;"/>
      </div>
     <br>
+    {{#if error_message}}
+      {{error_message}}
+    {{/if}}
 	  <form>
-  		<input type="text" name="user" placeholder="přihlašovací jméno">
-  		<input type="password" name="pass" placeholder="heslo">
-  		<input type="submit" name="login"  class="btn btn-primary" value="Přihlaš se">
+      {{input value=identification placeholder="přihlašovací jméno"}}
+  		{{input type="password" value=password placeholder="heslo"}}
+  		<input type="submit" name="login"  class="btn btn-primary" value="Přihlaš se" {{action 'login'}}>
 	  </form>
 
 	  <div class="login-help">
