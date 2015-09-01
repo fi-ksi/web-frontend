@@ -146,47 +146,45 @@ export default Ember.Component.extend({
 		            {
 		                content: 'Odevzdání',
 		                select: function(){
-		                    self.sendAction('sub', this.id());
+		                    self.sendAction("sub", this.id());
 		                }
 		            },
 
 		            {
 		                content: 'Zadání',
 		                select: function(){
-		                    //TODO
-		                    var url = location.origin  + "/web/uloha-template.html";
-		                    location.href = url;
+		                    self.sendAction('assign', this.id());
 		                }
 		            },
 
 		            {
 		                content: 'Statistika',
 		                select: function(){
-		                    //TODO
-		                    var url = location.origin  + "/web/uloha-template.html";
-		                    location.href = url;
+		                    self.sendAction('stat', this.id());
 		                }
 		            },
 
 		            {
 		                content: 'Diskuze',
 		                select: function(){
-		                    //TODO
-		                    var url = location.origin  + "/web/uloha-template.html";
-		                    location.href = url;
+		                    self.sendAction('discuss', this.id());
 		                }
 		            },
 
 		            {
 		                content: 'Řešení',
 		                select: function(){
-		                    //TODO
-		                    var url = location.origin  + "/web/uloha-template.html";
-		                    location.href = url;
+		                    self.sendAction('solution', this.id());
 		                }
 		            }
 		        ]
 		    });
+
+			this.get("cy").on('mousedown','node', function(event){
+				var target = event.cyTarget;
+		        var id = target.data("id");
+		        self.sendAction('assign', id);
+			});
 
 			this.get("cy").on('mouseover','node', function(event){
 		        var target = event.cyTarget;
@@ -216,7 +214,7 @@ export default Ember.Component.extend({
 		            hide: {
 		                fixed: true,
 		                event: false,
-		                inactive: 3000
+		                inactive: 500
 		            },
 		            style: {
 		                classes: 'qtip-bootstrap',

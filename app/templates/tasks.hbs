@@ -1,6 +1,6 @@
 <div id="content">
 		{{#unless session.isAuthenticated}}
-			{{warning-login text="nejsi přihláše, aby byly tvé operace užloženy, musíš se přihlásit."}}
+			{{warning-login text="nejsi přihlášen. Aby byly tvé operace užloženy, musíš se přihlásit."}}
 		{{/unless}}
-    {{tasks-graph model=model currentControllerBinding=controller}}
+    {{tasks-graph model=model sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
 </div>
