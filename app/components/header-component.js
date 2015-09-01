@@ -3,12 +3,11 @@ import Ember from "ember";
 export default Ember.Component.extend({
 	didInsertElement: function() {
 		this.set("error_message", undefined);
-		if(this.get("model").get("admin")) {
-	     	Ember.$('body').toggleClass("body-admin");
-	  	}
-	  	else {
-	  		Ember.$('body').toggleClass("body-user");
-	  	}
+	  	this.resizeBody();
+	  	var self = this;
+	  	Ember.$( window ).resize(function() {
+	  		self.resizeBody();
+	  	});
 	},
 	actions: {
 		login: function() {
@@ -25,5 +24,14 @@ export default Ember.Component.extend({
 		logout: function() {
 			this.get('session').invalidate();
 		}
-	}
+	},
+	resizeBody: function() {
+		if(this.get("session.current_user.admin")) {
+	     	Ember.$('body').css("padding-top", Ember.$("#navbar").height() + 70);
+	  	}
+	  	else {
+	  		console.log("User!");
+	  		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+10);
+	  	}
+	}.observes("session.current_user.admin")
 });

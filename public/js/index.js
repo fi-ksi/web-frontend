@@ -23,7 +23,5 @@ $(window).load(function() {
         }
 
     }
-
     theWindow.resize(resizeBackgroundImage).trigger("resize");
-
 });

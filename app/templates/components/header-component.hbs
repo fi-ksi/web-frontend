@@ -1,5 +1,5 @@
 <!-- header content -->
-<nav class="navbar navbar-trans navbar-fixed-top" role="navigation" style="z-index:150;  padding: 15px 0;">
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation" style="z-index:150;  padding: 15px 0;" id=navbar>
   <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav navbar-right">
               {{#if session.isAuthenticated}}
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <div style="text-align:center;">
                       <!--<div style="display:inline">
                           <img src="{{session.current_user.profile_pic}}" style="margin:0width:53px;"/>
@@ -58,7 +58,7 @@
             {{else}}
               <li>
                 <p class="navbar-btn" data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
-                      <a href="#" class="btn btn-header">Přihlásit se</a>
+                      <a href="javascript:void(0)" class="btn btn-header">Přihlásit se</a>
                 </p>
               </li>
               <li>
@@ -76,7 +76,7 @@
   <div class="modal-dialog">
 	 <div class="loginmodal-container">
     <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px; text-align: right;">
-          <a href="#">zavřít</a>
+          <a href="javascript:void(0)">zavřít</a>
     </p>
      <div align="center">
 		     <img src="img/karlik_color.png" style="max-width:200px; vertical-align: middle;"/>
@@ -92,7 +92,7 @@
 	  </form>
 
 	  <div class="login-help">
-      {{#link-to "registration"}}Registrovat se{{/link-to}} - {{#link-to "forgot-password"}}Zapomenuté heslo{{/link-to}} <!-- TODO toogle button -->
+      <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px; text-align: right;">{{#link-to "registration"}}Registrovat se{{/link-to}} - {{#link-to "forgot-password"}}Zapomenuté heslo{{/link-to}}</p> <!-- TODO toogle button -->
 	  </div>
 	 </div>
   </div>
