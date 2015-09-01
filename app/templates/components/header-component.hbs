@@ -38,10 +38,10 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <div style="text-align:center;">
                       <!--<div style="display:inline">
-                          <img src="{{model.profile_pic}}" style="margin:0width:53px;"/>
+                          <img src="{{session.current_user.profile_pic}}" style="margin:0width:53px;"/>
                       </div>--><!-- foto nefunguje opravim ked pridem -->
                       <div id="header-text" style=" margin-left:10px; display:inline">
-                        {{model.name}}
+                        {{session.current_user.name}}
                       </div>
                       <div style=" margin-left:10px; display:inline">
                         <span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="color:#fff"></span>

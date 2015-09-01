@@ -166,7 +166,8 @@
       "reaction": [
         2,
         3
-      ]
+      ],
+      "is_new": true
     },
     {
       "id": 2,

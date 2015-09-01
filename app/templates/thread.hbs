@@ -1,4 +1,7 @@
 <section id="thread" class="container content-section" style="text-align:justify">
+	{{#unless session.isAuthenticated}}
+          {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+    {{/unless}}
 	{{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
 	<!-- Sekcia -->
 	<div style="margin:40px;">

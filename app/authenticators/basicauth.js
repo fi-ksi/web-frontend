@@ -24,7 +24,7 @@ export default Base.extend({
                     Authorization: window.btoa(data.username + ":" + data.password)
                 }
             }).then(function(response) {
-                if(response.profile[0].signed_in) {
+                if(response.profile && response.profile[0].signed_in) {
                 	console.log("Resolved1");
                     resolve(response);
                 }
@@ -35,7 +35,7 @@ export default Base.extend({
                 }
             }, function() {
             	console.log("Rejected3");
-                reject("Nemohu se připojit k serveru");
+                reject("Špatné uživatelské jméno nebo heslo");
             });
         });
     },

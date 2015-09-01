@@ -35,6 +35,7 @@ module.exports = function(defaults) {
   // import the jquery integration file
   app.import('bower_components/tinymce/jquery.tinymce.min.js', {destDir: 'assets/tinymce'});
 
+  app.import(app.bowerDirectory + '/moment/locale/cs.js');
   // import all the assets (technically you could be more precise in picking just the plugins and themes that you require, but for brevity's sake this will work)
   var tinymceAssets = pickFiles('bower_components/tinymce/', {
     srcDir: '/',

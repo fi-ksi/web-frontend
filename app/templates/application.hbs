@@ -1,8 +1,10 @@
 <div id="wrapper">
     <div id="header">
-        {{header-component model=model}}
-        {{#if model.admin}}
-          {{header-admin model=model}}
+        {{header-component}}
+        {{#if session.isAuthenticated}}
+            {{#if session.current_user.admin}}
+              {{header-admin}}
+            {{/if}}
         {{/if}}
     </div>
 

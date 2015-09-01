@@ -3,7 +3,7 @@
         <img class="media-object" src="{{model.author.profile_picture}}"> <!-- foto autora prispevku -->
     </div>
     <div class="media-body">
-      <div class="discussion-caption">{{model.author.full_name}}, řešitel, {{model.published_at}}</div> <!-- meno, status, cas-->
+      <div class="discussion-caption">{{model.author.full_name}}, řešitel, {{date-and-time model.published_at 'cs'}}{{#if model.is_new}}, nové{{/if}}</div> <!-- meno, status, cas-->
         {{{model.body}}}
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
@@ -15,13 +15,17 @@
       </div>
       <!-- button odkryje textareau: -->
       {{#if is_reacting}}
-        <div class="panel panel-default" style="border:none; box-shadow: none;">
-            <div class="controls form-inline" style="margin-top:20px">
-                <label for="threadName">Příspěvek:</label>
-                {{text-editor value=taskNewArticleEditor}}
-            </div>
-    				<button class="btn btn-sm btn-primary" style="margin-top:20px">Odeslat</button>
-    		</div>
+        {{#unless session.isAuthenticated}}
+          {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+        {{else}}
+          <div class="panel panel-default" style="border:none; box-shadow: none;">
+              <div class="controls form-inline" style="margin-top:20px">
+                  <label for="threadName">Příspěvek:</label>
+                  {{text-editor value=taskNewArticleEditor}}
+              </div>
+      				<button class="btn btn-sm btn-primary" style="margin-top:20px">Odeslat</button>
+      		</div>
+        {{/unless}}
       {{/if}}
       <!-- vnorena reakcia -->
       {{#each model.reaction as |react|}}

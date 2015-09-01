@@ -21,22 +21,26 @@
 		</div>
 
 		{{#if new_thread}}
-			<div style="margin-top:20px; margin-bottom:20px;">
-				<div class="panel panel-default">
-					<form class="form-horizontal" style="margin:30px">
-						<div class="controls form-inline">
-								<label for="threadName">Název:</label>
-								<input type="text" class="form-control" style="min-width: 100%" id="threadName">
-						</div>
-						<div class="controls form-inline" style="margin-top:20px">
-								<label for="threadName">Příspěvek:</label>
-								{{text-editor value=forumNewArticleEditor}}
-						</div>
-						<!-- TODO: textarea na http://www.tinymce.com/ -->
-						<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
-					</form>
+			{{#unless session.isAuthenticated}}
+				{{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
+			{{else}}
+				<div style="margin-top:20px; margin-bottom:20px;">
+					<div class="panel panel-default">
+						<form class="form-horizontal" style="margin:30px">
+							<div class="controls form-inline">
+									<label for="threadName">Název:</label>
+									<input type="text" class="form-control" style="min-width: 100%" id="threadName">
+							</div>
+							<div class="controls form-inline" style="margin-top:20px">
+									<label for="threadName">Příspěvek:</label>
+									{{text-editor value=forumNewArticleEditor}}
+							</div>
+							<!-- TODO: textarea na http://www.tinymce.com/ -->
+							<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
+						</form>
+					</div>
 				</div>
-			</div>
+			{{/unless}}
 		{{/if}}
 
 		<table class="table table-striped table-hover-forum ">
