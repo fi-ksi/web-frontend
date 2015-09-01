@@ -128,6 +128,105 @@
       ],
       "my_score": 2,
       "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 3,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        1
+      ],
+      "title": "První KSI úloha",
+      "picture": "http://placehold.it/40x40",
+      "category": 0,
+      "body": "Nakresli kolečko!",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 4,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        2
+      ],
+      "title": "První KSI úloha",
+      "picture": "http://placehold.it/40x40",
+      "category": 0,
+      "body": "Nakresli kolečko!",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 5,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        3
+      ],
+      "title": "První KSI úloha",
+      "picture": "http://placehold.it/40x40",
+      "category": 0,
+      "body": "Nakresli kolečko!",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
     }
   ],
   "categories": [

@@ -2,10 +2,14 @@ import Ember from "ember";
 
 export default Ember.Component.extend({
 	didInsertElement: function() {
+		this._super();
 		this.set("error_message", undefined);
 	  	this.resizeBody();
 	  	var self = this;
 	  	Ember.$( window ).resize(function() {
+	  		Ember.$(window).trigger("window:resize");
+	  	});
+	  	Ember.$(window).on("window:resize", function() {
 	  		self.resizeBody();
 	  	});
 	},
@@ -31,7 +35,7 @@ export default Ember.Component.extend({
 	  	}
 	  	else {
 	  		console.log("User!");
-	  		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+10);
+	  		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+30);
 	  	}
 	}.observes("session.current_user.admin")
 });

@@ -21,6 +21,7 @@
     "ember-simple-auth": "0.8.0",
     "qunit": "~1.17.1",
     "tinymce": "~4.2.3",
-    "ember-cli-moment-shim": "0.0.3"
+    "ember-cli-moment-shim": "0.0.3",
+    "ember-qtip2": "~2.2.0"
   }
 }

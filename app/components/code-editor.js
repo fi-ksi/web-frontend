@@ -5,6 +5,7 @@ export default Ember.Component.extend({
     elementId: "editor",
     classNames: ["code_editor"],
     didInsertElement: function() {
+        this._super();
         Ember.run.scheduleOnce('afterRender', this, function(){
             this.editor = window.ace.edit("editor");
             this.editor.setTheme("ace/theme/monokai");

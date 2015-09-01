@@ -119,7 +119,7 @@ $(document).ready(function(){
         //TODO diakritika
         commands: [
             {
-                content: 'Odevzdani',
+                content: 'Odevzdáni',
                 select: function(){
                     //TODO
                     var url = location.origin  + "/web/uloha-template.html";
@@ -128,7 +128,7 @@ $(document).ready(function(){
             },
 
             {
-                content: 'Zadani',
+                content: 'Zadáni',
                 select: function(){
                     //TODO
                     var url = location.origin  + "/web/uloha-template.html";
@@ -155,7 +155,7 @@ $(document).ready(function(){
             },
 
             {
-                content: 'Reseni',
+                content: 'Řešení',
                 select: function(){
                     //TODO
                     var url = location.origin  + "/web/uloha-template.html";
@@ -174,7 +174,7 @@ $(document).ready(function(){
 
         var x=event.cyPosition.x;
         var y=event.cyPosition.y;
-
+        console.log(id);
         cy.$('#' + id).qtip({
             content: {
                 title: name,
