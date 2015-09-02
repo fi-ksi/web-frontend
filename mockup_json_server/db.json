@@ -72,11 +72,11 @@
         100
       ],
       "node_parent": [],
-      "title": "První KSI úloha",
+      "title": "Vítej v KSI!",
       "picture": "http://placehold.it/40x40",
       "category": 0,
-      "body": "Nakresli kolečko!",
-      "intro": "Úloha o...",
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>",
+      "intro": "Jak řešit? Co tě čeká?",
       "max_score": 5,
       "thread": 0,
       "active": true,
@@ -105,11 +105,11 @@
       "node_parent": [
         1
       ],
-      "title": "První KSI úloha",
+      "title": "Co je to ten Python?",
       "picture": "http://placehold.it/40x40",
-      "category": 0,
-      "body": "Nakresli kolečko!",
-      "intro": "Úloha o...",
+      "category": 1,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Karlíkovi se tu začal plazit jakýsi had...",
       "max_score": 5,
       "thread": 0,
       "active": true,
@@ -140,8 +140,8 @@
       ],
       "title": "První KSI úloha",
       "picture": "http://placehold.it/40x40",
-      "category": 0,
-      "body": "Nakresli kolečko!",
+      "category": 2,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
@@ -173,8 +173,8 @@
       ],
       "title": "První KSI úloha",
       "picture": "http://placehold.it/40x40",
-      "category": 0,
-      "body": "Nakresli kolečko!",
+      "category": 3,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
@@ -206,8 +206,8 @@
       ],
       "title": "První KSI úloha",
       "picture": "http://placehold.it/40x40",
-      "category": 0,
-      "body": "Nakresli kolečko!",
+      "category": 4,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
@@ -234,6 +234,22 @@
       "id": 0,
       "type": "uvod",
       "color": "red"
+    },
+    {
+      "id": 1,
+      "type": "small_p"
+    },
+    {
+      "id": 2,
+      "type": "small_t"
+    },
+    {
+      "id": 3,
+      "type": "big"
+    },
+    {
+      "id": 4,
+      "type": "bonus"
     }
   ],
   "threads": [

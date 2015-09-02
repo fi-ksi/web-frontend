@@ -73,160 +73,14 @@ export default Ember.Component.extend({
 		        panningEnabled: true,
 		        userPanningEnabled: false,
 		        autoungrabify: false,
-		            style: cytoscape.stylesheet()
-		            .selector('node')
-		              .css({
-		                'width': '100px',
-		                'height': '100px',
-		                'border-color': 'gray',
-		                'border-width': 3,
-		                'border-opacity': 0.5
-		              })
-		            .selector('node[node_type = "uvod"]')
-		              .css({
-										'background-image': 'img/nodes/node-start.svg',
-										'background-width': '103px',
-		              })
-		            .selector('node[node_type = "small_p"]')
-		              .css({
-		                'background-color': '#3885C6'
-		              })
-		            .selector('node[node_type = "small_t"]')
-		              .css({
-		                'background-color': '#81E877'
-		              })
-		            .selector('node[node_type = "big"]')
-		              .css({
-		                'background-color': '#FFCC52'
-		              })
-		            .selector('node[node_type = "bonus"]')
-		              .css({
-		                'background-color': '#7A80FF'
-		              })
-		            .selector('edge')
-		              .css({
-		                'width': 6,
-										'border-color': '#39393a',
-		                'target-arrow-shape': 'triangle',
-		                'opacity': 1
-		              })
-		            .selector(':selected')
-		              .css({
-		                'background-color': 'orange',
-		                'opacity': 1
-		              })
-		            .selector('.faded')
-		              .css({
-		                'opacity': 0.0,
-		                'text-opacity': 0
-		              })
+		        ready: function() {
+		        	console.log("Graph is ready!");
+		        	self.reset_graph_panel();
+		        	self.style_graph();
+		        	self.reposition_graph();
+		        	self.setup_graph_actions();
+		        }
 		    }));
-			this.reset_graph_panel();
-			
-
-			/*function showQTip(node)
-		    {
-		        Ember.$(node).qtip({
-		            // your options
-
-		            show: '',
-		            hide: '',
-
-		            content: {
-		                prerender: true, // important
-		                text: 'Whatever you want to display'
-		            }
-		        }).qtip('show');
-		    }*/
-
-		    //nastavenie kontextoveho po pravom kliknuti
-		    this.cy.cxtmenu({
-		        selector: 'node',
-		        commands: [
-		            {
-		                content: 'Odevzdání',
-		                select: function(){
-		                    self.sendAction("sub", this.id());
-		                }
-		            },
-
-		            {
-		                content: 'Zadání',
-		                select: function(){
-		                    self.sendAction('assign', this.id());
-		                }
-		            },
-
-		            {
-		                content: 'Statistika',
-		                select: function(){
-		                    self.sendAction('stat', this.id());
-		                }
-		            },
-
-		            {
-		                content: 'Diskuze',
-		                select: function(){
-		                    self.sendAction('discuss', this.id());
-		                }
-		            },
-
-		            {
-		                content: 'Řešení',
-		                select: function(){
-		                    self.sendAction('solution', this.id());
-		                }
-		            }
-		        ]
-		    });
-
-			this.get("cy").on('mousedown','node', function(event){
-				var target = event.cyTarget;
-		        var id = target.data("id");
-		        self.sendAction('assign', id);
-			});
-
-			this.get("cy").on('mouseover','node', function(event){
-		        var target = event.cyTarget;
-		        var id = target.data("id");
-		        var name = target.data("name");
-		        var text = target.data("tooltip") + " Pokud chcete resit ulohu kliknete pravym tlacitkem."; //TODO formatovanie textu
-
-		        var x=event.cyPosition.x;
-		        var y=event.cyPosition.y;
-		        self.get("cy").$('#' + id).qtip({
-		            content: {
-		                title: name,
-		                text: text
-		            },
-		            show: {
-		                delay: 5,
-		                event: false,
-		                ready: true,
-		                effect:false
-		            },
-		            position: {
-		                my: 'bottom center',
-		                at: 'top center',
-		                target: [x+3, y+3],
-		                adjust: {x:7,y:7}
-		            },
-		            hide: {
-		                fixed: true,
-		                event: false,
-		                inactive: 500
-		            },
-		            style: {
-		                classes: 'qtip-bootstrap',
-		                tip: {
-		                    width: 16,
-		                    height: 8
-		                }
-		            }
-		        });//.qtip("show");
-
-		    });
-			this.reposition_graph();
 		});
 	},
 	reset_graph_panel: function() {
@@ -282,10 +136,157 @@ export default Ember.Component.extend({
 		this.get("cy").layout(options);
 		this.get("cy").center();
 		options.boundingBox.height = this.get("cy").height();
-		console.log(this.get("cy").extent());
-		console.log( this.get("cy").json() );
 		//this.get("cy").layout(options);
 		this.get("cy").autolock(true);
 		this.get("cy").forceRender();
+    },
+    style_graph: function()  {
+    	this.get("cy").style()
+            .selector('node')
+              .css({
+                'width': '100px',
+                'height': '100px',
+                'border-color': 'gray',
+                'border-width': 3,
+                'border-opacity': 0.5
+              })
+            .selector('node[node_type = "uvod"]')
+              .css({
+				'background-image': 'img/nodes/node-start.svg',
+				'background-width': '103px',
+				'background-height': '103px'
+              })
+            .selector('node[node_type = "small_p"]')
+              .css({
+              	'background-image': 'img/nodes/node-jelen.png',
+              	'background-width': '103px',
+              	'background-height': '103px'
+                //'background-color': '#3885C6'
+              })
+            .selector('node[node_type = "small_t"]')
+              .css({
+              	'background-image': 'img/nodes/node-kufor.png',
+              	'background-width': '103px',
+              	'background-height': '103px'
+                //'background-color': '#81E877'
+              })
+            .selector('node[node_type = "big"]')
+              .css({
+              	'background-image': 'img/nodes/node-sova.png',
+              	'background-width': '103px',
+              	'background-height': '103px'
+                //'background-color': '#FFCC52'
+              })
+            .selector('node[node_type = "bonus"]')
+              .css({
+              	'background-image': 'img/nodes/node-zem.png',
+              	'background-width': '103px',
+              	'background-height': '103px'
+                //'background-color': '#7A80FF'
+              })
+            .selector('edge')
+              .css({
+                'width': 6,
+								'border-color': '#39393a',
+                'target-arrow-shape': 'triangle',
+                'opacity': 1
+              })
+            .selector(':selected')
+              .css({
+                'background-color': 'orange',
+                'opacity': 1
+              })
+            .selector('.faded')
+              .css({
+                'opacity': 0.0,
+                'text-opacity': 0
+        	}).update();
+        //this.get("cy").style(style);
+    },
+    setup_graph_actions: function() {
+    	var self = this;
+    	this.get("cy").cxtmenu({
+	        selector: 'node',
+	        commands: [
+	            {
+	                content: 'Odevzdání',
+	                select: function(){
+	                    self.sendAction("sub", this.id());
+	                }
+	            },
+
+	            {
+	                content: 'Zadání',
+	                select: function(){
+	                    self.sendAction('assign', this.id());
+	                }
+	            },
+
+	            {
+	                content: 'Statistika',
+	                select: function(){
+	                    self.sendAction('stat', this.id());
+	                }
+	            },
+
+	            {
+	                content: 'Diskuze',
+	                select: function(){
+	                    self.sendAction('discuss', this.id());
+	                }
+	            },
+
+	            {
+	                content: 'Řešení',
+	                select: function(){
+	                    self.sendAction('solution', this.id());
+	                }
+	            }
+	        ]
+	    });
+    	this.get("cy").on('mousedown','node', function(event){
+			var target = event.cyTarget;
+	        var id = target.data("id");
+	        self.sendAction('assign', id);
+		});
+
+		this.get("cy").on('mouseover','node', function(event){
+	        var target = event.cyTarget;
+	        var id = target.data("id");
+	        var name = target.data("name");
+	        var text = target.data("tooltip") + " Pro detaily podrž pravé tlačítko."; //TODO formatovanie textu
+
+	        var x=event.cyPosition.x;
+	        var y=event.cyPosition.y;
+	        self.get("cy").$('#' + id).qtip({
+	            content: {
+	                title: name,
+	                text: text
+	            },
+	            show: {
+	                event: false,
+	                ready: true,
+	                effect:false
+	            },
+	            position: {
+	                my: 'bottom center',
+	                at: 'top center',
+	                target: [x+3, y+3],
+	                adjust: {x:7,y:7}
+	            },
+	            hide: {
+	                fixed: true,
+	                event: false,
+	                inactive: 1000
+	            },
+	            style: {
+	                classes: 'qtip-bootstrap',
+	                tip: {
+	                    width: 16,
+	                    height: 8
+	                }
+	            }
+	        });
+	    });
     }
 });
