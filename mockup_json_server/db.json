@@ -355,6 +355,26 @@
       "admin": true
     }
   ],
+  "settings": [
+    {
+      "id": 1,
+      "first_name": "František",
+      "last_name": "Řešitel",
+      "email": "granta@resitel.cz",
+      "addr_street": "Krásenského 18",
+      "addr_city": "Brno",
+      "addr_zip": "634 00",
+      "addr_country": "Česká republika",
+      "school_name": "Gymnázium, Brno, Vídeňská 47",
+      "school_street": "Vídeňská 47",
+      "school_city": "Brno",
+      "school_zip": "123 45",
+      "school_country": "Česká republika",
+      "school_finish": "2018",
+      "description": "Ahoj, já jsem Franta, šikovný informatik, programátor, milovník stromů a (a)cyklických grafů.",
+      "tshirt_size": "M"
+    }
+  ],
   "achievements": [
     {
       "id": 1,

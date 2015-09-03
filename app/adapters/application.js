@@ -11,3 +11,4 @@ export default DS.RESTAdapter.extend({
 // Hack for singleton
 var inflector = Ember.Inflector.inflector;
 inflector.uncountable('profile');
+inflector.uncountable('settings');

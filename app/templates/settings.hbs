@@ -1,10 +1,10 @@
 <section id="profile" class="container content-section" style="text-align:justify">
-	<div class="row">
-	  <div class="col-xs-5 col-md-3">
+    <div class="row">
+      <div class="col-xs-5 col-md-3">
 
-			<div style="margin-top:30px">
-				<img src="{{model.profile_pic}}" style="max-width:250px;"/> <!-- user image --> <!-- TODO default img -->
-			</div>
+            <div style="margin-top:30px">
+                <img src="{{model.profile_pic}}" style="max-width:250px;"/> <!-- user image --> <!-- TODO default img -->
+            </div>
 
       <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;"> <!-- TODO file button -->
         <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
@@ -27,52 +27,52 @@
       <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
         Ulož změny
       </button>
-		</div>
+        </div>
 
-	  <div class="col-xs-7 col-sm-7 col-md-9">
-			<div style="margin-top:30px">
-				<h4>Osobní údaje</h4>
-				<hr>
-			</div>
+      <div class="col-xs-7 col-sm-7 col-md-9">
+            <div style="margin-top:30px">
+                <h4>Osobní údaje</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        <input type="text" class="form-control" id="name">
+        <input type="text" class="form-control" id="name" value="{{model.first_name}}">
       </div>
 
       <div class="form-group">
-        <label for="surname">Přímení:</label>
-        <input type="text" class="form-control" id="surname">
+        <label for="surname">Přijmení:</label>
+        <input type="text" class="form-control" id="surname" value="{{model.last_name}}">
       </div>
 
       <div class="form-group">
         <label for="email">E-mail:</label>
-        <input type="text" class="form-control" id="email">
+        <input type="text" class="form-control" id="email" value="{{model.email}}">
       </div>
 
       <div style="margin-top:30px">
-				<h4>Adresa</h4>
-				<hr>
-			</div>
+                <h4>Adresa</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        <input type="text" class="form-control" id="street">
+        <input type="text" class="form-control" id="street" value="{{model.addr_street}}">
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        <input type="text" class="form-control" id="city">
+        <input type="text" class="form-control" id="city" value="{{model.addr_city}}">
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        <input type="text" class="form-control" id="psc">
+        <input type="text" class="form-control" id="psc" value="{{model.addr_zip}}">
       </div>
 
       <div class="form-group">
-        <label for="country">Krajina:</label>
-        <select class="form-control" id="country">
+        <label for="country">Země:</label>
+        <select class="form-control" id="country" value="{{model.addr_country}}">
           <option>Česká republika</option>
           <option>Slovensko</option>
         </select>
@@ -80,66 +80,66 @@
 
       <hr>
 
-			<div style="margin-top:30px">
-				<h4>Škola</h4>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h4>Škola</h4>
+                <hr>
+            </div>
 
-			<div class="form-group">
-				<label for="street">Název:</label>
-				<input type="text" class="form-control" id="name-school">
-			</div>
+            <div class="form-group">
+                <label for="street">Název:</label>
+                <input type="text" class="form-control" id="name-school" value="{{model.school_name}}">
+            </div>
 
-			<div class="form-group">
-				<label for="street">Ulice:</label>
-				<input type="text" class="form-control" id="street-school">
-			</div>
+            <div class="form-group">
+                <label for="street">Ulice:</label>
+                <input type="text" class="form-control" id="street-school" value="{{model.school_street}}">
+            </div>
 
-			<div class="form-group">
-				<label for="city">Město:</label>
-				<input type="text" class="form-control" id="city-school">
-			</div>
+            <div class="form-group">
+                <label for="city">Město:</label>
+                <input type="text" class="form-control" id="city-school" value="{{model.school_city}}">
+            </div>
 
-			<div class="form-group">
-				<label for="psc">PSČ:</label>
-				<input type="text" class="form-control" id="psc-school">
-			</div>
+            <div class="form-group">
+                <label for="psc">PSČ:</label>
+                <input type="text" class="form-control" id="psc-school" value="{{model.school_zip}}">
+            </div>
 
-			<div class="form-group">
+            <div class="form-group">
         <label for="country">Krajina:</label>
-        <select class="form-control" id="country">
+        <select class="form-control" id="country" value="{{model.school_country}}">
           <option>Česká republika</option>
           <option>Slovensko</option>
         </select>
       </div>
-			<!--
+            <!--
       <div class="form-group">
         <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->
         <input type="text" class="form-control" id="school">
       </div>
-			-->
+            -->
 
-			<div class="form-group">
+            <div class="form-group">
         <label for="year-maturita">Rok maturity:</label>
-				<select class="form-control" id="year-maturita">
+                <select class="form-control" id="year-maturita" value="{{model.school_finish}}">
           <option>2016</option>
           <option>2017</option>
         </select>
       </div>
 
-			<div style="margin-top:30px">
-				<h4>Profil</h4>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h4>Profil</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="description">Krátky popis seba:</label>
-        <textarea class="form-control" rows="5" id="description"></textarea>
+        <textarea class="form-control" rows="5" id="description" value="{{model.description}}"></textarea>
       </div>
 
       <div class="form-group">
         <label for="tshirt">Velikost trička:</label>
-        <select class="form-control" id="tshirt">
+        <select class="form-control" id="tshirt" value="{{model.tshirt_size}}">
           <option>S</option>
           <option>M</option>
           <option>L</option>
@@ -147,7 +147,7 @@
           <option>XXL</option>
         </select>
       </div>
-		</div>
+        </div>
 
-	</div>
+    </div>
 </section>
