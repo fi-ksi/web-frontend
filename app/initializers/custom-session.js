@@ -7,7 +7,7 @@ export default {
     Session.reopen({
       setCurrentUser: function() {
         var self = this;
-        return container.lookup("store:main").find("profile", "").then(function(user) {
+        return container.lookup("service:store").find("profile", "").then(function(user) {
             self.set("current_user", user);
             console.log(user);
             console.log("Changed");

@@ -20,6 +20,10 @@
 			</button> <!-- otvori/skryje nasledujuci panel -->
 		</div>
 
+		{{#if info}}
+			<div class="alert alert-info">{{info}}</div>
+		{{/if}}
+
 		{{#if new_thread}}
 			{{#unless session.isAuthenticated}}
 				{{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
@@ -28,15 +32,20 @@
 					<div class="panel panel-default">
 						<form class="form-horizontal" style="margin:30px">
 							<div class="controls form-inline">
+									{{#if thread_name_error}}
+										{{warning-general text=thread_name_error}}
+									{{/if}}
 									<label for="threadName">Název:</label>
-									<input type="text" class="form-control" style="min-width: 100%" id="threadName">
+									{{input type="text" class="form-control full-width" id="threadName" value=thread_name}}
 							</div>
 							<div class="controls form-inline" style="margin-top:20px">
+									{{#if thread_content_error}}
+										{{warning-general text=thread_content_error}}
+									{{/if}}
 									<label for="threadName">Příspěvek:</label>
-									{{text-editor value=forumNewArticleEditor}}
+									{{text-editor value=thread_content}}
 							</div>
-							<!-- TODO: textarea na http://www.tinymce.com/ -->
-							<button class="btn btn-primary" style="margin-top:20px">Odeslat</button>
+							<button class="btn btn-primary" style="margin-top:20px" {{action "post_thread"}}>Odeslat</button>
 						</form>
 					</div>
 				</div>
