@@ -61,13 +61,8 @@
 						{{#link-to "thread" thread}}{{thread.title}}{{/link-to}}<!-- meno vlakna/ulohy - link na vlakno -->
 					</h5>
 				</td>
-				<td style="text-align: center;"><span class="badge">{{#link-to "thread" thread}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
-				<td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
-				<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-				Jirka Jiží:  				<!- - Meno autora prispevku - ->
-				Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-				<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-				</td> -->
+				<td style="text-align: center;"><span class="badge">{{#link-to "thread" thread class="white-link"}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
+				<td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread class="white-link"}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
 			</tr>
 			{{/each}}
 	    </tbody>
