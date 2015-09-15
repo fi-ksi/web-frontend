@@ -72,7 +72,13 @@
 
       <div class="form-group">
         <label for="country">Země:</label>
-        {{view "select" content=countries class="form-control" value=model.addr_country}}
+        <select class="form-control">
+          {{#each countries key="@index" as |item|}}
+            <option value="{{item}}" selected={{is-equal item model.addr_country}}>
+              {{item}}
+            </option>
+          {{/each}}
+        </select>
       </div>
 
       <hr>
@@ -104,7 +110,13 @@
 
             <div class="form-group">
                 <label for="country">Země:</label>
-                {{view "select" content=countries class="form-control" value=model.school_country}}
+                <select class="form-control">
+                  {{#each countries key="@index" as |item|}}
+                    <option value="{{item}}" selected={{is-equal item model.school_country}}>
+                      {{item}}
+                    </option>
+                  {{/each}}
+                </select>
             </div>
             <!--
       <div class="form-group">
@@ -115,7 +127,13 @@
 
             <div class="form-group">
                 <label for="year-maturita">Rok maturity:</label>
-                {{view "select" content=maturita_year class="form-control" value=model.school_finish}}
+                <select class="form-control">
+                  {{#each maturita_year key="@index" as |item|}}
+                    <option value="{{item}}" selected={{is-equal item model.school_finish}}>
+                      {{item}}
+                    </option>
+                  {{/each}}
+                </select>
             </div>
 
             <div style="margin-top:30px">
@@ -130,7 +148,13 @@
 
       <div class="form-group">
         <label for="tshirt">Velikost trička:</label>
-        {{view "select" content=tshirt_size class="form-control" value=model.tshirt_size}}
+        <select class="form-control">
+          {{#each tshirt_size key="@index" as |item|}}
+            <option value="{{item}}" selected={{is-equal item model.tshirt_size}}>
+              {{item}}
+            </option>
+          {{/each}}
+        </select>
       </div>
         </div>
 
