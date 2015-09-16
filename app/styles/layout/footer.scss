@@ -1,4 +1,4 @@
-$footer-height: 100px;
+$footer-height: 70px;
 
 footer {
     color: ksi-color('text-light');;
@@ -9,16 +9,17 @@ footer {
 }
 
 footer h3 {
-    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 footer .footer-above {
-    padding-top: 50px;
+    padding-top: 10px;
     background-color: ksi-color('secondary-dark');
+    vertical-align: center;
 }
 
 footer .footer-col {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 footer .footer-below {
@@ -27,80 +28,124 @@ footer .footer-below {
 }
 
 /* footer */
-div.footer-placeholder {
-  visibility: hidden;
-  display: block;
-  min-height: 80px;
-  width: 100%; min-width: 300px;
-  background-color: ksi-color('secondary-dark');
-}
-
-div.footer-info {
-  float: left;
-  min-width: 250px;
-  color: ksi-color('secondary-dark');
-  padding: 10px 5% 10px 5%;
-  font-size: 80%;
-  text-align: left;
-}
-
-div.footer-logos {
-  float: right;
-  padding: 15px 5% 5px 5%;
-  min-width: 250px;
-  text-align: right;
-}
-
 .footer-logo {
-  float:right;
-  display:block;
-  height: 50px;
   width: 50px;
+  height: 50px;
+  display: block;
   border: none;
   margin: 0 0 10px 10px;
 }
 
-.footer-logo:hover {
-  background-position: 50px 0;
-}
-
-.footer-logo.wide {
-  width: 75px;
-}
-
-.footer-logo.wide:hover {
-  background-position: 75px 0;
-}
-
-.footer-contact {
-  height: 40px;
-  width: 120px;
-  float: left;
-}
-
-.footer-facebook {
-  height: 40px;
-  width: 120px;
-  float: right;
-  background-image:url('/img/logos/facebook.png');
-  text-decoration:none;
-}
-
-.footer-facebook:hover {
-  background-position: 0 40px;
-}
-
 /* specific logos */
-.muni-logo { background-image:url('/img/logos/logo-mu.png'); }
-.fi-logo { background-image:url('/img/logos/logo-fi.png'); }
-.prf-logo { background-image:url('/img/logos/logo-prf.png'); }
-.brkos-logo { background-image:url('/img/logos/logo-brkos.png'); }
-.keks-logo { background-image:url('/img/logos/logo-keks.png'); }
-.ksi-logo { background-image:url('/img/logos/logo-ksi.png'); }
-.vibuch-logo { background-image:url('/img/logos/logo-vibuch.png'); }
-.interlos-logo { background-image:url('/img/logos/logo-los.png'); }
-.mam-logo { background-image:url('/img/logos/logo-mam.png'); }
+ #mail-logo {
+   background: url("/img/logos/email.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #mail-logo:hover {
+   background: url("/img/logos/email-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
 
-div.icon {
-  position: absolute; top: -65px; right: 5%;
-}
+ #facebook-logo {
+   background: url("/img/logos/facebook.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #facebook-logo:hover {
+   background: url("/img/logos/facebook-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+ #youtube-logo {
+   background: url("/img/logos/youtube.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #youtube-logo:hover {
+   background: url("/img/logos/youtube-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+//TODO
+ #fi-logo {
+   background: url("/img/logos/logo-fi.png") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #fi-logo:hover {
+   background: url("/img/logos/logo-fi-hover.png") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+//TODO
+ #mu-logo {
+   background: url("/img/logos/logo-mu.png") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #mu-logo:hover {
+   background: url("/img/logos/logo-mu-hover.png") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+//TODO
+ #prf-logo {
+   background: url("/img/logos/youtube.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #prf-logo:hover {
+   background: url("/img/logos/youtube-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+ #keks-logo {
+   background: url("/img/logos/keks.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #keks-logo:hover {
+   background: url("/img/logos/keks-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+ #brkos-logo {
+   background: url("/img/logos/brkos.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #brkos-logo:hover {
+   background: url("/img/logos/brkos-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+//TODO
+ #mam-logo {
+   background: url("/img/logos/youtube.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #mam-logo:hover {
+   background: url("/img/logos/youtube-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+//TODO
+ #vybuch-logo {
+   background: url("/img/logos/youtube.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #vybuch-logo:hover {
+   background: url("/img/logos/youtube-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+ #sob-logo {
+   background: url("/img/logos/intersob.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #sob-logo:hover {
+   background: url("/img/logos/intersob-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
+ #los-logo {
+   background: url("/img/logos/los.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #los-logo:hover {
+   background: url("/img/logos/los-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
