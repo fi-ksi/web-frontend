@@ -26,6 +26,7 @@ export default Base.extend({
             }).then(function(response) {
                 if(response.profile && response.profile[0].signed_in) {
                 	console.log("Resolved1");
+                    console.log(response.profile);
                     resolve(response);
                 }
                 else {

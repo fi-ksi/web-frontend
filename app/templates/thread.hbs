@@ -7,7 +7,7 @@
 	<div style="margin:40px;">
 		<h2>{{model.title}}!</h2>
 		{{#each model.root_posts as |post|}}
-			{{thread-post model=post}}
+			{{thread-post model=post store=store}}
 		{{/each}}
 	</div>
 </section>
