@@ -19,7 +19,7 @@ Router.map(function() {
   this.route('results',     { path: '/vysledky'});
   this.route('forum',       { path: '/forum'});
   this.route('thread',      { path: '/forum/:thread_id'});
-  this.route('faq',         { path: '/faq'});
+  this.route('about',         { path: '/o-ksi'});
   this.route('profile',     { path: '/profil'});
   this.route('user-profile',{ path: '/profil/:profile_id'});
   this.route('registration',{ path: '/registrace'});

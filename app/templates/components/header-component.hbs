@@ -22,13 +22,18 @@
                   {{#link-to "results"}}{{t "menu.results"}}{{/link-to}}
               </li>
               <li>
+                  {{#link-to "about"}}{{t "menu.about"}}{{/link-to}}
+              </li>
+              <li>
                   {{#link-to "articles"}}{{t "menu.news"}}{{/link-to}}
               </li>
               <li>
                   {{#link-to "forum"}}{{t "menu.forum"}}{{/link-to}}
               </li>
               <li>
-                  {{#link-to "faq"}}{{t "menu.faq"}}{{/link-to}}
+                  <!--Nasty hack
+                  {{#link-to "faq"}}{{t "menu.faq"}}{{/link-to}}-->
+                  <a href="/o-ksi#faq">{{t "menu.faq"}}</a>
               </li>
               <li>&nbsp;</li>
             </ul>

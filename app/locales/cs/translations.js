@@ -4,6 +4,7 @@ export default {
 	"menu.news": "Novinky",
 	"menu.forum": "Diskuse",
 	"menu.faq": "FAQ",
+	"menu.about": "O KSI",
 	"menu.login": "Přihlásit se",
 	"menu.register": "Registrovat se"
 }
