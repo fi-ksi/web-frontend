@@ -17,34 +17,52 @@
     </div>
 </section>
 
-<section id="about" class="container-fluid content-section">
+<section id="about-container" class="container-fluid content-section">
     <!-- Sekcia o ksi -->
-    <div class="jumbotron jumbotron-about"> <!-- TODO: full width -->
-        <div style="text-align: center; color: #fff; background-size: cover; "><h1>O KSI</h1></div>
-            <div class="row" style="margin-top: 30px; max-width=50%"> <!-- TODO center images -->
-              <div class="col-xs-12 col-sm-4">
-                {{#link-to "achievements"}}
-                  <img src="img/info-achievement.svg" style="max-width:100%;"/>
-                {{/link-to}}
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                <a href="http://ksi.fi.muni.cz/kscuk/">
-                  <img src="img/info-kscuk.svg" style="max-width:100%;"/>
-              </a>
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                {{#link-to "tasks"}}
-                  <img src="img/info-ksi.svg" style="max-width:100%;"/>
-                {{/link-to}}
-              </div>
-            </div>
+    <div class="jumbotron" style="background-color: transparent; margin-top:-20px">
+      <div style="text-align: center; color: #fff;"><h1>O KSI</h1></div>
+      <hr style="color:white; width: 80%; height:3px;">
     </div>
+      <div style="margin-top:-30px; margin-bottom:20px">
+        <div class="row" style="
+          width:80%;
+          margin: 0 auto;
+          text-align: center;">
+          <div class="col-xs-12 col-sm-4">
+            {{#link-to "achievements"}}
+              <img src="img/info-achievement.svg" style="max-width:100%;"/>
+            {{/link-to}}
+            <p class="about-paragraph" style="font-size:17px;" align="justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac auctor leo. Donec imperdiet euismod dui vel ornare. Nullam nec eros laoreet, hendrerit magna non, auctor nisi. Ut vestibulum dui vel elit tempus, ac volutpat dolor accumsan. Morbi commodo blandit nibh vitae suscipit. Cras nec sapien pellentesque, mollis quam nec, vulputate purus.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <a href="http://ksi.fi.muni.cz/kscuk/">
+              <img src="img/info-kscuk.svg" style="max-width:100%;"/>
+            </a>
+            <p class="about-paragraph" style="font-size:17px;" align="justify">
+              Úspěšní řešitelé semináře jsou pozvání na týdenní soustředění K-SCUK, které je společné pro KSI a ekologický seminář KEKS. Náplní soustředění je jak odborný program, kdy se opět naučíte něco nového z informatiky, tak doprovodný zážitkový program. Odborný program se skládá ze zajímavých přednášek, které jdou nad rámec běžné výuky na školách. Cílem není nahrazovat klasickou výuku, ale spíše inspirovat, ukázat netradiční směry. Doprovodný program spočívá v tematicky laděných hrách a programech (mezi organizátory jsou například členové Instruktorů Brno nebo  někteří orgové her Intersob a Interlos). Důležitá role soustředění je setkání. Setkání s dalšími lidmi, kteří mají podobné zájmy. A také setkání s organizátory, kteří vám mohou poskytnout zajímavé pohledy do zákulisí vysoké školy.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            {{#link-to "tasks"}}
+              <img src="img/info-ksi.svg" style="max-width:100%;"/>
+            {{/link-to}}
+            <p class="about-paragraph" style="font-size:17px;" align="justify">
+              KSI, neboli Korespondenční Seminář z Informatiky, je celoroční soutěž pro středoškoláky z České i Slovenské republiky organizovaná studenty Fakulty Informatiky Masarykovy Univerzity. Cílem semináře je seznámit řešitele se zajímavými oblastmi informatiky a procvičit programátorské a matematické myšlení.
+            <br>
+              Každý ročník semináře se skládá z několika tematických sad (vln). Sada vždy začíná úvodními příklady, které vás, řešitele, uvedou do tématu, vysvětlí základní myšlenky, pojmy a triky. Následní těžší úlohy různého charakteru, na jejichž vyřešení a sepsání řešení máte zhruba jeden měsíc. Zatímco nejjednodušší úlohy by po přečtení úvodního povídání neměly dělat problémy ani úplným začátečníkům, nad tou nejtěžší se může zapotit i ostřílený řešitel programátorských soutěží.
+            </p>
+          </div>
+        </div>
+      </div>
 </section>
 
 <section id="organizatori" class="container content-section">
     <!-- Sekcia organizatoru -->
-    <div class="jumbotron" style="background-color: #fff; ">
+    <div class="jumbotron" style="background-color: #fff; margin-bottom: 20px">
         <div style="text-align: center; color: #39393a;"><h1>Organizátoři</h1></div>
+        <hr>
         {{orgs-list model=model.organisators}}
     </div>
 </section>
