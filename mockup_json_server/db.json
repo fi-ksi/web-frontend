@@ -270,6 +270,17 @@
       "root_posts": [
         2
       ]
+    },
+    {
+      "thread": {
+        "title": "safa",
+        "unread": null,
+        "posts_count": null,
+        "root_posts": [
+          null
+        ]
+      },
+      "id": 3
     }
   ],
   "posts": [
@@ -297,6 +308,16 @@
       "published_at": "2015-07-07T15:55:02",
       "body": "Příspěvek3!",
       "reaction": []
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>b</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 4
     }
   ],
   "modules": [
