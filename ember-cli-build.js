@@ -22,6 +22,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.css');
 
+  app.import(app.bowerDirectory + '/jquery.livequery/dist/jquery.livequery.min.js');
+
   app.import(app.bowerDirectory + '/cytoscape/dist/cytoscape.min.js');
   app.import(app.bowerDirectory + '/cytoscape-cxtmenu/cytoscape-cxtmenu.js');
   app.import(app.bowerDirectory + '/ember-qtip2/jquery.qtip.min.js');

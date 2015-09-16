@@ -1,27 +1,28 @@
 {
   "name": "ksi",
   "dependencies": {
-    "HCaptions": "~1.0.0",
     "ace-builds": "~1.2.0",
     "bootstrap": "~3.3.5",
     "cytoscape": "~2.4.5",
     "cytoscape-cxtmenu": "~2.1.6",
     "cytoscape-qtip": "~2.2.3",
     "ember": "1.13.3",
+    "ember-cli-moment-shim": "0.0.3",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
     "ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
     "ember-data": "1.13.5",
     "ember-load-initializers": "ember-cli/ember-load-initializers#0.1.5",
+    "ember-qtip2": "~2.2.0",
     "ember-qunit": "0.4.1",
     "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "~0.1.18",
+    "ember-simple-auth": "0.8.0",
+    "HCaptions": "~1.0.0",
     "jquery": "^1.11.1",
+    "jquery.livequery": "~1.3.6",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qtip2": "~2.2.1",
-    "ember-simple-auth": "0.8.0",
     "qunit": "~1.17.1",
-    "tinymce": "~4.2.3",
-    "ember-cli-moment-shim": "0.0.3",
-    "ember-qtip2": "~2.2.0"
+    "tinymce": "~4.2.3"
   }
 }
