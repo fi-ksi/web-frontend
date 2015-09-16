@@ -79,6 +79,7 @@ export default Ember.Component.extend({
 		        	self.style_graph();
 		        	self.reposition_graph();
 		        	self.setup_graph_actions();
+		        	self.get("cy").forceRender();
 		        }
 		    }));
 		});
