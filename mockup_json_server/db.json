@@ -272,15 +272,13 @@
       ]
     },
     {
-      "thread": {
-        "title": "safa",
-        "unread": null,
-        "posts_count": null,
-        "root_posts": [
-          null
-        ]
-      },
-      "id": 3
+      "id": 3,
+      "title": "safa",
+      "unread": 6,
+      "posts_count": 7,
+      "root_posts": [
+        4
+      ]
     }
   ],
   "posts": [
@@ -291,9 +289,21 @@
       "body": "Příspěvek!",
       "reaction": [
         2,
-        3
+        3,
+        11
       ],
-      "is_new": true
+      "is_new": true,
+      "post": {
+        "published_at": "2015-07-07T15:55:02.000Z",
+        "body": "Příspěvek!",
+        "is_new": true,
+        "author": "1",
+        "reaction": [
+          "2",
+          "3",
+          "11"
+        ]
+      }
     },
     {
       "id": 2,
@@ -318,6 +328,76 @@
         "reaction": []
       },
       "id": 4
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>alfj</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 5
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>alfj</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 6
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>ljlůjlůjl</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 7
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>fffff</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 8
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>fasdf</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 9
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>ljlůjl</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 10
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>ůljlkjl</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 11
     }
   ],
   "modules": [
