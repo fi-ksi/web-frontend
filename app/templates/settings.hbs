@@ -5,11 +5,14 @@
             <div style="margin-top:30px">
                 <img src="{{model.profile_pic}}" style="max-width:100%;"/> <!-- user image --> <!-- TODO default img -->
             </div>
+      {{#if picture_info}}
+        {{info-general text=picture_info}}
+      {{/if}}
       {{#if is_changing_picture}}
         {{#if picture_error}}
           {{warning-general text=picture_error}}
         {{/if}}
-        {{picture-upload url="/profile/pic" actionReceiver=picture_field file_type_error="file_type_error"}}
+        {{picture-upload url="/profile/pic" actionReceiver=picture_field file_type_error="file_type_error" upload_finished="upload_finished" upload_failed="upload_failed"}}
       {{/if}}
 
       <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}> <!-- TODO file button -->

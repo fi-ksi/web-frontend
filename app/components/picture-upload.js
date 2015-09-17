@@ -13,10 +13,12 @@ export default EmberUploader.FileField.extend(InboundActions, {
 			});
 
 			uploader.on("didUpload", function() {
+				console.log("Upload finished");
 				this.sendAction("upload_finished");
 			});
 
 			uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
+				console.log("Upload canceled");
 				this.sendAction("upload_failed", textStatus, errorThrown);
 			});
 
