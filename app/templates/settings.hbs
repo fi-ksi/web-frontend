@@ -1,9 +1,9 @@
 <section id="profile" class="container content-section" style="text-align:justify">
     <div class="row">
-      <div class="col-xs-5 col-md-3">
+      <div class="col-sm-12 col-md-3">
 
             <div style="margin-top:30px">
-                <img src="{{model.profile_pic}}" style="max-width:250px;"/> <!-- user image --> <!-- TODO default img -->
+                <img src="{{model.profile_pic}}" style="max-width:100%;"/> <!-- user image --> <!-- TODO default img -->
             </div>
       {{#if is_changing_picture}}
         {{#if picture_error}}
@@ -12,7 +12,7 @@
         {{picture-upload url="/profile/pic" actionReceiver=picture_field file_type_error="file_type_error"}}
       {{/if}}
 
-      <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;" {{action "upload_pic"}}> <!-- TODO file button -->
+      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}> <!-- TODO file button -->
         <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
         {{#if is_changing_picture}}
           Nahraj fotografii
@@ -21,7 +21,7 @@
         {{/if}}
       </button>
 
-      <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:250px;"> <!-- TODO colors/styles a linky -->
+      <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:100%;"> <!-- TODO colors/styles a linky -->
         <li class="active">
           {{#link-to "settings"}}
           <span class="glyphicon glyphicon-chevron-right"></span> Profil
@@ -34,12 +34,12 @@
         </li>
       </ul>
 
-      <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
+      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;">
         Ulož změny
       </button>
         </div>
 
-      <div class="col-xs-7 col-sm-7 col-md-9">
+      <div class="col-sm-12 col-md-9">
             <div style="margin-top:30px">
                 <h4>Osobní údaje</h4>
                 <hr>
@@ -47,7 +47,7 @@
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        {{input value=model.first_name class="form-control"}}
+        {{input value=model.first_name class="form-control" style="width:100%;"}}
       </div>
 
       <div class="form-group">
