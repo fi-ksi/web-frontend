@@ -11,8 +11,8 @@
   <h5>Skóre:</h5>
 
 	<div class="progress" style="margin-top:20px">
-		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: {{model.my_score.score}}%"><!-- TODO: max value = pocet max bodov z ulohy-->
-			{{model.my_score.score}}&nbsp;/pocet bodov za ulohu <!-- TODO honza -->
+		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: {{progress_width}}%"><!-- TODO: max value = pocet max bodov z ulohy-->
+			{{model.my_score.score}}&nbsp;/{{model.max_score}} <!-- TODO honza -->
 		</div>
 	</div>
 
