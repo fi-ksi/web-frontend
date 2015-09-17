@@ -7,4 +7,4 @@ export default {
 	"menu.about": "O KSI",
 	"menu.login": "Přihlásit se",
 	"menu.register": "Registrovat se"
-}
+};

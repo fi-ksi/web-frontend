@@ -37,10 +37,10 @@ export default Ember.Controller.extend({
                 ]                
             });
 
-            var post = this.store.createRecord("post", {
+            /*var post = this.store.createRecord("post", {
                 author: this.get("session.profile.id"),
                 body: this.get("thread_content")
-            });
+            });*/
 
             thread.save().then(function() {
                 // ToDo: Error handling

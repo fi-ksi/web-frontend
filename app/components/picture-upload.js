@@ -31,7 +31,7 @@ export default EmberUploader.FileField.extend(InboundActions, {
 			var file = files.item(i).name;
 			console.log(file);
 			console.log(file.split(".").pop().toLowerCase());
-			if (this.get("supported_ext").indexOf(file.split(".").pop().toLowerCase()) == -1) {
+			if (this.get("supported_ext").indexOf(file.split(".").pop().toLowerCase()) === -1) {
 				this.sendAction("file_type_error", file);
 				console.log("Invalid file");
 				return;
