@@ -8,11 +8,12 @@ export default Ember.Route.extend({
 			Ember.$("#faq").livequery(function() {
 				console.log("Done!");
 				Ember.$('html, body').animate({
-			        scrollTop: Ember.$("#faq").offset().top
+			        scrollTop: Ember.$("#faq").offset().top - 150 //Magic constant
 			    }, "slow");
 			});
 		}
 		else {
+			Ember.$("#faq").expire();
 			Ember.$("html, body").animate({ scrollTop: 0 }, "slow");
 		}
 	},
