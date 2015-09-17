@@ -4,7 +4,6 @@
     "ace-builds": "~1.2.0",
     "bootstrap": "~3.3.5",
     "cytoscape": "~2.4.5",
-    "cytoscape-cxtmenu": "~2.1.6",
     "cytoscape-qtip": "~2.2.3",
     "ember": "1.13.3",
     "ember-cli-moment-shim": "0.0.3",

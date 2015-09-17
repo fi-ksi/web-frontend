@@ -206,45 +206,7 @@ export default Ember.Component.extend({
     },
     setup_graph_actions: function() {
     	var self = this;
-    	this.get("cy").cxtmenu({
-	        selector: 'node',
-	        commands: [
-	            {
-	                content: 'Odevzdání',
-	                select: function(){
-	                    self.sendAction("sub", this.id());
-	                }
-	            },
-
-	            {
-	                content: 'Zadání',
-	                select: function(){
-	                    self.sendAction('assign', this.id());
-	                }
-	            },
-
-	            {
-	                content: 'Statistika',
-	                select: function(){
-	                    self.sendAction('stat', this.id());
-	                }
-	            },
-
-	            {
-	                content: 'Diskuze',
-	                select: function(){
-	                    self.sendAction('discuss', this.id());
-	                }
-	            },
-
-	            {
-	                content: 'Řešení',
-	                select: function(){
-	                    self.sendAction('solution', this.id());
-	                }
-	            }
-	        ]
-	    });
+    	
     	this.get("cy").on('mousedown','node', function(event){
 			var target = event.cyTarget;
 	        var id = target.data("id");
