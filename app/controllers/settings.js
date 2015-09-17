@@ -7,6 +7,8 @@ export default Ember.Controller.extend( {
     is_changing_picture: false,
     picture_error: undefined,
     picture_info: undefined,
+    global_error: undefined,
+    global_info: undefined,
     actions: {
     	upload_pic: function() {
     		if(this.get("is_changing_picture")) {
@@ -30,6 +32,19 @@ export default Ember.Controller.extend( {
     	upload_failed: function(status, error) {
     		this.set("picture_info", undefined);
     		this.set("picture_error", "Nepodařilo se nahrát obrázek: " + status + " " + error);
+    	},
+    	save: function() {
+    		this.set("global_info", undefined);
+    		this.set("global_error", undefined);
+    		this.get("model").save().then(function() {
+    			this.set("global_info", "Nastavení úspěšně uloženo");
+    			Ember.run.later((function() {
+    				self.set("global_info", undefined);
+    			}), 3000);
+    		},
+    		function() {
+    			this.set("global_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu");
+    		})
     	}
     }
 });

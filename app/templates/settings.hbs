@@ -1,5 +1,6 @@
 <section id="profile" class="container content-section" style="text-align:justify">
     <div class="row">
+      {{#validatable-form action="save"}}
       <div class="col-sm-12 col-md-3">
 
             <div style="margin-top:30px">
@@ -37,30 +38,36 @@
         </li>
       </ul>
 
-      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;">
+      <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
         Ulož změny
       </button>
         </div>
 
       <div class="col-sm-12 col-md-9">
-            <div style="margin-top:30px">
-                <h4>Osobní údaje</h4>
-                <hr>
-            </div>
+      {{#if general_error}}
+        {{warning-general text=general_error}}
+      {{/if}}
+      {{#if general_info}}
+        {{info-general text=general_info}}
+      {{/if}}
+      <div style="margin-top:30px">
+          <h4>Osobní údaje</h4>
+          <hr>
+      </div>
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        {{input value=model.first_name class="form-control" style="width:100%;"}}
+        {{input value=model.first_name class="form-control" style="width:100%;" required=true title="Jméno je povinné"}}
       </div>
 
       <div class="form-group">
         <label for="surname">Přijmení:</label>
-        {{input value=model.last_name class="form-control"}}
+        {{input value=model.last_name class="form-control" required=true title="Přijmení je povinné"}}
       </div>
 
       <div class="form-group">
         <label for="email">E-mail:</label>
-        {{input value=model.email class="form-control"}}
+        {{input value=model.email class="form-control" required=true type="email" title="Je třeba zadat platný e-mail"}}
       </div>
 
       <div style="margin-top:30px">
@@ -70,17 +77,17 @@
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        {{input value=model.addr_street class="form-control"}}
+        {{input value=model.addr_street class="form-control" required=true title="Adresa je povinná"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        {{input value=model.addr_city class="form-control"}}
+        {{input value=model.addr_city class="form-control" required=true title="Adresa je povinná"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        {{input value=model.addr_zip class="form-control"}}
+        {{input value=model.addr_zip class="form-control" required=true title="Adresa je povinná"}}
       </div>
 
       <div class="form-group">
@@ -103,22 +110,22 @@
 
             <div class="form-group">
                 <label for="street">Název:</label>
-                {{input value=model.school_name class="form-control"}}
+                {{input value=model.school_name class="form-control" required=true title="Adresa školy je povinná"}}
             </div>
 
             <div class="form-group">
                 <label for="street">Ulice:</label>
-                {{input value=model.school_street class="form-control"}}
+                {{input value=model.school_street class="form-control" required=true title="Adresa školy je povinná"}}
             </div>
 
             <div class="form-group">
                 <label for="city">Město:</label>
-                {{input value=model.school_city class="form-control"}}
+                {{input value=model.school_city class="form-control" required=true title="Adresa školy je povinná"}}
             </div>
 
             <div class="form-group">
                 <label for="psc">PSČ:</label>
-                {{input value=model.school_zip class="form-control"}}
+                {{input value=model.school_zip class="form-control" required=true title="Adresa školy je povinná"}}
             </div>
 
             <div class="form-group">
@@ -170,6 +177,6 @@
         </select>
       </div>
         </div>
-
+    {{/validatable-form}}
     </div>
 </section>

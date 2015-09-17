@@ -465,7 +465,42 @@
         1,
         2
       ],
-      "admin": true
+      "admin": true,
+      "profile": {
+        "signed_in": true,
+        "first_name": "Františekk",
+        "last_name": "Řešitel",
+        "profile_pic": "/img/avatar-default.svg",
+        "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
+        "email": "granta@resitel.cz",
+        "score": 42,
+        "percentile": 69,
+        "seasons": 1.5,
+        "successful": 96,
+        "addr_street": "Krásenského 18",
+        "addr_city": "Brno",
+        "addr_zip": "634 00",
+        "addr_country": "Česká republika",
+        "school_name": "Gymnázium, Brno, Vídeňská 47",
+        "school_street": "Vídeňská 47",
+        "school_city": "Brno",
+        "school_zip": "123 45",
+        "school_country": "Česká republika",
+        "school_finish": 2018,
+        "tshirt_size": "M",
+        "admin": true,
+        "organisator": false,
+        "achievements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "results": [
+          "1",
+          "2"
+        ]
+      }
     }
   ],
   "settings": [
