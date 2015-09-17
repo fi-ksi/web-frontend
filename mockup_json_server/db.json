@@ -468,7 +468,7 @@
       "admin": true,
       "profile": {
         "signed_in": true,
-        "first_name": "Františekk",
+        "first_name": "František",
         "last_name": "Řešitel",
         "profile_pic": "/img/avatar-default.svg",
         "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
@@ -527,22 +527,26 @@
     {
       "id": 1,
       "title": "Buldozer!",
-      "picture": "img/achievements/achievement-buldozer.svg"
+      "active": true,
+      "picture_active": "img/achievements/achievement-buldozer.svg"
     },
     {
       "id": 2,
       "title": "Heňův mazánek",
-      "picture": "http://placehold.it/40x40"
+      "active": true,
+      "picture_active": "/img/achievements/achievement-unknown.svg"
     },
     {
       "id": 3,
       "title": "Pampeliška",
-      "picture": "http://placehold.it/40x40"
+      "active": true,
+      "picture_active": "/img/achievements/achievement-second.svg"
     },
     {
       "id": 4,
       "title": "Italský špagetový gurmán",
-      "picture": "img/achievements/achievement-spagety.svg"
+      "active": true,
+      "picture_active": "img/achievements/achievement-spagety.svg"
     }
   ],
   "scores": [

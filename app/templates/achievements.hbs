@@ -4,35 +4,11 @@
 	<hr>
   <!-- TODO odomknute trofeje -->
   <div class="row" style="margin-bottom:10px" align="center">
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-first.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-second.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-third.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-unknown.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-buldozer.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-      <img src="/img/achievements/achievement-spagety.svg" width="200px;"/>
-      <p id="profile-text">Popis trofeje.</p>
-    </div>
-
+    {{#each model as |trophy|}}
+      <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
+        <img src="{{trophy.picture}}" width="200px;"/>
+        <p id="profile-text">{{trophy.title}}</p>
+      </div>
+    {{/each}}
   </div>
 </section>
