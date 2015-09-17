@@ -23,6 +23,7 @@
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qtip2": "~2.2.1",
     "qunit": "~1.17.1",
-    "tinymce": "~4.2.3"
+    "tinymce": "~4.2.3",
+    "ember-uploader": "0.3.9"
   }
 }
