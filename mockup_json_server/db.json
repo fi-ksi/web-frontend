@@ -408,7 +408,28 @@
     },
     {
       "id": 1,
-      "type": "quiz"
+      "description": "A tady je malý kvíz!",
+      "type": "quiz",
+      "questions": [
+        {
+          "type": "radio",
+          "question": "Co to je?",
+          "options": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "question": "A co je toto?",
+          "options": [
+            "b",
+            "c",
+            "d"
+          ]
+        }
+      ]
     },
     {
       "id": 2,
