@@ -52,7 +52,13 @@
         Soubor k odevzdání: {{input placeholder="Soubor s řešením"}}
       </div>
     {{/if}}
+    {{#if module.is_sortable}}
+      {{log module}}
+      {{sortable-module module=module id=module.id}}
+    {{/if}}
+    {{#if module.is_text}}
+      {{plaintext-module module=module}}
+    {{/if}}
   {{/each}}
-
   <button class="btn btn-primary">Odevzdat</button>
 </div>

@@ -83,7 +83,8 @@
       "modules": [
         0,
         1,
-        2
+        2,
+        3
       ],
       "time_deadline": "2014-11-11T08:40:51.620Z",
       "time_published": "2014-11-11T08:40:51.620Z",
@@ -412,6 +413,33 @@
     {
       "id": 2,
       "type": "general"
+    },
+    {
+      "id": 3,
+      "description": "<p>Seřaď!</p>",
+      "type": "sortable",
+      "sortable_list": {
+        "fixed": [
+          {
+            "content": "Fixni prvni radek",
+            "style": ""
+          },
+          {
+            "content": "Fixni posledni radek",
+            "style": ""
+          }
+        ],
+        "movable": [
+          {
+            "content": "A",
+            "style": ""
+          },
+          {
+            "content": "B",
+            "style": ""
+          }
+        ]
+      }
     }
   ],
   "organisators": [

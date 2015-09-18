@@ -79,7 +79,6 @@ export default Ember.Component.extend({
 		        	self.style_graph();
 		        	self.reposition_graph();
 		        	self.setup_graph_actions();
-		        	self.get("cy").forceRender();
 		        }
 		    }));
 		});
@@ -139,7 +138,6 @@ export default Ember.Component.extend({
 		options.boundingBox.height = this.get("cy").height();
 		//this.get("cy").layout(options);
 		this.get("cy").autolock(true);
-		this.get("cy").forceRender();
     },
     style_graph: function()  {
     	this.get("cy").style()

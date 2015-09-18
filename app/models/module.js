@@ -12,6 +12,18 @@ export default DS.Model.extend( {
 	is_general: Ember.computed("type", function() {
 		return this.get("type") === "general";
 	}),
+	is_text: Ember.computed("type", function() {
+		return this.get("type") === "text";
+	}),
+	is_sortable: Ember.computed("type", function() {
+		return this.get("type") === "sortable";
+	}),
+
+	endpoint: DS.attr("string"),
+	description: DS.attr("string"),
+
+	// For sortable
+	sortable_list: DS.attr("sortable-list"),
 
 	// For quiz
 

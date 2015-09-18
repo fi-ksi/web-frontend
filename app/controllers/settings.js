@@ -34,6 +34,7 @@ export default Ember.Controller.extend( {
     		this.set("picture_error", "Nepodařilo se nahrát obrázek: " + status + " " + error);
     	},
     	save: function() {
+    		var self = this;
     		this.set("global_info", "Ukládám nastavení");
     		this.set("global_error", undefined);
     		this.get("model").save().then(function() {
@@ -45,7 +46,7 @@ export default Ember.Controller.extend( {
     		function() {
     			this.set("global_info", undefined);
     			this.set("global_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu");
-    		})
+    		});
     	}
     }
 });

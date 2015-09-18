@@ -1,0 +1,30 @@
+.sortable {
+	width: 90%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.sortable li {
+	list-style: none;
+	border: 1px solid #CCC;
+	background: #F6F6F6;
+	margin: 5px;
+	padding: 5px;
+	height: 22px;
+}
+.handle {
+	cursor: move;
+}
+.sortable.connected {
+	width: 200px;
+	min-height: 100px;
+	float: left;
+}
+li.highlight {
+	background: #FEE25F;
+}
+li.sortable-placeholder {
+	border: 1px dashed #CCC;
+	background: none;
+}
