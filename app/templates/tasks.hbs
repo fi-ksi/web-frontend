@@ -2,5 +2,5 @@
 		{{#unless session.isAuthenticated}}
 			{{warning-login text="nejsi přihlášen. Aby byly tvé operace užloženy, musíš se přihlásit."}}
 		{{/unless}}
-    {{tasks-graph model=model sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
+    {{tasks-graph model=model.tasks sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
 </div>
