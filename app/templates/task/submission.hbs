@@ -11,16 +11,24 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="text-align: center;">1</td> <!-- index odovzdania -->
-      <td style="text-align: center;">10.10.2015 00:00:00</td> <!-- cas odovzdania -->
-      <td>uloha1.zip</td> <!-- odovzdany subor --><!-- TODO link na stiahnutie suboru -->
-      <td>
-        <img src="http://placehold.it/30x30"> <!-- ziskane trofeje po oprave, ma to tu byt? nenechame to len vo vysledkoch? -->
-      </td>
-      <td style="text-align: center;"> <!-- ziskane body po oprave, ma to tu byt? nenechame to len vo vysledkoch? -->
-        10
-      </td>
-    </tr>
+    {{#each model.submissions as |sub|}}
+      <tr>
+        <td style="text-align: center;" class="numbering"></td>
+        <td style="text-align: center;">{{date-and-time sub.datetime 'cs'}}</td>
+        <td>{{sub.files}}</td><!-- TODO link na stiahnutie suboru -->
+        <td>
+          {{#each sub.achievements as |ach|}}
+            {{achievement-small model=ach}}
+          {{/each}}
+        </td>
+        <td style="text-align: center;">
+          {{#if sub.score}}
+            {{sub.score.score}}
+          {{else}}
+            –
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
