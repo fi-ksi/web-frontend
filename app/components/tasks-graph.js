@@ -10,13 +10,12 @@ export default Ember.Component.extend({
 			edges: []
 		};
 
-		var first = true;
+		this.set("root_node",
+			Math.min.apply(null, this.get("model").map(function(node) { return node.get("id"); })));
+
 		var self = this;
 		this.get("model").forEach(function(node) {
-			if(first) {
-				first = false;
-				self.set("root_node", node.get("id"));
-
+			if(node.get("id") === self.get("root_node")) {
 				ret["nodes"].push({
 					data: {
 						id: node.get("id"),
@@ -36,11 +35,7 @@ export default Ember.Component.extend({
 						name: node.get("title"),
 						tooltip: node.get("intro"),
 						node_type: node.get("category").get("type")
-					}/*,
-					position: {
-						x: node.get("position").get("x"),
-						y: node.get("position").get("y")
-					}*/
+					}
 				});
 			}
 			node.get("node_parent").forEach(function(parent) {
@@ -220,7 +215,7 @@ export default Ember.Component.extend({
 	        self.sendAction('assign', id);
 		});
 
-		this.get("cy").on('mouseover','node', function(event){
+		this.get("cy").on('mouseover','node', function(/*event*/){
 	        /*var target = event.cyTarget;
 	        var id = target.data("id");
 	        var name = target.data("name");

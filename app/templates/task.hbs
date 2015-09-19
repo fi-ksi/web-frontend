@@ -1,41 +1,42 @@
-<section id="novinky" class="container content-section" style="text-align:justify">
-    <div class="row" style="margin-top: 30px; margin-left: 20px">
-        <h2 id="name" style="color: black">{{model.title}}</h2>
-    </div>
-    <!-- TODO: center name and image -->
-    <div class="row" style="padding-left:5px; margin-left: 20px">
-      <h5 class="inline">Autor: </h5>
-      <img id="org-photo" class="inline" src="{{model.author.profile_picture}}" style="width: 30px">
-      <h5 id="org-name" class="inline" style="color: #39393a"> {{model.author.full_name}}</h5>
-      <p class="task-points inline">Max. {{model.max_score}} bodů</p>
-    </div>
-    <div class="row" style="margin-top: 20px">
-        <nav class="navbar navbar-uloha" role="navigation">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-task-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="bs-task-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        {{#link-to "task.assignment" tagName="li"}}<a href="{{view.href}}">Zadání</a>{{/link-to}}
-                        {{#link-to "task.submission" tagName="li"}}<a href="{{view.href}}">Odevzdání</a>{{/link-to}}
-                        {{#link-to "task.statistics" tagName="li"}}<a href="{{view.href}}">Statistika</a>{{/link-to}}
-                        {{#link-to "task.discussion" tagName="li"}}<a href="{{view.href}}">Diskuze</a>{{/link-to}}
-                        {{#link-to "task.solution" tagName="li"}}<a href="{{view.href}}">Řešení</a>{{/link-to}}
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
-    <section>
-        {{outlet}}
+{{#if model.active}}
+    <section class="container content-section" style="text-align:justify">
+        <div class="row" style="margin-top: 30px; margin-left: 20px">
+            <h2 id="name" style="color: black">{{model.title}}</h2>
+        </div>
+        <!-- TODO: center name and image -->
+        <div class="row" style="padding-left:5px; margin-left: 20px">
+          <h5 class="inline">Autor: </h5>
+          <img id="org-photo" class="inline" src="{{model.author.profile_picture}}" style="width: 30px">
+          <h5 id="org-name" class="inline" style="color: #39393a"> {{model.author.full_name}}</h5>
+          <p class="task-points inline">Max. {{model.max_score}} bodů</p>
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <nav class="navbar navbar-uloha" role="navigation">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-task-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-task-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            {{#link-to "task.assignment" tagName="li"}}<a href="{{view.href}}">Zadání</a>{{/link-to}}
+                            {{#link-to "task.submission" tagName="li"}}<a href="{{view.href}}">Odevzdání</a>{{/link-to}}
+                            {{#link-to "task.statistics" tagName="li"}}<a href="{{view.href}}">Statistika</a>{{/link-to}}
+                            {{#link-to "task.discussion" tagName="li"}}<a href="{{view.href}}">Diskuze</a>{{/link-to}}
+                            {{#link-to "task.solution" tagName="li"}}<a href="{{view.href}}">Řešení</a>{{/link-to}}
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <section>
+            {{outlet}}
+        </section>
     </section>
-    <!-- TODO: python odovzdavanie -->
-    <!-- TODO: odovzdavaci system -->
-
-</section>
+{{else}}
+    {{warning-general text="Tato úloha je uzamčena!"}}
+{{/if}}
