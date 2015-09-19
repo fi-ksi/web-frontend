@@ -3,8 +3,12 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1000px" height="1000px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<circle fill="#FAAC40" cx="500" cy="500" r="500"/>
+<circle fill="#FFC388" cx="500" cy="500" r="441.451"/>
 <g>
-	<circle fill="#FAAC40" cx="500.749" cy="500" r="500"/>
-	<circle fill="#FFC388" cx="500.749" cy="500" r="441.45"/>
+	<path fill="#007F3D" d="M499.999,0c-0.25,0-0.499,0.004-0.749,0.005v999.99c0.25,0.001,0.499,0.005,0.749,0.005
+		C776.142,1000,1000,776.144,1000,500C1000,223.858,776.142,0,499.999,0z"/>
+	<path fill="#00A54F" d="M499.999,58.55c-0.25,0-0.5,0.004-0.75,0.005v882.891c0.25,0.001,0.5,0.005,0.75,0.005
+		c243.807,0,441.45-197.644,441.45-441.451C941.449,256.193,743.806,58.55,499.999,58.55z"/>
 </g>
 </svg>

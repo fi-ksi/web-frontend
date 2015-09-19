@@ -143,45 +143,44 @@ export default Ember.Component.extend({
     	this.get("cy").style()
             .selector('node')
               .css({
-                'width': '100px',
-                'height': '100px',
+                'width': '125px',
+                'height': '125px',
+								'background-width': '103px',
+              	'background-height': '103px',
+								'background-color': 'white',
+
+								'color': 'white',
+								'font-size': '14',
 								'content': 'data(name)',
-        				'text-valign': 'bottom',
-        				'color': 'gray',
+        				'text-valign': 'center',
+								'text-transform': 'uppercase',
+								'text-wrap': 'wrap',
+								'text-max-width': '90px',
               })
             .selector('node[node_type = "uvod"]')
               .css({
-				'background-image': 'img/nodes/node-start.svg',
-				'background-width': '103px',
-				'background-height': '103px'
+								'background-image': 'img/nodes/node-start.svg',
+								'content': '',
               })
             .selector('node[node_type = "small_p"]')
               .css({
-              	'background-image': 'img/nodes/node-jelen.png',
-              	'background-width': '103px',
-              	'background-height': '103px'
-                //'background-color': '#3885C6'
+              	'background-image': 'img/nodes/base/node-blue.svg',
               })
             .selector('node[node_type = "small_t"]')
               .css({
-              	'background-image': 'img/nodes/node-kufor.png',
-              	'background-width': '103px',
-              	'background-height': '103px'
-                //'background-color': '#81E877'
+              	'background-image': 'img/nodes/base/node-done.svg',
               })
             .selector('node[node_type = "big"]')
               .css({
-              	'background-image': 'img/nodes/node-sova.png',
-              	'background-width': '103px',
-              	'background-height': '103px'
-                //'background-color': '#FFCC52'
+              	'background-image': 'img/nodes/base/node-big.svg',
+								'background-width': '118px',
+              	'background-height': '118px',
+								'content': '',
               })
             .selector('node[node_type = "bonus"]')
               .css({
-              	'background-image': 'img/nodes/node-zem.png',
-              	'background-width': '103px',
-              	'background-height': '103px'
-                //'background-color': '#7A80FF'
+              	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
+								'content': '',
               })
             .selector('edge')
               .css({
