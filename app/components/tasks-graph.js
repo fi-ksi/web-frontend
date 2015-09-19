@@ -87,7 +87,7 @@ export default Ember.Component.extend({
 		var graphPanel = document.getElementById("cy");
 
 		graphPanel.style.width = "100%";
-		graphPanel.style.height = 800 + "px";
+		graphPanel.style.height = 1300 + "px";
 	},
 	loadGraph: function(file) {
         var json = null;
@@ -106,7 +106,7 @@ export default Ember.Component.extend({
     	var self = this;
     	this.get("cy").autolock(false);
     	var width = Ember.$("#cy").width();
-    	var height = 800;
+    	var height = 1300;
     	var options = {
 			name: 'breadthfirst',
 			roots: [self.get("root_node")],
