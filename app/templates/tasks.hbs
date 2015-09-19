@@ -1,6 +1,33 @@
-<div id="content">
-		{{#unless session.isAuthenticated}}
-			{{warning-login text="nejsi přihlášen. Aby byly tvé operace užloženy, musíš se přihlásit."}}
-		{{/unless}}
-    {{tasks-graph model=model.tasks sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
-</div>
+{{#unless session.isAuthenticated}}
+	{{warning-login text="nejsi přihlášen. Aby byly tvé operace užloženy, musíš se přihlásit."}}
+{{/unless}}
+
+<section id="graph" class="container content-section" style="text-align:justify">
+		<div class="row">
+			<!-- vysvetlivky -->
+			<div class="col-sm-12 col-md-1 fix-sidebar">
+				<div id="graph-info-panel" class="panel panel-ksi">
+				  <div class="panel-heading panel-heading-ksi"><h4 align="center">Vysvětlivky</h4></div>
+				  <div class="panel-body">
+						<img src="img/nodes/base/node-green.svg" class="node-info"/> Algoritmické úkoly<br>
+						<img src="img/nodes/base/node-blue.svg" class="node-info"/> Programovací úkoly<br>
+						<img src="img/nodes/base/node-red.svg" class="node-info"/><br>
+						<img src="img/nodes/base/node-orange.svg" class="node-info"/><br>
+						<img src="img/nodes/base/node-bronze-unknown.svg" class="node-info"/>Úkoly s překvapením<br>
+						zmíchané úkoly<br>
+						<img src="img/nodes/base/node-big-green.svg" class="node-info-big"/>Velké úkoly<br><!--TODO-->
+						<hr>
+						uzamčené úkoly<br>
+						vyřešené úkoly<br>
+						<hr>
+						prerekvizity<!-- TODO -->
+				  </div>
+				</div>
+			</div>
+
+			<!-- graf -->
+			<div class="col-sm-12 col-md-11 col-md-offset-1">
+    		{{tasks-graph model=model.tasks sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
+			</div>
+		</div>
+</section>
