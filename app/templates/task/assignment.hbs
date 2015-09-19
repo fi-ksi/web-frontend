@@ -5,7 +5,7 @@
   <div style="margin:20px">
     <a href="/tasks/{{model.id}}/assignment/pdf"><button class="btn btn-primary">Stáhnout pdf</button></a>
   </div>
-  {{#each model.modules as |module|}}
+  {{#each model.modules as |module index|}}
     <hr>
     {{#if module.is_programming}}
     <!-- styl odovzdavania -->
@@ -23,25 +23,7 @@
     </div>
     {{/if}}
     {{#if module.is_quiz}}
-      <!-- abcd odovzdavanie -->
-      <div class="controls" style="margin:20px">
-        <div class="panel panel-task">
-          <div class="panel-body">
-            <div class="checkbox">
-             <label><input type="checkbox" value="">Option 1</label>
-            </div>
-            <div class="checkbox">
-             <label><input type="checkbox" value="">Option 2</label>
-            </div>
-            <div class="checkbox disabled">
-             <label><input type="checkbox" value="">Option 3</label>
-            </div>
-            <div class="checkbox disabled">
-             <label><input type="checkbox" value="">Option 4</label>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{quiz-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_general}}
       <div class="alert alert-warning" role="alert" style="margin:20px">
@@ -53,12 +35,11 @@
       </div>
     {{/if}}
     {{#if module.is_sortable}}
-      {{log module}}
-      {{sortable-module module=module id=module.id}}
+      {{sortable-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_text}}
       {{plaintext-module module=module}}
     {{/if}}
   {{/each}}
-  <button class="btn btn-primary">Odevzdat</button>
+  <button class="btn btn-primary" {{action "submit"}}>Odevzdat</button>
 </div>

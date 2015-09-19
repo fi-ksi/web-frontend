@@ -1,22 +1,24 @@
-<div class="row">
+<div class="row" style="margin-left:20px">
 	{{{module.description}}}
 	{{#if general_error}}
 		{{warning-general text=general_error}}
 	{{/if}}
 </div>
-<div class="col-xs-12 col-sm-6">
-	Výsledek:
-	<ul class="sortable list" id="sortable{{id}}a">
-		{{#each module.sortable_list.fixed as |line index|}}
-			<li class="{{line.style}} static" id="a{{index}}"><span class="handle">::&nbsp;</span>{{line.content}}</li>
-		{{/each}}
-	</ul>
-</div>
-<div class="col-xs-12 col-sm-6">
-	Použij tyto řádky
-	<ul class="sortable list" id="sortable{{id}}b">
-		{{#each module.sortable_list.movable as |line index|}}
-			<li class="{{line.style}}" id="b{{index}}"><span class="handle">::&nbsp;</span>{{line.content}}</li>
-		{{/each}}
-	</ul>
+<div class="row" style="margin-left:20px">
+	<div class="col-xs-12 col-sm-6">
+		Výsledek:
+		<ul class="sortable list" id="sortable{{id}}a">
+			{{#each module.sortable_list.fixed as |line index|}}
+				<li class="{{line.style}} static" id="a{{index}}"><span class="handle">::&nbsp;</span>{{line.content}}</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		Použij tyto řádky
+		<ul class="sortable list" id="sortable{{id}}b">
+			{{#each module.sortable_list.movable as |line index|}}
+				<li class="{{line.style}}" id="b{{index}}"><span class="handle">::&nbsp;</span>{{line.content}}</li>
+			{{/each}}
+		</ul>
+	</div>
 </div>

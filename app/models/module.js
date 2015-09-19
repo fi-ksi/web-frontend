@@ -26,6 +26,7 @@ export default DS.Model.extend( {
 	sortable_list: DS.attr("sortable-list"),
 
 	// For quiz
+	questions: DS.attr("quiz-questions"),
 
 	// For code
 	code: DS.attr("string")
