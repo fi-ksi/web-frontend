@@ -6,23 +6,10 @@
             <div style="margin-top:30px">
                 <img src="{{model.profile_pic}}" style="width:100%; max-width:250px;" align="center"/> <!-- user image --> <!-- TODO default img -->
             </div>
-      {{#if picture_info}}
-        {{info-general text=picture_info}}
-      {{/if}}
-      {{#if is_changing_picture}}
-        {{#if picture_error}}
-          {{warning-general text=picture_error}}
-        {{/if}}
-        {{picture-upload url="/profile/pic" actionReceiver=picture_field file_type_error="file_type_error" upload_finished="upload_finished" upload_failed="upload_failed"}}
-      {{/if}}
-
-      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}> <!-- TODO file button -->
+      {{picture-upload url="/profile/pic" actionReceiver=picture_field upload_finished="upload_finished" upload_failed="upload_failed" id="picture_input"}}
+      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}>
         <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-        {{#if is_changing_picture}}
           Nahraj fotografii
-        {{else}}
-          Změnit fotografii
-        {{/if}}
       </button>
 
       <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:100%;"> <!-- TODO colors/styles a linky -->
