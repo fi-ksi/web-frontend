@@ -5,23 +5,32 @@
   <div style="margin:20px">
     <a href="/tasks/{{model.id}}/assignment/pdf"><button class="btn btn-primary">Stáhnout pdf</button></a>
   </div>
-  {{#each model.modules as |module index|}}
-    <hr>
-    {{#if module.is_programming}}
-      {{code-module module=module id=module.id result="result" error="error"}}
+  {{#if opened}}
+    {{#if show_submission}}
+      {{#each model.modules as |module index|}}
+        <hr>
+        {{#if module.is_programming}}
+          {{code-module module=module id=module.id result="result" error="error"}}
+        {{/if}}
+        {{#if module.is_quiz}}
+          {{quiz-module module=module id=module.id result="result" error="error"}}
+        {{/if}}
+        {{#if module.is_general}}
+          {{file-module module=module id=module.id result="result" error="error"}}
+        {{/if}}
+        {{#if module.is_sortable}}
+          {{sortable-module module=module id=module.id result="result" error="error"}}
+        {{/if}}
+        {{#if module.is_text}}
+          {{plaintext-module module=module result="result"}}
+        {{/if}}
+      {{/each}}
+      <button class="btn btn-primary" {{action "submit"}}>Odevzdat</button>
+    {{else}}
+      {{info-general text="Tuto úlohu jsi už odevzdal."}}
+      <button class="btn btn-primary" {{action "new_submit"}}>Znovu odevzdat úlohu</button>
     {{/if}}
-    {{#if module.is_quiz}}
-      {{quiz-module module=module id=module.id result="result" error="error"}}
-    {{/if}}
-    {{#if module.is_general}}
-      {{file-module module=module id=module.id result="result" error="error"}}
-    {{/if}}
-    {{#if module.is_sortable}}
-      {{sortable-module module=module id=module.id result="result" error="error"}}
-    {{/if}}
-    {{#if module.is_text}}
-      {{plaintext-module module=module result="result"}}
-    {{/if}}
-  {{/each}}
-  <button class="btn btn-primary" {{action "submit"}}>Odevzdat</button>
+  {{else}}
+    {{warning-general disable_warning=true text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}
+  {{/if}}
 </div>
