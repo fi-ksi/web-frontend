@@ -16,6 +16,7 @@ export default DS.Model.extend( {
 	time_deadline: DS.attr("date"),
 	time_published: DS.attr("date"),
 	best_scores: DS.hasMany("score", { async: true}),
-	my_score: DS.belongsTo("score", {async: true}),
-	solution: DS.attr("string")
+	my_score: DS.belongsTo("score", {async: true, inverse:null}),
+	solution: DS.attr("string"),
+	submissions: DS.hasMany("submission", { async: true, inverse:null})
 });
