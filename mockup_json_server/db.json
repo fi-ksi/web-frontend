@@ -404,7 +404,10 @@
   "modules": [
     {
       "id": 0,
-      "type": "programming"
+      "type": "programming",
+      "description": "A tady je naše první programovací úloha. Do toho!",
+      "code": "print(\"Hello universe!\")",
+      "default_code": "print(\"Hello world!\")"
     },
     {
       "id": 1,

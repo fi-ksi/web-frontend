@@ -23,6 +23,7 @@ export default Ember.Component.extend({
                     // there aren't checked items!
                     valid = false;
                     console.log("Invalid! " + "#w_" + self.get("id") + "_" + index);
+                    Ember.$("#w_" + self.get("id") + "_" + index).removeClass("hide");
                     response.push(undefined);
                 } else {
                     Ember.$("#w_" + self.get("id") + "_" + index).addClass("hide");
@@ -38,7 +39,10 @@ export default Ember.Component.extend({
                 return;
             }
             
-            this.sendAction("result", "module_" + this.get("module").id, response);
+            this.sendAction("result", "module_" + this.get("module").id, {solution: response});
         });
+    }),
+    release_submit: Ember.on('willDestroyElement', function () {
+        this.get('module_service').off('submit', this);
     })
 });

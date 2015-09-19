@@ -12,7 +12,6 @@
 				{{{question.question}}}
 				{{#each question.options as |option number|}}
 					<div>
-						{{log question.type}}
 						<label>{{input type=question.type name=(construct-id "group" id index) id=(construct-id "id_q" index number) class=(construct-id "group" id index)}} {{option}}</label>
 					</div>
 				{{/each}}

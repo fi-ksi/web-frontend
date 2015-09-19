@@ -8,37 +8,19 @@
   {{#each model.modules as |module index|}}
     <hr>
     {{#if module.is_programming}}
-    <!-- styl odovzdavania -->
-    <!-- TMP Python -->
-    <div class="controls" style="margin:20px">
-        <label for="threadName">Editor kódu</label>
-        {{code-editor content=module.code}}
-
-        <label for="threadName">Python konzola:</label>
-        <textarea class="form-control" style="min-width: 100%" rows="3"></textarea>
-    </div>
-    <div class="row" style="margin:20px">
-        <button class="btn-sm btn-default inline">Nahrát .py soubor</button>
-        <button class="btn-sm btn-default inline">Spustit</button>
-    </div>
+      {{code-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_quiz}}
       {{quiz-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_general}}
-      <div class="alert alert-warning" role="alert" style="margin:20px">
-        <!-- TODO color poznamky -->
-        <strong>Poznámka:</strong> odevzdávejte všechny vaše soubory řešení v jediném zip souboru. <!-- TODO odkaz na clanek, ako odevzdavat ukoly -->
-      </div>
-      <div style="margin:20px">
-        Soubor k odevzdání: {{input placeholder="Soubor s řešením"}}
-      </div>
+      {{file-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_sortable}}
       {{sortable-module module=module id=module.id result="result" error="error"}}
     {{/if}}
     {{#if module.is_text}}
-      {{plaintext-module module=module}}
+      {{plaintext-module module=module result="result"}}
     {{/if}}
   {{/each}}
   <button class="btn btn-primary" {{action "submit"}}>Odevzdat</button>

@@ -29,5 +29,6 @@ export default DS.Model.extend( {
 	questions: DS.attr("quiz-questions"),
 
 	// For code
-	code: DS.attr("string")
+	code: DS.attr("string"),
+	default_code: DS.attr("string")
 });

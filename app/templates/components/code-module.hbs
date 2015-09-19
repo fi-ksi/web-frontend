@@ -1,0 +1,35 @@
+<div class="controls" style="margin:20px">
+    <div class="row">
+        {{module.description}}
+    </div>
+    {{#if general_error}}
+        {{warning-general text=general_error}}
+    {{/if}}
+    <button class="btn btn-primary inline" {{action "toggle_info"}}>{{info_button_text}}</button>
+    {{#if show_info}}
+        {{info-general text="Náš kód se používá blablabalba. Nemůžeš používat blablaba."}}
+    {{/if}}
+    <div class="row">
+        <label for="threadName">Editor kódu</label>
+        {{code-editor content=module.code  id=(construct-id "editor_module" id)}}
+    </div>
+    <div class="row">
+        <button class="btn btn-primary inline" {{action "run"}}>Spustit</button>
+        <button class="btn btn-primary inline" {{action "load"}}>Nahrát soubor z disku</button>
+        <button class="btn btn-primary inline" {{action "save"}}>Uložit soubor na disk</button>
+        <button class="btn btn-primary inline" {{action "reset"}}>Obnovit výchozí kód</button>
+        {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
+    </div>
+    {{#if script_text_output}}
+        <div class="row">
+            <label>Výstup kódu</label>
+            {{textarea class="form-control" style="min-width: 100%" rows="3" readonly="true" value=script_text_output}}
+        </div>
+    {{/if}}
+    {{#if script_graphics_output}}
+        <div class="row">
+            <label>Grafický výstup</label>
+            <img src="{{script_graphics_output}}"/>
+        </div>
+    {{/if}}
+</div>

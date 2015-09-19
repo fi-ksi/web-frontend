@@ -25,5 +25,8 @@
     "qtip2": "~2.2.1",
     "qunit": "~1.17.1",
     "tinymce": "~4.2.3"
+  },
+  "devDependencies": {
+    "file-saver.js": "~1.20150507.2"
   }
 }

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce('afterRender', this, function(){
-            this.editor = window.ace.edit("editor");
+            this.editor = window.ace.edit(this.get("id"));
             this.editor.setTheme("ace/theme/monokai");
             this.editor.getSession().setMode("ace/mode/python");
         }); 
