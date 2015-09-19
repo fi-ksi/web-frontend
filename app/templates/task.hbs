@@ -1,17 +1,18 @@
 <section id="novinky" class="container content-section" style="text-align:justify">
-    <div class="row" style="margin-top: 30px">
+    <div class="row" style="margin-top: 30px; margin-left: 20px">
         <h2 id="name" style="color: black">{{model.title}}</h2>
     </div>
     <!-- TODO: center name and image -->
-    <div class="row" style="padding-left:5px">
+    <div class="row" style="padding-left:5px; margin-left: 20px">
       <h5 class="inline">Autor: </h5>
       <img id="org-photo" class="inline" src="{{model.author.profile_picture}}" style="width: 30px">
       <h5 id="org-name" class="inline" style="color: #39393a"> {{model.author.full_name}}</h5>
+      <p class="task-points inline">Max. {{model.max_score}} bodů</p>
     </div>
     <div class="row" style="margin-top: 20px">
         <nav class="navbar navbar-uloha" role="navigation">
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-task-navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-task-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
