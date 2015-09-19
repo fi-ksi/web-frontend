@@ -1,10 +1,10 @@
 <section id="profile" class="container content-section" style="text-align:justify">
     <div class="row">
       {{#validatable-form action="save"}}
-      <div class="col-sm-12 col-md-3">
+      <div class="col-sm-12 col-md-2 fix-sidebar" style="min-width:200px; max-width=250px">
 
             <div style="margin-top:30px">
-                <img src="{{model.profile_pic}}" style="max-width:100%;"/> <!-- user image --> <!-- TODO default img -->
+                <img src="{{model.profile_pic}}" style="width:100%; max-width:250px;" align="center"/> <!-- user image --> <!-- TODO default img -->
             </div>
       {{#if picture_info}}
         {{info-general text=picture_info}}
@@ -43,7 +43,7 @@
       </button>
         </div>
 
-      <div class="col-sm-12 col-md-9">
+      <div class="col-sm-12 col-md-8 col-md-offset-4">
       {{#if general_error}}
         {{warning-general text=general_error}}
       {{/if}}

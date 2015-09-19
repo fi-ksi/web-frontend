@@ -145,9 +145,9 @@ export default Ember.Component.extend({
               .css({
                 'width': '100px',
                 'height': '100px',
-                'border-color': 'gray',
-                'border-width': 3,
-                'border-opacity': 0.5
+								'content': 'data(name)',
+        				'text-valign': 'bottom',
+        				'color': 'gray',
               })
             .selector('node[node_type = "uvod"]')
               .css({
@@ -204,7 +204,7 @@ export default Ember.Component.extend({
     },
     setup_graph_actions: function() {
     	var self = this;
-    	
+
     	this.get("cy").on('mousedown','node', function(event){
 			var target = event.cyTarget;
 	        var id = target.data("id");

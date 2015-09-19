@@ -1,0 +1,15 @@
+.fix-sidebar {
+  position: fixed;
+}
+
+@media (min-width: 994px) {
+    .fix-sidebar {
+        position: fixed;
+    }
+}
+
+@media (max-width: 994px) {
+    .fix-sidebar{
+        position: static;
+    }
+}
