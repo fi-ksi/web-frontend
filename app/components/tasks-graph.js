@@ -173,9 +173,7 @@ export default Ember.Component.extend({
               })
             .selector('node[node_type = "big"]')
               .css({
-              	'background-image': 'img/nodes/base/node-red.svg',
-								'background-width': '118px',
-              	'background-height': '118px',
+              	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
               })
             .selector('node[node_type = "bonus"]')
               .css({
