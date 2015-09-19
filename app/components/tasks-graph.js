@@ -148,6 +148,7 @@ export default Ember.Component.extend({
 								'background-width': '103px',
               	'background-height': '103px',
 								'background-color': 'white',
+								'background-opacity': '0',
 
 								'color': 'white',
 								'font-size': '14',
@@ -168,20 +169,31 @@ export default Ember.Component.extend({
               })
             .selector('node[node_type = "small_t"]')
               .css({
-              	'background-image': 'img/nodes/base/node-done.svg',
+              	'background-image': 'img/nodes/base/node-orange.svg',
               })
             .selector('node[node_type = "big"]')
               .css({
-              	'background-image': 'img/nodes/base/node-big.svg',
+              	'background-image': 'img/nodes/base/node-red.svg',
 								'background-width': '118px',
               	'background-height': '118px',
-								'content': '',
               })
             .selector('node[node_type = "bonus"]')
               .css({
               	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
 								'content': '',
               })
+						.selector('node[node_type = "small_t_p"]')
+              .css({
+              	'background-image': 'img/nodes/base/node-orange-blue.svg',
+              })
+						.selector('node[node_type = "small_a"]')
+              .css({
+              	'background-image': 'img/nodes/base/node-green.svg',
+              })
+						.selector('node[node_type = "small_a_p"]')
+	            .css({
+	            	'background-image': 'img/nodes/base/node-green-blue.svg',
+	            })
             .selector('edge')
               .css({
                 'width': 6,
@@ -211,7 +223,7 @@ export default Ember.Component.extend({
 		});
 
 		this.get("cy").on('mouseover','node', function(event){
-	        var target = event.cyTarget;
+	        /*var target = event.cyTarget;
 	        var id = target.data("id");
 	        var name = target.data("name");
 	        var text = target.data("tooltip") + " Pro detaily podrž pravé tlačítko."; //TODO formatovanie textu
@@ -246,7 +258,7 @@ export default Ember.Component.extend({
 	                    height: 8
 	                }
 	            }
-	        });
+	        });*/
 	    });
     }
 });

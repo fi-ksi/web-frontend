@@ -137,11 +137,11 @@
         450
       ],
       "node_parent": [
-        1
+        2
       ],
-      "title": "První KSI úloha",
+      "title": "Želvy, gramatiky a pláže",
       "picture": "http://placehold.it/40x40",
-      "category": 2,
+      "category": 1,
       "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
@@ -170,11 +170,11 @@
         450
       ],
       "node_parent": [
-        2
+        3
       ],
-      "title": "První KSI úloha",
+      "title": "Želva a funkce",
       "picture": "http://placehold.it/40x40",
-      "category": 3,
+      "category": 1,
       "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
@@ -203,11 +203,345 @@
         450
       ],
       "node_parent": [
+        2
+      ],
+      "title": "Složitá grafika",
+      "picture": "http://placehold.it/40x40",
+      "category": 1,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
         3
       ],
-      "title": "První KSI úloha",
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 6,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        4,
+        5
+      ],
+      "title": "Obrázek",
       "picture": "http://placehold.it/40x40",
       "category": 4,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 7,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        4,
+        5
+      ],
+      "title": "Kooperační",
+      "picture": "http://placehold.it/40x40",
+      "category": 3,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 8,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        1
+      ],
+      "title": "O algoritmice obecně",
+      "picture": "http://placehold.it/40x40",
+      "category": 2,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 9,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        8
+      ],
+      "title": "Složitost",
+      "picture": "http://placehold.it/40x40",
+      "category": 2,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 10,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        8
+      ],
+      "title": "Korektnost",
+      "picture": "http://placehold.it/40x40",
+      "category": 2,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 11,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        2,
+        9,
+        10
+      ],
+      "title": "Úvod do hrubé síly",
+      "picture": "http://placehold.it/40x40",
+      "category": 7,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 12,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        11
+      ],
+      "title": "Hladové algoritmy",
+      "picture": "http://placehold.it/40x40",
+      "category": 6,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 13,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        11
+      ],
+      "title": "Hrubá síla",
+      "picture": "http://placehold.it/40x40",
+      "category": 6,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 14,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        12
+      ],
+      "title": "Jedeme na Ksílet!",
+      "picture": "http://placehold.it/40x40",
+      "category": 3,
+      "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
+      "intro": "Úloha o...",
+      "max_score": 5,
+      "thread": 0,
+      "active": true,
+      "modules": [
+        0,
+        1,
+        2
+      ],
+      "time_deadline": "2014-11-11T08:40:51.620Z",
+      "time_published": "2014-11-11T08:40:51.620Z",
+      "author": 1,
+      "best_scores": [
+        1,
+        2,
+        3
+      ],
+      "my_score": 2,
+      "solution": "Přehledně vysvětlené řešení"
+    },
+    {
+      "id": 15,
+      "position": [
+        500,
+        450
+      ],
+      "node_parent": [
+        13
+      ],
+      "title": "Průvodce",
+      "picture": "http://placehold.it/40x40",
+      "category": 3,
       "body": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>",
       "intro": "Úloha o...",
       "max_score": 5,
@@ -251,6 +585,18 @@
     {
       "id": 4,
       "type": "bonus"
+    },
+    {
+      "id": 5,
+      "type": "small_t_p"
+    },
+    {
+      "id": 6,
+      "type": "small_a"
+    },
+    {
+      "id": 7,
+      "type": "small_a_p"
     }
   ],
   "threads": [
