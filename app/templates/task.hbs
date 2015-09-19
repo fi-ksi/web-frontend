@@ -3,9 +3,10 @@
         <h2 id="name" style="color: black">{{model.title}}</h2>
     </div>
     <!-- TODO: center name and image -->
-    <div class="row" style="margin-top: 15px">
-      <img id="org-photo" class="inline" src="{{model.author.profile_picture}}" style="width: 50px">
-      <h4 id="org-name" class="inline" style="color: #39393a">Autor úlohy: {{model.author.full_name}}</h4>
+    <div class="row" style="padding-left:5px">
+      <h5 class="inline">Autor: </h5>
+      <img id="org-photo" class="inline" src="{{model.author.profile_picture}}" style="width: 30px">
+      <h5 id="org-name" class="inline" style="color: #39393a"> {{model.author.full_name}}</h5>
     </div>
     <div class="row" style="margin-top: 20px">
         <nav class="navbar navbar-uloha" role="navigation">
