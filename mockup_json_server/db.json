@@ -782,7 +782,8 @@
     },
     {
       "id": 2,
-      "type": "general"
+      "type": "general",
+      "description": "A tady odevzdej své textové řešení. Nezapomeň na pseudokód!"
     },
     {
       "id": 3,

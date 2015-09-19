@@ -32,11 +32,15 @@ export default Ember.Component.extend({
         this.get("module_service").on("submit", () => {
             this.set("general_error", undefined);
             var content = this.get_editor().getValue();
-            if(content) {
+            if(content && content !== this.get("module.default_code")) {
                 this.sendAction("result", "module_" + this.get("module").id, {code: content});
             } else {
                 this.sendAction("error", "module_" + this.get("module").id);
-                this.set("general_error", "Nelze odevzdat prázdný kód!");
+                if(content == this.get("module.default_code")) {
+                    this.set("general_error", "Neprovedl jsi žádné změny na kódu");
+                } else {
+                    this.set("general_error", "Nelze odevzdat prázdný kód!");
+                }
             }
         });
     }),
