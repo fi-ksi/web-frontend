@@ -69,7 +69,6 @@ export default Ember.Component.extend({
 		        userPanningEnabled: false,
 		        autoungrabify: false,
 		        ready: function() {
-		        	console.log("Graph is ready!");
 		        	self.reset_graph_panel();
 		        	self.style_graph();
 		        	self.reposition_graph();
@@ -84,74 +83,34 @@ export default Ember.Component.extend({
 		graphPanel.style.width = "100%";
 		graphPanel.style.height = 1300 + "px";
 	},
-	loadGraph: function(file) {
-        var json = null;
-        Ember.$.ajax({
-            'async': false,
-            'global': false,
-            'url': file,
-            'dataType': 'json',
-            'success': function (data) {
-                json = data;
-            }
-        });
-        return json;
-    },
     reposition_graph: function() {
     	var self = this;
     	this.get("cy").autolock(false);
     	var width = Ember.$("#cy").width();
     	var height = 1300;
     	var options = {
-			name: 'breadthfirst',
-			roots: [self.get("root_node")],
-			boundingBox: {
-				x1: 0,
-				y1: 0,
-				w: width,
-				h: height
-			},
-			padding: 5,
-			spacingFactor: 1
-
-			/*fit: true, // whether to fit the viewport to the graph
-			directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-			padding: 30, // padding on fit
-			circle: false, // put depths in concentric circles if true, put depths top down if false
-			spacingFactor: 1.75, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
-			boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-			avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-			roots: undefined, // the roots of the trees
-			maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
-			animate: false, // whether to transition the node positions
-			animationDuration: 500, // duration of animation in ms if enabled
-			ready: undefined, // callback on layoutready
-			stop: undefined // callback on layoutstop*/
-		};
-		options = {
 			name: 'dagre',
 
 			// dagre algo options, uses default value on undefined
-			nodeSep: undefined, // the separation between adjacent nodes in the same rank
+			/*nodeSep: undefined, // the separation between adjacent nodes in the same rank
 			edgeSep: undefined, // the separation between adjacent edges in the same rank
-			rankSep: undefined, // the separation between adjacent nodes in the same rank
-			rankDir: undefined, // 'TB' for top to bottom flow, 'LR' for left to right
-			minLen: function( edge ){ return 1; }, // number of ranks to keep between the source and target of the edge
-			edgeWeight: function( edge ){ return 1; }, // higher weight edges are generally made shorter and straighter than lower weight edges
+			rankSep: undefined, // the separation between adjacent nodes in the same rank*/
+			rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right
+			minLen: function(){ return 1; }, // number of ranks to keep between the source and target of the edge
+			edgeWeight: function(){ return 1; }, // higher weight edges are generally made shorter and straighter than lower weight edges
 
 			// general layout options
-			fit: true, // whether to fit to viewport
-			padding: 30, // fit padding
+			fit: false, // whether to fit to viewport
+			padding: 5, // fit padding
 			animate: false, // whether to transition the node positions
-			animationDuration: 500, // duration of animation in ms if enabled
-			boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+			// Magic number hack
+			boundingBox: {x1: 0, y1: 0, w: width/2, h: 0.8*height}, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
 			ready: function(){}, // on layoutready
 			stop: function(){} // on layoutstop
 		};
 		this.get("cy").layout(options);
 		this.get("cy").center();
 		options.boundingBox.height = this.get("cy").height();
-		//this.get("cy").layout(options);
 		this.get("cy").autolock(true);
     },
     style_graph: function()  {
@@ -224,12 +183,12 @@ export default Ember.Component.extend({
                 'opacity': 0.0,
                 'text-opacity': 0
         	}).update();
-        //this.get("cy").style(style);
     },
     setup_graph_actions: function() {
     	var self = this;
 
     	this.get("cy").on('mousedown','node', function(event){
+    		console.log("clicked!");
 			var target = event.cyTarget;
 	        var id = target.data("id");
 	        self.sendAction('assign', id);
