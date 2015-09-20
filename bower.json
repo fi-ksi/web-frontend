@@ -27,6 +27,7 @@
     "tinymce": "~4.2.3"
   },
   "devDependencies": {
+    "dagre": "~0.7.4",
     "file-saver.js": "~1.20150507.2"
   }
 }

@@ -33,6 +33,9 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/ember-qtip2/jquery.qtip.min.css');
   app.import(app.bowerDirectory + '/html.sortable/dist/html.sortable.min.js');
   app.import(app.bowerDirectory + '/file-saver.js/FileSaver.js');
+  app.import(app.bowerDirectory + '/lodash/lodash.min.js');
+  app.import(app.bowerDirectory + '/graphlib/dist/graphlib.core.js');
+  app.import(app.bowerDirectory + '/dagre/dist/dagre.core.js');
 
   // import the main file
   app.import('bower_components/tinymce/tinymce.min.js', {destDir: 'assets/tinymce'});
