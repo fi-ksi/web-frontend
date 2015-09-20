@@ -36,6 +36,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/lodash/lodash.min.js');
   app.import(app.bowerDirectory + '/graphlib/dist/graphlib.core.js');
   app.import(app.bowerDirectory + '/dagre/dist/dagre.core.js');
+  app.import(app.bowerDirectory + '/sticky-kit/jquery.sticky-kit.js');
+  app.import('vendor/sticky-column.js');
 
   // import the main file
   app.import('bower_components/tinymce/tinymce.min.js', {destDir: 'assets/tinymce'});

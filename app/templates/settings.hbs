@@ -1,10 +1,10 @@
 <section id="profile" class="container content-section" style="text-align:justify">
-    <div class="row">
-      {{#validatable-form action="save"}}
-      <div class="col-sm-12 col-md-2 fix-sidebar" style="min-width:200px; max-width=250px">
-
+  {{#validatable-form action="save"}}
+    <div class="row flex-row-md stickycolumn-parent">
+      <div class="col-sm-12 col-md-3">
+        <div class="stickycolumn">
             <div style="margin-top:30px">
-                <img src="{{model.profile_pic}}" style="width:100%; max-width:250px;" align="center"/> <!-- user image --> <!-- TODO default img -->
+                <img src="{{model.profile_pic}}" style="width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;" align="center"/> <!-- user image --> <!-- TODO default img -->
             </div>
       {{picture-upload url="/profile/pic" actionReceiver=picture_field upload_finished="upload_finished" upload_failed="upload_failed" id="picture_input"}}
       <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}>
@@ -28,9 +28,10 @@
       <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
         Ulož změny
       </button>
+          </div>
         </div>
 
-      <div class="col-sm-12 col-md-8 col-md-offset-4">
+      <div class="col-sm-12 col-md-9">
       {{#if general_error}}
         {{warning-general text=general_error}}
       {{/if}}
@@ -164,6 +165,6 @@
         </select>
       </div>
         </div>
-    {{/validatable-form}}
-    </div>
+  </div>
+{{/validatable-form}}
 </section>

@@ -17,6 +17,7 @@
     "ember-resolver": "~0.1.18",
     "ember-simple-auth": "0.8.0",
     "ember-uploader": "0.3.9",
+    "enquire": "~2.1.2",
     "HCaptions": "~1.0.0",
     "html.sortable": "~0.3.0",
     "jquery": "2.1.4",
@@ -24,6 +25,7 @@
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qtip2": "~2.2.1",
     "qunit": "~1.17.1",
+    "sticky-kit": "~1.1.2",
     "tinymce": "~4.2.3"
   },
   "devDependencies": {
