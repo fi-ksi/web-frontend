@@ -25,7 +25,7 @@ export default Ember.Component.extend({
                     alert("Nepodařilo se načíst soubor!");
                 }
             });
-        }); 
+        });
     },
     module_service: Ember.inject.service("module-service"),
     manage_submit: Ember.on("init", function() {
