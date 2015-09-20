@@ -25,7 +25,7 @@ export default Ember.Component.extend({
                     alert("Nepodařilo se načíst soubor!");
                 }
             });
-        }); 
+        });
     },
     module_service: Ember.inject.service("module-service"),
     manage_submit: Ember.on("init", function() {
@@ -36,7 +36,7 @@ export default Ember.Component.extend({
                 this.sendAction("result", "module_" + this.get("module").id, {code: content});
             } else {
                 this.sendAction("error", "module_" + this.get("module").id);
-                if(content == this.get("module.default_code")) {
+                if(content === this.get("module.default_code")) {
                     this.set("general_error", "Neprovedl jsi žádné změny na kódu");
                 } else {
                     this.set("general_error", "Nelze odevzdat prázdný kód!");
