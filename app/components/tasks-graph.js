@@ -13,31 +13,17 @@ export default Ember.Component.extend({
 		this.set("root_node",
 			Math.min.apply(null, this.get("model").map(function(node) { return node.get("id"); })));
 
-		var self = this;
+		//var self = this;
 		this.get("model").forEach(function(node) {
-			if(node.get("id") === self.get("root_node")) {
-				ret["nodes"].push({
-					data: {
-						id: node.get("id"),
-						name: node.get("title"),
-						tooltip: node.get("intro"),
-						node_type: node.get("category").get("type")
-					},
-					position: {
-						//x: node.get("position").get("x"),
-						y: 0
-					}
-				});
-			} else {
-				ret["nodes"].push({
-					data: {
-						id: node.get("id"),
-						name: node.get("title"),
-						tooltip: node.get("intro"),
-						node_type: node.get("category").get("type")
-					}
-				});
-			}
+			ret["nodes"].push({
+				data: {
+					id: node.get("id"),
+					name: node.get("title"),
+					tooltip: node.get("intro"),
+					node_type: node.get("category").get("type")
+				}
+			});
+			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
 			node.get("node_parent").forEach(function(parent) {
 				ret["edges"].push({
 					data: {
@@ -84,7 +70,7 @@ export default Ember.Component.extend({
 		graphPanel.style.height = 1300 + "px";
 	},
     reposition_graph: function() {
-    	var self = this;
+    	//var self = this;
     	this.get("cy").autolock(false);
     	var width = Ember.$("#cy").width();
     	var height = 1300;
