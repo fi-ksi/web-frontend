@@ -14,6 +14,11 @@
   color:ksi-color('text-light');
   border-width: 0;
 }
+
+.btn-task {
+  width: 200px;
+}
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: ksi-color('secondary-orange');
 }
