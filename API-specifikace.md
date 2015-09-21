@@ -43,3 +43,6 @@ Je jendo odevzdání daného uživatele k dané úloze. Pokud odevzdání nepat�
 
 # Module
 Je některý z typů odevzdávacího modulu. Je to vlastně union všechn možných typů. Formát kvízu je... 
+
+Co je potřeba domluvit/vyřešit
+Na jekém endpointu a jak řešit odevzdávání úloh, jak nahrávat soubory, jak se registrovat atd.
