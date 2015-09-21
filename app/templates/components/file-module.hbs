@@ -1,15 +1,21 @@
-<div class=row>
+<div class=row style="margin-left:0px">
 	{{{module.description}}}
 </div>
 {{#if general_error}}
 	{{warning-general text=general_error}}
 {{/if}}
-<div class="alert alert-warning" role="alert" style="margin:20px">
+<div class="alert alert-warning" role="alert" style="margin-left:0px; margin-top:20px">
 	<!-- TODO color poznamky -->
 	<strong>Poznámka:</strong> Odevzdat můžete i více různých souborů naráz, stačí je vybrat. <!-- TODO odkaz na clanek, ako odevzdavat ukoly -->
 </div>
-<div style="margin:20px">
-	Soubor k odevzdání: {{solution-file-upload placeholder="Soubor s řešením" valid="valid" invalid="invalid" class="btn-primary" upload_finished="upload_finished" upload_failed="upload_failed" factionReceiver=file_upload}}
+<div style="margin-left:0px">
+	<h5>Soubory k odevzdání:</h5>
+	<div class="fileUpload btn btn-primary">
+		<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+    <span>Upload</span>
+		{{solution-file-upload id="file-upload" type="file" valid="valid" invalid="invalid" class="upload" upload_finished="upload_finished" upload_failed="upload_failed" factionReceiver=file_upload}}
+
+</div>
 	{{#if files}}
 		Vybrané soubory:
 		<ul>
