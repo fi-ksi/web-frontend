@@ -7,7 +7,7 @@
 <div class="row" style="margin-left:5px">
 	<div class="col-xs-12 col-sm-6">
 		<h5>Výsledek:</h5>
-		<ul class="sortable list" id="sortable{{id}}a">
+		<ul class="sortable list" id="sortable{{id}}a" style="min-height: 100px; min-width:50%;">
 			{{#each module.sortable_list.fixed as |line index|}}
 				<li draggable="true" class="{{line.style}} static" id="a{{index}}">{{line.content}}</li>
 			{{/each}}
@@ -15,7 +15,7 @@
 	</div>
 	<div class="col-xs-12 col-sm-6">
 		<h5>Použij tyto řádky:</h5>
-		<ul class="sortable list" id="sortable{{id}}b">
+		<ul class="sortable list" id="sortable{{id}}b" style="min-height: 100px; min-width:50%;">
 			{{#each module.sortable_list.movable as |line index|}}
 				<li draggable="true" class="{{line.style}} highlight" id="b{{index}}">{{line.content}}</li>
 			{{/each}}

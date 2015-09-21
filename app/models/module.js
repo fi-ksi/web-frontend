@@ -19,8 +19,10 @@ export default DS.Model.extend( {
 		return this.get("type") === "sortable";
 	}),
 
-	endpoint: DS.attr("string"),
 	description: DS.attr("string"),
+
+	// For general "file"
+	endpoint: DS.attr("string"),
 
 	// For sortable
 	sortable_list: DS.attr("sortable-list"),
