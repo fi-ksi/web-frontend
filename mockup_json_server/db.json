@@ -82,6 +82,9 @@
       "thread": 0,
       "active": true,
       "modules": [
+        0,
+        1,
+        2,
         3
       ],
       "time_deadline": "2015-12-12T08:40:51.620Z",
