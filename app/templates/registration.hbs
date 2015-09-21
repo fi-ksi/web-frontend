@@ -1,5 +1,7 @@
 <section id="registration" class="container content-section" style="text-align:justify">
-	<!-- Sekcia noviniek -->
+	{{#if registration_done}}
+    {{info-general text="Registrace byla provedna. Za chvíli by ti měl přijít e-mail s dalšími instrukcemi."}}
+  {{else}}
 	<div class="jumbotron" style="background-color: transparent">
 	    <h2>Registrace</h2>
 			<div style="margin-top:30px">
@@ -52,25 +54,28 @@
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        <input type="text" class="form-control" id="street">
+        {{input value=model.addr_street class="form-control" required=true title="Adresa je povinná" placeholder="ulice"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        <input type="text" class="form-control" id="city">
+        {{input value=model.addr_city class="form-control" required=true title="Adresa je povinná" placeholder="město"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        <input type="text" class="form-control" id="psc">
+        {{input value=model.addr_zip class="form-control" required=true title="Adresa je povinná" placeholder="PSČ"}}
       </div>
 
       <div class="form-group">
-        <label for="country">Krajina:</label>
-        <select class="form-control" id="country">
-          <option>Česká republika</option>
-          <option>Slovensko</option>
-        </select>
+        <label for="country">Země:</label>
+        {{#x-select value=model.addr_country class="form-control"}}
+          {{#each countries key="@index" as |item|}}
+            {{#x-option value=item selected=(is-equal item model.addr_country)}}
+              {{item}}
+            {{/x-option}}
+          {{/each}}
+        {{/x-select}}
       </div>
 
 			<div style="margin-top:30px">
@@ -79,45 +84,51 @@
 			</div>
 
 			<div class="form-group">
-				<label for="street">Název:</label>
-				<input type="text" class="form-control" id="name-school">
-			</div>
-
-			<div class="form-group">
-				<label for="street">Ulice:</label>
-				<input type="text" class="form-control" id="street-school">
-			</div>
-
-			<div class="form-group">
-				<label for="city">Město:</label>
-				<input type="text" class="form-control" id="city-school">
-			</div>
-
-			<div class="form-group">
-				<label for="psc">PSČ:</label>
-				<input type="text" class="form-control" id="psc-school">
-			</div>
-
-			<div class="form-group">
-        <label for="country">Krajina:</label>
-        <select class="form-control" id="country">
-          <option>Česká republika</option>
-          <option>Slovensko</option>
-        </select>
+        <label for="street">Název:</label>
+        {{input value=model.school_name class="form-control" required=true title="Adresa školy je povinná" placeholder="název"}}
       </div>
-			<!--
+
+      <div class="form-group">
+        <label for="street">Ulice:</label>
+        {{input value=model.school_street class="form-control" required=true title="Adresa školy je povinná" placeholder="ulice"}}
+      </div>
+
+      <div class="form-group">
+        <label for="city">Město:</label>
+        {{input value=model.school_city class="form-control" required=true title="Adresa školy je povinná" placeholder="město"}}
+      </div>
+
+      <div class="form-group">
+        <label for="psc">PSČ:</label>
+        {{input value=model.school_zip class="form-control" required=true title="Adresa školy je povinná" placeholder="PSČ"}}
+      </div>
+
+      <div class="form-group">
+        <label for="country">Země:</label>
+        {{#x-select value=model.school_country class="form-control"}}
+          {{#each countries key="@index" as |item|}}
+            {{#x-option value=item selected=(is-equal item model.school_country)}}
+              {{item}}
+            {{/x-option}}
+          {{/each}}
+        {{/x-select}}
+      </div>
+            <!--
       <div class="form-group">
         <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->
         <input type="text" class="form-control" id="school">
       </div>
-			-->
+            -->
 
-			<div class="form-group">
+      <div class="form-group">
         <label for="year-maturita">Rok maturity:</label>
-				<select class="form-control" id="year-maturita">
-          <option>2016</option>
-          <option>2017</option>
-        </select>
+        {{#x-select value=model.school_finish class="form-control"}}
+          {{#each maturita_year key="@index" as |item|}}
+            {{#x-option value=item selected=(is-equal item model.school_finish)}}
+              {{item}}
+            {{/x-option}}
+          {{/each}}
+        {{/x-select}}
       </div>
 
 			<div style="margin-top:30px">
@@ -126,34 +137,35 @@
 			</div>
 
       <div class="form-group">
-        <label for="description">Krátky popis seba:</label>
-        <textarea class="form-control" rows="5" id="description"></textarea>
+        <label for="description">Krátky popis sebe:</label>
+        {{textarea class="form-control" rows="5" value=model.short_info}}
       </div>
 
       <div class="form-group">
         <label for="tshirt">Velikost trička:</label>
-        <select class="form-control" id="tshirt">
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-          <option>XXL</option>
+        <select class="form-control">
+          {{#each tshirt_size key="@index" as |item|}}
+            <option value="{{item}}" selected={{is-equal item model.tshirt_size}}>
+              {{item}}
+            </option>
+          {{/each}}
         </select>
       </div>
 
-			<div class="form-group">
+			<!--<div class="form-group">
 				<label for="photo">Profilová fotografie:</label> (fotografie není povinná, bude se ukazovat na webu v diskusích)
 				<br>
-				<button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;"> <!-- TODO file button -->
+				<button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
 	        <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
 	        Nahraj fotografii
 	      </button>
-			</div>
+			</div>-->
 
 			<div align="center" style="margin:30px">
-				<button type="button" class="btn btn-primary">
+				<button type="button" class="btn btn-primary" {{action "register"}}>
 	        <h2>Registruj se</h2>
 	      </button>
 			</div>
 		</div>
+    {{/if}}
 </section>

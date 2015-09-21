@@ -57,7 +57,7 @@
     <label for="country">Země:</label>
     {{#x-select value=model.addr_country class="form-control"}}
       {{#each countries key="@index" as |item|}}
-        {{#x-option value=item selected=(is-equeal item model.addr_country)}}
+        {{#x-option value=item selected=(is-equal item model.addr_country)}}
           {{item}}
         {{/x-option}}
       {{/each}}
