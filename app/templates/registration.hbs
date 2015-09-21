@@ -2,6 +2,7 @@
 	{{#if registration_done}}
     {{info-general text="Registrace byla provedna. Za chvíli by ti měl přijít e-mail s dalšími instrukcemi."}}
   {{else}}
+  {{#validatable-form action="register" model=model}}
 	<div class="jumbotron" style="background-color: transparent">
 	    <h2>Registrace</h2>
 			<div style="margin-top:30px">
@@ -162,10 +163,11 @@
 			</div>-->
 
 			<div align="center" style="margin:30px">
-				<button type="button" class="btn btn-primary" {{action "register"}}>
+				<button type="submit" class="btn btn-primary">
 	        <h2>Registruj se</h2>
 	      </button>
 			</div>
 		</div>
+    {{/validatable-form}}
     {{/if}}
 </section>

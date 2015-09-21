@@ -5,4 +5,5 @@ export default Ember.Route.extend(ResetScroll, {
 	model: function() {	
 		return this.store.findAll("thread", "");
 	},
+	title: "KSI: Diskuse"
 });

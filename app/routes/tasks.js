@@ -8,4 +8,5 @@ export default Ember.Route.extend(ResetScroll, {
 			categories: this.store.findAll("category", "") // Small hack - make sure all categories are loaded
 		});
 	},
+	title: "KSI: Úlohy"
 });

@@ -7,4 +7,5 @@ export default Ember.Route.extend( {
         });*/ // After backend is working
         return this.store.find("profile", "");
     },
+    title: "KSI: Profil"
 });

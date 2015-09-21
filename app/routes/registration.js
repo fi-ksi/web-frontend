@@ -6,4 +6,5 @@ export default Ember.Route.extend(ResetScroll, {
 		var profile = this.store.createRecord('profile');
 		return profile;
 	},
+	title: "KSI: Registrace"
 });

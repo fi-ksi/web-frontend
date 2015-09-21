@@ -23,5 +23,6 @@ export default Ember.Route.extend({
 			as: "view"
 		}
 	},
-	view: null
+	view: null,
+	title: "O KSI"
 });

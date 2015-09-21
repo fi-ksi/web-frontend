@@ -30,5 +30,6 @@ export default Ember.Route.extend(ResetScroll, {
 			offset: this.get("offset"),
 			limit: this.get("limit")
 		});
-	}
+	},
+	title: "KSI: Novinky"
 });

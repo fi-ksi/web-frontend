@@ -5,4 +5,10 @@ export default Ember.Route.extend(ResetScroll, {
 	model: function(params) {
 		return this.store.find("thread", params["thread_id"]);
 	},
+	titleToken: function(model) {
+		return this.get("title");
+	},
+	title: function(tokens) {
+		return "KSI: " + tokens.pop();
+	}
 });
