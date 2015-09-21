@@ -9,6 +9,7 @@ $(document).ready(function () {
   			elem.trigger("sticky_kit:detach");
   		} else {
   			elem.stick_in_parent({
+  				parent: ".stickycolumn-parent",
   				offset_top: 150
   			});
   		}
@@ -32,11 +33,10 @@ $(document).ready(function () {
 
   	var trig = function(dim, fun) {
   		$(".flex-row-" + dim + ".stickycolumn-parent").livequery(function() {
-  			console.log("found");
-			$(window).on("windows:resize", fun);
+			$(window).on("window:resize", fun);
 			fun();
 		}, function() {
-			$(window).off("windows:resize", fun);
+			$(window).off("window:resize", fun);
 		});
   	};
 

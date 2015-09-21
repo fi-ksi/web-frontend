@@ -1,170 +1,25 @@
 <section id="profile" class="container content-section" style="text-align:justify">
-  {{#validatable-form action="save"}}
     <div class="row flex-row-md stickycolumn-parent">
       <div class="col-sm-12 col-md-3">
         <div class="stickycolumn">
-            <div style="margin-top:30px">
-                <img src="{{model.profile_pic}}" style="width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;" align="center"/> <!-- user image --> <!-- TODO default img -->
-            </div>
-      {{picture-upload url="/profile/pic" actionReceiver=picture_field upload_finished="upload_finished" upload_failed="upload_failed" id="picture_input"}}
-      <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}>
-        <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-          Nahraj fotografii
-      </button>
-
-      <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:100%;"> <!-- TODO colors/styles a linky -->
-        <li class="active">
-          {{#link-to "settings"}}
-          <span class="glyphicon glyphicon-chevron-right"></span> Profil
-          {{/link-to}}
-        </li>
-        <li>
-          {{#link-to "change-password"}}
-            <span class="glyphicon glyphicon-chevron-right"></span> Změna hesla
-          {{/link-to}}
-        </li>
-      </ul>
-
-      <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
-        Ulož změny
-      </button>
+          <div style="margin-top:30px margin-bottom:30px;">
+              <img src="{{model.profile_pic}}" style="width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;" align="center"/> <!-- user image --> <!-- TODO default img -->
           </div>
+          {{picture-upload url="/profile/pic" actionReceiver=picture_field upload_finished="upload_finished" upload_failed="upload_failed" id="picture_input"}}
+          <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}>
+            <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+              Nahraj fotografii
+          </button>
+
+          <ul id="custom-bootstrap-menu" class="nav nav-pills nav-stacked" style="margin-top:20px; width:100%;"> <!-- TODO colors/styles a linky -->
+            {{#link-to "settings.personal" tagName="li"}}<a href="{{view.href}}"><span class="glyphicon glyphicon-chevron-right"></span>Profil</a>{{/link-to}}
+            {{#link-to "settings.password" tagName="li"}}<a href="{{view.href}}"><span class="glyphicon glyphicon-chevron-right"></span>Změnit heslo</a>{{/link-to}}
+          </ul>
         </div>
-
-      <div class="col-sm-12 col-md-9">
-      {{#if general_error}}
-        {{warning-general text=general_error}}
-      {{/if}}
-      {{#if general_info}}
-        {{info-general text=general_info}}
-      {{/if}}
-      <div style="margin-top:30px">
-          <h4>Osobní údaje</h4>
-          <hr>
       </div>
 
-      <div class="form-group">
-        <label for="name">Jméno:</label>
-        {{input value=model.first_name class="form-control" style="width:100%;" required=true title="Jméno je povinné"}}
+      <div class="col-sm-12 col-md-9" style="margin-bottom: 30px">
+        {{outlet}}
       </div>
-
-      <div class="form-group">
-        <label for="surname">Přijmení:</label>
-        {{input value=model.last_name class="form-control" required=true title="Přijmení je povinné"}}
-      </div>
-
-      <div class="form-group">
-        <label for="email">E-mail:</label>
-        {{input value=model.email class="form-control" required=true type="email" title="Je třeba zadat platný e-mail"}}
-      </div>
-
-      <div style="margin-top:30px">
-                <h4>Adresa</h4>
-                <hr>
-            </div>
-
-      <div class="form-group">
-        <label for="street">Ulice:</label>
-        {{input value=model.addr_street class="form-control" required=true title="Adresa je povinná"}}
-      </div>
-
-      <div class="form-group">
-        <label for="city">Město:</label>
-        {{input value=model.addr_city class="form-control" required=true title="Adresa je povinná"}}
-      </div>
-
-      <div class="form-group">
-        <label for="psc">PSČ:</label>
-        {{input value=model.addr_zip class="form-control" required=true title="Adresa je povinná"}}
-      </div>
-
-      <div class="form-group">
-        <label for="country">Země:</label>
-        <select class="form-control">
-          {{#each countries key="@index" as |item|}}
-            <option value="{{item}}" selected={{is-equal item model.addr_country}}>
-              {{item}}
-            </option>
-          {{/each}}
-        </select>
-      </div>
-
-      <hr>
-
-            <div style="margin-top:30px">
-                <h4>Škola</h4>
-                <hr>
-            </div>
-
-            <div class="form-group">
-                <label for="street">Název:</label>
-                {{input value=model.school_name class="form-control" required=true title="Adresa školy je povinná"}}
-            </div>
-
-            <div class="form-group">
-                <label for="street">Ulice:</label>
-                {{input value=model.school_street class="form-control" required=true title="Adresa školy je povinná"}}
-            </div>
-
-            <div class="form-group">
-                <label for="city">Město:</label>
-                {{input value=model.school_city class="form-control" required=true title="Adresa školy je povinná"}}
-            </div>
-
-            <div class="form-group">
-                <label for="psc">PSČ:</label>
-                {{input value=model.school_zip class="form-control" required=true title="Adresa školy je povinná"}}
-            </div>
-
-            <div class="form-group">
-                <label for="country">Země:</label>
-                <select class="form-control">
-                  {{#each countries key="@index" as |item|}}
-                    <option value="{{item}}" selected={{is-equal item model.school_country}}>
-                      {{item}}
-                    </option>
-                  {{/each}}
-                </select>
-            </div>
-            <!--
-      <div class="form-group">
-        <label for="school">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->
-        <input type="text" class="form-control" id="school">
-      </div>
-            -->
-
-            <div class="form-group">
-                <label for="year-maturita">Rok maturity:</label>
-                <select class="form-control">
-                  {{#each maturita_year key="@index" as |item|}}
-                    <option value="{{item}}" selected={{is-equal item model.school_finish}}>
-                      {{item}}
-                    </option>
-                  {{/each}}
-                </select>
-            </div>
-
-            <div style="margin-top:30px">
-                <h4>Profil</h4>
-                <hr>
-            </div>
-
-      <div class="form-group">
-        <label for="description">Krátky popis sebe:</label>
-        {{textarea class="form-control" rows="5" value=model.short_info}}
-      </div>
-
-      <div class="form-group">
-        <label for="tshirt">Velikost trička:</label>
-        <select class="form-control">
-          {{#each tshirt_size key="@index" as |item|}}
-            <option value="{{item}}" selected={{is-equal item model.tshirt_size}}>
-              {{item}}
-            </option>
-          {{/each}}
-        </select>
-      </div>
-        </div>
   </div>
-{{/validatable-form}}
 </section>
