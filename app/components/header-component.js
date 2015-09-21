@@ -6,9 +6,6 @@ export default Ember.Component.extend({
 		this.set("error_message", undefined);
 	  	this.resizeBody();
 	  	var self = this;
-	  	Ember.$( window ).resize(function() {
-	  		Ember.$(window).trigger("window:resize");
-	  	});
 	  	Ember.$(window).on("window:resize", function() {
 	  		self.resizeBody();
 	  	});
@@ -34,7 +31,6 @@ export default Ember.Component.extend({
 	     	Ember.$('body').css("padding-top", Ember.$("#navbar").height() + 70);
 	  	}
 	  	else {
-	  		console.log("User!");
 	  		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+30);
 	  	}
 	}.observes("session.current_user.admin")

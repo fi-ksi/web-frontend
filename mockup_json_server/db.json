@@ -72,6 +72,7 @@
         100
       ],
       "node_parent": [],
+      "prerequisities": [],
       "title": "Vítej v KSI!",
       "picture": "http://placehold.it/40x40",
       "category": 0,
@@ -107,6 +108,14 @@
       "node_parent": [
         1
       ],
+      "prerequisities": [
+        {
+          "id": 1,
+          "parents": [
+            1
+          ]
+        }
+      ],
       "title": "Co je to ten Pythonn?",
       "picture": "http://placehold.it/40x40",
       "category": 1,
@@ -139,6 +148,14 @@
       ],
       "node_parent": [
         2
+      ],
+      "prerequisities": [
+        {
+          "id": 2,
+          "parents": [
+            2
+          ]
+        }
       ],
       "title": "Želvy, gramatiky a pláže",
       "picture": "http://placehold.it/40x40",
@@ -173,6 +190,14 @@
       "node_parent": [
         3
       ],
+      "prerequisities": [
+        {
+          "id": 3,
+          "parents": [
+            3
+          ]
+        }
+      ],
       "title": "Želva a funkce",
       "picture": "http://placehold.it/40x40",
       "category": 1,
@@ -205,6 +230,14 @@
       ],
       "node_parent": [
         2
+      ],
+      "prerequisities": [
+        {
+          "id": 4,
+          "parents": [
+            2
+          ]
+        }
       ],
       "title": "Složitá grafika",
       "picture": "http://placehold.it/40x40",
@@ -240,6 +273,15 @@
         4,
         5
       ],
+      "prerequisities": [
+        {
+          "id": 5,
+          "parents": [
+            4,
+            5
+          ]
+        }
+      ],
       "title": "Obrázek",
       "picture": "http://placehold.it/40x40",
       "category": 4,
@@ -274,6 +316,15 @@
         4,
         5
       ],
+      "prerequisities": [
+        {
+          "id": 6,
+          "parents": [
+            4,
+            5
+          ]
+        }
+      ],
       "title": "Kooperační",
       "picture": "http://placehold.it/40x40",
       "category": 3,
@@ -306,6 +357,14 @@
       ],
       "node_parent": [
         1
+      ],
+      "prerequisities": [
+        {
+          "id": 7,
+          "parents": [
+            1
+          ]
+        }
       ],
       "title": "O algoritmice obecně",
       "picture": "http://placehold.it/40x40",
@@ -340,6 +399,14 @@
       "node_parent": [
         8
       ],
+      "prerequisities": [
+        {
+          "id": 8,
+          "parents": [
+            8
+          ]
+        }
+      ],
       "title": "Složitost",
       "picture": "http://placehold.it/40x40",
       "category": 2,
@@ -372,6 +439,14 @@
       ],
       "node_parent": [
         8
+      ],
+      "prerequisities": [
+        {
+          "id": 9,
+          "parents": [
+            8
+          ]
+        }
       ],
       "title": "Korektnost",
       "picture": "http://placehold.it/40x40",
@@ -408,6 +483,16 @@
         9,
         10
       ],
+      "prerequisities": [
+        {
+          "id": 10,
+          "parents": [
+            2,
+            9,
+            10
+          ]
+        }
+      ],
       "title": "Úvod do hrubé síly",
       "picture": "http://placehold.it/40x40",
       "category": 7,
@@ -440,6 +525,14 @@
       ],
       "node_parent": [
         11
+      ],
+      "prerequisities": [
+        {
+          "id": 11,
+          "parents": [
+            11
+          ]
+        }
       ],
       "title": "Hladové algoritmy",
       "picture": "http://placehold.it/40x40",
@@ -474,6 +567,14 @@
       "node_parent": [
         11
       ],
+      "prerequisities": [
+        {
+          "id": 12,
+          "parents": [
+            11
+          ]
+        }
+      ],
       "title": "Hrubá síla",
       "picture": "http://placehold.it/40x40",
       "category": 6,
@@ -507,6 +608,14 @@
       "node_parent": [
         12
       ],
+      "prerequisities": [
+        {
+          "id": 13,
+          "parents": [
+            12
+          ]
+        }
+      ],
       "title": "Jedeme na Ksílet!",
       "picture": "http://placehold.it/40x40",
       "category": 3,
@@ -539,6 +648,14 @@
       ],
       "node_parent": [
         13
+      ],
+      "prerequisities": [
+        {
+          "id": 14,
+          "parents": [
+            13
+          ]
+        }
       ],
       "title": "Průvodce",
       "picture": "http://placehold.it/40x40",
