@@ -4,14 +4,15 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .sortable li {
 	list-style: none;
-	border: 1px solid #CCC;
-	background: #F6F6F6;
+	border: 1px solid ksi-color-level('primary-dark',3);
+	background: ksi-color-level('primary-dark',9.5);
 	margin: 5px;
 	padding: 5px;
-	height: 22px;
+	height: 30px;
 }
 .handle {
 	cursor: move;
@@ -22,7 +23,9 @@
 	float: left;
 }
 li.highlight {
-	background: #FEE25F;
+	background: ksi-color-level('primary-orange',9.5);
+  color: ksi-color('secondary-orange');
+  border-color: ksi-color-level('primary-orange',6);
 }
 li.sortable-placeholder {
 	border: 1px dashed #CCC;
