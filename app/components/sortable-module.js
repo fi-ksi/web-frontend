@@ -10,8 +10,7 @@ export default Ember.Component.extend({
             // Documentation: https://github.com/voidberg/html5sortable
             var id = "#sortable" + this.get("id");
             Ember.$(id + "a, " + id + "b").sortable({
-                connectWith: ".connect" + this.get("id"),
-                handle: ".handle"
+                connectWith: ".connect" + this.get("id")
             }).bind('sortstop', function() {
                 if (self.get("general_error") && Ember.$(id + "b li").length !== 0) {
                     self.set("general_error", "Musíš použít všechny řádky kódu!");
@@ -20,7 +19,7 @@ export default Ember.Component.extend({
                     self.set("general_error", undefined);
                 }
             });
-        }); 
+        });
     },
     general_error: undefined,
     module_service: Ember.inject.service("module-service"),
