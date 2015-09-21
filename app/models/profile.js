@@ -6,16 +6,22 @@ export default DS.Model.extend( {
 	signed_in: DS.attr("boolean", {default: false}),
 
 	first_name: DS.attr("string"),
-	last_name: DS.attr("string"),
-	name: Ember.computed("first_name", "last_name", function() {
-        return this.get("first_name") + ' ' + this.get("last_name");
+    last_name: DS.attr("string"),
+    nick_name: DS.attr("string"),
+    full_name: Ember.computed("first_name", "nick_name", "last_name", function() {
+        //console.log(this.get("nick_name"));
+        if(this.get("nick_name") === undefined || this.get("nick_name").length === 0) {
+            return this.get("first_name") + ' ' + this.get("last_name");
+        }
+        return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
 
 	profile_pic: DS.attr("string"),
 	short_info: DS.attr("string"),
 	email: DS.attr("string"),
+	gender: DS.attr("string"),
 
-	// Relevant only when not organisator
+	// Relevant only when not organisator or admin
 	achievements: DS.hasMany("achievement", {async: true, defaultValue: []}),
 	score: DS.attr("number"),
 	percentile: DS.attr("number"),

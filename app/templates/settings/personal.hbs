@@ -25,6 +25,14 @@
     {{input value=model.email class="form-control" required=true type="email" title="Je třeba zadat platný e-mail"}}
   </div>
 
+  <div class="form-group">
+    <label for="gender">Pohlaví:</label>
+    {{#x-select value=model.gender class="form-control" id="gender" required=true}}
+      {{#x-option value="M"}}Muž{{/x-option}}
+      {{#x-option value="F"}}Žena{{/x-option}}
+    {{/x-select}}
+  </div>
+
   <div style="margin-top:30px">
     <h4>Adresa</h4>
     <hr>
@@ -47,13 +55,13 @@
 
   <div class="form-group">
     <label for="country">Země:</label>
-    <select class="form-control">
+    {{#x-select value=model.addr_country class="form-control"}}
       {{#each countries key="@index" as |item|}}
-        <option value="{{item}}" selected={{is-equal item model.addr_country}}>
+        {{#x-option value=item selected=(is-equeal item model.addr_country)}}
           {{item}}
-        </option>
+        {{/x-option}}
       {{/each}}
-    </select>
+    {{/x-select}}
   </div>
 
   <hr>
@@ -85,13 +93,13 @@
 
   <div class="form-group">
     <label for="country">Země:</label>
-    <select class="form-control">
+    {{#x-select value=model.school_country class="form-control"}}
       {{#each countries key="@index" as |item|}}
-        <option value="{{item}}" selected={{is-equal item model.school_country}}>
+        {{#x-option value=item selected=(is-equal item model.school_country)}}
           {{item}}
-        </option>
+        {{/x-option}}
       {{/each}}
-    </select>
+    {{/x-select}}
   </div>
         <!--
   <div class="form-group">
@@ -102,13 +110,13 @@
 
   <div class="form-group">
     <label for="year-maturita">Rok maturity:</label>
-    <select class="form-control">
+    {{#x-select value=model.school_finish class="form-control"}}
       {{#each maturita_year key="@index" as |item|}}
-        <option value="{{item}}" selected={{is-equal item model.school_finish}}>
+        {{#x-option value=item selected=(is-equal item model.school_finish)}}
           {{item}}
-        </option>
+        {{/x-option}}
       {{/each}}
-    </select>
+    {{/x-select}}
   </div>
 
   <div style="margin-top:30px">

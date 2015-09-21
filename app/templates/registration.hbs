@@ -8,18 +8,18 @@
 			</div>
 
       <div class="form-group">
-        <label for="name">Přihlašovací jméno:</label>
-        <input type="text" class="form-control" id="name">
+        <label for="email">E-mail:</label>
+        {{input value=model.email type="text" class="form-control" id="email" required=true title="Toto pole je třeba vyplnit" placeholder="e-mail"}}
       </div>
 
       <div class="form-group">
-        <label for="surname">Heslo:</label>
-        <input type="text" class="form-control" id="surname">
+        <label for="password">Heslo:</label>
+        {{input value=password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" title="Heslo musí mít alespoň 6 znaků"}}
       </div>
 
       <div class="form-group">
-        <label for="email">Heslo znovu:</label>
-        <input type="text" class="form-control" id="email">
+        <label for="password2">Heslo:</label>
+        {{input value=password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" title="Hesla se musejí shodovat"}}
       </div>
 
 			<div style="margin-top:30px">
@@ -29,25 +29,20 @@
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        <input type="text" class="form-control" id="name">
+        {{input value=model.first_name class="form-control" style="width:100%;" required=true title="Jméno je povinné" placeholder="jméno"}}
       </div>
 
       <div class="form-group">
-        <label for="surname">Přímení:</label>
-        <input type="text" class="form-control" id="surname">
-      </div>
-
-      <div class="form-group">
-        <label for="email">E-mail:</label>
-        <input type="text" class="form-control" id="email">
+        <label for="surname">Přijmení:</label>
+        {{input value=model.last_name class="form-control" required=true title="Přijmení je povinné" placeholder="příjmení"}}
       </div>
 
 			<div class="form-group">
-        <label for="tshirt">Pohlaví:</label>
-        <select class="form-control" id="tshirt">
-          <option>Muž</option>
-          <option>Žena</option>
-        </select>
+        <label for="gender">Pohlaví:</label>
+        {{#x-select value=model.gender class="form-control" id="gender" required=true}}
+          {{#x-option value="M"}}Muž{{/x-option}}
+          {{#x-option value="F"}}Žena{{/x-option}}
+        {{/x-select}}
       </div>
 
       <div style="margin-top:30px">
