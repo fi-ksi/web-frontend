@@ -974,7 +974,7 @@
       "signed_in": true,
       "first_name": "František",
       "last_name": "Řešitel",
-      "profile_pic": "/img/avatar-default.svg",
+      "profile_picture": "/img/avatar-default.svg",
       "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
       "email": "granta@resitel.cz",
       "addr_street": "Krásenského 18",
@@ -1145,7 +1145,8 @@
       ],
       "school_name": "Bradavice",
       "addr_country": "Česká republika",
-      "seasons": 2
+      "seasons": 2,
+      "short_info": "Pilná řešitelka KSI, skvělá holka, ve volném čase rád peče suflé."
     },
     {
       "id": 2,
@@ -1154,6 +1155,7 @@
       "first_name": "Henrich",
       "nick_name": "Boží",
       "last_name": "Skvělý",
+      "short_info": "Notorický grafik, duchovní otec Karlíka",
       "tasks": [
         1,
         2,

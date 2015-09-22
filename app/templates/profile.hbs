@@ -87,7 +87,7 @@
 
 			{{#if model.results}}
 				<div style="margin-top:30px">
-					<h5>Odevzdané úkoly</h5>
+					<h5>Odevzdané úlohy</h5>
 					<hr>
 				</div>
 
@@ -113,7 +113,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-xs-6">
-								<img class="inline" src="{{result.task.pic}}">
+								<img class="inline" src="{{result.task.picture}}">
 								<label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{result.task.title}}{{/link-to}}</label>
 							</div>
 							<div class="col-xs-4">
@@ -132,7 +132,23 @@
 		</div>
 		{{else}}
 		<div class="col-xs-7 col-sm-7 col-md-9">
-			<p>Teď tu je organizátor, doplň mu info!</p>
+			<div style="margin-top:40px">
+					<h4>Autorovy úlohy</h4>
+					<hr>
+				</div>
+
+				{{#each model.tasks as |task|}}
+				<div class="panel panel-profile-assignment">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<img class="inline" src="{{task.picture}}">
+								<label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{task.title}}{{/link-to}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/each}}
 		</div>
 		{{/unless}}
 	</div>

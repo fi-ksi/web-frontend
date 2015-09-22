@@ -13,6 +13,7 @@ export default DS.Model.extend( {
         return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
     profile_picture: DS.attr("string"),
+    short_info: DS.attr("string"),
     is_organisator: DS.attr("boolean"),
 
 	// Relevant only when user
