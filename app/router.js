@@ -31,7 +31,7 @@ Router.map(function() {
   });
   this.route('achievements',{ path: '/achievementy'});
   this.route('forgot-password',{ path: '/zapomenute-heslo'});
-  this.route('change-password',{ path: '/zmenit-heslo'});
+  this.route('login', { path: '/prihlaseni'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
   this.route('admin/article-edit', {path: '/admin/article-edit'});

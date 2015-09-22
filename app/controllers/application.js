@@ -19,4 +19,8 @@ export default Ember.Controller.extend( {
 			this.get('session').invalidate();
 		}
 	},
+	currentPathDidChange: function() {
+	    //App.set('currentPath', this.get('currentPath'));
+	    //console.log("Path change: " + this.get("currentPath"));
+	}.observes('currentPath')
 });
