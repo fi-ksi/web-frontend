@@ -1,7 +1,7 @@
 import Ember from "ember";
-import ResetScrollProtected from '../mixins/reset-scroll-protected';
+import ResetScroll from '../mixins/reset-scroll';
 
-export default Ember.Route.extend(ResetScrollProtected, {
+export default Ember.Route.extend(ResetScroll, {
     model: function(params) {
     	return this.store.find("user", params["profile_id"]);
     },

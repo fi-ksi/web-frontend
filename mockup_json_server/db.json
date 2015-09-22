@@ -1003,7 +1003,6 @@
         1,
         2
       ],
-      "admin": true,
       "profile": {
         "signed_in": true,
         "first_name": "František",
@@ -1026,7 +1025,7 @@
         "school_country": "Česká republika",
         "school_finish": 2018,
         "tshirt_size": "M",
-        "admin": true,
+        "admin": false,
         "organisator": false,
         "achievements": [
           "1",

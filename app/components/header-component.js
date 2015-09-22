@@ -12,6 +12,7 @@ export default Ember.Component.extend({
 	},
 	actions: {
 		login: function() {
+			console.log("Action triggered!");
 			var _this = this;
 			var data = this.getProperties('identification', 'password');
 			this.set('password', "");
