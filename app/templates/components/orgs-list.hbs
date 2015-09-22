@@ -2,12 +2,12 @@
     <div class="col-xs-6 col-md-3">
 
         <a href="#" data-target="#toggle{{index}}" class="hcaption" cap-overlay_bg="black" cap-overlay_opacity="0.5">
-            {{#link-to "profile" org}}
+            {{#link-to "user-profile" org}}
                 <img src="{{org.profile_picture}}" style="width: 100%">
             {{/link-to}}
         </a>
         <div id="toggle{{index}}" class="">
-            {{#link-to "profile" org}}
+            {{#link-to "user-profile" org}}
                 <span class="">{{org.full_name}}</span>
             {{/link-to}}
         </div>
