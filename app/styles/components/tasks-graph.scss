@@ -1,0 +1,16 @@
+.node-base {
+  width: 85px;
+  height: 85px;
+  background-width: 83px;
+  background-height: 83px;
+  background-color: white;
+  background-opacity: 0;
+
+  color: white;
+  font-size: 14;
+  content: data(name);
+  text-valign: center;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  text-max-width: 70px;
+}
