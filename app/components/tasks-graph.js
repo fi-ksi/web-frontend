@@ -111,7 +111,7 @@ export default Ember.Component.extend({
 								'background-opacity': '0',
 
 								'color': 'white',
-								'font-size': '14',
+								'font-size': '13',
 								'content': 'data(name)',
         				'text-valign': 'center',
 								'text-transform': 'uppercase',
@@ -193,11 +193,11 @@ export default Ember.Component.extend({
 	        self.sendAction('assign', id);
 		});
 
-		this.get("cy").on('mouseover','node', function(/*event*/){
-	        /*var target = event.cyTarget;
+		this.get("cy").on('mouseover','node', function(event){
+	        var target = event.cyTarget;
 	        var id = target.data("id");
 	        var name = target.data("name");
-	        var text = target.data("tooltip") + " Pro detaily podrž pravé tlačítko."; //TODO formatovanie textu
+	        var text = target.data("tooltip");
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
@@ -214,22 +214,15 @@ export default Ember.Component.extend({
 	            position: {
 	                my: 'bottom center',
 	                at: 'top center',
-	                target: [x+3, y+3],
-	                adjust: {x:7,y:7}
+	                target: [x, y]
 	            },
-	            hide: {
-	                fixed: true,
-	                event: false,
-	                inactive: 1000
-	            },
+							hide: { event: 'mouseout'
+                },
 	            style: {
-	                classes: 'qtip-bootstrap',
-	                tip: {
-	                    width: 16,
-	                    height: 8
-	                }
+	                classes: 'graph-qtip',
+	                tip: false
 	            }
-	        });*/
+	        });
 	    });
     }
 });
