@@ -29,9 +29,14 @@ module.exports = function(environment) {
   };
 
   ENV["simple-auth"] = {
-        authorizer: 'authenticator:basicauth',
+        //authorizer: 'authenticator:basicauth',
+        authorizer: 'simple-auth-authorizer:oauth2-bearer',
         store: 'simple-auth-session-store:local-storage'
       }
+
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: 'http://192.168.0.110:8000/v1/oauth2/token'
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
