@@ -197,7 +197,10 @@ export default Ember.Component.extend({
 	        var target = event.cyTarget;
 	        var id = target.data("id");
 	        var name = target.data("name");
-	        var text = target.data("tooltip");
+	        var text = target.data("tooltip")
+					+ "<br><br>"
+					+ "<p class='graph-qtip-text inline'>Max.body:</p> 10<br>"
+					+ "<p class='graph-qtip-text inline'>Termím odevzdání:</p> 1.1.2015";
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
