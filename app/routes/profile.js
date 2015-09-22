@@ -1,11 +1,12 @@
 import Ember from "ember";
 
 export default Ember.Route.extend( {
-    model: function() {
-        /*return this.store.query("profile",  {
-            info: "full"
-        });*/ // After backend is working
-        return this.store.find("profile", "");
+    model: function(params) {
+    	if("profile_id" in params) {
+    		return this.store.find("user", params["profile_id"]);
+    	}
+    	console.log("Returning data from authentication");
+        return this.get("session.current_user");
     },
     title: "KSI: Profil"
 });

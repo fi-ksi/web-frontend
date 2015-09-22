@@ -16,7 +16,7 @@ export default DS.Model.extend( {
         return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
 
-	profile_pic: DS.attr("string"),
+	profile_picture: DS.attr("string"),
 	short_info: DS.attr("string"),
 	email: DS.attr("string"),
 	gender: DS.attr("string"),

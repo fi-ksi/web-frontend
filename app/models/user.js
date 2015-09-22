@@ -19,6 +19,9 @@ export default DS.Model.extend( {
 	score: DS.attr("number"),
 	tasks_num: DS.attr("number"),
 	achievements: DS.hasMany("achievement", {async: true}),
+    school_name: DS.attr("string"),
+    addr_country: DS.attr("string"),
+    seasons: DS.attr("number"),
 
 	// Relevant only when organisator
 	tasks: DS.hasMany("tasks", {async: true}),

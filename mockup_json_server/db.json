@@ -1008,7 +1008,7 @@
         "signed_in": true,
         "first_name": "František",
         "last_name": "Řešitel",
-        "profile_pic": "/img/avatar-default.svg",
+        "profile_picture": "/img/avatar-default.svg",
         "short_info": "šikovný informatik, programátor, milovník stromů a (a)cyklických grafů",
         "email": "granta@resitel.cz",
         "score": 42,
@@ -1143,15 +1143,20 @@
         1,
         2,
         3
-      ]
+      ],
+      "school_name": "Bradavice",
+      "addr_country": "Česká republika",
+      "seasons": 2
     },
     {
       "id": 2,
-      "first_name": "Katka",
-      "last_name": "Skvělá",
-      "score": 150,
-      "tasks_num": 16,
-      "achievements": [
+      "is_organisator": true,
+      "profile_picture": "http://placehold.it/50x50",
+      "first_name": "Henrich",
+      "nick_name": "Boží",
+      "last_name": "Skvělý",
+      "tasks": [
+        1,
         2,
         3
       ]

@@ -2,24 +2,27 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-3">
 			<div style="margin-top:30px">
-				<img src="{{model.profile_pic}}" style="width:100%; max-width:250px;"/>
+				<img src="{{model.profile_picture}}" style="width:100%; max-width:250px;"/>
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
 				<h3>{{model.full_name}}</h3>
+				<h4>{{#if model.is_organisator}}Organizátor{{else}}Řešitel<!-- ToDo: Řešitel/ka -->{{/if}}</h4>
 			</div>
 			<div id="name">
 				<p id="profile-text">{{model.short_info}}</p>
 			</div>
 			<!-- TODO: chceme sem odkaze na FB, Twitter, web? -->
-			<div class="panel panel-profile" style="margin-top:30px">
-				<div class="panel-body">
-					<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
-					<br>
-					<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{model.addr_country}}</h6>
+			{{#unless model.is_organisator}}
+				<div class="panel panel-profile" style="margin-top:30px">
+					<div class="panel-body">
+						<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
+						<br>
+						<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{model.addr_country}}</h6>
+					</div>
 				</div>
-			</div>
+			{{/unless}}
 		</div>
-		{{#unless model.administrator}}
+		{{#unless model.is_organisator}}
 		<div class="col-sm-12 col-md-9">
 			<div style="margin-top:30px">
 				<h5>Trofeje</h5>
@@ -40,30 +43,47 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-4">
-					<div id="profile-points-text" class="inline">Skóre: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
-				</div>
-				<div class="col-xs-4">
-					<div id="profile-points-text" class="inline">Percentil: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
-				</div>
-				<div class="col-xs-4">
-					<div id="profile-points-text" class="inline">Ročníky: </div>
-					<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
-				</div>
+				{{#if model.percentile}}
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Skóre: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
+					</div>
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Percentil: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
+					</div>
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Ročníky: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
+					</div>
+				{{else}}
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Skóre: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
+					</div>
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Úloh: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.tasks_num}}&nbsp;%</div>
+					</div>
+					<div class="col-xs-4">
+						<div id="profile-points-text" class="inline">Ročníky: </div>
+						<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
+					</div>
+				{{/if}}
 			</div>
 
 			<hr>
 
-			<p id="profile-points-text">
-				Úspěšný řešitel:
-			</p>
-			<div class="progress" style="margin-top:20px">
-				<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.successful}}%">
-					{{model.successful}}&nbsp;%
+			{{#if model.successful}}
+				<p id="profile-points-text">
+					Úspěšný řešitel:
+				</p>
+				<div class="progress" style="margin-top:20px">
+					<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.successful}}%">
+						{{model.successful}}&nbsp;%
+					</div>
 				</div>
-			</div>
+			{{/if}}
 
 			{{#if model.results}}
 				<div style="margin-top:30px">

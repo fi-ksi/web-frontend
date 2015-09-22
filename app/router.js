@@ -21,7 +21,7 @@ Router.map(function() {
   this.route('thread',      { path: '/forum/:thread_id'});
   this.route('about',         { path: '/o-ksi'});
   this.route('profile',     { path: '/profil'});
-  this.route('user-profile',{ path: '/profil/:profile_id'});
+  this.route('profile',{ path: '/profil/:profile_id'});
   this.route('registration',{ path: '/registrace'});
   this.route('articles',    { path: '/novinky'});
   this.route('article',     { path: '/novinky/:article_id'});
