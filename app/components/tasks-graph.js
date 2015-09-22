@@ -67,13 +67,13 @@ export default Ember.Component.extend({
 		var graphPanel = document.getElementById("cy");
 
 		graphPanel.style.width = "100%";
-		graphPanel.style.height = 1300 + "px";
+		graphPanel.style.height = 1000 + "px";
 	},
     reposition_graph: function() {
     	//var self = this;
     	this.get("cy").autolock(false);
     	var width = Ember.$("#cy").width();
-    	var height = 1300;
+    	var height = 1000;
     	var options = {
 			name: 'dagre',
 
@@ -103,10 +103,10 @@ export default Ember.Component.extend({
     	this.get("cy").style()
             .selector('node')
               .css({
-                'width': '125px',
-                'height': '125px',
-								'background-width': '103px',
-              	'background-height': '103px',
+                'width': '85px',
+                'height': '85px',
+								'background-width': '83px',
+              	'background-height': '83px',
 								'background-color': 'white',
 								'background-opacity': '0',
 
@@ -116,11 +116,15 @@ export default Ember.Component.extend({
         				'text-valign': 'center',
 								'text-transform': 'uppercase',
 								'text-wrap': 'wrap',
-								'text-max-width': '90px',
+								'text-max-width': '70px',
               })
             .selector('node[node_type = "uvod"]')
               .css({
 								'background-image': 'img/nodes/node-start.svg',
+								'width': '105px',
+                'height': '105px',
+								'background-width': '105px',
+              	'background-height': '105px',
 								'content': '',
               })
             .selector('node[node_type = "small_p"]')
@@ -133,11 +137,20 @@ export default Ember.Component.extend({
               })
             .selector('node[node_type = "big"]')
               .css({
-              	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
+              	'background-image': 'img/nodes/base/node-big.svg',
+								'width': '105px',
+                'height': '105px',
+								'background-width': '105px',
+              	'background-height': '105px',
+								'content': '',
               })
             .selector('node[node_type = "bonus"]')
               .css({
               	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
+								'width': '105px',
+                'height': '105px',
+								'background-width': '105px',
+              	'background-height': '105px',
 								'content': '',
               })
 						.selector('node[node_type = "small_t_p"]')
