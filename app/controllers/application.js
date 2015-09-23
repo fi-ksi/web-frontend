@@ -8,8 +8,8 @@ export default Ember.Controller.extend( {
 			var _this = this;
 			var data = this.getProperties('identification', 'password');
 			this.set('password', "");
-			//this.get('session').authenticate('authenticator:basicauth', data).then(function() {
-			this.get("session").authenticate("simple-auth-authenticator:oauth2-password-grant", data).then(function() {
+			this.get('session').authenticate('authenticator:basicauth', data).then(function() {
+			//this.get("session").authenticate("simple-auth-authenticator:oauth2-password-grant", data).then(function() {
 				Ember.$('#login-modal').modal('hide');
 			}, function(error) {
 				console.log(error);

@@ -20,6 +20,8 @@ export default Ember.Component.extend({
 					id: node.get("id"),
 					name: node.get("title"),
 					tooltip: node.get("intro"),
+					max_score: node.get("max_score"),
+					deadline: node.get("time_deadline"),
 					node_type: node.get("category").get("type")
 				}
 			});
@@ -197,10 +199,11 @@ export default Ember.Component.extend({
 	        var target = event.cyTarget;
 	        var id = target.data("id");
 	        var name = target.data("name");
+	        var date = target.data("deadline");
 	        var text = target.data("tooltip")
 					+ "<br><br>"
-					+ "<p class='graph-qtip-text inline'>Max.body:</p> 10<br>"
-					+ "<p class='graph-qtip-text inline'>Termím odevzdání:</p> 1.1.2015";
+					+ "<p class='graph-qtip-text inline'>Max.body:</p>" + target.data("max_score") + "<br>"
+					+ "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
