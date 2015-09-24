@@ -13,10 +13,11 @@
 	<div class="fileUpload btn btn-primary">
 		<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
     <span>Upload</span>
-		{{solution-file-upload id="file-upload" type="file" valid="valid" invalid="invalid" class="upload" upload_finished="upload_finished" upload_failed="upload_failed" factionReceiver=file_upload}}
+		{{file-input type="file" value=items multiple=true file_change="file_change" class="upload"}}
 
-</div>
+	</div>
 	{{#if files}}
+		<br>
 		Vybrané soubory:
 		<ul>
 			{{#each files as |file|}}
