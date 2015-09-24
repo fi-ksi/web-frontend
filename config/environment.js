@@ -35,7 +35,7 @@ module.exports = function(environment) {
       }
 
   ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: 'http://192.168.188.131:8000/v1/oauth2/token'
+    serverTokenEndpoint: 'http://192.168.188.131:8000/v1/oauth2/auth'
   };
 
   if (environment === 'development') {

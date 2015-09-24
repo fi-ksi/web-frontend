@@ -22,7 +22,8 @@ export default Ember.Component.extend({
 					tooltip: node.get("intro"),
 					max_score: node.get("max_score"),
 					deadline: node.get("time_deadline"),
-					node_type: node.get("category").get("type")
+					node_type: node.get("category").get("type"),
+					picture: node.get("picture")
 				}
 			});
 			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
@@ -200,10 +201,11 @@ export default Ember.Component.extend({
 	        var id = target.data("id");
 	        var name = target.data("name");
 	        var date = target.data("deadline");
-	        var text = target.data("tooltip")
-					+ "<br><br>"
-					+ "<p class='graph-qtip-text inline'>Max.body:</p>" + target.data("max_score") + "<br>"
-					+ "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+	        var text = target.data("tooltip") + "<br><br>" + 
+	        	"<p class='graph-qtip-text inline'>Max.body:</p>" + target.data("max_score") + "<br>";
+			if(date) {
+				text += "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+			}
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
