@@ -12,16 +12,16 @@
           {{info-general text="Náš kód se používá blablabalba. Nemůžeš používat blablaba."}}
       {{/if}}
     </div>
-    
+
     <div class="row" style="margin-top:20px; margin-left:0px">
         <label for="threadName">Editor kódu</label>
         {{code-editor content=module.code  id=(construct-id "editor_module" id)}}
     </div>
-    <div class="row" style="margin-top:20px; margin-left:0px">
-        <button class="btn btn-primary btn-task inline" {{action "run"}}>Spustit</button>
-        <button class="btn btn-primary btn-task inline" {{action "load"}}>Nahrát soubor z disku</button>
-        <button class="btn btn-primary btn-task inline" {{action "save"}}>Uložit soubor na disk</button>
-        <button class="btn btn-primary btn-task inline" {{action "reset"}}>Obnovit výchozí kód</button>
+    <div class="row" style="margin-left:0px">
+        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "run"}}>Spustit</button>
+        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
+        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>
+        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
     </div>
     {{#if script_text_output}}
