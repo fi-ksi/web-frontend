@@ -18,8 +18,8 @@ export default Ember.Component.extend({
 			ret["nodes"].push({
 				data: {
 					id: node.get("id"),
+					active: node.get("active"),
 					name: node.get("title"),
-					picture: node.get("picture"),
 					tooltip: node.get("intro"),
 					max_score: node.get("max_score"),
 					deadline: node.get("time_deadline"),
@@ -154,10 +154,11 @@ export default Ember.Component.extend({
     	var self = this;
 
     	this.get("cy").on('mousedown','node', function(event){
-    		console.log("clicked!");
 			var target = event.cyTarget;
 	        var id = target.data("id");
-	        self.sendAction('assign', id);
+	        if(target.data("active")) {
+		        self.sendAction('assign', id);
+		    }
 		});
 
 		this.get("cy").on('mouseover','node', function(event){
