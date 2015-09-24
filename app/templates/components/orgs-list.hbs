@@ -1,16 +1,15 @@
 {{#each model as |org index|}}
-    <div class="col-xs-6 col-md-3" style="margin:20px">
-
-        <a href="#" data-target="#toggle{{index}}" class="hcaption" cap-overlay_bg="black" cap-overlay_opacity="0.5">
-            {{#link-to "user-profile" org}}
-                <img src="{{org.profile_picture}}" style="
-                  width: 220px;
-                  margin: 0 auto;
-                  overflow:hidden;
-                  position: relative;
-                  height: 220px;">
-                  <div class="org-index-name ">{{org.full_name}}</div>
-            {{/link-to}}
-        </a>
+    <div class="col-xs-6 col-md-3" style="margin:20px text-align:center;">
+      {{#link-to "user-profile" org}}
+          <img src="{{org.profile_picture}}" style="
+            width: 100%;
+            margin: 0 auto;
+            overflow:hidden;
+            position: relative;"
+            >
+      {{/link-to}}
+      {{#link-to "user-profile" org}}
+            <div class="org-index-name ">{{org.full_name}}</div>
+      {{/link-to}}
     </div>
 {{/each}}
