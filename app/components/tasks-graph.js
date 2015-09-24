@@ -19,6 +19,7 @@ export default Ember.Component.extend({
 				data: {
 					id: node.get("id"),
 					name: node.get("title"),
+					picture: node.get("picture"),
 					tooltip: node.get("intro"),
 					max_score: node.get("max_score"),
 					deadline: node.get("time_deadline"),
@@ -113,61 +114,24 @@ export default Ember.Component.extend({
 								'background-color': 'white',
 								'background-opacity': '0',
 
-								'color': 'white',
-								'font-size': '13',
-								'content': 'data(name)',
-        				'text-valign': 'center',
-								'text-transform': 'uppercase',
-								'text-wrap': 'wrap',
-								'text-max-width': '70px',
+								'background-image': 'data(picture)',
               })
             .selector('node[node_type = "uvod"]')
               .css({
-								'background-image': 'img/nodes/node-start.svg',
 								'width': '105px',
                 'height': '105px',
 								'background-width': '105px',
               	'background-height': '105px',
 								'content': '',
-              })
-            .selector('node[node_type = "small_p"]')
-              .css({
-              	'background-image': 'img/nodes/base/node-blue.svg',
-              })
-            .selector('node[node_type = "small_t"]')
-              .css({
-              	'background-image': 'img/nodes/base/node-orange.svg',
               })
             .selector('node[node_type = "big"]')
               .css({
-              	'background-image': 'img/nodes/base/node-big.svg',
 								'width': '105px',
                 'height': '105px',
 								'background-width': '105px',
               	'background-height': '105px',
 								'content': '',
               })
-            .selector('node[node_type = "bonus"]')
-              .css({
-              	'background-image': 'img/nodes/base/node-bronze-unknown.svg',
-								'width': '105px',
-                'height': '105px',
-								'background-width': '105px',
-              	'background-height': '105px',
-								'content': '',
-              })
-						.selector('node[node_type = "small_t_p"]')
-              .css({
-              	'background-image': 'img/nodes/base/node-orange-blue.svg',
-              })
-						.selector('node[node_type = "small_a"]')
-              .css({
-              	'background-image': 'img/nodes/base/node-green.svg',
-              })
-						.selector('node[node_type = "small_a_p"]')
-	            .css({
-	            	'background-image': 'img/nodes/base/node-green-blue.svg',
-	            })
             .selector('edge')
               .css({
                 'width': 6,
@@ -224,8 +188,13 @@ export default Ember.Component.extend({
 	                at: 'top center',
 	                target: [x, y]
 	            },
-							hide: { event: 'mouseout'
-                },
+							hide: { event: 'mouseout',
+											when: 	{
+												event: 'inactive',
+												delay: 3000
+											},
+											fixed: false
+              },
 	            style: {
 	                classes: 'graph-qtip',
 	                tip: false
