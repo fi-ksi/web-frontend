@@ -14,7 +14,7 @@ export default Ember.Controller.extend( {
             function() {
                 alert("Saving failed!");
                 // ToDo
-            }
+            });
         }
     }
 });
