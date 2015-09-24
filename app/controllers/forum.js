@@ -27,30 +27,27 @@ export default Ember.Controller.extend({
         		return;
         	}
 
-            var post = this.store.createRecord("post", {
-                author: this.get("session.profile.id"),
-                body: this.get("thread_content")
-            }); 
+            var thread = self.store.createRecord("thread", {
+                title: self.get("thread_name"),          
+            });
 
-            post.save().then(function() {
-                var thread = self.store.createRecord("thread", {
-                    title: self.get("thread_name"),
-                    root_posts: [
-                        post
-                    ]                
+            thread.save().then(function() {
+                var post = self.store.createRecord("post", {
+                    author: self.get("session.profile.id"),
+                    body: self.get("thread_content"),
+                    parent_thread: thread
                 });
-                thread.save().then(function() {
-                    // ToDo: Error handling
-                	self.set("new_thread", false);
-                	self.set("info", "Vlákno úspěšně založeno");
+                post.save();
+            }).then(function() {
+                self.set("new_thread", false);
+                self.set("info", "Vlákno úspěšně založeno");
 
-                	self.set("thread_name", undefined);
-                	self.set("thread_content", undefined);
+                self.set("thread_name", undefined);
+                self.set("thread_content", undefined);
 
-                	Ember.run.later((function() {
-        				self.set("info", undefined);
-        			}), 5000);
-                });
+                Ember.run.later((function() {
+                    self.set("info", undefined);
+                }), 5000);
             });
         }
     },

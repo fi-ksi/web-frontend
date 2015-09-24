@@ -1,5 +1,6 @@
 import Ember from "ember";
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+import Configuration from '../config/environment';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
 	beforeModel: function(transition) {

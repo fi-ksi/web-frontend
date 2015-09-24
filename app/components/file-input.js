@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 export default Ember.TextField.extend(Ember.Evented, {
   type: 'file',
   attributeBindings: ['multiple'],
