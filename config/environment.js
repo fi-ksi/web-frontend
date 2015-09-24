@@ -66,5 +66,7 @@ module.exports = function(environment) {
     defaultLocale: 'cs'
   };
 
+  ENV["API_LOC"] = "http://localhost:3000";
+
   return ENV;
 };

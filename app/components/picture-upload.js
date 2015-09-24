@@ -3,7 +3,7 @@ import Ember from "ember";
 import InboundActions from "ember-component-inbound-actions/inbound-actions";
 
 export default EmberUploader.FileField.extend(InboundActions, {
-	url: "",
+	url: "/profile/picture",
 	supported_ext: ["jpg", "jpeg", "png", "gif"],
 	classNames: ["hide"],
 	attributeBindings: ["multiple", "accept"],

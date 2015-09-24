@@ -33,7 +33,7 @@ export default Ember.Component.extend({
             this.set("general_error", undefined);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
-                this.sendAction("result", "module_" + this.get("module").id, {code: content});
+                this.sendAction("result", "module_" + this.get("module").id, { result: content});
             } else {
                 this.sendAction("error", "module_" + this.get("module").id);
                 if(content === this.get("module.default_code")) {

@@ -28,7 +28,10 @@
               {{plaintext-module module=module result="result"}}
             {{/if}}
           {{/each}}
-          <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>Odevzdat</button>
+          {{#if submit_error}}
+            {{warning-general text=submit_error}}
+          {{/if}}
+          <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>{{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}</button>
         {{else}}
           {{info-general text="Tuto úlohu jsi už odevzdal."}}
           <button class="btn btn-task btn-primary" {{action "new_submit"}}>Znovu odevzdat úlohu</button>
