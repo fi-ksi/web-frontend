@@ -1,12 +1,12 @@
 {{#each model as |org index|}}
-    <div class="col-xs-6 col-md-3" style="margin:20px">
+    <div class="col-xs-6 col-md-3" style="margin:20px text-align:center;">
       {{#link-to "user-profile" org}}
           <img src="{{org.profile_picture}}" style="
-            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
             overflow:hidden;
-            position: relative;
-            height: 220px;">
+            position: relative;"
+            >
       {{/link-to}}
       {{#link-to "user-profile" org}}
             <div class="org-index-name ">{{org.full_name}}</div>
