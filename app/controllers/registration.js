@@ -7,8 +7,14 @@ export default Ember.Controller.extend( {
     registration_done: false,
     actions: {
     	register: function() {
-            // ToDo: Send result
-            this.set("registration_done", true);
+            this.get("model").save().then(function() {
+                this.set("registration_done", true);
+                // ToDo
+            },
+            function() {
+                alert("Saving failed!");
+                // ToDo
+            }
         }
     }
 });
