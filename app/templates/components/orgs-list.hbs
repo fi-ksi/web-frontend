@@ -9,12 +9,8 @@
                   overflow:hidden;
                   position: relative;
                   height: 220px;">
+                  <div class="org-index-name ">{{org.full_name}}</div>
             {{/link-to}}
         </a>
-        <div id="toggle{{index}}" class="">
-            {{#link-to "user-profile" org class="org-caption-images white-link"}}
-                <span class="">{{org.full_name}}</span>
-            {{/link-to}}
-        </div>
     </div>
 {{/each}}

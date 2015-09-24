@@ -5,7 +5,7 @@
 				<img src="{{model.profile_picture}}" style="width:100%; max-width:250px;"/>
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
-				<h3>{{model.full_name}}</h3>
+				<h3 style="text-align: left">{{model.full_name}}</h3>
 				<h4>{{#if model.is_organisator}}Organizátor{{else}}Řešitel<!-- ToDo: Řešitel/ka -->{{/if}}</h4>
 			</div>
 			<div id="name">
@@ -142,7 +142,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-xs-12">
-								<img class="inline" src="{{task.picture}}">
+								<img class="inline" src="{{task.picture}}" style="max-width: 45px">
 								<label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{task.title}}{{/link-to}}</label>
 							</div>
 						</div>
