@@ -9,8 +9,9 @@
                 <span class="icon-bar"></span>
             </button>
             {{#link-to "index" class="pull-left" rel="home"}}
-                  <img src="img/karlik_color.png" class="inline" style="max-width:53px;"/>
-                  Korespondenční seminář z informatiky <!-- TODO krajsi text -->
+                  <img src="img/karlik_color.png" class="inline" style="padding-left: 5px; max-width:53px;"/>
+                  <!--<div class="inline visible-xs" style="padding-left: 5px">KSI</div>-->
+                  <div class="hidden-xs inline" style="padding-left: 5px">Korespondenční seminář z informatiky</div><!-- TODO krajsi text -->
             {{/link-to}}
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -30,10 +31,9 @@
               <li>
                   {{#link-to "forum"}}{{t "menu.forum"}}{{/link-to}}
               </li>
-              <li>
+              <!--<li>
                   {{#link-to "about" (query-params view="faq")}}{{t "menu.faq"}}{{/link-to}}
-              </li>
-              <li>&nbsp;</li>
+              </li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {{#if session.isAuthenticated}}
@@ -65,8 +65,8 @@
                 </p>
               </li>
               <li>
-                <p class="navbar-btn navbar-btn-main" style="margin-left:20px">
-                      {{#link-to "registration" class="btn btn-header" style="width:130px"}}Registrovat se{{/link-to}}
+                <p class="navbar-btn navbar-btn-main btn btn-header" style="width:130px; margin-left:20px">
+                      {{#link-to "registration"}}Registrovat se{{/link-to}}
                 </p>
               </li>
             {{/if}}
@@ -74,5 +74,3 @@
         </div>
     </div>
 </nav>
-
-
