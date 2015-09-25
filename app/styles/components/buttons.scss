@@ -15,6 +15,29 @@
   border-width: 0;
 }
 
+.btn-vertical {
+  padding:0px 0px 0px 0px;
+  text-align: center;
+  margin:0px;
+  width: 160px;
+  height:40px;
+  z-index:15;
+  background-color: ksi-color('primary-dark');
+  border-width: 0px;
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  transform-origin: bottom left;
+  position: fixed;
+  border-radius: 0px;
+  left: 0px;
+}
+
+.btn-vertical:hover {
+  background-color: ksi-color('secondary-orange');
+}
+
 .btn-task {
   width: 200px;
 }
