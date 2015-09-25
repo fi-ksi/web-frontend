@@ -30,6 +30,10 @@ export default Ember.Controller.extend( {
                 contentType: "application/json",
                 type: 'POST',
                 success: function(data){
+                    if ("error" in data) {
+                        self.set("submit_error", data["error"]);
+                        return;
+                    }
                     this.set("old_password", "");
                     this.set("new_password", "");
                     this.set("new_password2", "");
