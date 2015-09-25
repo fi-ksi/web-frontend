@@ -3,8 +3,9 @@ import ResetScroll from '../mixins/reset-scroll';
 
 export default Ember.Route.extend(ResetScroll, {
 	model: function() {
-		var profile = this.store.createRecord('profile');
-		return profile;
+		/*var profile = this.store.createRecord('profile');
+		return profile;*/
+		return {};
 	},
 	title: "KSI: Registrace"
 });

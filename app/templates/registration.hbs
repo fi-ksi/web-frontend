@@ -17,13 +17,16 @@
 
       <div class="form-group">
         <label for="password">Heslo:</label>
-        {{input value=password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" title="Heslo musí mít alespoň 6 znaků"}}
+        {{input value=model.password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" title="Heslo musí mít alespoň 6 znaků"}}
       </div>
 
       <div class="form-group">
         <label for="password2">Heslo:</label>
-        {{input value=password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" title="Hesla se musejí shodovat"}}
+        {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" title="Hesla se musejí shodovat"}}
       </div>
+      {{#if password_error}}
+        {{warning-general text="Hesla se neshodují"}}
+      {{/if}}
 
 			<div style="margin-top:30px">
 				<h4>Osobní údaje</h4>
@@ -166,6 +169,9 @@
 				<button type="submit" class="btn btn-primary">
 	        <h2>Registruj se</h2>
 	      </button>
+        {{#if general_error}}
+          {{warning-general text=general_error}}
+        {{/if}}
 			</div>
 		</div>
     {{/validatable-form}}

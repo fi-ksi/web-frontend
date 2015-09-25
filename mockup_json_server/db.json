@@ -792,6 +792,95 @@
       "root_posts": [
         4
       ]
+    },
+    {
+      "thread": {
+        "title": "abc",
+        "unread": null,
+        "posts_count": null,
+        "root_posts": [
+          null
+        ]
+      },
+      "id": 4
+    },
+    {
+      "thread": {
+        "title": "gsdfg",
+        "unread": null,
+        "posts_count": null,
+        "root_posts": [
+          null
+        ]
+      },
+      "id": 5
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null,
+        "root_posts": [
+          "13"
+        ]
+      },
+      "id": 6
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 7
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 8
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 9
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 10
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 11
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 12
+    },
+    {
+      "thread": {
+        "title": "a",
+        "unread": null,
+        "posts_count": null
+      },
+      "id": 13
     }
   ],
   "posts": [
@@ -911,6 +1000,37 @@
         "reaction": []
       },
       "id": 11
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>cda</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 12
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>b</p>",
+        "is_new": false,
+        "author": null,
+        "reaction": []
+      },
+      "id": 13
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>b</p>",
+        "is_new": false,
+        "author": null,
+        "parent_thread": "13",
+        "reaction": []
+      },
+      "id": 14
     }
   ],
   "modules": [
@@ -1010,7 +1130,7 @@
       "first_name": "Henrich",
       "last_name": "Lauko",
       "nick_name": "Heňo",
-      "profile_picture": "http://placehold.it/50x50"
+      "profile_picture": "img/profile/heno.jpg"
     }
   ],
   "profile": [
@@ -1083,6 +1203,39 @@
           "2"
         ]
       }
+    },
+    {
+      "profile": {
+        "signed_in": false,
+        "first_name": "afdljadlskf",
+        "last_name": "afjadslf",
+        "nick_name": null,
+        "profile_picture": null,
+        "short_info": null,
+        "email": "a@e",
+        "gender": null,
+        "score": null,
+        "percentile": null,
+        "seasons": null,
+        "successful": null,
+        "addr_street": "asfljaslkf",
+        "addr_city": "lasjflaksjf",
+        "addr_zip": "aflajsdfl",
+        "addr_country": null,
+        "school_name": "alfdjalksdf",
+        "school_street": "aslfkjklasdf",
+        "school_city": "afjalsdkjf",
+        "school_zip": "afljasdlf",
+        "school_country": null,
+        "school_finish": null,
+        "tshirt_size": null,
+        "admin": false,
+        "organisator": false,
+        "achievements": [],
+        "results": [],
+        "tasks": []
+      },
+      "id": 2
     }
   ],
   "settings": [
