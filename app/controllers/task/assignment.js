@@ -50,7 +50,6 @@ export default Ember.Controller.extend({
 				    }
 				}
 
-				var self = this;
 				// Send it
 				Ember.$.ajax({
 					url: config.API_LOC + "/task/" + this.get("model.id") + "/submit",
