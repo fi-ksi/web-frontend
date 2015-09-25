@@ -31,9 +31,6 @@ export default Ember.Controller.extend( {
     			this.set("global_info", undefined);
     			this.set("global_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu");
     		});
-    	},
-        change_password: function() {
-            // ToDo: Depends on backend
-        }
+    	}
     }
 });
