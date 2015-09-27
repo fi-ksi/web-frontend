@@ -5,9 +5,10 @@ import DS from "ember-data";
  */
 export default DS.Model.extend( {
 	author: DS.belongsTo("user", {async: true}),
-	parent_thread: DS.belongsTo("thread", {async: true, inverse: "root_posts"}),
+	thread: DS.belongsTo("thread", {async: true, inverse: null}),
 	published_at: DS.attr("date"),
 	body: DS.attr("string"),
-	reaction: DS.hasMany("post", {async: true, inverse:null}),
+	parent: DS.belongsTo("post", {async: true, inverse: "reaction"}),
+	reaction: DS.hasMany("post", {async: true, inverse:"parent"}),
 	is_new: DS.attr("boolean")
 });

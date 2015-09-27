@@ -17,7 +17,7 @@ export default Ember.Component.extend({
 
 		//var self = this;
 		this.get("model").forEach(function(node) {
-			ret["nodes"].push({
+			var n = {
 				data: {
 					id: node.get("id"),
 					active: node.get("active"),
@@ -29,7 +29,10 @@ export default Ember.Component.extend({
 					picture: node.get("picture"),
 					prerequisities: node.get("prerequisities")
 				}
-			});
+			};
+
+			console.log(JSON.stringify(node.get("prerequisities")));
+			ret["nodes"].push(n);
 			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
 			var prerequisities = node.get("prerequisities");
 			console.log(JSON.stringify(node));
@@ -43,6 +46,7 @@ export default Ember.Component.extend({
 			});
 		});
 
+		console.log(ret);
 		return ret;
 	}.property("model"),
 	didInsertElement: function() {
@@ -52,7 +56,6 @@ export default Ember.Component.extend({
 			Ember.$(window).on("window:resize", function() {
 		  		self.reposition_graph();
 		  	});
-			this.reset_graph_panel();
 			this.set("cy", cytoscape({
 		        container: Ember.$('#cy')[0],
 		        elements: this.get("cytoscape_data"),
@@ -64,7 +67,6 @@ export default Ember.Component.extend({
 		        userPanningEnabled: false,
 		        autoungrabify: false,
 		        ready: function() {
-		        	self.reset_graph_panel();
 		        	self.style_graph();
 		        	self.reposition_graph();
 		        	self.setup_graph_actions();
@@ -72,17 +74,11 @@ export default Ember.Component.extend({
 		    }));
 		});
 	},
-	reset_graph_panel: function() {
-		var graphPanel = document.getElementById("cy");
-
-		graphPanel.style.width = "100%";
-		graphPanel.style.height = 1000 + "px";
-	},
     reposition_graph: function() {
-    	//var self = this;
-    	this.get("cy").autolock(false);
+    	var cy = this.get("cy");
+    	cy.autolock(false);
+    	document.getElementById("cy").style.width = "100%";
     	var width = Ember.$("#cy").width();
-    	var height = 1000;
     	var options = {
 			name: 'dagre',
 
@@ -98,15 +94,42 @@ export default Ember.Component.extend({
 			fit: false, // whether to fit to viewport
 			padding: 5, // fit padding
 			animate: false, // whether to transition the node positions
-			// Magic number hack
-			boundingBox: {x1: 0, y1: 0, w: width/2, h: 0.8*height}, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
 			ready: function(){}, // on layoutready
 			stop: function(){} // on layoutstop
 		};
-		this.get("cy").layout(options);
-		this.get("cy").center();
-		options.boundingBox.height = this.get("cy").height();
-		this.get("cy").autolock(true);
+		cy.layout(options);
+
+		var positions = cy.nodes().map(function(node) { return node.position(); });
+		var min_y = Math.min.apply(
+			null,
+			positions.map(function(pos) { return pos.y; }));
+		var max_y = Math.max.apply(
+			null,
+			positions.map(function(pos) { return pos.y; }));
+
+		var min_x = Math.min.apply(
+			null,
+			positions.map(function(pos) { return pos.x; }));
+		var max_x = Math.max.apply(
+			null,
+			positions.map(function(pos) { return pos.x; }));
+
+		var graph_width = max_y - min_x + 100;
+		if (graph_width > width) {
+			console.log("Resizing!");
+			var ratio = width / graph_width;
+			cy.nodes().positions(function(i, elem) {
+				var pos = elem.position();
+				return {
+					y: pos.y,
+					x: pos.x * ratio
+				}
+			});
+		}
+
+		document.getElementById("cy").style.height = (max_y + 100) + "px"; // Magic constant
+		cy.resize();
+		cy.center();
     },
     style_graph: function()  {
     	this.get("cy").style()

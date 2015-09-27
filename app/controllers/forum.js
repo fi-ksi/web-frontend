@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
                 var post = self.store.createRecord("post", {
                     author: self.get("session.profile.id"),
                     body: self.get("thread_content"),
-                    parent_thread: thread
+                    thread: thread
                 });
                 post.save();
             }).then(function() {

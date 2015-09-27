@@ -4,7 +4,7 @@ import Ember from "ember";
 export default DS.Model.extend( {
 	node_parent: DS.hasMany("task", { async: true, inverse:null}),
 
-	prerequisities: DS.hasMany("prerequisity", { inverse: null }),
+	prerequisities: DS.attr("prerequisite"),
 	category: DS.belongsTo("category", { async: true }),
 
 	active: DS.attr("boolean"),
