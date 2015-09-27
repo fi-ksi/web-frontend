@@ -28,17 +28,17 @@
   <div class="form-group">
     <label for="gender">Pohlaví:</label>
     {{#x-select value=model.gender class="form-control" id="gender" required=true}}
-      {{#x-option value="M"}}Muž{{/x-option}}
-      {{#x-option value="F"}}Žena{{/x-option}}
-    {{/x-select}}
+        {{#x-option value="male" selected=(is-equal "male" model.gender)}}Muž{{/x-option}}
+        {{#x-option value="female" selected=(is-equal "female" model.gender)}}Žena{{/x-option}}
+      {{/x-select}}
   </div>
 
   <div style="margin-top:30px">
     <h4>Adresa</h4>
     <hr>
   </div>
-
   <div class="form-group">
+
     <label for="street">Ulice:</label>
     {{input value=model.addr_street class="form-control" required=true title="Adresa je povinná"}}
   </div>
@@ -57,8 +57,9 @@
     <label for="country">Země:</label>
     {{#x-select value=model.addr_country class="form-control"}}
       {{#each countries key="@index" as |item|}}
-        {{#x-option value=item selected=(is-equal item model.addr_country)}}
-          {{item}}
+        {{log "Země!"}}
+        {{#x-option value=item.short selected=(is-equal item.short model.addr_country)}}
+          {{item.name}}
         {{/x-option}}
       {{/each}}
     {{/x-select}}
@@ -95,8 +96,8 @@
     <label for="country">Země:</label>
     {{#x-select value=model.school_country class="form-control"}}
       {{#each countries key="@index" as |item|}}
-        {{#x-option value=item selected=(is-equal item model.school_country)}}
-          {{item}}
+        {{#x-option value=item.short selected=(is-equal item.short model.school_country)}}
+          {{item.name}}
         {{/x-option}}
       {{/each}}
     {{/x-select}}
@@ -142,5 +143,4 @@
   <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
     Ulož změny
   </button>
-  <!--{{async-button class="button btn btn-primary" style="margin-top:20px; width:100%;" isLoading=isSaving isValid=isValid value="Ulož změny"}}-->
 {{/validatable-form}}

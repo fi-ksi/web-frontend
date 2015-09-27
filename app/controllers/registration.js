@@ -1,10 +1,8 @@
 import Ember from "ember";
+import UserSettings from "../mixins/user-settings";
 import config from '../config/environment';
 
-export default Ember.Controller.extend( {
-    countries: [{name: "Česká republika", short: "cs"}, {name: "Slovensko", short: "sk"}],
-    tshirt_size: ["S", "M", "L", "XL"],
-    maturita_year: ["2016", "2017", "2018", "2019"],
+export default Ember.Controller.extend(UserSettings, {
     registration_done: false,
     check: function() {
         if(this.get("model.password") && this.get("model.password2") &&

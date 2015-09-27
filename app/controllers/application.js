@@ -28,7 +28,7 @@ export default Ember.Controller.extend( {
             var obj = {
             	body: this.get("feedback_text"),
             	email: this.get("feedback_email")
-            }
+            };
 
             Ember.$.ajax({
                 url: config.API_LOC + "/feedback",

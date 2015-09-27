@@ -109,7 +109,7 @@ export default Ember.Component.extend({
 			null,
 			positions.map(function(pos) { return pos.x; }));
 
-		var graph_width = max_y - min_x + 100;
+		var graph_width = max_x - min_x + 100;
 		if (graph_width > width) {
 			console.log("Resizing!");
 			var ratio = width / graph_width;
@@ -118,11 +118,11 @@ export default Ember.Component.extend({
 				return {
 					y: pos.y,
 					x: pos.x * ratio
-				}
+				};
 			});
 		}
 
-		document.getElementById("cy").style.height = (max_y + 100) + "px"; // Magic constant
+		document.getElementById("cy").style.height = (max_y + 250 - min_y) + "px"; // Magic constant
 		cy.resize();
 		cy.center();
     },
