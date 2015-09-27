@@ -27,6 +27,8 @@ export default Ember.Component.extend({
 					picture: node.get("picture")
 				}
 			};
+
+			console.log(JSON.stringify(node.get("prerequisities")));
 			ret["nodes"].push(n);
 			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
 			node.get("node_parent").forEach(function(parent) {

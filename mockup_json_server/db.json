@@ -115,12 +115,9 @@
         1
       ],
       "prerequisities": [
-        {
-          "id": 1,
-          "parents": [
-            1
-          ]
-        }
+        [
+          1
+        ]
       ],
       "title": "Co je to ten Python?",
       "picture_active": "img/nodes/vlna-1/node-python/base.svg",
@@ -159,12 +156,9 @@
         2
       ],
       "prerequisities": [
-        {
-          "id": 2,
-          "parents": [
-            2
-          ]
-        }
+        [
+          2
+        ]
       ],
       "title": "Želvy, gramatiky a pláže",
       "picture_active": "img/nodes/vlna-1/node-turtle/base.svg",
@@ -203,12 +197,9 @@
         3
       ],
       "prerequisities": [
-        {
-          "id": 3,
-          "parents": [
-            3
-          ]
-        }
+        [
+          3
+        ]
       ],
       "title": "Želva a funkce",
       "picture_active": "img/nodes/vlna-1/node-turtle/base.svg",
@@ -247,12 +238,9 @@
         2
       ],
       "prerequisities": [
-        {
-          "id": 4,
-          "parents": [
-            2
-          ]
-        }
+        [
+          2
+        ]
       ],
       "title": "Složitá grafika",
       "picture_active": "img/nodes/vlna-1/node-turtle/base.svg",
@@ -292,13 +280,8 @@
         5
       ],
       "prerequisities": [
-        {
-          "id": 5,
-          "parents": [
-            4,
-            5
-          ]
-        }
+        4,
+        5
       ],
       "title": "Obrázek",
       "picture_active": "img/nodes/vlna-1/node-big-unknown/base.svg",
@@ -338,13 +321,10 @@
         5
       ],
       "prerequisities": [
-        {
-          "id": 6,
-          "parents": [
-            4,
-            5
-          ]
-        }
+        [
+          4,
+          5
+        ]
       ],
       "title": "Kooperační",
       "picture_active": "img/nodes/vlna-1/node-big-turtle/base.svg",
@@ -383,12 +363,9 @@
         1
       ],
       "prerequisities": [
-        {
-          "id": 7,
-          "parents": [
-            1
-          ]
-        }
+        [
+          7
+        ]
       ],
       "title": "O algoritmice obecně",
       "picture_active": "img/nodes/vlna-1/node-algorithm/base.svg",
@@ -427,12 +404,9 @@
         8
       ],
       "prerequisities": [
-        {
-          "id": 8,
-          "parents": [
-            8
-          ]
-        }
+        [
+          8
+        ]
       ],
       "title": "Složitost",
       "picture_active": "img/nodes/vlna-1/node-algorithm/base.svg",
@@ -471,12 +445,9 @@
         8
       ],
       "prerequisities": [
-        {
-          "id": 9,
-          "parents": [
-            8
-          ]
-        }
+        [
+          8
+        ]
       ],
       "title": "Korektnost",
       "picture_active": "img/nodes/vlna-1/node-algorithm/base.svg",
@@ -517,14 +488,11 @@
         10
       ],
       "prerequisities": [
-        {
-          "id": 10,
-          "parents": [
-            2,
-            9,
-            10
-          ]
-        }
+        [
+          2,
+          9,
+          10
+        ]
       ],
       "title": "Úvod do hrubé síly",
       "picture_active": "img/nodes/vlna-1/node-bg-buldozer/base.svg",
@@ -563,12 +531,9 @@
         11
       ],
       "prerequisities": [
-        {
-          "id": 11,
-          "parents": [
-            11
-          ]
-        }
+        [
+          11
+        ]
       ],
       "title": "Hladové algoritmy",
       "picture_active": "img/nodes/vlna-1/node-pribor/base.svg",
@@ -607,12 +572,9 @@
         11
       ],
       "prerequisities": [
-        {
-          "id": 12,
-          "parents": [
-            11
-          ]
-        }
+        [
+          11
+        ]
       ],
       "title": "Hrubá síla",
       "picture_active": "img/nodes/vlna-1/node-g-buldozer/base.svg",
@@ -651,12 +613,9 @@
         12
       ],
       "prerequisities": [
-        {
-          "id": 13,
-          "parents": [
-            12
-          ]
-        }
+        [
+          12
+        ]
       ],
       "title": "Jedeme na Ksílet!",
       "picture_active": "img/nodes/vlna-1/node-big-travelling/base.svg",
@@ -695,12 +654,9 @@
         13
       ],
       "prerequisities": [
-        {
-          "id": 14,
-          "parents": [
-            13
-          ]
-        }
+        [
+          13
+        ]
       ],
       "title": "Průvodce",
       "picture_active": "img/nodes/vlna-1/node-big-book/base.svg",
