@@ -1263,26 +1263,22 @@
     {
       "id": 1,
       "title": "Buldozer!",
-      "active": true,
-      "picture_active": "img/achievements/achievement-buldozer.svg"
+      "picture": "img/achievements/achievement-buldozer.svg"
     },
     {
       "id": 2,
       "title": "Heňův mazánek",
-      "active": true,
-      "picture_active": "/img/achievements/achievement-unknown.svg"
+      "picture": "/img/achievements/achievement-unknown.svg"
     },
     {
       "id": 3,
       "title": "Pampeliška",
-      "active": true,
-      "picture_active": "/img/achievements/achievement-second.svg"
+      "picture": "/img/achievements/achievement-second.svg"
     },
     {
       "id": 4,
       "title": "Italský špagetový gurmán",
-      "active": true,
-      "picture_active": "img/achievements/achievement-spagety.svg"
+      "picture": "img/achievements/achievement-spagety.svg"
     }
   ],
   "scores": [
