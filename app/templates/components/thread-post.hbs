@@ -32,7 +32,7 @@
       {{/if}}
       <!-- vnorena reakcia -->
       {{#each model.reaction as |react|}}
-        <!--{{thread-post model=react admin=admin}}-->
+          {{thread-post model=react store=store}}
       {{/each}}
     </div>
   </li>

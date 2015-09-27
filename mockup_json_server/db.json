@@ -915,7 +915,15 @@
       "author": 1,
       "published_at": "2015-07-07T15:55:02",
       "body": "Příspěvek 2!",
-      "reaction": []
+      "reaction": [],
+      "post": {
+        "published_at": "2015-07-07T15:55:02.000Z",
+        "body": "Příspěvek 2!",
+        "is_new": false,
+        "author": "1",
+        "thread": null,
+        "parent": "1"
+      }
     },
     {
       "id": 3,
@@ -1057,6 +1065,17 @@
         "reaction": []
       },
       "id": 16
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>adslfjaldsj</p>",
+        "is_new": false,
+        "author": null,
+        "thread": null,
+        "parent": "2"
+      },
+      "id": 17
     }
   ],
   "modules": [

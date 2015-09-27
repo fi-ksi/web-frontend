@@ -17,9 +17,9 @@ export default Ember.Component.extend({
         	}
         	this.set("content_error", undefined);
         	var post = this.get("store").createRecord("post", {
-        		body: this.get("response_text"),
-                parent: this.get("model"),
-                thread: this.get("model.thread")
+        		body: self.get("response_text"),
+                parent: self.get("model"),
+                thread: self.get("model.thread")
         	});
 
         	post.save().then(function() {
