@@ -900,10 +900,13 @@
         "body": "Příspěvek!",
         "is_new": true,
         "author": "1",
+        "thread": "0",
+        "parent": null,
         "reaction": [
           "2",
           "3",
-          "11"
+          "11",
+          "16"
         ]
       }
     },
@@ -1027,10 +1030,33 @@
         "body": "<p>b</p>",
         "is_new": false,
         "author": null,
-        "parent_thread": "13",
+        "thread": "13",
         "reaction": []
       },
       "id": 14
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>abc</p>",
+        "is_new": false,
+        "author": null,
+        "thread": "0",
+        "parent": "1"
+      },
+      "id": 15
+    },
+    {
+      "post": {
+        "published_at": null,
+        "body": "<p>abcabc</p>",
+        "is_new": false,
+        "author": null,
+        "thread": "0",
+        "parent": "1",
+        "reaction": []
+      },
+      "id": 16
     }
   ],
   "modules": [
