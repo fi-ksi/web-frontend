@@ -18,35 +18,39 @@
 </div/>
 h
 <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style hidden-xs" style="top:200px;">
-    <button type="button" class="btn btn-default btn-vertical" style="margin-top:-50px" data-toggle="modal" data-target="#zpetna-vazba">
+    <button type="button" class="btn btn-default btn-vertical" style="margin-top:-50px" data-toggle="modal" data-target="#feedback-modal">
       <p id="vazba-text">Zpětná vazba</p>
     </button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="zpetna-vazba" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Pošli nám odezvu na nový ksi web</h4>
       </div>
-      <div class="modal-body">
-        <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
+      {{#validatable-form action="feedback"}}
+        <div class="modal-body">
+          <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
 
-        <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
+          <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
+          {{#if feedback_error}}
+            {{warning-general text=feedback_error}}
+          {{/if}}
+          {{textarea class="form-control" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text}}
+          <br>
+          <p><b>Tvá e-mailová adresa - volitelně</b></p>
 
-        <textarea class="form-control" rows="3" style="resize:none;"></textarea>
-        <br>
-        <p><b>Tvá mailová adresa - volitelně</b></p>
+          <p>Abychom se když tak mohli doptat na detaily.</p>
 
-        <p>Abychom se když tak mohli doptat na detaily.</p>
-
-        <input type="email" class="form-control" id="zpetna-vazba-email" placeholder="Email">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" style="width: 200px">Odeslat odezvu</button>
-      </div>
+          {{input type="email" class="form-control" id="zpetna-vazba-email" placeholder="e-mail" title="E-mailová adresa je neplatná" value=feedback_email}}
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" style="width: 200px">Odeslat odezvu</button>
+        </div>
+      {{/validatable-form}}
     </div>
   </div>
 </div>
@@ -56,15 +60,13 @@ h
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
      <div class="loginmodal-container">
-    <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px; text-align: right;">
-          <a href="javascript:void(0)">zavřít</a>
-    </p>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
      <div align="center">
              <img src="img/karlik_color.png" style="max-width:200px; vertical-align: middle;"/>
      </div>
     <br>
     {{#if login_error_message}}
-      {{login_error_message}}
+      {{warning-general text=login_error_message}}
     {{/if}}
       <form>
       {{input value=identification placeholder="e-mail"}}
