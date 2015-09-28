@@ -15,9 +15,8 @@
             <div class="panel panel-module-{{module-type module}}" style="margin-left:0px">
               <div class="panel-heading panel-heading-module-{{module-type module}}">
                   Nazev modulu
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                   {{#if module.is_correct}}
-
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                   {{/if}}
                   {{#if module.is_incorrect}}
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

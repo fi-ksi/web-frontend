@@ -1,10 +1,10 @@
 import Ember from "ember";
 
-export default Ember.Helper.helper(function(values) {
+export default Ember.Helper.helper(function(module) {
 	var ret = "blank";
-  if (values[0].is_correct) {
+  if (module.is_correct) {
     ret = "correct";
-  } else if (values[0].is_incorrect) {
+  } else if (module.is_incorrect) {
     ret = "incorrect";
   }
 	return ret;
