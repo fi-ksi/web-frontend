@@ -13,7 +13,7 @@
       {{/if}}
     </div>
 
-    <div class="row" style="margin-top:20px; margin-left:0px">
+    <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
         <label for="threadName">Editor kódu</label>
         {{code-editor content=module.code  id=(construct-id "editor_module" id)}}
     </div>
@@ -25,7 +25,7 @@
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
     </div>
     {{#if script_text_output}}
-        <div class="row" style="margin-top:20px; margin-left:0px">
+        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
             <label>Výstup kódu</label>
             {{textarea class="form-control" style="min-width: 100%;" rows="3" readonly="true" value=script_text_output}}
         </div>

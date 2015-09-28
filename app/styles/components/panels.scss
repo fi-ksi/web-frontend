@@ -9,6 +9,39 @@
   font-weight: 600;
 }
 
+.panel-module-blank {
+  border-color: ksi-color-level('primary-orange',6);
+}
+
+.panel-module-blank > .panel-heading-module-blank {
+  background: ksi-color-level('primary-orange',9.5);
+  color: ksi-color('secondary-orange');
+  border-color: ksi-color-level('primary-orange',6);
+  font-weight: 600;
+}
+
+.panel-module-correct {
+  border-color: ksi-color-level('correct-green',6);
+}
+
+.panel-module-correct > .panel-heading-module-correct {
+  background: ksi-color-level('correct-green',9.5);
+  color: ksi-color('correct-green');
+  border-color: ksi-color-level('correct-green',6);
+  font-weight: 600;
+}
+
+.panel-module-incorrect {
+  border-color: ksi-color-level('incorrect-red',6);
+}
+
+.panel-module-incorrect > .panel-heading-module-incorrect {
+  background: ksi-color-level('incorrect-red',9.5);
+  color: ksi-color('incorrect-red');
+  border-color: ksi-color-level('incorrect-red',6);
+  font-weight: 600;
+}
+
 .panel-article {
   box-shadow: none;
 }

@@ -12,8 +12,16 @@
         {{#if show_submission}}
           {{#each model.modules as |module index|}}
             <hr>
-            <div class="panel panel-ksi" style="margin-left:0px">
-              <div class="panel-heading panel-heading-ksi">Nazev modulu</div>
+            <div class="panel panel-module-{{module-type module}}" style="margin-left:0px">
+              <div class="panel-heading panel-heading-module-{{module-type module}}">
+                  Nazev modulu
+                  {{#if module.is_correct}}
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  {{/if}}
+                  {{#if module.is_incorrect}}
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  {{/if}}
+              </div>
               <div class="panel-body">
               {{#if module.is_programming}}
                 {{code-module module=module id=module.id result="result" error="error"}}
