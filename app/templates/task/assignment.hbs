@@ -12,30 +12,38 @@
         {{#if show_submission}}
           {{#each model.modules as |module index|}}
             <hr>
-            {{#if module.is_programming}}
-              {{code-module module=module id=module.id result="result" error="error"}}
-            {{/if}}
-            {{#if module.is_quiz}}
-              {{quiz-module module=module id=module.id result="result" error="error"}}
-            {{/if}}
-            {{#if module.is_general}}
-              {{file-module module=module id=module.id result="result" error="error"}}
-            {{/if}}
-            {{#if module.is_sortable}}
-              {{sortable-module module=module id=module.id result="result" error="error"}}
-            {{/if}}
-            {{#if module.is_text}}
-              {{plaintext-module module=module result="result"}}
-            {{/if}}
+            <div class="panel panel-ksi" style="margin-left:0px">
+              <div class="panel-heading panel-heading-ksi">Nazev modulu</div>
+              <div class="panel-body">
+              {{#if module.is_programming}}
+                {{code-module module=module id=module.id result="result" error="error"}}
+              {{/if}}
+              {{#if module.is_quiz}}
+                {{quiz-module module=module id=module.id result="result" error="error"}}
+              {{/if}}
+              {{#if module.is_general}}
+                {{file-module module=module id=module.id result="result" error="error"}}
+              {{/if}}
+              {{#if module.is_sortable}}
+                {{sortable-module module=module id=module.id result="result" error="error"}}
+              {{/if}}
+              {{#if module.is_text}}
+                {{plaintext-module module=module result="result"}}
+              {{/if}}
+              <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>
+                {{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}} <!-- TODO doladit button -->
+              </button>
+            </div>
+          </div>
           {{/each}}
           {{#if submit_error}}
             {{warning-general text=submit_error}}
+          {{/if}}<!-- TODO zmazat -->
+            <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>{{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}</button>
+          {{else}}
+            {{info-general text="Tuto úlohu jsi už odevzdal."}}
+            <button class="btn btn-task btn-primary" {{action "new_submit"}}>Znovu odevzdat úlohu</button>
           {{/if}}
-          <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>{{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}</button>
-        {{else}}
-          {{info-general text="Tuto úlohu jsi už odevzdal."}}
-          <button class="btn btn-task btn-primary" {{action "new_submit"}}>Znovu odevzdat úlohu</button>
-        {{/if}}
       {{else}}
           {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
       {{/if}}
