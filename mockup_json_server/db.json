@@ -270,8 +270,12 @@
         5
       ],
       "prerequisities": [
-        4,
-        5
+        [
+          4
+        ],
+        [
+          5
+        ]
       ],
       "title": "Obrázek",
       "picture_base": "img/nodes/vlna-1/node-big-unknown/",
@@ -310,7 +314,9 @@
       ],
       "prerequisities": [
         [
-          4,
+          4
+        ],
+        [
           5
         ]
       ],
@@ -350,7 +356,7 @@
       ],
       "prerequisities": [
         [
-          7
+          1
         ]
       ],
       "title": "O algoritmice obecně",
