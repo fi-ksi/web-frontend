@@ -28,16 +28,21 @@ export default Ember.Component.extend({
 				}
 			};
 
-			console.log(JSON.stringify(node.get("prerequisities")));
 			ret["nodes"].push(n);
-			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
-			node.get("node_parent").forEach(function(parent) {
-				ret["edges"].push({
-					data: {
-						source: parent.get("id"),
-						target: node.get("id")
-					}
+
+			var colors = ["#ffc388","#52b27e","#ef7b8c","#50b5d8","#8fb2cc"];
+			var i = 0;
+			node.get("prerequisities.groups").forEach( function(prerequizit) {
+				prerequizit.forEach( function(parent) {
+						ret["edges"].push({
+							data: {
+								source: parent,
+								target: node.get("id"),
+								color: colors[i]
+							}
+						});
 				});
+				i++;
 			});
 		});
 
@@ -158,11 +163,10 @@ export default Ember.Component.extend({
             .selector('edge')
               .css({
                 'width': 6,
-								'line-color': '#8fb2cc',
-								'target-arrow-color': '#8fb2cc',
-								'border-color': '#39393a',
+								'line-color': 'data(color)',
+								'target-arrow-color': 'data(color)',
                 'target-arrow-shape': 'triangle',
-                'opacity': 1
+                'opacity': 0.7
               })
             .selector(':selected')
               .css({
