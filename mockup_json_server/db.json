@@ -125,7 +125,7 @@
       "intro": "Karlíkovi se tu začal plazit jakýsi had...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -164,7 +164,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -203,7 +203,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -242,7 +242,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -281,7 +281,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -322,7 +322,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -361,7 +361,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -400,7 +400,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -439,7 +439,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -482,7 +482,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -521,7 +521,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -560,7 +560,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -599,7 +599,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,
@@ -638,7 +638,7 @@
       "intro": "Úloha o...",
       "max_score": 5,
       "thread": 0,
-      "active": true,
+      "active": false,
       "modules": [
         0,
         1,

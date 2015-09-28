@@ -10,8 +10,6 @@ export default Ember.Component.extend({
 			edges: []
 		};
 
-		var edge_colors = [ "#29a7df", "#00a54f", "#ffc388", "#d12233" ];
-
 		this.set("root_node",
 			Math.min.apply(null, this.get("model").map(function(node) { return node.get("id"); })));
 
@@ -26,22 +24,20 @@ export default Ember.Component.extend({
 					max_score: node.get("max_score"),
 					deadline: node.get("time_deadline"),
 					node_type: node.get("category").get("type"),
-					picture: node.get("picture"),
-					prerequisities: node.get("prerequisities")
+					picture: node.get("picture")
 				}
 			};
 
+			console.log(JSON.stringify(node.get("prerequisities")));
 			ret["nodes"].push(n);
-
-			node.get("prerequisities.groups").forEach(function(prerequisiti) {
-				for (var i = 0; i < prerequisiti.length; i++) {
-						ret["edges"].push({
-							data: {
-								source: prerequisiti[i].toString(),
-								target: node.get("id")
-							}
-						});
-				}
+			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
+			node.get("node_parent").forEach(function(parent) {
+				ret["edges"].push({
+					data: {
+						source: parent.get("id"),
+						target: node.get("id")
+					}
+				});
 			});
 		});
 
@@ -159,14 +155,18 @@ export default Ember.Component.extend({
               	'background-height': '105px',
 								'content': '',
               })
-						.selector('edge')
-	            .css({
-	              'width': 6,
-								'line-color': '#90b2cc',
-								'target-arrow-color': '#90b2cc',
-	              'target-arrow-shape': 'triangle',
-	              'opacity': 0.8
-	            })
+            .selector('edge')
+              .css({
+                'width': 6,
+								'border-color': '#39393a',
+                'target-arrow-shape': 'triangle',
+                'opacity': 1
+              })
+            .selector(':selected')
+              .css({
+                'background-color': 'orange',
+                'opacity': 1
+              })
             .selector('.faded')
               .css({
                 'opacity': 0.0,
@@ -191,9 +191,9 @@ export default Ember.Component.extend({
 	        var date = target.data("deadline");
 	        var text = target.data("tooltip") + "<br><br>" +
 	        	"<p class='graph-qtip-text inline'>Max.body:</p>" + target.data("max_score") + "<br>";
-					if(date) {
-						text += "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
-					}
+			if(date) {
+				text += "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+			}
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
@@ -214,8 +214,8 @@ export default Ember.Component.extend({
 	            },
 							hide: { event: 'mouseout',
 											when: 	{
-												event: true,
-												inactive: 0
+												event: 'inactive',
+												delay: 1
 											},
 											fixed: false
               },
