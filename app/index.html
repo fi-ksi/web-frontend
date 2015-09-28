@@ -10,15 +10,11 @@
     <!-- icon -->
     <link rel="shortcut icon" href="img/icon/ksi-icon-32x32.png">
 
-    {{content-for 'head'}}
-
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ksi.css">
 
     <!-- Custom Fonts -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-
-    {{content-for 'head-footer'}}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,6 +24,8 @@
     <![endif]-->
   </head>
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    {{content-for 'head'}}
+    {{content-for 'head-footer'}}
     <div class="row">
       {{content-for 'body'}}
     </div>
