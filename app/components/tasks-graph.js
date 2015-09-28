@@ -31,18 +31,17 @@ export default Ember.Component.extend({
 				}
 			};
 
-			console.log(JSON.stringify(node.get("prerequisities")));
 			ret["nodes"].push(n);
-			// Heno ToDo: Počítej si hrany z node.get("prerequisities") - je to pole prerequizit, z nichž každá má atribut parents
-			var prerequisities = node.get("prerequisities");
-			console.log(JSON.stringify(node));
-			node.get("node_parent").forEach(function(parent) {
-					ret["edges"].push({
-					data: {
-						source: parent.get("id"),
-						target: node.get("id")
-					}
-				});
+
+			node.get("prerequisities.groups").forEach(function(prerequisiti) {
+				for (var i = 0; i < prerequisiti.length; i++) {
+						ret["edges"].push({
+							data: {
+								source: prerequisiti[i].toString(),
+								target: node.get("id")
+							}
+						});
+				}
 			});
 		});
 
