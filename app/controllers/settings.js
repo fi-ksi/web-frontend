@@ -1,9 +1,7 @@
 import Ember from "ember";
+import UserSettings from "../mixins/user-settings";
 
-export default Ember.Controller.extend( {
-    countries: ["Česká republika", "Slovensko"],
-    tshirt_size: ["S", "M", "L", "XL"],
-    maturita_year: ["2016", "2017", "2018", "2019"],
+export default Ember.Controller.extend(UserSettings, {
     global_error: undefined,
     global_info: undefined,
     actions: {

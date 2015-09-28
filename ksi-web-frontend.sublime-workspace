@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"pass",
+				"password_error"
+			],
+			[
+				"passw",
+				"password_error"
+			],
+			[
+				"new",
+				"new_password2"
+			],
+			[
+				"ne",
+				"new_password2"
+			],
+			[
+				"err",
+				"errorThrown"
+			],
+			[
+				"submi",
+				"submit_error"
+			],
+			[
+				"sub",
+				"submit_error"
+			],
+			[
+				"picture",
+				"picture_finished"
+			],
+			[
+				"pic",
+				"picture_submitted"
+			],
+			[
 				"auth",
 				"authenticate"
 			],
@@ -60,14 +96,6 @@
 				"picture_inactive"
 			],
 			[
-				"pic",
-				"picture_active"
-			],
-			[
-				"picture",
-				"picture_inactive"
-			],
-			[
 				"glo",
 				"global_info"
 			],
@@ -86,10 +114,6 @@
 			[
 				"res",
 				"resizeBody"
-			],
-			[
-				"pass",
-				"password"
 			],
 			[
 				"cyto",
@@ -490,293 +514,16 @@
 			[
 				"fon",
 				"font-weight"
-			],
-			[
-				"table",
-				"table-cell"
-			],
-			[
-				"text",
-				"text-decoration"
-			],
-			[
-				"meta",
-				"metadata-date"
-			],
-			[
-				"post_e",
-				"post_excerpt"
-			],
-			[
-				"post_",
-				"post_excerpt"
-			],
-			[
-				"tran",
-				"translate"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "app/models/user.js",
+			"file": "app/components/file-module.js",
 			"settings":
 			{
-				"buffer_size": 1075,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/settings.hbs",
-			"settings":
-			{
-				"buffer_size": 1539,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/main.cpp",
-			"settings":
-			{
-				"buffer_size": 314,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/model_noop.ll",
-			"settings":
-			{
-				"buffer_size": 3646,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/pointers/main.cpp",
-			"settings":
-			{
-				"buffer_size": 283,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/models/profile.js",
-			"settings":
-			{
-				"buffer_size": 1734,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 177 files for \"{{name}}\"\n\n0 matches across 0 files\n\n\nSearching 177 files for \"current_user.name\"\n\n0 matches across 0 files\n\n\nSearching 177 files for \".name\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\code-module.js:\n   11                  var f = evt.target.files[0];\n   12  \n   13:                 if(f.name.split(\".\").pop() !== \"py\") {\n   14                      alert(\"Vybrán nepodporovaný typ souboru!\");\n   15                      return;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\picture-upload.js:\n   13  	filesDidChange: function(files) {\n   14  		for(var i = 0; i !== files.length; i++) {\n   15: 			var file = files.item(i).name;\n   16  			console.log(file);\n   17  			console.log(file.split(\".\").pop().toLowerCase());\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\solution-file-upload.js:\n   30  	filesDidChange: function(files) {\n   31  		if(!Ember.isEmpty(files)) {\n   32: 			this.sendAction(\"valid\", [].slice.call(files).map(function(i) {return i.name;}));\n   33  		} else {\n   34  			this.sendAction(\"invalid\");\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\profile.hbs:\n    6  			</div>\n    7  			<div id=\"name\" style=\"margin-top:30px; margin-left:5px\">\n    8: 				<h3>{{model.name}}</h3>\n    9  			</div>\n   10  			<div id=\"name\">\n\n4 matches across 4 files\n\n\nSearching 177 files for \"user-profile\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\orgs-list.hbs:\n    3  \n    4          <a href=\"#\" data-target=\"#toggle{{index}}\" class=\"hcaption\" cap-overlay_bg=\"black\" cap-overlay_opacity=\"0.5\">\n    5:             {{#link-to 'user-profile' org}}\n    6                  <img src=\"{{org.profile_picture}}\" style=\"width: 100%\">\n    7              {{/link-to}}\n    8          </a>\n    9          <div id=\"toggle{{index}}\" class=\"\">\n   10:             {{#link-to 'user-profile' org}}\n   11                  <span class=\"\">{{org.full_name}}</span>\n   12              {{/link-to}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\task.hbs:\n    7          <div class=\"row\" style=\"padding-left:5px; margin-left: 20px\">\n    8            <h5 class=\"inline\">Autor: </h5>\n    9:           {{#link-to \"user-profile\" model.author}}<img id=\"org-photo\" class=\"inline\" src=\"{{model.author.profile_picture}}\" style=\"width: 30px\">\n   10            <h5 id=\"org-name\" class=\"inline\" style=\"color: #39393a\"> {{model.author.full_name}}</h5>{{/link-to}}\n   11            <p class=\"task-points inline\">Max. {{model.max_score}} bodů</p>\n\n3 matches across 2 files\n\n\nSearching 178 files for \"{{#link-to \"profile\"\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\header-component.hbs:\n   53                    </a>\n   54                    <ul class=\"dropdown-menu dropdown-menu-main\" aria-labelledby=\"dropdownMenu\"> <!-- TODO odkazy -->\n   55:                     <li>{{#link-to \"profile\"}}Profil{{/link-to}}</li>\n   56                      <li>{{#link-to \"settings\"}}Nastavení{{/link-to}}</li>\n   57                      <li class=\"divider\"></li>\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\orgs-list.hbs:\n    3  \n    4          <a href=\"#\" data-target=\"#toggle{{index}}\" class=\"hcaption\" cap-overlay_bg=\"black\" cap-overlay_opacity=\"0.5\">\n    5:             {{#link-to \"profile\" org}}\n    6                  <img src=\"{{org.profile_picture}}\" style=\"width: 100%\">\n    7              {{/link-to}}\n    8          </a>\n    9          <div id=\"toggle{{index}}\" class=\"\">\n   10:             {{#link-to \"profile\" org}}\n   11                  <span class=\"\">{{org.full_name}}</span>\n   12              {{/link-to}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\task.hbs:\n    7          <div class=\"row\" style=\"padding-left:5px; margin-left: 20px\">\n    8            <h5 class=\"inline\">Autor: </h5>\n    9:           {{#link-to \"profile\" model.author}}<img id=\"org-photo\" class=\"inline\" src=\"{{model.author.profile_picture}}\" style=\"width: 30px\">\n   10            <h5 id=\"org-name\" class=\"inline\" style=\"color: #39393a\"> {{model.author.full_name}}</h5>{{/link-to}}\n   11            <p class=\"task-points inline\">Max. {{model.max_score}} bodů</p>\n\n4 matches across 3 files\n\n\nSearching 182 files for \"require\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\routes\\application.js:\n    6  	actions: {\n    7  		sessionAuthenticationSucceeded: function() {},\n    8: 		sessionRequiresAuthentication: function(params) {\n    9  			console.log(params);\n   10  			console.log(\"clicked\");\n   11: 			/*console.log(\"Auth required\");\n   12  			//this.transitionTo(Configuration.authenticationRoute); --default behavior\n   13  			//Ember.$(\"#login-modal\").toggleClass(\"modal\");\n   14: 			console.log(\"Auth required\");*/\n   15  			$(\"#login_button\").click();\n   16  		}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\registration.hbs:\n   13        <div class=\"form-group\">\n   14          <label for=\"email\">E-mail:</label>\n   15:         {{input value=model.email type=\"text\" class=\"form-control\" id=\"email\" required=true title=\"Toto pole je třeba vyplnit\" placeholder=\"e-mail\"}}\n   16        </div>\n   17  \n   ..\n   33        <div class=\"form-group\">\n   34          <label for=\"name\">Jméno:</label>\n   35:         {{input value=model.first_name class=\"form-control\" style=\"width:100%;\" required=true title=\"Jméno je povinné\" placeholder=\"jméno\"}}\n   36        </div>\n   37  \n   38        <div class=\"form-group\">\n   39          <label for=\"surname\">Přijmení:</label>\n   40:         {{input value=model.last_name class=\"form-control\" required=true title=\"Přijmení je povinné\" placeholder=\"příjmení\"}}\n   41        </div>\n   42  \n   43  			<div class=\"form-group\">\n   44          <label for=\"gender\">Pohlaví:</label>\n   45:         {{#x-select value=model.gender class=\"form-control\" id=\"gender\" required=true}}\n   46            {{#x-option value=\"M\"}}Muž{{/x-option}}\n   47            {{#x-option value=\"F\"}}Žena{{/x-option}}\n   ..\n   56        <div class=\"form-group\">\n   57          <label for=\"street\">Ulice:</label>\n   58:         {{input value=model.addr_street class=\"form-control\" required=true title=\"Adresa je povinná\" placeholder=\"ulice\"}}\n   59        </div>\n   60  \n   61        <div class=\"form-group\">\n   62          <label for=\"city\">Město:</label>\n   63:         {{input value=model.addr_city class=\"form-control\" required=true title=\"Adresa je povinná\" placeholder=\"město\"}}\n   64        </div>\n   65  \n   66        <div class=\"form-group\">\n   67          <label for=\"psc\">PSČ:</label>\n   68:         {{input value=model.addr_zip class=\"form-control\" required=true title=\"Adresa je povinná\" placeholder=\"PSČ\"}}\n   69        </div>\n   70  \n   ..\n   87  			<div class=\"form-group\">\n   88          <label for=\"street\">Název:</label>\n   89:         {{input value=model.school_name class=\"form-control\" required=true title=\"Adresa školy je povinná\" placeholder=\"název\"}}\n   90        </div>\n   91  \n   92        <div class=\"form-group\">\n   93          <label for=\"street\">Ulice:</label>\n   94:         {{input value=model.school_street class=\"form-control\" required=true title=\"Adresa školy je povinná\" placeholder=\"ulice\"}}\n   95        </div>\n   96  \n   97        <div class=\"form-group\">\n   98          <label for=\"city\">Město:</label>\n   99:         {{input value=model.school_city class=\"form-control\" required=true title=\"Adresa školy je povinná\" placeholder=\"město\"}}\n  100        </div>\n  101  \n  102        <div class=\"form-group\">\n  103          <label for=\"psc\">PSČ:</label>\n  104:         {{input value=model.school_zip class=\"form-control\" required=true title=\"Adresa školy je povinná\" placeholder=\"PSČ\"}}\n  105        </div>\n  106  \n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\settings\\password.hbs:\n    6  	{{#validatable-form action=\"change_password\"}}\n    7  		<label>Staré heslo:</label>\n    8: 		{{input value=old_password type=\"password\" name=\"pass\" placeholder=\"staré heslo\" required=true title=\"Musíš vyplnit stávající heslo\"}}\n    9  		<label>Nové heslo:</label>\n   10: 		{{input value=new_password type=\"password\" name=\"pass\" placeholder=\"nové heslo\" required=true title=\"Musíš vyplnit nové heslo (alespoň 6 znaků)\" pattern=\".{6,}\"}}\n   11  		<label>Ověření hesla:</label>\n   12: 		{{input value=new_password2 type=\"password\" name=\"pass\" placeholder=\"nové heslo znovu\" required=true title=\"Musíš vyplnit ověření nového hesla (alespoň 6 znaků)\" pattern=\".{6,}\"}}\n   13  		{{input type=\"submit\" name=\"login\"  class=\"btn btn-primary\" value=\"Změnit\"}}\n   14  	{{/validatable-form}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\settings\\personal.hbs:\n   13    <div class=\"form-group\">\n   14      <label for=\"name\">Jméno:</label>\n   15:     {{input value=model.first_name class=\"form-control\" style=\"width:100%;\" required=true title=\"Jméno je povinné\"}}\n   16    </div>\n   17  \n   18    <div class=\"form-group\">\n   19      <label for=\"surname\">Přijmení:</label>\n   20:     {{input value=model.last_name class=\"form-control\" required=true title=\"Přijmení je povinné\"}}\n   21    </div>\n   22  \n   23    <div class=\"form-group\">\n   24      <label for=\"email\">E-mail:</label>\n   25:     {{input value=model.email class=\"form-control\" required=true type=\"email\" title=\"Je třeba zadat platný e-mail\"}}\n   26    </div>\n   27  \n   28    <div class=\"form-group\">\n   29      <label for=\"gender\">Pohlaví:</label>\n   30:     {{#x-select value=model.gender class=\"form-control\" id=\"gender\" required=true}}\n   31        {{#x-option value=\"M\"}}Muž{{/x-option}}\n   32        {{#x-option value=\"F\"}}Žena{{/x-option}}\n   ..\n   41    <div class=\"form-group\">\n   42      <label for=\"street\">Ulice:</label>\n   43:     {{input value=model.addr_street class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n   44    </div>\n   45  \n   46    <div class=\"form-group\">\n   47      <label for=\"city\">Město:</label>\n   48:     {{input value=model.addr_city class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n   49    </div>\n   50  \n   51    <div class=\"form-group\">\n   52      <label for=\"psc\">PSČ:</label>\n   53:     {{input value=model.addr_zip class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n   54    </div>\n   55  \n   ..\n   74    <div class=\"form-group\">\n   75      <label for=\"street\">Název:</label>\n   76:     {{input value=model.school_name class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n   77    </div>\n   78  \n   79    <div class=\"form-group\">\n   80      <label for=\"street\">Ulice:</label>\n   81:     {{input value=model.school_street class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n   82    </div>\n   83  \n   84    <div class=\"form-group\">\n   85      <label for=\"city\">Město:</label>\n   86:     {{input value=model.school_city class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n   87    </div>\n   88  \n   89    <div class=\"form-group\">\n   90      <label for=\"psc\">PSČ:</label>\n   91:     {{input value=model.school_zip class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n   92    </div>\n   93  \n\n28 matches across 4 files\n\n\nSearching 182 files for \"require(\"\n\n0 matches across 0 files\n",
-			"settings":
-			{
-				"buffer_size": 11150,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/templates/components/orgs-list.hbs",
-			"settings":
-			{
-				"buffer_size": 546,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/task.hbs",
-			"settings":
-			{
-				"buffer_size": 2432,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/profile.hbs",
-			"settings":
-			{
-				"buffer_size": 4941,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/profile.js",
-			"settings":
-			{
-				"buffer_size": 427,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/user-profile.js",
-			"settings":
-			{
-				"buffer_size": 454,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/registration.js",
-			"settings":
-			{
-				"buffer_size": 251,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/router.js",
-			"settings":
-			{
-				"buffer_size": 2453,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/routes/index.js",
-			"settings":
-			{
-				"buffer_size": 367,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/index.hbs",
-			"settings":
-			{
-				"buffer_size": 3531,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/mixins/reset-scroll.js",
-			"settings":
-			{
-				"buffer_size": 170,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/mixins/reset-scroll-protected.js",
-			"settings":
-			{
-				"buffer_size": 279,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import Ember from \"ember\";\n\nexport default Ember.Component.extend({\n	didInsertElement: function() {\n		this._super();\n		this.set(\"error_message\", undefined);\n	  	this.resizeBody();\n	  	var self = this;\n	  	Ember.$(window).on(\"window:resize\", function() {\n	  		self.resizeBody();\n	  	});\n	},\n	resizeBody: function() {\n		if(this.get(\"session.current_user.admin\")) {\n			console.log(\"Admin!\");\n	     	Ember.$('body').css(\"padding-top\", Ember.$(\"#navbar\").height() + 150);\n	  	}\n	  	else {\n	  		console.log(\"User!\");\n	  		Ember.$('body').css(\"padding-top\", Ember.$(\"#navbar\").height()+30);\n	  	}\n	}.observes(\"session.current_user.admin\")\n});\n",
-			"file": "app/components/header-component.js",
-			"file_size": 1158,
-			"file_write_time": 130874051059335270,
-			"settings":
-			{
-				"buffer_size": 636,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/application.js",
-			"settings":
-			{
-				"buffer_size": 890,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/application.js",
-			"settings":
-			{
-				"buffer_size": 1410,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/xampp/htdocs/vyveska.txt",
-			"settings":
-			{
-				"buffer_size": 1859,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/login.hbs",
-			"settings":
-			{
-				"buffer_size": 257,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/about.js",
-			"settings":
-			{
-				"buffer_size": 645,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/login.js",
-			"settings":
-			{
-				"buffer_size": 68,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/models/module.js",
-			"settings":
-			{
-				"buffer_size": 868,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/routes/thread.js",
-			"settings":
-			{
-				"buffer_size": 345,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ember-cli-build.js",
-			"settings":
-			{
-				"buffer_size": 2631,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/environment.js",
-			"settings":
-			{
-				"buffer_size": 1680,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/app.js",
-			"settings":
-			{
-				"buffer_size": 439,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/routes/settings.js",
-			"settings":
-			{
-				"buffer_size": 267,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/models/registration.js",
-			"settings":
-			{
-				"buffer_size": 705,
+				"buffer_size": 1018,
 				"line_ending": "Windows"
 			}
 		},
@@ -784,23 +531,105 @@
 			"file": "app/templates/task/assignment.hbs",
 			"settings":
 			{
-				"buffer_size": 1883,
+				"buffer_size": 2040,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/components/tasks-graph.js",
+			"file": "app/templates/task.hbs",
 			"settings":
 			{
-				"buffer_size": 7678,
+				"buffer_size": 2659,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/models/thread.js",
+			"file": "app/templates/tasks.hbs",
 			"settings":
 			{
-				"buffer_size": 235,
+				"buffer_size": 1732,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/settings/password.js",
+			"settings":
+			{
+				"buffer_size": 1944,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/settings.js",
+			"settings":
+			{
+				"buffer_size": 1074,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/registration.hbs",
+			"settings":
+			{
+				"buffer_size": 6469,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/registration.js",
+			"settings":
+			{
+				"buffer_size": 1787,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/mixins/user-settings.js",
+			"settings":
+			{
+				"buffer_size": 276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/forgot-password.js",
+			"settings":
+			{
+				"buffer_size": 714,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 185 files for \"general-error\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"root_posts\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\post.js:\n    6  export default DS.Model.extend( {\n    7  	author: DS.belongsTo(\"user\", {async: true}),\n    8: 	thread: DS.belongsTo(\"thread\", {async: true, inverse: \"root_posts\"}),\n    9  	published_at: DS.attr(\"date\"),\n   10  	body: DS.attr(\"string\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\thread.js:\n    6  export default DS.Model.extend( {\n    7  	title: DS.attr(\"string\"),\n    8: 	root_posts: DS.hasMany(\"post\", {async: true}),\n    9  	unread: DS.attr(\"number\"),\n   10  	posts_count: DS.attr(\"number\")\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\thread-view.hbs:\n    1  <ul class=\"media-list\" style=\"margin:20px\">\n    2: 	{{#each thread.root_posts as |post|}}\n    3  		{{thread-post model=post}}\n    4  	{{/each}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\thread.hbs:\n    7  	<div style=\"margin:40px;\">\n    8  		<h2>{{model.title}}!</h2>\n    9: 		{{#each model.root_posts as |post|}}\n   10  			{{thread-post model=post store=store}}\n   11  		{{/each}}\n\n4 matches across 4 files\n\n\nSearching 186 files for \"is-equial\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"inject\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\app.js:\n    6  var App;\n    7  \n    8: Ember.MODEL_FACTORY_INJECTIONS = true;\n    9  \n   10  App = Ember.Application.extend({\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\code-module.js:\n   28          });\n   29      },\n   30:     module_service: Ember.inject.service(\"module-service\"),\n   31      manage_submit: Ember.on(\"init\", function() {\n   32          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\file-module.js:\n   14          }\n   15      },\n   16:     module_service: Ember.inject.service(\"module-service\"),\n   17      manage_submit: Ember.on(\"init\", function() {\n   18          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\plaintext-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\quiz-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\sortable-module.js:\n   23      },\n   24      general_error: undefined,\n   25:     module_service: Ember.inject.service(\"module-service\"),\n   26      manage_submit: Ember.on(\"init\", function() {\n   27          var self = this;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\controllers\\task\\assignment.js:\n    3  \n    4  export default Ember.Controller.extend({\n    5: 	module_service: Ember.inject.service('module-service'),\n    6  	resubmit: false,\n    7  	opened: Ember.computed(\"model.time_deadline\", function() {\n\n7 matches across 7 files\n",
+			"settings":
+			{
+				"buffer_size": 3246,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/templates/application.hbs",
+			"settings":
+			{
+				"buffer_size": 3496,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/submission.js",
+			"settings":
+			{
+				"buffer_size": 239,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/achievement.js",
+			"settings":
+			{
+				"buffer_size": 150,
 				"line_ending": "Windows"
 			}
 		},
@@ -808,7 +637,47 @@
 			"file": "app/templates/components/header-component.hbs",
 			"settings":
 			{
-				"buffer_size": 3835,
+				"buffer_size": 3967,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/articles.js",
+			"settings":
+			{
+				"buffer_size": 891,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/settings/password.hbs",
+			"settings":
+			{
+				"buffer_size": 1026,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/routes/forgot-password.js",
+			"settings":
+			{
+				"buffer_size": 268,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/application.js",
+			"settings":
+			{
+				"buffer_size": 1660,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/forgot-password.hbs",
+			"settings":
+			{
+				"buffer_size": 866,
 				"line_ending": "Windows"
 			}
 		},
@@ -816,22 +685,155 @@
 			"file": "mockup_json_server/db.json",
 			"settings":
 			{
-				"buffer_size": 35309,
+				"buffer_size": 41715,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/templates/application.hbs",
+			"file": "app/templates/components/file-module.hbs",
 			"settings":
 			{
-				"buffer_size": 1619,
-				"line_ending": "Unix"
+				"buffer_size": 855,
+				"line_ending": "Windows"
 			}
 		},
 		{
+			"file": "app/components/file-input.js",
+			"settings":
+			{
+				"buffer_size": 259,
+				"line_ending": "Windows",
+				"name": "export default Ember.TextField.extend(Ember.Evente"
+			}
+		},
+		{
+			"file": "app/components/solution-file-upload.js",
 			"settings":
 			{
 				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/task/assignment.js",
+			"settings":
+			{
+				"buffer_size": 3164,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/task/solution.js",
+			"settings":
+			{
+				"buffer_size": 283,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/code-module.js",
+			"settings":
+			{
+				"buffer_size": 3122,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/environment.js",
+			"settings":
+			{
+				"buffer_size": 1724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/components/picture-upload.js",
+			"settings":
+			{
+				"buffer_size": 1305,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/forum.js",
+			"settings":
+			{
+				"buffer_size": 1875,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/post.js",
+			"settings":
+			{
+				"buffer_size": 431,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/routes/application.js",
+			"settings":
+			{
+				"buffer_size": 1461,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{{#validatable-form action=\"save\" model=model}}\n  {{#if general_error}}\n    {{warning-general text=general_error}}\n  {{/if}}\n  {{#if general_info}}\n    {{info-general text=general_info}}\n  {{/if}}\n  <div style=\"margin-top:30px\">\n    <h4>Osobní údaje</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"name\">Jméno:</label>\n    {{input value=model.first_name class=\"form-control\" style=\"width:100%;\" required=true title=\"Jméno je povinné\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"surname\">Přijmení:</label>\n    {{input value=model.last_name class=\"form-control\" required=true title=\"Přijmení je povinné\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"email\">E-mail:</label>\n    {{input value=model.email class=\"form-control\" required=true type=\"email\" title=\"Je třeba zadat platný e-mail\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"gender\">Pohlaví:</label>\n    {{#x-select value=model.gender class=\"form-control\" id=\"gender\" required=true}}\n      {{#x-option value=\"M\"}}Muž{{/x-option}}\n      {{#x-option value=\"F\"}}Žena{{/x-option}}\n    {{/x-select}}\n  </div>\n\n  <div style=\"margin-top:30px\">\n    <h4>Adresa</h4>\n    <hr>\n  </div>\n  <div class=\"form-group\">\n\n    <label for=\"street\">Ulice:</label>\n    {{input value=model.addr_street class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"city\">Město:</label>\n    {{input value=model.addr_city class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"psc\">PSČ:</label>\n    {{input value=model.addr_zip class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"country\">Země:</label>\n    {{#x-select value=model.addr_country class=\"form-control\"}}\n      {{#each countries key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.addr_country)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n\n  <hr>\n\n  <div style=\"margin-top:30px\">\n    <h4>Škola</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"street\">Název:</label>\n    {{input value=model.school_name class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"street\">Ulice:</label>\n    {{input value=model.school_street class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"city\">Město:</label>\n    {{input value=model.school_city class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"psc\">PSČ:</label>\n    {{input value=model.school_zip class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"country\">Země:</label>\n    {{#x-select value=model.school_country class=\"form-control\"}}\n      {{#each countries key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.school_country)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n        <!--\n  <div class=\"form-group\">\n    <label for=\"school\">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->\n    <input type=\"text\" class=\"form-control\" id=\"school\">\n  </div>\n        -->\n\n  <div class=\"form-group\">\n    <label for=\"year-maturita\">Rok maturity:</label>\n    {{#x-select value=model.school_finish class=\"form-control\"}}\n      {{#each maturita_year key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.school_finish)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n\n  <div style=\"margin-top:30px\">\n    <h4>Profil</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"description\">Krátky popis sebe:</label>\n    {{textarea class=\"form-control\" rows=\"5\" value=model.short_info}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"tshirt\">Velikost trička:</label>\n    <select class=\"form-control\">\n      {{#each tshirt_size key=\"@index\" as |item|}}\n        <option value=\"{{item}}\" selected={{is-equal item model.tshirt_size}}>\n          {{item}}\n        </option>\n      {{/each}}\n    </select>\n  </div>\n  <button type=\"submit\" class=\"btn btn-primary\" style=\"margin-top:20px; width:100%;\">\n    Ulož změny\n  </button>\n  <!--{{async-button class=\"button btn btn-primary\" style=\"margin-top:20px; width:100%;\" isLoading=isSaving isValid=isValid value=\"Ulož změny\"}}-->\n{{/validatable-form}}\n",
+			"file": "app/templates/settings/personal.hbs",
+			"file_size": 4806,
+			"file_write_time": 130876773323353088,
+			"settings":
+			{
+				"buffer_size": 4613,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/thread-post.js",
+			"settings":
+			{
+				"buffer_size": 1154,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/tasks-graph.js",
+			"settings":
+			{
+				"buffer_size": 6869,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/task.js",
+			"settings":
+			{
+				"buffer_size": 1427,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/thread.hbs",
+			"settings":
+			{
+				"buffer_size": 493,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/components/thread-post.hbs",
+			"settings":
+			{
+				"buffer_size": 1871,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/transforms/prerequisite.js",
+			"settings":
+			{
+				"buffer_size": 250,
 				"line_ending": "Windows"
 			}
 		}
@@ -884,54 +886,79 @@
 	},
 	"file_history":
 	[
+		"/D/Users/email/cv.txt",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/registration.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/registration.js",
+		"/Z/Dropbox/web-frontend/config/environment.js",
+		"/Z/Dropbox/web-frontend/mockup_json_server/db.json",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/thread.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/header-component.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/mockup_json_server/db.json",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/application.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/user.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/settings.hbs",
+		"/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/main.cpp",
+		"/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/model_noop.ll",
+		"/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/pointers/main.cpp",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/profile.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/orgs-list.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/profile.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/profile.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/user-profile.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/router.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/index.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/index.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/mixins/reset-scroll.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/mixins/reset-scroll-protected.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/components/header-component.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/application.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/application.js",
+		"/D/xampp/htdocs/vyveska.txt",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/login.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/about.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/login.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/module.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/thread.js",
+		"/D/Users/email/Documents/KSI/web-frontend/ember-cli-build.js",
+		"/D/Users/email/Documents/KSI/web-frontend/config/environment.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/app.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/routes/settings.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/assignment.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/components/tasks-graph.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/models/task.js",
+		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/registration.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/user-profile.hbs",
 		"/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/threads/main.cpp",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/settings/personal.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/registration.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/settings/password.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/API-specifikace.md",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/organisator.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/sortable-module.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/application.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/article.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/settings.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/thread.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/tasks.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/task.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/results.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/registration.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/profile.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/forum.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/articles.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/routes/about.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/routes/achievements.js",
 		"/D/xampp/htdocs/aakce.txt",
-		"/D/xampp/htdocs/vyveska.txt",
 		"/D/xampp/htdocs/akce.txt",
 		"/D/xampp/htdocs/index.php",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/task.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/achievement.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/articles.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/article.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/components/sortable-module.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/registration.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/profile.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/registration.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/post.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/score.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/submission.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/user.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/module.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/components/header-component.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/styles/base/html.scss",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/tasks-graph.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/tasks.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/tasks.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/components/tasks-graph.js",
-		"/D/Users/email/Documents/KSI/web-frontend/ember-cli-build.js",
 		"/D/Users/email/Documents/KSI/web-frontend/bower_components/sticky-kit/README.md",
 		"/D/Users/email/Documents/KSI/web-frontend/app/components/code-module.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/serializers/task.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/prerequisity.js",
 		"/D/Users/email/Documents/KSI/web-frontend/vendor/sticky-column.js",
@@ -939,8 +966,6 @@
 		"/D/Users/email/Documents/KSI/web-frontend/app/styles/layout/rows.scss",
 		"/D/Users/email/Documents/KSI/web-frontend/app/styles/components/panels.scss",
 		"/D/Users/email/Documents/KSI/web-frontend/app/styles/layout/module.scss",
-		"/D/Users/email/Documents/KSI/web-frontend/app/router.js",
-		"/D/Users/email/Documents/KSI/web-frontend/mockup_json_server/db.json",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/settings.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/settings.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/settings/password.js",
@@ -958,12 +983,10 @@
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/submission.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/solution.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/file-module.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/settings.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/quiz-module.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/helpers/construct-id.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/helpers/array-helper",
 		"/D/Users/email/Documents/KSI/web-frontend/app/styles/components/module.scss",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/assignment.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/warning-general.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/components/warning-general.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/code-module.hbs",
@@ -979,13 +1002,10 @@
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/about.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/info-general.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/achievements.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/index.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/plaintext-module.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/transforms/sortable-list.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/transforms/quiz-questions",
-		"/D/Users/email/Documents/KSI/web-frontend/app/models/thread.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/task/solution.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/profile.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/forum.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/locales/cs/translations.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/adapters/application.js",
@@ -993,25 +1013,7 @@
 		"/D/Users/email/Documents/KSI/web-frontend/bower.json",
 		"/D/Users/email/Documents/KSI/web-frontend/app/transforms/quiz-questions.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/thread-post.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/thread.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/discussion.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/initializers/custom-session.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/instance-initializers/custom-session.js",
-		"/D/Users/email/Documents/KSI/web-frontend/config/environment.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/header-component.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/authenticators/basicauth.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/styles/pages/module.scss",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/text-editor.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/components/orgs-list.hbs",
-		"/D/Users/email/Documents/KSI/web-frontend/app/components/orgs-list.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/styles/components/orgs-list.scss",
-		"/D/Users/email/Documents/KSI/web-frontend/app/styles/components/jumbotron-about.scss",
-		"/D/Users/email/AppData/Local/Temp/main-1.cpp",
-		"/D/xampp/htdocs/doporucujeme.txt",
-		"/D/Users/email/Documents/KSI/web-frontend/app/util/wait-for-exist",
-		"/D/Users/email/Documents/KSI/web-frontend/app/util/waitUntilExists.js",
-		"/D/Users/email/Documents/KSI/web-frontend/bower_components/jquery.livequery/src/jquery.livequery.js",
-		"/D/Users/email/Documents/KSI/web-frontend/bower_components/jquery.livequery/dist/jquery.livequery.min.js"
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/thread.hbs"
 	],
 	"find":
 	{
@@ -1019,7 +1021,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"D:\\Users\\email\\Documents\\KSI\\web-frontend\\app",
@@ -1036,6 +1038,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"feedback_error",
+			"achieveme",
+			"prerequisities",
+			"],\n",
+			"inject",
+			"female",
+			"x-se",
+			"is-equal",
+			"is-equial",
+			"country",
+			"selected",
+			"}}\n",
+			"root_posts",
+			"parent_thread",
+			"general-error",
+			"value=",
+			"tasks",
 			"!== ",
 			"require(",
 			"require",
@@ -1146,24 +1165,7 @@
 			"S3_DataSaver",
 			"packet",
 			"Dobružství",
-			"home",
-			"přpojte",
-			"|>\n",
-			"/usr",
-			",",
-			"hracky",
-			"Hlídání",
-			"Obchů",
-			"\\n",
-			"hpp",
-			"ltl_parser.h",
-			"conflict",
-			"TNEG",
-			"osrm",
-			"yylex",
-			"yylex(",
-			"yylex",
-			"yy_scan_string"
+			"home"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1171,6 +1173,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"thread",
 			"\"",
 			"session.current_user.",
 			"picture",
@@ -1230,23 +1233,23 @@
 	"groups":
 	[
 		{
-			"selected": 33,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/models/user.js",
+					"file": "app/components/file-module.js",
 					"settings":
 					{
-						"buffer_size": 1075,
+						"buffer_size": 1018,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								674,
-								674
+								683,
+								683
 							]
 						],
 						"settings":
@@ -1263,18 +1266,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/templates/settings.hbs",
+					"file": "app/templates/task/assignment.hbs",
 					"settings":
 					{
-						"buffer_size": 1539,
+						"buffer_size": 2040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1539,
-								1539
+								383,
+								383
 							]
 						],
 						"settings":
@@ -1291,23 +1294,25 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/main.cpp",
+					"file": "app/templates/task.hbs",
 					"settings":
 					{
-						"buffer_size": 314,
+						"buffer_size": 2659,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								292,
-								292
+								953,
+								953
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1317,349 +1322,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/array/model_noop.ll",
+					"file": "app/templates/tasks.hbs",
 					"settings":
 					{
-						"buffer_size": 3646,
+						"buffer_size": 1732,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								319,
-								325
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LLVM/LLVM.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vilik/test_programs/pointers/main.cpp",
-					"settings":
-					{
-						"buffer_size": 283,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/models/profile.js",
-					"settings":
-					{
-						"buffer_size": 1734,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								970,
-								970
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"settings":
-					{
-						"buffer_size": 11150,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										328,
-										333
-									],
-									[
-										673,
-										678
-									],
-									[
-										1012,
-										1017
-									],
-									[
-										1255,
-										1260
-									],
-									[
-										1625,
-										1637
-									],
-									[
-										1858,
-										1870
-									],
-									[
-										2195,
-										2207
-									],
-									[
-										2866,
-										2886
-									],
-									[
-										3281,
-										3301
-									],
-									[
-										3509,
-										3529
-									],
-									[
-										3841,
-										3861
-									],
-									[
-										4393,
-										4400
-									],
-									[
-										4531,
-										4538
-									],
-									[
-										4714,
-										4721
-									],
-									[
-										5025,
-										5032
-									],
-									[
-										5304,
-										5311
-									],
-									[
-										5551,
-										5558
-									],
-									[
-										5812,
-										5819
-									],
-									[
-										6105,
-										6112
-									],
-									[
-										6347,
-										6354
-									],
-									[
-										6585,
-										6592
-									],
-									[
-										6832,
-										6839
-									],
-									[
-										7086,
-										7093
-									],
-									[
-										7336,
-										7343
-									],
-									[
-										7582,
-										7589
-									],
-									[
-										7938,
-										7945
-									],
-									[
-										8117,
-										8124
-									],
-									[
-										8335,
-										8342
-									],
-									[
-										8785,
-										8792
-									],
-									[
-										8996,
-										9003
-									],
-									[
-										9202,
-										9209
-									],
-									[
-										9449,
-										9456
-									],
-									[
-										9722,
-										9729
-									],
-									[
-										9928,
-										9935
-									],
-									[
-										10130,
-										10137
-									],
-									[
-										10346,
-										10353
-									],
-									[
-										10564,
-										10571
-									],
-									[
-										10778,
-										10785
-									],
-									[
-										10988,
-										10995
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								11089,
-								11089
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 7,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4043.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/templates/components/orgs-list.hbs",
-					"settings":
-					{
-						"buffer_size": 546,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								413,
-								413
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/templates/task.hbs",
-					"settings":
-					{
-						"buffer_size": 2432,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								433,
-								433
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/templates/profile.hbs",
-					"settings":
-					{
-						"buffer_size": 4941,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								516,
-								526
+								98,
+								98
 							]
 						],
 						"settings":
@@ -1674,45 +1348,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "app/routes/profile.js",
+					"buffer": 4,
+					"file": "app/controllers/settings/password.js",
 					"settings":
 					{
-						"buffer_size": 427,
+						"buffer_size": 1944,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								95,
+								73,
 								27
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "app/routes/user-profile.js",
-					"settings":
-					{
-						"buffer_size": 454,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								45
 							]
 						],
 						"settings":
@@ -1728,19 +1376,268 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "app/routes/registration.js",
+					"buffer": 5,
+					"file": "app/controllers/settings.js",
 					"settings":
 					{
-						"buffer_size": 251,
+						"buffer_size": 1074,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								76,
-								27
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/templates/registration.hbs",
+					"settings":
+					{
+						"buffer_size": 6469,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2215,
+								1947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/controllers/registration.js",
+					"settings":
+					{
+						"buffer_size": 1787,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/mixins/user-settings.js",
+					"settings":
+					{
+						"buffer_size": 276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								272,
+								272
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/controllers/forgot-password.js",
+					"settings":
+					{
+						"buffer_size": 714,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								693
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"settings":
+					{
+						"buffer_size": 3246,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										325,
+										335
+									],
+									[
+										560,
+										570
+									],
+									[
+										840,
+										850
+									],
+									[
+										1079,
+										1089
+									],
+									[
+										1401,
+										1407
+									],
+									[
+										1608,
+										1614
+									],
+									[
+										1899,
+										1905
+									],
+									[
+										2198,
+										2204
+									],
+									[
+										2492,
+										2498
+									],
+									[
+										2807,
+										2813
+									],
+									[
+										3094,
+										3100
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1262,
+								1262
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/templates/application.hbs",
+					"settings":
+					{
+						"buffer_size": 3496,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2802,
+								2802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/models/submission.js",
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1755,18 +1652,18 @@
 				},
 				{
 					"buffer": 13,
-					"file": "app/router.js",
+					"file": "app/models/achievement.js",
 					"settings":
 					{
-						"buffer_size": 2453,
+						"buffer_size": 150,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1338,
-								1338
+								28,
+								28
 							]
 						],
 						"settings":
@@ -1783,10 +1680,38 @@
 				},
 				{
 					"buffer": 14,
-					"file": "app/routes/index.js",
+					"file": "app/templates/components/header-component.hbs",
 					"settings":
 					{
-						"buffer_size": 367,
+						"buffer_size": 3967,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/controllers/articles.js",
+					"settings":
+					{
+						"buffer_size": 891,
 						"regions":
 						{
 						},
@@ -1807,54 +1732,33 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 16,
+			"sheets":
+			[
 				{
-					"buffer": 15,
-					"file": "app/templates/index.hbs",
+					"buffer": 16,
+					"file": "app/templates/settings/password.hbs",
 					"settings":
 					{
-						"buffer_size": 3531,
+						"buffer_size": 1026,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								326,
-								328
+								803,
+								803
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/mixins/reset-scroll.js",
-					"settings":
-					{
-						"buffer_size": 170,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1864,18 +1768,18 @@
 				},
 				{
 					"buffer": 17,
-					"file": "app/mixins/reset-scroll-protected.js",
+					"file": "app/routes/forgot-password.js",
 					"settings":
 					{
-						"buffer_size": 279,
+						"buffer_size": 268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27,
-								110
+								268,
+								268
 							]
 						],
 						"settings":
@@ -1890,18 +1794,18 @@
 				},
 				{
 					"buffer": 18,
-					"file": "app/components/header-component.js",
+					"file": "app/controllers/application.js",
 					"settings":
 					{
-						"buffer_size": 636,
+						"buffer_size": 1660,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								289,
-								289
+								949,
+								949
 							]
 						],
 						"settings":
@@ -1917,98 +1821,18 @@
 				},
 				{
 					"buffer": 19,
-					"file": "app/controllers/application.js",
+					"file": "app/templates/forgot-password.hbs",
 					"settings":
 					{
-						"buffer_size": 890,
+						"buffer_size": 866,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								292,
-								292
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "app/routes/application.js",
-					"settings":
-					{
-						"buffer_size": 1410,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								235,
-								235
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "/D/xampp/htdocs/vyveska.txt",
-					"settings":
-					{
-						"buffer_size": 1859,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								980,
-								980
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "app/templates/login.hbs",
-					"settings":
-					{
-						"buffer_size": 257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								129
+								536,
+								536
 							]
 						],
 						"settings":
@@ -2022,19 +1846,103 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
-					"file": "app/routes/about.js",
+					"buffer": 20,
+					"file": "mockup_json_server/db.json",
 					"settings":
 					{
-						"buffer_size": 645,
+						"buffer_size": 41715,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								62,
-								62
+								39524,
+								39524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 18653.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "app/templates/components/file-module.hbs",
+					"settings":
+					{
+						"buffer_size": 855,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								613,
+								613
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/components/file-input.js",
+					"settings":
+					{
+						"buffer_size": 259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26,
+								26
+							]
+						],
+						"settings":
+						{
+							"auto_name": "export default Ember.TextField.extend(Ember.Evente",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/components/solution-file-upload.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2050,18 +1958,18 @@
 				},
 				{
 					"buffer": 24,
-					"file": "app/routes/login.js",
+					"file": "app/controllers/task/assignment.js",
 					"settings":
 					{
-						"buffer_size": 68,
+						"buffer_size": 3164,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26,
-								26
+								2317,
+								2575
 							]
 						],
 						"settings":
@@ -2070,70 +1978,17 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 25,
-					"file": "app/models/module.js",
+					"file": "app/controllers/task/solution.js",
 					"settings":
 					{
-						"buffer_size": 868,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								868,
-								868
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"file": "app/routes/thread.js",
-					"settings":
-					{
-						"buffer_size": 345,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								260,
-								260
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 27,
-					"file": "ember-cli-build.js",
-					"settings":
-					{
-						"buffer_size": 2631,
+						"buffer_size": 283,
 						"regions":
 						{
 						},
@@ -2146,9 +2001,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2157,19 +2010,47 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
-					"file": "config/environment.js",
+					"buffer": 26,
+					"file": "app/components/code-module.js",
 					"settings":
 					{
-						"buffer_size": 1680,
+						"buffer_size": 3122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								810,
-								810
+								1354,
+								1354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 55.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "config/environment.js",
+					"settings":
+					{
+						"buffer_size": 1724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1705,
+								1705
 							]
 						],
 						"settings":
@@ -2177,6 +2058,33 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "app/components/picture-upload.js",
+					"settings":
+					{
+						"buffer_size": 1305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2186,70 +2094,18 @@
 				},
 				{
 					"buffer": 29,
-					"file": "app/app.js",
+					"file": "app/controllers/forum.js",
 					"settings":
 					{
-						"buffer_size": 439,
+						"buffer_size": 1875,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								368,
-								368
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 30,
-					"file": "app/routes/settings.js",
-					"settings":
-					{
-						"buffer_size": 267,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								212,
-								224
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 31,
-					"file": "app/models/registration.js",
-					"settings":
-					{
-						"buffer_size": 705,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29,
-								29
+								1379,
+								1379
 							]
 						],
 						"settings":
@@ -2265,47 +2121,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 32,
-					"file": "app/templates/task/assignment.hbs",
+					"buffer": 30,
+					"file": "app/models/post.js",
 					"settings":
 					{
-						"buffer_size": 1883,
+						"buffer_size": 431,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1627,
-								1627
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 33,
-					"file": "app/components/tasks-graph.js",
-					"settings":
-					{
-						"buffer_size": 7678,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								668,
-								668
+								322,
+								330
 							]
 						],
 						"settings":
@@ -2317,27 +2145,104 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 34,
-					"file": "app/models/thread.js",
+					"buffer": 31,
+					"file": "app/routes/application.js",
 					"settings":
 					{
-						"buffer_size": 235,
+						"buffer_size": 1461,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								124,
-								134
+								127,
+								127
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 32,
+					"file": "app/templates/settings/personal.hbs",
+					"settings":
+					{
+						"buffer_size": 4613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1180,
+								1207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 105.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "app/components/thread-post.js",
+					"settings":
+					{
+						"buffer_size": 1154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								749,
+								749
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 34,
+					"file": "app/components/tasks-graph.js",
+					"settings":
+					{
+						"buffer_size": 6869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								763,
+								763
 							]
 						],
 						"settings":
@@ -2352,74 +2257,72 @@
 				},
 				{
 					"buffer": 35,
-					"file": "app/templates/components/header-component.hbs",
+					"file": "app/models/task.js",
 					"settings":
 					{
-						"buffer_size": 3835,
+						"buffer_size": 1427,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3444,
-								3444
+								157,
+								171
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 598.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 36,
-					"file": "mockup_json_server/db.json",
+					"file": "app/templates/thread.hbs",
 					"settings":
 					{
-						"buffer_size": 35309,
+						"buffer_size": 493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4138,
-								4138
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1521.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 37,
-					"file": "app/templates/application.hbs",
+					"file": "app/templates/components/thread-post.hbs",
 					"settings":
 					{
-						"buffer_size": 1619,
+						"buffer_size": 1871,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								360,
-								1541
+								1834,
+								1834
 							]
 						],
 						"settings":
@@ -2436,22 +2339,23 @@
 				},
 				{
 					"buffer": 38,
+					"file": "app/transforms/prerequisite.js",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 250,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								235,
+								235
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2490,7 +2394,7 @@
 		"cols":
 		[
 			0.0,
-			0.540179198296,
+			0.490458875114,
 			1.0
 		],
 		"rows":
