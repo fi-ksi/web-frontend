@@ -168,15 +168,18 @@ export default Ember.Component.extend({
                 'target-arrow-shape': 'triangle',
                 'opacity': 0.7
               })
-            .selector(':selected')
-              .css({
-                'background-color': 'orange',
-                'opacity': 1
-              })
             .selector('.faded')
               .css({
                 'opacity': 0.0,
                 'text-opacity': 0
+							})
+						.selector(':active')
+			        .css({
+			            'overlay-opacity': 0
+			        })
+						.selector('core') // just core properties
+							.css({
+								'active-bg-size': 0
         	}).update();
     },
     setup_graph_actions: function() {
