@@ -158,6 +158,8 @@ export default Ember.Component.extend({
             .selector('edge')
               .css({
                 'width': 6,
+								'line-color': '#8fb2cc',
+								'target-arrow-color': '#8fb2cc',
 								'border-color': '#39393a',
                 'target-arrow-shape': 'triangle',
                 'opacity': 1
