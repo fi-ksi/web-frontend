@@ -1,6 +1,7 @@
 import DS from "ember-data";
+import ResetScrollUnauthenticated from "../mixins/reset-scroll-unauthenticated";
 
-export default DS.Model.extend( {
+export default DS.Model.extend(ResetScrollUnauthenticated, {
     first_name: DS.attr("string"),
     last_name: DS.attr("string"),
     nick_name: DS.attr("string"),
