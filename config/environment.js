@@ -29,9 +29,9 @@ module.exports = function(environment) {
   };
 
   ENV["simple-auth"] = {
-        //authorizer: 'authenticator:basicauth',
         authorizer: 'simple-auth-authorizer:oauth2-bearer',
-        store: 'simple-auth-session-store:local-storage'
+        store: 'simple-auth-session-store:local-storage',
+        crossOriginWhitelist: ['http://localhost:3000']
       }
 
   ENV['simple-auth-oauth2'] = {

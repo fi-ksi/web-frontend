@@ -196,7 +196,7 @@ export default Ember.Component.extend({
 	        var name = target.data("name");
 	        var date = target.data("deadline");
 	        var text = target.data("tooltip") + "<br><br>" +
-	        	"<p class='graph-qtip-text inline'>Max.body:</p>" + target.data("max_score") + "<br>";
+	        	"<p class='graph-qtip-text inline'>Max.body: </p>" + target.data("max_score") + "<br>";
 			if(date) {
 				text += "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
 			}
