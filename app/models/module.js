@@ -19,7 +19,19 @@ export default DS.Model.extend( {
 		return this.get("type") === "sortable";
 	}),
 
+	name: DS.attr("string"),
 	description: DS.attr("string"),
+	state: DS.attr("string"),
+
+	is_blank: Ember.computed("state", function() {
+		return this.get("state") === "blank";
+	}),
+	is_correct: Ember.computed("state", function() {
+		return this.get("state") === "correct";
+	}),
+	is_incorrect: Ember.computed("state", function() {
+		return this.get("state") === "incorrect";
+	}),
 
 	// For general "file"
 	endpoint: DS.attr("string"),
