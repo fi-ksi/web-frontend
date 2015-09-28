@@ -209,24 +209,25 @@ export default Ember.Component.extend({
 	        self.get("cy").$('#' + id).qtip({
 	            content: {
 	                title: name,
-	                text: text
-	            },
-	            show: {
-	                event: false,
-	                ready: true,
-	                effect:false
+	                text: text,
+									button: true
 	            },
 	            position: {
 	                my: 'bottom center',
 	                at: 'top center',
 	                target: [x, y]
 	            },
-							hide: { event: 'mouseout',
-											when: 	{
-												event: 'inactive',
-												delay: 1
-											},
-											fixed: false
+							show: {
+									event: false,
+									ready: true,
+									effect:false
+							},
+							hide: {
+									event: 'mouseout',
+									when: 	{
+										event: 'inactive',
+									},
+									fixed: false
               },
 	            style: {
 	                classes: 'graph-qtip',
