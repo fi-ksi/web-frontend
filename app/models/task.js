@@ -20,27 +20,8 @@ export default DS.Model.extend( {
 	time_deadline: DS.attr("date"),
 	time_published: DS.attr("date"),
 
-	/*picture_locked: DS.attr("string"),
-	picture_active: DS.attr("string"),
-	picture_submitted: DS.attr("string"),
-	picture_finished: DS.attr("string"),*/
-
 	picture_base: DS.attr("string"),
 	picture_suffix: DS.attr("string"),
-
-	/*picture: Ember.computed("picture_locked", "picture_active", "picture_submitted",
-	 "picture_finished", "active", "submissions", "my_score", function() {
-	 	if(!this.get("active")) {
-	 		return this.get("picture_locked");
-	 	}
-	 	if(Ember.isEmpty(this.get("submissions"))) {
-	 		return this.get("picture_active");
-	 	}
-	 	if(!this.get("my_score")) {
-	 		return this.get("picture_submitted");
-	 	}
-		return this.get("picture_finished");
-	}),*/
 
 	picture: Ember.computed("picture_base", "picture_suffix", "active",
 	 "submissions", "my_score", function() {
@@ -48,12 +29,12 @@ export default DS.Model.extend( {
 	 		return this.get("picture_base") + "locked" + this.get("picture_suffix");
 	 	}
 	 	if(Ember.isEmpty(this.get("submissions"))) {
-	 		return this.get("picture_base") + "active" + this.get("picture_suffix");
+	 		return this.get("picture_base") + "base" + this.get("picture_suffix");
 	 	}
 	 	if(!this.get("my_score")) {
-	 		return this.get("picture_base") + "submitted" + this.get("picture_suffix");
+	 		return this.get("picture_base") + "correcting" + this.get("picture_suffix");
 	 	}
-		return this.get("picture_base") + "finished" + this.get("picture_suffix");
+		return this.get("picture_base") + "done" + this.get("picture_suffix");
 	}),
 
 	best_scores: DS.hasMany("score", { async: true}),
