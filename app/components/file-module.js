@@ -1,22 +1,37 @@
 import Ember from "ember";
+import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     general_error: undefined,
-    endpoint: function() {
-        return "/module/" + this.get("module.id") + "/submission";
-    }.observes("module.id"),
+    endpoint: Ember.computed("module.id", function() {
+        return "/module/" + this.get("module.id") + "/submit";
+    }),
     valid: false,
     files: undefined,
     actions: {
-        file_change: function(files) {
-            this.set("file_list", files);
-            this.set("files", [].slice.call(files).map(function(i) {return i.name;}));
+        file_list: function(files) {
+            this.set("files", files);
             this.set("valid", !Ember.isEmpty(files));
         },
         select_files: function() {
             Ember.$("#upload_" + this.get("module.id")).trigger('click');
+        },
+        submit: function() {
+            this.set("general_error", undefined);
+            if(this.get("valid")) {
+                this.get("f_input").send("upload");
+            } else {
+                this.set("general_error", "Nejsou vybrány žádné soubory!");
+            }
+        },
+        upload_finished: function() {
+            this.set("module.state", "correct");
+            this.sendAction("submit_done");
+        },
+        upload_failed: function(text, err) {
+            this.set("general_error", text + ": " + err);
         }
     },
     module_service: Ember.inject.service("module-service"),

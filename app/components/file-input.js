@@ -4,37 +4,41 @@ import InboundActions from "ember-component-inbound-actions/inbound-actions";
 import config from '../config/environment';
 
 export default EmberUploader.FileField.extend(InboundActions, {
-	url: function() {
+	url: Ember.computed("endpoint", function() {
 		return config["API_LOC"] + this.get("endpoint");
-	}.property("endpoint"),
+	}),
 	classNames: ["hide"],
 	attributeBindings: ["multiple", "accept"],
 	filesDidChange: function(files) {
-		var self = this;
+		var res = [];
 		for(var i = 0; i !== files.length; i++) {
 			var file = files.item(i).name;
-			console.log(file);
-			console.log(file.split(".").pop().toLowerCase());
+			res.push(file);
 		}
-		var uploader = EmberUploader.Uploader.create({
-			url: self.get("url")
-		});
-
-		uploader.on("didUpload", function() {
-			console.log("Upload finished");
-			self.sendAction("upload_finished");
-		});
-
-		uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
-			console.log("Upload canceled");
-			self.sendAction("upload_failed", textStatus, errorThrown);
-		});
-
-		if (!Ember.isEmpty(this.get("files"))) {
-			uploader.upload(this.get("files")[0]);
-		}
+		this.sendAction("file_list", res);
 	},
 	actions: {
-		
+		upload: function() {
+			var self = this;
+			var uploader = EmberUploader.Uploader.create({
+				url: self.get("url")
+			});
+
+			console.log("URL: ", self.get("url"));
+
+			uploader.on("didUpload", function() {
+				self.sendAction("upload_finished");
+			});
+
+			uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
+				console.log("Upload canceled");
+				self.sendAction("upload_failed", textStatus, errorThrown);
+			});
+
+			if (!Ember.isEmpty(this.get("files"))) {
+				uploader.upload(this.get("files"));
+			}
+		},
+
 	}
 });
