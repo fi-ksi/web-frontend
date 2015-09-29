@@ -96,7 +96,7 @@
         2,
         3
       ],
-      "my_score": 2,
+      "my_score": 1,
       "solution": "Přehledně vysvětlené řešení příkladu. Celý příklad spočíval v blabla",
       "submissions": [
         1,
@@ -1397,6 +1397,43 @@
       "tasks_count": 25
     }
   ],
-  "taskScores": [],
-  "userScores": []
+  "taskScores": [
+    {
+      "id": 1,
+      "reviewed_by": 1,
+      "thread": 2,
+      "score": 8,
+      "achievements": [
+        1,
+        2
+      ],
+      "score_table": [
+        {
+          "module_name": "Kvíz 1",
+          "is_corrected": true,
+          "manual_correction": true,
+          "max_score": 4,
+          "score": 4
+        },
+        {
+          "module_name": "Kvíz 2",
+          "is_corrected": false,
+          "manual_correction": false,
+          "max_score": 4,
+          "score": 4
+        }
+      ]
+    }
+  ],
+  "userScores": [
+    {
+      "id": 1,
+      "user": 1,
+      "achievements": [
+        1,
+        2
+      ],
+      "score": 12
+    }
+  ]
 }

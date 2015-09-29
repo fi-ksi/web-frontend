@@ -14,9 +14,9 @@
     {{#each model.best_scores as |score|}}
     <tr style="height:45px">
       <td class="numbering" style="text-align: center;"></td>
-      <td>{{score.user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
+      <td>{{#link-to "user-profile" score.user}}{{score.user.full_name}}{{/link-to}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
       <td>
-        {{#each score.user.achievements as |achievement|}}
+        {{#each score.achievements as |achievement|}}
           {{achievement-small model=achievement}}
         {{/each}}
       </td>

@@ -1,4 +1,4 @@
-{{#if model.my_score}} <!-- TODO ozivit -->
+{{#if model.my_score}}
 <div style="margin:20px">
   <div style="margin-top:30px">
     <h5>Skóre:</h5>
@@ -6,52 +6,62 @@
   </div>
 
 	<div class="progress" style="margin-top:20px">
-		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: {{progress_width}}%"><!-- TODO: max value = pocet max bodov z ulohy-->
-			{{model.my_score.score}}&nbsp;/{{model.max_score}}
+		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: {{progress_width}}%">
+			<b>{{model.my_score.score}}&nbsp;/{{model.max_score}}</b>
 		</div>
 	</div>
 
-  <div style="margin-top:30px">
-    <h5>Trofeje</h5>
-    <hr>
-  </div>
-
-  <div class="panel panel-achievements">
-    <div class="panel-body">
-      <!-- TODO add achievements -->
+  {{#if model.my_score.achievements}}
+    <div style="margin-top:30px">
+      <h5>Trofeje</h5>
+      <hr>
     </div>
-  </div>
 
-  <div style="margin-top:30px">
-    <h5>Výsledky</h5>
-    <hr>
-  </div>
+    <div class="panel panel-achievements">
+      <div class="panel-body">
+        {{#each model.my_score.achievements as |achievement|}}
+              {{achievement-small model=achievement}}
+            {{/each}}
+      </div>
+    </div>
+  {{/if}}
 
-  <table class="table table-striped table-hover-forum ">
-    <thead>
-      <tr style="height:45px">
-        <th style="text-align: center;">Název úlohy</th>
-        <th>Opravující</th>
-        <th style="text-align: center;">Body</th>
-        <th>Stav</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td style="text-align: center;">Kviz1</td> <!-- Jmeno ulohy -->
-          <td>Honza</td> <!-- opravujici -->
-          <td style="text-align: center;">2/2</td> <!-- body -->
-          <td>opraveno</td> <!-- stav -->
+  {{#if model.my_score}}
+    <div style="margin-top:30px">
+      <h5>Výsledky</h5>
+      <hr>
+    </div>
+
+    <table class="table table-striped table-hover-forum ">
+      <thead>
+        <tr style="height:45px">
+          <th style="text-align: center;">Název úlohy</th>
+          <th>Opravující</th>
+          <th style="text-align: center;">Body</th>
+          <th>Stav</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each model.my_score.score_table.table as |row|}}
+          <tr>
+            <td style="text-align: center;">{{row.module_name}}</td>
+            <td>{{if row.manual_correction model.my_score.reviewed_by.full_name "–"}}</td>
+            <td style="text-align: center;">{{#if row.is_corrected}}{{row.score}}/{{row.max_score}}{{else}}–{{/if}}</td>
+            <td>{{if row.is_corrected "Opraveno" "Neopraveno"}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
 
-  <div style="margin-top:50px">
-    <h5>Komentář ke tvému řešení:</h5>
-    <hr>
-  </div>
+  {{#if model.my_score.thread}}
+    <div style="margin-top:50px">
+      <h5>Komentář ke tvému řešení:</h5>
+      <hr>
+    </div>
 
-  {{thread-view thread=model.thread store=store}}
+    {{thread-view thread=model.my_score.thread store=store}}
+  {{/if}}
 </div>
 {{else}}
   {{info-general text="Tuto úlohu jsi zatím neodevzdal."}} <!-- TODO -->
