@@ -10,8 +10,8 @@ Router.map(function() {
   this.route('index',       { path: '/'});
   this.route('task',  { path: '/ulohy/:task_id'}, function() {
     this.route('statistics', { path: 'statistiky'});
-    this.route('submission', { path: 'odevzdani'});
     this.route('discussion', { path: 'diskuse'});
+    this.route('evaluation', { path: 'hodnoceni'});
     this.route('solution',   { path: 'reseni'});
     this.route('assignment', {path: ''});
   });
