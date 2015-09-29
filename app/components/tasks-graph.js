@@ -191,6 +191,11 @@ export default Ember.Component.extend({
 	        if(target.data("active")) {
 		        self.sendAction('assign', id);
 		    }
+			$(".qtip").remove();
+		});
+
+		this.get("cy").on('mouseout','node', function(event) {
+			$(".qtip").remove();
 		});
 
 		this.get("cy").on('mouseover','node', function(event){
@@ -209,8 +214,7 @@ export default Ember.Component.extend({
 	        self.get("cy").$('#' + id).qtip({
 	            content: {
 	                title: name,
-	                text: text,
-									button: true
+	                text: text
 	            },
 	            position: {
 	                my: 'bottom center',
@@ -222,13 +226,6 @@ export default Ember.Component.extend({
 									ready: true,
 									effect:false
 							},
-							hide: {
-									event: 'mouseout',
-									when: 	{
-										event: 'inactive',
-									},
-									fixed: false
-              },
 	            style: {
 	                classes: 'graph-qtip',
 	                tip: false
