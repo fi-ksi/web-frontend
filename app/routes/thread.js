@@ -4,13 +4,13 @@ import config from '../config/environment';
 
 export default Ember.Route.extend(ResetScroll, {
 	model: function(params) {
-		this.set("thread_id", params["thread_id"]);
 		return this.store.find("thread", params["thread_id"]);
 	},
 	afterModel: function() {
+		console.log("After model called!");
 		// Non-system hack
 		Ember.$.ajax({
-            url: config.API_LOC + "/threads/" + this.get("thread_id"),
+            url: config.API_LOC + "/threads/" + this.modelFor(this.routeName).get("id"),
             data: {},
             contentType: "application/json",
             type: 'PUT',
@@ -21,6 +21,5 @@ export default Ember.Route.extend(ResetScroll, {
 	},
 	title: function(tokens) {
 		return "KSI: " + tokens.pop();
-	},
-	thread_id: undefined
+	}
 });
