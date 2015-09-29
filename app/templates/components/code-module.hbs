@@ -2,9 +2,6 @@
     <div class="row" style="margin-left:0px">
         {{module.description}}
     </div>
-    {{#if general_error}}
-        {{warning-general text=general_error}}
-    {{/if}}
     <button class="btn btn-primary btn-task inline" style="margin-top:20px" {{action "toggle_info"}}>{{info_button_text}}</button>
 
     <div style="margin-top:20px">
@@ -15,7 +12,7 @@
 
     <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
         <label for="threadName">Editor kódu</label>
-        {{code-editor content=module.code  id=(construct-id "editor_module" id)}}
+        {{code-editor content=module.code  id=(construct-id "editor_module" module.id)}}
     </div>
     <div class="row" style="margin-left:0px">
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "run"}}>Spustit</button>
@@ -24,6 +21,9 @@
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
     </div>
+    {{#if general_error}}
+        {{warning-general text=general_error}}
+    {{/if}}
     {{#if script_text_output}}
         <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
             <label>Výstup kódu</label>

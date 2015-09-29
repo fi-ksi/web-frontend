@@ -1,0 +1,30 @@
+<div class="panel panel-module-{{module-type module.state}}" style="margin-left:0px">
+  <div class="panel-heading panel-heading-module-{{module-type module.state}}">
+      {{module.name}}
+      {{#if module.is_correct}}
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      {{/if}}
+      {{#if module.is_incorrect}}
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      {{/if}}
+  </div>
+  <div class="panel-body">
+    {{#if show}}
+      {{#if module.is_programming}}
+        {{code-module module=module id=module.id submit_done="submit_done" actionReceiver=module_logic}}
+      {{/if}}
+      {{#if module.is_quiz}}
+        {{quiz-module module=module id=module.id result="result" error="error"}}
+      {{/if}}
+      {{#if module.is_general}}
+        {{file-module module=module id=module.id result="result" error="error"}}
+      {{/if}}
+      {{#if module.is_sortable}}
+        {{sortable-module module=module id=module.id result="result" error="error"}}
+      {{/if}}
+    {{/if}}
+    <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "trigger"}}>
+      {{#if show}} Odevzdat {{else}} Zkusit odevzdat znovu {{/if}}
+    </button>
+  </div>
+</div>

@@ -1022,6 +1022,8 @@
     },
     {
       "id": 1,
+      "name": "Malý kvíz!",
+      "state": "incorrect",
       "description": "A tady je malý kvíz!",
       "type": "quiz",
       "questions": [
@@ -1048,12 +1050,16 @@
     {
       "id": 2,
       "type": "general",
+      "name": "Odevzdávátko",
+      "state": "blank",
       "description": "A tady odevzdej své textové řešení. Nezapomeň na pseudokód!"
     },
     {
       "id": 3,
       "description": "<p>Seřaď!</p>",
       "type": "sortable",
+      "name": "A jdeme řadit",
+      "state": "blank",
       "sortable_list": {
         "fixed": [
           {

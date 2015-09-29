@@ -1,13 +1,15 @@
 import Ember from "ember";
+import InboundActions from 'ember-component-inbound-actions/inbound-actions';
+import config from '../config/environment';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
             var self = this;
-            Ember.$("#load_input_" + this.get("id")).change(function(evt) {
+            Ember.$("#load_input_" + this.get("module.id")).change(function(evt) {
                 var f = evt.target.files[0];
 
                 if(f.name.split(".").pop() !== "py") {
@@ -27,30 +29,41 @@ export default Ember.Component.extend({
             });
         });
     },
-    module_service: Ember.inject.service("module-service"),
-    manage_submit: Ember.on("init", function() {
-        this.get("module_service").on("submit", () => {
+    get_editor: function() {
+        return window.ace.edit("editor_module_" + this.get("module.id"));
+    },
+    actions: {
+        submit: function() {
+            var self = this;
             this.set("general_error", undefined);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
-                this.sendAction("result", "module_" + this.get("module").id, { result: content});
+                Ember.$.ajax({
+                    url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
+                    data: JSON.stringify({ content: content }),
+                    contentType: "application/json",
+                    type: 'POST',
+                    success: function(data) {
+                        if(result in data) {
+                            self.set("module.state", data.result);
+                            self.sendAction("submit_done");
+                        }
+                        else {
+                            self.set("general_error", "Špatná odpověď serveru");
+                        }
+                    },
+                    error: function(j, e, error) {
+                        self.set("general_error", error);
+                    }
+                });
             } else {
-                this.sendAction("error", "module_" + this.get("module").id);
                 if(content === this.get("module.default_code")) {
                     this.set("general_error", "Neprovedl jsi žádné změny na kódu");
                 } else {
                     this.set("general_error", "Nelze odevzdat prázdný kód!");
                 }
             }
-        });
-    }),
-    release_submit: Ember.on('willDestroyElement', function () {
-        this.get('module_service').off('submit', this);
-    }),
-    get_editor: function() {
-        return window.ace.edit("editor_module_" + this.get("id"));
-    },
-    actions: {
+        },
         toggle_info: function() {
             this.set("show_info", !this.get("show_info"));
             if(this.get("show_info")) {
@@ -69,7 +82,7 @@ export default Ember.Component.extend({
             // ToDo: Depends on backend
         },
         load: function() {
-            Ember.$("#load_input_" + this.get("id")).trigger('click');
+            Ember.$("#load_input_" + this.get("module.id")).trigger('click');
         },
         save: function() {
             var blob = new Blob([this.get_editor().getValue()], {type: "text/plain;charset=utf-8"});

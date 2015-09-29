@@ -7,46 +7,10 @@
   </div>
   <div style="margin-left:20px">
     {{#if opened}}
-      {{#if session.isAuthenticated}}
+      {{#if true}}
         {{#each model.modules as |module index|}}
-          <hr>
-          <div class="panel panel-module-{{module.state}}" style="margin-left:0px">
-            <div class="panel-heading panel-heading-module-{{module.state}}">
-                {{module.name}}
-                {{#if module.is_correct}}
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                {{/if}}
-                {{#if module.is_incorrect}}
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                {{/if}}
-            </div>
-            <div class="panel-body">
-              {{#unless module.is_correct}}
-                {{#if module.is_programming}}
-                  {{code-module module=module id=module.id result="result" error="error"}}
-                {{/if}}
-                {{#if module.is_quiz}}
-                  {{quiz-module module=module id=module.id result="result" error="error"}}
-                {{/if}}
-                {{#if module.is_general}}
-                  {{file-module module=module id=module.id result="result" error="error"}}
-                {{/if}}
-                {{#if module.is_sortable}}
-                  {{sortable-module module=module id=module.id result="result" error="error"}}
-                {{/if}}
-                {{#if module.is_text}}
-                  {{plaintext-module module=module result="result"}}
-                {{/if}}
-              {{/unless}}
-              <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "trigger" module.id}}>
-                {{#if module.is_correct}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}
-              </button>
-          </div>
-        </div>
+          {{module-wrap module=module}}
         {{/each}}
-        <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "submit"}}>{{#if submit_error}}
-          Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}
-        </button>
       {{else}}
           {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
       {{/if}}

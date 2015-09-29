@@ -3,7 +3,10 @@ import Ember from "ember";
 
 export default DS.Transform.extend({
 	serialize: function(value) {
-		return value.get("questions");
+		if(value) {
+			return value.get("questions");
+		}
+		return {};
 	},
 	deserialize: function(value) {
 		return Ember.Object.create({

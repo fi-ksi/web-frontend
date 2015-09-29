@@ -1,16 +1,11 @@
 import Ember from "ember";
 
-export default Ember.Helper.helper(function(module) {
-	console.log(module.length);
-	module = module[0];
+export default Ember.Helper.helper(function(type) {
+	type = type[0];
 	var ret = "blank";
-	console.log("-----------------------");
-	console.log(module);
-  	console.log(module.get("state"));
-	console.log(module.get("is_correct"));
-	if (module.get("is_correct")) {
+	if (type === "correct") {
 		ret = "correct";
-	} else if (module.get("is_incorrect")) {
+	} else if (type === "incorrect") {
 		ret = "incorrect";
 	}
 	return ret;
