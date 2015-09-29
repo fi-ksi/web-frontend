@@ -1,6 +1,8 @@
 import Ember from "ember";
+import InboundActions from 'ember-component-inbound-actions/inbound-actions';
+import config from '../config/environment';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     didInsertElement: function() {
@@ -9,24 +11,23 @@ export default Ember.Component.extend({
             
         }); 
     },
-    module_service: Ember.inject.service("module-service"),
-    manage_submit: Ember.on("init", function() {
-        this.get("module_service").on("submit", () => {
+    actions: {
+        submit: function() {
             var self = this;
             var valid = true;
             var response = [];
             this.get("module.questions.questions").forEach(function(question, index) {
-                var checked = Ember.$(".group_" + self.get("id") + "_" + index).filter(function() {
+                var checked = Ember.$(".group_" + self.get("module.id") + "_" + index).filter(function() {
                     return Ember.$(this).is(":checked");
                 });
                 if(checked.length === 0) {
                     // there aren't checked items!
                     valid = false;
-                    console.log("Invalid! " + "#w_" + self.get("id") + "_" + index);
-                    Ember.$("#w_" + self.get("id") + "_" + index).removeClass("hide");
+                    console.log("Invalid! " + "#w_" + self.get("module.id") + "_" + index);
+                    Ember.$("#w_" + self.get("module.id") + "_" + index).removeClass("hide");
                     response.push(undefined);
                 } else {
-                    Ember.$("#w_" + self.get("id") + "_" + index).addClass("hide");
+                    Ember.$("#w_" + self.get("module.id") + "_" + index).addClass("hide");
                     var c = [];
                     checked.each(function() {
                         c.push(Ember.$(this).attr("id").split("_").pop());
@@ -34,15 +35,26 @@ export default Ember.Component.extend({
                     response.push(c);
                 }
             });
-            if(!valid) {
-                this.sendAction("error", "module_" + this.get("module").id);
-                return;
+            if(valid) {
+                Ember.$.ajax({
+                    url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
+                    data: JSON.stringify({ content: response }),
+                    contentType: "application/json",
+                    type: 'POST',
+                    success: function(data) {
+                        if("result" in data) {
+                            self.set("module.state", data.result);
+                            self.sendAction("submit_done");
+                        }
+                        else {
+                            self.set("general_error", "Špatná odpověď serveru");
+                        }
+                    },
+                    error: function(j, e, error) {
+                        self.set("general_error", error);
+                    }
+                });
             }
-            
-            this.sendAction("result", "module_" + this.get("module").id, {solution: response});
-        });
-    }),
-    release_submit: Ember.on('willDestroyElement', function () {
-        this.get('module_service').off('submit', this);
-    })
+        }
+    }
 });
