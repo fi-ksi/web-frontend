@@ -1,6 +1,8 @@
 import Ember from "ember";
+import InboundActions from 'ember-component-inbound-actions/inbound-actions';
+import config from '../config/environment';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(InboundActions, {
     tagName: "div",
     classNames: ["controls row"],
     didInsertElement: function() {
@@ -8,9 +10,9 @@ export default Ember.Component.extend({
         Ember.run.scheduleOnce('afterRender', this, function(){
             var self = this;
             // Documentation: https://github.com/voidberg/html5sortable
-            var id = "#sortable" + this.get("id");
+            var id = "#sortable" + this.get("module.id");
             Ember.$(id + "a, " + id + "b").sortable({
-                connectWith: ".connect" + this.get("id")
+                connectWith: ".connect" + this.get("module.id")
             }).bind('sortstop', function() {
                 if (self.get("general_error") && Ember.$(id + "b li").length !== 0) {
                     self.set("general_error", "Musíš použít všechny řádky kódu!");
@@ -21,16 +23,13 @@ export default Ember.Component.extend({
             });
         });
     },
-    general_error: undefined,
-    module_service: Ember.inject.service("module-service"),
-    manage_submit: Ember.on("init", function() {
-        var self = this;
-        this.get("module_service").on("submit", () => {
+    actions: {
+        submit: function() {
+            var self = this;
             // Returns object with the solution or undefined if cannot submit
-            var id = "#sortable" + self.get("id");
+            var id = "#sortable" + self.get("module.id");
             if (Ember.$(id + "b li").length !== 0) {
                 self.set("general_error", "Musíš použít všechny řádky kódu!");
-                self.sendAction("error", "module_" + this.get("module.id"));
                 return;
             }
             self.set("general_error", undefined);
@@ -41,11 +40,25 @@ export default Ember.Component.extend({
                 result.push(Ember.$(this).attr("id"));
             });
 
-            self.sendAction("result", "module_" + self.get("module.id"), {solution: result});
-            console.log("Action sent!");
-        });
-    }),
-    release_submit: Ember.on('willDestroyElement', function () {
-        this.get('module_service').off('submit', this);
-    })
+            Ember.$.ajax({
+                url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
+                data: JSON.stringify({ content: result }),
+                contentType: "application/json",
+                type: 'POST',
+                success: function(data) {
+                    if("result" in data) {
+                        self.set("module.state", data.result);
+                        self.sendAction("submit_done");
+                    }
+                    else {
+                        self.set("general_error", "Špatná odpověď serveru");
+                    }
+                },
+                error: function(j, e, error) {
+                    self.set("general_error", error);
+                }
+            });
+        }
+    },
+    general_error: undefined
 });

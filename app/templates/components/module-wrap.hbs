@@ -20,7 +20,7 @@
         {{file-module module=module submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_sortable}}
-        {{sortable-module module=module id=module.id result="result" error="error"}}
+        {{sortable-module module=module submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
     {{/if}}
     <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "trigger"}}>
