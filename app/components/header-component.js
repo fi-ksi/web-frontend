@@ -13,13 +13,19 @@ export default Ember.Component.extend({
 	},
 	actions: {
 		logout: function() {
+			var self = this;
 			Ember.$.ajax({
                 url: config.API_LOC + "/logout",
                 data: {},
                 contentType: "application/json",
-                type: 'GET'
+                type: 'GET',
+                success: function() {
+                	self.get("session").invalidate();
+                },
+                error: function() {
+                	self.get("session").invalidate();
+                }
             });
-			this.get('session').invalidate();
 		}
 	},
 	resizeBody: function() {
