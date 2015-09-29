@@ -1384,5 +1384,17 @@
       "tasks_num": 1,
       "achievements": []
     }
+  ],
+  "resultScores": [
+    {
+      "id": 1,
+      "user": 1,
+      "achievements": [
+        1,
+        2
+      ],
+      "score": 42,
+      "tasks_count": 25
+    }
   ]
 }

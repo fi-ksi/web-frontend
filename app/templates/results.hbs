@@ -12,17 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model as |user|}}
+      {{#each model.results as |result|}}
         <tr style="height:45px">
   				<td class="numbering" style="text-align: center;"></td>
-          <td>{{user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
+          <td>{{result.user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
           <td>
-            {{#each user.achievements as |achievement|}}
+            {{#each result.achievements as |achievement|}}
     					{{achievement-small model=achievement}}
             {{/each}}
   				</td>
-          <td style="text-align: center;">{{user.score}}</td> <!-- body -->
-  				<td style="text-align: center;">{{user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
+          <td style="text-align: center;">{{result.score}}</td> <!-- body -->
+  				<td style="text-align: center;">{{result.tasks_count}}</td> <!-- pocet vyriesenych uloh -->
         </tr>
       {{/each}}
     </tbody>
