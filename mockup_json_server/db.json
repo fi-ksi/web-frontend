@@ -1396,5 +1396,7 @@
       "score": 42,
       "tasks_count": 25
     }
-  ]
+  ],
+  "taskScores": [],
+  "userScores": []
 }

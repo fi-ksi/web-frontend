@@ -37,7 +37,6 @@ export default DS.Model.extend( {
 		return this.get("picture_base") + "done" + this.get("picture_suffix");
 	}),
 
-	best_scores: DS.hasMany("score", { async: true}),
-	my_score: DS.belongsTo("score", {async: true, inverse:null}),
-	submissions: DS.hasMany("submission", { async: true, inverse:null})
+	best_scores: DS.hasMany("user-score", { async: true}), // Top 5
+	my_score: DS.belongsTo("task-score", {async: true, inverse:null}) // Complete review
 });
