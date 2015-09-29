@@ -41,7 +41,7 @@ module.exports = function(environment) {
     serverTokenEndpoint: 'http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/v1/oauth2/auth'
   };
 
-  if (environment === 'local_dev') {
+  if (environment === 'local_dev' || environment === 'mockup_dev') {
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'http://localhost:3000/v1/oauth2/auth'
     };
