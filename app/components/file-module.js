@@ -6,7 +6,7 @@ export default Ember.Component.extend(InboundActions, {
     classNames: [],
     general_error: undefined,
     endpoint: Ember.computed("module.id", function() {
-        return "/module/" + this.get("module.id") + "/submit";
+        return "/modules/" + this.get("module.id") + "/submit";
     }),
     valid: false,
     files: undefined,
