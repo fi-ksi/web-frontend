@@ -191,11 +191,11 @@ export default Ember.Component.extend({
 	        if(target.data("active")) {
 		        self.sendAction('assign', id);
 		    }
-			$(".qtip").remove();
+			Ember.$(".qtip").remove();
 		});
 
-		this.get("cy").on('mouseout','node', function(event) {
-			$(".qtip").remove();
+		this.get("cy").on('mouseout','node', function() {
+			Ember.$(".qtip").remove();
 		});
 
 		this.get("cy").on('mouseover','node', function(event){

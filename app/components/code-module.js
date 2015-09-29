@@ -44,7 +44,7 @@ export default Ember.Component.extend(InboundActions, {
                     contentType: "application/json",
                     type: 'POST',
                     success: function(data) {
-                        if(result in data) {
+                        if("result" in data) {
                             self.set("module.state", data.result);
                             self.sendAction("submit_done");
                         }

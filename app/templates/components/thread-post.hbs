@@ -3,7 +3,7 @@
         <img class="media-object" src="{{model.author.profile_picture}}"> <!-- foto autora prispevku -->
     </div>
     <div class="media-body">
-      <div class="discussion-caption">{{model.author.full_name}}, řešitel, {{date-and-time model.published_at 'cs'}}{{#if model.is_new}}, nové{{/if}}</div> <!-- meno, status, cas-->
+      <div class="discussion-caption">{{model.author.full_name}}, {{if model.author.is_organisator "organizátor" "řešitel"}}, {{date-and-time model.published_at 'cs'}}{{if model.is_new ", nové"}}</div> <!-- meno, status, cas-->
         {{{model.body}}}
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
