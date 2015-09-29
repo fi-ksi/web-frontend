@@ -1,4 +1,5 @@
 import Ember from "ember";
+import config from '../config/environment';
 
 export default Ember.Component.extend({
 	didInsertElement: function() {
@@ -11,19 +12,13 @@ export default Ember.Component.extend({
 	  	});
 	},
 	actions: {
-		login: function() {
-			console.log("Action triggered!");
-			var _this = this;
-			var data = this.getProperties('identification', 'password');
-			this.set('password', "");
-			this.get('session').authenticate('authenticator:basicauth', data).then(function() {
-				Ember.$('#login-modal').modal('hide');
-			}, function(error) {
-				console.log(error);
-				_this.set('error_message', error);
-			});
-		},
 		logout: function() {
+			Ember.$.ajax({
+                url: config.API_LOC + "/logout",
+                data: {},
+                contentType: "application/json",
+                type: 'GET'
+            });
 			this.get('session').invalidate();
 		}
 	},

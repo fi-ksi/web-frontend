@@ -17,9 +17,6 @@ export default Ember.Controller.extend( {
 				_this.set('login_error_message', error);
 			});
 		},
-		logout: function() {
-			this.get('session').invalidate();
-		},
 		feedback: function() {
 			console.log("Sending feedback!");
 			var self = this;
