@@ -1014,6 +1014,8 @@
     {
       "id": 0,
       "type": "programming",
+      "name": "První programovací úloha",
+      "state": "correct",
       "description": "A tady je naše první programovací úloha. Do toho!",
       "code": "print(\"Hello universe!\")",
       "default_code": "print(\"Hello world!\")"

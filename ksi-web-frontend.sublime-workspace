@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"pic",
+				"picture_suffix"
+			],
+			[
 				"pass",
 				"password_error"
 			],
@@ -34,10 +38,6 @@
 			[
 				"picture",
 				"picture_finished"
-			],
-			[
-				"pic",
-				"picture_submitted"
 			],
 			[
 				"auth",
@@ -520,6 +520,14 @@
 	"buffers":
 	[
 		{
+			"file": "app/templates/settings/personal.hbs",
+			"settings":
+			{
+				"buffer_size": 4619,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "app/components/file-module.js",
 			"settings":
 			{
@@ -528,11 +536,30 @@
 			}
 		},
 		{
+			"contents": "<div style=\"margin-bottom:30px\">\n  <div style=\"margin:20px\">\n     {{{model.body}}}\n  </div>\n  <div style=\"margin:20px\">\n    <a href=\"/tasks/{{model.id}}/assignment/pdf\"><button class=\"btn btn-task btn-primary\">Stáhnout pdf</button></a>\n  </div>\n  <div style=\"margin-left:20px\">\n    {{#if opened}}\n      {{#if session.isAuthenticated}}\n        {{#if show_submission}}\n          {{#each model.modules as |module index|}}\n            <hr>\n            <div class=\"panel panel-module-{{module-type module}}\" style=\"margin-left:0px\">\n              <div class=\"panel-heading panel-heading-module-{{module-type module}}\">\n                  {{module.name}}\n                  {{#if module.is_correct}}\n                    <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>\n                  {{/if}}\n                  {{#if module.is_incorrect}}\n                    <span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>\n                  {{/if}}\n              </div>\n              <div class=\"panel-body\">\n              {{#if module.is_programming}}\n                {{code-module module=module id=module.id result=\"result\" error=\"error\"}}\n              {{/if}}\n              {{#if module.is_quiz}}\n                {{quiz-module module=module id=module.id result=\"result\" error=\"error\"}}\n              {{/if}}\n              {{#if module.is_general}}\n                {{file-module module=module id=module.id result=\"result\" error=\"error\"}}\n              {{/if}}\n              {{#if module.is_sortable}}\n                {{sortable-module module=module id=module.id result=\"result\" error=\"error\"}}\n              {{/if}}\n              {{#if module.is_text}}\n                {{plaintext-module module=module result=\"result\"}}\n              {{/if}}\n              <button class=\"btn btn-task btn-primary\" style=\"margin-top:20px\" {{action \"submit\"}}>\n                {{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}} <!-- TODO doladit button -->\n              </button>\n            </div>\n          </div>\n          {{/each}}\n            <button class=\"btn btn-task btn-primary\" style=\"margin-top:20px\" {{action \"submit\"}}>{{#if submit_error}} Zkusit odevzdat znovu {{else}}Odevzdat{{/if}}</button>\n          {{else}}\n            {{info-general text=\"Tuto úlohu jsi už odevzdal.\"}}\n            <button class=\"btn btn-task btn-primary\" {{action \"new_submit\"}}>Znovu odevzdat úlohu</button>\n          {{/if}}\n      {{else}}\n          {{warning-login text=\"Úlohu nemůžeš odevzdat dokud se nepřihlásíš!\"}}\n      {{/if}}\n    {{else}}\n      {{warning-general disable_warning=true text=\"Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy.\"}}\n    {{/if}}\n  </div>\n</div>\n",
 			"file": "app/templates/task/assignment.hbs",
+			"file_size": 2942,
+			"file_write_time": 130879489874789722,
 			"settings":
 			{
-				"buffer_size": 2040,
+				"buffer_size": 2790,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mockup_json_server/db.json",
+			"settings":
+			{
+				"buffer_size": 38966,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/task.js",
+			"settings":
+			{
+				"buffer_size": 1452,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -560,10 +587,13 @@
 			}
 		},
 		{
+			"contents": "import Ember from \"ember\";\nimport UserSettings from \"../mixins/user-settings\";\n\nexport default Ember.Controller.extend(UserSettings, {\n    global_error: undefined,\n    global_info: undefined,\n    actions: {\n    	upload_pic: function() {\n    		Ember.$(\"#picture_input\").trigger('click');\n    	},\n    	upload_finished: function() {\n    		// ToDo: Reload picture!\n            alert(\"Obrázek změnen!\");\n    	},\n    	upload_failed: function(status, error) {\n    		alert(\"Nepodařilo se nahrát obrázek: \" + status + \" \" + error);\n    	}\n    }\n});\n",
 			"file": "app/controllers/settings.js",
+			"file_size": 1126,
+			"file_write_time": 130878599437147707,
 			"settings":
 			{
-				"buffer_size": 1074,
+				"buffer_size": 540,
 				"line_ending": "Windows"
 			}
 		},
@@ -600,20 +630,28 @@
 			}
 		},
 		{
-			"contents": "Searching 185 files for \"general-error\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"root_posts\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\post.js:\n    6  export default DS.Model.extend( {\n    7  	author: DS.belongsTo(\"user\", {async: true}),\n    8: 	thread: DS.belongsTo(\"thread\", {async: true, inverse: \"root_posts\"}),\n    9  	published_at: DS.attr(\"date\"),\n   10  	body: DS.attr(\"string\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\thread.js:\n    6  export default DS.Model.extend( {\n    7  	title: DS.attr(\"string\"),\n    8: 	root_posts: DS.hasMany(\"post\", {async: true}),\n    9  	unread: DS.attr(\"number\"),\n   10  	posts_count: DS.attr(\"number\")\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\thread-view.hbs:\n    1  <ul class=\"media-list\" style=\"margin:20px\">\n    2: 	{{#each thread.root_posts as |post|}}\n    3  		{{thread-post model=post}}\n    4  	{{/each}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\thread.hbs:\n    7  	<div style=\"margin:40px;\">\n    8  		<h2>{{model.title}}!</h2>\n    9: 		{{#each model.root_posts as |post|}}\n   10  			{{thread-post model=post store=store}}\n   11  		{{/each}}\n\n4 matches across 4 files\n\n\nSearching 186 files for \"is-equial\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"inject\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\app.js:\n    6  var App;\n    7  \n    8: Ember.MODEL_FACTORY_INJECTIONS = true;\n    9  \n   10  App = Ember.Application.extend({\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\code-module.js:\n   28          });\n   29      },\n   30:     module_service: Ember.inject.service(\"module-service\"),\n   31      manage_submit: Ember.on(\"init\", function() {\n   32          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\file-module.js:\n   14          }\n   15      },\n   16:     module_service: Ember.inject.service(\"module-service\"),\n   17      manage_submit: Ember.on(\"init\", function() {\n   18          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\plaintext-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\quiz-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\sortable-module.js:\n   23      },\n   24      general_error: undefined,\n   25:     module_service: Ember.inject.service(\"module-service\"),\n   26      manage_submit: Ember.on(\"init\", function() {\n   27          var self = this;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\controllers\\task\\assignment.js:\n    3  \n    4  export default Ember.Controller.extend({\n    5: 	module_service: Ember.inject.service('module-service'),\n    6  	resubmit: false,\n    7  	opened: Ember.computed(\"model.time_deadline\", function() {\n\n7 matches across 7 files\n",
+			"contents": "Searching 185 files for \"general-error\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"root_posts\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\post.js:\n    6  export default DS.Model.extend( {\n    7  	author: DS.belongsTo(\"user\", {async: true}),\n    8: 	thread: DS.belongsTo(\"thread\", {async: true, inverse: \"root_posts\"}),\n    9  	published_at: DS.attr(\"date\"),\n   10  	body: DS.attr(\"string\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\thread.js:\n    6  export default DS.Model.extend( {\n    7  	title: DS.attr(\"string\"),\n    8: 	root_posts: DS.hasMany(\"post\", {async: true}),\n    9  	unread: DS.attr(\"number\"),\n   10  	posts_count: DS.attr(\"number\")\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\thread-view.hbs:\n    1  <ul class=\"media-list\" style=\"margin:20px\">\n    2: 	{{#each thread.root_posts as |post|}}\n    3  		{{thread-post model=post}}\n    4  	{{/each}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\thread.hbs:\n    7  	<div style=\"margin:40px;\">\n    8  		<h2>{{model.title}}!</h2>\n    9: 		{{#each model.root_posts as |post|}}\n   10  			{{thread-post model=post store=store}}\n   11  		{{/each}}\n\n4 matches across 4 files\n\n\nSearching 186 files for \"is-equial\"\n\n0 matches across 0 files\n\n\nSearching 186 files for \"inject\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\app.js:\n    6  var App;\n    7  \n    8: Ember.MODEL_FACTORY_INJECTIONS = true;\n    9  \n   10  App = Ember.Application.extend({\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\code-module.js:\n   28          });\n   29      },\n   30:     module_service: Ember.inject.service(\"module-service\"),\n   31      manage_submit: Ember.on(\"init\", function() {\n   32          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\file-module.js:\n   14          }\n   15      },\n   16:     module_service: Ember.inject.service(\"module-service\"),\n   17      manage_submit: Ember.on(\"init\", function() {\n   18          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\plaintext-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\quiz-module.js:\n   10          }); \n   11      },\n   12:     module_service: Ember.inject.service(\"module-service\"),\n   13      manage_submit: Ember.on(\"init\", function() {\n   14          this.get(\"module_service\").on(\"submit\", () => {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\sortable-module.js:\n   23      },\n   24      general_error: undefined,\n   25:     module_service: Ember.inject.service(\"module-service\"),\n   26      manage_submit: Ember.on(\"init\", function() {\n   27          var self = this;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\controllers\\task\\assignment.js:\n    3  \n    4  export default Ember.Controller.extend({\n    5: 	module_service: Ember.inject.service('module-service'),\n    6  	resubmit: false,\n    7  	opened: Ember.computed(\"model.time_deadline\", function() {\n\n7 matches across 7 files\n\n\nSearching 191 files for \"profile\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\adapters\\application.js:\n   10  // Hack for singleton\n   11  var inflector = Ember.Inflector.inflector;\n   12: inflector.uncountable('profile');\n   13  inflector.uncountable('settings');\n   14  \n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\authenticators\\basicauth.js:\n   19              console.log(data);\n   20              return Ember.$.ajax({\n   21:                 url:         \"http://localhost:3000/profile\",\n   22                  type:        'GET',\n   23                  headers:    {\n   ..\n   25                  }\n   26              }).then(function(response) {\n   27:                 if(response.profile && response.profile[0].signed_in) {\n   28                  	console.log(\"Resolved1\");\n   29:                     console.log(response.profile);\n   30                      resolve(response);\n   31                  }\n   32                  else {\n   33:                 	console.log(response.profile[0]);\n   34                  	console.log(\"Rejected2\");\n   35                      reject(\"Špatné uživatelské jméno nebo heslo\");\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\picture-upload.js:\n    4  \n    5  export default EmberUploader.FileField.extend(InboundActions, {\n    6: 	url: \"/profile/picture\",\n    7  	supported_ext: [\"jpg\", \"jpeg\", \"png\", \"gif\"],\n    8  	classNames: [\"hide\"],\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\controllers\\forum.js:\n   34              thread.save().then(function() {\n   35                  var post = self.store.createRecord(\"post\", {\n   36:                     author: self.get(\"session.profile.id\"),\n   37                      body: self.get(\"thread_content\"),\n   38                      thread: thread\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\controllers\\settings\\personal.js:\n   32  \n   33              Ember.$.ajax({\n   34:                 url: config.API_LOC + \"/profile\",\n   35                  data: JSON.stringify(obj),\n   36                  contentType: \"application/json\",\n   ..\n   41                          self.set(\"global_info\", undefined);\n   42                      }), 3000);\n   43:                     // ToDo: Reload profile\n   44                  },\n   45                  error: function(j, e, error) {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\initializers\\custom-session.js:\n    8        setCurrentUser: function() {\n    9          var self = this;\n   10:         return container.lookup(\"service:store\").find(\"profile\", \"\").then(function(user) {\n   11              self.set(\"current_user\", user);\n   12              console.log(user);\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\instance-initializers\\custom-session.js:\n    8        setCurrentUser: function() {\n    9          var self = this;\n   10:         return instance.container.lookup(\"service:store\").find(\"profile\", \"\").then(function(user) {\n   11              self.set(\"current_user\", user);\n   12              console.log(user);\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\organisator.js:\n   16          return this.get(\"first_name\") + ' \"' + this.get(\"nick_name\") + '\" ' + this.get(\"last_name\");\n   17      }),\n   18:     profile_picture: DS.attr(\"string\"),\n   19      email: DS.attr(\"string\"),\n   20      phone: DS.attr(\"string\")\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\profile.js:\n    3  \n    4  export default DS.Model.extend( {\n    5: 	// Relevant only if displaing user profile\n    6  	signed_in: DS.attr(\"boolean\", {default: false}),\n    7  \n    .\n   17      }),\n   18  \n   19: 	profile_picture: DS.attr(\"string\"),\n   20  	short_info: DS.attr(\"string\"),\n   21  	email: DS.attr(\"string\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\registration.js:\n    6      nick_name: DS.attr(\"string\"),\n    7  \n    8:     profile_pic: DS.attr(\"string\"),\n    9      short_info: DS.attr(\"string\"),\n   10      email: DS.attr(\"string\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\models\\user.js:\n   13          return this.get(\"first_name\") + ' \"' + this.get(\"nick_name\") + '\" ' + this.get(\"last_name\");\n   14      }),\n   15:     profile_picture: DS.attr(\"string\"),\n   16      short_info: DS.attr(\"string\"),\n   17      is_organisator: DS.attr(\"boolean\"),\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\router.js:\n   21    this.route('thread',      { path: '/forum/:thread_id'});\n   22    this.route('about',         { path: '/o-ksi'});\n   23:   this.route('profile',     { path: '/profil'});\n   24:   this.route('user-profile',{ path: '/profil/:profile_id'});\n   25    this.route('registration',{ path: '/registrace'});\n   26    this.route('articles',    { path: '/novinky'});\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\routes\\forgot-password.js:\n    4  export default Ember.Route.extend(ResetScroll, {\n    5  	model: function() {\n    6: 		/*var profile = this.store.createRecord('profile');\n    7: 		return profile;*/\n    8  		return {};\n    9  	},\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\routes\\profile.js:\n    4  export default Ember.Route.extend(ResetScrollProtected, {\n    5      model: function(params) {\n    6:     	if(\"profile_id\" in params) {\n    7:     		return this.store.find(\"user\", params[\"profile_id\"]);\n    8      	}\n    9      	console.log(\"Returning data from authentication\");\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\routes\\registration.js:\n    4  export default Ember.Route.extend(ResetScrollUnauthenticated, {\n    5  	model: function() {\n    6: 		/*var profile = this.store.createRecord('profile');\n    7: 		return profile;*/\n    8  		return {};\n    9  	},\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\routes\\user-profile.js:\n    4  export default Ember.Route.extend(ResetScroll, {\n    5      model: function(params) {\n    6:     	return this.store.find(\"user\", params[\"profile_id\"]);\n    7      },\n    8      titleToken: function(model) {\n    .\n   10      },\n   11      renderTemplate: function() {\n   12:     	this.render(\"profile\");\n   13      },\n   14      title: function(tokens) {\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\styles\\base\\typography.scss:\n   74    font-weight: bold;\n   75  }\n   76: #profile-text {\n   77    margin-right: 15px;\n   78    margin-left: 7px;\n   ..\n   81  }\n   82  \n   83: #profile-points {\n   84    font-size:medium;\n   85    color: ksi-color('text-dark');\n   86  }\n   87  \n   88: #profile-points-text {\n   89    margin-left: 4px;\n   90    font-size:medium;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\styles\\components\\panels.scss:\n   26  }\n   27  \n   28: .panel-profile {\n   29    background: ksi-color-level('primary-orange', 8);\n   30  }\n   31  \n   32: .panel-profile-assignment {\n   33    border: 2px;\n   34    border-style: solid;\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\styles\\layout\\module.scss:\n    4  @import 'navbar-main';\n    5  @import 'navbar-uloha';\n    6: @import 'navbar-profile-settings';\n    7  @import 'navbar-admin';\n    8  @import 'progressbar';\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\achievements.hbs:\n    8        <div class=\"col-xs-12 col-sm-4 col-md-3\"> <!--trofej -->\n    9          <img src=\"{{trophy.picture}}\" width=\"200px;\"/>\n   10:         <p id=\"profile-text\">{{trophy.title}}</p>\n   11        </div>\n   12      {{/each}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\header-component.hbs:\n   42                      <div style=\"text-align:center;\">\n   43                        <!--<div style=\"display:inline\">\n   44:                           <img src=\"{{session.current_user.profile_pic}}\" style=\"margin:0width:53px;\"/>\n   45                        </div>--><!-- foto nefunguje opravim ked pridem -->\n   46                        <div id=\"header-text\" style=\" margin-left:10px; display:inline\">\n   ..\n   53                    </a>\n   54                    <ul class=\"dropdown-menu dropdown-menu-main\" aria-labelledby=\"dropdownMenu\"> <!-- TODO odkazy -->\n   55:                     <li>{{#link-to \"profile\"}}Profil{{/link-to}}</li>\n   56                      <li>{{#link-to \"settings\"}}Nastavení{{/link-to}}</li>\n   57                      <li class=\"divider\"></li>\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\orgs-list.hbs:\n    1  {{#each model as |org index|}}\n    2      <div class=\"col-xs-6 col-md-3\" style=\"margin:20px text-align:center;\">\n    3:       {{#link-to \"user-profile\" org}}\n    4:           <img src=\"{{org.profile_picture}}\" style=\"\n    5              width: 100%;\n    6              margin: 0 auto;\n    .\n    9              >\n   10        {{/link-to}}\n   11:       {{#link-to \"user-profile\" org}}\n   12              <div class=\"org-index-name \">{{org.full_name}}</div>\n   13        {{/link-to}}\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\components\\thread-post.hbs:\n    1  <li class=\"media\" style=\"margin-top: 15px\"> <!-- pociatok prispevku -->\n    2      <div class=\"media-left\">\n    3:         <img class=\"media-object\" src=\"{{model.author.profile_picture}}\"> <!-- foto autora prispevku -->\n    4      </div>\n    5      <div class=\"media-body\">\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\profile.hbs:\n    1: <section id=\"profile\" class=\"container content-section\" style=\"text-align:justify\">\n    2  	<div class=\"row\">\n    3  		<div class=\"col-sm-12 col-md-3\">\n    4  			<div style=\"margin-top:30px\">\n    5: 				<img src=\"{{model.profile_picture}}\" style=\"width:100%; max-width:250px;\"/>\n    6  			</div>\n    7  			<div id=\"name\" style=\"margin-top:30px; margin-left:5px\">\n    .\n   10  			</div>\n   11  			<div id=\"name\">\n   12: 				<p id=\"profile-text\">{{model.short_info}}</p>\n   13  			</div>\n   14  			<!-- TODO: chceme sem odkaze na FB, Twitter, web? -->\n   15  			{{#unless model.is_organisator}}\n   16: 				<div class=\"panel panel-profile\" style=\"margin-top:30px\">\n   17  					<div class=\"panel-body\">\n   18  						<h6><span class=\"glyphicon glyphicon-education\" aria-hidden=\"true\"></span> {{model.school_name}}</h6>\n   ..\n   30  			</div>\n   31  \n   32: 			<div class=\"panel panel-profile\">\n   33  				<div class=\"panel-body\">\n   34  					{{#each model.achievements as |achievement|}}\n   ..\n   46  				{{#if model.percentile}}\n   47  					<div class=\"col-xs-4\">\n   48: 						<div id=\"profile-points-text\" class=\"inline\">Skóre: </div>\n   49: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.score}}</div>\n   50  					</div>\n   51  					<div class=\"col-xs-4\">\n   52: 						<div id=\"profile-points-text\" class=\"inline\">Percentil: </div>\n   53: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.percentile}}&nbsp;%</div>\n   54  					</div>\n   55  					<div class=\"col-xs-4\">\n   56: 						<div id=\"profile-points-text\" class=\"inline\">Ročníky: </div>\n   57: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.seasons}}</div>\n   58  					</div>\n   59  				{{else}}\n   60  					<div class=\"col-xs-4\">\n   61: 						<div id=\"profile-points-text\" class=\"inline\">Skóre: </div>\n   62: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.score}}</div>\n   63  					</div>\n   64  					<div class=\"col-xs-4\">\n   65: 						<div id=\"profile-points-text\" class=\"inline\">Úloh: </div>\n   66: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.tasks_num}}&nbsp;%</div>\n   67  					</div>\n   68  					<div class=\"col-xs-4\">\n   69: 						<div id=\"profile-points-text\" class=\"inline\">Ročníky: </div>\n   70: 						<div id=\"profile-points\" class=\"inline\" style=\"margin-left:10px\">{{model.seasons}}</div>\n   71  					</div>\n   72  				{{/if}}\n   ..\n   76  \n   77  			{{#if model.successful}}\n   78: 				<p id=\"profile-points-text\">\n   79  					Úspěšný řešitel:\n   80  				</p>\n   ..\n  110  \n  111  				{{#each model.results as |result|}}\n  112: 				<div class=\"panel panel-profile-assignment\">\n  113  					<div class=\"panel-body\">\n  114  						<div class=\"row\">\n  ...\n  139  \n  140  				{{#each model.tasks as |task|}}\n  141: 				<div class=\"panel panel-profile-assignment\">\n  142  					<div class=\"panel-body\">\n  143  						<div class=\"row\">\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\settings.hbs:\n    1: <section id=\"profile\" class=\"container content-section\" style=\"text-align:justify\">\n    2      <div class=\"row flex-row-md stickycolumn-parent\">\n    3        <div class=\"col-sm-12 col-md-3\">\n    4          <div class=\"stickycolumn\">\n    5            <div style=\"margin-top:30px margin-bottom:30px;\">\n    6:               <img src=\"{{model.profile_pic}}\" style=\"width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;\" align=\"center\"/> <!-- user image --> <!-- TODO default img -->\n    7            </div>\n    8:           {{picture-upload url=\"/profile/pic\" actionReceiver=picture_field upload_finished=\"upload_finished\" upload_failed=\"upload_failed\" id=\"picture_input\"}}\n    9            <button type=\"button\" class=\"btn btn-primary\" style=\"margin-top:20px; width:100%;\" {{action \"upload_pic\"}}>\n   10              <span class=\"glyphicon glyphicon-cloud-upload\" aria-hidden=\"true\"></span>\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\task.hbs:\n    7          <div class=\"row\" style=\"padding-left:5px; margin-left: 20px\">\n    8            <h5 class=\"inline\">Autor: </h5>\n    9:           {{#link-to \"user-profile\" model.author}}<img id=\"org-photo\" class=\"inline\" src=\"{{model.author.profile_picture}}\" style=\"width: 30px\">\n   10            <h5 id=\"org-name\" class=\"inline\" style=\"color: #39393a\"> {{model.author.full_name}}</h5>{{/link-to}}\n   11            <p class=\"task-points inline\">Max. {{model.max_score}} bodů</p>\n\n68 matches across 26 files\n\n\nSearching 194 files for \"Špatné\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\authenticators\\basicauth.js:\n   33                  	console.log(response.profile[0]);\n   34                  	console.log(\"Rejected2\");\n   35:                     reject(\"Špatné uživatelské jméno nebo heslo\");\n   36                  }\n   37              }, function() {\n   38              	console.log(\"Rejected3\");\n   39:                 reject(\"Špatné uživatelské jméno nebo heslo\");\n   40              });\n   41          });\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\index.hbs:\n   34              {{/link-to}}\n   35              <p class=\"about-paragraph\" style=\"font-size:18px;\" align=\"justify\">\n   36:               \"Posbírej je všechny!\" Během řešení semináře můžeš nejen za překonávání milníků, zajímavá řešení (jak v dobrém, tak špatném slova smyslu) a účast na akcích získat odznáčky. Některé odznáčky jsou vzácné, jiné relativně běžné.\n   37              </p>\n   38            </div>\n\n3 matches across 2 files\n\n\nSearching 194 files for \"profile/picture\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\picture-upload.js:\n    5  \n    6  export default EmberUploader.FileField.extend(InboundActions, {\n    7: 	url: config[\"API_LOC\"] + \"/profile/picture42\",\n    8  	supported_ext: [\"jpg\", \"jpeg\", \"png\", \"gif\"],\n    9  	classNames: [\"hide\"],\n\n1 match in 1 file\n\n\nSearching 194 files for \"profile/pic\"\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\components\\picture-upload.js:\n    5  \n    6  export default EmberUploader.FileField.extend(InboundActions, {\n    7: 	url: config[\"API_LOC\"] + \"/profile/picture42\",\n    8  	supported_ext: [\"jpg\", \"jpeg\", \"png\", \"gif\"],\n    9  	classNames: [\"hide\"],\n\nD:\\Users\\email\\Documents\\KSI\\web-frontend\\app\\templates\\settings.hbs:\n    6                <img src=\"{{model.profile_picture}}\" style=\"width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;\" align=\"center\"/> <!-- user image --> <!-- TODO default img -->\n    7            </div>\n    8:           {{picture-upload url=\"/profile/pic\" actionReceiver=picture_field upload_finished=\"upload_finished\" upload_failed=\"upload_failed\" id=\"picture_input\"}}\n    9            <button type=\"button\" class=\"btn btn-primary\" style=\"margin-top:20px; width:100%;\" {{action \"upload_pic\"}}>\n   10              <span class=\"glyphicon glyphicon-cloud-upload\" aria-hidden=\"true\"></span>\n\n2 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 3246,
+				"buffer_size": 19316,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
 			}
 		},
 		{
+			"file": "app/authenticators/basicauth.js",
+			"settings":
+			{
+				"buffer_size": 1721,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "app/templates/application.hbs",
 			"settings":
 			{
-				"buffer_size": 3496,
+				"buffer_size": 3494,
 				"line_ending": "Unix"
 			}
 		},
@@ -669,7 +707,15 @@
 			"file": "app/controllers/application.js",
 			"settings":
 			{
-				"buffer_size": 1660,
+				"buffer_size": 1661,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/settings/personal.js",
+			"settings":
+			{
+				"buffer_size": 2172,
 				"line_ending": "Windows"
 			}
 		},
@@ -679,14 +725,6 @@
 			{
 				"buffer_size": 866,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "mockup_json_server/db.json",
-			"settings":
-			{
-				"buffer_size": 41715,
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -742,15 +780,23 @@
 			"file": "config/environment.js",
 			"settings":
 			{
-				"buffer_size": 1724,
+				"buffer_size": 1732,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/mixins/reset-scroll-unauthenticated.js",
+			"settings":
+			{
+				"buffer_size": 285,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/components/picture-upload.js",
 			"settings":
 			{
-				"buffer_size": 1305,
+				"buffer_size": 1388,
 				"line_ending": "Windows"
 			}
 		},
@@ -779,17 +825,6 @@
 			}
 		},
 		{
-			"contents": "{{#validatable-form action=\"save\" model=model}}\n  {{#if general_error}}\n    {{warning-general text=general_error}}\n  {{/if}}\n  {{#if general_info}}\n    {{info-general text=general_info}}\n  {{/if}}\n  <div style=\"margin-top:30px\">\n    <h4>Osobní údaje</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"name\">Jméno:</label>\n    {{input value=model.first_name class=\"form-control\" style=\"width:100%;\" required=true title=\"Jméno je povinné\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"surname\">Přijmení:</label>\n    {{input value=model.last_name class=\"form-control\" required=true title=\"Přijmení je povinné\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"email\">E-mail:</label>\n    {{input value=model.email class=\"form-control\" required=true type=\"email\" title=\"Je třeba zadat platný e-mail\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"gender\">Pohlaví:</label>\n    {{#x-select value=model.gender class=\"form-control\" id=\"gender\" required=true}}\n      {{#x-option value=\"M\"}}Muž{{/x-option}}\n      {{#x-option value=\"F\"}}Žena{{/x-option}}\n    {{/x-select}}\n  </div>\n\n  <div style=\"margin-top:30px\">\n    <h4>Adresa</h4>\n    <hr>\n  </div>\n  <div class=\"form-group\">\n\n    <label for=\"street\">Ulice:</label>\n    {{input value=model.addr_street class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"city\">Město:</label>\n    {{input value=model.addr_city class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"psc\">PSČ:</label>\n    {{input value=model.addr_zip class=\"form-control\" required=true title=\"Adresa je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"country\">Země:</label>\n    {{#x-select value=model.addr_country class=\"form-control\"}}\n      {{#each countries key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.addr_country)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n\n  <hr>\n\n  <div style=\"margin-top:30px\">\n    <h4>Škola</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"street\">Název:</label>\n    {{input value=model.school_name class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"street\">Ulice:</label>\n    {{input value=model.school_street class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"city\">Město:</label>\n    {{input value=model.school_city class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"psc\">PSČ:</label>\n    {{input value=model.school_zip class=\"form-control\" required=true title=\"Adresa školy je povinná\"}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"country\">Země:</label>\n    {{#x-select value=model.school_country class=\"form-control\"}}\n      {{#each countries key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.school_country)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n        <!--\n  <div class=\"form-group\">\n    <label for=\"school\">Škola:</label> (formát: název, ulice, město, PSČ, stát - ČR nebo SR)  <!- -TODO dropdown menu ? - ->\n    <input type=\"text\" class=\"form-control\" id=\"school\">\n  </div>\n        -->\n\n  <div class=\"form-group\">\n    <label for=\"year-maturita\">Rok maturity:</label>\n    {{#x-select value=model.school_finish class=\"form-control\"}}\n      {{#each maturita_year key=\"@index\" as |item|}}\n        {{#x-option value=item selected=(is-equal item model.school_finish)}}\n          {{item}}\n        {{/x-option}}\n      {{/each}}\n    {{/x-select}}\n  </div>\n\n  <div style=\"margin-top:30px\">\n    <h4>Profil</h4>\n    <hr>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"description\">Krátky popis sebe:</label>\n    {{textarea class=\"form-control\" rows=\"5\" value=model.short_info}}\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"tshirt\">Velikost trička:</label>\n    <select class=\"form-control\">\n      {{#each tshirt_size key=\"@index\" as |item|}}\n        <option value=\"{{item}}\" selected={{is-equal item model.tshirt_size}}>\n          {{item}}\n        </option>\n      {{/each}}\n    </select>\n  </div>\n  <button type=\"submit\" class=\"btn btn-primary\" style=\"margin-top:20px; width:100%;\">\n    Ulož změny\n  </button>\n  <!--{{async-button class=\"button btn btn-primary\" style=\"margin-top:20px; width:100%;\" isLoading=isSaving isValid=isValid value=\"Ulož změny\"}}-->\n{{/validatable-form}}\n",
-			"file": "app/templates/settings/personal.hbs",
-			"file_size": 4806,
-			"file_write_time": 130876773323353088,
-			"settings":
-			{
-				"buffer_size": 4613,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/components/thread-post.js",
 			"settings":
 			{
@@ -801,16 +836,50 @@
 			"file": "app/components/tasks-graph.js",
 			"settings":
 			{
-				"buffer_size": 6869,
+				"buffer_size": 6931,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/models/task.js",
+			"file": "/D/tmp/zelva-node3/process_student.py",
 			"settings":
 			{
-				"buffer_size": 1427,
-				"line_ending": "Windows"
+				"buffer_size": 899,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/initializers/emberx-select.js",
+			"settings":
+			{
+				"buffer_size": 184,
+				"line_ending": "Windows",
+				"name": "import ext from '../ext/emberx-select';"
+			}
+		},
+		{
+			"file": "app/ext/emberx-select.js",
+			"settings":
+			{
+				"buffer_size": 133,
+				"line_ending": "Windows",
+				"name": "import Select from 'emberx-select';"
+			}
+		},
+		{
+			"file": "/D/tmp/zelva-node3/turtle.cfg",
+			"settings":
+			{
+				"buffer_size": 84,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/tmp/zelva-node3/evaluation.py",
+			"settings":
+			{
+				"buffer_size": 2940,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -834,6 +903,89 @@
 			"settings":
 			{
 				"buffer_size": 250,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import DS from \"ember-data\";\n\nexport default DS.Model.extend( {\n    first_name: DS.attr(\"string\"),\n    last_name: DS.attr(\"string\"),\n    nick_name: DS.attr(\"string\"),\n\n    profile_pic: DS.attr(\"string\"),\n    short_info: DS.attr(\"string\"),\n    email: DS.attr(\"string\"),\n    gender: DS.attr(\"string\"),\n\n    addr_street: DS.attr(\"string\"),\n    addr_city: DS.attr(\"string\"),\n    addr_zip: DS.attr(\"string\"),\n    addr_country: DS.attr(\"string\"),\n\n    school_name: DS.attr(\"string\"),\n    school_street: DS.attr(\"string\"),\n    school_city: DS.attr(\"string\"),\n    school_zip: DS.attr(\"string\"),\n    school_country: DS.attr(\"string\"),\n    school_finish: DS.attr(\"number\"),\n\n    tshirt_size: DS.attr(\"string\"),\n});\n",
+			"file": "app/models/registration.js",
+			"file_size": 840,
+			"file_write_time": 130879072565375141,
+			"settings":
+			{
+				"buffer_size": 705,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/routes/login.js",
+			"settings":
+			{
+				"buffer_size": 177,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/routes/registration.js",
+			"settings":
+			{
+				"buffer_size": 314,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/score.js",
+			"settings":
+			{
+				"buffer_size": 347,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/user-score.js",
+			"settings":
+			{
+				"buffer_size": 255,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/task-score.js",
+			"settings":
+			{
+				"buffer_size": 253,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/result-score.js",
+			"settings":
+			{
+				"buffer_size": 228,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mockup_json_server/index.js",
+			"settings":
+			{
+				"buffer_size": 1791,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/module.js",
+			"settings":
+			{
+				"buffer_size": 1213,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/settings.hbs",
+			"settings":
+			{
+				"buffer_size": 1524,
 				"line_ending": "Windows"
 			}
 		}
@@ -1038,6 +1190,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"profile/pic",
+			"profile/picture",
+			"Špatné",
+			"cores",
+			"profile",
+			"authorizer: 'simple-auth-authorizer:oauth2-bearer'",
+			"emberx-select",
+			",",
+			"model",
+			"profile",
+			"Ulož ",
 			"feedback_error",
 			"achieveme",
 			"prerequisities",
@@ -1154,18 +1317,7 @@
 			"STM32PLUS_F1_HD",
 			"\\",
 			"argc_copy",
-			"start_unix_daemon",
-			"avrgcc",
-			"Process",
-			"C:/SysGCC/Lego/",
-			"@",
-			"        \n",
-			"struct ServerData",
-			"S3_DataLoader",
-			"S3_DataSaver",
-			"packet",
-			"Dobružství",
-			"home"
+			"start_unix_daemon"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1173,6 +1325,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"),",
+			"this.get(\"model\")",
 			"thread",
 			"\"",
 			"session.current_user.",
@@ -1233,11 +1387,39 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "app/templates/settings/personal.hbs",
+					"settings":
+					{
+						"buffer_size": 4619,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								228,
+								228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
 					"file": "app/components/file-module.js",
 					"settings":
 					{
@@ -1265,19 +1447,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "app/templates/task/assignment.hbs",
 					"settings":
 					{
-						"buffer_size": 2040,
+						"buffer_size": 2790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								383,
-								383
+								2064,
+								2064
 							]
 						],
 						"settings":
@@ -1287,13 +1469,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 105.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mockup_json_server/db.json",
+					"settings":
+					{
+						"buffer_size": 38966,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23306,
+								23310
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9173.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/models/task.js",
+					"settings":
+					{
+						"buffer_size": 1452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								647,
+								647
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
 					"file": "app/templates/task.hbs",
 					"settings":
 					{
@@ -1321,7 +1558,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "app/templates/tasks.hbs",
 					"settings":
 					{
@@ -1348,7 +1585,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "app/controllers/settings/password.js",
 					"settings":
 					{
@@ -1376,19 +1613,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "app/controllers/settings.js",
 					"settings":
 					{
-						"buffer_size": 1074,
+						"buffer_size": 540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								78,
-								78
+								337,
+								338
 							]
 						],
 						"settings":
@@ -1404,7 +1641,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "app/templates/registration.hbs",
 					"settings":
 					{
@@ -1415,8 +1652,8 @@
 						"selection":
 						[
 							[
-								2215,
-								1947
+								5738,
+								5738
 							]
 						],
 						"settings":
@@ -1426,13 +1663,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 1605.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "app/controllers/registration.js",
 					"settings":
 					{
@@ -1443,8 +1680,8 @@
 						"selection":
 						[
 							[
-								78,
-								78
+								122,
+								79
 							]
 						],
 						"settings":
@@ -1460,7 +1697,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 11,
 					"file": "app/mixins/user-settings.js",
 					"settings":
 					{
@@ -1486,7 +1723,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 12,
 					"file": "app/controllers/forgot-password.js",
 					"settings":
 					{
@@ -1514,10 +1751,10 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 13,
 					"settings":
 					{
-						"buffer_size": 3246,
+						"buffer_size": 19316,
 						"regions":
 						{
 							"match":
@@ -1568,6 +1805,302 @@
 									[
 										3094,
 										3100
+									],
+									[
+										3463,
+										3470
+									],
+									[
+										3738,
+										3745
+									],
+									[
+										3942,
+										3949
+									],
+									[
+										3962,
+										3969
+									],
+									[
+										4084,
+										4091
+									],
+									[
+										4240,
+										4247
+									],
+									[
+										4548,
+										4555
+									],
+									[
+										4891,
+										4898
+									],
+									[
+										5178,
+										5185
+									],
+									[
+										5448,
+										5455
+									],
+									[
+										5751,
+										5758
+									],
+									[
+										6109,
+										6116
+									],
+									[
+										6438,
+										6445
+									],
+									[
+										6705,
+										6712
+									],
+									[
+										6815,
+										6822
+									],
+									[
+										7055,
+										7062
+									],
+									[
+										7363,
+										7370
+									],
+									[
+										7690,
+										7697
+									],
+									[
+										7751,
+										7758
+									],
+									[
+										7778,
+										7785
+									],
+									[
+										8083,
+										8090
+									],
+									[
+										8118,
+										8125
+									],
+									[
+										8145,
+										8152
+									],
+									[
+										8371,
+										8378
+									],
+									[
+										8448,
+										8455
+									],
+									[
+										8725,
+										8732
+									],
+									[
+										8760,
+										8767
+									],
+									[
+										8787,
+										8794
+									],
+									[
+										9044,
+										9051
+									],
+									[
+										9199,
+										9206
+									],
+									[
+										9382,
+										9389
+									],
+									[
+										9484,
+										9491
+									],
+									[
+										9593,
+										9600
+									],
+									[
+										9778,
+										9785
+									],
+									[
+										9878,
+										9885
+									],
+									[
+										10109,
+										10116
+									],
+									[
+										10418,
+										10425
+									],
+									[
+										10772,
+										10779
+									],
+									[
+										11194,
+										11201
+									],
+									[
+										11595,
+										11602
+									],
+									[
+										11643,
+										11650
+									],
+									[
+										11820,
+										11827
+									],
+									[
+										12194,
+										12201
+									],
+									[
+										12389,
+										12396
+									],
+									[
+										12597,
+										12604
+									],
+									[
+										12806,
+										12813
+									],
+									[
+										13004,
+										13011
+									],
+									[
+										13255,
+										13262
+									],
+									[
+										13458,
+										13465
+									],
+									[
+										13530,
+										13537
+									],
+									[
+										13684,
+										13691
+									],
+									[
+										13760,
+										13767
+									],
+									[
+										13926,
+										13933
+									],
+									[
+										14000,
+										14007
+									],
+									[
+										14176,
+										14183
+									],
+									[
+										14248,
+										14255
+									],
+									[
+										14402,
+										14409
+									],
+									[
+										14473,
+										14480
+									],
+									[
+										14638,
+										14645
+									],
+									[
+										14712,
+										14719
+									],
+									[
+										14897,
+										14904
+									],
+									[
+										15060,
+										15067
+									],
+									[
+										15241,
+										15248
+									],
+									[
+										15421,
+										15428
+									],
+									[
+										15747,
+										15754
+									],
+									[
+										15975,
+										15982
+									],
+									[
+										16547,
+										16554
+									],
+									[
+										16625,
+										16632
+									],
+									[
+										17146,
+										17152
+									],
+									[
+										17322,
+										17328
+									],
+									[
+										17727,
+										17733
+									],
+									[
+										18145,
+										18160
+									],
+									[
+										18499,
+										18510
+									],
+									[
+										18945,
+										18956
 									]
 								],
 								"scope": ""
@@ -1576,19 +2109,47 @@
 						"selection":
 						[
 							[
-								1262,
-								1262
+								18352,
+								18352
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
-							"output_tag": 4,
+							"output_tag": 8,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
 							"scroll_past_end": true,
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7095.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/authenticators/basicauth.js",
+					"settings":
+					{
+						"buffer_size": 1721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1199,
+								1199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1597,11 +2158,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 15,
 					"file": "app/templates/application.hbs",
 					"settings":
 					{
-						"buffer_size": 3496,
+						"buffer_size": 3494,
 						"regions":
 						{
 						},
@@ -1625,7 +2186,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 16,
 					"file": "app/models/submission.js",
 					"settings":
 					{
@@ -1651,7 +2212,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 17,
 					"file": "app/models/achievement.js",
 					"settings":
 					{
@@ -1679,7 +2240,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 18,
 					"file": "app/templates/components/header-component.hbs",
 					"settings":
 					{
@@ -1707,7 +2268,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 19,
 					"file": "app/controllers/articles.js",
 					"settings":
 					{
@@ -1736,11 +2297,11 @@
 			]
 		},
 		{
-			"selected": 16,
+			"selected": 13,
 			"sheets":
 			[
 				{
-					"buffer": 16,
+					"buffer": 20,
 					"file": "app/templates/settings/password.hbs",
 					"settings":
 					{
@@ -1767,7 +2328,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 21,
 					"file": "app/routes/forgot-password.js",
 					"settings":
 					{
@@ -1793,19 +2354,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 22,
 					"file": "app/controllers/application.js",
 					"settings":
 					{
-						"buffer_size": 1660,
+						"buffer_size": 1661,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								949,
-								949
+								329,
+								329
 							]
 						],
 						"settings":
@@ -1820,7 +2381,35 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 23,
+					"file": "app/controllers/settings/personal.js",
+					"settings":
+					{
+						"buffer_size": 2172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1320,
+								1320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 24,
 					"file": "app/templates/forgot-password.hbs",
 					"settings":
 					{
@@ -1846,35 +2435,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
-					"file": "mockup_json_server/db.json",
-					"settings":
-					{
-						"buffer_size": 41715,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								39524,
-								39524
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 18653.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 21,
+					"buffer": 25,
 					"file": "app/templates/components/file-module.hbs",
 					"settings":
 					{
@@ -1901,7 +2462,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 26,
 					"file": "app/components/file-input.js",
 					"settings":
 					{
@@ -1930,7 +2491,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 27,
 					"file": "app/components/solution-file-upload.js",
 					"settings":
 					{
@@ -1957,7 +2518,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 28,
 					"file": "app/controllers/task/assignment.js",
 					"settings":
 					{
@@ -1984,7 +2545,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 29,
 					"file": "app/controllers/task/solution.js",
 					"settings":
 					{
@@ -2010,7 +2571,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 30,
 					"file": "app/components/code-module.js",
 					"settings":
 					{
@@ -2038,19 +2599,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 31,
 					"file": "config/environment.js",
 					"settings":
 					{
-						"buffer_size": 1724,
+						"buffer_size": 1732,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1705,
-								1705
+								1670,
+								1714
 							]
 						],
 						"settings":
@@ -2060,25 +2621,51 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 28,
-					"file": "app/components/picture-upload.js",
+					"buffer": 32,
+					"file": "app/mixins/reset-scroll-unauthenticated.js",
 					"settings":
 					{
-						"buffer_size": 1305,
+						"buffer_size": 285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								237,
-								237
+								153,
+								153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "app/components/picture-upload.js",
+					"settings":
+					{
+						"buffer_size": 1388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1231,
+								1231
 							]
 						],
 						"settings":
@@ -2093,7 +2680,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 34,
 					"file": "app/controllers/forum.js",
 					"settings":
 					{
@@ -2121,7 +2708,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 30,
+					"buffer": 35,
 					"file": "app/models/post.js",
 					"settings":
 					{
@@ -2147,7 +2734,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 31,
+					"buffer": 36,
 					"file": "app/routes/application.js",
 					"settings":
 					{
@@ -2174,35 +2761,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 32,
-					"file": "app/templates/settings/personal.hbs",
-					"settings":
-					{
-						"buffer_size": 4613,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1180,
-								1207
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 105.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 33,
+					"buffer": 37,
 					"file": "app/components/thread-post.js",
 					"settings":
 					{
@@ -2230,23 +2789,76 @@
 					"type": "text"
 				},
 				{
-					"buffer": 34,
+					"buffer": 38,
 					"file": "app/components/tasks-graph.js",
 					"settings":
 					{
-						"buffer_size": 6869,
+						"buffer_size": 6931,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								763,
-								763
+								5923,
+								5923
 							]
 						],
 						"settings":
 						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2603.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 39,
+					"file": "/D/tmp/zelva-node3/process_student.py",
+					"settings":
+					{
+						"buffer_size": 899,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								639,
+								639
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 40,
+					"file": "app/initializers/emberx-select.js",
+					"settings":
+					{
+						"buffer_size": 184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								37
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import ext from '../ext/emberx-select';",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -2256,25 +2868,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 35,
-					"file": "app/models/task.js",
+					"buffer": 41,
+					"file": "app/ext/emberx-select.js",
 					"settings":
 					{
-						"buffer_size": 1427,
+						"buffer_size": 133,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								157,
-								171
+								95,
+								95
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "import Select from 'emberx-select';",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2283,7 +2895,61 @@
 					"type": "text"
 				},
 				{
-					"buffer": 36,
+					"buffer": 42,
+					"file": "/D/tmp/zelva-node3/turtle.cfg",
+					"settings":
+					{
+						"buffer_size": 84,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 43,
+					"file": "/D/tmp/zelva-node3/evaluation.py",
+					"settings":
+					{
+						"buffer_size": 2940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1035.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 44,
 					"file": "app/templates/thread.hbs",
 					"settings":
 					{
@@ -2310,7 +2976,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 37,
+					"buffer": 45,
 					"file": "app/templates/components/thread-post.hbs",
 					"settings":
 					{
@@ -2338,7 +3004,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 38,
+					"buffer": 46,
 					"file": "app/transforms/prerequisite.js",
 					"settings":
 					{
@@ -2356,6 +3022,273 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 47,
+					"file": "app/models/registration.js",
+					"settings":
+					{
+						"buffer_size": 705,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 48,
+					"file": "app/routes/login.js",
+					"settings":
+					{
+						"buffer_size": 177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 49,
+					"file": "app/routes/registration.js",
+					"settings":
+					{
+						"buffer_size": 314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 50,
+					"file": "app/models/score.js",
+					"settings":
+					{
+						"buffer_size": 347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 51,
+					"file": "app/models/user-score.js",
+					"settings":
+					{
+						"buffer_size": 255,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								232,
+								232
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 52,
+					"file": "app/models/task-score.js",
+					"settings":
+					{
+						"buffer_size": 253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								165
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 53,
+					"file": "app/models/result-score.js",
+					"settings":
+					{
+						"buffer_size": 228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								228,
+								228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 54,
+					"file": "mockup_json_server/index.js",
+					"settings":
+					{
+						"buffer_size": 1791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								252,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 55,
+					"file": "app/models/module.js",
+					"settings":
+					{
+						"buffer_size": 1213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								677,
+								677
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 56,
+					"file": "app/templates/settings.hbs",
+					"settings":
+					{
+						"buffer_size": 1524,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

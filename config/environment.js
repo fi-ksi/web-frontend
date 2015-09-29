@@ -28,15 +28,25 @@ module.exports = function(environment) {
     }
   };
 
+  ENV["API_LOC"] = "http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128";
+
   ENV["simple-auth"] = {
         authorizer: 'simple-auth-authorizer:oauth2-bearer',
         store: 'simple-auth-session-store:local-storage',
-        crossOriginWhitelist: ['http://localhost:3000']
+        crossOriginWhitelist: ['http://localhost:3000',
+          'http://http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/']
       }
 
   ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: 'http://192.168.188.131:8000/v1/oauth2/auth'
+    serverTokenEndpoint: 'http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/v1/oauth2/auth'
   };
+
+  if (environment === 'local_dev') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://localhost:3000/v1/oauth2/auth'
+    };
+    ENV["API_LOC"] = "http://localhost:3000";
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -65,8 +75,6 @@ module.exports = function(environment) {
   ENV.i18n = {
     defaultLocale: 'cs'
   };
-
-  ENV["API_LOC"] = "http://localhost:3000";
 
   return ENV;
 };

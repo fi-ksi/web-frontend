@@ -14,12 +14,6 @@ export default Ember.Controller.extend({
 		}
 		return false;
 	}),
-	show_submission: Ember.computed("resubmit", "model.submissions", function() {
-		if(this.get("resubmit")) {
-			return true;
-		}
-		return Ember.isEmpty(this.get("model.submissions"));
-	}),
 	module_ids: Ember.computed("model", function() {
 		return this.get("model.modules").map(function(module) { return "module_" + module.get("id"); });
 	}),
