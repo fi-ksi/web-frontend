@@ -10,11 +10,10 @@
 </div>
 <div style="margin-left:0px">
 	<h5>Soubory k odevzdání:</h5>
-	<div class="fileUpload btn btn-primary">
+	<div class="fileUpload btn btn-primary" {{action "select_files"}}>
 		<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-    <span>Nahrát soubory</span>
-		{{file-input type="file" value=items multiple=true file_change="file_change" class="upload"}}
-
+    	<span>Vybrat soubory</span>
+		{{file-input multiple=true class="upload" endpoint=endpoint id=(construct-id "upload" module.id)}}
 	</div>
 	{{#if files}}
 		<br>

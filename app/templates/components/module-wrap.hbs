@@ -17,7 +17,7 @@
         {{quiz-module module=module submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_general}}
-        {{file-module module=module id=module.id result="result" error="error"}}
+        {{file-module module=module submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_sortable}}
         {{sortable-module module=module id=module.id result="result" error="error"}}

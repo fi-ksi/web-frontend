@@ -4,6 +4,9 @@ export default Ember.Component.extend({
     tagName: "",
     classNames: [],
     general_error: undefined,
+    endpoint: function() {
+        return "/module/" + this.get("module.id") + "/submission";
+    }.observes("module.id"),
     valid: false,
     files: undefined,
     actions: {
@@ -11,6 +14,9 @@ export default Ember.Component.extend({
             this.set("file_list", files);
             this.set("files", [].slice.call(files).map(function(i) {return i.name;}));
             this.set("valid", !Ember.isEmpty(files));
+        },
+        select_files: function() {
+            Ember.$("#upload_" + this.get("module.id")).trigger('click');
         }
     },
     module_service: Ember.inject.service("module-service"),
