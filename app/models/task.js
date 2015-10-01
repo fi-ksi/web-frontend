@@ -7,7 +7,10 @@ export default DS.Model.extend( {
 	prerequisities: DS.attr("prerequisite"),
 	category: DS.belongsTo("category", { async: true }),
 
-	active: DS.attr("boolean"),
+	state: DS.attr("string"),
+	active: Ember.computed("state", function() {
+		return ["base", "correcting", "done"].indexOf(this.get("state")) > -1;
+	}),
 
 	title: DS.attr("string"),
 	body: DS.attr("string"),
@@ -24,17 +27,11 @@ export default DS.Model.extend( {
 	picture_suffix: DS.attr("string"),
 
 	picture: Ember.computed("picture_base", "picture_suffix", "active",
-	 "submissions", "my_score", function() {
+	 "state", function() {
 	 	if(!this.get("active")) {
 	 		return this.get("picture_base") + "locked" + this.get("picture_suffix");
 	 	}
-	 	if(Ember.isEmpty(this.get("submissions"))) {
-	 		return this.get("picture_base") + "base" + this.get("picture_suffix");
-	 	}
-	 	if(!this.get("my_score")) {
-	 		return this.get("picture_base") + "correcting" + this.get("picture_suffix");
-	 	}
-		return this.get("picture_base") + "done" + this.get("picture_suffix");
+	 	return this.get("picture_base") + this.get("state") + this.get("picture_suffix");
 	}),
 
 	best_scores: DS.hasMany("user-score", { async: true}), // Top 5
