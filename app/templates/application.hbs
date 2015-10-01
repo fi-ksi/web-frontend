@@ -66,11 +66,11 @@
     {{#if login_error_message}}
       {{warning-general text=login_error_message}}
     {{/if}}
-      <form>
-      {{input value=identification placeholder="e-mail"}}
-        {{input type="password" value=password placeholder="heslo"}}
-        <input type="submit" name="login"  class="btn btn-primary" value="Přihlas se" {{action 'login'}}>
-      </form>
+      {{#validatable-form action="login"}}
+        {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true}}
+        {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
+        <input type="submit" name="login"  class="btn btn-primary" value="Přihlas se">
+      {{/validatable-form}}
 
       <div class="login-help">
       <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px; text-align: right;">{{#link-to "registration"}}Registrovat se{{/link-to}} - {{#link-to "forgot-password"}}Zapomenuté heslo{{/link-to}}</p> <!-- TODO toogle button -->

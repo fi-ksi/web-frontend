@@ -1,7 +1,7 @@
 import Ember from "ember";
-import ResetScroll from '../mixins/reset-scroll';
+import ResetScrollUn from '../mixins/reset-scroll-unauthenticated';
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScrollUn, {
 	model: function() {
 		/*var profile = this.store.createRecord('profile');
 		return profile;*/
