@@ -547,7 +547,15 @@
 			"file": "app/models/task.js",
 			"settings":
 			{
-				"buffer_size": 1420,
+				"buffer_size": 1291,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/initializers/emberx-select.js",
+			"settings":
+			{
+				"buffer_size": 143,
 				"line_ending": "Windows"
 			}
 		},
@@ -681,10 +689,18 @@
 			}
 		},
 		{
+			"file": "app/ext/emberx-select.js",
+			"settings":
+			{
+				"buffer_size": 133,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "mockup_json_server/db.json",
 			"settings":
 			{
-				"buffer_size": 40059,
+				"buffer_size": 40086,
 				"line_ending": "Unix"
 			}
 		},
@@ -1000,7 +1016,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"D:\\Users\\email\\Documents\\KSI\\web-frontend\\app",
@@ -1205,7 +1221,7 @@
 			".skill",
 			"('fast')"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -1214,7 +1230,7 @@
 	"groups":
 	[
 		{
-			"selected": 18,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1305,15 +1321,15 @@
 					"file": "app/models/task.js",
 					"settings":
 					{
-						"buffer_size": 1420,
+						"buffer_size": 1291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1415,
-								1415
+								651,
+								651
 							]
 						],
 						"settings":
@@ -1329,6 +1345,32 @@
 				},
 				{
 					"buffer": 4,
+					"file": "app/initializers/emberx-select.js",
+					"settings":
+					{
+						"buffer_size": 143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								141,
+								143
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "app/routes/application.js",
 					"settings":
 					{
@@ -1355,7 +1397,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "app/components/code-module.js",
 					"settings":
 					{
@@ -1383,7 +1425,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "app/components/tasks-graph.js",
 					"settings":
 					{
@@ -1410,7 +1452,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"settings":
 					{
 						"buffer_size": 3810,
@@ -1501,7 +1543,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "app/components/header-component.js",
 					"settings":
 					{
@@ -1528,7 +1570,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "app/authorizers/basicauth.js",
 					"settings":
 					{
@@ -1554,7 +1596,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "app/authenticators/basicauth.js",
 					"settings":
 					{
@@ -1582,7 +1624,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "app/initializers/authentication.js",
 					"settings":
 					{
@@ -1608,7 +1650,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "config/environment.js",
 					"settings":
 					{
@@ -1636,7 +1678,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1662,7 +1704,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "app/sessions/custom.js",
 					"settings":
 					{
@@ -1690,7 +1732,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "app/initializers/session-store.js",
 					"settings":
 					{
@@ -1717,7 +1759,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "app/templates/results.hbs",
 					"settings":
 					{
@@ -1745,7 +1787,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "app/models/user-score.js",
 					"settings":
 					{
@@ -1771,7 +1813,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "app/templates/task/evaluation.hbs",
 					"settings":
 					{
@@ -1793,13 +1835,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 240.0,
+						"translation.y": 222.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "app/transforms/score-table.js",
 					"settings":
 					{
@@ -1824,27 +1866,53 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 16,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 20,
-					"file": "mockup_json_server/db.json",
+					"buffer": 21,
+					"file": "app/ext/emberx-select.js",
 					"settings":
 					{
-						"buffer_size": 40059,
+						"buffer_size": 133,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								39459,
-								39459
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 22,
+					"file": "mockup_json_server/db.json",
+					"settings":
+					{
+						"buffer_size": 40086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2385,
+								2385
 							]
 						],
 						"settings":
@@ -1854,13 +1922,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 20621.0,
+						"translation.y": 1008.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 23,
 					"file": "app/templates/task/statistics.hbs",
 					"settings":
 					{
@@ -1888,7 +1956,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 24,
 					"file": "app/routes/results.js",
 					"settings":
 					{
@@ -1914,7 +1982,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 25,
 					"file": "app/controllers/application.js",
 					"settings":
 					{
@@ -1940,7 +2008,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 26,
 					"file": "app/components/file-module.js",
 					"settings":
 					{
@@ -1968,7 +2036,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 27,
 					"file": "app/components/sortable-module.js",
 					"settings":
 					{
@@ -1996,7 +2064,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 28,
 					"file": "app/components/quiz-module.js",
 					"settings":
 					{
@@ -2024,7 +2092,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 29,
 					"file": "app/components/module-wrap.js",
 					"settings":
 					{
@@ -2052,7 +2120,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 30,
 					"file": "app/templates/components/module-wrap.hbs",
 					"settings":
 					{
@@ -2080,7 +2148,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 31,
 					"file": "app/models/result-score.js",
 					"settings":
 					{
@@ -2106,7 +2174,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 30,
+					"buffer": 32,
 					"file": "app/models/task-score.js",
 					"settings":
 					{
@@ -2132,7 +2200,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 31,
+					"buffer": 33,
 					"file": "app/templates/task/submission.hbs",
 					"settings":
 					{
@@ -2160,7 +2228,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 32,
+					"buffer": 34,
 					"file": "app/templates/task/solution.hbs",
 					"settings":
 					{
@@ -2188,7 +2256,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 33,
+					"buffer": 35,
 					"file": "app/templates/loading.hbs",
 					"settings":
 					{
@@ -2214,7 +2282,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 34,
+					"buffer": 36,
 					"file": "app/templates/settings/loading.hbs",
 					"settings":
 					{
@@ -2240,7 +2308,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 35,
+					"buffer": 37,
 					"file": "app/templates/task/loading.hbs",
 					"settings":
 					{
@@ -2266,7 +2334,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 36,
+					"buffer": 38,
 					"file": "app/templates/error.hbs",
 					"settings":
 					{

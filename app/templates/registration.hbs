@@ -12,17 +12,17 @@
 
       <div class="form-group">
         <label for="email">E-mail:</label>
-        {{input value=model.email type="email" class="form-control" id="email" required=true title="Toto pole je třeba vyplnit" placeholder="e-mail"}}
+        {{input value=model.email type="email" class="form-control" id="email" required=true placeholder="e-mail"}}
       </div>
 
       <div class="form-group">
-        <label for="password">Heslo:</label>
-        {{input value=model.password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" title="Heslo musí mít alespoň 6 znaků" required=true}}
+        <label for="password">Heslo (alespoň 6 znaků):</label>
+        {{input value=model.password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" required=true}}
       </div>
 
       <div class="form-group">
         <label for="password2">Heslo:</label>
-        {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" title="Hesla se musejí shodovat" required=true}}
+        {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" required=true}}
       </div>
       {{#if password_error}}
         {{warning-general text="Hesla se neshodují"}}
@@ -35,17 +35,17 @@
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        {{input value=model.first_name class="form-control" style="width:100%;" required=true title="Jméno je povinné" placeholder="jméno"}}
+        {{input value=model.first_name class="form-control" style="width:100%;" required=true placeholder="jméno"}}
       </div>
 
       <div class="form-group">
         <label for="surname">Přijmení:</label>
-        {{input value=model.last_name class="form-control" required=true title="Přijmení je povinné" placeholder="příjmení"}}
+        {{input value=model.last_name class="form-control" required=true placeholder="příjmení"}}
       </div>
 
 			<div class="form-group">
         <label for="gender">Pohlaví:</label>
-        {{#x-select value=model.gender class="form-control" id="gender" required=true}}
+        {{#x-select value=model.gender class="form-control" id="gender" required=true }}
           {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#x-option value="male"}}Muž{{/x-option}}
           {{#x-option value="female"}}Žena{{/x-option}}
@@ -59,22 +59,23 @@
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        {{input value=model.addr_street class="form-control" required=true title="Adresa je povinná" placeholder="ulice"}}
+        {{input value=model.addr_street class="form-control" required=true placeholder="ulice"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        {{input value=model.addr_city class="form-control" required=true title="Adresa je povinná" placeholder="město"}}
+        {{input value=model.addr_city class="form-control" required=true  placeholder="město"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        {{input value=model.addr_zip class="form-control" required=true title="Adresa je povinná" placeholder="PSČ"}}
+        {{input value=model.addr_zip class="form-control" required=true placeholder="PSČ"}}
       </div>
 
       <div class="form-group">
         <label for="country">Země:</label>
-        {{#x-select value=model.addr_country class="form-control"}}
+        {{#x-select value=model.addr_country class="form-control" required=true}}
+          {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#each countries key="@index" as |item|}}
             {{#x-option value=item.short}}
               {{item.name}}
@@ -90,27 +91,28 @@
 
 			<div class="form-group">
         <label for="street">Název:</label>
-        {{input value=model.school_name class="form-control" required=true title="Adresa školy je povinná" placeholder="název"}}
+        {{input value=model.school_name class="form-control" required=true placeholder="název"}}
       </div>
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        {{input value=model.school_street class="form-control" required=true title="Adresa školy je povinná" placeholder="ulice"}}
+        {{input value=model.school_street class="form-control" required=true placeholder="ulice"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        {{input value=model.school_city class="form-control" required=true title="Adresa školy je povinná" placeholder="město"}}
+        {{input value=model.school_city class="form-control" required=true placeholder="město"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        {{input value=model.school_zip class="form-control" required=true title="Adresa školy je povinná" placeholder="PSČ"}}
+        {{input value=model.school_zip class="form-control" required=true placeholder="PSČ"}}
       </div>
 
       <div class="form-group">
         <label for="country">Země:</label>
-        {{#x-select value=model.school_country class="form-control"}}
+        {{#x-select value=model.school_country class="form-control" required=true }}
+          {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#each countries key="@index" as |item|}}
             {{#x-option value=item.short}}
               {{item.name}}
@@ -127,7 +129,8 @@
 
       <div class="form-group">
         <label for="year-maturita">Rok maturity:</label>
-        {{#x-select value=model.school_finish class="form-control"}}
+        {{#x-select value=model.school_finish class="form-control" required=true}}
+          {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#each maturita_year key="@index" as |item|}}
             {{#x-option value=item}}
               {{item}}
@@ -148,7 +151,8 @@
 
       <div class="form-group">
         <label for="tshirt">Velikost trička:</label>
-        {{#x-select value=model.thisrt_size class="form-control"}}
+        {{#x-select value=model.thirt_size class="form-control" required=true}}
+          {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#each tshirt_size key="@index" as |item|}}
             {{#x-option value=item}}
               {{item}}
