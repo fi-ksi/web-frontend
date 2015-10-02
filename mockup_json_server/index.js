@@ -10,7 +10,7 @@ server.use(jsonServer.defaults)
 
 // Returns an Express router
 var router = jsonServer.router('db.json')
-console.log(router.db.object)
+//console.log(router.db.object)
 
 router.render = function (req, res) {
   var url = req.url;
@@ -44,20 +44,21 @@ router.render = function (req, res) {
 
   // Handle profile
   if(item == "profile") {
-    /*response["achievements"] = router.db.object["achievements"].filter(function(v) {
-        return res.locals.data[0]["achievements"].indexOf(v["id"]) > -1;
-    });
-
-    response["scores"] = router.db.object["scores"].filter(function(v) {
+    response["taskScores"] = router.db.object["taskScores"].filter(function(v) {
         return res.locals.data[0]["results"].indexOf(v["id"]) > -1;
     });
+  }
 
-    response["tasks"] = [];
-    response["scores"].forEach(function (item) {
-      response["tasks"].push(router.db.object["tasks"].filter(function(v) {
-        return v["id"] == item["id"];
-      }));
-    });*/
+  // Handle taskDetails
+  if(item == "taskDetail") {
+    console.log("Here!");
+    console.log(res.locals.data);
+    response["modules"] = router.db.object["modules"].filter(function(v) {
+        return res.locals.data["modules"].indexOf(v["id"]) > -1;
+    });
+    response["moduleScores"] = router.db.object["moduleScores"].filter(function(v) {
+        return res.locals.data["modules"].indexOf(v["id"]) > -1;
+    });
   }
 
   res.jsonp(response);

@@ -151,7 +151,7 @@
 
       <div class="form-group">
         <label for="tshirt">Velikost trička:</label>
-        {{#x-select value=model.thirt_size class="form-control" required=true}}
+        {{#x-select value=model.tshirt_size class="form-control" required=true}}
           {{#x-option value=""}}Prosím vyber{{/x-option}}
           {{#each tshirt_size key="@index" as |item|}}
             {{#x-option value=item}}

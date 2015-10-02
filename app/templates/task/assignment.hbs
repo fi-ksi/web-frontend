@@ -1,14 +1,12 @@
 <div style="margin-bottom:30px">
   <div style="margin:20px">
-     {{{model.body}}}
+     {{{model.details.body}}}
   </div>
-  <div style="margin:20px">
-    <a href="/tasks/{{model.id}}/assignment/pdf"><button class="btn btn-task btn-primary">Stáhnout pdf</button></a>
-  </div>
+  <hr>
   <div style="margin-left:20px">
     {{#if opened}}
       {{#if true}}
-        {{#each model.modules as |module index|}}
+        {{#each model.details.modules as |module index|}}
           {{module-wrap module=module}}
         {{/each}}
       {{else}}

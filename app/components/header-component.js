@@ -30,11 +30,9 @@ export default Ember.Component.extend({
 	},
 	resizeBody: function() {
 		if(this.get("session.current_user.admin")) {
-			console.log("Admin!");
 	     	Ember.$('body').css("padding-top", Ember.$("#navbar").height() + 150);
 	  	}
 	  	else {
-	  		console.log("User!");
 	  		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+30);
 	  	}
 	}.observes("session.current_user.admin")

@@ -1,6 +1,3 @@
-{{#if model.my_score}}
-  Tvé skóre: {{model.my_score.score}}
-{{/if}}
 <table class="table table-striped">
   <thead>
     <tr style="height:45px">
@@ -14,7 +11,7 @@
     {{#each model.best_scores as |score|}}
     <tr style="height:45px">
       <td class="numbering" style="text-align: center;"></td>
-      <td>{{#link-to "user-profile" score.user}}{{score.user.full_name}}{{/link-to}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
+      <td>{{#link-to "user-profile" score.user}}{{score.user.full_name}}{{/link-to}}</td>
       <td>
         {{#each score.achievements as |achievement|}}
           {{achievement-small model=achievement}}
