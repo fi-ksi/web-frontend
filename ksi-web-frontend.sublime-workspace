@@ -586,14 +586,6 @@
 			}
 		},
 		{
-			"file": "app/templates/task.hbs",
-			"settings":
-			{
-				"buffer_size": 2659,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/templates/task/solution.hbs",
 			"settings":
 			{
@@ -610,18 +602,18 @@
 			}
 		},
 		{
-			"file": "app/templates/task/evaluation.hbs",
-			"settings":
-			{
-				"buffer_size": 2063,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/controllers/task/evaluation.js",
 			"settings":
 			{
-				"buffer_size": 819,
+				"buffer_size": 784,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/task/statistics.hbs",
+			"settings":
+			{
+				"buffer_size": 794,
 				"line_ending": "Windows"
 			}
 		},
@@ -629,7 +621,31 @@
 			"file": "mockup_json_server/db.json",
 			"settings":
 			{
-				"buffer_size": 37815,
+				"buffer_size": 37159,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/main.cpp",
+			"settings":
+			{
+				"buffer_size": 200,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/Makefile",
+			"settings":
+			{
+				"buffer_size": 408,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/model_noop.ll",
+			"settings":
+			{
+				"buffer_size": 5188,
 				"line_ending": "Unix"
 			}
 		},
@@ -662,6 +678,14 @@
 			"settings":
 			{
 				"buffer_size": 161,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/user-score.js",
+			"settings":
+			{
+				"buffer_size": 195,
 				"line_ending": "Windows"
 			}
 		}
@@ -714,6 +738,8 @@
 	},
 	"file_history":
 	[
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/evaluation.hbs",
+		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/submission.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/submission.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/initializers/emberx-select.js",
@@ -730,7 +756,6 @@
 		"/D/Users/email/Documents/KSI/web-frontend/app/initializers/session-store.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/results.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/user-score.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task/evaluation.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/transforms/score-table.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/ext/emberx-select.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/settings.hbs",
@@ -809,7 +834,6 @@
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/score.js",
 		"/D/Users/email/Documents/KSI/web-frontend/mockup_json_server/index.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/models/task.js",
-		"/D/Users/email/Documents/KSI/web-frontend/app/templates/task.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/templates/tasks.hbs",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/settings/password.js",
 		"/D/Users/email/Documents/KSI/web-frontend/app/controllers/registration.js",
@@ -849,7 +873,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"D:\\Users\\email\\Documents\\KSI\\web-frontend\\app",
@@ -866,6 +890,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"comment",
+			"thread",
 			"console",
 			"\"score\"",
 			"inverse",
@@ -991,9 +1017,7 @@
 			"graph-content",
 			"second_name",
 			"achievements",
-			"assignments",
-			"resource",
-			"\n"
+			"assignments"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1063,7 +1087,7 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -1161,8 +1185,8 @@
 						"selection":
 						[
 							[
-								908,
-								915
+								341,
+								346
 							]
 						],
 						"settings":
@@ -1323,41 +1347,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1692.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "app/templates/task.hbs",
-					"settings":
-					{
-						"buffer_size": 2659,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "app/templates/task/solution.hbs",
 					"settings":
 					{
@@ -1383,7 +1379,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "app/templates/task/discussion.hbs",
 					"settings":
 					{
@@ -1394,8 +1390,8 @@
 						"selection":
 						[
 							[
-								27,
-								34
+								55,
+								55
 							]
 						],
 						"settings":
@@ -1409,19 +1405,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/templates/task/evaluation.hbs",
+					"buffer": 10,
+					"file": "app/controllers/task/evaluation.js",
 					"settings":
 					{
-						"buffer_size": 2063,
+						"buffer_size": 784,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								35,
-								35
+								778,
+								778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/templates/task/statistics.hbs",
+					"settings":
+					{
+						"buffer_size": 794,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
 							]
 						],
 						"settings":
@@ -1435,53 +1458,27 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/controllers/task/evaluation.js",
-					"settings":
-					{
-						"buffer_size": 819,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								306,
-								306
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "mockup_json_server/db.json",
 					"settings":
 					{
-						"buffer_size": 37815,
+						"buffer_size": 37159,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2334,
-								2334
+								2111,
+								2111
 							]
 						],
 						"settings":
@@ -1491,13 +1488,93 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1080.0,
+						"translation.y": 978.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/main.cpp",
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 14,
+					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/Makefile",
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								321,
+								321
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/D/Users/email/Documents/Paradise/SymDivine_Vojta/test_programs/simple/model_noop.ll",
+					"settings":
+					{
+						"buffer_size": 5188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4483,
+								4627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LLVM/LLVM.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 24.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
 					"file": "app/models/task-score.js",
 					"settings":
 					{
@@ -1523,7 +1600,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 17,
 					"file": "app/models/module.js",
 					"settings":
 					{
@@ -1550,7 +1627,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 18,
 					"file": "app/models/task-detail.js",
 					"settings":
 					{
@@ -1561,8 +1638,8 @@
 						"selection":
 						[
 							[
-								148,
-								154
+								395,
+								395
 							]
 						],
 						"settings":
@@ -1577,7 +1654,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 19,
 					"file": "app/models/module-score.js",
 					"settings":
 					{
@@ -1590,6 +1667,32 @@
 							[
 								126,
 								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/models/user-score.js",
+					"settings":
+					{
+						"buffer_size": 195,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1633,7 +1736,7 @@
 		"cols":
 		[
 			0.0,
-			0.58492748916,
+			0.481757818557,
 			1.0
 		],
 		"rows":
