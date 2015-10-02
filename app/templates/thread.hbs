@@ -6,8 +6,6 @@
 	<!-- Sekcia -->
 	<div style="margin:40px;">
 		<h2>{{model.title}}!</h2>
-		{{#each model.root_posts as |post|}}
-			{{thread-post model=post store=store}}
-		{{/each}}
+		{{thread-view thread=model store=store}}
 	</div>
 </section>
