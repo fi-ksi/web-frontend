@@ -4,7 +4,6 @@ export default Ember.Controller.extend({
 	submitted: Ember.computed('model.details.modules.[]', function() {
 	    var res = false;
 	    this.get('model.details.modules').mapBy('score.score').forEach(function(score) {
-	    	console.log("Score: ", score);
 	     	res |= typeof score != 'undefined';
 	    });
 	    return res;
@@ -21,6 +20,6 @@ export default Ember.Controller.extend({
 		if (res > 100) {
 			res = 100;
 		}
-		return Math.round(res);
+		return new Ember.Handlebars.SafeString('width: ' + Math.round(res) + '%');
 	}.property("sum", "model.max_score")
 });

@@ -24,8 +24,6 @@ export default EmberUploader.FileField.extend(InboundActions, {
 				url: self.get("url")
 			});
 
-			console.log("URL: ", self.get("url"));
-
 			uploader.on("didUpload", function() {
 				self.sendAction("upload_finished");
 			});
