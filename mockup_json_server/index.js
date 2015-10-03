@@ -59,6 +59,9 @@ router.render = function (req, res) {
     response["moduleScores"] = router.db.object["moduleScores"].filter(function(v) {
         return res.locals.data["modules"].indexOf(v["id"]) > -1;
     });
+    response["userScores"] = router.db.object["userScores"].filter(function(v) {
+        return res.locals.data["best_scores"].indexOf(v["id"]) > -1;
+    });
   }
 
   res.jsonp(response);
