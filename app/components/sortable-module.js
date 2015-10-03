@@ -48,6 +48,15 @@ export default Ember.Component.extend(InboundActions, {
                 success: function(data) {
                     if("result" in data) {
                         self.set("module.state", data.result);
+                        if("score" in data) {
+                            if(!this.get("module.score")) {
+                                this.set("module.score", this.get("store").createRecord("module-score"));
+                            }
+                            this.set("module.score.score", data.score.score);
+                            if("reviewed_by" in data.score) {
+                                this.set("module.score.reviewed_by", data.score.reviewed_by);
+                            }
+                        }
                         self.sendAction("submit_done");
                     }
                     else {
