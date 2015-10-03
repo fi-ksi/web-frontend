@@ -5,7 +5,7 @@ import DS from "ember-data";
  */
 export default DS.Model.extend( {
 	title: DS.attr("string"),
-	root_posts: DS.hasMany("post", {async: true}),
+	details: DS.belongsTo("thread-detail", {async: true}),
 	unread: DS.attr("number"),
 	posts_count: DS.attr("number")
 });
