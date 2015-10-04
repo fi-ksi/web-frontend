@@ -64,6 +64,14 @@ router.render = function (req, res) {
     });
   }
 
+  // Handle profile
+  if(item == "threadDetail") {
+    response["posts"] = router.db.object["posts"].filter(function(v) {
+        return res.locals.data["root_posts"].indexOf(v["id"]) > -1;
+    });
+  }
+
+
   res.jsonp(response);
 }
 
