@@ -44,7 +44,7 @@ module.exports = function(environment) {
 
   if (environment === 'local_dev' || environment === 'mockup_dev') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://localhost:3000/v1/oauth2/auth'
+      serverTokenEndpoint: 'http://localhost:3000/auth'
     };
     ENV["API_LOC"] = "http://localhost:3000";
   }
