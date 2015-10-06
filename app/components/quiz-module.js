@@ -23,7 +23,6 @@ export default Ember.Component.extend(InboundActions, {
                 if(checked.length === 0) {
                     // there aren't checked items!
                     valid = false;
-                    console.log("Invalid! " + "#w_" + self.get("module.id") + "_" + index);
                     Ember.$("#w_" + self.get("module.id") + "_" + index).removeClass("hide");
                     response.push(undefined);
                 } else {

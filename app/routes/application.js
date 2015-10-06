@@ -7,7 +7,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 		sessionAuthenticationSucceeded: function() {
 			var attemptedTransition = this.get('session.attemptedTransition');
 		    if (attemptedTransition) {
-		    	console.log("Vytaženo: " + attemptedTransition.targetName);
 		    	attemptedTransition.retry(); // <== would you look at that!
 		    	this.get('session').set('attemptedTransition', null);
 			} else {

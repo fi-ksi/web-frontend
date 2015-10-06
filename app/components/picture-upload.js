@@ -15,8 +15,6 @@ export default EmberUploader.FileField.extend(InboundActions, {
 		var self = this;
 		for(var i = 0; i !== files.length; i++) {
 			var file = files.item(i).name;
-			console.log(file);
-			console.log(file.split(".").pop().toLowerCase());
 			if (this.get("supported_ext").indexOf(file.split(".").pop().toLowerCase()) === -1) {
 				alert("Nepodporovaný typ souboru: " + file);
 				return;
@@ -27,12 +25,10 @@ export default EmberUploader.FileField.extend(InboundActions, {
 		});
 
 		uploader.on("didUpload", function() {
-			console.log("Upload finished");
 			self.sendAction("upload_finished");
 		});
 
 		uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
-			console.log("Upload canceled");
 			self.sendAction("upload_failed", textStatus, errorThrown);
 		});
 

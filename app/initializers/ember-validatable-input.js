@@ -1,4 +1,4 @@
-import ext from '../ext/validatable-input';
+import '../ext/validatable-input';
 
 export function initialize() {
 	
@@ -7,4 +7,4 @@ export function initialize() {
 export default {
 	name: 'ember-validatable-input',
 	initialize: initialize
-}
+};

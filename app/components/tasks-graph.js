@@ -46,7 +46,6 @@ export default Ember.Component.extend({
 			});
 		});
 
-		console.log(ret);
 		return ret;
 	}.property("model"),
 	didInsertElement: function() {
@@ -116,7 +115,6 @@ export default Ember.Component.extend({
 
 		var graph_width = max_x - min_x + 100;
 		if (graph_width > width) {
-			console.log("Resizing!");
 			var ratio = width / graph_width;
 			cy.nodes().positions(function(i, elem) {
 				var pos = elem.position();

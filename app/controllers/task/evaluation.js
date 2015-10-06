@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 	submitted: Ember.computed('model.details.modules.[]', function() {
 	    var res = false;
 	    this.get('model.details.modules').mapBy('score.score').forEach(function(score) {
-	     	res |= typeof score != 'undefined';
+	     	res |= typeof score !== 'undefined';
 	    });
 	    return res;
     }),
