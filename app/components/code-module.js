@@ -84,6 +84,8 @@ export default Ember.Component.extend(InboundActions, {
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
                 self.set("general_info", "Vyhodnocuji kód");
+                self.set("script_text_output", null);
+                self.set("script_graphics_output", null);
                 Ember.$.ajax({
                     url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
                     data: JSON.stringify({ content: content }),
@@ -94,15 +96,8 @@ export default Ember.Component.extend(InboundActions, {
                             if("output" in data) {
                                 self.set("script_text_output", data.output);
                             }
-                            else {
-                                self.set("script_text_output", null);
-                            }
-
                             if("image_output" in data) {
                                 self.set("script_graphics_output", data.image_output);
-                            }
-                            else {
-                                self.set("script_graphics_output", null);
                             }
                         }
                         else {
@@ -110,10 +105,10 @@ export default Ember.Component.extend(InboundActions, {
                             self.set("script_text_output", null);
                             self.set("general_error", "Špatná odpověď serveru");
                         }
-                        //self.set("general_info", null);
+                        self.set("general_info", null);
                     },
                     error: function(j, e, error) {
-                        //self.set("general_info", null);
+                        self.set("general_info", null);
                         self.set("general_error", error);
                     }
                 });
