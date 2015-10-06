@@ -110,10 +110,10 @@ export default Ember.Component.extend(InboundActions, {
                             self.set("script_text_output", null);
                             self.set("general_error", "Špatná odpověď serveru");
                         }
-                        self.set("general_info", null);
+                        //self.set("general_info", null);
                     },
                     error: function(j, e, error) {
-                        self.set("general_info", null);
+                        //self.set("general_info", null);
                         self.set("general_error", error);
                     }
                 });
