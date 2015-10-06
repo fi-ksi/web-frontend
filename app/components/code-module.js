@@ -83,6 +83,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("general_error", undefined);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
+                self.set("general_info", "Vyhodnocuji kód");
                 Ember.$.ajax({
                     url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
                     data: JSON.stringify({ content: content }),
@@ -109,8 +110,10 @@ export default Ember.Component.extend(InboundActions, {
                             self.set("script_text_output", null);
                             self.set("general_error", "Špatná odpověď serveru");
                         }
+                        self.set("general_info", null);
                     },
                     error: function(j, e, error) {
+                        self.set("general_info", null);
                         self.set("general_error", error);
                     }
                 });
@@ -133,6 +136,7 @@ export default Ember.Component.extend(InboundActions, {
     script_text_output: "abcd",
     script_graphics_output: undefined,
     general_error: undefined,
+    general_info: undefined,
     info_button_text: "Zobrazit nápovědu",
     show_info: false
 });

@@ -21,6 +21,9 @@
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
     </div>
+    {{#if general_info}}
+        {{info-general text=general_info}}
+    {{/if}}
     {{#if general_error}}
         {{warning-general text=general_error}}
     {{/if}}

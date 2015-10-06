@@ -6,8 +6,9 @@ export default Ember.Route.extend(ResetScrollProtected, {
     	if("profile_id" in params) {
     		return this.store.find("user", params["profile_id"]);
     	}
-    	console.log("Returning data from authentication");
-        return this.get("session.current_user");
+    	this.store.unloadAll("profile");
+        //return this.get("session.current_user");
+        return this.store.find("profile", "");
     },
     title: "KSI: Profil"
 });

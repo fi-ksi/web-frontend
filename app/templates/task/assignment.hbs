@@ -5,7 +5,7 @@
   <hr>
   <div style="margin-left:20px">
     {{#if opened}}
-      {{#if true}}
+      {{#if session.isAuthenticated}}
         {{#each model.details.modules as |module index|}}
           {{module-wrap module=module}}
         {{/each}}
