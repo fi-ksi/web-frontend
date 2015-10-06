@@ -79,7 +79,48 @@ export default Ember.Component.extend(InboundActions, {
             }
         },
         run: function() {
-            // ToDo: Depends on backend
+            var self = this;
+            this.set("general_error", undefined);
+            var content = this.get_editor().getValue();
+            if(content && content !== this.get("module.default_code")) {
+                Ember.$.ajax({
+                    url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
+                    data: JSON.stringify({ content: content }),
+                    contentType: "application/json",
+                    type: 'POST',
+                    success: function(data) {
+                        if("output" in data || "image_output" in data) {
+                            if("output" in data) {
+                                self.set("script_text_output", data.output);
+                            }
+                            else {
+                                self.set("script_text_output", null);
+                            }
+
+                            if("image_output" in data) {
+                                self.set("script_graphics_output", data.image_output);
+                            }
+                            else {
+                                self.set("script_graphics_output", null);
+                            }
+                        }
+                        else {
+                            self.set("script_graphics_output", null);
+                            self.set("script_text_output", null);
+                            self.set("general_error", "Špatná odpověď serveru");
+                        }
+                    },
+                    error: function(j, e, error) {
+                        self.set("general_error", error);
+                    }
+                });
+            } else {
+                if(content === this.get("module.default_code")) {
+                    this.set("general_error", "Neprovedl jsi žádné změny na kódu");
+                } else {
+                    this.set("general_error", "Nelze odevzdat prázdný kód!");
+                }
+            }
         },
         load: function() {
             Ember.$("#load_input_" + this.get("module.id")).trigger('click');
