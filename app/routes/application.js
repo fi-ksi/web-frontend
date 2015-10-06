@@ -15,7 +15,15 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 			}
 		},
 		error: function(reason) {
-			return console.log('Hit!', reason);
+			console.log("Hit", reason);
+			if (reason.status === 401) {
+	            this.get('session').invalidate();
+	        }
+	        return true;
+		},
+		authorizationFailed: function() {
+			console.log("Auth failed");
+			return true;
 		}
 	},
 	title: "KSI – Korespondenční seminář z informatiky"
