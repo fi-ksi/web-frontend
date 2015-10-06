@@ -35,7 +35,7 @@ module.exports = function(environment) {
         store: 'simple-auth-session-store:local-storage',
         crossOriginWhitelist: ['http://localhost:3000',
           'http://http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/',
-          'http://147.251.43.191']
+          'http://147.251.43.191:3000']
       }
 
   ENV['simple-auth-oauth2'] = {
@@ -47,6 +47,13 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'http://localhost:3000/auth'
     };
     ENV["API_LOC"] = "http://localhost:3000";
+  }
+
+  if (environment === 'remote_dev') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+    };
+    ENV["API_LOC"] = "http://147.251.43.191:3000";
   }
 
   if (environment === 'development') {
