@@ -97,7 +97,7 @@ export default Ember.Component.extend(InboundActions, {
                                 self.set("script_text_output", data.output);
                             }
                             if("image_output" in data) {
-                                self.set("script_graphics_output", data.image_output);
+                                self.set("script_graphics_output", config.API_LOC + data.image_output);
                             }
                         }
                         else {
