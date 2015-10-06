@@ -67,8 +67,12 @@
       {{warning-general text=login_error_message}}
     {{/if}}
       {{#validatable-form action="login"}}
-        {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true}}
-        {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
+        <div>
+          {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true}}
+        </div>
+        <div style="margin-top:5px">
+          {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
+        </div>
         <input type="submit" name="login"  class="btn btn-primary" value="Přihlas se">
       {{/validatable-form}}
 

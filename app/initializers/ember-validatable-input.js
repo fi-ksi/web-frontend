@@ -1,7 +1,7 @@
 import '../ext/validatable-input';
 
 export function initialize() {
-	
+
 }
 
 export default {
