@@ -49,6 +49,13 @@ module.exports = function(environment) {
     ENV["API_LOC"] = "http://localhost:3000";
   }
 
+  if (environment === 'remote_dev') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+    };
+    ENV["API_LOC"] = "http://147.251.43.191:3000";
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
