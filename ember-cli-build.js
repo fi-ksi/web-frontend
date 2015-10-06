@@ -28,6 +28,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/ember-qtip2/jquery.qtip.min.js');
   app.import(app.bowerDirectory + '/cytoscape-qtip/cytoscape-qtip.js');
   app.import(app.bowerDirectory + '/ace-builds/src-min-noconflict/ace.js');
+  app.import(app.bowerDirectory + '/ace-builds/src-min-noconflict/mode-python.js');
+  app.import(app.bowerDirectory + '/ace-builds/src-min-noconflict/theme-monokai.js');
   app.import(app.bowerDirectory + '/HCaptions/jquery.hcaptions.js');
 
   app.import(app.bowerDirectory + '/ember-qtip2/jquery.qtip.min.css');

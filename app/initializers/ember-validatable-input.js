@@ -1,4 +1,4 @@
-import ext from '../ext/validatable-input';
+import '../ext/validatable-input';
 
 export function initialize() {
 

@@ -9,7 +9,6 @@ export default Ember.Route.extend(ResetScroll, {
 		return model.get("title");
 	},
 	title: function(tokens) {
-		console.log(tokens);
 		return "KSI: " + tokens.pop();
 	}
 });

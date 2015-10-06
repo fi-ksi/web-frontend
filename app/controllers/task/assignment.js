@@ -35,11 +35,9 @@ export default Ember.Controller.extend({
 				        	// This is file module
 				        	for (var i = 0; i !== result["files"].length; i++) {
 				        		data.append(property + "_file_" + i, result["files"][i]);
-				        		console.log("Appending " + property + "_file_" + i + ": " + result["files"][i]);
 				        	}
 				        } else {
 				        	data.append(property, JSON.stringify(result));
-				        	console.log("Appending " + property + ": " + JSON.stringify(result));
 				        }
 				    }
 				}
@@ -67,7 +65,6 @@ export default Ember.Controller.extend({
 			        scrollTop: offset - 150 //Magic constant
 			    }, "slow");
 			}
-			console.log("All components have responded!");
 		}
 	},
 	actions: {
@@ -77,13 +74,10 @@ export default Ember.Controller.extend({
 		},
 		result: function(id, message) {
 			this.get("results").set(id, { type: "success", data: message});
-			console.log(id + " sent: ");
-			console.log(message);
 			this.submit_all();
 		},
 		error: function(id) {
 			this.get("results").set(id, { type: "fail" });
-			console.log(id + " reports error");
 			this.submit_all();
 		},
 		new_submit: function() {

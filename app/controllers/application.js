@@ -5,7 +5,6 @@ export default Ember.Controller.extend( {
 	login_error_message: undefined, 
 	actions: {
 		login: function() {
-			console.log("Action triggered!");
 			var _this = this;
 			var data = this.getProperties('identification', 'password');
 			this.set('password', "");
@@ -21,7 +20,6 @@ export default Ember.Controller.extend( {
 			});
 		},
 		feedback: function() {
-			console.log("Sending feedback!");
 			var self = this;
             this.set("feedback_error", undefined);
 

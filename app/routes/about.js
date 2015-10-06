@@ -4,7 +4,6 @@ export default Ember.Route.extend({
 	beforeModel: function(param) {
 		this._super();
 		if("queryParams" in param && "view" in param.queryParams && param.queryParams.view === "faq") {
-			console.log("Here!");
 			Ember.$("#faq").livequery(function() {
 				Ember.$('html, body').animate({
 			        scrollTop: Ember.$("#faq").offset().top - 150 //Magic constant

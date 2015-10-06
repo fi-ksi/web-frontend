@@ -11,7 +11,6 @@ export default Ember.Component.extend({
         	var self = this;
 
         	if(!this.get("response_text")) {
-        		console.log("Error");
         		this.set("content_error", "Nelze odeslat prázdný příspěvek");
         		return;
         	}

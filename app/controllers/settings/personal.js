@@ -28,8 +28,6 @@ export default Ember.Controller.extend(UserSettings, {
                 tshirt_size: this.get("model.tshirt_size")
             };
 
-            console.log(JSON.stringify(obj));
-
             Ember.$.ajax({
                 url: config.API_LOC + "/profile",
                 data: JSON.stringify(obj),
