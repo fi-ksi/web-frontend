@@ -14,7 +14,7 @@
         <label for="threadName">Editor kódu</label>
         {{code-editor content=module.code  id=(construct-id "editor_module" module.id)}}
     </div>
-    <div class="row" style="margin-left:0px">
+    <div class="row" style="margin-left:0px; margin-right:20px">
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "run"}}>Spustit</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>
@@ -35,7 +35,7 @@
     {{/if}}
     {{#if script_graphics_output}}
         <div class="row">
-            <label>Grafický výstup</label>
+            <label>Grafický výstup</label><br>
             <img src="{{script_graphics_output}}"/>
         </div>
     {{/if}}
