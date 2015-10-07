@@ -1,5 +1,6 @@
 import DS from "ember-data";
 import Ember from "ember";
+import config from '../config/environment';
 
 export default DS.Model.extend( {
 	first_name: DS.attr("string"),
@@ -13,6 +14,13 @@ export default DS.Model.extend( {
         return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
     profile_picture: DS.attr("string"),
+    profile_picture_r: Ember.computed("profile_picture", function() {
+        var p = this.get("profile_picture");
+        if(p) {
+            return config.API_LOC + p;
+        }
+        return "/img/avatar-default.svg";
+    }),
     short_info: DS.attr("string"),
     is_organisator: DS.attr("boolean"),
 

@@ -5,7 +5,7 @@ export default Ember.Controller.extend( {
 	login_error_message: undefined, 
 	actions: {
 		login: function() {
-			var _this = this;
+			var self = this;
 			var data = this.getProperties('identification', 'password');
 			this.set('password', "");
 			var authenticator = "simple-auth-authenticator:oauth2-password-grant";
@@ -15,8 +15,16 @@ export default Ember.Controller.extend( {
 			this.get('session').authenticate(authenticator, data).then(function() {
 				Ember.$('#login-modal').modal('hide');
 			}, function(error) {
-				console.log(error);
-				_this.set('login_error_message', error);
+				if ("error" in error) {
+					if(error.error === "unauthorized_client") {
+						self.set('login_error_message', "Neexistující uživatel nebo špatné heslo");
+					} else {
+						console.log(error.error);
+						self.set('login_error_message', "Interní chyba přihlášení: " + error.error);
+					}
+				} else {
+					self.set('login_error_message', "Interní chyba serveru: " + error.error);
+				}		
 			});
 		},
 		feedback: function() {

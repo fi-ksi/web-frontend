@@ -32,8 +32,8 @@ export default EmberUploader.FileField.extend(InboundActions, {
 			self.sendAction("upload_failed", textStatus, errorThrown);
 		});
 
-		if (!Ember.isEmpty(this.get("files"))) {
-			uploader.upload(this.get("files")[0]);
+		if (!Ember.isEmpty(files)) {
+			uploader.upload(files[0]);
 		}
 	}
 });

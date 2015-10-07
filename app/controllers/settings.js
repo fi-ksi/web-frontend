@@ -9,7 +9,7 @@ export default Ember.Controller.extend(UserSettings, {
     		Ember.$("#picture_input").trigger('click');
     	},
     	upload_finished: function() {
-    		// ToDo: Reload picture!
+    		this.get("model").reload();
             alert("Obrázek změnen!");
     	},
     	upload_failed: function(status, error) {
