@@ -30,6 +30,9 @@ export default Ember.Controller.extend(UserSettings, {
                 return;
             }
 
+            if(!this.get("model.short_info")) {
+                this.set("model.short_info", "");
+            }
             
             Ember.$.ajax({
                 url: config.API_LOC + "/registration",

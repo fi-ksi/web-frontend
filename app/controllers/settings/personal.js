@@ -6,8 +6,8 @@ export default Ember.Controller.extend(UserSettings, {
     actions: {
         save: function() {
             var self = this;
-            this.set("global_info", "Ukládám nastavení");
-            this.set("global_error", undefined);
+            this.set("general_info", "Ukládám nastavení");
+            this.set("general_error", undefined);
 
             var obj = {
                 first_name: this.get("model.first_name"),
@@ -34,15 +34,15 @@ export default Ember.Controller.extend(UserSettings, {
                 contentType: "application/json",
                 type: 'PUT',
                 success: function() {
-                    self.set("global_info", "Nastavení úspěšně uloženo");
+                    self.set("general_info", "Nastavení úspěšně uloženo");
                     Ember.run.later((function() {
-                        self.set("global_info", undefined);
+                        self.set("general_info", undefined);
                     }), 3000);
                     // ToDo: Reload profile
                 },
                 error: function(j, e, error) {
-                    self.set("global_info", undefined);
-                    self.set("global_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
+                    self.set("general_info", undefined);
+                    self.set("general_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
                 }
             });
         }

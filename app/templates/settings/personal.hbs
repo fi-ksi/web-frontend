@@ -57,7 +57,6 @@
     <label for="country">Země:</label>
     {{#x-select value=model.addr_country class="form-control" required=true}}
       {{#each countries key="@index" as |item|}}
-        {{log "Země!"}}
         {{#x-option value=item.short selected=(is-equal item.short model.addr_country)}}
           {{item.name}}
         {{/x-option}}
@@ -140,6 +139,12 @@
       {{/each}}
     {{/x-select}}
   </div>
+  {{#if general_error}}
+    {{warning-general text=general_error}}
+  {{/if}}
+  {{#if general_info}}
+    {{info-general text=general_info}}
+  {{/if}}
   <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
     Ulož změny
   </button>

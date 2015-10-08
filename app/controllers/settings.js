@@ -15,7 +15,7 @@ export default Ember.Controller.extend(UserSettings, {
     	upload_failed: function(status, error) {
     		alert("Nepodařilo se nahrát obrázek: " + status + " " + error);
     	},
-    	save: function() {
+    	/*save: function() {
     		var self = this;
     		this.set("global_info", "Ukládám nastavení");
     		this.set("global_error", undefined);
@@ -29,6 +29,6 @@ export default Ember.Controller.extend(UserSettings, {
     			this.set("global_info", undefined);
     			this.set("global_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu");
     		});
-    	}
+    	}*/
     }
 });
