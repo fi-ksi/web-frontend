@@ -3,7 +3,11 @@ import Ember from "ember";
 export default Ember.Controller.extend({
 	submitted: Ember.computed('model.details.modules.[]', function() {
 	    var res = false;
-	    this.get('model.details.modules').mapBy('score.score').forEach(function(score) {
+	    var modules = this.get('model.details.modules');
+	    if (!modules) {
+	    	return modules;
+	    }
+	    modules.mapBy('score.score').forEach(function(score) {
 	     	res |= typeof score !== 'undefined';
 	    });
 	    return res;

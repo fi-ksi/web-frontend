@@ -75,8 +75,11 @@ export default Ember.Component.extend({
 	},
     reposition_graph: function() {
     	var cy = this.get("cy");
-    	cy.autolock(false);
-    	document.getElementById("cy").style.width = "100%";
+    	cy.autolock(true);
+    	var cy_elem = document.getElementById("cy");
+    	if(cy_elem) {
+	    	cy_elem.style.width = "100%";
+	    }
     	var width = Ember.$("#cy").width();
     	var options = {
 			name: 'dagre',
@@ -125,7 +128,9 @@ export default Ember.Component.extend({
 			});
 		}
 
-		document.getElementById("cy").style.height = (max_y + 250 - min_y) + "px"; // Magic constant
+		if (cy_elem) {
+			cy_elem.style.height = (max_y + 250 - min_y) + "px"; // Magic constant
+		}
 		cy.resize();
 		cy.center();
     },

@@ -93,10 +93,10 @@ export default Ember.Component.extend(InboundActions, {
                     type: 'POST',
                     success: function(data) {
                         if("output" in data || "image_output" in data) {
-                            if("output" in data) {
+                            if("output" in data && data.output) {
                                 self.set("script_text_output", data.output);
                             }
-                            if("image_output" in data) {
+                            if("image_output" in data && data.image_output) {
                                 self.set("script_graphics_output", config.API_LOC + data.image_output);
                             }
                         }
@@ -128,7 +128,7 @@ export default Ember.Component.extend(InboundActions, {
             saveAs(blob, "source.py");
         }
     },
-    script_text_output: "abcd",
+    script_text_output: undefined,
     script_graphics_output: undefined,
     general_error: undefined,
     general_info: undefined,

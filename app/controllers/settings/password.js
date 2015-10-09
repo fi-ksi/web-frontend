@@ -21,7 +21,7 @@ export default Ember.Controller.extend( {
                 return;
             }
             Ember.$.ajax({
-                url: config.API_LOC + "/settings/change_password",
+                url: config.API_LOC + "/settings/changePassword",
                 data: JSON.stringify({
                     old_password: this.get("old_password"),
                     new_password: this.get("new_password"),
