@@ -8,7 +8,7 @@ export default Ember.Controller.extend( {
             this.set("general_error", undefined);
 
             Ember.$.ajax({
-                url: config.API_LOC + "/forgot_password",
+                url: config.API_LOC + "/forgottenPassword",
                 data: JSON.stringify(self.get("model")),
                 contentType: "application/json",
                 type: 'POST',
