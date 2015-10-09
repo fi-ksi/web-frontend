@@ -75,7 +75,7 @@ export default Ember.Component.extend({
 	},
     reposition_graph: function() {
     	var cy = this.get("cy");
-    	cy.autolock(true);
+    	cy.autolock(false);
     	var cy_elem = document.getElementById("cy");
     	if(cy_elem) {
 	    	cy_elem.style.width = "100%";
