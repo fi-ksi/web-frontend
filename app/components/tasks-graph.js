@@ -133,6 +133,7 @@ export default Ember.Component.extend({
 		}
 		cy.resize();
 		cy.center();
+		cy.autolock(true);
     },
     style_graph: function()  {
     	this.get("cy").style()
