@@ -3,3 +3,23 @@
 		{{thread-post model=post store=store}}
 	{{/each}}
 </ul>
+
+<div class="row" style="margin-bottom: 20px;">
+	{{#if session.isAuthenticated}}
+		<button class="btn btn-primary" {{action "add_comment"}}>{{unless is_reacting "Přidat příspěvek" "Zrušit příspěvek"}}</button>
+		{{#if is_reacting}}
+          {{#if content_error}}
+            {{warning-general text=content_error}}
+          {{/if}}
+          <div class="panel panel-default" style="border:none; box-shadow: none;">
+              <div class="controls form-inline" style="margin-top:20px">
+                  <label for="threadName">Příspěvek:</label>
+                  {{text-editor value=response_text}}
+              </div>
+      				<button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "send"}}>Odeslat</button>
+      		</div>
+      {{/if}}
+	{{else}}
+        {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+    {{/if}}
+</div>
