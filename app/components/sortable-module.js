@@ -60,8 +60,8 @@ export default Ember.Component.extend(InboundActions, {
                         self.set("general_error", "Špatná odpověď serveru");
                     }
                 },
-                error: function(j, e, error) {
-                    self.set("general_error", error);
+                error: function() {
+                    self.set("general_error", "Špatná odpověď ze serveru");
                 }
             });
         }

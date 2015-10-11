@@ -15,8 +15,8 @@ export default Ember.Controller.extend( {
                 success: function() {
                     self.set("finished", true);
                 },
-                error: function(j, e, error) {
-                    self.set("general_error", error);
+                error: function() {
+                    self.set("general_error", "Špatná odpověď ze serveru");
                 }
             });
         }

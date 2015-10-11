@@ -4,6 +4,7 @@ import config from '../config/environment';
 
 export default Ember.Controller.extend(UserSettings, {
     registration_done: false,
+    registration_in_progress: false,
     check: function() {
         if(this.get("model.password") && this.get("model.password2") &&
             this.get("model.password").length > 6 && this.get("model.password2").length > 6) {
@@ -34,6 +35,7 @@ export default Ember.Controller.extend(UserSettings, {
                 this.set("model.short_info", "");
             }
             
+            this.set("registration_in_progress", true);
             Ember.$.ajax({
                 url: config.API_LOC + "/registration",
                 data: JSON.stringify(self.get("model")),
@@ -42,8 +44,9 @@ export default Ember.Controller.extend(UserSettings, {
                 success: function() {
                     self.set("registration_done", true);
                 },
-                error: function(j, e, error) {
-                    self.set("general_error", error);
+                error: function() {
+                    self.set("registration_in_progress", false);
+                    self.set("general_error", "Špatná odpověď ze serveru. Zkus to znovu za chvíli.");
                 }
             });
         }

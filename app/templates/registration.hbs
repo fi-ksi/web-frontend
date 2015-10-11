@@ -1,6 +1,6 @@
 <section id="registration" class="container content-section" style="text-align:justify">
 	{{#if registration_done}}
-    {{info-general text="Registrace byla provedna. Za chvíli by ti měl přijít e-mail s dalšími instrukcemi."}}
+    {{info-general text="Registrace byla provedna. Nyní se můžeš přihlásit."}}
   {{else}}
   {{#validatable-form action="register" model=model}}
 	<div class="jumbotron" style="background-color: transparent">
@@ -178,6 +178,9 @@
 					<div style="margin-top: 20px;">
 	          {{warning-general text=general_error}}
 					</div>
+        {{/if}}
+        {{#if registration_in_progress}}
+          {{info-general text="Odesílám data."}}
         {{/if}}
 			</div>
 		</div>

@@ -14,6 +14,14 @@ export default Ember.Controller.extend( {
 			}
 			this.get('session').authenticate(authenticator, data).then(function() {
 				Ember.$('#login-modal').modal('hide');
+				var store = this.get("store");
+				store.unload("task");
+				store.unload("task-detail");
+				store.unload("thread");
+				store.unload("module");
+				store.unload("module-score");
+				store.unload("achievement");
+				store.unload("task-score");
 			}, function(error) {
 				if ("error" in error) {
 					if(error.error === "unauthorized_client") {
@@ -44,8 +52,8 @@ export default Ember.Controller.extend( {
                 success: function() {
                     Ember.$('#feedback-modal').modal('hide');
                 },
-                error: function(j, e, error) {
-                    self.set("feedback_error", error);
+                error: function() {
+                    self.set("feedback_error", "Špatná odpověď ze serveru");
                 }
             });
 		}
