@@ -36,24 +36,36 @@ export default Ember.Component.extend(InboundActions, {
         submit: function() {
             var self = this;
             this.set("general_error", undefined);
+            self.set("script_text_output", null);
+            self.set("script_graphics_output", null);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
+                self.set("general_info", "Odevzdávám");
                 Ember.$.ajax({
                     url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                     data: JSON.stringify({ content: content }),
                     contentType: "application/json",
                     type: 'POST',
                     success: function(data) {
+                        self.set("general_info", null);
                         if("result" in data) {
                             self.set("module.state", data.result);
+                            if(!self.get("module.score")) {
+                                self.set("module.score", self.get("store").createRecord("module-score"));
+                            }
+                            if(!data.score) {
+                                self.set("general_info", "Tvé řešení není správné! Zkus to znovu.");
+                            }
+                            self.set("module.score.score", data.score);
                             self.sendAction("submit_done");
                         }
                         else {
                             self.set("general_error", "Špatná odpověď serveru");
                         }
                     },
-                    error: function(j, e, error) {
-                        self.set("general_error", error);
+                    error: function() {
+                        self.set("general_info", null);
+                        self.set("general_error", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                     }
                 });
             } else {
@@ -86,13 +98,14 @@ export default Ember.Component.extend(InboundActions, {
                 self.set("general_info", "Vyhodnocuji kód");
                 self.set("script_text_output", null);
                 self.set("script_graphics_output", null);
+                this.get_editor().focus();
                 Ember.$.ajax({
                     url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
                     data: JSON.stringify({ content: content }),
                     contentType: "application/json",
                     type: 'POST',
                     success: function(data) {
-                        if("output" in data || "image_output" in data) {
+                        if("output" in data ||  "image_output" in data) {
                             if("output" in data && data.output) {
                                 self.set("script_text_output", data.output);
                             }
@@ -107,9 +120,9 @@ export default Ember.Component.extend(InboundActions, {
                         }
                         self.set("general_info", null);
                     },
-                    error: function(j, e, error) {
+                    error: function() {
                         self.set("general_info", null);
-                        self.set("general_error", error);
+                        self.set("general_error", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                     }
                 });
             } else {
