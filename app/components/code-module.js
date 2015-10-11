@@ -38,6 +38,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("general_error", undefined);
             self.set("script_text_output", null);
             self.set("script_graphics_output", null);
+            self.set("submission_info", null);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
                 self.set("general_info", "Odevzdávám");
@@ -54,7 +55,7 @@ export default Ember.Component.extend(InboundActions, {
                                 self.set("module.score", self.get("store").createRecord("module-score"));
                             }
                             if(!data.score) {
-                                self.set("general_info", "Tvé řešení není správné! Zkus to znovu.");
+                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                             }
                             self.set("module.score.score", data.score);
                             self.sendAction("submit_done");
@@ -64,8 +65,7 @@ export default Ember.Component.extend(InboundActions, {
                         }
                     },
                     error: function() {
-                        self.set("general_info", null);
-                        self.set("general_error", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+                        self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                     }
                 });
             } else {
@@ -92,7 +92,9 @@ export default Ember.Component.extend(InboundActions, {
         },
         run: function() {
             var self = this;
-            this.set("general_error", undefined);
+            this.set("general_error", null);
+            self.set("submission_info", null);
+            this.set("general_info", null);
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
                 self.set("general_info", "Vyhodnocuji kód");

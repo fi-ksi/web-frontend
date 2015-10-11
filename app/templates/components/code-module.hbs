@@ -6,7 +6,7 @@
 
     <div style="margin-top:20px">
       {{#if show_info}}
-          {{info-general text="Náš kód se používá blablabalba. Nemůžeš používat blablaba."}}
+          {{info-general text="<p>Před sebou máš náš editor kódu, ve kterém může být předvyplněna šablona kódu. Do této šablony je tvým úkolem napsat program dle zadání. Můžeš využívat téměř libovolných prostředků jazyka Python 2.7.</p><p>Svůj kód si můžeš nechat vyhodnotit. Po úspěšném vyhodnocení se ti zobrazí textový výstup programu (i s případnými chybovými hláškami) a občas i grafickým znázorněním výstupu. Na čísla řádků v chybových řádků neber příliš ohled - z technických důvodů nebudou sedět s čísly řádků v editoru</p><p>Jakmile si myslíš, že tvůj kód funguje tak, jak má, můžeš jej odevzdat. Během odevzdání se provede sada automatických testů, které ověří jestli tvůj kód splňuje zadání.</p><p><strong>Pozor:</strong>Tvůj kód není ukládán! Pokud opustíš stránku, přijdeš o něj. Můžeš si jej však uložit k sobě na disk a případně jej později načíst.</p>"}}
       {{/if}}
     </div>
 
@@ -26,6 +26,9 @@
     {{/if}}
     {{#if general_error}}
         {{warning-general text=general_error}}
+    {{/if}}
+    {{#if submission_info}}
+        {{info-general text=submission_info disable_warning=true}}
     {{/if}}
     {{#if script_text_output}}
         <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
