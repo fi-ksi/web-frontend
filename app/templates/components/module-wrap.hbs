@@ -11,16 +11,19 @@
   <div class="panel-body">
     {{#if show}}
       {{#if module.is_programming}}
-        {{code-module module=module id=module.id submit_done="submit_done" actionReceiver=module_logic}}
+        {{code-module module=module sotre=store id=module.id submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_quiz}}
-        {{quiz-module module=module submit_done="submit_done" actionReceiver=module_logic}}
+        {{quiz-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_general}}
-        {{file-module module=module submit_done="submit_done" actionReceiver=module_logic}}
+        {{file-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_sortable}}
-        {{sortable-module module=module submit_done="submit_done" actionReceiver=module_logic}}
+        {{sortable-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
+      {{/if}}
+      {{#if module.is_text}}
+        {{sortable-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
     {{/if}}
     <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "trigger"}}>

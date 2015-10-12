@@ -15,7 +15,6 @@ export default Ember.Component.extend({
     actions: {
         trigger: function() {
             if (this.get("show")) {
-                // ToDo: Odevzdat
                 this.get("module_logic").send("submit");
             }
             else {

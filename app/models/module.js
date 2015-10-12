@@ -15,6 +15,9 @@ export default DS.Model.extend( {
 	is_sortable: Ember.computed("type", function() {
 		return this.get("type") === "sortable";
 	}),
+	is_text: Ember.computed("type", function() {
+		return this.get("type") === "text";
+	}),
 
 	name: DS.attr("string"),
 	description: DS.attr("string"),

@@ -43,12 +43,13 @@ export default Ember.Component.extend(InboundActions, {
                     success: function(data) {
                         if("result" in data) {
                             self.set("module.state", data.result);
-                            if("score" in data) {
-                                if(!self.get("module.score")) {
-                                    self.set("module.score", self.get("store").createRecord("module-score"));
-                                }
-                                self.set("module.score.score", data.score);
+                            if(!self.get("module.score")) {
+                                self.set("module.score", self.get("store").createRecord("module-score"));
                             }
+                            if(!data.score) {
+                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                            }
+                            self.set("module.score.score", data.score);
                             self.sendAction("submit_done");
                         }
                         else {
