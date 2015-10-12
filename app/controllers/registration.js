@@ -19,6 +19,7 @@ export default Ember.Controller.extend(UserSettings, {
     	register: function() {
             var self = this;
             this.set("general_error", undefined);
+            this.set("taken", false);
 
             if(this.get("model.password") !== this.get("model.password2")) {
                 this.set("password_error", true);
@@ -41,8 +42,21 @@ export default Ember.Controller.extend(UserSettings, {
                 data: JSON.stringify(self.get("model")),
                 contentType: "application/json",
                 type: 'POST',
-                success: function() {
-                    self.set("registration_done", true);
+                success: function(data) {
+                    if ("error" in data) {
+                        if (data.error == "duplicate_user") {
+                            self.set("taken", true);
+                        } else {
+                            self.set("general_error", "Chyba při registraci! " + data.error);
+                        }
+                        var elems = Ember.$(".alert-danger");
+                        var offset = Math.min.apply(null, Ember.$.map(elems, function(elem) { return Ember.$(elem).offset().top; }));
+                        Ember.$('html, body').animate({
+                            scrollTop: offset - 150 //Magic constant
+                        }, "slow");
+                    } else {
+                        self.set("registration_done", true);
+                    }
                 },
                 error: function() {
                     self.set("registration_in_progress", false);

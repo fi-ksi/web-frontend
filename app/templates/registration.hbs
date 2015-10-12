@@ -14,6 +14,9 @@
         <label for="email">E-mail:</label>
         {{input value=model.email type="email" class="form-control" id="email" required=true placeholder="e-mail"}}
       </div>
+      {{#if taken}}
+        {{warning-general text="Tato e-mailová adresa je již použita."}}
+      {{/if}}
 
       <div class="form-group">
         <label for="password">Heslo (alespoň 6 znaků):</label>
