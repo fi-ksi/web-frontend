@@ -1,0 +1,18 @@
+<div class=row style="margin-left:0px">
+	{{{module.description}}}
+</div>
+<div style="margin-left:0px">
+	<form class="form-horizontal">
+	  <div class="form-group">
+	    <label for="inputSolution" class="col-sm-1 control-label">Řešení: </label>
+	    <div class="col-sm-11">
+	      <input type="text" class="form-control" id="inputSolution">
+	    </div>
+	  </div>
+	</form>
+	{{#if general_error}}
+		<div style="margin-top:20px">
+			{{warning-general text=general_error}}
+		</div>
+	{{/if}}
+</div>
