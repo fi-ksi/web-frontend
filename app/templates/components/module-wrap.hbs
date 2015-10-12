@@ -23,7 +23,7 @@
         {{sortable-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_text}}
-        {{sortable-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
+        {{text-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
     {{/if}}
     <button class="btn btn-task btn-primary" style="margin-top:20px" {{action "trigger"}}>
