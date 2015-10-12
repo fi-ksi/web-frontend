@@ -1,6 +1,6 @@
 <div class="controls">
     <div class="row" style="margin-left:0px">
-        {{module.description}}
+        {{{module.description}}}
     </div>
     <button class="btn btn-primary btn-task inline" style="margin-top:20px" {{action "toggle_info"}}>{{info_button_text}}</button>
 
@@ -40,7 +40,7 @@
         <div class="row">
             <label>Grafický výstup</label><br>
             <div style="align: center;">
-                <img src="{{script_graphics_output}}"/>
+                <img src="{{script_graphics_output}}" style="display:block; margin: auto; border-radius: 5px; border:1px solid black; width:100%; max-width:800px;"/>
             </div>
         </div>
     {{/if}}
