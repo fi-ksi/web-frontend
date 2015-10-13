@@ -7,7 +7,9 @@
         {{{model.body}}}
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
-          {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}</button>
+          {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
+        </button>
+        <hr>
         {{#if admin}}
           <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "delete"}}>Smazat</button>
           <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "move"}}>Přesunout</button> <!-- TODO ako? -->

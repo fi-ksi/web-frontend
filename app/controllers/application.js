@@ -18,6 +18,8 @@ export default Ember.Controller.extend( {
 				store.unload("task");
 				store.unload("task-detail");
 				store.unload("thread");
+				store.unload("thread-detail");
+				store.unload("post");
 				store.unload("module");
 				store.unload("module-score");
 				store.unload("achievement");

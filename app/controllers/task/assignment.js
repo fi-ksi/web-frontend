@@ -69,19 +69,10 @@ export default Ember.Controller.extend({
 	},
 	actions: {
 		submit: function() {
-			this.set("results", Ember.Object.create());
-			this.get("module_service").emit_submit();
-		},
-		result: function(id, message) {
-			this.get("results").set(id, { type: "success", data: message});
-			this.submit_all();
-		},
-		error: function(id) {
-			this.get("results").set(id, { type: "fail" });
-			this.submit_all();
-		},
-		new_submit: function() {
-			this.set("resubmit", true);
+			console.log(this.get("model"));
+			console.log(this.get("model.details"));
+			this.get("store").find("task-detail", this.get("model.details.id"));
+			//this.get("model.details").reload();
 		}
 	}
 });

@@ -23,6 +23,7 @@ export default Ember.Component.extend({
         },
         submit_done: function() {
             this.set("is_editing", false);
+            this.sendAction("submit");
         }
     }
 });

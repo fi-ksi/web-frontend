@@ -7,7 +7,7 @@
     {{#if opened}}
       {{#if session.isAuthenticated}}
         {{#each model.details.modules as |module index|}}
-          {{module-wrap module=module store=store}}
+          {{module-wrap module=module store=store submit="submit"}}
         {{/each}}
       {{else}}
           {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
