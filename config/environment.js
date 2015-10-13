@@ -85,9 +85,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV["API_LOC"] = "http://147.251.43.191:3000";
+    ENV["API_LOC"] = "https://147.251.43.191:3000";
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+      serverTokenEndpoint: 'https://147.251.43.191:3000/auth'
     }
   }
 

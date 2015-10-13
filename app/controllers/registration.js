@@ -43,7 +43,7 @@ export default Ember.Controller.extend(UserSettings, {
                 contentType: "application/json",
                 type: 'POST',
                 success: function(data) {
-                    if ("error" in data) {
+                    if (data && "error" in data) {
                         if (data.error == "duplicate_user") {
                             self.set("taken", true);
                         } else {

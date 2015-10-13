@@ -11,7 +11,7 @@
   <div class="panel-body">
     {{#if show}}
       {{#if module.is_programming}}
-        {{code-module module=module sotre=store id=module.id submit_done="submit_done" actionReceiver=module_logic}}
+        {{code-module module=module store=store id=module.id submit_done="submit_done" actionReceiver=module_logic}}
       {{/if}}
       {{#if module.is_quiz}}
         {{quiz-module module=module store=store submit_done="submit_done" actionReceiver=module_logic}}

@@ -14,6 +14,9 @@ export default Ember.Component.extend(InboundActions, {
     actions: {
         submit: function() {
             var self = this;
+            if (!this.get("text")) {
+                this.set("text", "");
+            }
             Ember.$.ajax({
                 url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                 data: JSON.stringify({ content: this.get("text") }),

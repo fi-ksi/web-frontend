@@ -52,12 +52,14 @@
     </tbody>
   </table>
 
-  <div style="margin-top:50px">
-    <h5>Komentář ke tvému řešení:</h5>
-    <hr>
-  </div>
+  {{#if model.details.comment}}
+    <div style="margin-top:50px">
+      <h5>Komentář ke tvému řešení:</h5>
+      <hr>
+    </div>
 
-  {{thread-view thread=model.details.comment store=store}}
+    {{thread-view thread=model.details.comment store=store}}
+  {{/if}}
 </div>
 {{else}}
   {{info-general text="Tuto úlohu jsi zatím neodevzdal."}} <!-- TODO -->
