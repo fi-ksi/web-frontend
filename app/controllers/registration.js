@@ -35,7 +35,7 @@ export default Ember.Controller.extend(UserSettings, {
             if(!this.get("model.short_info")) {
                 this.set("model.short_info", "");
             }
-            
+
             this.set("registration_in_progress", true);
             Ember.$.ajax({
                 url: config.API_LOC + "/registration",
@@ -44,7 +44,7 @@ export default Ember.Controller.extend(UserSettings, {
                 type: 'POST',
                 success: function(data) {
                     if ("error" in data) {
-                        if (data.error == "duplicate_user") {
+                        if (data.error === "duplicate_user") {
                             self.set("taken", true);
                         } else {
                             self.set("general_error", "Chyba při registraci! " + data.error);
