@@ -14,6 +14,17 @@ export default Ember.Controller.extend({
 		}
 		return false;
 	}),
+	finished: Ember.computed('model.details.modules.[]', function() {
+	    var res = true;
+	    var modules = this.get('model.details.modules');
+	    if (!modules) {
+	    	return false;
+	    }
+	    modules.forEach(function(x) {
+	    	res &= x.get("is_correct");
+	    })
+	    return res;
+    }),
 	module_ids: Ember.computed("model", function() {
 		return this.get("model.modules").map(function(module) { return "module_" + module.get("id"); });
 	}),
@@ -73,6 +84,16 @@ export default Ember.Controller.extend({
 			console.log(this.get("model.details"));
 			this.get("store").find("task-detail", this.get("model.details.id"));
 			//this.get("model.details").reload();
+
+			var res = true;
+		    var modules = this.get('model.details.modules');
+		    if (!modules) {
+		    	this.set("finished", false);
+		    }
+		    modules.forEach(function(x) {
+		    	res &= x.get("is_correct");
+		    })
+		    this.set("finished", res);
 		}
 	}
 });
