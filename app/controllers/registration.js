@@ -44,7 +44,7 @@ export default Ember.Controller.extend(UserSettings, {
                 type: 'POST',
                 success: function(data) {
                     if (data && "error" in data) {
-                        if (data.error == "duplicate_user") {
+                        if (data.error === "duplicate_user") {
                             self.set("taken", true);
                         } else {
                             self.set("general_error", "Chyba při registraci! " + data.error);

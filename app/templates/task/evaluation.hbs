@@ -1,66 +1,70 @@
-{{#if submitted}}
-<div style="margin:20px">
-  <div style="margin-top:30px">
-    <h5>Skóre:</h5>
-    <hr>
-  </div>
-
-	<div class="progress" style="margin-top:20px">
-		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style={{progress_width}}>
-			<b>{{sum}}&nbsp;/{{model.max_score}}</b>
-		</div>
-	</div>
-
-  {{#if model.details.achievements}}
-    <div style="margin-top:30px">
-      <h5>Trofeje</h5>
-      <hr>
-    </div>
-
-    <div class="panel panel-achievements">
-      <div class="panel-body">
-        {{#each model.details.achievements as |achievement|}}
-              {{achievement-small model=achievement}}
-            {{/each}}
+ {{#if session.isAuthenticated}}
+  {{#if submitted}}
+    <div style="margin:20px">
+      <div style="margin-top:30px">
+        <h5>Skóre:</h5>
+        <hr>
       </div>
-    </div>
-  {{/if}}
 
-  <div style="margin-top:30px">
-    <h5>Výsledky</h5>
-    <hr>
+    	<div class="progress" style="margin-top:20px">
+    		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style={{progress_width}}>
+    			<b>{{sum}}&nbsp;/{{model.max_score}}</b>
+    		</div>
+    	</div>
+
+      {{#if model.details.achievements}}
+        <div style="margin-top:30px">
+          <h5>Trofeje</h5>
+          <hr>
+        </div>
+
+        <div class="panel panel-achievements">
+          <div class="panel-body">
+            {{#each model.details.achievements as |achievement|}}
+                  {{achievement-small model=achievement}}
+                {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      <div style="margin-top:30px">
+        <h5>Výsledky</h5>
+        <hr>
+      </div>
+
+      <table class="table table-striped table-hover-forum ">
+        <thead>
+          <tr style="height:45px">
+            <th style="text-align: center;">Název úlohy</th>
+            <th>Opravující</th>
+            <th style="text-align: center;">Body</th>
+            <th>Stav</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.details.modules as |module|}}
+            <tr>
+              <td style="text-align: center;">{{module.name}}</td>
+              <td>{{if module.score module.score.reviewed_by.full_name "–"}}</td>
+              <td style="text-align: center;">{{#if module.score}}{{module.score.score}}/{{module.max_score}}{{else}}–{{/if}}</td>
+              <td>{{if module.score "Opraveno" "Neopraveno"}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+      {{#if model.details.comment}}
+        <div style="margin-top:50px">
+          <h5>Komentář ke tvému řešení:</h5>
+          <hr>
+        </div>
+
+        {{thread-view thread=model.details.comment store=store}}
+      {{/if}}
   </div>
-
-  <table class="table table-striped table-hover-forum ">
-    <thead>
-      <tr style="height:45px">
-        <th style="text-align: center;">Název úlohy</th>
-        <th>Opravující</th>
-        <th style="text-align: center;">Body</th>
-        <th>Stav</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model.details.modules as |module|}}
-        <tr>
-          <td style="text-align: center;">{{module.name}}</td>
-          <td>{{if module.score module.score.reviewed_by.full_name "–"}}</td>
-          <td style="text-align: center;">{{#if module.score}}{{module.score.score}}/{{module.max_score}}{{else}}–{{/if}}</td>
-          <td>{{if module.score "Opraveno" "Neopraveno"}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-
-  {{#if model.details.comment}}
-    <div style="margin-top:50px">
-      <h5>Komentář ke tvému řešení:</h5>
-      <hr>
-    </div>
-
-    {{thread-view thread=model.details.comment store=store}}
+  {{else}}
+    {{info-general text="Tuto úlohu jsi zatím neodevzdal."}} <!-- TODO -->
   {{/if}}
-</div>
 {{else}}
-  {{info-general text="Tuto úlohu jsi zatím neodevzdal."}} <!-- TODO -->
+  {{warning-login text="Nejsi přihlášen"}}
 {{/if}}

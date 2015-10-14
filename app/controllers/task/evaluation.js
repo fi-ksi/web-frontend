@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	    var res = false;
 	    var modules = this.get('model.details.modules');
 	    if (!modules) {
-	    	return modules;
+	    	return false;
 	    }
 	    modules.mapBy('score.score').forEach(function(score) {
 	     	res |= typeof score !== 'undefined';
