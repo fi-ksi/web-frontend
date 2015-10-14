@@ -35,7 +35,7 @@ export default Ember.Controller.extend(UserSettings, {
             if(!this.get("model.short_info")) {
                 this.set("model.short_info", "");
             }
-            
+
             this.set("registration_in_progress", true);
             Ember.$.ajax({
                 url: config.API_LOC + "/registration",

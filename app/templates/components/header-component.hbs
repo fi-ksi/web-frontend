@@ -60,13 +60,13 @@
                 </li>
             {{else}}
               <li>
-                <p class="navbar-btn" data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
-                      <a href="javascript:void(0)" class="btn btn-header" style="width:130px;" id="login_button">Přihlásit se</a>
+                <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
+                      <a href="javascript:void(0)" class="btn navbar-btn btn-header" style="width:130px;" id="login_button">Přihlásit se</a>
                 </p>
               </li>
               <li>
-                <p class="navbar-btn navbar-btn-main btn btn-header" style="width:130px; margin-left:20px">
-                      {{#link-to "registration"}}Registrovat se{{/link-to}}
+                <p style="margin-left:20px">
+                      {{#link-to "registration" class="btn navbar-btn btn-header" style="width:130px;"}}Registrovat se{{/link-to}}
                 </p>
               </li>
             {{/if}}

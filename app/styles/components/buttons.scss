@@ -51,8 +51,8 @@
 }
 
 .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-    color: ksi-color('text-light');
     background: ksi-color('primary-orange');
+    color: ksi-color('primary-orange');
 }
 .btn-primary.outline:active, .btn-primary.outline.active {
     border-color: ksi-color('primary-orange');
