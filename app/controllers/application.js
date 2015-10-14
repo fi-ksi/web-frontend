@@ -52,6 +52,8 @@ export default Ember.Controller.extend( {
                 contentType: "application/json",
                 type: 'POST',
                 success: function() {
+                	self.set("feedback_email", "");
+                    self.set("feedback_text", "");
                     Ember.$('#feedback-modal').modal('hide');
                 },
                 error: function() {
