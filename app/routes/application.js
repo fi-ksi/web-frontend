@@ -3,7 +3,7 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import Configuration from '../config/environment';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
-	actions: {
+	/*actions: {
 		sessionAuthenticationSucceeded: function() {
 			var attemptedTransition = this.get('session.attemptedTransition');
 		    if (attemptedTransition) {
@@ -13,6 +13,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 		    	this.transitionTo(Configuration.routeAfterAuthentication);
 			}
 		}
-	},
+	},*/
 	title: "KSI – Korespondenční seminář z informatiky"
 });
