@@ -141,12 +141,12 @@ export default Ember.Component.extend({
               .css({
                 'width': '85px',
                 'height': '85px',
-								'background-width': '83px',
+				'background-width': '83px',
               	'background-height': '83px',
-								'background-color': 'white',
-								'background-opacity': '0',
-
-								'background-image': 'data(picture)',
+				'background-color': 'white',
+				'background-opacity': '0',
+				'background-image': 'data(picture)',
+				'cursor': 'pointer'
               })
             .selector('node[node_type = "uvod"]')
               .css({
@@ -198,8 +198,9 @@ export default Ember.Component.extend({
 			Ember.$(".qtip").remove();
 		});
 
-		this.get("cy").on('mouseout','node', function() {
+		this.get("cy").on('mouseout','node', function(event) {
 			Ember.$(".qtip").remove();
+			Ember.$(event.cyTarget).removeClass('mouseover');
 		});
 
 		this.get("cy").on('mouseover','node', function(event){
@@ -208,10 +209,12 @@ export default Ember.Component.extend({
 	        var name = target.data("name");
 	        var date = target.data("deadline");
 	        var text = target.data("tooltip") + "<br><br>" +
-	        	"<p class='graph-qtip-text inline'>Max.body: </p>" + target.data("max_score") + "<br>";
+	        	"<p class='graph-qtip-text inline'>Max.body: </p> " + target.data("max_score") + "<br>";
 			if(date) {
-				text += "<p class='graph-qtip-text inline'>Termím odevzdání:</p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+				text += "<p class='graph-qtip-text inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
 			}
+
+			Ember.$(target).addClass('mouseover');
 
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
