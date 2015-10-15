@@ -200,7 +200,7 @@ export default Ember.Component.extend({
 
 		this.get("cy").on('mouseout','node', function(event) {
 			Ember.$(".qtip").remove();
-			Ember.$(event.cyTarget).removeClass('mouseover');
+			Ember.$("#cy").removeClass('mouseover');
 		});
 
 		this.get("cy").on('mouseover','node', function(event){
@@ -214,8 +214,10 @@ export default Ember.Component.extend({
 				text += "<p class='graph-qtip-text inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
 			}
 
-			Ember.$(target).addClass('mouseover');
-
+			if(target.data("active")) {
+		        Ember.$("#cy").addClass('mouseover');
+		    }
+			
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
 	        self.get("cy").$('#' + id).qtip({

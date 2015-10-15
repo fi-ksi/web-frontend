@@ -43,6 +43,7 @@ export default Ember.Controller.extend(UserSettings, {
                 contentType: "application/json",
                 type: 'POST',
                 success: function(data) {
+                    self.set("registration_in_progress", false);
                     if (data && "error" in data) {
                         if (data.error === "duplicate_user") {
                             self.set("taken", true);
