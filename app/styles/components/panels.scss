@@ -1,5 +1,7 @@
 .panel-ksi {
   border-color: ksi-color-level('primary-orange',6);
+  font-size: $base-font-size;
+  margin-top: .5em; color: ksi-color('text-dark');
 }
 
 .panel-ksi > .panel-heading-ksi {
