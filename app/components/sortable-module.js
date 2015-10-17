@@ -20,7 +20,23 @@ export default Ember.Component.extend(InboundActions, {
                 else {
                     self.set("general_error", undefined);
                 }
+                self.update_indent();
             });
+            this.update_indent();
+        });
+    },
+    update_indent: function() {
+        var id = "#sortable" + this.get("module.id");
+        var offset = 0;
+        var k = 30;
+        Ember.$(id + "a").find("li").each(function() {
+            var current = Ember.$(this);
+            current.css("padding-left", 5 + offset * k + "px");
+            offset += parseInt(current.attr("data-offset"));
+        });
+        Ember.$(id + "b").find("li").each(function() {
+            var current = Ember.$(this);
+            current.css("padding-left", 5 + "px");
         });
     },
     actions: {
