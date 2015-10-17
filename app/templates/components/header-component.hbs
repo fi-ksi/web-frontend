@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{#link-to "index" class="pull-left" rel="home"}}
+            {{#link-to "index" class="pull-left header-link" rel="home"}}
                   <img src="img/karlik_color.png" class="inline" style="padding-left: 5px; max-width:53px;"/>
                   <!--<div class="inline visible-xs" style="padding-left: 5px">KSI</div>-->
                   <div class="hidden-xs inline" style="padding-left: 5px">Korespondenční seminář z informatiky</div><!-- TODO krajsi text -->
@@ -17,19 +17,19 @@
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
             <ul class="nav navbar-nav navbar-left" style="margin-left:20px">
               <li>
-                  {{#link-to "tasks"}}{{t "menu.tasks"}}{{/link-to}}
+                  {{#link-to "tasks" class="header-button" }}{{t "menu.tasks"}}{{/link-to}}
               </li>
               <li>
-                  {{#link-to "results"}}{{t "menu.results"}}{{/link-to}}
+                  {{#link-to "results" class="header-button" }}{{t "menu.results"}}{{/link-to}}
               </li>
               <li>
-                  {{#link-to "about" (query-params view="about")}}{{t "menu.about"}}{{/link-to}}
+                  {{#link-to "about" (query-params view="about") class="header-button" }}{{t "menu.about"}}{{/link-to}}
               </li>
               <li>
-                  {{#link-to "articles"}}{{t "menu.news"}}{{/link-to}}
+                  {{#link-to "articles" class="header-button" }}{{t "menu.news"}}{{/link-to}}
               </li>
               <li>
-                  {{#link-to "forum"}}{{t "menu.forum"}}{{/link-to}}
+                  {{#link-to "forum" class="header-button" }}{{t "menu.forum"}}{{/link-to}}
               </li>
               <!--<li>
                   {{#link-to "about" (query-params view="faq")}}{{t "menu.faq"}}{{/link-to}}
@@ -55,18 +55,18 @@
                     <li>{{#link-to "profile"}}Profil{{/link-to}}</li>
                     <li>{{#link-to "settings"}}Nastavení{{/link-to}}</li>
                     <li class="divider"></li>
-                    <li><a {{ action 'logout' }}>Odhlásit se</a></li> <!-- TODO odhlasit -->
+                    <li><a {{ action 'logout' }} class="header-button">Odhlásit se</a></li> <!-- TODO odhlasit -->
                   </ul>
                 </li>
             {{else}}
               <li>
                 <p data-toggle="modal" data-target="#login-modal" style="margin-left:20px">
-                      <a href="javascript:void(0)" class="btn navbar-btn btn-header" style="width:130px;" id="login_button">Přihlásit se</a>
+                      <a href="javascript:void(0)" class="btn navbar-btn btn-header header-button" style="width:130px;" id="login_button">Přihlásit se</a>
                 </p>
               </li>
               <li>
                 <p style="margin-left:20px">
-                      {{#link-to "registration" class="btn navbar-btn btn-header" style="width:130px;"}}Registrovat se{{/link-to}}
+                      {{#link-to "registration" class="btn navbar-btn btn-header header-button" style="width:130px;"}}Registrovat se{{/link-to}}
                 </p>
               </li>
             {{/if}}

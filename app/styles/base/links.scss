@@ -1,1 +1,26 @@
 a.white-link { color: ksi-color('text-light') }
+
+a.header-button {
+  outline: 0;
+}
+
+a.header-link {
+  outline: 0;
+  text-decoration: none;
+}
+
+a.header-link:link {
+    color: ksi-color('text-light')
+}
+
+a.header-link:visited {
+    color: ksi-color('text-light')
+}
+
+a.header-link:hover {
+    color: ksi-color('primary-orange')
+}
+
+a.header-link:active {
+  outline: 0;
+}
