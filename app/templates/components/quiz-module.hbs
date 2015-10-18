@@ -15,7 +15,7 @@
 								{{warning-general text="Položku je nutno vyplnit" id=(construct-id "w" module.id index) class="hide"}}
 								{{#each question.options as |option number|}}
 									<div>
-										<label>{{input type=question.type name=(construct-id "group" module.id index) id=(construct-id "id_q" module.id index number) class=(construct-id "group" module.id index)}} {{option}}</label>
+										<p>{{input type=question.type name=(construct-id "group" module.id index) id=(construct-id "id_q" module.id index number) class=(construct-id "group" module.id index)}} {{option}}</p>
 									</div>
 								{{/each}}
 						  </div>

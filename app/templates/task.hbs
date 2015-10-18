@@ -7,7 +7,7 @@
         <div class="row" style="padding-left:5px; margin-left: 20px">
           <h5 class="inline">Autor: </h5>
           {{#link-to "user-profile" model.author}}<img id="org-photo" class="inline" src="{{model.author.profile_picture_r}}" style="width: 30px">
-          <h5 id="org-name" class="inline" style="color: #39393a"> {{model.author.full_name}}</h5>{{/link-to}}
+          <h5 id="org-name" class="inline" style="color: #39393a;text-decoration: none;"> {{model.author.full_name}}</h5>{{/link-to}}
           <p class="task-points inline">Max. {{model.max_score}} bodů</p>
         </div>
         <div class="row" style="padding-left:5px; margin-left: 20px">
