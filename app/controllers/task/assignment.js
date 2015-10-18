@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
 	    }
 	    modules.forEach(function(x) {
 	    	res &= x.get("is_correct");
-	    })
+	    });
 	    return res;
     }),
 	module_ids: Ember.computed("model", function() {
@@ -92,7 +92,7 @@ export default Ember.Controller.extend({
 		    }
 		    modules.forEach(function(x) {
 		    	res &= x.get("is_correct");
-		    })
+		    });
 		    this.set("finished", res);
 		}
 	}
