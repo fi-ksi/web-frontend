@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 	finished: Ember.computed('model.details.modules.[]', function() {
 	    var res = true;
 	    var modules = this.get('model.details.modules');
-	    if (!modules) {
+	    if (Ember.isEmpty(modules)) {
 	    	return false;
 	    }
 	    modules.forEach(function(x) {
