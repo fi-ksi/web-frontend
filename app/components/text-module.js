@@ -11,15 +11,29 @@ export default Ember.Component.extend(InboundActions, {
             
         }); 
     },
+    inputs: Ember.computed("module.fields", function() {
+        var l = this.get("module.fields");
+        var res = [];
+        for(var i = 1; i <= l; i++) {
+            res.push(i);
+        }
+        return res;
+        //return Array.apply(null, {length: this.get("module.fields")}).map(Number.call, Number);
+    }),
     actions: {
         submit: function() {
             var self = this;
             if (!this.get("text")) {
                 this.set("text", "");
             }
+
+            var data = [];
+            for(var i = 0; i < this.get("module.fields"); i++) {
+                data.push(Ember.$("#" + this.get("module.id") + "_" + i).val())
+            }
             Ember.$.ajax({
                 url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
-                data: JSON.stringify({ content: this.get("text") }),
+                data: JSON.stringify({ content: data }),
                 contentType: "application/json",
                 type: 'POST',
                 success: function(data) {

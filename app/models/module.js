@@ -43,5 +43,8 @@ export default DS.Model.extend( {
 
 	// For code
 	code: DS.attr("string"),
-	default_code: DS.attr("string")
+	default_code: DS.attr("string"),
+
+	// For text
+	fields: DS.attr("number")
 });
