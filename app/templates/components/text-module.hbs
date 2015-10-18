@@ -4,10 +4,16 @@
 <div style="margin-left:0px">
 	<form class="form-horizontal">
 	  <div class="form-group">
-	    <label for="inputSolution" class="col-sm-1 control-label">Řešení: </label>
-	    <div class="col-sm-11">
-	      	{{input type="text" class="form-control" value=text}}
+	  	{{#each inputs as |val index|}}
+	    <div class="col-sm-12 row">
+	    	<div class="col-sm-3 row">
+		    	<label for="inputSolution" class="col-sm-1 control-label">Odpověď {{val}}: </label>
+		    </div>
+	    	<div class="col-sm-9 row">
+	      		{{input type="text" class="form-control" id=(construct-id module.id index)}}
+	      	</div>
 	    </div>
+	    {{/each}}
 	  </div>
 	</form>
 	{{#if general_error}}
