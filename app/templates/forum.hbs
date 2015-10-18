@@ -72,6 +72,8 @@
 				<td style="text-align: center;"><span class="badge">{{#link-to "thread" thread class="white-link"}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
 				<td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread class="white-link"}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
 			</tr>
+			{{else}}
+			<p>Zatím tu nejsou žádná vlákna. Můžeš být první, kdo nějaké založí!</p>
 			{{/each}}
 	    </tbody>
 	  </table> <!-- zobrazovat max 10 vlakien? -->
