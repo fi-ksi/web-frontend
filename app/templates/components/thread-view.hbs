@@ -1,6 +1,8 @@
 <ul class="media-list" style="margin:20px">
 	{{#each thread.details.root_posts as |post|}}
 		{{thread-post model=post store=store}}
+  {{else}}
+  <p>Toto vlákno je zatím prázdné. Můžeš přidat první příspěvek!</p>
 	{{/each}}
 </ul>
 

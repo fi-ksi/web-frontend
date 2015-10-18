@@ -24,6 +24,8 @@
           <td style="text-align: center;">{{user.score}}</td> <!-- body -->
   				<td style="text-align: center;">{{user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
         </tr>
+      {{else}}
+      <p>Výsledková listina je zatím prázdná</p>
       {{/each}}
     </tbody>
   </table>
