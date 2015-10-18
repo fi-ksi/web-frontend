@@ -7,5 +7,11 @@ export default Ember.Route.extend(ResetScrollUnauthenticated, {
 		return profile;*/
 		return {};
 	},
-	title: "KSI: Registrace"
+	title: "KSI: Registrace",
+	setupController: function(controller, model) {
+	    this._super(controller, model);
+	    controller.set('model', model);
+	    controller.set('registration_done', false);
+	    controller.set('registration_in_progress', false);
+	}
 });
