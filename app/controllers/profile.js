@@ -9,5 +9,29 @@ export default Ember.Controller.extend(UserSettings, {
         });
         arr.push({ name: "" });
         return arr[0].name;
+    }),
+    participant: Ember.computed("model.gender", function() {
+    	if(this.get("model.gender") == "male") {
+    		return "řešitel";
+    	} else if (this.get("model.gender") == "female") {
+    		return "řešitelka";
+    	}
+    	return null;
+    }),
+    organisator: Ember.computed("model.gender", function() {
+   		if(this.get("model.gender") == "male") {
+    		return "organizátor";
+    	} else if (this.get("model.gender") == "female") {
+    		return "organizátorka";
+    	}
+    	return null;
+    }),
+    tasks: Ember.computed("model.gender", function() {
+    	if(this.get("model.gender") == "male") {
+    		return "Organizátorovy úlohy";
+    	} else if (this.get("model.gender") == "female") {
+    		return "Organizátorčiny úlohy";
+    	}
+    	return null;
     })
 });

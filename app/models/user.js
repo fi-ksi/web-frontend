@@ -23,6 +23,7 @@ export default DS.Model.extend( {
     }),
     short_info: DS.attr("string"),
     is_organisator: DS.attr("boolean"),
+    gender: DS.attr("string"),
 
 	// Relevant only when user
 	score: DS.attr("number"),

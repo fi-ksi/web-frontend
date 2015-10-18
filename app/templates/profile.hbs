@@ -7,7 +7,7 @@
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
 				<h3 style="text-align: left">{{model.full_name}}</h3>
-				<h4>{{#if model.is_organisator}}Organizátor{{else}}Řešitel<!-- ToDo: Řešitel/ka -->{{/if}}</h4>
+				<h4>{{#if model.is_organisator}}{{organisator}}{{else}}{{participant}}{{/if}}</h4>
 			</div>
 			<div id="name">
 				<p id="profile-text">{{model.short_info}}</p>
@@ -134,7 +134,7 @@
 		{{else}}
 		<div class="col-xs-7 col-sm-7 col-md-9">
 			<div style="margin-top:40px">
-					<h4>Autorovy úlohy</h4>
+					<h4>{{tasks}}</h4>
 					<hr>
 				</div>
 
@@ -149,6 +149,8 @@
 						</div>
 					</div>
 				</div>
+				{{else}}
+					<p>Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!</p>
 				{{/each}}
 		</div>
 		{{/unless}}
