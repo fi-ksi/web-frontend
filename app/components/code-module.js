@@ -109,7 +109,7 @@ export default Ember.Component.extend(InboundActions, {
                     success: function(data) {
                         if("output" in data ||  "image_output" in data) {
                             if("output" in data && data.output) {
-                                self.set("script_text_output", data.output);
+                                self.set("script_text_output", data.output.trim());
                             }
                             if("image_output" in data && data.image_output) {
                                 self.set("script_graphics_output", config.API_LOC + data.image_output);
