@@ -7,6 +7,7 @@
         <h3 id="name">
           {{#link-to "article" article}} {{article.title}} {{/link-to}}
         </h3>
+        {{date-and-time article.time_published 'cs'}}
         {{{article.intro}}}
         <div>
           {{#link-to "article" article}} Přečíst celé {{/link-to}}
