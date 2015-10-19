@@ -9,6 +9,16 @@
   color:ksi-color('text-light');
 }
 
+.btn-header:active {
+  background: ksi-color('secondary-orange');
+  color:ksi-color('text-light');
+}
+
+.btn-header:after {
+  background: ksi-color('secondary-orange');
+  color:ksi-color('text-light');
+}
+
 .btn-primary {
   background-color: ksi-color('primary-orange');
   color:ksi-color('text-light');
