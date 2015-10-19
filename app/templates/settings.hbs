@@ -1,9 +1,9 @@
 <section id="profile" class="container content-section" style="text-align:justify">
     <div class="row flex-row-md stickycolumn-parent">
       <div class="col-sm-12 col-md-3">
-        <div class="stickycolumn">
+        <div class="stickycolumn-parent" style="margin-top:30px">
           <div style="margin-top:30px margin-bottom:30px;">
-              <img src="{{model.profile_picture_r}}" style="width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;" align="center"/> <!-- user image --> <!-- TODO default img -->
+              <img src="{{model.profile_picture_r}}" style="border-radius: 25px; width:100%; max-width:350px;margin-left:auto;margin-right:auto;display:block;" align="center"/> <!-- user image --> <!-- TODO default img -->
           </div>
           {{picture-upload actionReceiver=picture_field upload_finished="upload_finished" upload_failed="upload_failed" id="picture_input"}}
           <button type="button" class="btn btn-primary" style="margin-top:20px; width:100%;" {{action "upload_pic"}}>
