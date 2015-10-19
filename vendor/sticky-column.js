@@ -10,7 +10,7 @@ $(document).ready(function () {
   		} else {
   			elem.stick_in_parent({
   				parent: ".stickycolumn-parent",
-  				offset_top: 150
+  				offset_top: 100
   			});
   		}
   	};
