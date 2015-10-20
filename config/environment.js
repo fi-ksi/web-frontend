@@ -36,7 +36,11 @@ module.exports = function(environment) {
         crossOriginWhitelist: ['http://localhost:3000',
           'http://http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/',
           'http://147.251.43.191:3000',
-          'http://147.251.43.191:4242']
+          'http://147.251.43.191:4242',
+          'https://ksi.fi.muni.cz',
+          'http://ksi.fi.muni.cz',
+          'https://ksi.fi.muni.cz:3000',
+          'http://ksi.fi.muni.cz:3000']
       }
 
   ENV['simple-auth-oauth2'] = {
@@ -85,9 +89,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV["API_LOC"] = "http://147.251.43.191:3000";
+    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     }
   }
 

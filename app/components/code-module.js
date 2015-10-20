@@ -96,7 +96,7 @@ export default Ember.Component.extend(InboundActions, {
             self.set("submission_info", null);
             this.set("general_info", null);
             var content = this.get_editor().getValue();
-            if(content && content !== this.get("module.default_code")) {
+            if(content/* && content !== this.get("module.default_code")*/) {
                 self.set("general_info", "Vyhodnocuji kód");
                 self.set("script_text_output", null);
                 self.set("script_graphics_output", null);
