@@ -22,10 +22,9 @@ p {
   margin-top: .5em; color: ksi-color('text-dark');
 }
 
-code{
-  white-space: pre-wrap;
+pre{
+  brush: python;
 }
-
 .org-caption {
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
