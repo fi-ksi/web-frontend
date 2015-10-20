@@ -198,7 +198,7 @@ export default Ember.Component.extend({
 			Ember.$(".qtip").remove();
 		});
 
-		this.get("cy").on('mouseout','node', function(event) {
+		this.get("cy").on('mouseout','node', function() {
 			Ember.$(".qtip").remove();
 			Ember.$("#cy").removeClass('mouseover');
 		});
