@@ -24,7 +24,7 @@
 				</div>
 			{{/unless}}
 		</div>
-		{{#unless model.organisator}}
+		{{#if model.show_solved}}
 		<div class="col-sm-12 col-md-9">
 			<div style="margin-top:30px">
 				<h5>Trofeje</h5>
@@ -132,7 +132,9 @@
 				{{/each}}
 			{{/if}}
 		</div>
-		{{else}}
+		{{/if}}
+
+        {{#if model.organisator}}
 		<div class="col-xs-7 col-sm-7 col-md-9">
 			<div style="margin-top:40px">
 					<h4>{{tasks}}</h4>
@@ -154,6 +156,6 @@
 					<p>Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!</p>
 				{{/each}}
 		</div>
-		{{/unless}}
+		{{/if}}
 	</div>
 </section>

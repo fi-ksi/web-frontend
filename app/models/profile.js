@@ -53,13 +53,17 @@ export default DS.Model.extend( {
 
     // Relevant only when organisator
     role: DS.attr("string", {defaultValue: "participant"}),
-    admin: Ember.computed("profile_picture", function(){
-        return this.get("role") === 'admin';
+    admin: Ember.computed("role", function(){
+        return this.get("role") === "admin";
     }),
 
-    organisator: Ember.computed("profile_picture", function(){
-        return this.get("role") === 'organisator';
+    organisator: Ember.computed("role", function(){
+        return this.get("role") === "org";
     }),
 
-    tasks: DS.hasMany("task", {defaultValue: [], async: true})
+    // this property must be here, it defines the difference between user and profile
+    // (orgs public "user" does not show his solved tasks, private "profile" does it)
+    show_solved: true,
+
+    tasks: DS.hasMany("task", {defaultValue: [], async: true}),
 });
