@@ -3,10 +3,10 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default DS.Model.extend( {
-	// Relevant only if displaing user profile
-	signed_in: DS.attr("boolean", {default: false}),
+    // Relevant only if displaing user profile
+    signed_in: DS.attr("boolean", {default: false}),
 
-	first_name: DS.attr("string"),
+    first_name: DS.attr("string"),
     last_name: DS.attr("string"),
     nick_name: DS.attr("string"),
     full_name: Ember.computed("first_name", "nick_name", "last_name", function() {
@@ -17,27 +17,27 @@ export default DS.Model.extend( {
         return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
 
-	profile_picture: DS.attr("string"),
-	profile_picture_r: Ember.computed("profile_picture", function() {
-		var p = this.get("profile_picture");
-		if(p) {
-			return config.API_LOC + p;
-		}
-		return "/img/avatar-default.svg";
-	}),
-	short_info: DS.attr("string"),
-	email: DS.attr("string"),
-	gender: DS.attr("string"),
+    profile_picture: DS.attr("string"),
+    profile_picture_r: Ember.computed("profile_picture", function() {
+        var p = this.get("profile_picture");
+        if(p) {
+            return config.API_LOC + p;
+        }
+        return "/img/avatar-default.svg";
+    }),
+    short_info: DS.attr("string"),
+    email: DS.attr("string"),
+    gender: DS.attr("string"),
 
-	// Relevant only when not organisator or admin
-	achievements: DS.hasMany("achievement", {async: true, defaultValue: []}),
-	score: DS.attr("number"),
-	percentile: DS.attr("number"),
-	seasons: DS.attr("number"),
-	successful: DS.attr("number"),
-	results: DS.hasMany("task-score", {defaultValue: []}),
+    // Relevant only when not organisator or admin
+    achievements: DS.hasMany("achievement", {async: true, defaultValue: []}),
+    score: DS.attr("number"),
+    percentile: DS.attr("number"),
+    seasons: DS.attr("number"),
+    successful: DS.attr("number"),
+    results: DS.hasMany("task-score", {defaultValue: []}),
 
-	addr_street: DS.attr("string"),
+    addr_street: DS.attr("string"),
     addr_city: DS.attr("string"),
     addr_zip: DS.attr("string"),
     addr_country: DS.attr("string"),
@@ -51,8 +51,15 @@ export default DS.Model.extend( {
 
     tshirt_size: DS.attr("string"),
 
-	// Relevant only when organisator
-	admin: DS.attr("boolean", {defaultValue: false}),
-	organisator: DS.attr("boolean", {defaultValue: false}),
-	tasks: DS.hasMany("task", {defaultValue: [], async: true})
+    // Relevant only when organisator
+    role: DS.attr("string", {defaultValue: "participant"}),
+    admin: Ember.computed("profile_picture", function(){
+        return this.get("role") === 'admin';
+    }),
+
+    organisator: Ember.computed("profile_picture", function(){
+        return this.get("role") === 'organisator';
+    }),
+
+    tasks: DS.hasMany("task", {defaultValue: [], async: true})
 });

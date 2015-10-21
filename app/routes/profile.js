@@ -6,6 +6,7 @@ export default Ember.Route.extend(ResetScrollProtected, {
     	this.store.unloadAll("profile");
         return this.store.find("profile", "");
     },
+
     afterModel: function(model) {
     	this.set("session.current", model);
     },
