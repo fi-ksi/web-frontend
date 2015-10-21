@@ -63,9 +63,9 @@ module.exports = function(environment) {
 
   if (environment === 'prod_dev') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     };
-    ENV["API_LOC"] = "http://147.251.43.191:3000";
+    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
   }
 
   if (environment === 'development') {
