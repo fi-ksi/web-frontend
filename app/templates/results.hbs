@@ -1,28 +1,28 @@
 <section id="results" class="container content-section" style="text-align:justify">
-	<!-- Sekcia noviniek -->
+    <!-- Sekcia noviniek -->
   <h2>Výsledky</h2>
-	<table class="table table-striped">
+    <table class="table table-striped">
     <thead>
       <tr style="height:45px">
-				<th style="text-align: center;">Pořadí</th>
+                <th style="text-align: center;">Pořadí</th>
         <th>Jméno</th>
         <th>Trofeje</th>
         <th style="text-align: center;">Skóre</th>
-				<th style="text-align: center;">Počet vyřešených úloh</th>
+                <th style="text-align: center;">Počet vyřešených úloh</th>
       </tr>
     </thead>
     <tbody>
       {{#each model as |user|}}
         <tr style="height:45px">
-  				<td class="numbering" style="text-align: center;"></td>
-          <td>{{user.full_name}}</td> <!-- meno --> <!-- TODO odkaz na profil -->
+                <td class="numbering" style="text-align: center;"></td>
+          <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td> <!-- meno -->
           <td>
             {{#each user.achievements as |achievement|}}
-    					{{achievement-small model=achievement}}
+                        {{achievement-small model=achievement}}
             {{/each}}
-  				</td>
+                </td>
           <td style="text-align: center;">{{user.score}}</td> <!-- body -->
-  				<td style="text-align: center;">{{user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
+                <td style="text-align: center;">{{user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
         </tr>
       {{else}}
       <p>Výsledková listina je zatím prázdná</p>
