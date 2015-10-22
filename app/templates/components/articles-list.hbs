@@ -1,9 +1,11 @@
 {{#each model as |article|}}
-    <div class="media" style="margin-top:20px">
-      <div class="media-left">
-        <img src="{{article.picture}}" style="width: 150px">
+    <div class="row" style="margin-top:20px;margin: 0 auto;">
+      <div class="col-xs-12 col-sm-3">
+        <div class="hidden-xs">
+          <img src="{{article.picture}}" style="width: 100%; border-radius: 25px;" align="center">
+        </div>
       </div>
-      <div class="media-body">
+      <div class="col-xs-12 col-sm-9">
         <h3 id="name">
           {{#link-to "article" article}} {{article.title}} {{/link-to}}
         </h3>

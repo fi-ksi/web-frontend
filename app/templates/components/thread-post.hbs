@@ -1,6 +1,6 @@
 <li class="media" style="margin-top: 15px"> <!-- pociatok prispevku -->
     <div class="media-left" >
-        <img class="media-object" src="{{model.author.profile_picture_r}}" style="width:50px;"> <!-- foto autora prispevku -->
+        <img class="media-object" src="{{model.author.profile_picture_r}}" style="width:50px; border-radius: 5px;"> <!-- foto autora prispevku -->
     </div>
     <div class="media-body">
       <div class="discussion-caption">{{model.author.full_name}}, {{if model.author.is_organisator "organizátor" "řešitel"}}, {{date-and-time model.published_at 'cs'}}{{if model.is_new ", nové"}}</div> <!-- meno, status, cas-->
