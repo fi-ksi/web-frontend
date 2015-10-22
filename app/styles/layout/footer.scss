@@ -1,3 +1,15 @@
+// Apply this to the enclosing row
+.row-centered {
+  text-align: center;
+  display:inline-block;
+}
+
+.inline-footer {
+  display: inline-block;
+  vertical-align: middle;
+  float:left;
+}
+
 $footer-height: 70px;
 
 footer {
