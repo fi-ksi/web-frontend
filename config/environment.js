@@ -28,24 +28,19 @@ module.exports = function(environment) {
     }
   };
 
-  ENV["API_LOC"] = "http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128";
-
   ENV["simple-auth"] = {
         authorizer: 'simple-auth-authorizer:oauth2-bearer',
         store: 'simple-auth-session-store:local-storage',
-        crossOriginWhitelist: ['http://localhost:3000',
-          'http://http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/',
-          'http://147.251.43.191:3000',
-          'http://147.251.43.191:4242',
+        crossOriginWhitelist: [
+          'http://localhost:3000',
+          'https://localhost:3000',
+          'http://kyzikos.fi.muni.cz:3000',
+          'https://kyzikos.fi.muni.cz:3000',
           'https://ksi.fi.muni.cz',
           'http://ksi.fi.muni.cz',
           'https://ksi.fi.muni.cz:3000',
           'http://ksi.fi.muni.cz:3000']
       }
-
-  ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: 'http://ec2-52-10-225-244.us-west-2.compute.amazonaws.com:9128/v1/oauth2/auth'
-  };
 
   if (environment === 'local_dev' || environment === 'mockup_dev') {
     ENV['simple-auth-oauth2'] = {
@@ -56,16 +51,9 @@ module.exports = function(environment) {
 
   if (environment === 'remote_dev') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://147.251.43.191:3000/auth'
+      serverTokenEndpoint: 'https://kyzikos.fi.muni.cz:3000/auth'
     };
-    ENV["API_LOC"] = "http://147.251.43.191:3000";
-  }
-
-  if (environment === 'prod_dev') {
-    ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
-    };
-    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
+    ENV["API_LOC"] = "https://kyzikos.fi.muni.cz:3000";
   }
 
   if (environment === 'development') {
