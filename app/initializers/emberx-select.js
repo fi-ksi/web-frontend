@@ -1,5 +1,3 @@
-import ext from '../ext/emberx-select';
-
 export function initialize() {
 
 }

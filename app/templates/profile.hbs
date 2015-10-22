@@ -7,13 +7,14 @@
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
 				<h3 style="text-align: left">{{model.full_name}}</h3>
-				<h4>{{#if model.is_organisator}}{{organisator}}{{else}}{{participant}}{{/if}}</h4>
+				<h4>
+                    {{#if model.admin}}{{admin}}{{else}}{{#if model.organisator}}{{organisator}}{{else}}{{participant}}{{/if}}{{/if}}</h4>
 			</div>
 			<div id="name">
 				<p id="profile-text">{{model.short_info}}</p>
 			</div>
 			<!-- TODO: chceme sem odkaze na FB, Twitter, web? -->
-			{{#unless model.is_organisator}}
+			{{#unless model.organisator}}
 				<div class="panel panel-profile" style="margin-top:30px">
 					<div class="panel-body">
 						<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
@@ -23,7 +24,7 @@
 				</div>
 			{{/unless}}
 		</div>
-		{{#unless model.is_organisator}}
+		{{#if model.show_solved}}
 		<div class="col-sm-12 col-md-9">
 			<div style="margin-top:30px">
 				<h5>Trofeje</h5>
@@ -131,7 +132,9 @@
 				{{/each}}
 			{{/if}}
 		</div>
-		{{else}}
+		{{/if}}
+
+        {{#if model.organisator}}
 		<div class="col-xs-7 col-sm-7 col-md-9">
 			<div style="margin-top:40px">
 					<h4>{{tasks}}</h4>
@@ -153,6 +156,6 @@
 					<p>Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!</p>
 				{{/each}}
 		</div>
-		{{/unless}}
+		{{/if}}
 	</div>
 </section>

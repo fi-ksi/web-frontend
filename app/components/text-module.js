@@ -29,7 +29,7 @@ export default Ember.Component.extend(InboundActions, {
 
             var data = [];
             for(var i = 0; i < this.get("module.fields"); i++) {
-                data.push(Ember.$("#" + this.get("module.id") + "_" + i).val())
+                data.push(Ember.$("#" + this.get("module.id") + "_" + i).val());
             }
             Ember.$.ajax({
                 url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",

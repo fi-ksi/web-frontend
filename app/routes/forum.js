@@ -3,6 +3,7 @@ import ResetScroll from '../mixins/reset-scroll';
 
 export default Ember.Route.extend(ResetScroll, {
 	model: function() {	
+		this.store.unloadAll("thread");
 		return this.store.findAll("thread", "");
 	},
 	title: "KSI: Diskuse",

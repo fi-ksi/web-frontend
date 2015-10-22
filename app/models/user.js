@@ -3,7 +3,7 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default DS.Model.extend( {
-	first_name: DS.attr("string"),
+    first_name: DS.attr("string"),
     last_name: DS.attr("string"),
     nick_name: DS.attr("string"),
     full_name: Ember.computed("first_name", "nick_name", "last_name", function() {
@@ -22,18 +22,32 @@ export default DS.Model.extend( {
         return "/img/avatar-default.svg";
     }),
     short_info: DS.attr("string"),
-    is_organisator: DS.attr("boolean"),
     gender: DS.attr("string"),
 
-	// Relevant only when user
-	score: DS.attr("number"),
-	tasks_num: DS.attr("number"),
-	achievements: DS.hasMany("achievement", {async: true}),
+    // Relevant only when user
+    score: DS.attr("number"),
+    tasks_num: DS.attr("number"),
+    achievements: DS.hasMany("achievement", {async: true}),
     school_name: DS.attr("string"),
     addr_country: DS.attr("string"),
     seasons: DS.attr("number"),
 
-	// Relevant only when organisator
-	tasks: DS.hasMany("tasks", {async: true}),
-	email: DS.attr("string"),
+    role: DS.attr("string", {defaultValue: "participant"}),
+    admin: Ember.computed("role", function(){
+        return this.get("role") === "admin";
+    }),
+
+    organisator: Ember.computed("role", function(){
+        return this.get("role") === "org";
+    }),
+
+    // this property must be here, see ./profile.js
+    show_solved: Ember.computed("role", function(){
+        return this.get("role") === "participant";
+    }),
+
+
+    // Relevant only when organisator
+    tasks: DS.hasMany("tasks", {async: true}),
+    email: DS.attr("string"),
 });
