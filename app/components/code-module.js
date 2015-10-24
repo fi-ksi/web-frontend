@@ -51,17 +51,25 @@ export default Ember.Component.extend(InboundActions, {
                         self.set("general_info", null);
                         if("result" in data) {
                             self.set("module.state", data.result);
+                            if(data.result === "error") {
+                                self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                            }
+                            if(data.result === "exec-error") {
+                                self.set("general_error", "Nastala chyba při vykonávání kódu, zkontroluj si syntaxi.");
+                            }
                             if(!self.get("module.score")) {
                                 self.set("module.score", self.get("store").createRecord("module-score"));
                             }
-                            if(!data.score) {
+                            if(data.result === "incorrect") {
                                 self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                             }
                             self.set("module.score.score", data.score);
                             self.sendAction("submit_done");
-                        }
-                        else {
+                        } else {
                             self.set("general_error", "Špatná odpověď serveru");
+                        }
+                        if ("output" in data) {
+                            self.set("script_text_output", data.output.trim());
                         }
                     },
                     error: function() {
