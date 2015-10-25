@@ -42,8 +42,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-* Call ./deploy-ksi.sh to deploy at ksi.fi.muni.cz
-* Call ./deploy-dev.sh to deploy at kyzikos.fi.muni.cz
+* Run `./deploy-ksi.sh` to deploy at ksi.fi.muni.cz.
+* Run `./deploy-dev.sh` to deploy at kyzikos.fi.muni.cz.
 
 ## Further Reading / Useful Links
 
