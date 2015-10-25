@@ -46,8 +46,25 @@ export default DS.Model.extend( {
         return this.get("role") === "participant";
     }),
 
-
     // Relevant only when organisator
     tasks: DS.hasMany("tasks", {async: true}),
     email: DS.attr("string"),
+
+    role_str: Ember.computed("gender", "role", function() {
+        var ret = "";
+        if (this.get("role") === "org") {
+            ret = "organizátor";
+        }
+        if (this.get("role") === "admin") {
+            ret = "administrátor";
+        }
+        if (this.get("role") === "participant") {
+            ret = "řešitel";
+        }
+        if (this.get("gender") === "female") {
+            ret = ret + "ka";
+        }
+        return ret;
+    }),
+
 });

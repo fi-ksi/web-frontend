@@ -7,8 +7,7 @@
 			</div>
 			<div id="name" style="margin-top:30px; margin-left:5px">
 				<h3 style="text-align: left">{{model.full_name}}</h3>
-				<h4>
-                    {{#if model.admin}}{{admin}}{{else}}{{#if model.organisator}}{{organisator}}{{else}}{{participant}}{{/if}}{{/if}}</h4>
+				<h4>{{model.role_str}}</h4>
 			</div>
 			<div id="name">
 				<p id="profile-text">{{model.short_info}}</p>

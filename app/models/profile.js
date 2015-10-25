@@ -66,4 +66,22 @@ export default DS.Model.extend( {
     show_solved: true,
 
     tasks: DS.hasMany("task", {defaultValue: [], async: true}),
+
+    role_str: Ember.computed("gender", "role", function() {
+        var ret = "";
+        if (this.get("role") === "org") {
+            ret = "organizátor";
+        }
+        if (this.get("role") === "admin") {
+            ret = "administrátor";
+        }
+        if (this.get("role") === "participant") {
+            ret = "řešitel";
+        }
+        if (this.get("gender") === "female") {
+            ret = ret + "ka";
+        }
+        return ret;
+    }),
+
 });
