@@ -25,7 +25,7 @@ You will need the following things properly installed on your computer.
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
-* premenne prostredia - vyvoj v muni sieti: `remote_dev` 
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details
@@ -37,12 +37,13 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Building
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+* `ember build --environment=production` (production for ksi.fi.muni.cz)
+* `ember build --environment=remote_dev` (development for kyzikos.fi.muni.cz)
 
 ### Deploying
 
-To deploy our app, just call `ember build --environment production`. Then copy constent of `dist` dir to /var/www/html
+* Call ./deploy-ksi.sh to deploy at ksi.fi.muni.cz
+* Call ./deploy-dev.sh to deploy at kyzikos.fi.muni.cz
 
 ## Further Reading / Useful Links
 
