@@ -4,7 +4,7 @@ import ResetScroll from '../mixins/reset-scroll';
 export default Ember.Route.extend(ResetScroll, {
 	model: function() {
 		this.store.unloadAll("user");
-		return this.store.findQuery("user", { filter: "participants"} );
+		return this.store.findQuery("user", { filter: "participants" , sort: "score" } );
 	},
 	title: "KSI: Výsledky"
 });
