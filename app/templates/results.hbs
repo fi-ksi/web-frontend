@@ -18,7 +18,7 @@
           <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td> <!-- meno -->
           <td>
             {{#each user.achievements as |achievement|}}
-                        {{achievement-small model=achievement}}
+                        {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
             {{/each}}
                 </td>
           <td style="text-align: center;">{{user.score}}</td> <!-- body -->
