@@ -23,7 +23,6 @@ export default Ember.Component.extend({
 					tooltip: node.get("intro"),
 					max_score: node.get("max_score"),
 					deadline: node.get("time_deadline"),
-					node_type: node.get("category").get("type"),
 					picture: node.get("picture")
 				}
 			};
@@ -147,22 +146,6 @@ export default Ember.Component.extend({
 				'background-opacity': '0',
 				'background-image': 'data(picture)',
 				'cursor': 'pointer'
-              })
-            .selector('node[node_type = "uvod"]')
-              .css({
-								'width': '105px',
-                'height': '105px',
-								'background-width': '105px',
-              	'background-height': '105px',
-								'content': '',
-              })
-            .selector('node[node_type = "big"]')
-              .css({
-								'width': '105px',
-                'height': '105px',
-								'background-width': '105px',
-              	'background-height': '105px',
-								'content': '',
               })
             .selector('edge')
               .css({
