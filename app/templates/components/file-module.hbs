@@ -1,29 +1,37 @@
 <div class="row" style="margin-left:0px; margin-right:10px">
-	{{{module.description}}}
+    {{{module.description}}}
 </div>
+<h5>Odevzdané soubory:</h5>
+<ul>
+    {{#each module.submitted_files as |file|}}
+        <li>{{#link-to file.filepath}}{{file.filename}}{{/link-to}}</li>
+    {{else}}
+        <p>Zatím nebyly odevzdány žádné soubory.</p>
+    {{/each}}
+</ul>
 <div class="alert alert-warning" role="alert" style="margin-left:0px; margin-top:20px">
-	<!-- TODO color poznamky -->
-	<strong>Poznámka:</strong> Odevzdat můžete i více různých souborů naráz, stačí je vybrat. <!-- TODO odkaz na clanek, ako odevzdavat ukoly -->
+    <!-- TODO color poznamky -->
+    <strong>Poznámka:</strong> Odevzdat můžete i více různých souborů naráz, stačí je vybrat. <!-- TODO odkaz na clanek, ako odevzdavat ukoly -->
 </div>
 <div style="margin-left:0px">
-	<h5>Soubory k odevzdání:</h5>
-	<div class="fileUpload btn btn-primary" {{action "select_files"}}>
-		<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-    	<span>Vybrat soubory</span>
-	</div>
-	{{file-input multiple=true class="upload" endpoint=endpoint id=(construct-id "upload" module.id) file_list="file_list" status="status" upload_finished="upload_finished" upload_failed="upload_failed" actionReceiver=f_input}}
-	{{#if files}}
-		<br>
-		Vybrané soubory:
-		<ul>
-			{{#each files as |file|}}
-				<li>{{file}}</li>
-			{{/each}}
-		</ul>
-	{{/if}}
-	{{#if general_error}}
-		<div style="margin-top:20px">
-			{{warning-general text=general_error}}
-		</div>
-	{{/if}}
+    <h5>Soubory k odevzdání:</h5>
+    <div class="fileUpload btn btn-primary" {{action "select_files"}}>
+        <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+        <span>Vybrat soubory</span>
+    </div>
+    {{file-input multiple=true class="upload" endpoint=endpoint id=(construct-id "upload" module.id) file_list="file_list" status="status" upload_finished="upload_finished" upload_failed="upload_failed" actionReceiver=f_input}}
+    {{#if files}}
+        <br>
+        Vybrané soubory:
+        <ul>
+            {{#each files as |file|}}
+                <li>{{file}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if general_error}}
+        <div style="margin-top:20px">
+            {{warning-general text=general_error}}
+        </div>
+    {{/if}}
 </div>
