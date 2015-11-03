@@ -4,13 +4,21 @@ import config from '../config/environment';
 
 export default DS.Transform.extend({
     serialize: function(value) {
-        return { id: value.get("id"), filename: value.get("filename") };
+        if(value) {
+            return value.get("files");
+        }
     },
     deserialize: function(value) {
-        return Ember.Object.create( {
+        /*return Ember.Object.create( {
             id: value['id'],
             filename: value['filename'],
             filepath: config.API_LOC + value['filename']
+        });*/
+        return Ember.Object.create( {
+            files: value.map(function(x) {
+                x['filepath'] = config.API_LOC + '/subm-files/' + x['id']
+                return x;
+            })
         });
     }
 });

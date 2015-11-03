@@ -3,8 +3,8 @@
 </div>
 <h5>Odevzdané soubory:</h5>
 <ul>
-    {{#each module.submitted_files as |file|}}
-        <li>{{#link-to file.filepath}}{{file.filename}}{{/link-to}}</li>
+    {{#each module.submitted_files.files as |file|}}
+        {{submitted-file file=file del="delete_file"}}
     {{else}}
         <p>Zatím nebyly odevzdány žádné soubory.</p>
     {{/each}}

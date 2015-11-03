@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     classNames: [],
     is_editing: false,
     show: function() {
-        return this.get("is_editing") || !this.get("module.is_correct");
+        return this.get("is_editing") || !this.get("module.is_correct") || this.get("module.is_general");
     }.property("is_editing", "module.state"),
     didInsertElement: function() {
         this._super();

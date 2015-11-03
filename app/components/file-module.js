@@ -32,6 +32,11 @@ export default Ember.Component.extend(InboundActions, {
         },
         upload_failed: function(text, err) {
             this.set("general_error", text + ": " + err);
+        },
+        delete_file: function(id) {
+            this.set("submitted_files.files", this.get("submitted_files.files").filter(function(x) {
+                return x['id'] === id;
+            }));
         }
     },
     module_service: Ember.inject.service("module-service"),
