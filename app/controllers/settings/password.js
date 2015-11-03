@@ -32,7 +32,7 @@ export default Ember.Controller.extend( {
                     contentType: "application/json",
                     type: 'POST',
                     headers: {
-                        header: component
+                        header: content
                     },
                     success: function(data){
                         if ("error" in data) {

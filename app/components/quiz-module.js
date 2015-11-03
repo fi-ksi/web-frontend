@@ -35,7 +35,7 @@ export default Ember.Component.extend(InboundActions, {
                 }
             });
             if(valid) {
-                this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                self.get('session').authorize('authorizer:oauth2', function(header, content) {
                     Ember.$.ajax({
                         url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                         data: JSON.stringify({ content: response }),
