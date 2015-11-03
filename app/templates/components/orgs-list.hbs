@@ -1,7 +1,7 @@
 {{#each model as |org index|}}
     <div class="col-xs-6 col-md-3" style="text-align:center;">
       {{#link-to "user-profile" org}}
-          <img src="{{org.profile_picture_r}}" style="
+          <img src="{{org.profile_picture_r}}" alt="Organizátor {{org.full_name}}" title="Skóre orga: {{org.score}}" style="
             border-radius: 25px;
             width: 100%;
             margin: 0 auto;

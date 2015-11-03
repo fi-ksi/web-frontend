@@ -3,7 +3,6 @@ import Ember from "ember";
 
 export default DS.Model.extend( {
 	prerequisities: DS.attr("prerequisite"),
-	category: DS.belongsTo("category", { async: true }),
 
 	state: DS.attr("string"),
 	active: Ember.computed("state", function() {
