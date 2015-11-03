@@ -2,17 +2,14 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default Ember.Controller.extend( {
+	session: Ember.inject.service(),
 	login_error_message: undefined, 
 	actions: {
 		login: function() {
 			var self = this;
-			var data = this.getProperties('identification', 'password');
+			const { identification, password } = this.getProperties('identification', 'password');
 			this.set('password', "");
-			var authenticator = "simple-auth-authenticator:oauth2-password-grant";
-			if (config.environment === "mockup_dev") {
-				authenticator = "authenticator:basicauth";
-			}
-			this.get('session').authenticate(authenticator, data).then(function() {
+			this.get('session').authenticate('authenticator:oauth2', identification, password).then(function() {
 				Ember.$('#login-modal').modal('hide');
 				var store = this.get("store");
 				store.unload("task");

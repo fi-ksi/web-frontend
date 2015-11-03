@@ -35,7 +35,7 @@ export default Ember.Component.extend(InboundActions, {
         },
         delete_file: function(id) {
             this.set("submitted_files.files", this.get("submitted_files.files").filter(function(x) {
-                return x['id'] != id;
+                return x['id'] !== id;
             }));
         }
     },

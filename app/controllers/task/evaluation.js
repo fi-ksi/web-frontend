@@ -1,6 +1,7 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service(),
 	submitted: Ember.computed('model.details.modules.[]', function() {
 	    var res = false;
 	    var modules = this.get('model.details.modules');

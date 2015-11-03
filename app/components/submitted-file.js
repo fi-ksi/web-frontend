@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 export default Ember.Component.extend({
-    session: Ember.inject.service('session'),
+    session: Ember.inject.service(),
     tagName: "",
     classNames: [],
     didInsertElement: function() {
@@ -18,9 +18,7 @@ export default Ember.Component.extend({
             }
             this.set("active", false);
             var self = this;
-            console.log(this.get('session'));
-            this.get('session').authorize('authorizer:oauth2-bearer', function(header, content) {
-                alert("Here!");
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
                 Ember.$.ajax({
                     url: self.get("file.filepath"),
                     data: JSON.stringify({}),
@@ -30,11 +28,15 @@ export default Ember.Component.extend({
                     },
                     type: 'DELETE',
                     success: function(data) {
+                        console.log(data);
                         if(data['status'] === "ok") {
                             self.send("del", self.get("file.id"));
                         }
                     },
-                    error: function() {
+                    error: function(j, s, a) {
+                        console.log(j);
+                        console.log(s);
+                        console.log(a);
                         self.set("active", true);
                     }
                 });

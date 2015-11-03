@@ -16,7 +16,7 @@ export default DS.Transform.extend({
         });*/
         return Ember.Object.create( {
             files: value.map(function(x) {
-                x['filepath'] = config.API_LOC + '/submFiles/' + x['id']
+                x['filepath'] = config.API_LOC + '/submFiles/' + x['id'];
                 return x;
             })
         });

@@ -1,7 +1,8 @@
 import Ember from "ember";
-import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
+	session: Ember.inject.service(),
 	/*actions: {
 		sessionAuthenticationSucceeded: function() {
 			var attemptedTransition = this.get('session.attemptedTransition');

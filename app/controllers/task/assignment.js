@@ -2,6 +2,7 @@ import Ember from "ember";
 import config from '../../config/environment';
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service(),
 	module_service: Ember.inject.service('module-service'),
 	resubmit: false,
 	opened: Ember.computed("model.time_deadline", function() {

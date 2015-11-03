@@ -31,32 +31,37 @@ export default Ember.Component.extend(InboundActions, {
             for(var i = 0; i < this.get("module.fields"); i++) {
                 data.push(Ember.$("#" + this.get("module.id") + "_" + i).val());
             }
-            Ember.$.ajax({
-                url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
-                data: JSON.stringify({ content: data }),
-                contentType: "application/json",
-                type: 'POST',
-                success: function(data) {
-                    if("result" in data) {
-                        self.set("module.state", data.result);
-                        if("score" in data) {
-                            if(!self.get("module.score")) {
-                                self.set("module.score", self.get("store").createRecord("module-score"));
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                Ember.$.ajax({
+                    url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
+                    data: JSON.stringify({ content: data }),
+                    contentType: "application/json",
+                    type: 'POST',
+                    headers: {
+                        header: content
+                    },
+                    success: function(data) {
+                        if("result" in data) {
+                            self.set("module.state", data.result);
+                            if("score" in data) {
+                                if(!self.get("module.score")) {
+                                    self.set("module.score", self.get("store").createRecord("module-score"));
+                                }
+                                self.set("module.score.score", data.score);
+                                if(!data.score) {
+                                    self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                                }
                             }
-                            self.set("module.score.score", data.score);
-                            if(!data.score) {
-                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
-                            }
+                            self.sendAction("submit_done");
                         }
-                        self.sendAction("submit_done");
+                        else {
+                            self.set("general_error", "Špatná odpověď serveru");
+                        }
+                    },
+                    error: function() {
+                        self.set("general_error", "Špatná odpověď ze serveru.");
                     }
-                    else {
-                        self.set("general_error", "Špatná odpověď serveru");
-                    }
-                },
-                error: function() {
-                    self.set("general_error", "Špatná odpověď ze serveru.");
-                }
+                });
             });
         }
     }

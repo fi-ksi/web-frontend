@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    session: Ember.inject.service(),
     actions: {
         react: function() {
             this.set("is_reacting", !this.get("is_reacting"));
