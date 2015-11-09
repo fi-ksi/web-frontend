@@ -15,9 +15,9 @@ export default Ember.Component.extend({
                 data: {},
                 contentType: "application/json",
                 type: 'PUT',
-                headers: {
-                    header: content
-                }
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader(header, content);
+                },
             });
         });
     }.observes("thread"),

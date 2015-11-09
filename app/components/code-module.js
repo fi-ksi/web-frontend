@@ -49,8 +49,8 @@ export default Ember.Component.extend(InboundActions, {
                         data: JSON.stringify({ content: content }),
                         contentType: "application/json",
                         type: 'POST',
-                        headers: {
-                            header: content
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, content);
                         },
                         success: function(data) {
                             self.set("general_info", null);
@@ -121,8 +121,8 @@ export default Ember.Component.extend(InboundActions, {
                         data: JSON.stringify({ content: content }),
                         contentType: "application/json",
                         type: 'POST',
-                        headers: {
-                            header: content
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, content);
                         },
                         success: function(data) {
                             if("output" in data ||  "image_output" in data) {

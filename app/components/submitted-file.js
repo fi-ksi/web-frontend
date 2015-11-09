@@ -25,9 +25,6 @@ export default Ember.Component.extend({
                     url: self.get("file.filepath"),
                     data: JSON.stringify({}),
                     contentType: "application/json",
-                    /*headers: {
-                        header: content
-                    },*/
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader(header, content);
                     },
@@ -35,7 +32,8 @@ export default Ember.Component.extend({
                     success: function(data) {
                         console.log(data);
                         if(data['status'] === "ok") {
-                            self.send("del", self.get("file.id"));
+                            self.sendAction("del", self.get("file.id"));
+                            console.log("Delete action!");
                         }
                     },
                     error: function(j, s, a) {
@@ -57,20 +55,33 @@ export default Ember.Component.extend({
                         xhr.setRequestHeader(header, content);
                     },
                     processData: false,
-                    success: function (result) {
-                        var str = result.response;
-
-                        var anchor = Ember.$('.vcard-hyperlink');
+                    success: function (result, a, xhr) {
+                        var v = new Int8Array(result.length);
+                        for(var i = 0; i != result.length; i++) {
+                            v[i] = result.charCodeAt(i);
+                        }
+                        var blob = new Blob([v], {type: xhr.getResponseHeader("content-type") || ""});
+                        saveAs(blob, self.get("file.filename"));
+                        //saveAs(blob, self.get("file.filename"));
+                        /*var anchor = Ember.$("#sub_file" + self.get("file.id"));
+                        console.log(anchor);
                         var windowUrl = window.URL || window.webkitURL;
                         var blob = new Blob([result.response], { type: 'text/bin' });
                         var url = windowUrl.createObjectURL(blob);
                         anchor.prop('href', url);
                         anchor.prop('download', self.get("file.filename"));
                         anchor.get(0).click();
-                        windowUrl.revokeObjectURL(url);
+                        windowUrl.revokeObjectURL(url);*/
+                        /*console.log(result);
+                        $("#sub_file" + self.get("file.id"))
+                            .attr({
+                            "href": result,
+                            "download": "file.txt"
+                        }).html($("#sub_file" + self.get("file.id")).attr("download"))
+                            .get(0).click();*/
                     },
                     error: function (jqxhr, textStatus, errorThrown) {
-                      console.log(textStatus, errorThrown);
+                        console.log(textStatus, errorThrown);
                     }
                 });
             });

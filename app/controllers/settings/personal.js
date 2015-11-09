@@ -35,8 +35,8 @@ export default Ember.Controller.extend(UserSettings, {
                     data: JSON.stringify(obj),
                     contentType: "application/json",
                     type: 'PUT',
-                    headers: {
-                        header: content
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader(header, content);
                     },
                     success: function() {
                         self.set("general_info", "Nastavení úspěšně uloženo");

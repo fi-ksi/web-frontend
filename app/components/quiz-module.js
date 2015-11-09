@@ -41,8 +41,8 @@ export default Ember.Component.extend(InboundActions, {
                         data: JSON.stringify({ content: response }),
                         contentType: "application/json",
                         type: 'POST',
-                        headers: {
-                            header: content
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, content);
                         },
                         success: function(data) {
                             if("result" in data) {

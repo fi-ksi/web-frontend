@@ -21,9 +21,9 @@ export default Ember.Component.extend({
 	                data: {},
 	                contentType: "application/json",
 	                type: 'GET',
-	                headers: {
-	                	header: content
-	                },
+	                beforeSend: function(xhr) {
+                        xhr.setRequestHeader(header, content);
+                    },
 	                success: function() {
 	                	self.get("session").invalidate();
 	                },

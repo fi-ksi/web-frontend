@@ -27,14 +27,19 @@ export default Ember.Component.extend(InboundActions, {
             }
         },
         upload_finished: function() {
+            var self = this;
             this.set("module.state", "correct");
+            this.get("module").reload().then(function() {
+                self.set("files", undefined);
+            });
             this.sendAction("submit_done");
         },
         upload_failed: function(text, err) {
             this.set("general_error", text + ": " + err);
         },
         delete_file: function(id) {
-            this.set("submitted_files.files", this.get("submitted_files.files").filter(function(x) {
+            console.log("captured");
+            this.set("module.submitted_files.files", this.get("module.submitted_files.files").filter(function(x) {
                 return x['id'] !== id;
             }));
         }
