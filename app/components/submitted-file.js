@@ -19,8 +19,6 @@ export default Ember.Component.extend({
             this.set("active", false);
             var self = this;
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
-                console.log(header);
-                console.log(content);
                 Ember.$.ajax({
                     url: self.get("file.filepath"),
                     data: JSON.stringify({}),
@@ -30,16 +28,11 @@ export default Ember.Component.extend({
                     },
                     type: 'DELETE',
                     success: function(data) {
-                        console.log(data);
                         if(data['status'] === "ok") {
                             self.sendAction("del", self.get("file.id"));
-                            console.log("Delete action!");
                         }
                     },
                     error: function(j, s, a) {
-                        console.log(j);
-                        console.log(s);
-                        console.log(a);
                         self.set("active", true);
                     }
                 });
@@ -68,9 +61,7 @@ export default Ember.Component.extend({
                 request.responseType = "blob";
                 request.setRequestHeader(header, content);
                 request.onload = function() {
-                    console.log("Here");
                     if (this.status === 200) {
-                        console.log("in");
                         var file = window.URL.createObjectURL(this.response);
                         var a = document.createElement("a");
                         a.href = file;

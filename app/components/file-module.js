@@ -38,7 +38,6 @@ export default Ember.Component.extend(InboundActions, {
             this.set("general_error", text + ": " + err);
         },
         delete_file: function(id) {
-            console.log("captured");
             this.set("module.submitted_files.files", this.get("module.submitted_files.files").filter(function(x) {
                 return x['id'] !== id;
             }));
