@@ -67,13 +67,17 @@
       {{warning-general text=login_error_message}}
     {{/if}}
       {{#validatable-form action="login"}}
-        <div>
-          {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true id="login-email" autofocus="autofocus"}}
-        </div>
-        <div style="margin-top:5px">
-          {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
-        </div>
-        <input type="submit" name="login"  class="btn btn-primary" value="Přihlas se">
+        {{#if in_progress}}
+          {{info-general text="Přihlašuji"}}
+        {{else}}
+          <div>
+            {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true id="login-email" autofocus="autofocus"}}
+          </div>
+          <div style="margin-top:5px">
+            {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
+          </div>
+          <input type="submit" name="login"  class="btn btn-primary" value="Přihlas se">
+        {{/if}}
       {{/validatable-form}}
 
       <div class="login-help">

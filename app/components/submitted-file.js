@@ -32,7 +32,7 @@ export default Ember.Component.extend({
                             self.sendAction("del", self.get("file.id"));
                         }
                     },
-                    error: function(j, s, a) {
+                    error: function() {
                         self.set("active", true);
                     }
                 });
