@@ -48,7 +48,7 @@ export default Ember.Component.extend({
         down: function() {
             var self = this;
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
-                Ember.$.ajax({
+                /*Ember.$.ajax({
                     url: self.get("file.filepath"),
                     type: "GET",
                     beforeSend: function(xhr) {
@@ -56,34 +56,33 @@ export default Ember.Component.extend({
                     },
                     processData: false,
                     success: function (result, a, xhr) {
-                        var v = new Int8Array(result.length);
-                        for(var i = 0; i != result.length; i++) {
-                            v[i] = result.charCodeAt(i);
-                        }
-                        var blob = new Blob([v], {type: xhr.getResponseHeader("content-type") || ""});
+                        var blob = new Blob([result], {type: xhr.getResponseHeader("content-type") || ""});
                         saveAs(blob, self.get("file.filename"));
-                        //saveAs(blob, self.get("file.filename"));
-                        /*var anchor = Ember.$("#sub_file" + self.get("file.id"));
-                        console.log(anchor);
-                        var windowUrl = window.URL || window.webkitURL;
-                        var blob = new Blob([result.response], { type: 'text/bin' });
-                        var url = windowUrl.createObjectURL(blob);
-                        anchor.prop('href', url);
-                        anchor.prop('download', self.get("file.filename"));
-                        anchor.get(0).click();
-                        windowUrl.revokeObjectURL(url);*/
-                        /*console.log(result);
-                        $("#sub_file" + self.get("file.id"))
-                            .attr({
-                            "href": result,
-                            "download": "file.txt"
-                        }).html($("#sub_file" + self.get("file.id")).attr("download"))
-                            .get(0).click();*/
                     },
                     error: function (jqxhr, textStatus, errorThrown) {
                         console.log(textStatus, errorThrown);
                     }
-                });
+                });*/
+                var request = new XMLHttpRequest();
+                request.open("GET", self.get("file.filepath"), true);
+                request.responseType = "blob";
+                request.setRequestHeader(header, content);
+                request.onload = function() {
+                    console.log("Here");
+                    if (this.status === 200) {
+                        console.log("in");
+                        var file = window.URL.createObjectURL(this.response);
+                        var a = document.createElement("a");
+                        a.href = file;
+                        a.download = this.response.name || self.get("file.filename");
+                        document.body.appendChild(a);
+                        a.click();
+                        window.onfocus = function() {
+                            document.body.removeChild(a);
+                        };
+                    }
+                };
+                request.send();
             });
         }
     }
