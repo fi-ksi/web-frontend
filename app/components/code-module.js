@@ -43,14 +43,14 @@ export default Ember.Component.extend(InboundActions, {
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
                 self.set("general_info", "Odevzdávám");
-                this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                this.get('session').authorize('authorizer:oauth2', function(header, h) {
                     Ember.$.ajax({
                         url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                         data: JSON.stringify({ content: content }),
                         contentType: "application/json",
                         type: 'POST',
                         beforeSend: function(xhr) {
-                            xhr.setRequestHeader(header, content);
+                            xhr.setRequestHeader(header, h);
                         },
                         success: function(data) {
                             self.set("general_info", null);
@@ -115,14 +115,14 @@ export default Ember.Component.extend(InboundActions, {
                 self.set("script_text_output", null);
                 self.set("script_graphics_output", null);
                 this.get_editor().focus();
-                this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                this.get('session').authorize('authorizer:oauth2', function(header, h) {
                     Ember.$.ajax({
                         url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
                         data: JSON.stringify({ content: content }),
                         contentType: "application/json",
                         type: 'POST',
                         beforeSend: function(xhr) {
-                            xhr.setRequestHeader(header, content);
+                            xhr.setRequestHeader(header, h);
                         },
                         success: function(data) {
                             if("output" in data ||  "image_output" in data) {

@@ -4,6 +4,7 @@ export default Ember.Component.extend({
     tagName: "",
     classNames: [],
     is_editing: false,
+    session: Ember.inject.service(),
     show: function() {
         return this.get("is_editing") || !this.get("module.is_correct") || this.get("module.is_general");
     }.property("is_editing", "module.state"),

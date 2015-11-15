@@ -5,6 +5,7 @@ import config from '../config/environment';
 export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
+    session: Ember.inject.service(),
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
@@ -35,14 +36,14 @@ export default Ember.Component.extend(InboundActions, {
                 }
             });
             if(valid) {
-                self.get('session').authorize('authorizer:oauth2', function(header, content) {
+                self.get('session').authorize('authorizer:oauth2', function(header, h) {
                     Ember.$.ajax({
                         url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                         data: JSON.stringify({ content: response }),
                         contentType: "application/json",
                         type: 'POST',
                         beforeSend: function(xhr) {
-                            xhr.setRequestHeader(header, content);
+                            xhr.setRequestHeader(header, h);
                         },
                         success: function(data) {
                             if("result" in data) {

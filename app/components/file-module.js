@@ -3,6 +3,7 @@ import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
 export default Ember.Component.extend(InboundActions, {
     tagName: "",
+    session: Ember.inject.service(),
     classNames: [],
     general_error: undefined,
     endpoint: Ember.computed("module.id", function() {

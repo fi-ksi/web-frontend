@@ -2,7 +2,7 @@
     <div id="header">
         {{header-component}}
         {{#if session.isAuthenticated}}
-            {{#if session.current_user.admin}}
+            {{#if session.current_user.organisator}}
               {{header-admin}}
             {{/if}}
         {{/if}}

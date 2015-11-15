@@ -81,9 +81,11 @@ export default Ember.Controller.extend({
 	},
 	actions: {
 		submit: function() {
-			this.get("store").find("task-detail", this.get("model.details.id"));
-			//this.get("model.details").reload();
-
+			//console.log(this.get("store").find("task-detail", this.get("model.details.id")));
+			//console.log(this.get("model.details"));
+			this.get("model").reload().then(function(e) {
+				e.get("details").reload();
+			});
 			var res = true;
 		    var modules = this.get('model.details.modules');
 		    if (!modules) {
