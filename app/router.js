@@ -35,7 +35,7 @@ Router.map(function() {
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
   this.route('admin/article-edit', {path: '/admin/article-edit'});
-  this.route('admin/correcting', {path: '/admin/correcting'});
+  this.route('admin/correcting', {path: '/admin/opravovani'});
   this.route('admin/e-mail', {path: '/admin/e-mail'});
   this.route('admin/export', {path: '/admin/export'});
   this.route('admin/schools', {path: '/admin/schools'});
