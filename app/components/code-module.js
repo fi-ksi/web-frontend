@@ -1,6 +1,6 @@
 import Ember from "ember";
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
-import config from '../../config/environment';
+import config from '../config/environment';
 
 export default Ember.Component.extend(InboundActions, {
     session: Ember.inject.service(),
