@@ -17,7 +17,9 @@
           <label style="margin-left:20px">Příklad {{task}}</label>
           {{#x-select value=task class="form-control" action="didMakeSelection"}}
             {{#x-option value=""}}Libovolný příklad{{/x-option}}
-            {{#x-option value=tasks.id}}{{tasks.title}}{{/x-option}}
+            {{#each tasks as |t|}}
+                {{#x-option value=t.id}}{{t.title}}{{/x-option}}
+            {{/each}}
           {{/x-select}}
         </div>
         <div class="col-md-3">

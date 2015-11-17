@@ -173,7 +173,6 @@ export default Ember.Component.extend({
     	var self = this;
 
     	addEventListener("touchstart", function(event){  
-		    console.log('down fired');
 		    event.target.classList.add('down');
 		}, true);
 

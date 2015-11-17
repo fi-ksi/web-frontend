@@ -174,7 +174,6 @@ $(document).ready(function(){
 
         var x=event.cyPosition.x;
         var y=event.cyPosition.y;
-        console.log(id);
         cy.$('#' + id).qtip({
             content: {
                 title: name,

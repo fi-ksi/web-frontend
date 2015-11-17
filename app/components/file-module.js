@@ -21,6 +21,8 @@ export default Ember.Component.extend(InboundActions, {
         },
         submit: function() {
             this.set("general_error", undefined);
+            this.set("in_progress", true);
+            this.set("progress_msg", "Nahrávám");
             if(this.get("valid")) {
                 this.get("f_input").send("upload");
             } else {
@@ -30,13 +32,18 @@ export default Ember.Component.extend(InboundActions, {
         upload_finished: function() {
             var self = this;
             this.set("module.state", "correct");
+            this.set("in_progress", false);
             this.get("module").reload().then(function() {
                 self.set("files", undefined);
             });
             this.sendAction("submit_done");
         },
         upload_failed: function(text, err) {
+            this.set("in_progress", false);
             this.set("general_error", text + ": " + err);
+        },
+        progress: function(progress) {
+            this.set("progress_msg", "Nahrávám - " + Math.floor(progress) + " %");  
         },
         delete_file: function(id) {
             this.set("module.submitted_files.files", this.get("module.submitted_files.files").filter(function(x) {

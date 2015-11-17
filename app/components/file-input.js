@@ -52,6 +52,10 @@ export default EmberUploader.FileField.extend(InboundActions, {
 				uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
 					self.sendAction("upload_failed", textStatus, errorThrown);
 				});
+				
+				uploader.on("progress", function(e) {
+					self.sendAction("progress", e.percent);
+				});
 
 				if (!Ember.isEmpty(self.get("files"))) {
 					uploader.upload(self.get("files"));
