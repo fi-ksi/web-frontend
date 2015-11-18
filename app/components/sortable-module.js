@@ -26,6 +26,9 @@ export default Ember.Component.extend(InboundActions, {
             this.update_indent();
         });
     },
+    mathObserver: Ember.computed("module", function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }),
     update_indent: function() {
         var id = "#sortable" + this.get("module.id");
         var offset = 0;

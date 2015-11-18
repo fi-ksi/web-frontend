@@ -9,9 +9,12 @@ export default Ember.Component.extend(InboundActions, {
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
-            
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         }); 
     },
+    mathObserver: Ember.computed("module", function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }),
     actions: {
         submit: function() {
             var self = this;

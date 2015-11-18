@@ -6,6 +6,9 @@ export default Ember.Component.extend(InboundActions, {
     session: Ember.inject.service(),
     tagName: "",
     classNames: [],
+    mathObserver: Ember.computed("module", function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }),
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
