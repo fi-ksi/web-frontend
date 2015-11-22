@@ -15,9 +15,9 @@ export default Ember.Controller.extend({
 		}
 		return false;
 	}),
-	mathObserver: Ember.computed("model", "model.details", function() {
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }),
+	/*mathObserver: Ember.computed("model", "model.details", function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }),*/
 	finished: Ember.computed('model.details.modules.[]', function() {
 	    var res = true;
 	    var modules = this.get('model.details.modules');
