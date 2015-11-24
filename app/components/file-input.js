@@ -22,13 +22,22 @@ export default EmberUploader.FileField.extend(InboundActions, {
 	}),
 	classNames: ["hide"],
 	attributeBindings: ["multiple", "accept"],
+	limit: 20971520,
 	filesDidChange: function(files) {
 		var self = this;
 		var res = [];
+		var size = 0;
 		for(var i = 0; i !== files.length; i++) {
 			var file = files.item(i).name;
 			res.push(file);
+			size += files[i].size;
 		}
+
+		this.set("size", size);
+		if(this.get("size") > this.get("limit")) {
+			this.sendAction("upload_failed", "Nelze nahrát soubory větší než 20 MB", "");
+		}
+
 		this.sendAction("file_list", res);
 		this.get('session').authorize('authorizer:oauth2', function(header, content) {
 			self.set('header', header);
@@ -37,6 +46,9 @@ export default EmberUploader.FileField.extend(InboundActions, {
 	},
 	actions: {
 		upload: function() {
+			if(this.get("size") > this.get("limit")) {
+				this.sendAction("upload_failed", "Nelze nahrát soubory větší než 20 MB", "");
+			}
 			var self = this;
 			this.get('session').authorize('authorizer:oauth2', function(h, c) {
 				var uploader  = EmberUploader.Uploader.create({
@@ -50,7 +62,8 @@ export default EmberUploader.FileField.extend(InboundActions, {
 				});
 
 				uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
-					self.sendAction("upload_failed", JSON.parse(jqXHR.responseText)["error"], errorThrown);
+					//self.sendAction("upload_failed", JSON.parse(jqXHR.responseText)["error"], errorThrown);
+					self.sendAction("upload_failed", "Nepodařilo se nahrát soubory - chyba spojení nebo příliš velké soubory", errorThrown);
 				});
 				
 				uploader.on("progress", function(e) {
