@@ -18,7 +18,15 @@
           <select {{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny příklady</option>
             {{#each tasks as |t|}}
-                <option value="{{t.id}}">{{t.title}} - {{t.author.full_name}}</option>
+                <option value="{{t.id}}">
+                  <span style="color:
+                    {{if t.base "red"}}
+                    {{if t.working "orange"}}
+                    {{if t.corrected "blue"}}
+                    {{if t.published "green"}}
+                    ">
+                    {{t.title}}</span> - {{t.author.full_name}}
+                </option>
             {{/each}}
           </select>
         </div>
