@@ -1,1 +1,1 @@
-<li><a href="javascript:void()" id="sub_file{{file.id}}" {{action "down"}}>{{file.filename}}</a> – <a href="javascript:void()" {{action "del"}}>{{if active "Smazat" "Mažu"}}</a></li>
+<li><a href="javascript:void()" id="sub_file{{file.id}}" {{action "down"}}>{{file.filename}}</a>{{#if deletable}} – <a href="javascript:void()" {{action "del"}}>{{if active "Smazat" "Mažu"}}</a>{{/if}}</li>
