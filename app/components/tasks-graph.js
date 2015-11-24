@@ -172,7 +172,11 @@ export default Ember.Component.extend({
     setup_graph_actions: function() {
     	var self = this;
 
-    	this.get("cy").on('mousedown','node', function(event){
+    	addEventListener("touchstart", function(event){  
+		    event.target.classList.add('down');
+		}, true);
+
+    	this.get("cy").on('vmousedown','node', function(event){
 			var target = event.cyTarget;
 	        var id = target.data("id");
 	        if(target.data("active")) {

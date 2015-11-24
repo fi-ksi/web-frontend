@@ -3,6 +3,7 @@ import UserSettings from "../../mixins/user-settings";
 import config from '../../config/environment';
 
 export default Ember.Controller.extend(UserSettings, {
+    session: Ember.inject.service(),
     actions: {
         save: function() {
             var self = this;
@@ -28,22 +29,27 @@ export default Ember.Controller.extend(UserSettings, {
                 tshirt_size: this.get("model.tshirt_size")
             };
 
-            Ember.$.ajax({
-                url: config.API_LOC + "/profile",
-                data: JSON.stringify(obj),
-                contentType: "application/json",
-                type: 'PUT',
-                success: function() {
-                    self.set("general_info", "Nastavení úspěšně uloženo");
-                    Ember.run.later((function() {
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                Ember.$.ajax({
+                    url: config.API_LOC + "/profile",
+                    data: JSON.stringify(obj),
+                    contentType: "application/json",
+                    type: 'PUT',
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader(header, content);
+                    },
+                    success: function() {
+                        self.set("general_info", "Nastavení úspěšně uloženo");
+                        Ember.run.later((function() {
+                            self.set("general_info", undefined);
+                        }), 3000);
+                        // ToDo: Reload profile
+                    },
+                    error: function(j, e, error) {
                         self.set("general_info", undefined);
-                    }), 3000);
-                    // ToDo: Reload profile
-                },
-                error: function(j, e, error) {
-                    self.set("general_info", undefined);
-                    self.set("general_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
-                }
+                        self.set("general_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
+                    }
+                });
             });
         }
     }

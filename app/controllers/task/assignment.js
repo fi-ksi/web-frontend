@@ -2,6 +2,7 @@ import Ember from "ember";
 import config from '../../config/environment';
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service(),
 	module_service: Ember.inject.service('module-service'),
 	resubmit: false,
 	opened: Ember.computed("model.time_deadline", function() {
@@ -14,6 +15,9 @@ export default Ember.Controller.extend({
 		}
 		return false;
 	}),
+	/*mathObserver: Ember.computed("model", "model.details", function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }),*/
 	finished: Ember.computed('model.details.modules.[]', function() {
 	    var res = true;
 	    var modules = this.get('model.details.modules');
@@ -80,11 +84,11 @@ export default Ember.Controller.extend({
 	},
 	actions: {
 		submit: function() {
-			console.log(this.get("model"));
-			console.log(this.get("model.details"));
-			this.get("store").find("task-detail", this.get("model.details.id"));
-			//this.get("model.details").reload();
-
+			//console.log(this.get("store").find("task-detail", this.get("model.details.id")));
+			//console.log(this.get("model.details"));
+			this.get("model").reload().then(function(e) {
+				e.get("details").reload();
+			});
 			var res = true;
 		    var modules = this.get('model.details.modules');
 		    if (!modules) {

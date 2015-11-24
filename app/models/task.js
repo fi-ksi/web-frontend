@@ -1,5 +1,6 @@
 import DS from "ember-data";
 import Ember from "ember";
+import config from '../config/environment';
 
 export default DS.Model.extend( {
 	prerequisities: DS.attr("prerequisite"),
@@ -23,9 +24,9 @@ export default DS.Model.extend( {
 	picture: Ember.computed("picture_base", "picture_suffix", "active",
 	 "state", function() {
 	 	if(!this.get("active")) {
-	 		return this.get("picture_base") + "locked" + this.get("picture_suffix");
+	 		return config.API_LOC + this.get("picture_base") + "locked" + this.get("picture_suffix");
 	 	}
-	 	return this.get("picture_base") + this.get("state") + this.get("picture_suffix");
+	 	return config.API_LOC + this.get("picture_base") + this.get("state") + this.get("picture_suffix");
 	}),
 	details: DS.belongsTo("task-detail", {async: true})
 });

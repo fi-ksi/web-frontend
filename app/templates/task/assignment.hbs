@@ -4,16 +4,15 @@
   </div>
   <hr>
   <div style="margin-left:20px">
-    {{#if opened}}
-      {{#if session.isAuthenticated}}
-        {{#each model.details.modules as |module index|}}
-          {{module-wrap module=module store=store submit="submit"}}
-        {{/each}}
-      {{else}}
-          {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
-      {{/if}}
-    {{else}}
+    {{#unless opened}}
       {{warning-general disable_warning=true text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}
+    {{/unless}}
+    {{#if session.isAuthenticated}}
+      {{#each model.details.modules as |module index|}}
+        {{module-wrap module=module store=store submit="submit" opened=opened}}
+      {{/each}}
+    {{else}}
+        {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
     {{/if}}
   </div>
   {{#if finished}}

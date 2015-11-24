@@ -51,7 +51,6 @@ router.render = function (req, res) {
 
   // Handle taskDetails
   if(item == "taskDetail") {
-    console.log("Here!");
     console.log(res.locals.data);
     response["modules"] = router.db.object["modules"].filter(function(v) {
         return res.locals.data["modules"].indexOf(v["id"]) > -1;

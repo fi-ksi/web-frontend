@@ -1,4 +1,7 @@
 <div class="container content-section" id="graph-content">
+	{{#unless cytoscape_data}}
+		V aktuálním ročníku nejsou zveřejněny zatím žádné úlohy.
+	{{/unless}}
     <div class="centre" style="margin: 10px">
         <!-- cytoscape graf -->
         <div id="cy"></div>

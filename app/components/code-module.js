@@ -3,8 +3,12 @@ import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 import config from '../config/environment';
 
 export default Ember.Component.extend(InboundActions, {
+    session: Ember.inject.service(),
     tagName: "",
     classNames: [],
+    mathObserver: Ember.computed("module", function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }),
     didInsertElement: function() {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
@@ -42,39 +46,44 @@ export default Ember.Component.extend(InboundActions, {
             var content = this.get_editor().getValue();
             if(content && content !== this.get("module.default_code")) {
                 self.set("general_info", "Odevzdávám");
-                Ember.$.ajax({
-                    url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
-                    data: JSON.stringify({ content: content }),
-                    contentType: "application/json",
-                    type: 'POST',
-                    success: function(data) {
-                        self.set("general_info", null);
-                        if("result" in data) {
-                            self.set("module.state", data.result);
-                            if(data.result === "error") {
-                                self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                this.get('session').authorize('authorizer:oauth2', function(header, h) {
+                    Ember.$.ajax({
+                        url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
+                        data: JSON.stringify({ content: content }),
+                        contentType: "application/json",
+                        type: 'POST',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, h);
+                        },
+                        success: function(data) {
+                            self.set("general_info", null);
+                            if("result" in data) {
+                                self.set("module.state", data.result);
+                                if(data.result === "error") {
+                                    self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                                }
+                                if(data.result === "exec-error") {
+                                    self.set("general_error", "Nastala chyba při vykonávání kódu, zkontroluj si syntaxi.");
+                                }
+                                if(!self.get("module.score")) {
+                                    self.set("module.score", self.get("store").createRecord("module-score"));
+                                }
+                                if(data.result === "incorrect") {
+                                    self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                                }
+                                self.set("module.score.score", data.score);
+                                self.sendAction("submit_done");
+                            } else {
+                                self.set("general_error", "Špatná odpověď serveru");
                             }
-                            if(data.result === "exec-error") {
-                                self.set("general_error", "Nastala chyba při vykonávání kódu, zkontroluj si syntaxi.");
+                            if ("output" in data) {
+                                self.set("script_text_output", data.output.trim());
                             }
-                            if(!self.get("module.score")) {
-                                self.set("module.score", self.get("store").createRecord("module-score"));
-                            }
-                            if(data.result === "incorrect") {
-                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
-                            }
-                            self.set("module.score.score", data.score);
-                            self.sendAction("submit_done");
-                        } else {
-                            self.set("general_error", "Špatná odpověď serveru");
+                        },
+                        error: function() {
+                            self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                         }
-                        if ("output" in data) {
-                            self.set("script_text_output", data.output.trim());
-                        }
-                    },
-                    error: function() {
-                        self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
-                    }
+                    });
                 });
             } else {
                 if(content === this.get("module.default_code")) {
@@ -109,31 +118,36 @@ export default Ember.Component.extend(InboundActions, {
                 self.set("script_text_output", null);
                 self.set("script_graphics_output", null);
                 this.get_editor().focus();
-                Ember.$.ajax({
-                    url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
-                    data: JSON.stringify({ content: content }),
-                    contentType: "application/json",
-                    type: 'POST',
-                    success: function(data) {
-                        if("output" in data ||  "image_output" in data) {
-                            if("output" in data && data.output) {
-                                self.set("script_text_output", data.output.trim());
+                this.get('session').authorize('authorizer:oauth2', function(header, h) {
+                    Ember.$.ajax({
+                        url: config.API_LOC + "/runCode/" + self.get("module.id") + "/submit",
+                        data: JSON.stringify({ content: content }),
+                        contentType: "application/json",
+                        type: 'POST',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, h);
+                        },
+                        success: function(data) {
+                            if("output" in data ||  "image_output" in data) {
+                                if("output" in data && data.output) {
+                                    self.set("script_text_output", data.output.trim());
+                                }
+                                if("image_output" in data && data.image_output) {
+                                    self.set("script_graphics_output", config.API_LOC + data.image_output);
+                                }
                             }
-                            if("image_output" in data && data.image_output) {
-                                self.set("script_graphics_output", config.API_LOC + data.image_output);
+                            else {
+                                self.set("script_graphics_output", null);
+                                self.set("script_text_output", null);
+                                self.set("general_error", "Špatná odpověď serveru");
                             }
+                            self.set("general_info", null);
+                        },
+                        error: function() {
+                            self.set("general_info", null);
+                            self.set("general_error", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                         }
-                        else {
-                            self.set("script_graphics_output", null);
-                            self.set("script_text_output", null);
-                            self.set("general_error", "Špatná odpověď serveru");
-                        }
-                        self.set("general_info", null);
-                    },
-                    error: function() {
-                        self.set("general_info", null);
-                        self.set("general_error", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
-                    }
+                    });
                 });
             } else {
                 if(content === this.get("module.default_code")) {

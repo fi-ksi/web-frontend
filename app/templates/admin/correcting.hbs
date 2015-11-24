@@ -3,40 +3,58 @@
   <div class="panel panel-default">
     <div class="panel-heading">Zvolit omezení</div>
     <div class="panel-body">
-      <div class="form-group">
-        <label>Ročník:</label>
-        <select>
-         <option>2014</option> <!-- TODO rocniky -->
-         <option>2013</option>
-         <option>2012</option>
-        </select>
-        <label style="margin-left:20px">Vlna:</label>
-        <select>
-         <option>vlna 1</option> <!-- TODO vlny -->
-         <option>vlna 2</option>
-         <option>vlna 3</option>
-        </select>
-        <label style="margin-left:20px">Příklad:</label>
-        <select>
-         <option>priklad 1</option> <!-- TODO priklad -->
-         <option>priklad 2</option>
-         <option>priklad 3</option>
-        </select>
-        <label style="margin-left:20px">Stav:</label>
-        <select>
-         <option>všechny</option> <!-- TODO stav -->
-         <option>odevzdáno</option>
-         <option>opraveno</option>
-         <option>uzavřeno</option>
-        </select>
-        <label style="margin-left:20px">Řešitel:</label>
-        <select>
-         <option>jmeno</option> <!-- TODO priklad -->
-         <option>jmeno</option>
-         <option>jmeno</option>
-        </select>
+      <div class="form-group col-xs-12">
+        <div class="col-md-3">
+          <label style="margin-left:20px">Vlna</label>
+          {{#x-select value=wave class="form-control"}}
+            {{#x-option value=""}}Libovolná vlna{{/x-option}}
+            {{#each waves as |w|}}
+              {{#x-option value=w.id}}{{w.caption}}{{/x-option}}
+            {{/each}}
+          {{/x-select}}
+        </div>
+        <div class="col-md-3">
+          <label style="margin-left:20px">Příklad</label>
+          <select {{action "task_select"}} class="form-control" id="task_sel">
+            <option value="">Všechny příklady</option>
+            {{#each tasks as |t|}}
+                <option value="{{t.id}}">
+                  <span style="color:
+                    {{if t.base "red"}}
+                    {{if t.working "orange"}}
+                    {{if t.corrected "blue"}}
+                    {{if t.published "green"}}
+                    ">
+                    {{t.title}}</span> - {{t.author.full_name}}
+                </option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label style="margin-left:20px">Stav</label>
+          {{#x-select value=state class="form-control"}}
+            {{#x-option value="all"}}Všechny{{/x-option}}
+            {{#x-option value="todo"}}Neopravené{{/x-option}}
+            {{#x-option value="corrected"}}Opravené{{/x-option}}
+          {{/x-select}}
+        </div>
+        <div class="col-md-3">
+          <label style="margin-left:20px">Řešitel</label>
+          <select {{action "participant_select"}} class="form-control" id="par_sel">
+            <option value="">Všechni řešitelé</option>
+            {{#each participants as |p|}}
+                <option value="{{p.id}}">{{p.full_name}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
-      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px">OK</button> <!-- TODO button -->
+
+      <div class="col-xs-12">
+        {{#if wrong-filter}}
+          {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, příklad nebo oboje!"}}
+        {{/if}}
+      </div>
+      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>Zobrazit</button>
     </div>
   </div>
 

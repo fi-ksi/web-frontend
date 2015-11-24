@@ -2,19 +2,19 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default Ember.Controller.extend( {
+	session: Ember.inject.service(),
 	login_error_message: undefined, 
+	in_progress: false,
 	actions: {
 		login: function() {
 			var self = this;
-			var data = this.getProperties('identification', 'password');
+			const { identification, password } = this.getProperties('identification', 'password');
 			this.set('password', "");
-			var authenticator = "simple-auth-authenticator:oauth2-password-grant";
-			if (config.environment === "mockup_dev") {
-				authenticator = "authenticator:basicauth";
-			}
-			this.get('session').authenticate(authenticator, data).then(function() {
+			this.set('in_progress', true);
+			this.get('session').authenticate('authenticator:oauth2', identification, password).then(function() {
+				self.set('in_progress', false);
 				Ember.$('#login-modal').modal('hide');
-				var store = this.get("store");
+				var store = self.get("store");
 				store.unload("task");
 				store.unload("task-detail");
 				store.unload("thread");
@@ -25,6 +25,7 @@ export default Ember.Controller.extend( {
 				store.unload("achievement");
 				store.unload("task-score");
 			}, function(error) {
+				self.set('in_progress', false);
 				if ("error" in error) {
 					if(error.error === "unauthorized_client") {
 						self.set('login_error_message', "Neexistující uživatel nebo špatné heslo");

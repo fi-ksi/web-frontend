@@ -2,6 +2,7 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default Ember.Component.extend({
+	session: Ember.inject.service(),
 	didInsertElement: function() {
 		this._super();
 		this.set("error_message", undefined);
@@ -14,18 +15,23 @@ export default Ember.Component.extend({
 	actions: {
 		logout: function() {
 			var self = this;
-			Ember.$.ajax({
-                url: config.API_LOC + "/logout",
-                data: {},
-                contentType: "application/json",
-                type: 'GET',
-                success: function() {
-                	self.get("session").invalidate();
-                },
-                error: function() {
-                	self.get("session").invalidate();
-                }
-            });
+			this.get('session').authorize('authorizer:oauth2', function(header, content) {
+				Ember.$.ajax({
+	                url: config.API_LOC + "/logout",
+	                data: {},
+	                contentType: "application/json",
+	                type: 'GET',
+	                beforeSend: function(xhr) {
+                        xhr.setRequestHeader(header, content);
+                    },
+	                success: function() {
+	                	self.get("session").invalidate();
+	                },
+	                error: function() {
+	                	self.get("session").invalidate();
+	                }
+	            });
+	        });
 		}
 	},
 	resizeBody: function() {

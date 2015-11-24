@@ -2,17 +2,23 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
+    session: Ember.inject.service(),
     thread_mark_as_read_observer: function() {
         var thread = this.get("thread");
         if(!thread) {
             return;
         }
 
-        Ember.$.ajax({
-            url: config.API_LOC + "/threads/" + thread.get("id"),
-            data: {},
-            contentType: "application/json",
-            type: 'PUT',
+        this.get('session').authorize('authorizer:oauth2', function(header, content) {
+            Ember.$.ajax({
+                url: config.API_LOC + "/threads/" + thread.get("id"),
+                data: {},
+                contentType: "application/json",
+                type: 'PUT',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader(header, content);
+                },
+            });
         });
     }.observes("thread"),
     actions: {
