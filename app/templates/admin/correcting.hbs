@@ -14,13 +14,13 @@
           {{/x-select}}
         </div>
         <div class="col-md-3">
-          <label style="margin-left:20px">Příklad {{task}}</label>
-          {{#x-select value=task class="form-control" action="didMakeSelection"}}
-            {{#x-option value=""}}Libovolný příklad{{/x-option}}
+          <label style="margin-left:20px">Příklad</label>
+          <select {{action "task_select"}} class="form-control" id="task_sel">
+            <option value="">Všechny příklady</option>
             {{#each tasks as |t|}}
-                {{#x-option value=t.id}}{{t.title}}{{/x-option}}
+                <option value="{{t.id}}">{{t.title}} - {{t.author.full_name}}</option>
             {{/each}}
-          {{/x-select}}
+          </select>
         </div>
         <div class="col-md-3">
           <label style="margin-left:20px">Stav</label>
@@ -32,12 +32,12 @@
         </div>
         <div class="col-md-3">
           <label style="margin-left:20px">Řešitel</label>
-          {{#x-select value=participant class="form-control"}}
-            {{#x-option value=""}}Všichni řešitelé{{/x-option}}
+          <select {{action "participant_select"}} class="form-control" id="par_sel">
+            <option value="">Všechni řešitelé</option>
             {{#each participants as |p|}}
-              
+                <option value="{{p.id}}">{{p.full_name}}</option>
             {{/each}}
-          {{/x-select}}
+          </select>
         </div>
       </div>
 

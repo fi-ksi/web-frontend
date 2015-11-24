@@ -26,7 +26,9 @@ export default Ember.Controller.extend({
 		this.get("model").forEach(function(element) {
 			if (!self.get("task") || element.get("id") === self.get("task")) {
 				element.get("solvers").forEach(function(e) {
-					set.add(e);
+					if (!e.get("organisator")) {
+						set.add(e);
+					}
 				});
 			}
 		});
@@ -37,14 +39,11 @@ export default Ember.Controller.extend({
 		});
 	}),
 	actions: {
-		didMakeSelection: function(selection, component) {
-			selection = Ember.$(component.element).val();
-			this.set('value', Ember.$(component.element).val());
-			/*if (selection) {
-				this.set('selection', selection)
-			} else {
-				this.set('selection', component.get('default'))
-			}*/
+		task_select: function() {
+			this.set("task", Ember.$("#task_sel").val());
+		},
+		participant_select: function() {
+			this.set("participant", Ember.$("#par_sel").val());
 		}
 	}
 });
