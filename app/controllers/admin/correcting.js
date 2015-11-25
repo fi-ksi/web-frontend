@@ -2,6 +2,8 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
 	store: Ember.inject.service(),
+	participant: "",
+	task: "",
 	waves: Ember.computed("model", function() {
 		var set = new Set();
 		this.get("model").forEach(function(element) {
@@ -38,12 +40,50 @@ export default Ember.Controller.extend({
 				 a.get("first_name") < b.get("first_name"));
 		});
 	}),
+	corrections_filtered: Ember.computed("corrections", "state", function() {
+		var val = this.get("state");
+		if (val == "all") {
+			return this.get("corrections");
+		}
+		return this.get("corrections").filter(function(p) {
+			return p.get("state") === val;
+		});
+	}),
+	set_filter_warning: function() {
+		if (this.get("participant") === "" && this.get("task") === "") {
+			this.set("wrong-filter", true);
+			return true;
+		}
+		this.set("wrong-filter", false);
+		return false;
+	},
 	actions: {
 		task_select: function() {
+			var t = this.get("task");
 			this.set("task", Ember.$("#task_sel").val());
+			if(t !== this.get("task")) {
+				this.set_filter_warning();
+			}
 		},
 		participant_select: function() {
+			var p = this.get("participant");
 			this.set("participant", Ember.$("#par_sel").val());
+			if (p !== this.get("participant")) {
+				this.set_filter_warning();
+			}
+		},
+		filter: function() {
+			if (this.set_filter_warning()) {
+				return;
+			}
+			var params = {};
+			if (this.get("task") !== "") {
+				params["task"] = this.get("task");
+			}
+			if(this.get("participant") !== "") {
+				params["participant"] = this.get("participant");
+			}
+			this.set("corrections", this.get("store").find("correction", params));
 		}
 	}
 });

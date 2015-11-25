@@ -7,14 +7,14 @@
         <div class="col-md-3">
           <label style="margin-left:20px">Vlna</label>
           {{#x-select value=wave class="form-control"}}
-            {{#x-option value=""}}Libovolná vlna{{/x-option}}
+            {{#x-option value=""}}Vyber vlnu{{/x-option}}
             {{#each waves as |w|}}
               {{#x-option value=w.id}}{{w.caption}}{{/x-option}}
             {{/each}}
           {{/x-select}}
         </div>
         <div class="col-md-3">
-          <label style="margin-left:20px">Příklad</label>
+          <label style="margin-left:20px">Vyber příklad</label>
           <select {{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny příklady</option>
             {{#each tasks as |t|}}
@@ -34,7 +34,7 @@
           <label style="margin-left:20px">Stav</label>
           {{#x-select value=state class="form-control"}}
             {{#x-option value="all"}}Všechny{{/x-option}}
-            {{#x-option value="todo"}}Neopravené{{/x-option}}
+            {{#x-option value="notcorrected"}}Neopravené{{/x-option}}
             {{#x-option value="corrected"}}Opravené{{/x-option}}
           {{/x-select}}
         </div>
@@ -62,51 +62,11 @@
     Nezapomeň výsledky zveřejnit!
   </div>
 
-  <div class="panel panel-ksi">
-	  <div class="panel-heading panel-heading-ksi" style="hight:400px">
-      Honza Sikovny <!-- meno resitele -->
-      <div style="float: right;">
-        Uloha 1. meno <!-- meno ulohy -->
-      </div>
-    </div>
-	  <div class="panel-body">
-	     <div id="date-text">
-         řešení naposledy upraveno: 2.12.2014 16:35 <!-- datum reseni -->
-         <div style="float: right;">
-           Opravil: Heňo <!-- opravujuci -->
-         </div></div>
-       <hr>
-
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Stáhnout řešení</button> <!-- TODO button -->
-
-       <div class="form-group" style="margin-top:20px">
-         <label>Komentár:</label>
-         {{text-editor value=articleEditEditor}}
-       </div>
-
-       <div class="form-group" style="margin-top:20px">
-         <form style="margin: 0; padding: 0;">
-          <p>
-            <label>Body: </label>
-            <input id="points" style="display: inline;" type="input"/> <!-- body -->
-            <label>Přidat trofej: </label>
-            <select>
-              <option><img src="http://placehold.it/30x30"> trofej</option> <!-- TODO obrazky z databaze -->
-              <option><img src="http://placehold.it/30x30"> trofej</option>
-              <option><img src="http://placehold.it/30x30"> trofej</option>
-            </select>
-            <label> Trofeje:</label>
-            <img src="http://placehold.it/30x30"> <!-- TODO kliknutim smazat -->
-          </p>
-        </form>
-       </div>
-
-       <hr>
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Uložit</button> <!-- TODO button -->
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Zveřejnit</button> <!-- TODO button -->
-    </div>
-	</div>
-
+  {{#each corrections as |corr|}}
+    {{correction-unit model=corr}}
+  {{else}}
+    {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
+  {{/each}}
 
   <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:20px;margin-bottom:20px">Uložit vše</button> <!-- TODO button -->
   <button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px">Zveřejnit vše</button> <!-- TODO button -->
