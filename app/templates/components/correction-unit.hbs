@@ -6,20 +6,14 @@
       </div>
     </div>
 	  <div class="panel-body">
-	     <div id="date-text">
-         řešení naposledy upraveno: 2.12.2014 16:35 <!-- datum reseni -->
+	     <!--<div id="date-text">
+         řešení naposledy upraveno: 2.12.2014 16:35
          <div style="float: right;">
-           Opravil: Heňo <!-- opravujuci -->
+           Opravil: Heňo
          </div></div>
        <hr>
 
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Stáhnout řešení</button> <!-- TODO button -->
-
-       <div class="form-group" style="margin-top:20px">
-         <label>Komentár:</label>
-         {{text-editor value=articleEditEditor}}
-       </div>
-
+       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Stáhnout řešení</button>-->
        <div class="form-group" style="margin-top:20px">
          <form style="margin: 0; padding: 0;">
           <p>
@@ -37,8 +31,13 @@
         </form>
        </div>
 
-       <hr>
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Uložit</button> <!-- TODO button -->
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Zveřejnit</button> <!-- TODO button -->
+       <div class="form-group" style="margin-top:20px">
+         <label>Komentář:</label>
+         {{#if model.comment}}
+          {{thread-view thread=model.comment}}
+         {{else}}
+          Načítám
+         {{/if}}
+       </div>
     </div>
 	</div>

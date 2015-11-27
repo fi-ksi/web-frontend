@@ -5,6 +5,7 @@ export default DS.Model.extend( {
 	task_id: DS.belongsTo("task"),
 	state: DS.attr("string"),
 	user: DS.belongsTo("user"),
-	comment: DS.belongsTo("thread"),
-	achievements: DS.hasMany("achievement")
+	comment: DS.belongsTo("thread", {async: true}),
+	achievements: DS.hasMany("achievement"),
+	modules: DS.attr("module")
 });

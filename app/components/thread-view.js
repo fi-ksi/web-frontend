@@ -3,6 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
+    store: Ember.inject.service(),
     thread_mark_as_read_observer: function() {
         var thread = this.get("thread");
         if(!thread) {

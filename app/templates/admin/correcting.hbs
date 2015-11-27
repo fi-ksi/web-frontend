@@ -59,16 +59,16 @@
   </div>
 
   <div class="alert alert-info">
-    Nezapomeň výsledky zveřejnit!
+    Všechny úlohy jsou již opraveny - nezapomeň výsledky zveřejnit!
+    <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px">Zveřejnit výsledky</button>
   </div>
 
+  {{#if corrections}}
+  <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:20px;margin-bottom:20px">Uložit vše</button>
+  {{/if}}
   {{#each corrections as |corr|}}
     {{correction-unit model=corr}}
   {{else}}
     {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
   {{/each}}
-
-  <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:20px;margin-bottom:20px">Uložit vše</button> <!-- TODO button -->
-  <button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px">Zveřejnit vše</button> <!-- TODO button -->
-
 </section>
