@@ -18,9 +18,9 @@
          <form style="margin: 0; padding: 0;">
           <p>
             <label>Body: </label>
-            <input id="points" style="display: inline;" type="input"/> <!-- body -->
+            <input id="points" style="display: inline;" type="input" class="form-control col-md-1"/> <!-- body -->
             <label>Přidat trofej: </label>
-            <select>
+            <select class="form-control col-md-1">
               <option><img src="http://placehold.it/30x30"> trofej</option> <!-- TODO obrazky z databaze -->
               <option><img src="http://placehold.it/30x30"> trofej</option>
               <option><img src="http://placehold.it/30x30"> trofej</option>
@@ -28,6 +28,9 @@
             <label> Trofeje:</label>
             <img src="http://placehold.it/30x30"> <!-- TODO kliknutim smazat -->
           </p>
+          {{#if invalid_data}}
+             {{info-general text=invalid_data}}
+           {{/if}}
         </form>
        </div>
 
@@ -36,7 +39,14 @@
          {{#if model.comment}}
           {{thread-view thread=model.comment}}
          {{else}}
-          Načítám
+           {{text-editor value=comment_content}}
+					 <button class="btn btn-primary" style="margin-top:20px" {{action "comment"}}>Vložit komentář k řešení</button>				
+           {{#if creating_comment}}
+             {{info-general text="Ukládám komentář"}}
+           {{/if}}
+           {{#if comment_error}}
+             {{warning-general text=comment_error}}
+           {{/if}}
          {{/if}}
        </div>
     </div>
