@@ -138,10 +138,10 @@ export default Ember.Component.extend({
     	this.get("cy").style()
             .selector('node')
               .css({
-                'width': '85px',
-                'height': '85px',
-				'background-width': '83px',
-              	'background-height': '83px',
+                'width': '92px',
+                'height': '92px',
+				'background-width': '80px',
+              	'background-height': '80px',
 				'background-color': 'white',
 				'background-opacity': '0',
 				'background-image': 'data(picture)',
