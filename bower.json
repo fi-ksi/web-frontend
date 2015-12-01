@@ -24,7 +24,8 @@
     "qtip2": "~2.2.1",
     "qunit": "~1.17.1",
     "sticky-kit": "~1.1.2",
-    "tinymce": "~4.2.3"
+    "tinymce": "~4.2.3",
+    "ember-data-model-fragments": "2.1.0"
   },
   "devDependencies": {
     "dagre": "~0.7.4",

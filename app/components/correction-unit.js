@@ -4,6 +4,12 @@ import config from '../config/environment';
 export default Ember.Component.extend({
     session: Ember.inject.service(),
     store: Ember.inject.service(),
+    ident: Ember.computed("model", function() {
+       return this.get("model.task_id").id + "_" + this.get("model.user.id");
+    }),
+    achievements: Ember.computed(function() {
+        return this.get("store").find("achievement");
+    }),
     /*comment_observer: function() {
         // ToDo: Create thread
         var self = this;

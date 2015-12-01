@@ -6,34 +6,58 @@
       </div>
     </div>
 	  <div class="panel-body">
-	     <!--<div id="date-text">
-         řešení naposledy upraveno: 2.12.2014 16:35
-         <div style="float: right;">
-           Opravil: Heňo
-         </div></div>
-       <hr>
-
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Stáhnout řešení</button>-->
        {{#each model.modules as |module|}}
        <div class="form-group" style="margin-top:20px col-md-12">
-            <label>Body: </label>
-            {{input style="display: inline;" class="form-control" size="4" value=model.evaluation.e.points}}      
+         {{#if module.evaluation.general}}
+          <div class="panel panel-ksi">
+            {{log module}}
+            <div class="panel-heading panel-heading-ksi">
+              Souborový modul - {{module.module_id.name}}
+            </div>
+            <div class="panel-body">
+              <div class="col-md-6">
+                <h4>Odevzdané soubory:</h4>
+                <ul>
+                  {{#each module.evaluation.general.files as |file|}}
+                    {{submitted-file file=file del="delete_file" deletable=false}}
+                  {{else}}
+                    <p>Nebyly odevzdány žádné soubory.</p>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <label>Body:</label>
+                {{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}  
+                <a href="javascript:void()" {{action "all"}}> Stáhnout všechny soubory v ZIP archivu</a>    
+              </div>
+            </div>
+          </div>
+         {{else}}
+          <h2>Zatím nepodporovaný modul!</h2>
+         {{/if}}
        </div>
        {{/each}}
 
        <div class="form-group" style="margin-top:10px">
-         <label>Přidat trofej: </label>
-            <select class="form-control col-md-1">
-              <option><img src="http://placehold.it/30x30"> trofej</option> <!-- TODO obrazky z databaze -->
-              <option><img src="http://placehold.it/30x30"> trofej</option>
-              <option><img src="http://placehold.it/30x30"> trofej</option>
+            <select id="a_{{ident}}" class="form-control col-md-1">
+              <option value="">Vyber trofej pro přidání</option>
+              {{#each achievements as |ach|}}
+                <option value="{{ach.id}}">{{ach.title}}</option>
+              {{/each}}
             </select>
-            <label> Trofeje:</label>
-            <img src="http://placehold.it/30x30"> <!-- TODO kliknutim smazat -->
-          {{#if invalid_data}}
-             {{info-general text=invalid_data}}
-          {{/if}}
+            <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
        </div>
+       
+       
+       <label>Uživatelovy trofeje:</label>
+       {{#each model.achievements as |ach|}}
+           {{achievement-small model=ach}}
+           <a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+       {{else}}
+           Uživatel nemá za tuto úlohu žádné trofeje
+       {{/each}}
+
+       
        <div class="form-group" style="margin-top:20px">
          <label>Komentář:</label>
          {{#if model.comment}}

@@ -1,5 +1,5 @@
 import DS from "ember-data";
-import Ember from "ember";
+import MF from 'model-fragments';
 
 export default DS.Model.extend( {
 	task_id: DS.belongsTo("task"),
@@ -7,5 +7,5 @@ export default DS.Model.extend( {
 	user: DS.belongsTo("user"),
 	comment: DS.belongsTo("thread", {async: true}),
 	achievements: DS.hasMany("achievement"),
-	modules: DS.attr("module")
+	modules: MF.fragmentArray('modulefragment')
 });
