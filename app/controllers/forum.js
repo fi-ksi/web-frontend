@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
                 self.set("thread_name", undefined);
                 self.set("thread_content", undefined);
 
-                Ember.run.later((function() {
+                Ember.run.later(this, (function() {
                     self.set("info", undefined);
                 }), 5000);
             });

@@ -27,7 +27,9 @@ export default Ember.Component.extend(InboundActions, {
         });
     },
     mathObserver: Ember.computed("module", function() {
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        Ember.run.later(this, function() {
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        }, 500);
     }),
     update_indent: function() {
         var id = "#sortable" + this.get("module.id");

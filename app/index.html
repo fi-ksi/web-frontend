@@ -46,4 +46,10 @@
 
     {{content-for 'body-footer'}}
   </body>
+
+  <script>
+    window.setInterval(function(){
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }, 3000);
+  </script>
 </html>

@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
 	    this.get('model.details.modules').mapBy('score.score').forEach(function(score) {
 	      sum = sum + score;
 	    });
-	    return sum;
+	    return Math.floor(sum * 100) / 100;
     }),
 	progress_width: function() {
 		var res = this.get("sum") / this.get("model.max_score") * 100;
