@@ -57,6 +57,11 @@
       <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>Zobrazit</button>
     </div>
   </div>
+  
+  {{#if corrections}}
+    <h3>Statistika:</h3>
+    <p>Úloh v aktuálním filtru: {{corrections.length}}</p>
+  {{/if}}
 
   <div class="alert alert-info">
     Všechny úlohy jsou již opraveny - nezapomeň výsledky zveřejnit!
@@ -68,6 +73,7 @@
   {{/if}}
   {{#each corrections as |corr|}}
     {{correction-unit model=corr}}
+    <hr>
   {{else}}
     {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
   {{/each}}

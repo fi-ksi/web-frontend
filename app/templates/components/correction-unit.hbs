@@ -1,37 +1,18 @@
 <div class="panel panel-ksi">
 	  <div class="panel-heading panel-heading-ksi" style="hight:400px">
       {{model.user.full_name}}
-      <div style="float: right;">
+      <div style="float: right; margin-right: 50px;">
         {{model.task_id.title}}
+      </div>
+      <div style="float: right; margin-left: 50px; margin-right: 50px;">
+        {{statemsg}}
       </div>
     </div>
 	  <div class="panel-body">
        {{#each model.modules as |module|}}
        <div class="form-group" style="margin-top:20px col-md-12">
          {{#if module.evaluation.general}}
-          <div class="panel panel-ksi">
-            {{log module}}
-            <div class="panel-heading panel-heading-ksi">
-              Souborový modul - {{module.module_id.name}}
-            </div>
-            <div class="panel-body">
-              <div class="col-md-6">
-                <h4>Odevzdané soubory:</h4>
-                <ul>
-                  {{#each module.evaluation.general.files as |file|}}
-                    {{submitted-file file=file del="delete_file" deletable=false}}
-                  {{else}}
-                    <p>Nebyly odevzdány žádné soubory.</p>
-                  {{/each}}
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <label>Body:</label>
-                {{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}  
-                <a href="javascript:void()" {{action "all"}}> Stáhnout všechny soubory v ZIP archivu</a>    
-              </div>
-            </div>
-          </div>
+             {{correction-general module=module dirty="dirty"}}
          {{else}}
           <h2>Zatím nepodporovaný modul!</h2>
          {{/if}}
@@ -48,7 +29,7 @@
             <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
        </div>
        
-       
+       {{!--
        <label>Uživatelovy trofeje:</label>
        {{#each model.achievements as |ach|}}
            {{achievement-small model=ach}}
@@ -56,6 +37,7 @@
        {{else}}
            Uživatel nemá za tuto úlohu žádné trofeje
        {{/each}}
+       --}}
 
        
        <div class="form-group" style="margin-top:20px">

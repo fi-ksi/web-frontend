@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 	store: Ember.inject.service(),
 	participant: "",
 	task: "",
-	queryParams: ["participant", "task"],
+	queryParams: ["participant_", "task_"],
 	waves: Ember.computed("model", function() {
 		var set = new Set();
 		this.get("model").forEach(function(element) {
@@ -63,6 +63,32 @@ export default Ember.Controller.extend({
 		this.set("wrong-filter", false);
 		return false;
 	},
+	load_corrections: function() {
+		if (this.set_filter_warning()) {
+			return;
+		}
+		var params = {};
+		if (this.get("task") !== "") {
+			params["task"] = this.get("task");
+		}
+		if(this.get("participant") !== "") {
+			params["participant"] = this.get("participant");
+		}
+		this.set("corrections", this.get("store").find("correction", params));
+	},
+	paramsObserver: function() {
+		var p = this.get("participant1_");
+		var t = this.get("task_");
+		if (p) {
+			this.set("participant", p);
+		}
+		if(t) {
+			this.set("task", t);
+		}
+		if (p || t) {
+			this.load_corrections();
+		}
+	}.observes("participant_", "task_"),
 	actions: {
 		task_select: function() {
 			var t = this.get("task");
@@ -79,17 +105,7 @@ export default Ember.Controller.extend({
 			}
 		},
 		filter: function() {
-			if (this.set_filter_warning()) {
-				return;
-			}
-			var params = {};
-			if (this.get("task") !== "") {
-				params["task"] = this.get("task");
-			}
-			if(this.get("participant") !== "") {
-				params["participant"] = this.get("participant");
-			}
-			this.set("corrections", this.get("store").find("correction", params));
+			this.load_corrections();
 		}
 	}
 });

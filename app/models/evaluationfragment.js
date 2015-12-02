@@ -6,5 +6,6 @@ export default MF.Fragment.extend({
   full_report: DS.attr("string"),
   last_modified: DS.attr("date"),
   points: DS.attr("number"),
-  general: MF.fragment("generalfragment")
+  general: MF.fragment("generalfragment"),
+  eval_id: DS.attr("number")
 });

@@ -10,6 +10,10 @@ export default Ember.Component.extend({
     achievements: Ember.computed(function() {
         return this.get("store").find("achievement");
     }),
+    save_changes: function() {
+        
+    },
+    statemsg: "Uloženo",
     /*comment_observer: function() {
         // ToDo: Create thread
         var self = this;
@@ -41,6 +45,24 @@ export default Ember.Component.extend({
 
     }.observes("model.comment.id"),*/
     actions: {
-        
+        add_achievement: function() {
+            var self = this;
+            var selected = Ember.$("#a_" + this.get("ident")).val();
+            console.log(selected);
+            var ach = this.get("store").find("achievement", selected);
+            this.get("model.achievements").addObject(ach);
+        },
+        dirty: function() {
+            var self = this;
+            this.set("statemsg", "Ukládám");
+            this.get("model").save().then(
+                function() {
+                    self.set("statemsg", "Uloženo");
+                },
+                function() {
+                    self.set("statemsg", "Chyba! při ukládání. Zkus znovu");
+                }
+            );
+        }
     },
 });
