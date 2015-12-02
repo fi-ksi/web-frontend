@@ -28,7 +28,7 @@ export default Ember.Component.extend({
       contextmenu: '/tinymce/plugins/contextmenu/plugin.min.js',
       paste: '/tinymce/plugins/paste/plugin.min.js'
     },
-    menubar: true,
+    menubar: false,
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 },
 

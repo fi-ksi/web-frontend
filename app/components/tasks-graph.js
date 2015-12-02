@@ -138,10 +138,10 @@ export default Ember.Component.extend({
     	this.get("cy").style()
             .selector('node')
               .css({
-                'width': '85px',
-                'height': '85px',
-				'background-width': '83px',
-              	'background-height': '83px',
+                'width': '92px',
+                'height': '92px',
+				'background-width': '80px',
+              	'background-height': '80px',
 				'background-color': 'white',
 				'background-opacity': '0',
 				'background-image': 'data(picture)',
@@ -172,7 +172,7 @@ export default Ember.Component.extend({
     setup_graph_actions: function() {
     	var self = this;
 
-    	addEventListener("touchstart", function(event){  
+    	addEventListener("touchstart", function(event){
 		    event.target.classList.add('down');
 		}, true);
 
@@ -193,18 +193,18 @@ export default Ember.Component.extend({
 		this.get("cy").on('mouseover','node', function(event){
 	        var target = event.cyTarget;
 	        var id = target.data("id");
-	        var name = target.data("name");
+	        var name = "<p class='graph-qtip-header'>" + target.data("name") + "</p>";
 	        var date = target.data("deadline");
-	        var text = target.data("tooltip") + "<br><br>" +
-	        	"<p class='graph-qtip-text inline'>Max.body: </p> " + target.data("max_score") + "<br>";
+	        var text = "<div class='graph-qtip-text inline'>" + target.data("tooltip") + "</div></br>" +
+	        	"<p class='graph-qtip-text-bold inline'>Max.body: </p> " + target.data("max_score") + "<br>";
 			if(date) {
-				text += "<p class='graph-qtip-text inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+				text += "<p class='graph-qtip-text-bold inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
 			}
 
 			if(target.data("active")) {
 		        Ember.$("#cy").addClass('mouseover');
 		    }
-			
+
 	        var x=event.cyPosition.x;
 	        var y=event.cyPosition.y;
 	        self.get("cy").$('#' + id).qtip({

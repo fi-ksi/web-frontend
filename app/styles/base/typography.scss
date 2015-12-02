@@ -75,7 +75,18 @@ pre{
   color: ksi-color-level('text-dark', 5);
 }
 
+.graph-qtip-header {
+  color: ksi-color('secondary-orange');
+  line-height: 20px;
+}
+
 .graph-qtip-text {
+  padding-top: 3px;
+  color: ksi-color('secondary-orange');
+  line-height: 20px;
+}
+
+.graph-qtip-text-bold {
   padding-top: 3px;
   color: ksi-color('secondary-orange');
   font-weight: bold;

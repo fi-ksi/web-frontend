@@ -43,7 +43,7 @@ export default Ember.Controller.extend({
 	}),
 	corrections_filtered: Ember.computed("corrections", "state", function() {
 		var val = this.get("state");
-		if (val == "all") {
+		if (val === "all") {
 			return this.get("corrections");
 		}
 		return this.get("corrections").filter(function(p) {
@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
 		});
 	}),
 	is_fully_corrected: Ember.computed("corrections", function() {
-		return 0 == this.get("corrections").filter(function(p) {
+		return 0 === this.get("corrections").filter(function(p) {
 			return p.get("state") === "notcorrected";
 		}).length;
 	}),
