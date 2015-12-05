@@ -13,8 +13,9 @@
        <div class="form-group" style="margin-top:20px col-md-12">
          {{#if module.evaluation.general}}
              {{correction-general module=module dirty="dirty"}}
-         {{else}}
-          <h2>Zatím nepodporovaný modul!</h2>
+         {{/if}}
+         {{#if module.evaluation.quiz}}
+             {{correction-quiz module=module}}
          {{/if}}
        </div>
        {{/each}}

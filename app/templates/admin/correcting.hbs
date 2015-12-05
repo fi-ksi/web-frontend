@@ -64,13 +64,11 @@
   {{/if}}
 
   <div class="alert alert-info">
-    Všechny úlohy jsou již opraveny - nezapomeň výsledky zveřejnit!
+    Až budou úlohy opraveny, nezapomeň je zveřejnit!
     <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px">Zveřejnit výsledky</button>
+    <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
   </div>
 
-  {{#if corrections}}
-    <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:20px;margin-bottom:20px">Uložit vše</button>
-  {{/if}}
   {{#each corrections as |corr|}}
     {{correction-unit model=corr}}
     <hr>

@@ -1,7 +1,9 @@
 import Ember from "ember";
+import config from '../../config/environment';
 
 export default Ember.Controller.extend({
 	store: Ember.inject.service(),
+	session: Ember.inject.service(),
 	participant: "",
 	task: "",
 	queryParams: ["participant_", "task_"],
@@ -106,6 +108,35 @@ export default Ember.Controller.extend({
 		},
 		filter: function() {
 			this.load_corrections();
-		}
+		},
+		all: function() {
+            var self = this;
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
+				var id;
+				if (self.get("task")) {
+					id = self.get("task");
+				} else {
+					id = self.get("task_");
+				}
+                var request = new XMLHttpRequest();
+                request.open("GET", config.API_LOC + "/admin/subm/task/" + id, true);
+                request.responseType = "blob";
+                request.setRequestHeader(header, content);
+                request.onload = function() {
+                    if (this.status === 200) {
+                        var file = window.URL.createObjectURL(this.response);
+                        var a = document.createElement("a");
+                        a.href = file;
+                        a.download = this.response.name || ("opravy_uloha" + self.get("task") + ".zip");
+                        document.body.appendChild(a);
+                        a.click();
+                        window.onfocus = function() {
+                            document.body.removeChild(a);
+                        };
+                    }
+                };
+                request.send();
+            });
+        },
 	}
 });
