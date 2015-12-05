@@ -10,6 +10,9 @@ export default Ember.Component.extend({
             return;
         }
         var points = this.get("module.evaluation.points");
+        if (isFinite(points) && isFinite(this.get("lastInput"))) {
+		  this.sendAction("dirty");
+        }
         if(points > 10) {
             this.set("module.evaluation.points", 10);
         }
@@ -17,8 +20,33 @@ export default Ember.Component.extend({
             this.set("module.evaluation.points", 0);
         }
         this.set("lastInput", this.get("module.evaluation.points"));
-		this.sendAction("dirty");
 	}.observes("module.evaluation.points"),
     actions: {
+        all: function() {
+            var self = this;
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                var request = new XMLHttpRequest();
+                request.open("GET", config.API_LOC + "/admin/subm/eval/" + self.get("module.evaluation.eval_id"), true);
+                request.responseType = "blob";
+                request.setRequestHeader(header, content);
+                request.onload = function() {
+                    if (this.status === 200) {
+                        var file = window.URL.createObjectURL(this.response);
+                        var a = document.createElement("a");
+                        a.href = file;
+                        a.download = this.response.name || ("oprava" + self.get("module.evaluation.eval_id") + ".zip");
+                        document.body.appendChild(a);
+                        a.click();
+                        window.onfocus = function() {
+                            document.body.removeChild(a);
+                        };
+                    }
+                };
+                request.send();
+            });
+        },
+        log: function() {
+            this.set("show_log", !this.get("show_log"));
+        }
     },
 });

@@ -19,6 +19,8 @@
        </div>
        {{/each}}
 
+       <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+       {{!--
        <div class="form-group" style="margin-top:10px">
             <select id="a_{{ident}}" class="form-control col-md-1">
               <option value="">Vyber trofej pro přidání</option>
@@ -29,7 +31,7 @@
             <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
        </div>
        
-       {{!--
+       
        <label>Uživatelovy trofeje:</label>
        {{#each model.achievements as |ach|}}
            {{achievement-small model=ach}}
@@ -45,14 +47,38 @@
          {{#if model.comment}}
           {{thread-view thread=model.comment}}
          {{else}}
-           {{text-editor value=comment_content}}
-					 <button class="btn btn-primary" style="margin-top:20px" {{action "comment"}}>Vložit komentář k řešení</button>				
-           {{#if creating_comment}}
-             {{info-general text="Ukládám komentář"}}
-           {{/if}}
-           {{#if comment_error}}
-             {{warning-general text=comment_error}}
-           {{/if}}
+					 <div>
+              <button class="btn btn-primary" {{action "new_thread"}}>
+                {{#if new_thread}}
+                  Zrušit komentář
+                {{else}}
+                  Nový komentář
+                {{/if}}
+              </button>
+            </div>
+        
+            {{#if info}}
+              <div class="alert alert-info">{{info}}</div>
+            {{/if}}
+        
+            {{#if new_thread}}
+              {{#unless session.isAuthenticated}}
+                {{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
+              {{else}}
+                <div style="margin-top:20px; margin-bottom:20px;">
+                    <form class="form-horizontal" style="margin:30px">
+                      <div class="controls form-inline" style="margin-top:20px">
+                          {{#if thread_content_error}}
+                            {{warning-general text=thread_content_error}}
+                          {{/if}}
+                          <label for="threadName">Komentář:</label>
+                          {{text-editor value=thread_content}}
+                      </div>
+                      <button class="btn btn-primary" style="margin-top:20px" {{action "post_thread"}}>Odeslat</button>
+                    </form>
+                </div>
+              {{/unless}}
+            {{/if}}
          {{/if}}
        </div>
     </div>
