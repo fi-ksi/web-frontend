@@ -97,7 +97,7 @@ export default Ember.Controller.extend({
 			var self = this;
 			this.get('session').authorize('authorizer:oauth2', function(header, h) {
                     Ember.$.ajax({
-                        url: config.API_LOC + "/admin/corrections/" + self.get("task") + "/publish?public=1",
+                        url: config.API_LOC + "/admin/corrections/" + self.get("task") + "/publish?public=true",
                         type: 'GET',
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader(header, h);
