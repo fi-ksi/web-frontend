@@ -1,0 +1,14 @@
+<div class="panel panel-ksi">
+	<div class="panel-heading panel-heading-ksi">
+		Kvízový modul - {{module.module_id.name}}
+	</div>
+	<div class="panel-body">
+		Body: {{module.evaluation.points}}
+		<div class="col-md-12">
+			<button class="btn btn-primary" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+			{{#if show_log}}
+				{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.evaluation.full_report}}
+			{{/if}}
+		</div>
+	</div>
+</div>

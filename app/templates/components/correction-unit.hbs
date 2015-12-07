@@ -1,52 +1,85 @@
 <div class="panel panel-ksi">
 	  <div class="panel-heading panel-heading-ksi" style="hight:400px">
       {{model.user.full_name}}
-      <div style="float: right;">
+      <div style="float: right; margin-right: 50px;">
         {{model.task_id.title}}
+      </div>
+      <div style="float: right; margin-left: 50px; margin-right: 50px;">
+        {{statemsg}}
       </div>
     </div>
 	  <div class="panel-body">
-	     <!--<div id="date-text">
-         řešení naposledy upraveno: 2.12.2014 16:35
-         <div style="float: right;">
-           Opravil: Heňo
-         </div></div>
-       <hr>
-
-       <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:0px">Stáhnout řešení</button>-->
        {{#each model.modules as |module|}}
        <div class="form-group" style="margin-top:20px col-md-12">
-            <label>Body: </label>
-            {{input style="display: inline;" class="form-control" size="4" value=model.evaluation.e.points}}      
+         {{#if module.evaluation.general}}
+             {{correction-general module=module dirty="dirty"}}
+         {{/if}}
+         {{#if module.evaluation.quiz}}
+             {{correction-quiz module=module}}
+         {{/if}}
        </div>
        {{/each}}
 
+       <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+       {{!--
        <div class="form-group" style="margin-top:10px">
-         <label>Přidat trofej: </label>
-            <select class="form-control col-md-1">
-              <option><img src="http://placehold.it/30x30"> trofej</option> <!-- TODO obrazky z databaze -->
-              <option><img src="http://placehold.it/30x30"> trofej</option>
-              <option><img src="http://placehold.it/30x30"> trofej</option>
+            <select id="a_{{ident}}" class="form-control col-md-1">
+              <option value="">Vyber trofej pro přidání</option>
+              {{#each achievements as |ach|}}
+                <option value="{{ach.id}}">{{ach.title}}</option>
+              {{/each}}
             </select>
-            <label> Trofeje:</label>
-            <img src="http://placehold.it/30x30"> <!-- TODO kliknutim smazat -->
-          {{#if invalid_data}}
-             {{info-general text=invalid_data}}
-          {{/if}}
+            <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
        </div>
+       
+       
+       <label>Uživatelovy trofeje:</label>
+       {{#each model.achievements as |ach|}}
+           {{achievement-small model=ach}}
+           <a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+       {{else}}
+           Uživatel nemá za tuto úlohu žádné trofeje
+       {{/each}}
+       --}}
+
+       
        <div class="form-group" style="margin-top:20px">
          <label>Komentář:</label>
          {{#if model.comment}}
           {{thread-view thread=model.comment}}
          {{else}}
-           {{text-editor value=comment_content}}
-					 <button class="btn btn-primary" style="margin-top:20px" {{action "comment"}}>Vložit komentář k řešení</button>				
-           {{#if creating_comment}}
-             {{info-general text="Ukládám komentář"}}
-           {{/if}}
-           {{#if comment_error}}
-             {{warning-general text=comment_error}}
-           {{/if}}
+					 <div>
+              <button class="btn btn-primary" {{action "new_thread"}}>
+                {{#if new_thread}}
+                  Zrušit komentář
+                {{else}}
+                  Nový komentář
+                {{/if}}
+              </button>
+            </div>
+        
+            {{#if info}}
+              <div class="alert alert-info">{{info}}</div>
+            {{/if}}
+        
+            {{#if new_thread}}
+              {{#unless session.isAuthenticated}}
+                {{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
+              {{else}}
+                <div style="margin-top:20px; margin-bottom:20px;">
+                    <form class="form-horizontal" style="margin:30px">
+                      <div class="controls form-inline" style="margin-top:20px">
+                          {{#if thread_content_error}}
+                            {{warning-general text=thread_content_error}}
+                          {{/if}}
+                          <label for="threadName">Komentář:</label>
+                          {{text-editor value=thread_content}}
+                      </div>
+                      <button class="btn btn-primary" style="margin-top:20px" {{action "post_thread"}}>Odeslat</button>
+                    </form>
+                </div>
+              {{/unless}}
+            {{/if}}
          {{/if}}
        </div>
     </div>

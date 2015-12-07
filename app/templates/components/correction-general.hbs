@@ -1,0 +1,30 @@
+<div class="panel panel-ksi">
+<div class="panel-heading panel-heading-ksi">
+	Souborový modul - {{module.module_id.name}}
+</div>
+<div class="panel-body">
+	<div class="col-md-6">
+	<h4>Odevzdané soubory:</h4>
+	<ul>
+		{{#each module.evaluation.general.files as |file|}}
+		{{submitted-file file=file del="delete_file" deletable=false}}
+		{{else}}
+		<p>Nebyly odevzdány žádné soubory.</p>
+		{{/each}}
+	</ul>
+	</div>
+	<div class="col-md-6">
+	<label>Body:</label>
+	{{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}  
+	<a href="javascript:void()" {{action "all"}}> Stáhnout všechny soubory v ZIP archivu</a>    
+	</div>
+	
+	<div class="col-md-12">
+		<button class="btn btn-primary" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+		{{#if show_log}}
+			{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.evaluation.full_report}}
+		{{/if}}
+	</div>
+	
+</div>
+</div>

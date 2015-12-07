@@ -14,9 +14,9 @@
           {{/x-select}}
         </div>
         <div class="col-md-3">
-          <label style="margin-left:20px">Vyber příklad</label>
+          <label style="margin-left:20px">Vyber úlohu</label>
           <select {{action "task_select"}} class="form-control" id="task_sel">
-            <option value="">Všechny příklady</option>
+            <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
                 <option value="{{t.id}}">
                   <span style="color:
@@ -51,23 +51,27 @@
 
       <div class="col-xs-12">
         {{#if wrong-filter}}
-          {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, příklad nebo oboje!"}}
+          {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, úlohu nebo oboje!"}}
         {{/if}}
       </div>
       <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>Zobrazit</button>
     </div>
   </div>
+  
+  {{#if corrections}}
+    <h3>Statistika:</h3>
+    <p>Úloh v aktuálním filtru: {{corrections.length}}</p>
+  {{/if}}
 
   <div class="alert alert-info">
-    Všechny úlohy jsou již opraveny - nezapomeň výsledky zveřejnit!
+    Až budou úlohy opraveny, nezapomeň je zveřejnit!
     <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px">Zveřejnit výsledky</button>
+    <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
   </div>
 
-  {{#if corrections}}
-  <button class="btn btn-sm btn-primary" style="width: 250px; margin-left:20px;margin-bottom:20px">Uložit vše</button>
-  {{/if}}
   {{#each corrections as |corr|}}
     {{correction-unit model=corr}}
+    <hr>
   {{else}}
     {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
   {{/each}}
