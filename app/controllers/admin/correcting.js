@@ -77,6 +77,7 @@ export default Ember.Controller.extend({
 			params["participant"] = this.get("participant");
 		}
 		this.set("corrections", this.get("store").find("correction", params));
+		this.set("publish_done", "");
 	},
 	paramsObserver: function() {
 		var p = this.get("participant1_");
@@ -92,6 +93,24 @@ export default Ember.Controller.extend({
 		}
 	}.observes("participant_", "task_"),
 	actions: {
+		publish: function() {
+			var self = this;
+			this.get('session').authorize('authorizer:oauth2', function(header, h) {
+                    Ember.$.ajax({
+                        url: config.API_LOC + "/admin/corrections/" + self.get("task") + "/publish?public=1",
+                        type: 'GET',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, h);
+                        },
+                        success: function(data) {
+                            self.set("publish_done", "Publikováno");
+                        },
+                        error: function() {
+                            self.set("publish_done", "Špatná odpověď ze serveru. Zkus to za chvíli znovu.");
+                        }
+                    });
+			});
+		},
 		task_select: function() {
 			var t = this.get("task");
 			this.set("task", Ember.$("#task_sel").val());

@@ -12,6 +12,7 @@ export default Ember.Component.extend({
         var points = this.get("module.evaluation.points");
         if (isFinite(points) && isFinite(this.get("lastInput"))) {
 		  this.sendAction("dirty");
+          this.set("module.evaluation.corrected_by", this.get("session.current_user.id"));
         }
         if(points > 10) {
             this.set("module.evaluation.points", 10);
