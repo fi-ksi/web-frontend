@@ -41,7 +41,7 @@
         <div class="col-md-3">
           <label style="margin-left:20px">Řešitel</label>
           <select {{action "participant_select"}} class="form-control" id="par_sel">
-            <option value="">Všechni řešitelé</option>
+            <option value="">Všichni řešitelé</option>
             {{#each participants as |p|}}
                 <option value="{{p.id}}">{{p.full_name}}</option>
             {{/each}}
@@ -57,10 +57,9 @@
       <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>Zobrazit</button>
     </div>
   </div>
-  
+
   {{#if corrections}}
-    <h3>Statistika:</h3>
-    <p>Úloh v aktuálním filtru: {{corrections.length}}</p>
+    <div class="alert alert-info">Opravení v aktuálním filtru: <strong>{{corrections.length}}</strong></div>
   {{/if}}
 
   <div class="alert alert-info">
