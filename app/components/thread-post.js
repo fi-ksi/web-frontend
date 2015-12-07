@@ -32,6 +32,10 @@ export default Ember.Component.extend({
         	});
         }
     },
+    allow_edit: Ember.computed("session.current_user.organisator", "session.current_user.id", "model.author", function() {
+        return this.get("session.current_user.organisator") && this.get("model.author") === 
+            this.get("session.current_user");
+    }),
     is_reacting: false,
     content_error: undefined
 });

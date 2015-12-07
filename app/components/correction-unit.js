@@ -51,7 +51,7 @@ export default Ember.Component.extend({
         	this.set("thread_name_error", undefined);
             this.set("thread_content_error", undefined);
 
-        	this.set("thread_name", this.get("model.user.id") + "|" + this.get("model.task_id"));
+        	this.set("thread_name", "User" + this.get("model.user.id") + "|Task" + this.get("model.task_id.id"));
         	if(!this.get("thread_content")) {
         		this.set("thread_content_error", "Obsah komentáře musí být vyplněn!");
         	}
