@@ -69,6 +69,7 @@ export default Ember.Controller.extend({
 		if (this.set_filter_warning()) {
 			return;
 		}
+		this.set("filter_in_progress", true);
 		var params = {};
 		if (this.get("task") !== "") {
 			params["task"] = this.get("task");
@@ -76,8 +77,16 @@ export default Ember.Controller.extend({
 		if(this.get("participant") !== "") {
 			params["participant"] = this.get("participant");
 		}
-		this.set("corrections", this.get("store").find("correction", params));
-		this.set("publish_done", "");
+		var self = this;
+		this.get("store").find("correction", params).then(function(p) {
+			self.set("corrections", p);
+			self.set("publish_done", "");
+			self.set("filter_in_progress", false);
+		}, function() {
+			self.set("filter_in_progress", false);
+			alert("Nepodařilo se načíst data ze serveru!");
+		});
+		
 	},
 	paramsObserver: function() {
 		var p = this.get("participant1_");

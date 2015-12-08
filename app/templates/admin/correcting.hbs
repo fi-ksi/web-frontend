@@ -54,7 +54,7 @@
           {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, úlohu nebo oboje!"}}
         {{/if}}
       </div>
-      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>Zobrazit</button>
+      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>{{if filter_in_progress "Načítám" "Zobrazit"}}</button>
     </div>
   </div>
 
