@@ -91,7 +91,7 @@ export default Ember.Controller.extend({
 		
 	},
 	paramsObserver: function() {
-		var p = this.get("participant1_");
+		var p = this.get("participant_");
 		var t = this.get("task_");
 		if (p) {
 			this.set("participant", p);
