@@ -50,6 +50,8 @@ export default Ember.Controller.extend({
 		}
 		return this.get("corrections").filter(function(p) {
 			return p.get("state") === val;
+		}).sort(function(a, b) {
+			return a.get("user.last_name") < b.get("user.last_name");
 		});
 	}),
 	is_fully_corrected: Ember.computed("corrections", function() {

@@ -54,24 +54,28 @@
           {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, úlohu nebo oboje!"}}
         {{/if}}
       </div>
-      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}}>{{if filter_in_progress "Načítám" "Zobrazit"}}</button>
+      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
+        {{if filter_in_progress "Načítám" "Zobrazit"}}
+      </button>
     </div>
   </div>
 
-  {{#if corrections}}
-    <div class="alert alert-info">Opravení v aktuálním filtru: <strong>{{corrections.length}}</strong></div>
-  {{/if}}
-
-  <div class="alert alert-info">
-    Až budou úlohy opraveny, nezapomeň je zveřejnit!
-    <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
-    <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
-  </div>
-
-  {{#each corrections as |corr|}}
-    {{correction-unit model=corr}}
-    <hr>
-  {{else}}
-    {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
-  {{/each}}
+  {{#unless filter_in_progress}}
+    {{#if corrections}}
+      <div class="alert alert-info">Opravení v aktuálním filtru: <strong>{{corrections.length}}</strong></div>
+    {{/if}}
+  
+    <div class="alert alert-info">
+      Až budou úlohy opraveny, nezapomeň je zveřejnit!
+      <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
+      <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
+    </div>
+  
+    {{#each corrections as |corr|}}
+      {{correction-unit model=corr}}
+      <hr>
+    {{else}}
+      {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
+    {{/each}}
+   {{/unless}}
 </section>
