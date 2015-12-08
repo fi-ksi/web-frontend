@@ -6,7 +6,7 @@
 	<div class="col-md-6">
 	<h4>Odevzdané soubory:</h4>
 	<ul>
-		{{#each module.evaluation.general.files as |file|}}
+		{{#each module.evaluation.general.files.files as |file|}}
 		{{submitted-file file=file del="delete_file" deletable=false}}
 		{{else}}
 		<p>Nebyly odevzdány žádné soubory.</p>

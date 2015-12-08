@@ -1,4 +1,5 @@
 import Ember from "ember";
+import config from '../config/environment';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
@@ -56,6 +57,9 @@ export default Ember.Component.extend({
                         console.log(textStatus, errorThrown);
                     }
                 });*/
+                if(!self.get("file.filepath")) {
+                    self.set("file.filepath", config.API_LOC + '/submFiles/' + self.get("file").id);
+                }
                 var request = new XMLHttpRequest();
                 request.open("GET", self.get("file.filepath"), true);
                 request.responseType = "blob";
