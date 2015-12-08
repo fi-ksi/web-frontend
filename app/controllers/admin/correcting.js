@@ -31,9 +31,9 @@ export default Ember.Controller.extend({
 		this.get("model").forEach(function(element) {
 			if (!self.get("task") || element.get("id") === self.get("task")) {
 				element.get("solvers").forEach(function(e) {
-					if (!e.get("organisator")) {
+					//if (!e.get("organisator")) {
 						set.add(e);
-					}
+					//}
 				});
 			}
 		});
