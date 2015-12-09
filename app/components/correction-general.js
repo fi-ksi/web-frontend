@@ -25,6 +25,9 @@ export default Ember.Component.extend({
         }
         this.set("lastInput", this.get("module.evaluation.points"));
 	}.observes("module.evaluation.points"),
+    parent_module: Ember.computed("module.module_id", function() {
+        return this.get("store").find("module", this.get("module.module_id"));
+    }),
     actions: {
         all: function() {
             var self = this;

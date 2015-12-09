@@ -105,6 +105,9 @@ export default Ember.Controller.extend({
 	}.observes("participant_", "task_"),
 	actions: {
 		publish: function() {
+			if(!confirm("Opravdu zveřejnit?")) {
+				return;
+			}
 			var self = this;
 			this.get('session').authorize('authorizer:oauth2', function(header, h) {
                     Ember.$.ajax({
