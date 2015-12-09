@@ -55,6 +55,13 @@ module.exports = function(environment) {
     };
     ENV["API_LOC"] = "https://kyzikos.fi.muni.cz:3000";
   }
+  
+  if (environment === 'prod_dev') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
+    };
+    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

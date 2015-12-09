@@ -12,17 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model as |user|}}
+      {{#each results as |res|}}
         <tr style="height:45px">
-                <td class="numbering" style="text-align: center;"></td>
-          <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td> <!-- meno -->
+                <td style="text-align: center;">{{res.num}}</td>
+          <td>{{#link-to "user-profile" res.user}}{{res.user.full_name}}{{/link-to}}</td> <!-- meno -->
           <td>
-            {{#each user.achievements as |achievement|}}
+            {{#each res.user.achievements as |achievement|}}
                         {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
             {{/each}}
                 </td>
-          <td style="text-align: center;">{{user.score}}</td> <!-- body -->
-                <td style="text-align: center;">{{user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
+          <td style="text-align: center;">{{res.user.score}}</td> <!-- body -->
+                <td style="text-align: center;">{{res.user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
         </tr>
       {{else}}
       <p>Výsledková listina je zatím prázdná</p>
