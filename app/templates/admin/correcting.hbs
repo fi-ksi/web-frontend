@@ -1,4 +1,4 @@
-<section id="admin-correcting" class="container content-section" style=" margin-top: 20px; text-align:justify">
+<section id="admin-correcting" class="container content-section" style="text-align:justify">
   <h2>Opravování</h2>
   <div class="panel panel-default">
     <div class="panel-heading">Zvolit omezení</div>
@@ -64,13 +64,13 @@
     {{#if corrections}}
       <div class="alert alert-info">Opravení v aktuálním filtru: <strong>{{corrections.length}}</strong></div>
     {{/if}}
-  
+
     <div class="alert alert-info">
       Až budou úlohy opraveny, nezapomeň je zveřejnit!
       <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
       <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
     </div>
-  
+
     {{#each corrections as |corr|}}
       {{correction-unit model=corr}}
       <hr>
