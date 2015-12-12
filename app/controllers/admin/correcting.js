@@ -79,6 +79,9 @@ export default Ember.Controller.extend({
 		if(this.get("participant") !== "") {
 			params["participant"] = this.get("participant");
 		}
+		if(this.get("state") !== "") {
+			params["state"] = this.get("state");
+		}
 		var self = this;
 		this.get("store").find("correction", params).then(function(p) {
 			self.set("corrections", p);
