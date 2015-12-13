@@ -16,7 +16,7 @@
             <td><img src="{{article.picture}}" style="height: 25px;" align="center"> {{article.title}}</td>
             <td>{{date-and-time article.time_published 'cs'}}</td>
             <td>{{article.published_str}}</td>
-            <td>{{#link-to "admin/article-edit"}}upravit{{/link-to}} <a href="#">smazat</a></td>
+            <td>{{#link-to "admin/article-edit" article}}upravit{{/link-to}} <a href="#">smazat</a></td>
         </tr>
      {{else}}
         <p>V aktuálním ročníku zatím nebyly přidány žádné články.</p>
