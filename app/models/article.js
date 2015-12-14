@@ -9,10 +9,11 @@ export default DS.Model.extend( {
 	published: DS.attr("boolean"),
 
 	published_str: Ember.computed("published", function() {
-		if (this.get("published"))
+		if (this.get("published")) {
 			return "ano";
-		else
+		} else {
 			return "ne";
+		}
 	}),
 	intro: Ember.computed("body", function() {
 		var begin = this.get("body").indexOf("<p>");
