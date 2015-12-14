@@ -30,11 +30,42 @@ export default Ember.Component.extend({
         			self.set("content_error", "Nepodařilo se odeslat příspěvek");
         		});
         	});
+        },
+        delete: function() {
+            if (!confirm("Opravdu smazat příspěvek?")) {
+                return;
+            }
+            this.get("model").deleteRecord();
+            this.get("model").save();         
+        },
+        edit: function() {
+            this.set("content_bak", this.get("model.body"));
+            this.set("is_editing", true);
+            this.set("edit_error", undefined);
+            this.set("edit_progress", undefined);
+        },
+        cancel: function() {
+            this.set("model.body", this.get("content_bak"));
+            this.set("is_editing", false);
+        },
+        save: function() {
+            var self = this;
+            self.set("edit_progress", "Ukládám");
+            this.get("model").save().then(function() {
+                    self.set("is_editing", false);
+                },
+                function() {
+                    self.set("edit_error", "Nepodařilo se změnu příspěvku uložit");
+                }
+            );
         }
     },
-    allow_edit: Ember.computed("session.current_user.organisator", "session.current_user.id", "model.author", function() {
-        return this.get("session.current_user.organisator") && this.get("model.author") === 
-            this.get("session.current_user");
+    allow_edit: Ember.computed("session.current_user", "model.author", function() {
+        return this.get("session.current_user.organisator") && this.get("model.author.id") === 
+            this.get("session.current_user").id;
+    }),
+    allow_delete: Ember.computed("session.current_user", "model.author", function() {
+       return this.get("session.current_user.organisator");
     }),
     is_reacting: false,
     content_error: undefined
