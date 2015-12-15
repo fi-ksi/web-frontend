@@ -13,7 +13,9 @@ export default Ember.Controller.extend({
 			set.add(element.get("wave"));
 		}, this);
 		return Array.from(set).sort(function(a, b) {
-			return a.get("id") < b.get("id");
+			if(a.get("id") < b.get("id")) { return -1; }
+			if(a.get("id") > b.get("id")) { return 1; }
+			return 0;
 		});
 	}),
 	tasks: Ember.computed("wave", function() {
@@ -38,9 +40,13 @@ export default Ember.Controller.extend({
 			}
 		});
 		return Array.from(set).sort(function(a, b) {
-			return a.get("last_name") < b.get("last_name") ||
-				(a.get("last_name") === b.get("last_name") && 
-				 a.get("first_name") < b.get("first_name"));
+			if(a.get("last_name") < b.get("last_name")) {
+				return -1;
+			}
+			if (a.get("first_name") < b.get("first_name")) {
+				return -1;
+			}
+			return 0;
 		});
 	}),
 	corrections_filtered: Ember.computed("corrections", "state", function() {
@@ -51,7 +57,9 @@ export default Ember.Controller.extend({
 		return this.get("corrections").filter(function(p) {
 			return p.get("state") === val;
 		}).sort(function(a, b) {
-			return a.get("user.last_name") < b.get("user.last_name");
+			if (a.get("user.last_name") < b.get("user.last_name")) { return -1; }
+			if (a.get("user.last_name") > b.get("user.last_name")) { return 1; }
+			return 0;
 		});
 	}),
 	is_fully_corrected: Ember.computed("corrections", function() {

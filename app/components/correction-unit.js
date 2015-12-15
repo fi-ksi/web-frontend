@@ -18,9 +18,9 @@ export default Ember.Component.extend({
         add_achievement: function() {
             var self = this;
             var selected = Ember.$("#a_" + this.get("ident")).val();
-            console.log(selected);
-            var ach = this.get("store").find("achievement", selected);
-            this.get("model.achievements").addObject(ach);
+            this.get("store").find("achievement", selected).then(function(ach) {
+                this.get("model.achievements").pushObject(ach);
+            });
         },
         dirty: function() {
             this.set("statemsg", "Neuloženo");
