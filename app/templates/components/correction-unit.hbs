@@ -35,8 +35,10 @@
        
        <label>Uživatelovy trofeje:</label>
        {{#each model.achievements as |ach|}}
-           {{achievement-small model=ach}}
-           <a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+           <div>
+              {{achievement-small model=ach}}
+              <br><a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+           </div>
        {{else}}
            Uživatel nemá za tuto úlohu žádné trofeje
        {{/each}}

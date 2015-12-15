@@ -127,7 +127,7 @@ export default Ember.Controller.extend({
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader(header, h);
                         },
-                        success: function(data) {
+                        success: function() {
                             self.set("publish_done", "Publikováno");
                         },
                         error: function() {
