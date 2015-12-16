@@ -29,7 +29,8 @@ export default Ember.Controller.extend({
         	}
 
             var thread = self.store.createRecord("thread", {
-                title: self.get("thread_name"),          
+                title: self.get("thread_name"), 
+                public: true         
             });
 
             thread.save().then(function() {
