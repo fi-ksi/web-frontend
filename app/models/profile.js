@@ -36,6 +36,7 @@ export default DS.Model.extend( {
     seasons: DS.attr("number"),
     successful: DS.attr("number"),
     results: DS.hasMany("task-score", {defaultValue: []}),
+    tasks_num: DS.attr("number"),
 
     addr_street: DS.attr("string"),
     addr_city: DS.attr("string"),

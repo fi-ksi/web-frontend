@@ -1,21 +1,29 @@
-<section id="admin-article-edit" class="container content-section" style=" margin-top: 20px; text-align:justify">
+<section id="admin-article-edit" class="container content-section" style="text-align:justify">
   <h2>Úprava článku</h2>
   {{#link-to "admin/articles"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
       <div class="form-group">
         <label>Titulek:</label>
-        <input type="text" class="form-control">
+        {{input value=model.title class="form-control" required=true}}
       </div>
       <div class="form-group">
         <label>Obsah:</label>
-        {{text-editor value=articleEditEditor}}
+        {{text-editor value=model.body}}
       </div>
 
       <div class="form-group">
         <label>Termín publikace:</label>
-        <input type="date" class="form-control">
-        (v zadaném čase se zpráva nejdříve zveřejní; může i později, viz níže)
+        {{bs-datetimepicker date=model.time_published format='DD.MM.YYYY HH:MM:SS'}}
+      </div>
+
+      <div class="form-group">
+        <label>Zveřejněno:</label>
+        <!-- TODO zatim nefunguje -->
+        {{#x-select value=model.gender class="form-control" id="published" required=true}}
+            {{#x-option value="true" selected=(is-equal "true" model.published)}}ano{{/x-option}}
+            {{#x-option value="false" selected=(is-equal "false" model.published)}}ne{{/x-option}}
+        {{/x-select}}
       </div>
 
       <div class="form-group">

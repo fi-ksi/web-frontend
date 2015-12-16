@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import config from '../config/environment';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
@@ -18,9 +17,17 @@ export default Ember.Component.extend({
         add_achievement: function() {
             var self = this;
             var selected = Ember.$("#a_" + this.get("ident")).val();
-            console.log(selected);
-            var ach = this.get("store").find("achievement", selected);
-            this.get("model.achievements").addObject(ach);
+            this.get("store").find("achievement", selected).then(function(ach) {
+                self.get("model.achievements").pushObject(ach);
+                self.send("save");
+            });
+        },
+        ach_del: function(selected) {
+            var self = this;
+            this.get("store").find("achievement", selected).then(function(ach) {
+                self.get("model.achievements").removeObject(ach);
+                self.send("save");
+            });
         },
         dirty: function() {
             this.set("statemsg", "Neuloženo");

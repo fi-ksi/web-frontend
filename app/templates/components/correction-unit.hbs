@@ -21,7 +21,7 @@
        {{/each}}
 
        <button {{action "save"}} class="btn btn-primary">Uložit body</button>
-       {{!--
+       
        <div class="form-group" style="margin-top:10px">
             <select id="a_{{ident}}" class="form-control col-md-1">
               <option value="">Vyber trofej pro přidání</option>
@@ -35,12 +35,13 @@
        
        <label>Uživatelovy trofeje:</label>
        {{#each model.achievements as |ach|}}
-           {{achievement-small model=ach}}
-           <a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+           <div>
+              {{achievement-small model=ach}}
+              <br><a href="javascript.void()" {{action "ach_del" ach.id}}>Odebrat</a>
+           </div>
        {{else}}
            Uživatel nemá za tuto úlohu žádné trofeje
        {{/each}}
-       --}}
 
        
        <div class="form-group" style="margin-top:20px">

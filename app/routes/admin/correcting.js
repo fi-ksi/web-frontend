@@ -2,7 +2,7 @@ import Ember from "ember";
 import ResetScroll from '../../mixins/reset-scroll'; // ToDo: Protected route
 
 export default Ember.Route.extend(ResetScroll, {
-	model: function(params) {
+	model: function() {
 		return this.get('store').findAll("corrections_info");
 	},
 	titleToken: function() {
