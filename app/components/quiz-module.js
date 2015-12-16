@@ -41,14 +41,14 @@ export default Ember.Component.extend(InboundActions, {
                 }
             });
             if(valid) {
-                self.get('session').authorize('authorizer:oauth2', function(header, h) {
+                self.get('session').authorize('authorizer:oauth2', function(header, header_content) {
                     Ember.$.ajax({
                         url: config.API_LOC + "/modules/" + self.get("module.id") + "/submit",
                         data: JSON.stringify({ content: response }),
                         contentType: "application/json",
                         type: 'POST',
                         beforeSend: function(xhr) {
-                            xhr.setRequestHeader(header, h);
+                            xhr.setRequestHeader(header, header_content);
                         },
                         success: function(data) {
                             if("result" in data) {
