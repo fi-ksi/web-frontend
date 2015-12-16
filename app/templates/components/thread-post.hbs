@@ -1,22 +1,46 @@
 <li class="media" style="margin-top: 15px"> <!-- pociatok prispevku -->
     <div class="media-left" >
-        {{#link-to "user-profile" model.author}}<img class="media-object" src="{{model.author.profile_picture_r}}" style="width:50px; border-radius: 5px;">{{/link-to}} <!-- foto autora prispevku -->
+        {{#link-to "user-profile" model.author}}
+          <img class="media-object" src="{{model.author.profile_picture_r}}" style="width:50px; border-radius: 5px;">
+        {{/link-to}} <!-- foto autora prispevku -->
     </div>
     <div class="media-body">
-      <div class="discussion-caption">{{#link-to "user-profile" model.author}}{{model.author.full_name}}{{/link-to}}, {{model.author.role_str}}, {{date-and-time model.published_at 'cs'}}{{if model.is_new ", nové"}}</div> <!-- meno, status, cas-->
+      <div class="discussion-caption">
+        {{#link-to "user-profile" model.author}}
+          {{model.author.full_name}}
+        {{/link-to}}, {{model.author.role_str}}, {{date-and-time model.published_at 'cs'}}
+        {{if model.is_new ", nové"}}
+        {{#if allow_edit}}
+          {{#unless is_editing}}
+            <button class="btn-xs btn-primary"  style="border:none; margin-top: 10px;" {{action "edit"}}>Upravit</button>
+          {{/unless}}
+        {{/if}}
+        {{#if allow_delete}}
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "delete"}}>Smazat</button>
+        {{/if}}
+      </div> <!-- meno, status, cas-->
+      {{#unless is_editing}}
         {{{model.body}}}
+      {{else}}
+        <div class="panel panel-default" style="border:none; box-shadow: none;">
+          <div class="controls form-inline" style="margin-top:20px">
+              {{text-editor value=model.body}}
+          </div>
+          <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "save"}}>Uložit</button>
+          <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "cancel"}}>Zrušit</button>
+          {{#if edit_error}}
+            {{warning-general text=edit_error}}
+          {{/if}}
+          {{#if edit_progress}}
+            {{info-general text=edit_progress}}
+          {{/if}}
+        </div>
+      {{/unless}}
       <div>
         <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
           {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
         </button>
         <hr>
-        {{#if allow_edit}}
-          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px;" {{action "edit"}}>Upravit</button>
-        {{/if}}
-        {{#if admin}}
-          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "delete"}}>Smazat</button>
-          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "move"}}>Přesunout</button> <!-- TODO ako? -->
-        {{/if}}
       </div>
       <!-- button odkryje textareau: -->
       {{#if is_reacting}}

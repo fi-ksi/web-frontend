@@ -45,8 +45,22 @@
           {{#each model.details.modules as |module|}}
             <tr>
               <td style="text-align: center;">{{module.name}}</td>
-              <td>{{#if module.score.is_corrected}}{{#link-to "user-profile" module.score.reviewed_by}}{{module.score.reviewed_by.full_name}}{{/link-to}}{{else}}–{{/if}}</td>
-              <td style="text-align: center;">{{#if module.score.is_corrected}}{{module.score.score}}/{{module.max_score}}{{else}}–{{/if}}</td>
+              <td>
+                {{#if module.score.is_corrected}}
+                  {{#link-to "user-profile" module.score.reviewed_by}}
+                    {{module.score.reviewed_by.full_name}}
+                  {{/link-to}}
+                {{else}}
+                  –
+                {{/if}}
+              </td>
+              <td style="text-align: center;">
+                {{#if module.score.is_corrected}}
+                  {{module.score.score}}/{{module.max_score}}
+                {{else}}
+                  –
+                {{/if}}
+              </td>
               <td>{{if module.score.is_corrected "Opraveno" "Neopraveno"}}</td>
             </tr>
           {{/each}}

@@ -172,7 +172,7 @@ export default Ember.Component.extend({
     setup_graph_actions: function() {
     	var self = this;
 
-    	addEventListener("touchstart", function(event){
+    	/*addEventListener("touchstart", function(event){
 		    event.target.classList.add('down');
 		}, true);
 
@@ -183,11 +183,27 @@ export default Ember.Component.extend({
 		        self.sendAction('assign', id);
 		    }
 			Ember.$(".qtip").remove();
-		});
+		});*/
 
 		this.get("cy").on('mouseout','node', function() {
 			Ember.$(".qtip").remove();
 			Ember.$("#cy").removeClass('mouseover');
+		});
+		
+		this.get("cy").on('vclick', 'node', function(event) {
+			var target = event.cyTarget;
+	        var id = target.data("id");
+	        if(target.data("active")) {
+				var oe = event.originalEvent;
+				if (oe.which === 2 || (oe.which === 1 && oe.ctrlKey)) {
+					// Middle click
+					window.open("ulohy/" + id.toString(), '_blank');
+				} else {
+		        	self.sendAction('assign', id);
+				}
+		    }
+			Ember.$(".qtip").remove();
+			
 		});
 
 		this.get("cy").on('mouseover','node', function(event){

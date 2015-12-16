@@ -1,7 +1,12 @@
 <div id="ksi-photo" class="container-fluid">
     <div class="text-center">
         {{#link-to "tasks" type="button" class="btn btn-primary btn-lg the-button"}}
-        <h3>Začni řešit</h3>
+        {{#if is_tom}}
+            <h3>Získej pravý certifikát právě teď!</h3>
+            <h2>Osobně podepsaný Tomem E.!</h2>
+        {{else}}
+            <h3>Začni řešit</h3>
+        {{/if}}
         {{/link-to}}
     </div>
 </div>
