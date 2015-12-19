@@ -41,6 +41,10 @@ export default DS.Model.extend( {
         return this.get("role") === "org";
     }),
 
+    participant: Ember.computed("role", function(){
+        return this.get("role") === "participant";
+    }),
+
     // this property must be here, see ./profile.js
     show_solved: Ember.computed("role", function(){
         return this.get("role") === "participant";
