@@ -13,7 +13,7 @@
 				<p id="profile-text">{{model.short_info}}</p>
 			</div>
 			<!-- TODO: chceme sem odkaze na FB, Twitter, web? -->
-			{{#unless model.organisator}}
+			{{#if model.participant}}
 				<div class="panel panel-profile" style="margin-top:30px">
 					<div class="panel-body">
 						<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
@@ -21,7 +21,7 @@
 						<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{country}}</h6>
 					</div>
 				</div>
-			{{/unless}}
+			{{/if}}
 		</div>
 		{{#if model.show_solved}}
 		<div class="col-sm-12 col-md-9">

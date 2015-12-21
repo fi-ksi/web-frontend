@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
                 } else {
                     if (notused) {
                         o["num"] = position.toString() + "–" + (position + list.length - 1).toString() + ".";
-                        notused = false;
+                        // notused = false;
                     } else {
                         o["num"] = "";
                     }
