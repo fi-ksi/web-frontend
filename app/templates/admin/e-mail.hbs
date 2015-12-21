@@ -16,6 +16,7 @@
           <option value="{{t.id}}">{{t.year}}</option>
       {{/each}}
     </select>
+    (e-mail bude odeslán řešitelům vybraných ročníků)
   </div>
   <div class="form-group">
     <label>Pohlaví:</label>
@@ -27,7 +28,8 @@
   </div>
   <div class="form-group">
     <label>Slepá kopie:</label>
-    <textarea class="form-control" style="min-width: 100%" rows="3" id="bcc">ucastnik@mail.abc</textarea> <!-- maily vsetkych ucastnikov -->
+    <textarea class="form-control" style="min-width: 100%" rows="3" id="bcc"></textarea>
+    (e-maily oddělujte čárkou anebo středníkem)
   </div>
   <div class="form-group">
     <label>Předmět:</label>
@@ -38,12 +40,10 @@
     {{text-editor value=text}}
   </div>
   <div class="form-group">
-    <label>Karlíkov podpis:</label>
     {{input type="checkbox" checked=karlikSign}}
-  </div>
-  <div class="form-group">
-    <label>Easteregg:</label>
+    <label>Připojit na konec zprávy Karlíkův podpis</label><br>
     {{input type="checkbox" checked=easteregg}}
+    <label>Připojit do PS easteregg</label>
   </div>
   <div class="row" style="margin-bottom:20px; margin-left:0px">
     <button class="btn btn-primary inline" id="send-email-button" {{action "email"}}>Odeslat</button>
