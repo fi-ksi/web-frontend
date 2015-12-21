@@ -59,7 +59,7 @@ export default DS.Model.extend( {
     }),
 
     organisator: Ember.computed("role", function(){
-        return this.get("role") === "org";
+        return (this.get("role") === "org") || (this.get("role") === "admin");
     }),
 
     // this property must be here, it defines the difference between user and profile
