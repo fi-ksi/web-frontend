@@ -3,7 +3,9 @@
         {{header-component}}
         {{#if session.isAuthenticated}}
             {{#if session.current_user.organisator}}
-              {{header-admin}}
+              <div class="row">
+                {{header-admin}}
+              </div>
             {{/if}}
         {{/if}}
     </div>
