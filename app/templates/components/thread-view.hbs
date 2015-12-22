@@ -8,7 +8,7 @@
 
 <div class="row" style="margin-bottom: 20px;">
 	{{#if session.isAuthenticated}}
-		<button class="btn btn-primary" {{action "add_comment"}}>{{unless is_reacting "Přidat příspěvek" "Zrušit příspěvek"}}</button>
+		<button class="btn btn-primary" style="margin-left:10px" {{action "add_comment"}}>{{unless is_reacting "Přidat příspěvek" "Zrušit příspěvek"}}</button>
 		{{#if is_reacting}}
           {{#if content_error}}
             {{warning-general text=content_error}}
