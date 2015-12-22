@@ -11,15 +11,22 @@ export default Ember.Controller.extend({
     to: [],
     gender: "both",
     karlikSign: true,
-    eastergg: false,
+    easteregg: false,
+    send_status: "",
     years: Ember.computed("store", function() {
         return this.get("store").find("year");
     }),
     actions: {
         email: function() {
+
             var self = this;
 
-            var bcc = Ember.$("#bcc").val().match(/[^\s,;]+/g);
+            console.log("Email action");
+
+            var bcc = [];
+            if(Ember.$("#bcc").val()) {
+                bcc = Ember.$("#bcc").val().match(/[^\s,;]+/g);
+            }
 
             self.get('session').authorize('authorizer:oauth2', function(header, h) {
                 Ember.$.ajax({
@@ -34,34 +41,32 @@ export default Ember.Controller.extend({
                             'Bcc': bcc,
                             'Gender': self.get("gender"),
                             'KarlikSign': self.get("karlikSign"),
-                            'Eastergg': self.get("eastergg")
+                            'Easteregg': self.get("easteregg")
                         }
                     }),
                     contentType: "application/json",
                     type: 'POST',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader(header, h);
+                        self.set("send_status", "Odesílám zprávu");
                     },
                     success: function(data) {
-                        console.log(data);
-                        self.set("general_info", null);
-                        if("result" in data) {
-
+                        if("count" in data) {
+                            self.set("send_status", "Zpráva úspěšně odeslána "+data.count+" súťažiacim.");
                         } else {
-                            self.set("general_error", "Špatná odpověď serveru");
-                        }
-                        if ("output" in data) {
-                            self.set("script_text_output", data.output.trim());
+                            self.set("general_error", "Špatná odpověď serveru!");
                         }
                     },
                     error: function() {
-                        self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+                        self.set("send_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                     }
                 });
             });
         },
         to_select: function() {
-            this.set("to", Ember.$("#to_sel").val());
+            this.set("to", Ember.$("#to_sel").val().map(function(x){
+                return parseInt(x);
+            }));
         }
     }
 });
