@@ -91,6 +91,7 @@ export default Ember.Controller.extend({
 			params["state"] = this.get("state");
 		}
 		var self = this;
+    this.get("store").unloadAll("correction");
 		this.get("store").find("correction", params).then(function(p) {
 			self.set("corrections", p);
 			self.set("publish_done", "");
