@@ -1,9 +1,10 @@
 <section id="admin-correcting" class="container content-section" style="text-align:justify">
   <h2>Opravování</h2>
   <div class="panel panel-default">
+
     <div class="panel-heading">Zvolit omezení</div>
     <div class="panel-body">
-      <div class="form-group col-xs-12">
+      <div class="form-group">
         <div class="col-md-3">
           <label style="margin-left:20px">Vlna</label>
           {{#x-select value=wave class="form-control"}}
@@ -13,6 +14,7 @@
             {{/each}}
           {{/x-select}}
         </div>
+
         <div class="col-md-3">
           <label style="margin-left:20px">Vyber úlohu</label>
           <select {{action "task_select"}} class="form-control" id="task_sel">
@@ -30,6 +32,7 @@
             {{/each}}
           </select>
         </div>
+
         <div class="col-md-3">
           <label style="margin-left:20px">Stav</label>
           {{#x-select value=state class="form-control"}}
@@ -38,6 +41,7 @@
             {{#x-option value="corrected"}}Opravené{{/x-option}}
           {{/x-select}}
         </div>
+
         <div class="col-md-3">
           <label style="margin-left:20px">Řešitel</label>
           <select {{action "participant_select"}} class="form-control" id="par_sel">
@@ -49,12 +53,12 @@
         </div>
       </div>
 
-      <div class="col-xs-12">
+      <div class="col-xs-12" style="margin-top: 20px">
         {{#if wrong-filter}}
           {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, úlohu nebo oboje!"}}
         {{/if}}
       </div>
-      <button class="btn btn-primary inline" style="width: 250px; margin-left:0px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
+      <button class="btn btn-primary" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
         {{if filter_in_progress "Načítám" "Zobrazit"}}
       </button>
     </div>
@@ -67,7 +71,9 @@
 
     <div class="alert alert-info">
       Až budou úlohy opraveny, nezapomeň je zveřejnit!
-      <br><button class="btn btn-sm btn-primary" style="width: 250px; margin-bottom:20px" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
+    </div>
+    <div style="margin-left:18px">
+      <br><button class="btn btn-primary" style="width: 250px; margin-bottom:20px;" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
       <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
     </div>
 

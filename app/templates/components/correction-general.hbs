@@ -15,16 +15,16 @@
 	</div>
 	<div class="col-md-6">
 	<label>Body:</label>
-	{{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}  
-	<a href="javascript:void()" {{action "all"}}> Stáhnout všechny soubory v ZIP archivu</a>    
+	{{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}
+	<a href="javascript:void()" {{action "all"}}> Stáhnout všechny soubory v ZIP archivu</a>
 	</div>
-	
+
 	<div class="col-md-12">
-		<button class="btn btn-primary" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+		<button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
 		{{#if show_log}}
 			{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.evaluation.full_report}}
 		{{/if}}
 	</div>
-	
+
 </div>
 </div>
