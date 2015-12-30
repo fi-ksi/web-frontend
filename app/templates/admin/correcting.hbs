@@ -27,7 +27,11 @@
                     {{if t.corrected "blue"}}
                     {{if t.published "green"}}
                     ">
-                    {{t.title}}</span> - {{t.author.full_name}}
+                    {{t.title}}</span> - {{t.author.full_name}} - 
+                      {{if t.base "Neopraveno"}}
+                      {{if t.working "Opravuje se"}}
+                      {{if t.corrected "Opraveno, nepublikováno"}}
+                      {{if t.published "Publikováno"}}
                 </option>
             {{/each}}
           </select>
