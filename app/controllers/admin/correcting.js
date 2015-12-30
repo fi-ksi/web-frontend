@@ -115,6 +115,9 @@ export default Ember.Controller.extend({
 			this.load_corrections();
 		}
 	}.observes("participant_", "task_"),
+  is_task_selected: Ember.computed("task", "task_", function() {
+    return this.get("task") || this.get("task_");
+  }),
 	actions: {
 		publish: function() {
 			if(!confirm("Opravdu zveřejnit?")) {
