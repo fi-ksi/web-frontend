@@ -8,7 +8,7 @@ export default DS.Model.extend( {
 	corr_state: DS.attr("string"),
 	solvers: DS.hasMany("user"),
 
-	nothing: Ember.computed("corr_state", function() {
+	base: Ember.computed("corr_state", function() {
 		return this.get("corr_state") === "base";
 	}),
 	working: Ember.computed("corr_state", function() {
