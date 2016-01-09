@@ -122,7 +122,7 @@ export default Ember.Controller.extend( {
 			newTask.set("is_new", true);
 			this.transitionTo('admin/task-edit', newTask);
 		},
-		wave_select: function() {
+		'wave_select': function() {
 			this.set("wave", parseInt(Ember.$("#wave_sel").val()));
 		},
 	},
@@ -130,14 +130,14 @@ export default Ember.Controller.extend( {
 		var user = this.get("session.current_user");
 		if(user) {
 			var selectedWave = this.get("wave");
-			return this.get("model").map(function(task) {
+			return this.get("model").tasks.map(function(task) {
 
 				var is_admin = user.get("role") === "admin";
-				var authorized = task.git_branch && task.git_path && (is_admin || 
-					((new Date() < task.wave.time_published) && (user === task.author || user === task.wave.garant)));
+				var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
+					((new Date() < task.get("wave").get("time_published")) && (user.id === task.get("author").get("id") || user.id === task.get("wave").get("garant").get("id"))));
 
 				task.set("can_deploy", authorized);
-				task.set("can_merge", authorized && task.git_branch !== 'master');
+				task.set("can_merge", authorized && task.get("git_branch") !== 'master');
 				task.set("can_delete", is_admin);
 
 				return task;
@@ -147,12 +147,5 @@ export default Ember.Controller.extend( {
 		} else {
 			return undefined;
 		}
-	}),
-	waves: Ember.computed("store", function() {
-    	var set = new Set();
-        this.get("store").findAll("wave").forEach(function(element) {
-        	set.add(element);
-		}, this);
-		return set;
 	})
 });

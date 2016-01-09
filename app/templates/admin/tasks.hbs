@@ -9,7 +9,7 @@
   {{/if}}
   <select {{action "wave_select"}} class="form-control" id="wave_sel">
     <option value="">Vyber vlnu</option>
-    {{#each waves as |w|}}
+    {{#each model.waves as |w|}}
       <option value="{{w.id}}">
         {{w.caption}}
       </option>
