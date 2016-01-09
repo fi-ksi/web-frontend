@@ -1,67 +1,46 @@
 <section id="admin-task-edit" class="container content-section" style="text-align:justify">
   <h2>Úprava úlohy</h2>
-  {{#link-to "admin/tasks"}}zpět na přehled{{/link-to}}
+  {{#link-to "admin/tasks"}}Zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
 
       <div class="form-group">
         <label>Název:</label>
-        <input type="text" class="form-control">
+        {{input class="form-control" value=model.title}}
       </div>
 
       <div class="form-group">
-        <label>Vlna: </label>
-        <select>
-         <option>vlna 1</option>
-         <option>vlna 2</option>
-        </select>
+        <label>Vlna:</label>
+        {{#x-select value=model.wave class="form-control"}}
+          {{#each waves as |w|}}
+            {{#x-option value=w.id}}{{w.caption}}{{/x-option}}
+          {{/each}}
+        {{/x-select}}
 
-        <label>Typ: </label>
-        <select>
-         <option>Python</option> <!-- typy uloh, podla nich typy uzlov v grafe -->
-         <option>Hladové algoritmy</option>
-         <option>Dynamické programování</option>
-        </select>
+        <label>Author:</label>
+        {{#x-select value=model.author class="form-control"}}
+          {{#each organisators as |o|}}
+            {{#x-option value=o.id}}{{o.full_name}}{{/x-option}}
+          {{/each}}
+        {{/x-select}}
 
-        <label>Typ odevzdání: </label>
-        <select>
-         <option>Programovacia</option> <!-- typy ulohy -->
-         <option>Teoretická</option>
-         <option>ABCD</option>
-        </select>
+        <div>
+          {{input type="checkbox" checked=git_create}} <label>Vytvoriť git</label>
+        </div>
 
-        <label>Max. body:</label>
-        <select>
-         <option>1</option>
-         <option>2</option>
-         <option>3</option>
-        </select>
-      </div>
+        <label>Git branch: </label>
+        {{input class="form-control" value=model.git_branch}}
 
-      <div class="form-group">
-        <label>Termín publikace:</label>
-        <input type="date" class="form-control">
-        <label>Termín uzavření:</label>
-        <input type="date" class="form-control">
-        <form class="form-group">
-          <label>Zveřejnit podle vlny:</label>
-          <input type="checkbox">
-        </form>
-      </div>
+        <label>Git commit: </label>
+        {{input class="form-control" value=model.git_commit}}
 
-      <div class="form-group">
-        <label class="inline" for="email">Obrázek:</label> <!-- ako riesit ulohy s viac zdrojmi? obrazky? -->
-        <input class="inline" type="file">
-      </div>
-
-      <div class="form-group">
-        <label class="inline" for="email">Zdroj:</label> <!-- ako riesit ulohy s viac zdrojmi? obrazky? -->
-        <input class="inline" type="file">
+        <label>Git path: </label>
+        {{input class="form-control" value=model.git_path}}
+        
       </div>
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save">Uložit</button> <!-- TODO button -->
-        <button class="btn btn-primary inline" id="delete">Smazat</button> <!-- TODO button -->
+        <button class="btn btn-primary inline" id="save" {{action "task-save" model}}>Uložit</button>
       </div>
     </div>
   </div>

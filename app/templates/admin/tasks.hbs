@@ -1,36 +1,66 @@
 <section id="admin-tasks" class="container content-section" style="text-align:justify">
   <h2>Správa úloh</h2>
-  {{#link-to "admin/task-edit"}}nová úloha{{/link-to}}
+  <a href="javascript:void()" {{action "task-create"}}>Nová úloha</a>
+  {{#if merge_status}}
+    <div class="alert alert-info" style="margin-top:20px">{{merge_status}}</div>
+  {{/if}}
+  {{#if error_status}}
+    <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
+  {{/if}}
+  <select {{action "wave_select"}} class="form-control" id="wave_sel">
+    <option value="">Vyber vlnu</option>
+    {{#each waves as |w|}}
+      <option value="{{w.id}}">
+        {{w.caption}}
+      </option>
+    {{/each}}
+  </select>
   <table class="table table-striped">
     <thead>
       <tr style="height:45px">
         <th>Název</th>
         <th>Vlna</th>
-        <th>Typ</th>
-        <th>Typ odevzdani</th>
-        <th>Max. body</th>
-        <th>Zveřejnení</th>
-        <th>Uzavření</th>
-        <th>Zdroje</th>
         <th>Akce</th>
       </tr>
     </thead>
     <tbody>
-      <tr style="height:45px">
-        <td><a href="#">Uloha 1.</a></td> <!-- link na ulohu -->
-        <td>Vlna 2.</td>
-        <td>programovací</td>
-        <td>abcd moznošti</td>
-        <td>1</td>
-        <td>2.12.2014 16:45</td>
-        <td>2.12.2014 16:45</td>
-        <td><a href="#">uloha-1-1.tex</a></td>
-        <td>
-          {{#link-to "admin/task-edit"}}upravit{{/link-to}}
-          |
-          <a href="#">smazat</a>
-        </td>
-      </tr>
+      {{#each tasks as |task|}}
+        <tr style="height:45px">
+          <td>{{#link-to "admin/task-edit" task}}{{task.title}}{{/link-to}}</td>
+          <td>{{task.wave.caption}}</td>
+          <td>
+            {{#if task.can_deploy}}
+              <a href="javascript:void()" {{action "task-deploy" task}}>Deploy</a>
+              |
+            {{/if}}
+            {{#if task.can_merge}}
+              <a href="javascript:void()" {{action "task-merge" task}}>Merge</a>
+              |
+            {{/if}}
+            {{#if task.can_delete}}
+              <a href="javascript:void()" {{action "task-delete" task}}>Zmazat</a>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
+  {{#if deploy_status}}
+    <div id="myModal" class="modal" role="dialog" style="display: block">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{deploy_status}}</h4>
+          </div>
+          <div class="modal-body">
+            {{#if error_status}}
+              <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
+            {{/if}}
+            <pre>{{deploy_log}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
 </section>
