@@ -17,7 +17,7 @@ export default Ember.Controller.extend( {
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				
 				Ember.$.ajax({
-					url: config.API_LOC + "/admin/atasks/"+task.id+"/deploy",
+					url: config.API_LOC + "/admin/atasks/"+task.get("id")+"/deploy",
 					type: 'POST',
 					beforeSend: function(xhr) {
 						xhr.setRequestHeader(header, h);
@@ -58,14 +58,14 @@ export default Ember.Controller.extend( {
 			var watchingTask = setInterval(function() {
 				self.get('session').authorize('authorizer:oauth2', function(header, h) {
 					Ember.$.ajax({
-						url: config.API_LOC + "/admin/atasks/"+task.id+"/deploy",
+						url: config.API_LOC + "/admin/atasks/"+task.get("id")+"/deploy",
 						type: 'GET',
 						beforeSend: function(xhr) {
 							xhr.setRequestHeader(header, h);
 							self.set("deploy_status", "Odesílám požiadavok");
 						},
 						success: function(data) {
-								if (data.id === Number(task.id)) {
+								if (data.id === Number(task.get("id"))) {
 									self.set("deploy_status", data.deploy_status);
 									self.set("deploy_log", data.log);
 
@@ -101,7 +101,7 @@ export default Ember.Controller.extend( {
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				Ember.$.ajax({
-					url: config.API_LOC + "/admin/atasks/"+task.id+"/merge",
+					url: config.API_LOC + "/admin/atasks/"+task.get("id")+"/merge",
 					type: 'POST',
 					beforeSend: function(xhr) {
 						task.set("can_merge", false);
@@ -114,6 +114,7 @@ export default Ember.Controller.extend( {
 						if("result" in data) {
 							if(data.result === 'ok') {
 								self.set("merge_status", "Merge úspěšně proveden.");
+								setTimeout(function(){ self.set("merge_status", ""); }, 5000);
 							} else if(data.result === 'error') {
 								self.set("error_status", data.error);
 								self.set("merge_status", "");
@@ -131,6 +132,59 @@ export default Ember.Controller.extend( {
 						self.set("error_status", "Chybová odpověď serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
 						self.set("merge_status", "");
 						task.reload();
+					}
+				});
+			});
+		},
+		'wave-diff': function(wave) {
+			var self = this;
+
+			self.get('session').authorize('authorizer:oauth2', function(header, h) {
+				Ember.$.ajax({
+					url: config.API_LOC + "/admin/waves/"+wave.get("id")+"/diff",
+					type: 'POST',
+					beforeSend: function(xhr) {
+						xhr.setRequestHeader(header, h);
+						self.set("diff_status", "Odesílám požadavek k diffu, tato operace může trvat několik sekund ...");
+						wave.set("busy", true);
+					},
+					success: function(data) {
+						if("result" in data) {
+							if(data.result === 'ok') {
+								self.set("diff_status", "Diff úspěšně proveden.");
+							} else if(data.result === 'error') {
+								self.set("error_status", data.error);
+								self.set("diff_status", "");
+							} else {
+								self.set("error_status", "Špatná odpověď serveru!");
+								self.set("diff_status", "");
+							}
+						} else {
+							self.set("error_status", "Špatná odpověď serveru - odpověď neobsahuje result!");
+							self.set("diff_status", "");
+						}
+						wave.set("busy", false);
+
+						// reload tasks
+						self.get("tasks").filter(function(elem) {
+							return elem.get("wave.id") === wave.get("id");
+						}).forEach(function(elem) {
+							elem.reload();
+						});
+
+						setTimeout(function(){ self.set("diff_status", ""); }, 5000);
+					},
+					error: function() {
+						self.set("error_status", "Chybová odpověď serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+						self.set("diff_status", "");
+						wave.set("busy", false);
+
+						// reload tasks
+						self.get("tasks").filter(function(elem) {
+							return elem.get("wave.id") === wave.get("id");
+						}).forEach(function(elem) {
+							elem.reload();
+						});
 					}
 				});
 			});

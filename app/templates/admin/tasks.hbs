@@ -3,6 +3,9 @@
   {{#if merge_status}}
     <div class="alert alert-info" style="margin-top:20px">{{merge_status}}</div>
   {{/if}}
+  {{#if diff_status}}
+    <div class="alert alert-info" style="margin-top:20px">{{diff_status}}</div>
+  {{/if}}
   {{#if error_status}}
     <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
   {{/if}}
@@ -33,7 +36,15 @@
 	    <h3>{{task.wave.caption}}</h3>
 	    {{#if task.can_create}}
 	      {{#unless task.wave.published}}
-	        <p><button class="btn btn-primary inline" {{action "task-create" task.wave}}>Nová úloha</button></p>
+	        <p>
+	          {{#if task.wave.busy}}
+	           <button class="btn btn-primary disabled inline">Nová úloha</button>
+	           <button class="btn btn-primary disabled inline">Diff</button>
+	          {{else}}
+	           <button class="btn btn-primary inline" {{action "task-create" task.wave}}>Nová úloha</button>
+	           <button class="btn btn-primary inline" {{action "wave-diff" task.wave}}>Diff</button>
+	          {{/if}}
+	        </p>
 	      {{/unless}}
 	    {{/if}}
 	    </td></tr>
