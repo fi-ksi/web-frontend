@@ -6,12 +6,12 @@
 
       <div class="form-group">
         <label>Název:</label>
-        {{input class="form-control" value=new_task.title}}
+        {{input class="form-control" value=title}}
       </div>
 
       <div class="form-group">
         <label>Author:</label>
-        {{#x-select value=new_task.author class="form-control"}}
+        {{#x-select value=author class="form-control"}}
           {{#each organisators as |o|}}
             {{#x-option value=o.id}}{{o.full_name}}{{/x-option}}
           {{/each}}
@@ -21,14 +21,14 @@
         <p>{{input type="checkbox" checked=git_create}} Vytvoriť git repository</p>
 
         <label>Branch: </label>
-        {{input class="form-control" value=new_task.git_branch}}
+        {{input class="form-control" value=git_branch}}
 
         <label>Path: </label>
-        {{input class="form-control" value=new_task.git_path}}
+        {{input class="form-control" value=git_path}}
         
         {{#unless git_create}}
           <label>Commit: </label>
-          {{input class="form-control" value=new_task.git_commit}}
+          {{input class="form-control" value=git_commit}}
         {{/unless}}
 
       </div>
