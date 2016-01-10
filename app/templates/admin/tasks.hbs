@@ -1,6 +1,5 @@
 <section id="admin-tasks" class="container content-section" style="text-align:justify">
   <h2>Správa úloh</h2>
-  <p><a href="javascript:void()" {{action "task-create"}}>Nová úloha</a></p>
   {{#if merge_status}}
     <div class="alert alert-info" style="margin-top:20px">{{merge_status}}</div>
   {{/if}}
@@ -28,6 +27,11 @@
   {{#each tasks as |task|}}
 	  {{#if task.first_in_wave}}
 	    <h3>{{task.wave.caption}}</h3>
+	    {{#if task.can_create}}
+	      {{#unless task.wave.published}}
+	        <p><button class="btn btn-primary inline" {{action "task-create" task.wave}}>Nová úloha</button></p>
+	      {{/unless}}
+	    {{/if}}
 	  {{/if}}
 
 		<tr style="height:45px; background-color:
@@ -65,9 +69,8 @@
 	</tbody>
 	</table>
 
- {{#if deploy_status}}
-    <div id="myModal" class="modal" role="dialog" style="display: block">
-      <div class="modal-dialog">
+    <div id="myModal" class="modal" role="dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -82,5 +85,7 @@
         </div>
       </div>
     </div>
-  {{/if}}
+
 </section>
+
+

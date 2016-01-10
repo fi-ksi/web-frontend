@@ -12,21 +12,25 @@ export default Ember.Controller.extend( {
 		'task-deploy': function(task) {
 			var self = this;
 
+			$("#myModal").modal()
+
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				
 				Ember.$.ajax({
-					url: config.API_LOC + "/admin/tasks/"+task.id+"/deploy",
+					url: config.API_LOC + "/admin/atasks/"+task.id+"/deploy",
 					type: 'POST',
 					beforeSend: function(xhr) {
 						xhr.setRequestHeader(header, h);
 						self.set("deploy_status", "Odesílám požiadavok");
 					},
 					success: function(data) {
+						task.reload()
+
 						if("result" in data) {
 							if(data.result === 'ok') {
 
-								self.set("deploy_status", "Akce úspěšně provedena.");
-								self.sendAction('task-deploy-log', task);
+								self.set("deploy_status", "Požadavek úspěšně odeslán, načítám log...");
+								self.send('task-deploy-log', task);
 
 							} else if(data.result === 'error') {
 								self.set("error_status", data.error);
@@ -41,6 +45,7 @@ export default Ember.Controller.extend( {
 						}
 					},
 					error: function() {
+						task.reload()
 						self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 						self.set("deploy_status", "");
 					}
@@ -53,26 +58,25 @@ export default Ember.Controller.extend( {
 			var watchingTask = setInterval(function() {
 				self.get('session').authorize('authorizer:oauth2', function(header, h) {
 					Ember.$.ajax({
-						url: config.API_LOC + "/admin/tasks/"+task.id+"/deploy",
+						url: config.API_LOC + "/admin/atasks/"+task.id+"/deploy",
 						type: 'GET',
 						beforeSend: function(xhr) {
 							xhr.setRequestHeader(header, h);
 							self.set("deploy_status", "Odesílám požiadavok");
 						},
 						success: function(data) {
-								if(data.id === task.id) {
+								if(data.id == task.id) {
 									self.set("deploy_status", data.deploy_status);
 									self.set("deploy_log", data.log);
 
 									if(data.deploy_status === 'done') {
-										
 										clearInterval(watchingTask);
-
-										self.get('model').reload();
+										task.reload();
 									}
 								}
 						},
 						error: function() {
+							task.reload();
 							self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 							self.set("deploy_status", "");
 						}
@@ -141,6 +145,7 @@ export default Ember.Controller.extend( {
 				task.set("can_deploy", authorized);
 				task.set("can_merge", authorized && task.get("git_branch") !== 'master');
 				task.set("can_delete", is_admin);
+				task.set("can_create", is_admin || (user.id === task.get("wave.garant.id")));
 
 				task.set("first_in_wave", currentWave !== task.get("wave.index"));
 				if (currentWave !== task.get("wave.id")) {
