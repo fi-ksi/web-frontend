@@ -30,8 +30,17 @@
 	    <h3>{{task.wave.caption}}</h3>
 	  {{/if}}
 
-		<tr style="height:45px">
+		<tr style="height:45px; background-color:
+		  {{if task.deploy_status_default "white"}}
+		  {{if task.deploy_status_deploying "#CCE1E9"}}
+		  {{if task.deploy_status_done "#C0FFB0"}}
+		  {{if task.deploy_status_error "#FDD5E5"}}
+		  {{if task.deploy_status_diff "#FFEFD4"}}
+		  ">
 		  <td>{{#link-to "admin/task-edit" task}}{{task.title}}{{/link-to}}</td>
+		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
+		  <td>{{task.deploy_status}}</td>
+		  <td>{{date-and-time task.deploy_date 'cs'}}</td>
 		  <td>
 			{{#if task.can_deploy}}
 			  <button class="btn btn-primary inline" {{action "task-deploy" task}}>Deploy</button>
@@ -44,9 +53,9 @@
 			  <button class="btn btn-primary disabled inline" title="Merge může provádět pouze garant vlny nebo administrátor, úloha navíc nesmí být ve větvi master.">Merge</button>
 			{{/if}}
 			{{#if task.can_delete}}
-			  <button class="btn btn-primary inline" {{action "task-delete" task}}>Zmazat</button>
+			  <button class="btn btn-primary inline" {{action "task-delete" task}}>Smazat</button>
 			{{else}}
-			  <button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Zmazat</button>
+			  <button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Smazat</button>
 			{{/if}}
 		  </td>
 		</tr>
