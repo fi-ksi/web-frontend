@@ -101,37 +101,44 @@ export default Ember.Controller.extend( {
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				Ember.$.ajax({
-					url: config.API_LOC + "/admin/tasks/"+task.id+"/merge",
+					url: config.API_LOC + "/admin/atasks/"+task.id+"/merge",
 					type: 'POST',
 					beforeSend: function(xhr) {
+						task.set("can_merge", false);
+						task.set("can_deploy", false);
+						task.set("can_delete", false);
 						xhr.setRequestHeader(header, h);
 						self.set("merge_status", "Odesílám pozadavek");
 					},
 					success: function(data) {
 						if("result" in data) {
 							if(data.result === 'ok') {
-								self.set("deploy_status", "Akce úspěšně provedena.");
+								self.set("merge_status", "Merge úspěšně proveden.");
 							} else if(data.result === 'error') {
 								self.set("error_status", data.error);
-								self.set("deploy_status", "");
+								self.set("merge_status", "");
 							} else {
 								self.set("error_status", "Špatná odpověď serveru!");
-								self.set("deploy_status", "");
+								self.set("merge_status", "");
 							}
 						} else {
-							self.set("error_status", "Špatná odpověď serveru!");
-							self.set("deploy_status", "");
+							self.set("error_status", "Špatná odpověď serveru - odpověď neobsahuje result!");
+							self.set("merge_status", "");
 						}
+						task.reload();
 					},
 					error: function() {
-						self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
-						self.set("deploy_status", "");
+						self.set("error_status", "Chybová odpověď serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+						self.set("merge_status", "");
+						task.reload();
 					}
 				});
 			});
 		},
 		'task-delete': function(task) {
-			task.destroyRecord(); // DELETE to /admin/atask/1
+			if(confirm("Opravdu odstranit úlohu " + task.get("title") + "?")) {
+				task.destroyRecord(); // DELETE to /admin/atask/1
+			}
 		},
 		'task-create': function() {
 			var newTask = this.get("store").createRecord('atask');
