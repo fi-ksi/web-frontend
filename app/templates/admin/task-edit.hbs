@@ -13,24 +13,28 @@
         <label>Vlna:</label>
         {{input class="form-control" value=model.wave.caption disabled=true}}
 
-        <label>Author:</label>
+        <label>Autor:</label>
         {{input class="form-control" value=model.author.full_name disabled=true}}
 
         <h3>Git</h3>
-        <label>Branch: </label>
+        <label>Větev úlohy:</label>
         {{input class="form-control" value=model.git_branch}}
 
-        <label>Path: </label>
+        <label>Adresář úlohy:</label>
         {{input class="form-control" value=model.git_path}}
 
-        <label>Commit: </label>
+        <label>Verze úlohy na webu odpovídá commitu:</label>
         {{input class="form-control" value=model.git_commit}}
 
       </div>
 
-      <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
-      </div>
+      {{#if canSave}}
+        <div class="row" style="margin-left:0px; margin-top:20px">
+          <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
+        </div>
+      {{else}}
+        <div class="alert alert-info" style="margin-top:20px">Úlohu může změnit pouze její autor, garant vlny nebo administrátor.</div>
+      {{/if}}
       {{#if error_status}}
         <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
       {{/if}}

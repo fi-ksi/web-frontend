@@ -14,5 +14,15 @@ export default Ember.Controller.extend( {
 				self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 			});
 		}
-	}
+	},
+
+	 canSave: Ember.computed("model", "model.wave", "session.current_user", "model.wave.garant", "model.author", function(){
+		var user = this.get("session.current_user");
+		if (user) {
+			return (user.get("admin")) || (((user.get("id") === this.get("model.author.id")) || (user.get("id") === this.get("model.wave.garant.id"))) && (new Date() < this.get("model.wave.time_published")));
+		} else {
+			return undefined;
+		}
+	})
+
 });
