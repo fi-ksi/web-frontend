@@ -1,5 +1,6 @@
 import Ember from "ember";
 import config from '../../config/environment';
+import groupBy from 'ember-group-by';
 
 export default Ember.Controller.extend( {
 	store: Ember.inject.service(),
@@ -7,7 +8,6 @@ export default Ember.Controller.extend( {
 	deploy_status: "",
 	deploy_log: "",
 	error_status: "",
-	wave: null,
 	actions: {
 		'task-deploy': function(task) {
 			var self = this;
@@ -122,15 +122,17 @@ export default Ember.Controller.extend( {
 			newTask.set("is_new", true);
 			this.transitionTo('admin/task-edit', newTask);
 		},
-		'wave_select': function() {
-			this.set("wave", parseInt(Ember.$("#wave_sel").val()));
-		},
 	},
 	tasks: Ember.computed("wave", "model", "session.current_user", function(){
 		var user = this.get("session.current_user");
 		if(user) {
 			var selectedWave = this.get("wave");
-			return this.get("model").tasks.map(function(task) {
+			if (selectedWave === undefined) {
+				selectedWave = this.get('model.waves.lastObject.id')
+				this.set("wave", selectedWave)
+			}
+			var currentWave = undefined;
+			return this.get("model.tasks").map(function(task) {
 
 				var is_admin = user.get("role") === "admin";
 				var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
@@ -140,12 +142,23 @@ export default Ember.Controller.extend( {
 				task.set("can_merge", authorized && task.get("git_branch") !== 'master');
 				task.set("can_delete", is_admin);
 
+				task.set("first_in_wave", currentWave !== task.get("wave.index"));
+				if (currentWave !== task.get("wave.id")) {
+					currentWave = task.get("wave.index");
+				}
+
 				return task;
 			}).filter(function(elem) {
-				return !selectedWave || parseInt(elem.get("wave.id")) === selectedWave;
+				return !selectedWave || elem.get("wave.id") === selectedWave;
 			});
 		} else {
 			return undefined;
 		}
+	}),
+
+	waves: Ember.computed.sort("model.waves", function(a, b) {
+		if (a.get("index") < b.get("index")) { return 1; }
+		if (a.get("index") > b.get("index")) { return -1; }
+		return 0;
 	})
 });
