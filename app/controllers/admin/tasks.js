@@ -56,6 +56,8 @@ export default Ember.Controller.extend( {
 		'task-deploy-log': function(task) {
 			var self = this;
 
+			self.set("error_status", "");
+
 			var watchingTask = setInterval(function() {
 				self.get('session').authorize('authorizer:oauth2', function(header, h) {
 					Ember.$.ajax({
@@ -100,6 +102,8 @@ export default Ember.Controller.extend( {
 		'task-merge': function(task) {
 			var self = this;
 
+			self.set("error_status", "");
+
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				Ember.$.ajax({
 					url: config.API_LOC + "/admin/atasks/"+task.get("id")+"/merge",
@@ -137,6 +141,8 @@ export default Ember.Controller.extend( {
 		},
 		'wave-diff': function(wave) {
 			var self = this;
+
+			self.set("error_status", "");
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				Ember.$.ajax({
@@ -189,7 +195,6 @@ export default Ember.Controller.extend( {
 			});
 		},
 		'task-delete': function(task) {
-			var self = this;
 			if(!confirm("Opravdu odstranit úlohu " + task.get("title") + "?")) {
 				return;
 			}

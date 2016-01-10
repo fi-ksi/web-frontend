@@ -8,6 +8,7 @@ export default DS.Model.extend({
 	git_branch: DS.attr("string"),
 	git_commit: DS.attr("string"),
 	git_path: DS.attr("string"),
+	git_create: DS.attr("boolean"), // pouze pro ucely vytvareni nove ulohy
 
 	deploy_date: DS.attr("date"),
 	deploy_status: DS.attr("string"),
