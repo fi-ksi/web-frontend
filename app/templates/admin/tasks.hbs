@@ -16,22 +16,27 @@
   {{/x-select}}
 
   <table class="table table-striped">
-	<!--<thead>
+	<thead>
 	  <tr style="height:45px">
+		<th>ID</th>
 		<th>Název</th>
-		<th>Vlna</th>
+		<th>Autor</th>
+		<th>Stav deploye</th>
+		<th>Poslední deploy</th>
 		<th>Akce</th>
 	  </tr>
-	</thead> -->
+	</thead>
 	<tbody>
   {{#each tasks as |task|}}
 	  {{#if task.first_in_wave}}
+	    <tr style="background-color: white;"><td colspan="6">
 	    <h3>{{task.wave.caption}}</h3>
 	    {{#if task.can_create}}
 	      {{#unless task.wave.published}}
 	        <p><button class="btn btn-primary inline" {{action "task-create" task.wave}}>Nová úloha</button></p>
 	      {{/unless}}
 	    {{/if}}
+	    </td></tr>
 	  {{/if}}
 
 		<tr style="height:45px; background-color:
@@ -41,6 +46,7 @@
 		  {{if task.deploy_status_error "#FDD5E5"}}
 		  {{if task.deploy_status_diff "#FFEFD4"}}
 		  ">
+		  <td>{{#link-to "admin/task-edit" task}}{{task.id}}{{/link-to}}</td>
 		  <td>{{#link-to "admin/task-edit" task}}{{task.title}}{{/link-to}}</td>
 		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
 		  <td>{{task.deploy_status}}</td>
