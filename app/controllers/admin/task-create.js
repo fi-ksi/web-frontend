@@ -1,5 +1,4 @@
 import Ember from "ember";
-import config from '../../config/environment';
 
 export default Ember.Controller.extend( {
 	store: Ember.inject.service(),
@@ -12,6 +11,8 @@ export default Ember.Controller.extend( {
 	}),
 	actions: {
 		'task-save': function() {
+			var self = this;
+
 			this.get("store").createRecord('atask', {
 				title: this.get("title"),
 				wave: this.get("model").wave,
@@ -21,18 +22,15 @@ export default Ember.Controller.extend( {
 				git_path: this.get("git_path"),
 				git_commit: this.get("git_commit")
 			}).save().then(function() {
-				self.transitionToRoute('admin/tasks');
+				self.transitionToRoute('admin/atasks');
 			}, function () {
 				self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 			});
 		}
 	},
+
 	title_changed: function(){
-		
-		var newTaskId = this.get("store").all('atask').filter(function(element){
-			return element.wave === task.wave;
-		}).length + 1;
-		newTaskId = ("00" + newTaskId).substr(-2,2);
+		var newTaskId = ("00" + (this.get("model.tasks.length")+1)).substr(-2,2);
 
 		var accentedCharacters = "úuůuýyáačcďdéeěeíiňnóořršsťtľlšs";
 		var slug = this.get("title").toLowerCase()
@@ -43,14 +41,14 @@ export default Ember.Controller.extend( {
 				}
 				return '';
 			})
-			.replace(/ +/g,'-');
+			.replace(/ +/g,'_');
 
 		var wave = this.get("model").wave;
-		var year = wave.get("year.year").match(/[0-9]+/g)[0];
+		var year = wave.get("year").get("year").match(/[0-9]+/g)[0];
 		var waveIndex = wave.get("index");
 		var waveZeros = ("00" + waveIndex).substr(-2,2);
 
-		this.set("git_path", year+"/vlna"+waveIndex+"/"+newTaskId+"_"+slug);
+		this.set("git_path", year+"/vlna"+waveIndex+"/uloha_"+newTaskId+"_"+slug);
 		this.set("git_branch", year+"_"+waveZeros+"_"+newTaskId+"_"+slug);
 
 	}.observes('title')
