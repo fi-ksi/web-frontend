@@ -1,6 +1,5 @@
 import DS from "ember-data";
 import Ember from "ember";
-import config from '../config/environment';
 
 export default DS.Model.extend({
 	title: DS.attr("string"),
@@ -15,9 +14,9 @@ export default DS.Model.extend({
 
 	wave: DS.belongsTo("wave", { async: true }),
 
-	deploy_status_default: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "default" }),
-	deploy_status_deploying: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "deploying" }),
-	deploy_status_done: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "done" }),
-	deploy_status_error: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "error" }),
-	deploy_status_diff: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "diff" }),
+	deploy_status_default: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "default"; }),
+	deploy_status_deploying: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "deploying"; }),
+	deploy_status_done: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "done"; }),
+	deploy_status_error: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "error"; }),
+	deploy_status_diff: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "diff"; }),
 });

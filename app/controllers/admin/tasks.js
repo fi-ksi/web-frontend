@@ -1,6 +1,5 @@
 import Ember from "ember";
 import config from '../../config/environment';
-import groupBy from 'ember-group-by';
 
 export default Ember.Controller.extend( {
 	store: Ember.inject.service(),
@@ -12,7 +11,7 @@ export default Ember.Controller.extend( {
 		'task-deploy': function(task) {
 			var self = this;
 
-			$("#myModal").modal()
+			Ember.$("#myModal").modal();
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
 				
@@ -24,7 +23,7 @@ export default Ember.Controller.extend( {
 						self.set("deploy_status", "Odesílám požiadavok");
 					},
 					success: function(data) {
-						task.reload()
+						task.reload();
 
 						if("result" in data) {
 							if(data.result === 'ok') {
@@ -45,7 +44,7 @@ export default Ember.Controller.extend( {
 						}
 					},
 					error: function() {
-						task.reload()
+						task.reload();
 						self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 						self.set("deploy_status", "");
 					}
@@ -65,7 +64,7 @@ export default Ember.Controller.extend( {
 							self.set("deploy_status", "Odesílám požiadavok");
 						},
 						success: function(data) {
-								if(data.id == task.id) {
+								if (data.id === Number(task.id)) {
 									self.set("deploy_status", data.deploy_status);
 									self.set("deploy_log", data.log);
 
@@ -73,11 +72,15 @@ export default Ember.Controller.extend( {
 										clearInterval(watchingTask);
 										task.reload();
 									}
+								} else {
+									clearInterval(watchingTask);
+									self.set("error_status", "Špatná odpověď ze serveru - server posílá nekorektní ID v deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 								}
 						},
 						error: function() {
 							task.reload();
-							self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+							clearInterval(watchingTask);
+							self.set("error_status", "Chybová odpověď serveru na GET deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 							self.set("deploy_status", "");
 						}
 					});
@@ -132,10 +135,10 @@ export default Ember.Controller.extend( {
 		if(user) {
 			var selectedWave = this.get("wave");
 			if (selectedWave === undefined) {
-				selectedWave = this.get('model.waves.lastObject.id')
-				this.set("wave", selectedWave)
+				selectedWave = this.get('model.waves.lastObject.id');
+				this.set("wave", selectedWave);
 			}
-			var currentWave = undefined;
+			var currentWave;
 			return this.get("model.tasks").map(function(task) {
 
 				var is_admin = user.get("role") === "admin";
