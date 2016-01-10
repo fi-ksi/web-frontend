@@ -11,6 +11,7 @@ export default Ember.Controller.extend( {
 		'task-deploy': function(task) {
 			var self = this;
 
+			self.set("deploy_log", "");
 			Ember.$("#myModal").modal();
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
@@ -70,17 +71,25 @@ export default Ember.Controller.extend( {
 
 									if(data.deploy_status === 'done') {
 										clearInterval(watchingTask);
+										self.set("deploy_status", "Server úspěšně dokončil deploy");
+										task.reload();
+									}
+									else if(data.deploy_status === 'error') {
+										clearInterval(watchingTask);
+										self.set("deploy_status", "Deploy skončil s chybou!");
+										self.set("error_status", "Chyba pravděpodobně nastala kvůli špatné syntaxi úlohy v repozitáři. Pokus se prosím opravit syntaxi na základě chybové hlášky níže, případně kontaktuj administátora.");
 										task.reload();
 									}
 								} else {
 									clearInterval(watchingTask);
-									self.set("error_status", "Špatná odpověď ze serveru - server posílá nekorektní ID v deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+									self.set("error_status", "Špatná odpověď ze serveru - server posílá nekorektní ID v deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+									task.reload();
 								}
 						},
 						error: function() {
 							task.reload();
 							clearInterval(watchingTask);
-							self.set("error_status", "Chybová odpověď serveru na GET deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+							self.set("error_status", "Chybová odpověď serveru na GET deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
 							self.set("deploy_status", "");
 						}
 					});
