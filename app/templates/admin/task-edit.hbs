@@ -11,37 +11,32 @@
 
       <div class="form-group">
         <label>Vlna:</label>
-        {{#x-select value=model.wave class="form-control"}}
-          {{#each waves as |w|}}
-            {{#x-option value=w.id}}{{w.caption}}{{/x-option}}
-          {{/each}}
-        {{/x-select}}
+        {{input class="form-control" value=model.wave.caption disabled=true}}
 
         <label>Author:</label>
-        {{#x-select value=model.author class="form-control"}}
-          {{#each organisators as |o|}}
-            {{#x-option value=o.id}}{{o.full_name}}{{/x-option}}
-          {{/each}}
-        {{/x-select}}
+        {{input class="form-control" value=model.author.full_name disabled=true}}
 
-        <div>
-          {{input type="checkbox" checked=git_create}} <label>Vytvoriť git</label>
-        </div>
-
-        <label>Git branch: </label>
+        <h3>Git</h3>
+        <label>Branch: </label>
         {{input class="form-control" value=model.git_branch}}
 
-        <label>Git commit: </label>
+        <label>Path: </label>
+        {{input class="form-control" value=model.git_path}}
+
+        <label>Commit: </label>
         {{input class="form-control" value=model.git_commit}}
 
-        <label>Git path: </label>
-        {{input class="form-control" value=model.git_path}}
-        
       </div>
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save" {{action "task-save" model}}>Uložit</button>
+        <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
       </div>
+      {{#if error_status}}
+        <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
+      {{/if}}
+      {{#if save_status}}
+        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
+      {{/if}}
     </div>
   </div>
 </section>

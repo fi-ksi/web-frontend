@@ -40,6 +40,7 @@ Router.map(function() {
   this.route('admin/export', {path: '/admin/export'});
   this.route('admin/schools', {path: '/admin/schools'});
   this.route('admin/tasks', {path: '/admin/tasks'});
+  this.route('admin/task-create', {path: '/admin/tasks-create/:wave_id'});
   this.route('admin/task-edit', {path: '/admin/tasks/:task_id'});
   this.route('admin/users', {path: '/admin/users'});
   this.route('admin/graph', {path: '/admin/graph'});

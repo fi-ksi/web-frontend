@@ -194,11 +194,6 @@ export default Ember.Controller.extend( {
 				task.destroyRecord(); // DELETE to /admin/atask/1
 			}
 		},
-		'task-create': function() {
-			var newTask = this.get("store").createRecord('atask');
-			newTask.set("is_new", true);
-			this.transitionTo('admin/task-edit', newTask);
-		},
 	},
 	tasks: Ember.computed("wave", "model", "session.current_user", function(){
 		var user = this.get("session.current_user");

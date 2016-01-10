@@ -6,7 +6,7 @@ export default DS.Model.extend( {
 	'garant': DS.belongsTo("user", { async: true }),
 	'public': DS.attr("boolean"),
 	'time_published': DS.attr("date"),
-	'year': DS.attr("number"),
+	'year': DS.belongsTo("year", { async: true }),
 	'index': DS.attr("number"),
 
 	'published': Ember.computed("time_published", function() {

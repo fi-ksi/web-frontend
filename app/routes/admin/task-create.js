@@ -3,7 +3,10 @@ import ResetScroll from '../../mixins/reset-scroll';
 
 export default Ember.Route.extend(ResetScroll, {
 	model: function(params) {
-		return this.store.find("atask", params["task_id"]);
+		return Ember.RSVP.hash({
+			users: this.store.findAll("user"),
+			wave: this.store.find("wave", params["wave_id"])
+		});
 	},
-	title: "KSI: Správa úloh"
+	title: "KSI: Nová úloha"
 });
