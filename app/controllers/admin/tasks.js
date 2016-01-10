@@ -24,13 +24,13 @@ export default Ember.Controller.extend( {
 						xhr.setRequestHeader(header, h);
 						self.set("deploy_status", "Odesílám požiadavok");
 					},
-					success: function(data) {
+					success: function() {
 						task.reload();
 
 						self.set("deploy_status", "Požadavek úspěšně odeslán, načítám log...");
 						self.send('task-deploy-log', task);
 					},
-					error: function(xhr, status, error) {
+					error: function(xhr) {
 						task.reload();
 						self.set("error_status", "Server odpověděl chybou:\n"+xhr.responseText);
 						self.set("deploy_status", "");
@@ -98,12 +98,12 @@ export default Ember.Controller.extend( {
 						xhr.setRequestHeader(header, h);
 						self.set("merge_status", "Odesílám pozadavek");
 					},
-					success: function(data) {
+					success: function() {
 						self.set("merge_status", "Merge úspěšně proveden.");
 						setTimeout(function(){ self.set("merge_status", ""); }, 5000);
 						task.reload();
 					},
-					error: function(xhr, status, error) {
+					error: function(xhr) {
 						self.set("error_status", "Chybová odpověď serveru:\n"+xhr.responseText);
 						self.set("merge_status", "");
 						task.reload();
@@ -125,7 +125,7 @@ export default Ember.Controller.extend( {
 						self.set("diff_status", "Odesílám požadavek k diffu, tato operace může trvat několik sekund ...");
 						wave.set("busy", true);
 					},
-					success: function(data) {
+					success: function() {
 						self.set("diff_status", "Diff úspěšně proveden.");
 						wave.set("busy", false);
 
@@ -138,7 +138,7 @@ export default Ember.Controller.extend( {
 
 						setTimeout(function(){ self.set("diff_status", ""); }, 5000);
 					},
-					error: function(xhr, status, error) {
+					error: function(xhr) {
 						self.set("error_status", "Chybová odpověď serveru:\n"+xhr.responseText);
 						self.set("diff_status", "");
 						wave.set("busy", false);
