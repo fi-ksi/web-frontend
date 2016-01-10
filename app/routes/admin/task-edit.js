@@ -5,5 +5,11 @@ export default Ember.Route.extend(ResetScroll, {
 	model: function(params) {
 		return this.store.find("atask", params["task_id"]);
 	},
-	title: "KSI: Správa úloh"
+	title: "KSI: Správa úloh",
+	actions: {
+      willTransition: function(transition) {
+        this.controller.set('save_status', "");
+        this.controller.set('error_status', "");
+      }
+    }
 });
