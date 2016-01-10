@@ -204,8 +204,7 @@ export default Ember.Controller.extend( {
 				this.set("wave", selectedWave);
 			}
 			var currentWave;
-			return this.get("model.tasks").map(function(task) {
-
+			return this.get("model.tasks").sortBy("wave.id").map(function(task) {
 				var is_admin = user.get("role") === "admin";
 				var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
 					((new Date() < task.get("wave").get("time_published")) && (user.id === task.get("author").get("id") || user.id === task.get("wave").get("garant").get("id"))));
