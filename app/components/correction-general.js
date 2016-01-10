@@ -17,9 +17,9 @@ export default Ember.Component.extend({
             self.set("module.evaluation.corrected_by", p);
           });
         }
-        if(points > 10) {
+        /*if(points > 10) {
             this.set("module.evaluation.points", 10);
-        }
+        }*/
         if(points < 0) {
             this.set("module.evaluation.points", 0);
         }
