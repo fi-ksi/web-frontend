@@ -7,7 +7,7 @@ export default Ember.Route.extend(ResetScroll, {
 	},
 	title: "KSI: Správa úloh",
 	actions: {
-      willTransition: function(transition) {
+      willTransition: function() {
         this.controller.set('save_status', "");
         this.controller.set('error_status', "");
       }

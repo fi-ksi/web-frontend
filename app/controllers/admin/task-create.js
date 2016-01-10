@@ -4,9 +4,8 @@ export default Ember.Controller.extend( {
 	store: Ember.inject.service(),
 	session: Ember.inject.service(),
 	git_create: true,
+	saving: false,
 	organisators: Ember.computed("model.orgs", function() {
-		var orgs = this.get("model.orgs");
-		console.log("defined");
 		return this.get("model.orgs").filter(function(user){
 			return user.get("organisator");
 		});
@@ -15,6 +14,8 @@ export default Ember.Controller.extend( {
 	actions: {
 		'task-save': function() {
 			var self = this;
+
+			this.set("saving", true);
 
 			this.get("store").createRecord('atask', {
 				title: this.get("title"),
@@ -25,7 +26,7 @@ export default Ember.Controller.extend( {
 				git_path: this.get("git_path"),
 				git_commit: this.get("git_commit")
 			}).save().then(function() {
-				self.transitionToRoute('admin/atasks');
+				self.transitionToRoute('admin/tasks');
 			}, function () {
 				self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
 			});

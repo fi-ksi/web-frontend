@@ -12,6 +12,7 @@ export default Ember.Controller.extend( {
 			var self = this;
 
 			self.set("deploy_log", "");
+			self.set("error_status", "");
 			Ember.$("#myModal").modal();
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
@@ -105,8 +106,6 @@ export default Ember.Controller.extend( {
 					type: 'POST',
 					beforeSend: function(xhr) {
 						task.set("can_merge", false);
-						task.set("can_deploy", false);
-						task.set("can_delete", false);
 						xhr.setRequestHeader(header, h);
 						self.set("merge_status", "Odesílám pozadavek");
 					},
@@ -190,12 +189,17 @@ export default Ember.Controller.extend( {
 			});
 		},
 		'task-delete': function(task) {
-			if(confirm("Opravdu odstranit úlohu " + task.get("title") + "?")) {
-				task.destroyRecord(); // DELETE to /admin/atask/1
+			var self = this;
+			if(!confirm("Opravdu odstranit úlohu " + task.get("title") + "?")) {
+				return;
 			}
+
+			task.set("deleting", true);
+			task.deleteRecord(); // DELETE to /admin/atask/1
+			task.save();
 		},
 	},
-	tasks: Ember.computed("wave", "model", "session.current_user", function(){
+	tasks: Ember.computed("store", "wave", "model.tasks", "session.current_user", function(){
 		var user = this.get("session.current_user");
 		if(user) {
 			var selectedWave = this.get("wave");

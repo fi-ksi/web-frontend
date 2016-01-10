@@ -13,7 +13,7 @@
         <label>Author:</label>
         {{#x-select value=author class="form-control"}}
           {{#each organisators as |o|}}
-            {{#x-option value=o.id}}{{o.full_name}}{{/x-option}}
+            {{#x-option value=o}}{{o.full_name}}{{/x-option}}
           {{/each}}
         {{/x-select}}
 
@@ -34,7 +34,11 @@
       </div>
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
+        {{#unless saving}}
+          <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
+        {{else}}
+          <button class="btn btn-primary inline disabled" id="save-disabled">Vytvářím úlohu...</button>
+        {{/unless}}
       </div>
     </div>
   </div>

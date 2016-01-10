@@ -11,5 +11,16 @@ export default Ember.Route.extend(ResetScroll, {
 			years: this.store.findAll("year")
 		});
 	},
-	title: "KSI: Nová úloha"
+	title: "KSI: Nová úloha",
+	actions: {
+		willTransition: function() {
+			this.controller.set('git_create', true);
+			this.controller.set('title', "");
+			this.controller.set('author', undefined);
+			this.controller.set('git_branch', "");
+			this.controller.set('git_path', "");
+			this.controller.set('git_commit', "");
+			this.controller.set('saving', false);
+		}
+	}
 });
