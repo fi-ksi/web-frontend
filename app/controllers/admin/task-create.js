@@ -4,11 +4,19 @@ export default Ember.Controller.extend( {
 	store: Ember.inject.service(),
 	session: Ember.inject.service(),
 	git_create: true,
-	organisators: Ember.computed("model", function() {
-		return this.get("model").users.filter(function(user){
-			return user.get("organisator");
-		});
+	organisators: Ember.computed("model.orgs", function() {
+		var orgs = this.get("model.orgs");
+		if (orgs) {
+			console.log("defined");
+			return this.get("model.orgs").filter(function(user){
+				return user.get("organisator");
+			});
+		} else {
+			console.log("undefined");
+			return undefined;
+		}
 	}),
+
 	actions: {
 		'task-save': function() {
 			var self = this;

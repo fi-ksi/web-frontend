@@ -37,7 +37,7 @@
 	    <p>
 	    {{#if task.can_create}}
 	      {{#unless task.wave.published}}
-	         {{#link-to "admin/task-create" task.wave class="btn btn-primary inline"}}Nová úloha{{/link-to}}
+	         {{#link-to "admin/task-create" task.wave.id class="btn btn-primary inline"}}Nová úloha{{/link-to}}
 	      {{/unless}}
 	    {{/if}}
 
