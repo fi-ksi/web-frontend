@@ -27,27 +27,12 @@ export default Ember.Controller.extend( {
 					success: function(data) {
 						task.reload();
 
-						if("result" in data) {
-							if(data.result === 'ok') {
-
-								self.set("deploy_status", "Požadavek úspěšně odeslán, načítám log...");
-								self.send('task-deploy-log', task);
-
-							} else if(data.result === 'error') {
-								self.set("error_status", data.error);
-								self.set("deploy_status", "");
-							} else {
-								self.set("error_status", "Špatná odpověď serveru!");
-								self.set("deploy_status", "");
-							}
-						} else {
-							self.set("error_status", "Špatná odpověď serveru!");
-							self.set("deploy_status", "");
-						}
+						self.set("deploy_status", "Požadavek úspěšně odeslán, načítám log...");
+						self.send('task-deploy-log', task);
 					},
-					error: function() {
+					error: function(xhr, status, error) {
 						task.reload();
-						self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+						self.set("error_status", "Server odpověděl chybou:\n"+xhr.responseText);
 						self.set("deploy_status", "");
 					}
 				});
@@ -89,10 +74,10 @@ export default Ember.Controller.extend( {
 									task.reload();
 								}
 						},
-						error: function() {
+						error: function(xhr, status, error) {
 							task.reload();
 							clearInterval(watchingTask);
-							self.set("error_status", "Chybová odpověď serveru na GET deployStatus! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+							self.set("error_status", "Chybová odpověď serveru na GET deployStatus: " + error);
 							self.set("deploy_status", "");
 						}
 					});
@@ -114,25 +99,12 @@ export default Ember.Controller.extend( {
 						self.set("merge_status", "Odesílám pozadavek");
 					},
 					success: function(data) {
-						if("result" in data) {
-							if(data.result === 'ok') {
-								self.set("merge_status", "Merge úspěšně proveden.");
-								setTimeout(function(){ self.set("merge_status", ""); }, 5000);
-							} else if(data.result === 'error') {
-								self.set("error_status", data.error);
-								self.set("merge_status", "");
-							} else {
-								self.set("error_status", "Špatná odpověď serveru!");
-								self.set("merge_status", "");
-							}
-						} else {
-							self.set("error_status", "Špatná odpověď serveru - odpověď neobsahuje result!");
-							self.set("merge_status", "");
-						}
+						self.set("merge_status", "Merge úspěšně proveden.");
+						setTimeout(function(){ self.set("merge_status", ""); }, 5000);
 						task.reload();
 					},
-					error: function() {
-						self.set("error_status", "Chybová odpověď serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+					error: function(xhr, status, error) {
+						self.set("error_status", "Chybová odpověď serveru:\n"+xhr.responseText);
 						self.set("merge_status", "");
 						task.reload();
 					}
@@ -154,20 +126,7 @@ export default Ember.Controller.extend( {
 						wave.set("busy", true);
 					},
 					success: function(data) {
-						if("result" in data) {
-							if(data.result === 'ok') {
-								self.set("diff_status", "Diff úspěšně proveden.");
-							} else if(data.result === 'error') {
-								self.set("error_status", data.error);
-								self.set("diff_status", "");
-							} else {
-								self.set("error_status", "Špatná odpověď serveru!");
-								self.set("diff_status", "");
-							}
-						} else {
-							self.set("error_status", "Špatná odpověď serveru - odpověď neobsahuje result!");
-							self.set("diff_status", "");
-						}
+						self.set("diff_status", "Diff úspěšně proveden.");
 						wave.set("busy", false);
 
 						// reload tasks
@@ -179,8 +138,8 @@ export default Ember.Controller.extend( {
 
 						setTimeout(function(){ self.set("diff_status", ""); }, 5000);
 					},
-					error: function() {
-						self.set("error_status", "Chybová odpověď serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+					error: function(xhr, status, error) {
+						self.set("error_status", "Chybová odpověď serveru:\n"+xhr.responseText);
 						self.set("diff_status", "");
 						wave.set("busy", false);
 
