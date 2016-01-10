@@ -144,7 +144,7 @@ export default Ember.Controller.extend( {
 
 				task.set("can_deploy", authorized);
 				task.set("can_merge", authorized && task.get("git_branch") !== 'master');
-				task.set("can_delete", is_admin);
+				task.set("can_delete", is_admin && (new Date() < task.get("wave").get("time_published")));
 				task.set("can_create", is_admin || (user.id === task.get("wave.garant.id")));
 
 				task.set("first_in_wave", currentWave !== task.get("wave.index"));
