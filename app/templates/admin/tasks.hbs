@@ -47,6 +47,8 @@
 	     <button class="btn btn-primary inline" {{action "wave-diff" task.wave}}>Diff</button>
 	    {{/if}}
 
+	    {{input type="checkbox" checked=task.wave.show_details}} Zobrazit detaily
+
 	    </p>
 	    </td></tr>
 	  {{/if}}
@@ -86,6 +88,16 @@
 			{{/if}}
 		  </td>
 		</tr>
+
+		{{#if task.wave.show_details}}
+			<tr style="height:10px; background-color: #EFFFFF; font-size: 80%;">
+				<td></td>
+				<td>{{task.git_branch}}</td>
+				<td colspan="3">{{task.git_path}}</td>
+				<td>{{task.git_commit_short}}</td>
+			</tr>
+		{{/if}}
+
 	  {{else}}
 	  <p>V této vlně nejsou žádné úlohy.</p>
 	  {{/each}}

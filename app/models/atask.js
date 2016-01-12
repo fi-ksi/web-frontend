@@ -20,4 +20,12 @@ export default DS.Model.extend({
 	deploy_status_done: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "done"; }),
 	deploy_status_error: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "error"; }),
 	deploy_status_diff: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "diff"; }),
+
+	git_commit_short: Ember.computed("deploy_status", function() {
+		if (this.get("git_commit")) {
+			return this.get("git_commit").substring(0,8) + "...";
+		} else {
+			return undefined;
+		}
+	})
 });
