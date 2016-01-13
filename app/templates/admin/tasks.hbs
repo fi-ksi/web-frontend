@@ -72,9 +72,9 @@
 			  <button class="btn btn-primary disabled inline" title="Deploy úlohy může provádět pouze autor úlohy, garant vlny nebo administrátor.">Deploy</button>
 			{{/if}}
 			{{#if task.can_merge}}
-			  <button class="btn btn-primary inline" {{action "task-merge" task}}>Merge</button>
+			  <button class="btn btn-primary inline" {{action "task-merge" task}}>&#8594; Master</button>
 			{{else}}
-			  <button class="btn btn-primary disabled inline" title="Merge může provádět pouze garant vlny nebo administrátor, úloha navíc nesmí být ve větvi master.">Merge</button>
+			  <button class="btn btn-primary disabled inline" title="Merge může provádět pouze garant vlny nebo administrátor, úloha navíc nesmí být ve větvi master.">&#8594; Master</button>
 			{{/if}}
 			{{#link-to "admin/task-edit" task class="btn btn-primary inline"}}Detaily{{/link-to}}
 			{{#if task.deleting}}
