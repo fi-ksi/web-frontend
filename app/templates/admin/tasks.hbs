@@ -90,7 +90,14 @@
 		</tr>
 
 		{{#if task.wave.show_details}}
-			<tr style="height:10px; background-color: #EFFFFF; font-size: 80%;">
+			<tr style="height:10px; font-size: 80%; background-color:
+				{{if task.deploy_status_default "white"}}
+				{{if task.deploy_status_deploying "#CCE1F5"}}
+				{{if task.deploy_status_done "#EFFFFF"}}
+				{{if task.deploy_status_error "#FEDDE5"}}
+				{{if task.deploy_status_diff "#FFF4E5"}}
+			">
+
 				<td></td>
 				<td>{{task.git_branch}}</td>
 				<td colspan="3">{{task.git_path}}</td>
