@@ -1,0 +1,7 @@
+@media (max-width: 700px) {
+	#admin-tasks {
+		.btn.disabled {
+			display: none !important
+		}
+	}
+}

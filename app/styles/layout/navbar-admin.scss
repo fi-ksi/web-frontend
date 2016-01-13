@@ -1,6 +1,7 @@
 .navbar-admin {
   //margin-top: 82px;
   width:100%;
+  margin-bottom: 0;
 }
 
 .navbar-admin .navbar-nav {
@@ -9,7 +10,7 @@
   vertical-align: top;
 }
 
-.navbar-admin .navbar-collapse {
+#bs-admin-navbar-collapse {
   text-align: center;
 }
 
