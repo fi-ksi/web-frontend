@@ -11,15 +11,16 @@ module.exports = function(environment) {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
       },
+    },
+
     contentSecurityPolicy: {
-        'default-src': "'none'",
-        'script-src': "'self'",
-        'font-src': "'self'",
-        'connect-src': "'self' *",
-        'img-src': "'self'",
-        'style-src': "'self' *",
-        'media-src': "'self'"
-      }
+        'default-src': "http://static.addtoany.com/menu/ https://static.addtoany.com/menu/",
+        'script-src':  "'self' http://cdnjs.cloudflare.com/ajax/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js  http://static.addtoany.com/menu/ https://static.addtoany.com/menu/",
+        'font-src':    "'self'",
+        'connect-src': "'self'",
+        'img-src':     "'self' *",
+        'style-src':   "'self' *",
+        'media-src':   "'self'"
     },
 
     APP: {
@@ -54,8 +55,11 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'https://kyzikos.fi.muni.cz:3000/auth'
     };
     ENV["API_LOC"] = "https://kyzikos.fi.muni.cz:3000";
+    ENV["contentSecurityPolicy"]["connect-src"] += " https://kyzikos.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
+    ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
   }
-  
+
   if (environment === 'prod_dev') {
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
