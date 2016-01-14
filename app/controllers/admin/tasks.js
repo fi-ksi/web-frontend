@@ -87,6 +87,10 @@ export default Ember.Controller.extend( {
 		'task-merge': function(task) {
 			var self = this;
 
+			if(!confirm("Opravdu změnit větev úlohy '" + task.get("title") + "' na 'master'?")) {
+				return;
+			}
+
 			self.set("error_status", "");
 
 			self.get('session').authorize('authorizer:oauth2', function(header, h) {
