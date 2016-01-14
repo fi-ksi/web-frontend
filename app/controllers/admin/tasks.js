@@ -180,9 +180,11 @@ export default Ember.Controller.extend( {
 				var is_admin = user.get("role") === "admin";
 				var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
 					((new Date() < task.get("wave").get("time_published")) && (user.id === task.get("author").get("id") || user.id === task.get("wave").get("garant").get("id"))));
+				var can_merge = task.get("git_branch") && task.get("git_path") && task.get("git_branch") !== 'master' &&
+                    (is_admin || user.id === task.get("wave").get("garant").get("id"));
 
 				task.set("can_deploy", authorized);
-				task.set("can_merge", authorized && task.get("git_branch") !== 'master');
+				task.set("can_merge", can_merge);
 				task.set("can_delete", is_admin && (new Date() < task.get("wave").get("time_published")));
 				task.set("can_create", is_admin || (user.id === task.get("wave.garant.id")));
 
