@@ -1,0 +1,31 @@
+<section id="admin-yeras" class="container content-section" style="text-align:justify">
+  <h2>Správa ročníků</h2>
+  <!-- TODO {{#link-to "admin/vlna-edit"}}nová vlna{{/link-to}} -->
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Index</th>
+        <th>Ročník</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {{#each model.years as |year|}}
+        <tr style="height:45px">
+            <td>{{year.id}}</td>
+            <td>{{year.year}}</td>
+
+            <td>&ndash;
+            <!-- {{#if session.current_user.admin}}
+                {{#link-to "admin/task-create" wave.id class="btn btn-primary inline"}}Upravit{{/link-to}}
+            {{/if}}-->
+            </td>
+        </tr>
+    {{else}}
+        <p>V KSI zatím nejsou žádné ročníky.</p>
+    {{/each}}
+
+    </tbody>
+  </table>
+</section>
