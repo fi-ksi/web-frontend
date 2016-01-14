@@ -7,5 +7,6 @@ export default DS.RESTSerializer.extend({
     } else {
      return this._super(payloadKey);
     }
-  }
+  },
+  isNewSerializerAPI: true
 });
