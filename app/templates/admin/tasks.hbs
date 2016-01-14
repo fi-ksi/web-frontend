@@ -36,7 +36,7 @@
 	    <h3>{{task.wave.caption}}</h3>
 	    <p>
 	    {{#if task.can_create}}
-	      {{#unless task.wave.published}}
+	      {{#unless task.wave.public}}
 	         {{#link-to "admin/task-create" task.wave.id class="btn btn-primary inline"}}Nová úloha{{/link-to}}
 	      {{/unless}}
 	    {{/if}}

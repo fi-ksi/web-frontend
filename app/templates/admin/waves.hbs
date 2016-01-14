@@ -1,0 +1,36 @@
+<section id="admin-vlny" class="container content-section" style="text-align:justify">
+  <h2>Správa vln</h2>
+  <!-- TODO {{#link-to "admin/vlna-edit"}}nová vlna{{/link-to}} -->
+  <table class="table table-striped">
+    <thead>
+      <tr style="height:45px">
+        <th>Vlna</th>
+        <th>Název</th>
+        <th>Garant</th>
+        <th>Zveřejnení</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {{#each waves as |wave|}}
+        <tr style="height:45px">
+            <td>{{wave.index}}</td>
+            <td>{{wave.caption}}</td>
+            <td>{{#link-to "user-profile" wave.garant}}{{wave.garant.full_name}}{{/link-to}}</td>
+            <td>{{date-and-time wave.time_published 'cs'}}</td>
+            <td>
+            {{#if wave.can_add}}
+                {{#link-to "admin/task-create" wave.id class="btn btn-primary inline"}}Přidat úlohu{{/link-to}}
+            {{else}}
+                <button class="btn btn-primary disabled inline" title="Přidat úlohu může garant vlny nebo administrátor.">Přidat úlohu</button>
+            {{/if}}
+            </td>
+        </tr>
+    {{else}}
+        <p>V tomto ročníku zatím neexistují žádné vlny.</p>
+    {{/each}}
+
+    </tbody>
+  </table>
+</section>

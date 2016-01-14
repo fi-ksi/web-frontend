@@ -46,7 +46,7 @@ Router.map(function() {
   this.route('admin/graph', {path: '/admin/graph'});
   this.route('admin/school-edit', {path: '/admin/school-edit'});
   this.route('admin/user-edit', {path: '/admin/user-edit'});
-  this.route('admin/vlny', {path: '/admin/vlny'});
+  this.route('admin/waves', {path: '/admin/waves'});
   this.route('admin/vlna-edit', {path: '/admin/vlna-edit'});
   this.route('admin/achievements', {path: '/admin/achievements'});
   this.route('admin/achievement-edit', {path: '/admin/achievement-edit'});

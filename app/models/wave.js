@@ -8,8 +8,4 @@ export default DS.Model.extend( {
 	'time_published': DS.attr("date"),
 	'year': DS.belongsTo("year", { async: true }),
 	'index': DS.attr("number"),
-
-	'published': Ember.computed("time_published", function() {
-		return this.get("time_published") < new Date();
-	})
 });
