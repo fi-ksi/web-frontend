@@ -126,7 +126,7 @@ export default Ember.Controller.extend( {
 					type: 'POST',
 					beforeSend: function(xhr) {
 						xhr.setRequestHeader(header, h);
-						self.set("diff_status", "Odesílám požadavek k diffu, tato operace může trvat několik sekund ...");
+						self.set("diff_status", "Odesílám požadavek k diffu, tato operace může trvat až několik desítek sekund ...");
 						wave.set("busy", true);
 					},
 					success: function() {
