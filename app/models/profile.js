@@ -79,6 +79,9 @@ export default DS.Model.extend( {
         if (this.get("role") === "participant") {
             ret = "řešitel";
         }
+        if (this.get("role") === "tester") {
+            ret = "tester";
+        }
         if (this.get("gender") === "female") {
             ret = ret + "ka";
         }
