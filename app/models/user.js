@@ -56,7 +56,7 @@ export default DS.Model.extend( {
     }),
 
     // Relevant only when organisator
-    tasks: DS.hasMany("tasks", {async: true}),
+    tasks: DS.hasMany("task", {async: true}),
     email: DS.attr("string"),
 
     role_str: Ember.computed("gender", "role", function() {
@@ -69,6 +69,9 @@ export default DS.Model.extend( {
         }
         if (this.get("role") === "participant") {
             ret = "řešitel";
+        }
+        if (this.get("role") === "tester") {
+            ret = "tester";
         }
         if (this.get("gender") === "female") {
             ret = ret + "ka";

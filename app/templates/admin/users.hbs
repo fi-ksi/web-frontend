@@ -1,29 +1,54 @@
 <section id="admin-users" class="container content-section" style="text-align:justify">
   <h2>Správa uživatelů</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr style="height:45px">
-        <th>Login</th>
-        <th>Jméno</th>
-        <th>Profil</th>
-        <th>E-mail</th>
-        <th>Ročník</th>
-        <th>Akce</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="height:45px">
-        <td>effa</td> <!-- login -->
-        <td>Tomáš Effenberger</td> <!-- meno -->
-        <td>administrátor</td> <!-- profil -->
-        <td>teffenberger@seznam.cz</td> <!-- email -->
-        <td>6</td>
-        <td>
-          {{#link-to "admin/user-edit"}}upravit{{/link-to}}
-          |
-          <a href="#">su</a> <!-- prihlasit sa za uzivatela -->
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+    <label>Zobrazit uživatele:</label>
+    {{#x-select value=role class="form-control"}}
+        {{#x-option value="participants"}}Řešitele aktuálního ročníku{{/x-option}}
+        {{#x-option value="organisators"}}Organizátory{{/x-option}}
+        {{#x-option value=""}}Všechny{{/x-option}}
+    {{/x-select}}
+
+    {{#if filter_in_progress}}
+        <button class="btn btn-primary disabled inline">Načítám uživatele...</button>
+    {{else}}
+        <button class="btn btn-primary inline" {{action "filter"}}>Načíst uživatele</button>
+    {{/if}}
+
+    Zobrazeno uživatelů: {{users.length}}
+
+    <table class="table table-striped">
+        <thead>
+          <tr style="height:45px">
+            <th>ID</th>
+            <th>Jméno</th>
+            <th>E-mail</th>
+            <th>Akce</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {{#each users as |user|}}
+                {{#if user.first_in_role}}
+                    <tr style="background-color: white;"><td colspan="6">
+                        <h3>{{user.role_group}}</h3>
+                    </td></tr>
+                {{/if}}
+
+                <tr style="height:45px">
+                    <td>{{#link-to "user-profile" user}}{{user.id}}{{/link-to}}</td>
+                    <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td>
+                    <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                    <!-- <td><img src="{{user.profile_picture_r}}" alt="Uživatel {{user.full_name}}" style="
+                        border-radius: 5px;
+                        height: 30px;
+                        margin: 0 auto;"></td> -->
+
+                    <td></td>
+                </tr>
+            {{else}}
+                <p>Žádní uživatelé.</p>
+            {{/each}}
+
+        </tbody>
+    </table>
 </section>
