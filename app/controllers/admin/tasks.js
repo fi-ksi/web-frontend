@@ -163,8 +163,8 @@ export default Ember.Controller.extend( {
 			}
 
 			task.set("deleting", true);
-			task.deleteRecord(); // DELETE to /admin/atask/1
-			task.save();
+			task.destroyRecord(); // DELETE to /admin/atask/1
+			this.get("tasks").removeObject(task);
 		},
 	},
 	tasks: Ember.computed("store", "wave", "model.tasks", "session.current_user", function(){

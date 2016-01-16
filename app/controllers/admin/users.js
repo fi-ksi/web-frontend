@@ -48,8 +48,20 @@ export default Ember.Controller.extend({
     }),
 
     actions: {
-        filter: function() {
+        'filter': function() {
             this.load_users();
         },
+
+        'user-delete': function(user) {
+            if(!confirm("Opravdu odstranit uživatele " + user.get("full_name") + "?")) {
+                return;
+            }
+
+            user.set("deleting", true);
+            this.get("users_plain").removeObject(user);
+            this.get("users").removeObject(user);
+            user.destroyRecord(); // DELETE to /users/1
+        },
+
     }
 });

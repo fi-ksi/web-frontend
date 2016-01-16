@@ -22,6 +22,7 @@
             <th>ID</th>
             <th>Jméno</th>
             <th>E-mail</th>
+            <th>Trofeje</th>
             <th>Akce</th>
           </tr>
         </thead>
@@ -38,12 +39,26 @@
                     <td>{{#link-to "user-profile" user}}{{user.id}}{{/link-to}}</td>
                     <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td>
                     <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                    <td>
+                        {{#each user.achievements as |achievement|}}
+                            {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                        {{/each}}
+                    </td>
+                    <td>
+                        {{#if user.deleting}}
+                                <button class="btn btn-primary disabled inline">Mažu...</button>
+                        {{else}}
+                                {{#if session.current_user.admin}}
+                                  <button class="btn btn-primary inline" {{action "user-delete" user}}>Smazat</button>
+                                {{else}}
+                                  <button class="btn btn-primary disabled inline" title="Uživatele může smazat pouze administrátor.">Smazat</button>
+                                {{/if}}
+                        {{/if}}
+                    </td>
                     <!-- <td><img src="{{user.profile_picture_r}}" alt="Uživatel {{user.full_name}}" style="
                         border-radius: 5px;
                         height: 30px;
                         margin: 0 auto;"></td> -->
-
-                    <td></td>
                 </tr>
             {{else}}
                 <p>Žádní uživatelé.</p>
