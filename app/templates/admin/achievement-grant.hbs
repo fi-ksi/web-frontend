@@ -1,0 +1,64 @@
+<section id="admin-achievement-grant" class="container content-section" style="text-align:justify">
+  <h2>Udělit trofej</h2>
+
+  {{#link-to "admin/users"}}Zpět na přehled uživatelů{{/link-to}}<br>
+  {{#link-to "admin/achievements"}}Zpět na přehled trofejí{{/link-to}}
+
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+
+        <div class="form-group">
+            <label>Trofej:</label>
+              {{#x-select value=achievement class="form-control"}}
+              {{#each model.achievements as |achievement|}}
+                {{#x-option value=achievement.id}}{{achievement.title}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
+        </div>
+
+        <div class="form-group">
+            <label>Udělit uživatelům:</label>
+            <ol>
+            {{#each selected_users as |user|}}
+                <li><strong>{{#link-to "user-profile" user target="_blank"}}{{user.full_name}}{{/link-to}}</strong> (id {{user.id}}) &ndash; <a href="javascript:void()" {{action "delete-user" user}}>odebrat</a></li>
+            {{else}}
+                <p>Žádní uživatelé nejsou vybrání.</p>
+            {{/each}}
+            </ol>
+
+            <label>Přidat uživatele:</label>
+             {{#x-select value=add_user class="form-control"}}
+              {{#each model.users as |user|}}
+                {{#x-option value=user}}{{user.full_name}} (id {{user.id}}){{/x-option}}
+              {{/each}}
+            {{/x-select}}
+            <button class="btn btn-primary inline" {{action "add-user"}}>Přidat uživatele</button>
+        </div>
+
+
+        <div class="form-group">
+            <label>Za úlohu:</label>
+            {{#x-select value=task class="form-control"}}
+              {{#x-option value=""}}Žádnou{{/x-option}}
+              {{#each model.tasks as |task|}}
+                {{#x-option value=task.id}}{{task.title}} (id {{task.id}}){{/x-option}}
+              {{/each}}
+            {{/x-select}}
+        </div>
+
+        {{#if grant_status}}
+            <div class="alert alert-info" style="margin-top:20px">{{grant_status}}</div>
+        {{/if}}
+        {{#if grant_error}}
+            <div class="alert alert-danger" style="margin-top:20px">{{grant_error}}</div>
+        {{/if}}
+
+        {{#unless saving}}
+            <button class="btn btn-primary inline" id="save" {{action "achievement-grant"}}>Udělit</button>
+        {{else}}
+            <button class="btn btn-primary inline disabled" id="save-disabled">Uděluji ...</button>
+        {{/unless}}
+
+    </div>
+  </div>
+</section>

@@ -13,5 +13,9 @@ export default Ember.Controller.extend( {
              achievement.set("deleting", true);
              achievement.destroyRecord(); // DELETE to /admin/achievements/1
         },
+
+        'achievement-grant': function(achievement) {
+            this.transitionTo("admin/achievement-grant", {queryParams: {achievement: achievement.id}});
+        },
     },
 });

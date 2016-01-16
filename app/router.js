@@ -50,6 +50,7 @@ Router.map(function() {
   this.route('admin/years', {path: '/admin/years'});
   this.route('admin/vlna-edit', {path: '/admin/vlna-edit'});
   this.route('admin/achievements', {path: '/admin/achievements'});
+  this.route('admin/achievement-grant', {path: '/admin/achievements/grant'});
   this.route('admin/achievement-edit', {path: '/admin/achievement-edit'});
   this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
 });

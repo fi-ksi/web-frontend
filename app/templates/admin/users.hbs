@@ -47,6 +47,7 @@
                         {{/each}}
                     </td>
                     <td>
+                        <button class="btn btn-primary inline" {{action "achievement-one" user}}>Udělit trofej</button>
                         {{#if user.deleting}}
                                 <button class="btn btn-primary disabled inline">Mažu...</button>
                         {{else}}
@@ -72,7 +73,7 @@
     {{#if users_present}}
         <div class="panel panel-ksi">
             <div class="panel-heading panel-heading-ksi">Vybraní uživatelé:&nbsp;
-                <button class="btn btn-primary inline" {{action "achievement-multi"}}>Přidělit trofej</button>
+                <button class="btn btn-primary inline" {{action "achievement-multi"}}>Udělit trofej</button>
             </div>
         </div>
     {{/if}}

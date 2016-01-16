@@ -69,5 +69,19 @@ export default Ember.Controller.extend({
             user.destroyRecord(); // DELETE to /users/1
         },
 
+        'achievement-multi': function() {
+            var selected = this.get("users").filter(function(elem) {
+                return elem.get("selected");
+            }).map(function(elem){
+                return elem.get("id");
+            });
+
+            this.transitionTo("admin/achievement-grant", {queryParams: {sel_users: selected}});
+        },
+
+        'achievement-one': function(user) {
+            this.transitionTo("admin/achievement-grant", {queryParams: {sel_users: [ user.id ]}});
+        },
+
     }
 });
