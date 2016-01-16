@@ -5,6 +5,7 @@ export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
 
+    needs:[ 'admin/users' ],
     queryParams: [ 'sel_users', 'achievement' ],
     achievement: undefined,
     sel_users: [],
@@ -44,8 +45,7 @@ export default Ember.Controller.extend( {
             self.set("grant_error", "");
             self.set("grant_status", "");
 
-            console.log(self.get("task"));
-            console.log(self.get("achievement.id"));
+            self.get('controllers.admin/users').set('users_plain', []);
 
             if (self.get("achievement") === undefined) {
                 self.set("achievement", self.get("model.achievements.firstObject.id"));
