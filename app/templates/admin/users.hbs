@@ -19,6 +19,7 @@
     <table class="table table-striped">
         <thead>
           <tr style="height:45px">
+            <th>Vybrat</th>
             <th>ID</th>
             <th>Jméno</th>
             <th>E-mail</th>
@@ -36,6 +37,7 @@
                 {{/if}}
 
                 <tr style="height:45px">
+                    <td>{{input type="checkbox" checked=user.selected}}</td>
                     <td>{{#link-to "user-profile" user}}{{user.id}}{{/link-to}}</td>
                     <td>{{#link-to "user-profile" user}}{{user.full_name}}{{/link-to}}</td>
                     <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
@@ -66,4 +68,13 @@
 
         </tbody>
     </table>
+
+    {{#if users_present}}
+        <div class="panel panel-ksi">
+            <div class="panel-heading panel-heading-ksi">Vybraní uživatelé:&nbsp;
+                <button class="btn btn-primary inline" {{action "achievement-multi"}}>Přidělit trofej</button>
+            </div>
+        </div>
+    {{/if}}
+
 </section>

@@ -37,6 +37,8 @@ export default Ember.Controller.extend({
                 currentRole = user.get("role");
             }
 
+            user.set("selected", false);
+
             if (user.get("role") === "admin") { user.set("role_group", "Administrátoři"); }
             else if (user.get("role") === "org") { user.set("role_group", "Organizátoři"); }
             else if (user.get("role") === "participant") { user.set("role_group", "Řešitelé"); }
@@ -45,6 +47,10 @@ export default Ember.Controller.extend({
 
             return user;
         });
+    }),
+
+    users_present: Ember.computed("users_plain", function(){
+        return this.get("users").length > 0;
     }),
 
     actions: {

@@ -3,7 +3,7 @@ import ResetScroll from '../../mixins/reset-scroll';
 
 export default Ember.Route.extend(ResetScroll, {
 	model: function() {
-		return this.store.findAll("article");
+		return this.store.findAll("achievement");
 	},
-	title: "KSI: Správa novinek"
+	title: "KSI: Správa trofejí"
 });
