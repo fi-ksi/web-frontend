@@ -1,6 +1,13 @@
 <section id="admin-yeras" class="container content-section" style="text-align:justify">
   <h2>Správa ročníků</h2>
-  <!-- TODO {{#link-to "admin/vlna-edit"}}nová vlna{{/link-to}} -->
+
+  {{#if session.current_user.admin}}
+    {{#link-to "admin/year-create" class="btn btn-primary inline"}}Nový ročník{{/link-to}}
+  {{else}}
+    <button class="btn btn-primary disabled inline" title="Nový ročník může přidat pouze administrátor.">Nový ročník</button>
+  {{/if}}
+
+
   <table class="table table-striped">
     <thead>
       <tr style="height:45px">
@@ -13,13 +20,22 @@
 
     {{#each model.years as |year|}}
         <tr style="height:45px">
-            <td>{{year.id}}</td>
+            <td>{{year.index}}</td>
             <td>{{year.year}}</td>
 
-            <td>&ndash;
-            <!-- {{#if session.current_user.admin}}
-                {{#link-to "admin/task-create" wave.id class="btn btn-primary inline"}}Upravit{{/link-to}}
-            {{/if}}-->
+            <td>
+
+            {{#if session.current_user.admin}}
+                {{#link-to "admin/year-edit" year class="btn btn-primary inline"}}Upravit{{/link-to}}
+                {{#if year.deleting}}
+                    <button class="btn btn-primary inline disabled">Mažu...</button>
+                {{else}}
+                    <button class="btn btn-primary inline" {{action "year-delete" year}}>Smazat</button>
+                {{/if}}
+            {{else}}
+                <button class="btn btn-primary disabled inline" title="Upravit ročník může pouze administrátor.">Upravit</button>
+                <button class="btn btn-primary disabled inline" title="Odstranit ročník může pouze administrátor.">Smazat</button>
+            {{/if}}
             </td>
         </tr>
     {{else}}

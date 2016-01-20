@@ -35,18 +35,24 @@ Router.map(function() {
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
   this.route('admin/article-edit', {path: '/admin/articles/:article_id'});
+
   this.route('admin/correcting', {path: '/admin/opravovani'});
   this.route('admin/e-mail', {path: '/admin/e-mail'});
   this.route('admin/export', {path: '/admin/export'});
+
   this.route('admin/schools', {path: '/admin/schools'});
+  this.route('admin/school-edit', {path: '/admin/school-edit'});
+
   this.route('admin/tasks', {path: '/admin/tasks'});
   this.route('admin/task-create', {path: '/admin/tasks-create/:wave_id'});
   this.route('admin/task-edit', {path: '/admin/tasks/:task_id'});
+
   this.route('admin/users', {path: '/admin/users'});
-  this.route('admin/graph', {path: '/admin/graph'});
-  this.route('admin/school-edit', {path: '/admin/school-edit'});
   this.route('admin/user-edit', {path: '/admin/user-edit'});
+
   this.route('admin/years', {path: '/admin/years'});
+  this.route('admin/year-edit', {path: '/admin/years/:year_id'});
+  this.route('admin/year-create', {path: '/admin/year-create'});
 
   this.route('admin/waves', {path: '/admin/waves'});
   this.route('admin/wave-edit', {path: '/admin/waves/:wave_id'});

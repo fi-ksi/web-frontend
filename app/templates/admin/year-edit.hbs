@@ -1,0 +1,35 @@
+<section id="admin-task-edit" class="container content-section" style="text-align:justify">
+  <h2>Úprava ročníku</h2>
+  {{#link-to "admin/years"}}Zpět na přehled{{/link-to}}
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+
+      <div class="form-group">
+        <label>Index ročníku:</label>
+        {{input class="form-control" value=model.index}}
+      </div>
+
+      <div class="form-group">
+        <label>Ročník:</label>
+        {{input class="form-control" value=model.year}}
+      </div>
+
+      {{#if session.current_user.admin}}
+        {{#if saving}}
+          <button class="btn btn-primary inline disabled" id="save-disabled">Ukládám...</button>
+        {{else}}
+          <button class="btn btn-primary inline" id="save" {{action "year-save"}}>Uložit</button>
+        {{/if}}
+      {{else}}
+        <div class="alert alert-info" style="margin-top:20px">Ročník může upravit pouze administrátor.</div>
+      {{/if}}
+
+      {{#if error_status}}
+        <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
+      {{/if}}
+      {{#if save_status}}
+        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
+      {{/if}}
+    </div>
+  </div>
+</section>
