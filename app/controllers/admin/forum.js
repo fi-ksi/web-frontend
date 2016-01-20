@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
 
     load_threads: function() {
         var self = this;
-        var params;
 
         self.set("loading", true);
 
