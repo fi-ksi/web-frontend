@@ -21,11 +21,23 @@
             <td>{{date-and-time wave.time_published 'cs'}}</td>
             <td>
             {{#link-to "admin/wave-edit" wave.id class="btn btn-primary inline"}}Upravit{{/link-to}}
+
             {{#if wave.can_add}}
                 {{#link-to "admin/task-create" wave.id class="btn btn-primary inline"}}Přidat úlohu{{/link-to}}
             {{else}}
                 <button class="btn btn-primary disabled inline" title="Přidat úlohu může garant vlny nebo administrátor.">Přidat úlohu</button>
             {{/if}}
+
+            {{#if session.current_user.admin}}
+                {{#if wave.deleting}}
+                    <button class="btn btn-primary inline disabled">Mažu...</button>
+                {{else}}
+                    <button class="btn btn-primary inline" {{action "wave-delete" wave}}>Smazat</button>
+                {{/if}}
+            {{else}}
+                <button class="btn btn-primary disabled inline" title="Odstranit vlnu může pouze administrátor.">Smazat</button>
+            {{/if}}
+
             </td>
         </tr>
     {{else}}

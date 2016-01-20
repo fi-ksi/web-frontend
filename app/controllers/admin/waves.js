@@ -13,4 +13,17 @@ export default Ember.Controller.extend( {
             return wave;
         });
     }),
+
+    actions: {
+        'wave-delete': function(wave) {
+            if(!confirm("Opravdu odstranit vlnu " + wave.get("caption") + "?")) {
+                return;
+            }
+
+            wave.set("deleting", true);
+            wave.destroyRecord();
+            this.get("waves").removeObject(wave);
+        },
+    },
+
 });
