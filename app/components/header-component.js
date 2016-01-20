@@ -36,5 +36,5 @@ export default Ember.Component.extend({
 	},
 	resizeBody: function() {
 		Ember.$('body').css("padding-top", Ember.$("#navbar").height()+30);
-	}.observes("session.current_user.admin")
+	}.observes("session.current_user.organisator")
 });

@@ -15,15 +15,15 @@ export default Ember.Controller.extend( {
 				self.set('in_progress', false);
 				Ember.$('#login-modal').modal('hide');
 				var store = self.get("store");
-				store.unload("task");
-				store.unload("task-detail");
-				store.unload("thread");
-				store.unload("thread-detail");
-				store.unload("post");
-				store.unload("module");
-				store.unload("module-score");
-				store.unload("achievement");
-				store.unload("task-score");
+				store.unloadAll("task");
+				store.unloadAll("task-detail");
+				store.unloadAll("thread");
+				store.unloadAll("thread-detail");
+				store.unloadAll("post");
+				store.unloadAll("module");
+				store.unloadAll("module-score");
+				store.unloadAll("achievement");
+				store.unloadAll("task-score");
 			}, function(error) {
 				self.set('in_progress', false);
 				if ("error" in error) {
