@@ -16,10 +16,11 @@
     {{#each waves as |wave|}}
         <tr style="height:45px">
             <td>{{wave.index}}</td>
-            <td>{{wave.caption}}</td>
+            <td>{{#link-to 'admin/wave-edit' wave.id}}{{wave.caption}}{{/link-to}}</td>
             <td>{{#link-to "user-profile" wave.garant}}{{wave.garant.full_name}}{{/link-to}}</td>
             <td>{{date-and-time wave.time_published 'cs'}}</td>
             <td>
+            {{#link-to "admin/wave-edit" wave.id class="btn btn-primary inline"}}Upravit{{/link-to}}
             {{#if wave.can_add}}
                 {{#link-to "admin/task-create" wave.id class="btn btn-primary inline"}}Přidat úlohu{{/link-to}}
             {{else}}

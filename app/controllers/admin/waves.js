@@ -8,7 +8,7 @@ export default Ember.Controller.extend( {
         var user = this.get("session.current_user");
         return this.get("model.waves").sortBy("id").map(function(wave) {
             if (user) {
-                wave.set("can_add", (user.get("id") === wave.get("garant.id")) || (user.get("admin")));
+                wave.set("can_add", ((user.get("id") === wave.get("garant.id")) && (new Date() < wave.get("time_published"))) || (user.get("admin")));
             }
             return wave;
         });

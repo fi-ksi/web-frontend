@@ -46,9 +46,12 @@ Router.map(function() {
   this.route('admin/graph', {path: '/admin/graph'});
   this.route('admin/school-edit', {path: '/admin/school-edit'});
   this.route('admin/user-edit', {path: '/admin/user-edit'});
-  this.route('admin/waves', {path: '/admin/waves'});
   this.route('admin/years', {path: '/admin/years'});
-  this.route('admin/vlna-edit', {path: '/admin/vlna-edit'});
+
+  this.route('admin/waves', {path: '/admin/waves'});
+  this.route('admin/wave-edit', {path: '/admin/waves/:wave_id'});
+  this.route('admin/wave-create', {path: '/admin/wave-create'});
+
   this.route('admin/achievements', {path: '/admin/achievements'});
   this.route('admin/achievement-grant', {path: '/admin/achievements/grant'});
   this.route('admin/achievement-edit', {path: '/admin/achievement-edit'});
