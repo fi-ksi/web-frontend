@@ -1,0 +1,43 @@
+<section class="container content-section" style="text-align:justify">
+    <h2>Diskuse k úlohám</h2>
+
+    <label>Filtrovat vlákna podle vlny</label>
+    {{#x-select value=wave class="form-control"}}
+      {{#each model as |wave|}}
+        {{#x-option value=wave}}{{wave.caption}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
+
+    {{#if loading}}
+        <button class="btn btn-primary disabled inline">Načítám vlákna...</button>
+    {{else}}
+        <button class="btn btn-primary inline" {{action "load"}}>Načíst vlákna</button>
+    {{/if}}
+
+
+    <table class="table table-striped table-hover-forum ">
+    <thead>
+      <tr style="height:45px">
+        <th>Název vlákna</th>
+        <th style="text-align: center;">Počet příspěvků</th>
+        <th style="text-align: center;">Počet nečtených</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{#each threads as |thread|}}
+        <tr>
+            <td>
+                <h5 class="caption-text">
+                    {{#link-to "thread" thread}}{{thread.title}}{{/link-to}}<!-- meno vlakna/ulohy - link na vlakno -->
+                </h5>
+            </td>
+            <td style="text-align: center;"><span class="badge">{{#link-to "thread" thread class="white-link"}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
+            <td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread class="white-link"}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
+        </tr>
+        {{else}}
+        <p>Žádná vlákna ve filtru.</p>
+        {{/each}}
+    </tbody>
+  </table>
+
+</section>
