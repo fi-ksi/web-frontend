@@ -14,7 +14,7 @@ export default Ember.Controller.extend( {
 
             this.get("model").save().then(function(){
                 self.set("save_status", "Ročník uložen");
-                self.set("saving", false)
+                self.set("saving", false);
                 self.get("store").unloadAll("year");
                 self.transitionTo("admin/years");
             }, function(){
