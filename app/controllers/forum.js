@@ -2,6 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     session: Ember.inject.service(),
+
+    threads: Ember.computed.sort("model", function(a, b) {
+        console.log(Number(a.get("id")) + " : " + Number(b.get("id")));
+        // 0 je hack na zobrazeni noveho vlakna nahore -- nove vlakno v momente rekalkulace teto property ma id 0, protoze se id jeste nestihlo natahnout z backendu
+        if ((Number(a.get("id")) < Number(b.get("id"))) || (Number(b.get("id")) === 0)) { return 1; }
+        if ((Number(a.get("id")) > Number(b.get("id"))) || (Number(a.get("id")) === 0)) { return -1; }
+        return 0;
+    }),
+
     actions: {
         new_thread: function() {
             this.set("new_thread", !this.get("new_thread"));
@@ -29,8 +38,8 @@ export default Ember.Controller.extend({
         	}
 
             var thread = self.store.createRecord("thread", {
-                title: self.get("thread_name"), 
-                public: true         
+                title: self.get("thread_name"),
+                public: true
             });
 
             thread.save().then(function() {
