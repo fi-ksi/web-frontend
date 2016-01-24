@@ -20,7 +20,7 @@
 
       <div class="form-group">
         <label>Čas zveřejnění:</label>
-        {{bs-datetimepicker date=model.wave.time_published format='DD.MM.YYYY hh:mm'}}
+        {{bs-datetimepicker date=model.wave.time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut model.wave.time_published)) forceDateOutput=true}}
         <div class="alert alert-info" style="margin-top:20px">Po čase zveřejnění mohou vlnu upravovat pouze administrátoři!</div>
       </div>
 
