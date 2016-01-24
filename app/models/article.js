@@ -7,6 +7,7 @@ export default DS.Model.extend( {
 	picture: DS.attr("string"),
 	body: DS.attr("string"),
 	published: DS.attr("boolean"),
+	resource: DS.attr("string"),
 
 	published_str: Ember.computed("published", function() {
 		if (this.get("published")) {

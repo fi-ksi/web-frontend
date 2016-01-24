@@ -34,6 +34,7 @@ Router.map(function() {
   this.route('login', { path: '/prihlaseni'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
+  this.route('admin/article-create', {path: '/admin/article-create'});
   this.route('admin/article-edit', {path: '/admin/articles/:article_id'});
 
   this.route('admin/correcting', {path: '/admin/opravovani'});

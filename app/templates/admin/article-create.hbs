@@ -1,33 +1,37 @@
-<section id="admin-article-edit" class="container content-section" style="text-align:justify">
-  <h2>Úprava článku</h2>
+<section id="admin-article-create" class="container content-section" style="text-align:justify">
+  <h2>Nový článek</h2>
   {{#link-to "admin/articles"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
       <div class="form-group">
         <label>Titulek:</label>
-        {{input value=model.title class="form-control" required=true}}
+        {{input value=title class="form-control" required=true}}
       </div>
       <div class="form-group">
         <label>Obsah:</label>
-        {{text-editor value=model.body}}
+        {{text-editor value=body}}
       </div>
 
       <div class="form-group">
         <label>Termín publikace:</label>
-        {{bs-datetimepicker date=model.time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut model.time_published)) forceDateOutput=true}}
+        {{bs-datetimepicker date=time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut time_published)) forceDateOutput=true}}
       </div>
 
       <div class="form-group">
-        {{input type="checkbox" checked=model.published}} Zveřejněn
+        {{input type="checkbox" checked=published}} Zveřejněn
       </div>
 
       <div class="form-group">
         <label>URL obrázku (později bude zpracováno hezčeji):</label>
-        {{input value=model.picture class="form-control" required=true}}
+        {{input value=picture class="form-control" required=true}}
       </div>
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
+        {{#unless saving}}
+          <button class="btn btn-primary inline" id="save" {{action "article-create"}}>Vytvořit</button>
+        {{else}}
+          <button class="btn btn-primary inline disabled" id="save-disabled">Vytvářím článek...</button>
+        {{/unless}}
       </div>
 
       {{#if error_status}}
