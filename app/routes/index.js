@@ -9,7 +9,7 @@ export default Ember.Route.extend(ResetScroll, {
                 _start: 0,
                 _limit: this.get("articles_limit")
             }),
-            organisators: this.store.findQuery("user", { filter: "organisators", sort: "score" } )
+            organisators: this.store.query("user", { filter: "organisators", sort: "score" } )
         });
     },
 });

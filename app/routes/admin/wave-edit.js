@@ -5,7 +5,7 @@ export default Ember.Route.extend(ResetScroll, {
     model: function(params) {
         return Ember.RSVP.hash({
             wave: this.store.find("wave", params["wave_id"]),
-            users: this.store.findQuery("user", { filter: "organisators" } )
+            users: this.store.query("user", { filter: "organisators" } )
         });
     },
     title: "KSI: Úprava vlny",

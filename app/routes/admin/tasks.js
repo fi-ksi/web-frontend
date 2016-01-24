@@ -6,7 +6,7 @@ export default Ember.Route.extend(ResetScroll, {
 		return Ember.RSVP.hash({
 			tasks: this.store.findAll("atask"),
 			waves: this.store.findAll("wave"),
-			users: this.store.findQuery("user", { filter: "organisators" } )
+			users: this.store.query("user", { filter: "organisators" } )
 		});
 	},
 	title: "KSI: Správa úloh"
