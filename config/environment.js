@@ -65,6 +65,9 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     };
     ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
+    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
+    ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
   }
 
   if (environment === 'development') {
