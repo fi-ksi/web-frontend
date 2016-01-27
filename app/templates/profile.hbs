@@ -16,6 +16,10 @@
 			{{#if model.participant}}
 				<div class="panel panel-profile" style="margin-top:30px">
 					<div class="panel-body">
+						{{#if model.email}}
+							<h6><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{model.email}}">{{model.email}}</a></h6>
+							<br>
+						{{/if}}
 						<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
 						<br>
 						<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{country}}</h6>
