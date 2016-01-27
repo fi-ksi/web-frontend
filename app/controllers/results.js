@@ -1,6 +1,8 @@
 import Ember from "ember";
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
+    session: Ember.inject.service(),
     results: Ember.computed("model", function() {
         var groups = new Map();
         var score_list = [];
@@ -41,7 +43,36 @@ export default Ember.Controller.extend({
                 result.push(o);
             });
             position += list.length;
-        }); 
-        return result;     
-    })
+        });
+        return result;
+    }),
+
+    actions: {
+        'export-users': function() {
+            var self = this;
+            this.set('export_loading', true);
+            this.get('session').authorize('authorizer:oauth2', function(header, content) {
+                var request = new XMLHttpRequest();
+                request.open("GET", config.API_LOC + "/admin/user-export", true);
+                request.responseType = "blob";
+                request.setRequestHeader(header, content);
+                request.onload = function() {
+                    self.set('export_loading', false);
+                    if (this.status === 200) {
+                        var file = window.URL.createObjectURL(this.response);
+                        var a = document.createElement("a");
+                        a.href = file;
+                        a.download = this.response.name || "ksi_resitele.csv";
+                        document.body.appendChild(a);
+                        a.click();
+                        window.onfocus = function() {
+                            document.body.removeChild(a);
+                        };
+                    }
+                };
+                request.send();
+            });
+        }
+    },
+
 });
