@@ -36,7 +36,7 @@
                 <button class="btn btn-primary disabled inline" title="Přidat úlohu může garant vlny nebo administrátor.">Přidat úlohu</button>
             {{/if}}
 
-            {{#if session.current_user.admin}}
+            {{#if wave.can_delete}}
                 {{#if wave.deleting}}
                     <button class="btn btn-primary inline disabled">Mažu...</button>
                 {{else}}
