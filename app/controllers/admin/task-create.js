@@ -11,6 +11,8 @@ export default Ember.Controller.extend( {
 		});
 	}),
 
+    author: Ember.computed.alias('model.orgs.firstObject'),
+
 	actions: {
 		'task-save': function() {
 			var self = this;
