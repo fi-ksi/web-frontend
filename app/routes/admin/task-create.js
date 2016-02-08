@@ -21,6 +21,7 @@ export default Ember.Route.extend(ResetScroll, {
 			this.controller.set('git_path', "");
 			this.controller.set('git_commit', "");
 			this.controller.set('saving', false);
+            this.controller.set("error_status", "");
 		}
 	}
 });

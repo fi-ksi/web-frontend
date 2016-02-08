@@ -15,6 +15,7 @@ export default Ember.Controller.extend( {
 		'task-save': function() {
 			var self = this;
 
+            this.set("error_status", "");
 			this.set("saving", true);
 
 			this.get("store").createRecord('atask', {
@@ -27,8 +28,9 @@ export default Ember.Controller.extend( {
 				git_commit: this.get("git_commit")
 			}).save().then(function() {
 				self.transitionToRoute('admin/tasks');
-			}, function () {
-				self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+			}, function() {
+                self.set("saving", false);
+				self.set("error_status", "Chybová odpověď serveru! Kontaktuj administrátora.");
 			});
 		}
 	},

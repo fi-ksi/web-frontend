@@ -41,6 +41,11 @@
           <button class="btn btn-primary inline disabled" id="save-disabled">Vytvářím úlohu, tato operace může trvat několik sekund...</button>
         {{/unless}}
       </div>
+
+      {{#if error_status}}
+        <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
+      {{/if}}
+
     </div>
   </div>
 </section>
