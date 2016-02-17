@@ -24,6 +24,7 @@
 		<th>ID</th>
 		<th>Název</th>
 		<th>Autor</th>
+		<th>Max. bodů</th>
 		<th>Stav deploye</th>
 		<th>Poslední deploy</th>
 		<th>Akce</th>
@@ -49,6 +50,8 @@
 
 	    {{input type="checkbox" checked=task.wave.show_details}} Zobrazit detaily
 
+        | Celkem max. bodů: <strong>{{task.wave.sum_points}}</strong> (bez bonusových bodů)
+
 	    </p>
 	    </td></tr>
 	  {{/if}}
@@ -63,6 +66,7 @@
 		  <td>{{#link-to "task" task target="_blank"}}{{task.id}}{{/link-to}}</td>
 		  <td>{{#link-to "task" task target="_blank"}}{{task.title}}{{/link-to}}</td>
 		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
+		  <td>{{task.max_score}}</td>
 		  <td>{{task.deploy_status}}</td>
 		  <td>{{date-and-time task.deploy_date 'cs'}}</td>
 		  <td>

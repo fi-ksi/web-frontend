@@ -15,6 +15,9 @@ export default Ember.Controller.extend( {
         });
     }),
 
+    wave_points: Ember.computed.map('model.waves', function(wave) { return wave.get("sum_points"); }),
+    sum_points: Ember.computed.sum("wave_points"),
+
     actions: {
         'wave-delete': function(wave) {
             if(!confirm("Opravdu odstranit vlnu " + wave.get("caption") + "?")) {

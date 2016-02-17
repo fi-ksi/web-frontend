@@ -16,6 +16,7 @@
         <th>Název</th>
         <th>Garant</th>
         <th>Zveřejnení</th>
+        <th>Max. bodů</th>
         <th>Akce</th>
       </tr>
     </thead>
@@ -27,6 +28,7 @@
             <td>{{#link-to 'admin/wave-edit' wave.id}}{{wave.caption}}{{/link-to}}</td>
             <td>{{#link-to "user-profile" wave.garant}}{{wave.garant.full_name}}{{/link-to}}</td>
             <td>{{date-and-time wave.time_published 'cs'}}</td>
+            <td>{{wave.sum_points}}</td>
             <td>
             {{#link-to "admin/wave-edit" wave.id class="btn btn-primary inline"}}Upravit{{/link-to}}
 
@@ -52,6 +54,13 @@
         <p>V tomto ročníku zatím neexistují žádné vlny.</p>
     {{/each}}
 
+    <tr style="height:35px; background-color: #FFFFDD;">
+        <td colspan=4>&#8721;</td>
+        <td colspan=2><strong>{{sum_points}}</strong></td>
+    </tr>
+
     </tbody>
   </table>
+
+  <div class="alert alert-warning"><strong>Upozornění:</strong> Maximum bodů nezahrnuje bonusové body.</div>
 </section>

@@ -13,6 +13,7 @@
       <tr style="height:45px">
         <th>Index</th>
         <th>Ročník</th>
+        <th>Max. bodů</th>
         <th>Akce</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
         <tr style="height:45px">
             <td>{{year.index}}</td>
             <td>{{year.year}}</td>
+            <td>{{year.sum_points}}</td>
 
             <td>
 
@@ -44,4 +46,6 @@
 
     </tbody>
   </table>
+
+  <div class="alert alert-warning"><strong>Upozornění:</strong> Maximum bodů nezahrnuje bonusové body.</div>
 </section>

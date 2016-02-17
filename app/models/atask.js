@@ -13,6 +13,7 @@ export default DS.Model.extend({
 	deploy_date: DS.attr("date"),
 	deploy_status: DS.attr("string"),
 
+    max_score: DS.attr("number"),
 	wave: DS.belongsTo("wave", { async: true }),
 
 	deploy_status_default: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "default"; }),

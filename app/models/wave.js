@@ -7,4 +7,5 @@ export default DS.Model.extend( {
 	'time_published': DS.attr("date"),
 	'year': DS.belongsTo("year", { async: true }),
 	'index': DS.attr("number"),
+    'sum_points': DS.attr("number"),
 });
