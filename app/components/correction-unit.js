@@ -6,11 +6,8 @@ export default Ember.Component.extend({
     ident: Ember.computed("model", function() {
        return this.get("model.task_id").id + "_" + this.get("model.user.id");
     }),
-    achievements: Ember.computed(function() {
-        return this.get("store").find("achievement");
-    }),
     save_changes: function() {
-        
+
     },
     statemsg: "Uloženo",
     actions: {

@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     load_threads: function() {
         var self = this;
 
-        if (self.get("wave") == undefined) {
+        if (self.get("wave") === undefined) {
             self.set("threads", []);
             return;
         }

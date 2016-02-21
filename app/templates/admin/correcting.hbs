@@ -57,37 +57,60 @@
         </div>
       </div>
 
-      <div class="col-xs-12" style="margin-top: 20px">
-        {{#if wrong-filter}}
-          {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitle, úlohu nebo oboje!"}}
-        {{/if}}
+      {{#if wrong-filter}}
+         <div class="col-xs-12" style="margin-top: 20px">
+             {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitele, úlohu nebo oboje!"}}
+         </div>
+      {{/if}}
+
+      <div class="col-md-3">
+          <button class="btn btn-primary" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
+        {{if filter_in_progress "Načítám, vyčkej pár vteřin..." "Zobrazit"}}
+          </button>
       </div>
-      <button class="btn btn-primary" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
-        {{if filter_in_progress "Načítám" "Zobrazit"}}
-      </button>
+
+      {{#unless filter_in_progress}}
+        {{#if corrections}}
+            <div class="col-md-9">
+                <div class="alert alert-info" style="margin-top: 20px; height: 32px !important; padding: 7px !important;">
+                    <strong>{{corrections.length}}</strong> opravení |
+                    <a href="javascript:void()" {{action "all"}}>Stáhnout všechna v jednom ZIP souboru</a>
+                </div>
+            </div>
+        {{/if}}
+      {{/unless}}
     </div>
   </div>
 
   {{#unless filter_in_progress}}
     {{#if corrections}}
-      <div class="alert alert-info">Opravení v aktuálním filtru: <strong>{{corrections.length}}</strong></div>
-
       {{#if is_task_selected}}
-        <div class="alert alert-info">
-          Až budou úlohy opraveny, nezapomeň je zveřejnit!
-          <br><button class="btn btn-primary" style="width: 250px; margin-bottom:20px;" {{action "publish"}}>Zveřejnit výsledky</button> <b>{{publish_done}}</b>
-        </div>
-        <div style="margin-left:18px">
-          <br><a href="javascript:void()" {{action "all"}}>Stáhnout všechna řešení v jednom ZIP souboru</a>
+        <div class="alert alert-warning">
+          {{task.title}} :
+            {{#if publish_working}}
+                <button class="btn btn-primary disabled" style="width: 250px;">Pracuji...</button>
+            {{else}}
+              {{#if task.published}}
+                <button class="btn btn-primary" style="width: 250px;" {{action "unpublish"}}>Utajit opravení</button>
+                | Opravení zveřejněna
+              {{else}}
+                <button class="btn btn-primary" style="width: 250px;" {{action "publish"}}>Zveřejnit opravení</button>
+                | Opravení utajena
+              {{/if}}
+
+              {{#if publish_error}}| <b>{{publish_error}}</b>{{/if}}
+            {{/if}}
         </div>
       {{/if}}
     {{/if}}
 
     {{#each corrections as |corr|}}
-      {{correction-unit model=corr}}
+      {{correction-unit model=corr achievements=model.achievements orgs=model.orgs}}
       <hr>
     {{else}}
-      {{warning-general text="Pro zvolený filtr nebylo nic nalezeno!"}}
+      <div class="alert alert-warning" style="margin-top:20px; text-align: center;">
+          Zatím žádná opravení.
+      </div>
     {{/each}}
    {{/unless}}
 </section>

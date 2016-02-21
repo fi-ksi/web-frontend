@@ -4,9 +4,11 @@ import config from '../config/environment';
 export default Ember.Component.extend({
     session: Ember.inject.service(),
     store: Ember.inject.service(),
-    thread_mark_as_read_observer: function() {
+    mark_as_read: true, // pokud je komponente predano mark_as_read=false, nemarkue se precteni
+
+    thread_mark_as_read_observer: function(){
         var thread = this.get("thread");
-        if(!thread) {
+        if(!thread || !this.get("mark_as_read")) {
             return;
         }
 
@@ -21,7 +23,8 @@ export default Ember.Component.extend({
                 },
             });
         });
-    }.observes("thread"),
+    }.observes('thread', 'mark_as_read'),
+
     actions: {
         add_comment: function() {
             this.set("is_reacting", !this.get("is_reacting"));

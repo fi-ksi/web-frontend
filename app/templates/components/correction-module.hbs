@@ -1,0 +1,72 @@
+<div class="panel panel-ksi">
+<div class="panel-heading panel-heading-ksi">
+   {{parent_module.name}}
+
+    {{#if module.evaluation.general}}(souborový modul){{/if}}
+    {{#if module.evaluation.quiz}}(kvíz){{/if}}
+    {{#if module.evaluation.programming}}(programovací modul){{/if}}
+    {{#if module.evaluation.sortable}}(sortable modul){{/if}}
+    {{#if module.evaluation.input}}(input modul){{/if}}
+
+    (id {{module.module_id}})
+
+    <div style="float: right;">
+      <div style="float: left;">Opravení:&nbsp;</div>
+      <div style="float: left; margin-top: -5px;">
+          {{#x-select value=eval_id action="selectEval" class="form-control"}}
+            {{#each module.evaluations_list as |eval|}}
+                {{#x-option value=eval.id}}{{eval.id}}{{/x-option}}
+            {{/each}}
+          {{/x-select}}
+      </div>
+      <div style="float: left; margin-top: -5px; margin-left: 10px;">
+          {{#if eval_loading}}
+            <button class="btn btn-primary disabled">Načítám...</button>
+          {{else}}
+            <!-- <button class="btn btn-primary" {{action "loadEval"}}>Načíst</button> -->
+          {{/if}}
+      </div>
+    </div>
+</div>
+
+{{#if module.evaluation}}
+<div class="panel-body">
+    <div class="{{module_class}}">
+        {{#if module.evaluation.general}}
+            {{correction-general evaluation=module.evaluation}}
+            <button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+        {{/if}}
+        {{#if module.evaluation.quiz}}
+            {{correction-quiz evaluation=module.evaluation}}
+        {{/if}}
+    </div>
+
+    <div class="{{module_class}}">
+        <div class="form-group {{points_class}}">
+            <label>Body</label>
+                {{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}
+        </div>
+
+        <div class="form-group {{points_class}}">
+            <label>Opravil</label>
+            {{#x-select value=module.evaluation.corrected_by class="form-control"}}
+                {{#x-option value=null}}Nikdo{{/x-option}}
+                {{#each orgs as |org|}}
+                    {{#x-option value=org.id}}{{org.full_name}} ({{org.id}}){{/x-option}}
+                {{/each}}
+            {{/x-select}}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        {{#unless module.evaluation.general}}
+            <button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+        {{/unless}}
+        {{#if show_log}}
+            {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.evaluation.full_report}}
+        {{/if}}
+    </div>
+
+</div>
+{{/if}}
+</div>
