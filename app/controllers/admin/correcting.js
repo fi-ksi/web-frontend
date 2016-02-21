@@ -104,7 +104,8 @@ export default Ember.Controller.extend({
             self.set("corrections", p);
             self.set("publish_done", "");
             self.set("filter_in_progress", false);
-        }, function() {
+        }, function(error) {
+            console.log(error);
             self.set("filter_in_progress", false);
             alert("Nepodařilo se načíst data ze serveru!");
         });
