@@ -84,6 +84,7 @@ export default Ember.Component.extend({
                 self.set("eval_loading", false);
                 self.set("module.evaluation", p);
             }, function(err) {
+                console.log(err);
                 alert("Nepodařilo se načíst data ze serveru!");
                 self.set("eval_loading", false);
             });
