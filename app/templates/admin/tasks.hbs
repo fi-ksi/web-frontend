@@ -25,6 +25,7 @@
 		<th>Název</th>
 		<th>Autor</th>
 		<th>Max. bodů</th>
+        <th>GIT</th>
 		<th>Stav deploye</th>
 		<th>Poslední deploy</th>
 		<th>Akce</th>
@@ -67,6 +68,13 @@
 		  <td>{{#link-to "task" task target="_blank"}}{{task.title}}{{/link-to}}</td>
 		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
 		  <td>{{task.max_score}}</td>
+          <td>
+            {{#if task.git_defined}}
+                <a href="{{task.github_path}}" target="_blank">GIT</a>
+            {{else}}
+                &ndash;
+            {{/if}}
+          </td>
 		  <td>{{task.deploy_status}}</td>
 		  <td>{{date-and-time task.deploy_date 'cs'}}</td>
 		  <td>
@@ -104,8 +112,8 @@
 
 				<td></td>
 				<td>{{task.git_branch}}</td>
-				<td colspan="3">{{task.git_path}}</td>
-				<td>{{task.git_commit_short}}</td>
+				<td colspan="4">{{task.git_path}}</td>
+				<td colspan="2">{{task.git_commit_short}}</td>
 			</tr>
 		{{/if}}
 

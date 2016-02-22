@@ -28,5 +28,13 @@ export default DS.Model.extend({
 		} else {
 			return undefined;
 		}
-	})
+	}),
+
+    git_defined: Ember.computed("git_branch", "git_path", function(){
+        return this.get("git_branch") && this.get("git_path");
+    }),
+
+    github_path: Ember.computed("git_branch", "git_path", function(){
+        return "https://github.com/fi-ksi/seminar/tree/" + this.get("git_branch") + "/" + this.get("git_path");
+    }),
 });
