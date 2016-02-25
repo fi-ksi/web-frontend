@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import config from '../config/environment';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
@@ -25,7 +24,7 @@ export default Ember.Component.extend({
 
         },
 
-        v_check_stdout: function() { this.set("show_check_stdout", !this.get("show_check_stdout"))},
-        v_merge_stdout: function() { this.set("show_merge_stdout", !this.get("show_merge_stdout"))},
+        v_check_stdout: function() { this.set("show_check_stdout", !this.get("show_check_stdout")); },
+        v_merge_stdout: function() { this.set("show_merge_stdout", !this.get("show_merge_stdout")); },
     },
 });
