@@ -1,0 +1,54 @@
+<div class="form-group">
+{{#if evaluation.code}}
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Řešitelův kód</label>
+            {{code-editor content=evaluation.code.code  id=(construct-id "eval_code_code" evaluation.eval_id)}}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+             <label>Merged kód</label>
+            {{code-editor content=evaluation.code.merged  id=(construct-id "eval_code_merged" evaluation.eval_id)}}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Stdout</label>
+            {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.stdout}}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Stderr</label>
+            {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.stderr}}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <a href="javascript:void()" {{action "v_merge_stdout"}}><label>Stdout merge skriptu</label></a>
+            {{#if show_merge_stdout}}{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.merge_stdout}}{{/if}}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <a href="javascript:void()" {{action "v_check_stdout"}}><label>Stdout check skriptu</label></a>
+            {{#if show_check_stdout}}{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.check_stdout}}{{/if}}
+        </div>
+    </div>
+
+
+{{else}}
+    {{#if code_loading}}
+        <button class="btn btn-primary inline disabled">Načítám kód...</button>
+    {{else}}
+        <button class="btn btn-primary inline" {{action "loadCode"}}>Načíst řešitelův kód</button>
+    {{/if}}
+{{/if}}
+</div>

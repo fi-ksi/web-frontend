@@ -13,7 +13,7 @@
     <div style="float: right;">
       <div style="float: left;">Opravení:&nbsp;</div>
       <div style="float: left; margin-top: -5px;">
-          {{#x-select value=eval_id action="selectEval" class="form-control"}}
+          {{#x-select value=eval action="selectEval" class="form-control"}}
             {{#each module.evaluations_list as |eval|}}
                 {{#x-option value=eval.id}}{{eval.id}}{{/x-option}}
             {{/each}}
@@ -36,8 +36,13 @@
             {{correction-general evaluation=module.evaluation}}
             <button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
         {{/if}}
+
         {{#if module.evaluation.quiz}}
             {{correction-quiz evaluation=module.evaluation}}
+        {{/if}}
+
+        {{#if module.evaluation.programming}}
+            {{correction-programming evaluation=module.evaluation}}
         {{/if}}
     </div>
 

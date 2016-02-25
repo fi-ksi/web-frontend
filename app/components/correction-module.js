@@ -3,8 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     session: Ember.inject.service(),
     store: Ember.inject.service(),
+
     lastInput: undefined,
     lastCorrector: undefined,
+    eval: null,
 
     inputObserver: function() {
         if (!this.get("module.evaluation")) { return; }
@@ -61,8 +63,8 @@ export default Ember.Component.extend({
         }
     }),
 
-    eval_id: function() {
-        return this.get("module.evaluation.eval_id");
+    eval_observer: function() {
+        this.set("eval", this.get("module.evaluation.eval_id"));
     }.observes("module.evaluation.eval_id"),
 
     actions: {
@@ -74,13 +76,13 @@ export default Ember.Component.extend({
         },
 
         'loadEval': function() {
-            var eval_id = this.get("eval_id");
+            var evl_id = this.get("eval_id");
             this.set("eval_loading", true);
             this.set("module.evaluation", null);
 
             var self = this;
             //this.get("store").unloadAll("evaluation");
-            this.get("store").find("evaluation", eval_id).then(function(p) {
+            this.get("store").find("evaluation", evl_id).then(function(p) {
                 self.set("eval_loading", false);
                 self.set("module.evaluation", p);
             }, function(err) {
