@@ -17,7 +17,13 @@
 
         <div class="col-md-3">
           <label style="margin-left:20px">Vyber úlohu</label>
-          <select {{action "task_select"}} class="form-control" id="task_sel">
+          {{#x-select value=task class="form-control"}}
+            {{#x-option value=""}}Všechny úlohy{{/x-option}}
+            {{#each tasks as |t|}}
+                {{#x-option value=t}}{{t.title}}{{/x-option}}
+            {{/each}}
+          {{/x-select}}
+          <!-- <select {{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
                 <option value="{{t.id}}">
@@ -34,7 +40,7 @@
                       {{if t.published "Publikováno"}}
                 </option>
             {{/each}}
-          </select>
+          </select> -->
         </div>
 
         <div class="col-md-3">
