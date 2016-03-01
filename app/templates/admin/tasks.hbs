@@ -65,7 +65,7 @@
 		  {{if task.deploy_status_diff "#FFEFD4"}}
 		  ">
 		  <td>{{#link-to "task" task target="_blank"}}{{task.id}}{{/link-to}}</td>
-		  <td>{{#link-to "task" task target="_blank"}}{{task.title}}{{/link-to}}</td>
+		  <td>{{#link-to "task" task target="_blank"}}{{{task.title}}}{{/link-to}}</td>
 		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
 		  <td>{{task.max_score}}</td>
           <td>
