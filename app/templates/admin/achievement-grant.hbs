@@ -41,7 +41,7 @@
             {{#x-select value=task class="form-control"}}
               {{#x-option value=""}}Žádnou{{/x-option}}
               {{#each model.tasks as |task|}}
-                {{#x-option value=task.id}}{{task.title}} (id {{task.id}}){{/x-option}}
+                {{#x-option value=task.id}}{{{task.title}}} (id {{task.id}}){{/x-option}}
               {{/each}}
             {{/x-select}}
         </div>
