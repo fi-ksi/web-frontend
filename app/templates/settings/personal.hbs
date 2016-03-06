@@ -139,6 +139,22 @@
       {{/each}}
     {{/x-select}}
   </div>
+
+  <div style="margin-top:30px">
+    <h4>E-mailové notifikace</h4>
+    <hr>
+  </div>
+
+  <div class="form-group">
+    {{input type="checkbox" checked=model.notify_eval}}
+    <label for="description">Notifikovat o opravení mého řešení.</label>
+
+    <br>
+
+    {{input type="checkbox" checked=model.notify_response}}
+    <label for="description">Notifikovat o reakci na můj komentář.</label>
+  </div>
+
   {{#if general_error}}
     {{warning-general text=general_error}}
   {{/if}}

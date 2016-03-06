@@ -52,6 +52,9 @@ export default DS.Model.extend( {
 
     tshirt_size: DS.attr("string"),
 
+    notify_eval: DS.attr("boolean"),
+    notify_response: DS.attr("boolean"),
+
     // Relevant only when organisator
     role: DS.attr("string", {defaultValue: "participant"}),
     admin: Ember.computed("role", function(){
