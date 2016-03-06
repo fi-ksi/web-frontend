@@ -1,5 +1,14 @@
 <section class="container content-section" style="text-align:justify; margin-top: 40px;height:500px;">
-	<h1>Něco se rozbilo...</h1>
-	<p>Informuj prosím orgy pomocí zpětné vazby nebo e-mailu na <a href="mailto:ksi@fi.muni.cz">ksi@fi.muni.cz</a>, opravíme to.<br>Díky!</p>
-	{{model}}
+    {{#if model.errors}}
+        {{#each model.errors as |e|}}
+            <h1>{{e.status}} {{e.title}}</h1>
+            <h3>{{e.detail}}</h3>
+        {{/each}}
+
+        <p>Pokud si myslíš, že by tu tato chyba neměla být, informuj orgy pomocí zpětné vazby nebo e-mailu na <a href="mailto:ksi@fi.muni.cz">ksi@fi.muni.cz</a>.</p>
+    {{else}}
+        <h1>Něco se rozbilo...</h1>
+        {{model}}
+        <p>Informuj prosím orgy pomocí zpětné vazby nebo e-mailu na <a href="mailto:ksi@fi.muni.cz">ksi@fi.muni.cz</a>, opravíme to.<br>Díky!</p>
+    {{/if}}
 </section>

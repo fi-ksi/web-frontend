@@ -26,7 +26,9 @@ export default Ember.Controller.extend(UserSettings, {
                 school_country: this.get("model.school_country"),
                 school_finish: this.get("model.school_finish"),
                 short_info: this.get("model.short_info"),
-                tshirt_size: this.get("model.tshirt_size")
+                tshirt_size: this.get("model.tshirt_size"),
+                notify_eval: this.get("model.notify_eval"),
+                notify_response: this.get("model.notify_response")
             };
 
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
