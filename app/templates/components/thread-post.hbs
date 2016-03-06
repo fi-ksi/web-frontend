@@ -6,8 +6,7 @@
     </div>
     <div class="media-body">
       <div class="discussion-caption">
-        {{#link-to "user-profile" model.author}}{{model.author.full_name}}{{/link-to}}, {{model.author.role_str}}, {{date-and-time model.published_at 'cs'}}
-        {{if model.is_new ", nové"}}
+        {{#link-to "user-profile" model.author}}{{model.author.full_name}}{{/link-to}}, {{model.author.role_str}}, {{date-and-time model.published_at 'cs'}}{{if model.is_new ", nové"}}
         {{#if allow_edit}}
           {{#unless is_editing}}
             <button class="btn-xs btn-primary"  style="border:none; margin-top: 10px;" {{action "edit"}}>Upravit</button>
