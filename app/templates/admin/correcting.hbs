@@ -121,6 +121,13 @@
 
               {{#if task.sent_cnt}}| E-mail odeslán {{task.sent_cnt}} uživatelům.{{/if}}
 
+              {{#if task.sent_error}}
+                <div class="alert alert-danger" style="margin-top: 10px;">
+                    Chyba při zpracování e-mailů, kontaktuj administrátora:
+                    {{{task.sent_error}}}
+                </div>
+              {{/if}}
+
             {{/unless}}
           </div>
 
