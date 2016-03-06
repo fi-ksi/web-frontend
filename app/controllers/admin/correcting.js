@@ -252,5 +252,33 @@ export default Ember.Controller.extend({
                 request.send();
             });
         },
+
+        'send-email': function() {
+            if(!confirm("Opravdu odeslat informační e-mail všem, kteří odevzdali úlohu "+this.get("task.title")+"?")) {
+                return;
+            }
+
+            var self = this;
+            self.set("email_working", true);
+            self.set("task.sent_cnt", undefined);
+            this.get('session').authorize('authorizer:oauth2', function(header, h) {
+                    Ember.$.ajax({
+                        url: config.API_LOC + "/admin/correctionsEmail/" + self.get("task.id"),
+                        type: 'PUT',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(header, h);
+                        },
+                        success: function(data) {
+                            self.set("task.sent_cnt", data['count']);
+                            self.set("email_working", false);
+                        },
+                        error: function() {
+                            self.set("email_working", false);
+                            alert("Chyba backendu, kontaktuj administrátora!");
+                        }
+                    });
+            });
+
+        },
     }
 });
