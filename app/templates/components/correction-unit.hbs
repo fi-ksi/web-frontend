@@ -34,7 +34,7 @@
                 <select id="a_{{ident}}" class="form-control">
                   <option value="">Vyber trofej pro přidání</option>
                   {{#each achievements as |ach|}}
-                    <option value="{{ach.id}}">{{ach.title}}</option>
+                    <option value="{{ach.id}}">{{{ach.title}}}</option>
                   {{/each}}
                 </select>
             </div>

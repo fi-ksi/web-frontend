@@ -13,7 +13,7 @@
      {{#each model as |achievement|}}
         <tr style="height: 45px">
             <td><img src="{{achievement.picture_r}}" style="height: 25px;" align="center"></td>
-            <td>{{achievement.title}}</td>
+            <td>{{{achievement.title}}}</td>
             <td><!-- {{#link-to "admin/achievement-edit" article class="btn btn-primary inline"}}Upravit{{/link-to}} -->
                 <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
                 {{#if session.current_user.admin}}
