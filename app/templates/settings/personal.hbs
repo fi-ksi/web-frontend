@@ -112,7 +112,7 @@
     <label for="year-maturita">Rok maturity:</label>
     {{#x-select value=model.school_finish class="form-control" required=true}}
       {{#each maturita_year key="@index" as |item|}}
-        {{#x-option value=item selected=(is-equal item model.school_finish)}}
+        {{#x-option value=item}}
           {{item}}
         {{/x-option}}
       {{/each}}
