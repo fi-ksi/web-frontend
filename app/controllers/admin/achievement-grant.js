@@ -41,9 +41,15 @@ export default Ember.Controller.extend( {
         'achievement-grant': function(){
             var self = this;
 
-            self.set("saving", true);
             self.set("grant_error", "");
             self.set("grant_status", "");
+
+            if (this.get("selected_users").length === 0) {
+                alert("Není vybrán uživatel!\nUživatele je potřeba přidat pomocí tlačítka 'Přidat uživatele'.");
+                return;
+            }
+
+            self.set("saving", true);
 
             self.get('controllers.admin/users').set('users_plain', []);
 
