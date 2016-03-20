@@ -16,7 +16,9 @@ export default Ember.Controller.extend( {
     }),
 
     wave_points: Ember.computed.map('model.waves', function(wave) { return wave.get("sum_points"); }),
+    wave_tasks: Ember.computed.map('model.waves', function(wave) { return wave.get("tasks_cnt"); }),
     sum_points: Ember.computed.sum("wave_points"),
+    sum_tasks_cnt: Ember.computed.sum("wave_tasks"),
 
     actions: {
         'wave-delete': function(wave) {
