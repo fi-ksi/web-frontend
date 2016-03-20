@@ -3,9 +3,11 @@ import Ember from "ember";
 import config from '../config/environment';
 
 export default DS.Model.extend( {
+    active: DS.attr("boolean"),
     title: DS.attr("string"),
     picture: DS.attr("string"),
     description: DS.attr("string"),
+    persistent: DS.attr("boolean"),
 
     picture_r: Ember.computed("picture", function() {
         return config.API_LOC + this.get("picture");
