@@ -22,7 +22,7 @@
       </div>
 
       <div class="form-group">
-        <label>URL obrázku (později bude zpracováno hezčeji):</label>
+        <label>URL obrázku:</label>
         {{input value=model.picture class="form-control" required=true}}
       </div>
 
@@ -31,7 +31,7 @@
             <h3>Přiložené soubory</h3>
             {{content-component model=model.content}}
         {{else}}
-            <p>K&nbsp;článku není přiložen žádný content.</p>
+            <label>K&nbsp;článku není přiložen žádný content.</label>
         {{/if}}
       </div>
 

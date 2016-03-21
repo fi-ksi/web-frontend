@@ -23,7 +23,7 @@ export default Ember.Controller.extend( {
             this.get("store").createRecord('article', {
                 title: this.get("title"),
                 time_published: this.get("time_published"),
-                picture: pict,
+                picture: null,
                 body: this.get("body"),
                 published: this.get("published"),
                 resource: null,

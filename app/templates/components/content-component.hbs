@@ -1,6 +1,6 @@
 <!-- Content jako seznam souboru -->
 {{#if type_list}}
-    <div class="form-group list">
+    <div class="list">
     <ul>
     {{#each files as |file|}}
         <li class="{{if file.selected 'selected'}}">
@@ -26,19 +26,23 @@
 
 <!-- Content jako galerie -->
 {{#if type_gallery}}
-    <div class="form-group gallery" align="center">
+    <div class="gallery" align="center">
     {{#each files as |file|}}
         <div class="col-xs-12 col-sm-4 col-md-3 {{if file.selected 'selected'}}" style="margin-bottom: 20px; padding-bottom: 5px; height: 225px;">
-            <a href="{{endpoint}}{{file.file}}" target="_blank"><img src="{{endpoint}}{{file.file}}" title="{{file.file}}" alt="{{file.file}}" style="max-width: 200px; max-height: 200px;"></a>
-            {{#unless file.selected}}
-                {{#if file.deleting}}
-                    <button class="btn-xs btn-primary disabled">Mažu...</button>
-                {{else}}
-                    <button class="btn-xs btn-primary" {{action "delete_file" file}}>Smazat</button>
-                {{/if}}
+            <div>
+                <a href="{{endpoint}}{{file.file}}" target="_blank"><img src="{{endpoint}}{{file.file}}" title="{{file.file}}" alt="{{file.file}}" style="max-width: 200px; max-height: 200px;"></a>
+            </div>
+            <div style="float: top;">
+                {{#unless file.selected}}
+                    {{#if file.deleting}}
+                        <button class="btn-xs btn-primary disabled">Mažu...</button>
+                    {{else}}
+                        <button class="btn-xs btn-primary" {{action "delete_file" file}}>Smazat</button>
+                    {{/if}}
 
-                {{#if selectable}}<button class="btn-xs btn-primary" {{action "select" file}}>Vybrat</button>{{/if}}
-            {{/unless}}
+                    {{#if selectable}}<button class="btn-xs btn-primary" {{action "select" file}}>Vybrat</button>{{/if}}
+                {{/unless}}
+            </div>
         </div>
     {{else}}
         <p>Zatím žádné soubory</p>
