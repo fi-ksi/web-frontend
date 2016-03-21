@@ -27,8 +27,12 @@
       </div>
 
       <div class="form-group">
-        <h3>Přiložené soubory</h3>
-        {{content-component model=model.content}}
+        {{#if model.content}}
+            <h3>Přiložené soubory</h3>
+            {{content-component model=model.content}}
+        {{else}}
+            <p>K&nbsp;článku není přiložen žádný content.</p>
+        {{/if}}
       </div>
 
 
