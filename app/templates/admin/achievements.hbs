@@ -1,6 +1,6 @@
 <section id="admin-achievement" class="container content-section" style="text-align:justify">
   <h2>Správa trofejí</h2>
-  <!-- {{#link-to "admin/ahievement-creare" class="btn btn-primary inline"}}Nová trofej{{/link-to}} -->
+  {{#link-to "admin/achievement-create" class="btn btn-primary inline"}}Nová trofej{{/link-to}}
 
     <h3>Trofeje v&nbsp;aktuálním ročníku</h3>
        <table class="table table-striped">
@@ -16,7 +16,7 @@
        {{#each achs_current as |achievement|}}
             <tr style="height: 45px">
                 <td><img src="{{achievement.picture}}" style="height: 25px;" align="center"></td>
-                <td>{{{achievement.title}}}</td>
+                <td>{{#link-to "admin/achievement-edit" achievement.id}}{{{achievement.title}}}{{/link-to}}</td>
                 <td>{{#link-to "admin/achievement-edit" achievement.id class="btn btn-primary inline"}}Upravit{{/link-to}}
                     <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
                     {{#if session.current_user.admin}}
@@ -51,7 +51,7 @@
          {{#each achs_persistent as |achievement|}}
             <tr style="height: 45px">
                 <td><img src="{{achievement.picture}}" style="height: 25px;" align="center"></td>
-                <td>{{{achievement.title}}}</td>
+                <td>{{#link-to "admin/achievement-edit" achievement.id}}{{{achievement.title}}}{{/link-to}}</td>
                 <td>{{#link-to "admin/achievement-edit" achievement.id class="btn btn-primary inline"}}Upravit{{/link-to}}
                     <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
                     {{#if session.current_user.admin}}

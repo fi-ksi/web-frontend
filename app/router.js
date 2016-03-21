@@ -62,6 +62,7 @@ Router.map(function() {
   this.route('admin/achievements', {path: '/admin/achievements'});
   this.route('admin/achievement-grant', {path: '/admin/achievements/grant'});
   this.route('admin/achievement-edit', {path: '/admin/achievement-edit/:ach_id'});
+  this.route('admin/achievement-create', {path: '/admin/achievement-create'});
 
   this.route('admin/forum', { path: '/admin/forum'});
 

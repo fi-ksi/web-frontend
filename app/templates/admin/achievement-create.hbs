@@ -1,0 +1,38 @@
+<section id="admin-achievement-create" class="container content-section" style="text-align:justify">
+  <h2>Nová trofej</h2>
+  {{#link-to "admin/achievements"}}zpět na přehled{{/link-to}}
+  <div class="panel panel-ksi" style="margin-top:20px">
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Název:</label>
+        {{input class="form-control" value=title}}
+      </div>
+
+      <div class="form-group">
+        <label>Popis:</label>
+        {{text-editor value=description}}
+      </div>
+
+      <div class="form-group">
+        {{input type="checkbox" checked=persistent}} Perzistentní
+      </div>
+
+      <div class="form-group">
+        <h3>Obrázek</h3>
+        {{content-component model=model type='gallery' selectable=true selected=picture on_select="ach_select"}}
+      </div>
+
+      <div class="row" style="margin-left:0px; margin-top:20px">
+        {{#if saving}}
+            <button class="btn btn-primary inline disabled">Vytvářím...</button>
+        {{else}}
+            <button class="btn btn-primary inline" {{action "ach-create"}}>Vytvořit</button>
+        {{/if}}
+      </div>
+
+      {{#if save_status}}
+        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
+      {{/if}}
+    </div>
+  </div>
+</section>
