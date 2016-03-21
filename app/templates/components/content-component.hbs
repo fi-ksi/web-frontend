@@ -1,0 +1,78 @@
+<!-- Content jako seznam souboru -->
+{{#if type_list}}
+    <div class="form-group list">
+    <ul>
+    {{#each files as |file|}}
+        <li class="{{if file.selected 'selected'}}">
+            <strong><a href="{{endpoint}}{{file.file}}" target="_blank">{{endpoint}}{{file.file}}</a></strong>
+
+            {{#unless file.selected}}
+                {{#if file.deleting}}
+                    <button class="btn-xs btn-primary disabled">Mažu...</button>
+                {{else}}
+                    <button class="btn-xs btn-primary" {{action "delete_file" file}}>Smazat</button>
+                {{/if}}
+
+                {{#if selectable}}<button class="btn-xs btn-primary" {{action "select" file}}>Vybrat</button>{{/if}}
+            {{/unless}}
+        </li>
+    {{else}}
+        <p>Zatím žádné soubory</p>
+    {{/each}}
+    </ul>
+    </div>
+{{/if}}
+
+
+<!-- Content jako galerie -->
+{{#if type_gallery}}
+    <div class="form-group gallery" align="center">
+    {{#each files as |file|}}
+        <div class="col-xs-12 col-sm-4 col-md-3 {{if file.selected 'selected'}}" style="margin-bottom: 20px; padding-bottom: 5px; height: 225px;">
+            <a href="{{endpoint}}{{file.file}}" target="_blank"><img src="{{endpoint}}{{file.file}}" title="{{file.file}}" alt="{{file.file}}" style="max-width: 200px; max-height: 200px;"></a>
+            {{#unless file.selected}}
+                {{#if file.deleting}}
+                    <button class="btn-xs btn-primary disabled">Mažu...</button>
+                {{else}}
+                    <button class="btn-xs btn-primary" {{action "delete_file" file}}>Smazat</button>
+                {{/if}}
+
+                {{#if selectable}}<button class="btn-xs btn-primary" {{action "select" file}}>Vybrat</button>{{/if}}
+            {{/unless}}
+        </div>
+    {{else}}
+        <p>Zatím žádné soubory</p>
+    {{/each}}
+    </div>
+{{/if}}
+
+
+<div class="form-group">
+    <div class="fileUpload btn btn-primary" {{action "select_files"}}>
+        <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+        <span>Přidat soubory</span>
+    </div>
+
+    {{file-input multiple=true class="upload" endpoint=upload_endpoint id=(construct-id "c-upload" model.id) file_list="file_list" status="status" upload_finished="upload_finished" upload_failed="upload_failed" progress="progress" actionReceiver=f_input}}
+
+    {{#if to_upload}}
+        <br>
+        <label>K&nbsp;nahrání:</label>
+        <ul>
+            {{#each to_upload as |file|}}
+                <li>{{file}}</li>
+            {{/each}}
+        </ul>
+        <button class="btn btn-primary" {{action 'submit'}}>Nahrát soubory</button>
+    {{/if}}
+    {{#if in_progress}}
+        <div style="margin-top:20px">
+            {{info-general text=progress_msg}}
+        </div>
+    {{/if}}
+    {{#if general_error}}
+        <div style="margin-top:20px">
+            {{warning-general text=general_error}}
+        </div>
+    {{/if}}
+</div>
