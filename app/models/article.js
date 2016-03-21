@@ -8,6 +8,7 @@ export default DS.Model.extend( {
 	body: DS.attr("string"),
 	published: DS.attr("boolean"),
 	resource: DS.attr("string"),
+    content: DS.belongsTo("content", { async: true }),
 
 	published_str: Ember.computed("published", function() {
 		if (this.get("published")) {

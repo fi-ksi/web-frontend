@@ -26,6 +26,12 @@
         {{input value=model.picture class="form-control" required=true}}
       </div>
 
+      <div class="form-group">
+        <h3>Přiložené soubory</h3>
+        {{content-component model=model.content}}
+      </div>
+
+
       <div class="row" style="margin-left:0px; margin-top:20px">
         <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
       </div>
