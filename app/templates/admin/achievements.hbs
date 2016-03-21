@@ -1,36 +1,75 @@
 <section id="admin-achievement" class="container content-section" style="text-align:justify">
   <h2>Správa trofejí</h2>
   <!-- {{#link-to "admin/ahievement-creare" class="btn btn-primary inline"}}Nová trofej{{/link-to}} -->
-  <table class="table table-striped">
-    <thead>
-      <tr style="height:45px">
-        <th>Obrázek</th>
-        <th>Název</th>
-        <th>Akce</th>
-      </tr>
-    </thead>
-    <tbody>
-     {{#each model as |achievement|}}
-        <tr style="height: 45px">
-            <td><img src="{{achievement.picture_r}}" style="height: 25px;" align="center"></td>
-            <td>{{{achievement.title}}}</td>
-            <td><!-- {{#link-to "admin/achievement-edit" article class="btn btn-primary inline"}}Upravit{{/link-to}} -->
-                <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
-                {{#if session.current_user.admin}}
-                    {{#if achievement.deleting}}
-                        <button class="btn btn-primary inline disabled">Mažu...</button>
+
+    <h3>Trofeje v&nbsp;aktuálním ročníku</h3>
+       <table class="table table-striped">
+        <thead>
+          <tr style="height:45px">
+            <th>Obrázek</th>
+            <th>Název</th>
+            <th>Akce</th>
+          </tr>
+        </thead>
+        <tbody>
+
+       {{#each achs_current as |achievement|}}
+            <tr style="height: 45px">
+                <td><img src="{{achievement.picture}}" style="height: 25px;" align="center"></td>
+                <td>{{{achievement.title}}}</td>
+                <td>{{#link-to "admin/achievement-edit" achievement.id class="btn btn-primary inline"}}Upravit{{/link-to}}
+                    <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
+                    {{#if session.current_user.admin}}
+                        {{#if achievement.deleting}}
+                            <button class="btn btn-primary inline disabled">Mažu...</button>
+                        {{else}}
+                            <button class="btn btn-primary inline" {{action "achievement-delete" achievement}}>Smazat</button>
+                        {{/if}}
                     {{else}}
-                        <button class="btn btn-primary inline" {{action "achievement-delete" achievement}}>Smazat</button>
+                        <button class="btn btn-primary inline disabled" title="Trofej může smazat pouze administrátor">Smazat</button>
                     {{/if}}
-                {{else}}
-                    <button class="btn btn-primary inline disabled" title="Trofej může smazat pouze administrátor">Smazat</button>
-                {{/if}}
-            </td>
-        </tr>
-     {{else}}
-        <p>V aktuálním ročníku KSI zatím nejsou žádné trofeje.</p>
-     {{/each}}
-    </tbody>
-  </table>
+                </td>
+            </tr>
+         {{else}}
+            <p>V aktuálním ročníku KSI zatím nejsou žádné trofeje.</p>
+         {{/each}}
+
+        </tbody>
+      </table>
+
+     <h3>Perzistentní trofeje</h3>
+       <table class="table table-striped">
+        <thead>
+          <tr style="height:45px">
+            <th>Obrázek</th>
+            <th>Název</th>
+            <th>Akce</th>
+          </tr>
+        </thead>
+        <tbody>
+
+         {{#each achs_persistent as |achievement|}}
+            <tr style="height: 45px">
+                <td><img src="{{achievement.picture}}" style="height: 25px;" align="center"></td>
+                <td>{{{achievement.title}}}</td>
+                <td>{{#link-to "admin/achievement-edit" achievement.id class="btn btn-primary inline"}}Upravit{{/link-to}}
+                    <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
+                    {{#if session.current_user.admin}}
+                        {{#if achievement.deleting}}
+                            <button class="btn btn-primary inline disabled">Mažu...</button>
+                        {{else}}
+                            <button class="btn btn-primary inline" {{action "achievement-delete" achievement}}>Smazat</button>
+                        {{/if}}
+                    {{else}}
+                        <button class="btn btn-primary inline disabled" title="Trofej může smazat pouze administrátor">Smazat</button>
+                    {{/if}}
+                </td>
+            </tr>
+         {{else}}
+            <p>Žádné perzistentní trofeje.</p>
+         {{/each}}
+ 
+        </tbody>
+      </table>
 </section>
 

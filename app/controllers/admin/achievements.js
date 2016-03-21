@@ -4,6 +4,9 @@ export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
 
+    achs_persistent: Ember.computed.filter('model', function(ach) { return ach.get("persistent"); } ),
+    achs_current: Ember.computed.filter('model', function(ach) { return !ach.get("persistent"); } ),
+
     actions: {
         'achievement-delete': function(achievement) {
             if(!confirm("Opravdu odstranit trofej " + achievement.get("title") + " a veškerá její přidělení?")) {

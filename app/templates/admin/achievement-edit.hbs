@@ -5,30 +5,34 @@
     <div class="panel-body">
       <div class="form-group">
         <label>Název:</label>
-        <input type="text" class="form-control">
+        {{input class="form-control" value=model.achievement.title}}
       </div>
+
       <div class="form-group">
         <label>Popis:</label>
-        {{text-editor value=articleEditEditor}}
+        {{text-editor value=model.achievement.description}}
       </div>
 
       <div class="form-group">
-        <label>Obrázek:</label>
-        <select>
-         <option><img src="http://placehold.it/30x30">daco.jpg</option> <!-- TODO obrazky z databaze -->
-         <option><img src="http://placehold.it/30x30">daco.jpg</option>
-        </select>
+        {{input type="checkbox" checked=model.achievement.persistent}} Perzistentní
       </div>
 
       <div class="form-group">
-        <label class="inline" for="email">Nový obrázek:</label> <!-- TODO novy obrazok do databaze -->
-        <input class="inline" type="file">
+        <h3>Obrázek</h3>
+        {{content-component model=model.content type='gallery' selectable=true selected=model.achievement.picture on_select="ach_select"}}
       </div>
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save">Uložit</button> <!-- TODO button -->
-        <button class="btn btn-primary inline" id="delete">Smazat</button> <!-- TODO button -->
+        {{#if saving}}
+            <button class="btn btn-primary inline disabled">Ukládám...</button>
+        {{else}}
+            <button class="btn btn-primary inline" {{action "save"}}>Uložit</button>
+        {{/if}}
       </div>
+
+      {{#if save_status}}
+        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
+      {{/if}}
     </div>
   </div>
 </section>
