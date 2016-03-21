@@ -23,7 +23,7 @@ export default Ember.Component.extend({
 
     endpoint: Ember.computed("model.id", function() {
         // endpoint must end with "/"
-        return (config.API_LOC + "/content/" + this.get("model.id") + "/").replace("//", "/");
+        return config.API_LOC + ("/content/" + this.get("model.id") + "/").replace("//", "/");
     }),
 
     upload_endpoint: Ember.computed("model.id", function() {
@@ -110,6 +110,10 @@ export default Ember.Component.extend({
                     }
                 });
             });
+        },
+
+        'copy-to-clipboard': function(file) {
+            window.prompt("Stiskni Ctrl+C, Enter", this.get("endpoint") + file.get("file"));
         },
 
     }
