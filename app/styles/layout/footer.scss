@@ -164,6 +164,15 @@ div#preload { display: none; }
    background-size: 50px 50px;
  }
 
+ #github-logo {
+   background: url("/img/logos/github.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #github-logo:hover {
+   background: url("/img/logos/github-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
 footer .footer-below a {
     color: white;
 }
