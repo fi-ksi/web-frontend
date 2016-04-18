@@ -1,8 +1,9 @@
 #!/bin/bash
 
+# This script requires `ksi` to be defined in .ssh/config
+
 LOCAL_DIR="dist"
-REMOTE_USER="ksi"
-HOST="ksi.fi.muni.cz"
+HOST="ksi"
 REMOTE_DIR="/var/www/ksi"
 
 read -p "Really update frontend at $HOST$REMOTE_DIR ? (y/n) " -n 1 -r
@@ -12,5 +13,5 @@ then
     exit 1
     fi
 
-rsync -avz -r $LOCAL_DIR/ $REMOTE_USER@$HOST:$REMOTE_DIR
+rsync -avz -r $LOCAL_DIR/ $HOST:$REMOTE_DIR
 
