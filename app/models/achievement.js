@@ -6,4 +6,12 @@ export default DS.Model.extend( {
     picture: DS.attr("string"),
     description: DS.attr("string"),
     persistent: DS.attr("boolean"),
+
+    shortTitle: Ember.computed("title", function() {
+        if (this.get("title")) {
+            return this.get("title").substring(0,3) + ".";
+        } else {
+            return "";
+        }
+    })
 });
