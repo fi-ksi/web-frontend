@@ -61,11 +61,8 @@ export default DS.Model.extend( {
 
     role_str: Ember.computed("gender", "role", function() {
         var ret = "";
-        if (this.get("role") === "org") {
+        if ((this.get("role") === "org") || (this.get("role") === "admin")) {
             ret = "organizátor";
-        }
-        if (this.get("role") === "admin") {
-            ret = "administrátor";
         }
         if (this.get("role") === "participant") {
             ret = "řešitel";
