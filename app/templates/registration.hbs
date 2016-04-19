@@ -1,19 +1,19 @@
 <section id="registration" class="container content-section" style="text-align:justify">
-	{{#if registration_done}}
+    {{#if registration_done}}
     {{info-general text="Registrace byla provedna. Nyní se můžeš přihlásit."}}
   {{else}}
   {{#validatable-form action="register" model=model}}
-	<div class="jumbotron" style="background-color: transparent">
+    <div class="jumbotron" style="background-color: transparent">
         <div class="alert alert-info" role="alert">Soutěž je určena pro studenty středních škol a víceletých gymnázií.</div> 
-	    <h2>Registrace</h2>
-			<div style="margin-top:30px">
-				<h4>Přihlašovací údaje</h4>
-				<hr>
-			</div>
+        <h2>Registrace</h2>
+            <div style="margin-top:30px">
+                <h4>Přihlašovací údaje</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="email">E-mail:</label>
-        {{input value=model.email type="email" class="form-control" id="email" required=true placeholder="e-mail" autofocus="autofocus"}}
+        {{input value=model.email type="email" class="form-control" id="email" required=true placeholder="ksi@fi.muni.cz" autofocus="autofocus"}}
       </div>
       {{#if taken}}
         {{warning-general text="Tato e-mailová adresa je již použita."}}
@@ -21,33 +21,33 @@
 
       <div class="form-group">
         <label for="password">Heslo (alespoň 6 znaků):</label>
-        {{input value=model.password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="heslo" required=true}}
+        {{input value=model.password type="password" pattern=".{6,}" class="form-control" id="password" placeholder="silné a bezpečné heslo" required=true}}
       </div>
 
       <div class="form-group">
         <label for="password2">Heslo:</label>
-        {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="heslo znovu" required=true}}
+        {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="silné, bezpečné a stejné heslo" required=true}}
       </div>
       {{#if password_error}}
         {{warning-general text="Hesla se neshodují"}}
       {{/if}}
 
-			<div style="margin-top:30px">
-				<h4>Osobní údaje</h4>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h4>Osobní údaje</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="name">Jméno:</label>
-        {{input value=model.first_name class="form-control" style="width:100%;" required=true placeholder="jméno"}}
+        {{input value=model.first_name class="form-control" style="width:100%;" required=true placeholder="Karel"}}
       </div>
 
       <div class="form-group">
         <label for="surname">Přijmení:</label>
-        {{input value=model.last_name class="form-control" required=true placeholder="příjmení"}}
+        {{input value=model.last_name class="form-control" required=true placeholder="Novák"}}
       </div>
 
-			<div class="form-group">
+            <div class="form-group">
         <label for="gender">Pohlaví:</label>
         {{#x-select value=model.gender class="form-control" id="gender" required=true }}
           {{#x-option value=""}}Prosím vyber{{/x-option}}
@@ -57,23 +57,23 @@
       </div>
 
       <div style="margin-top:30px">
-				<h4>Adresa</h4>
-				<hr>
-			</div>
+                <h4>Adresa</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        {{input value=model.addr_street class="form-control" required=true placeholder="ulice"}}
+        {{input value=model.addr_street class="form-control" required=true placeholder="Informatická 42"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        {{input value=model.addr_city class="form-control" required=true  placeholder="město"}}
+        {{input value=model.addr_city class="form-control" required=true  placeholder="Brno"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        {{input value=model.addr_zip class="form-control" required=true placeholder="PSČ"}}
+        {{input value=model.addr_zip class="form-control" required=true placeholder="602 00"}}
       </div>
 
       <div class="form-group">
@@ -88,29 +88,29 @@
         {{/x-select}}
       </div>
 
-			<div style="margin-top:30px">
-				<h4>Škola</h4>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h4>Škola</h4>
+                <hr>
+            </div>
 
-			<div class="form-group">
+            <div class="form-group">
         <label for="street">Název:</label>
-        {{input value=model.school_name class="form-control" required=true placeholder="název"}}
+        {{input value=model.school_name class="form-control" required=true placeholder="Fakulta informatiky Masarykovy univerzity"}}
       </div>
 
       <div class="form-group">
         <label for="street">Ulice:</label>
-        {{input value=model.school_street class="form-control" required=true placeholder="ulice"}}
+        {{input value=model.school_street class="form-control" required=true placeholder="Botanická 68a"}}
       </div>
 
       <div class="form-group">
         <label for="city">Město:</label>
-        {{input value=model.school_city class="form-control" required=true placeholder="město"}}
+        {{input value=model.school_city class="form-control" required=true placeholder="Brno"}}
       </div>
 
       <div class="form-group">
         <label for="psc">PSČ:</label>
-        {{input value=model.school_zip class="form-control" required=true placeholder="PSČ"}}
+        {{input value=model.school_zip class="form-control" required=true placeholder="602 00"}}
       </div>
 
       <div class="form-group">
@@ -143,10 +143,10 @@
         {{/x-select}}
       </div>
 
-			<div style="margin-top:30px">
-				<h4>Profil</h4>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h4>Profil</h4>
+                <hr>
+            </div>
 
       <div class="form-group">
         <label for="description">Krátky popis sebe:</label>
@@ -165,29 +165,29 @@
         {{/x-select}}
       </div>
 
-			<!--<div class="form-group">
-				<label for="photo">Profilová fotografie:</label> (fotografie není povinná, bude se ukazovat na webu v diskusích)
-				<br>
-				<button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
-	        <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-	        Nahraj fotografii
-	      </button>
-			</div>-->
+            <!--<div class="form-group">
+                <label for="photo">Profilová fotografie:</label> (fotografie není povinná, bude se ukazovat na webu v diskusích)
+                <br>
+                <button type="button" class="btn btn-primary" style="margin-top:20px; width:250px;">
+            <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+            Nahraj fotografii
+          </button>
+            </div>-->
 
-			<div align="center" style="margin:30px">
-				<button type="submit" class="btn btn-primary">
-	        <h2>Registruj se</h2>
-	      </button>
+            <div align="center" style="margin:30px">
+                <button type="submit" class="btn btn-primary">
+            <h2>Registruj se</h2>
+          </button>
         {{#if general_error}}
-					<div style="margin-top: 20px;">
-	          {{warning-general text=general_error}}
-					</div>
+                    <div style="margin-top: 20px;">
+              {{warning-general text=general_error}}
+                    </div>
         {{/if}}
         {{#if registration_in_progress}}
           {{info-general text="Odesílám data."}}
         {{/if}}
-			</div>
-		</div>
+            </div>
+        </div>
     {{/validatable-form}}
     {{/if}}
 </section>
