@@ -19,11 +19,12 @@
     <table class="table table-striped">
         <thead>
           <tr style="height:45px">
-            <th>Vybrat</th>
-            <th>ID</th>
-            <th>Jméno</th>
-            <th>E-mail</th>
+            <th><a href="javascript:void()" {{action "sortBy" "selected"}}>Vybrat</a></th>
+            <th><a href="javascript:void()" {{action "sortBy" "id"}}>ID</a></th>
+            <th><a href="javascript:void()" {{action "sortBy" ""}}>Jméno</a></th>
+            <th><a href="javascript:void()" {{action "sortBy" "email"}}>E-mail</a></th>
             <th>Trofeje</th>
+            <th style="text-align: center;"><a href="javascript:void()" {{action "sortBy" "score_inverted"}}>Skóre</a></th>
             <th>Akce</th>
           </tr>
         </thead>
@@ -46,6 +47,7 @@
                             {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
                         {{/each}}
                     </td>
+                    <td style="text-align: center;">{{user.score}}</td>
                     <td>
                         <button class="btn btn-primary inline" {{action "achievement-one" user}}>Udělit trofej</button>
                         {{#if user.deleting}}

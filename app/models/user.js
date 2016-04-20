@@ -49,6 +49,9 @@ export default DS.Model.extend( {
         return this.get("role") === "tester";
     }),
 
+    score_inverted: Ember.computed("score", function(){
+        return -this.get("score");
+    }),
 
     // this property must be here, see ./profile.js
     show_solved: Ember.computed("role", function(){

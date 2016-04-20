@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     users_plain: [],
     role: "participants",
+    sortProperty: "",
 
     load_users: function() {
         var self = this;
@@ -18,7 +19,9 @@ export default Ember.Controller.extend({
         }
 
         self.get("store").query("user", params).then(function(p) {
-            self.set("users_plain", p);
+            self.set("users_plain", p.map(function(user){
+                return user.set("selected", false);
+            }));
             self.set("filter_in_progress", false);
         }, function(error) {
             console.log(error);
@@ -29,15 +32,13 @@ export default Ember.Controller.extend({
 
     },
 
-    users: Ember.computed("users_plain", function(){
+    users: Ember.computed("users_plain", "sortProperty", function(){
         var currentRole;
-        return this.get("users_plain").sortBy("role", "first_name", "last_name").map(function(user) {
+        return this.get("users_plain").sortBy("role", this.get("sortProperty"), "first_name", "last_name").map(function(user) {
             user.set("first_in_role", currentRole !== user.get("role"));
             if (currentRole !== user.get("role")) {
                 currentRole = user.get("role");
             }
-
-            user.set("selected", false);
 
             if (user.get("role") === "admin") { user.set("role_group", "Administrátoři"); }
             else if (user.get("role") === "org") { user.set("role_group", "Organizátoři"); }
@@ -81,6 +82,10 @@ export default Ember.Controller.extend({
 
         'achievement-one': function(user) {
             this.transitionTo("admin/achievement-grant", {queryParams: {sel_users: [ user.id ]}});
+        },
+
+        'sortBy': function(key) {
+            this.set("sortProperty", key);
         },
 
     }
