@@ -17,7 +17,7 @@ export default DS.Model.extend( {
     profile_picture_r: Ember.computed("profile_picture", "gender", function() {
         var p = this.get("profile_picture");
         if (p) { return config.API_LOC + p; }
-        if (this.get("gender") == "female") {
+        if (this.get("gender") === "female") {
             return "/img/avatar-default-woman.svg";
         } else {
             return "/img/avatar-default.svg";
