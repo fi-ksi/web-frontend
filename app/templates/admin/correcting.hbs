@@ -17,7 +17,7 @@
 
         <div class="col-md-3">
           <label style="margin-left:20px">Vyber úlohu</label>
-          <select {{action "task_select"}} class="form-control" id="task_sel">
+          <select onchange={{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
                 <option value="{{t.id}}">
@@ -48,7 +48,7 @@
 
         <div class="col-md-3">
           <label style="margin-left:20px">Řešitel</label>
-          <select {{action "participant_select"}} class="form-control" id="par_sel">
+          <select onchange={{action "participant_select"}} class="form-control" id="par_sel">
             <option value="">Všichni řešitelé</option>
             {{#each participants as |p|}}
                 <option value="{{p.id}}">{{p.full_name}}</option>
