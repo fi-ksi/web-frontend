@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-     {{#each model as |article|}}
+     {{#each articles as |article|}}
         <tr style="height: 45px">
             <td>{{#link-to "article" article target="_blank"}}<img src="{{article.picture}}" style="height: 25px;" align="center"> {{article.title}}{{/link-to}}</td>
             <td>{{date-and-time article.time_published 'cs'}}</td>

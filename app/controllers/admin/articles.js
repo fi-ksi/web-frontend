@@ -3,6 +3,9 @@ import Ember from "ember";
 export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
+    sortProperties:  [ "time_published:desc" ],
+
+    articles: Ember.computed.sort("model", "sortProperties"),
 
     actions: {
         'article-delete': function(article) {
