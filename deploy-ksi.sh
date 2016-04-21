@@ -13,5 +13,5 @@ then
     exit 1
     fi
 
-rsync -avz -r $LOCAL_DIR/ $HOST:$REMOTE_DIR
+rsync -avz --delete -r $LOCAL_DIR/ $HOST:$REMOTE_DIR
 
