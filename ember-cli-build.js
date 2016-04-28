@@ -4,7 +4,14 @@ var pickFiles = require('broccoli-static-compiler');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+      fingerprint: {
+        // tinymce/skins/*.css must be excluded
+        // Otherways, Ember adds filename hash in production but does not append the hash
+        // to links, so the browser looks for non-existing file and tinyMCE fails to load.
+        exclude: ['tinymce/skins']
+      }
+
+      // Add options here
   });
 
   // Use `app.import` to add additional libraries to the generated
