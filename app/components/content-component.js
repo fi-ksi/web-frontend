@@ -32,6 +32,7 @@ export default Ember.Component.extend({
     }),
 
     files: Ember.computed("model.files", "selected", function(){
+        if (!this.get("model.files")) { return []; }
         var sel = this.get("selected");
         if (sel) { sel = sel.split("/").get("lastObject"); }
         return this.get("model.files").map(function(file) {
