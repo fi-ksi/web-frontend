@@ -37,7 +37,11 @@
 
 
       <div class="row" style="margin-left:0px; margin-top:20px">
-        <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
+        {{#if saving}}
+            <button class="btn btn-primary inline disbaled" id="save_disabled">Ukládám...</button>
+        {{else}}
+            <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
+        {{/if}}
       </div>
 
       {{#if error_status}}
