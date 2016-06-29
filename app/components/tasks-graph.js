@@ -10,6 +10,11 @@ export default Ember.Component.extend({
 			edges: []
 		};
 
+        if (this.get("model").get("length") === 0) {
+            this.set("root_node", undefined);
+            return ret;
+        }
+
 		this.set("root_node",
 			Math.min.apply(null, this.get("model").map(function(node) { return node.get("id"); })));
 
