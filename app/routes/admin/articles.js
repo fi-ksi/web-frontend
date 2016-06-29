@@ -1,8 +1,7 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, AuthenticatedRouteMixin, {
+export default Ember.Route.extend(ResetScrollProtected, {
     model: function() {
         return this.store.findAll("article");
     },
