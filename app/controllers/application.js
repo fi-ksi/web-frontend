@@ -1,10 +1,12 @@
 import Ember from "ember";
 import config from '../config/environment';
+import Configuration from 'ember-simple-auth/configuration';
 
 export default Ember.Controller.extend( {
     session: Ember.inject.service(),
     login_error_message: undefined, 
     in_progress: false,
+
     actions: {
         login: function() {
             var self = this;
@@ -14,17 +16,9 @@ export default Ember.Controller.extend( {
             this.get('session').authenticate('authenticator:oauth2', identification, password).then(function() {
                 self.set('in_progress', false);
                 Ember.$('#login-modal').modal('hide');
-                var store = self.get("store");
-                store.unloadAll("task");
-                store.unloadAll("task-detail");
-                store.unloadAll("thread");
-                store.unloadAll("thread-detail");
-                store.unloadAll("post");
-                store.unloadAll("module");
-                store.unloadAll("module-score");
-                store.unloadAll("achievement");
-                store.unloadAll("task-score");
-            }, function(error) {
+                self.get('session').unloadSensitive();
+                self.send('reload');
+           }, function(error) {
                 self.set('in_progress', false);
                 if ("error" in error) {
                     if(error.error === "unauthorized_client") {
@@ -35,9 +29,10 @@ export default Ember.Controller.extend( {
                     }
                 } else {
                     self.set('login_error_message', "Interní chyba serveru: " + error.error);
-                }       
+                }
             });
         },
+
         feedback: function() {
             var self = this;
             this.set("feedback_error", undefined);
@@ -63,10 +58,13 @@ export default Ember.Controller.extend( {
             });
         }
     },
-    currentPathDidChange: function() {
-        //App.set('currentPath', this.get('currentPath'));
-        //console.log("Path change: " + this.get("currentPath"));
-    }.observes('currentPath'),
+
+    //currentPathDidChange: function() {
+    //}.observes('currentPath'),
+
+    currentRouteDidChange: function() {
+        Configuration.routeAfterAuthentication = this.currentRouteName;
+    }.observes('currentRouteName'),
 
     feedback_email: Ember.computed("session.current_user", function() {
         return this.get("session.current_user.email");
