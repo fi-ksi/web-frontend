@@ -1,7 +1,8 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll'; // ToDo: Protected route
+import ResetScroll from '../../mixins/reset-scroll';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScroll, AuthenticatedRouteMixin, {
     model: function() {
         return Ember.RSVP.hash({
             'corr-info': this.get('store').findAll("corrections_info"),
