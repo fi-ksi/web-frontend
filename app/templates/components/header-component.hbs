@@ -31,9 +31,19 @@
               <li>
                   {{#link-to "forum" class="header-button" }}{{t "menu.forum"}}{{/link-to}}
               </li>
-              <!--<li>
-                  {{#link-to "about" (query-params view="faq")}}{{t "menu.faq"}}{{/link-to}}
-              </li>-->
+              <li>
+<!--                <select onchange={{action "changeYear"}} class="form-control">
+                  {{#each session.years as |year|}}
+                      <option value={{year.id}} selected={{eq year.index session.year}}>{{year.year}} {{eq year.index session.year}}</option>
+                  {{/each}}
+                </select> -->
+                {{#x-select value=session.year action="changeYear" class="form-control"}}
+                   {{#each session.years as |year|}}
+                    {{#x-option value=year.id}}{{year.year}}{{/x-option}}
+                  {{/each}}
+                {{/x-select}}
+<!--                <button class="btn btn-primary inline" {{action "changeYear" 11}}>{{session.year}}</button> -->
+              </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {{#if session.isAuthenticated}}
