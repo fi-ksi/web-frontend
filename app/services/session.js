@@ -14,6 +14,16 @@ export default SessionService.extend({
     year: null,
     years: [],
 
+    year_str: Ember.computed("year", "years", function(){
+        var yearId = this.get("year");
+        var yearObj = this.get("years").findBy("id", yearId);
+        if ((yearId) && (yearObj)) {
+            return yearObj.year;
+        } else {
+            return yearId;
+        }
+    }),
+
     init() {
         this._super();
 

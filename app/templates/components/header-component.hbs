@@ -32,25 +32,13 @@
                   {{#link-to "forum" class="header-button" }}{{t "menu.forum"}}{{/link-to}}
               </li>
               <li class="dropdown-menu-main">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ročník 2016 <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.year_str}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Ročník 2016</a></li>
-                    <li><a href="#">Ročník 2015</a></li>
-                    <li><a href="#">Ročník 2014</a></li>
+                    {{#each session.years as |year|}}
+                        <li><a href="#" {{action "changeYear" year.id}}>{{year.year}}</a></li>
+                    {{/each}}
                 </ul>
             </li>
-<!--                <select onchange={{action "changeYear"}} class="form-control">
-                  {{#each session.years as |year|}}
-                      <option value={{year.id}} selected={{eq year.index session.year}}>{{year.year}} {{eq year.index session.year}}</option>
-                  {{/each}}
-                </select> -->
-                <!-- {{#x-select value=session.year action="changeYear" class="form-control"}}
-                   {{#each session.years as |year|}}
-                    {{#x-option value=year.id}}{{year.year}}{{/x-option}}
-                  {{/each}}
-                {{/x-select}} -->
-<!--                <button class="btn btn-primary inline" {{action "changeYear" 11}}>{{session.year}}</button> -->
-                
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {{#if session.isAuthenticated}}
