@@ -60,7 +60,11 @@
 					</div>
 					<div class="col-xs-4">
 						<div id="profile-points-text" class="inline">Ročníky: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
+						<div id="profile-points" class="inline" style="margin-left:10px">
+                            {{#each model.seasons as |year|}}
+                                {{year.id}}.,&nbsp;
+                            {{/each}}
+                        </div>
 					</div>
 				{{else}}
 					<div class="col-xs-4">
@@ -73,7 +77,11 @@
 					</div>
 					<div class="col-xs-4">
 						<div id="profile-points-text" class="inline">Ročníky: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.seasons}}</div>
+						<div id="profile-points" class="inline" style="margin-left:10px">
+                             {{#each model.seasons as |year|}}
+                                {{year.id}}.&nbsp;
+                            {{/each}}
+                        </div>
 					</div>
 				{{/if}}
 			</div>

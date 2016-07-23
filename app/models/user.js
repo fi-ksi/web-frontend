@@ -32,7 +32,7 @@ export default DS.Model.extend( {
     achievements: DS.hasMany("achievement", {async: true}),
     school_name: DS.attr("string"),
     addr_country: DS.attr("string"),
-    seasons: DS.attr("number"),
+    seasons: DS.hasMany("year", {async: true}),
 
     role: DS.attr("string", {defaultValue: "participant"}),
     admin: Ember.computed("role", function(){
