@@ -13,7 +13,7 @@ export default Ember.Controller.extend( {
             this.set("save_status", "");
             this.set("error_status", "");
             this.get("model").save().then(function(){
-                var date = new Date();
+                //var date = new Date();
                 self.set("saving", false);
                 self.set("save_status", "Článek uložen.");
                 setTimeout(function(){ self.set("save_status", ""); }, 5000);
