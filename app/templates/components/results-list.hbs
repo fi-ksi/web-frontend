@@ -1,0 +1,28 @@
+<table class="table table-striped">
+<thead>
+  <tr style="height:45px">
+            <th style="text-align: center;">Pořadí</th>
+    <th>Jméno</th>
+    <th>Trofeje</th>
+    <th style="text-align: center;">Skóre</th>
+            <th style="text-align: center;">Počet vyřešených úloh</th>
+  </tr>
+</thead>
+<tbody>
+    {{#each model as |res|}}
+        <tr style="height:45px">
+                <td style="text-align: center;">{{res.num}}</td>
+          <td>{{#link-to "user-profile" res.user}}{{res.user.full_name}}{{/link-to}}</td>
+          <td>
+            {{#each res.user.achievements as |achievement|}}
+                        {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+            {{/each}}
+                </td>
+          <td style="text-align: center;">{{res.user.score}}</td>
+                <td style="text-align: center;">{{res.user.tasks_num}}</td>
+        </tr>
+    {{else}}
+        <p>Výsledková listina je zatím prázdná.</p>
+    {{/each}}
+</tbody>
+</table>

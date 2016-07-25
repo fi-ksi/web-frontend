@@ -4,7 +4,6 @@
   {{else}}
   {{#validatable-form action="register" model=model}}
     <div class="jumbotron" style="background-color: transparent">
-        <div class="alert alert-info" role="alert">Soutěž je určena pro studenty středních škol a víceletých gymnázií.</div> 
         <h2>Registrace</h2>
             <div style="margin-top:30px">
                 <h4>Přihlašovací údaje</h4>
@@ -133,14 +132,7 @@
 
       <div class="form-group">
         <label for="year-maturita">Rok maturity:</label>
-        {{#x-select value=model.school_finish class="form-control" required=true}}
-          {{#x-option value=""}}Prosím vyber{{/x-option}}
-          {{#each maturita_year key="@index" as |item|}}
-            {{#x-option value=item}}
-              {{item}}
-            {{/x-option}}
-          {{/each}}
-        {{/x-select}}
+        {{input value=model.school_finish class="form-control" required=true placeholder="2016"}}
       </div>
 
             <div style="margin-top:30px">

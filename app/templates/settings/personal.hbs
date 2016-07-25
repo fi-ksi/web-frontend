@@ -110,13 +110,7 @@
 
   <div class="form-group">
     <label for="year-maturita">Rok maturity:</label>
-    {{#x-select value=model.school_finish class="form-control" required=true}}
-      {{#each maturita_year key="@index" as |item|}}
-        {{#x-option value=item}}
-          {{item}}
-        {{/x-option}}
-      {{/each}}
-    {{/x-select}}
+    {{input value=model.school_finish class="form-control" required=true}}
   </div>
 
   <div style="margin-top:30px">
