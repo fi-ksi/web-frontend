@@ -110,7 +110,7 @@
 
   <div class="form-group">
     <label for="year-maturita">Rok maturity:</label>
-    {{input value=model.school_finish class="form-control" required=true}}
+    {{input type="number" min="1900" max="2200" value=model.school_finish class="form-control" required=true}}
   </div>
 
   <div style="margin-top:30px">
