@@ -1,36 +1,12 @@
 <section id="results" class="container content-section" style="text-align:justify">
-    <!-- Sekcia noviniek -->
   <h2>Výsledky</h2>
-    <!-- <b>Počet řešitelů:</b> {{results.length}} -->
-    <table class="table table-striped">
-    <thead>
-      <tr style="height:45px">
-                <th style="text-align: center;">Pořadí</th>
-        <th>Jméno</th>
-        <th>Trofeje</th>
-        <th style="text-align: center;">Skóre</th>
-                <th style="text-align: center;">Počet vyřešených úloh</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each results as |res|}}
-        <tr style="height:45px">
-                <td style="text-align: center;">{{res.num}}</td>
-          <td>{{#link-to "user-profile" res.user}}{{res.user.full_name}}{{/link-to}}</td> <!-- meno -->
-          <td>
-            {{#each res.user.achievements as |achievement|}}
-                        {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
-            {{/each}}
-                </td>
-          <td style="text-align: center;">{{res.user.score}}</td> <!-- body -->
-                <td style="text-align: center;">{{res.user.tasks_num}}</td> <!-- pocet vyriesenych uloh -->
-        </tr>
-      {{else}}
-      <p>Výsledková listina je zatím prázdná</p>
-      {{/each}}
+  <h3>Středoškoláci</h3>
+  {{results-list model=results_hs}}
 
-    </tbody>
-  </table>
+  {{#if results_other}}
+      <h3>Ostatní</h3>
+      {{results-list model=results_other}}
+  {{/if}}
 
   {{#if session.current_user.organisator}}
     {{#if export_loading}}
