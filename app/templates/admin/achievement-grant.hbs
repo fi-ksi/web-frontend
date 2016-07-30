@@ -47,11 +47,15 @@
         </div>
 
         {{#if grant_status}}
-            <div class="alert alert-info" style="margin-top:20px">{{grant_status}}</div>
+           <div class="alert alert-info" style="margin-top:20px">{{{grant_status}}}</div>
         {{/if}}
         {{#if grant_error}}
-            <div class="alert alert-danger" style="margin-top:20px">{{grant_error}}</div>
+            <div class="alert alert-danger" style="margin-top:20px">{{{grant_error}}}</div>
         {{/if}}
+        {{#if grant_warning}}
+            <div class="alert alert-warning" style="margin-top:20px">{{{grant_warning}}}</div>
+        {{/if}}
+
 
         {{#unless saving}}
             <button class="btn btn-primary inline" id="save" {{action "achievement-grant"}}>Udělit</button>
