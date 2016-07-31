@@ -4,6 +4,7 @@ export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
     saving: false,
+    pad: 0,
 
     year: Ember.computed("model", function(){
         var curYear = new Date().getFullYear();
@@ -25,6 +26,7 @@ export default Ember.Controller.extend( {
                 index: this.get("index"),
                 year: this.get("year"),
                 sealed: false,
+                pad: this.get("pad"),
             }).save().then(function() {
                 self.set("saving", false);
                 self.get("store").unloadAll("year");

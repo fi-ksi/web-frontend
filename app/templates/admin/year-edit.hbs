@@ -19,6 +19,11 @@
         <label>Zapečetěn</label>
       </div>
 
+      <div class="form-group">
+        <label>Bodová vycpávka:</label>
+        {{input type="number" min="0" max="1000" value=model.point_pad class="form-control" required=true}}
+      </div>
+
       {{#if session.current_user.admin}}
         {{#if saving}}
           <button class="btn btn-primary inline disabled" id="save-disabled">Ukládám...</button>
