@@ -40,7 +40,12 @@ export default Ember.Component.extend({
         },
 
     },
+
     resizeBody: function() {
-        Ember.$('body').css("padding-top", Ember.$("#navbar").height()+30);
-    }.observes("session.current_user.organisator")
+        Ember.$('body').css("padding-top", Ember.$("#navbar").outerHeight());
+    }.observes("session.current_user.organisator"),
+
+    bindResizeEvent: function() {
+       Ember.$("#navbar").on('resize', Ember.run.bind(this, this.resizeBody));
+    }.on('init')
 });

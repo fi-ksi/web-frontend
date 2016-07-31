@@ -1,3 +1,11 @@
+@media (max-height: 499px) {
+    #navbar { padding: 4px 0; }
+}
+
+@media (min-height: 500px) {
+    #navbar { padding: 15px 0; }
+}
+
 .dropdown-toggle:active, .open .dropdown-toggle {
   background-color: ksi-color('primary-orange') !important;
   color: ksi-color('text-light') !important;
