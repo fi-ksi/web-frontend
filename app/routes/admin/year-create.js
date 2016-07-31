@@ -3,7 +3,10 @@ import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
 export default Ember.Route.extend(ResetScrollProtected, {
     model: function() {
-        return this.store.findAll("year");
+        return Ember.RSVP.hash({
+            years: this.store.findAll("year"),
+            orgs: this.store.query("user", { filter: "orgs-all" })
+        });
     },
     title: "KSI: Nový ročník",
 });

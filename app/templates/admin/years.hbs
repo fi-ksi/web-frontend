@@ -34,7 +34,7 @@
             <td>
 
             {{#if session.current_user.admin}}
-                {{#link-to "admin/year-edit" year class="btn btn-primary inline"}}Upravit{{/link-to}}
+                {{#link-to "admin/year-edit" year.id class="btn btn-primary inline"}}Upravit{{/link-to}}
                 {{#if year.deleting}}
                     <button class="btn btn-primary inline disabled">Mažu...</button>
                 {{else}}

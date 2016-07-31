@@ -19,6 +19,17 @@
         {{input type="number" min="0" max="1000" value=pad class="form-control" required=true}}
       </div>
 
+      <div class="form-group">
+        <h3>Aktivní organizátoři</h3>
+        <ul>
+        {{#each orgs as |org|}}
+            <li>
+                {{input type="checkbox" checked=org.active}}
+                {{org.full_name}}
+            </li>
+        {{/each}}
+      </ul>
+      </div>
 
       {{#if saving}}
         <button class="btn btn-primary inline disabled" id="save">Ukládám...</button>

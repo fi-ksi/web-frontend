@@ -88,8 +88,10 @@
   {{#unless filter_in_progress}}
     {{#if corrections}}
       {{#if is_task_selected}}
+        {{#if session.year_editable}}
         <div class="panel panel-warning">
         <div class="panel-body">
+
 
           <div class="col-md-6">
             {{{task.title}}}:
@@ -136,6 +138,7 @@
 
         </div>
         </div>
+        {{/if}}
       {{/if}}
     {{/if}}
 
