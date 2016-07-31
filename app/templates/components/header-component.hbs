@@ -10,8 +10,8 @@
             </button>
             {{#link-to "index" class="pull-left header-link" rel="home"}}
                   <img src="img/karlik_color.png" class="inline" style="padding-left: 5px; max-width:53px;"/>
-                  <div class="visible-xs-inline visible-sm-inline" style="padding-left: 5px">KSI</div>
-                  <div class="hidden-xs hidden-sm inline" style="padding-left: 5px">Korespondenční seminář z informatiky</div>
+                  <div class="inline" id="ksi-text-short" style="padding-left: 5px">KSI</div>
+                  <div class="inline" id="ksi-text-long">Korespondenční seminář z&nbsp;informatiky</div>
             {{/link-to}}
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -31,7 +31,7 @@
               <li>
                   {{#link-to "forum" class="header-button" }}{{t "menu.forum"}}{{/link-to}}
               </li>
-              <li class="dropdown-menu-main">
+              <li class="hidden-sm dropdown-menu-main">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.year_obj.year}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     {{#each session.years as |year|}}
@@ -69,7 +69,7 @@
                       <a href="javascript:void(0)" class="btn navbar-btn btn-header header-button" style="width:130px;" id="login_button">Přihlásit se</a>
                 </p>
               </li>
-              <li>
+              <li class="hidden-sm">
                 <p style="margin-left:20px">
                       {{#link-to "registration" class="btn navbar-btn btn-header header-button" style="width:130px;"}}Registrovat se{{/link-to}}
                 </p>
