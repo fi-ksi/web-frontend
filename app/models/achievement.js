@@ -7,6 +7,7 @@ export default DS.Model.extend( {
     picture: DS.attr("string"),
     description: DS.attr("string"),
     persistent: DS.attr("boolean"),
+    year: DS.belongsTo("year", { async: true }),
 
     shortTitle: Ember.computed("title", function() {
         if (this.get("title")) {

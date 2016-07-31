@@ -1,6 +1,8 @@
 <section id="admin-vlny" class="container content-section" style="text-align:justify">
   <h2>Správa vln</h2>
 
+  {{year-sealed model=session.year_obj}}
+
   {{#if session.current_user.admin}}
     {{#link-to "admin/wave-create" class="btn btn-primary inline"}}Nová vlna{{/link-to}}
   {{else}}

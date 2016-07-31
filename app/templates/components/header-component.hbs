@@ -32,7 +32,7 @@
                   {{#link-to "forum" class="header-button" }}{{t "menu.forum"}}{{/link-to}}
               </li>
               <li class="dropdown-menu-main">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.year_str}}<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.year_obj.year}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     {{#each session.years as |year|}}
                         <li><a href="#" {{action "changeYear" year.id}}>{{year.year}}</a></li>

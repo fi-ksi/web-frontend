@@ -14,6 +14,11 @@
         {{input class="form-control" value=model.year}}
       </div>
 
+      <div class="form-group">
+        {{input type="checkbox" checked=model.sealed}}
+        <label>Zapečetěn</label>
+      </div>
+
       {{#if session.current_user.admin}}
         {{#if saving}}
           <button class="btn btn-primary inline disabled" id="save-disabled">Ukládám...</button>

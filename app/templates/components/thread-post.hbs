@@ -33,12 +33,16 @@
           {{/if}}
         </div>
       {{/unless}}
-      <div>
-        <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
-          {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
-        </button>
-        <hr>
-      </div>
+
+      {{#unless model.thread.year.sealed}}
+          <div>
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
+              {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
+            </button>
+            <hr>
+          </div>
+      {{/unless}}
+
       <!-- button odkryje textareau: -->
       {{#if is_reacting}}
         {{#unless session.isAuthenticated}}

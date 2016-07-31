@@ -24,6 +24,7 @@ export default Ember.Controller.extend( {
             this.get("store").createRecord('year', {
                 index: this.get("index"),
                 year: this.get("year"),
+                sealed: false,
             }).save().then(function() {
                 self.set("saving", false);
                 self.get("store").unloadAll("year");

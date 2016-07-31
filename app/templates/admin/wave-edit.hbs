@@ -29,6 +29,8 @@
         {{input class="form-control" value=model.wave.index}}
       </div>
 
+      {{year-sealed model=session.year_obj}}
+
       {{#if canSave}}
         <div class="row" style="margin-left:0px; margin-top:20px">
           <button class="btn btn-primary inline" id="save" {{action "wave-save"}}>Uložit</button>

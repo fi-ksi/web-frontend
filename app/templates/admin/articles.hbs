@@ -1,6 +1,12 @@
 <section id="admin-articles" class="container content-section" style="text-align:justify">
   <h2>Správa článků</h2>
-  {{#link-to "admin/article-create" class="btn btn-primary inline"}}Nový článek{{/link-to}}
+
+  {{year-sealed model=session.year_obj}}
+
+  {{#if session.year_editable}}
+      {{#link-to "admin/article-create" class="btn btn-primary inline"}}Nový článek{{/link-to}}
+  {{/if}}
+
   <table class="table table-striped">
     <thead>
       <tr style="height:45px">
@@ -17,10 +23,12 @@
             <td>{{date-and-time article.time_published 'cs'}}</td>
             <td>{{article.published_str}}</td>
             <td>{{#link-to "admin/article-edit" article class="btn btn-primary inline"}}Upravit{{/link-to}}
-                {{#if article.deleting}}
-                    <button class="btn btn-primary inline disabled">Mažu...</button>
-                {{else}}
-                    <button class="btn btn-primary inline" {{action "article-delete" article}}>Smazat</button>
+                {{#if session.year_editable}}
+                    {{#if article.deleting}}
+                        <button class="btn btn-primary inline disabled">Mažu...</button>
+                    {{else}}
+                        <button class="btn btn-primary inline" {{action "article-delete" article}}>Smazat</button>
+                    {{/if}}
                 {{/if}}
             </td>
         </tr>

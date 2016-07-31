@@ -169,6 +169,7 @@ export default Ember.Controller.extend( {
 	},
 	tasks: Ember.computed("store", "wave", "model.tasks", "session.current_user", function(){
 		var user = this.get("session.current_user");
+        var self = this;
 		if(user) {
 			var selectedWave = this.get("wave");
 			if (selectedWave === undefined) {
@@ -181,12 +182,12 @@ export default Ember.Controller.extend( {
 				var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
 					((new Date() < task.get("wave").get("time_published")) && (user.id === task.get("author").get("id") || user.id === task.get("wave").get("garant").get("id"))));
 				var can_merge = task.get("git_branch") && task.get("git_path") && task.get("git_branch") !== 'master' &&
-                    (is_admin || user.id === task.get("wave").get("garant").get("id"));
+                    (is_admin || ((user.id === task.get("wave").get("garant").get("id")) && (!self.get("session.year_obj.sealed"))));
 
 				task.set("can_deploy", authorized);
 				task.set("can_merge", can_merge);
 				task.set("can_delete", is_admin && (new Date() < task.get("wave").get("time_published")));
-				task.set("can_create", is_admin || (user.id === task.get("wave.garant.id")));
+				task.set("can_create", is_admin || (user.id === task.get("wave.garant.id") && (!self.get("session.year_obj.sealed"))));
 
 				task.set("first_in_wave", currentWave !== task.get("wave.index"));
 				if (currentWave !== task.get("wave.id")) {

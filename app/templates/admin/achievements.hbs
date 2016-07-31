@@ -3,6 +3,8 @@
   {{#link-to "admin/achievement-create" class="btn btn-primary inline"}}Nová trofej{{/link-to}}
 
     <h3>Trofeje v&nbsp;aktuálním ročníku</h3>
+       {{year-sealed model=session.year_obj}}
+
        <table class="table table-striped">
         <thead>
           <tr style="height:45px">
@@ -18,7 +20,9 @@
                 <td><img src="{{achievement.picture}}" style="height: 25px;" align="center"></td>
                 <td>{{#link-to "admin/achievement-edit" achievement.id}}{{{achievement.title}}}{{/link-to}}</td>
                 <td>{{#link-to "admin/achievement-edit" achievement.id class="btn btn-primary inline"}}Upravit{{/link-to}}
-                    <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
+                    {{#if session.year_editable}}
+                        <button class="btn btn-primary inline" {{action "achievement-grant" achievement}}>Udělit</button>
+                    {{/if}}
                     {{#if session.current_user.admin}}
                         {{#if achievement.deleting}}
                             <button class="btn btn-primary inline disabled">Mažu...</button>

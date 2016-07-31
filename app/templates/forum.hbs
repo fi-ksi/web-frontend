@@ -10,15 +10,19 @@
 			Chceš-li nás kontaktovat neveřejně, <a href="mailto:ksi@fi.muni.cz">napiš nám</a>.
 		</div>
 
-		<div>
-			<button class="btn btn-primary" {{action "new_thread"}}>
-				{{#if new_thread}}
-					Zrušit nové vlákno
-				{{else}}
-					Nové vlákno
-				{{/if}}
-			</button> <!-- otvori/skryje nasledujuci panel -->
-		</div>
+        {{#unless session.year_obj.sealed}}
+            <div>
+    			<button class="btn btn-primary" {{action "new_thread"}}>
+    				{{#if new_thread}}
+    					Zrušit nové vlákno
+    				{{else}}
+    					Nové vlákno
+    				{{/if}}
+    			</button> <!-- otvori/skryje nasledujuci panel -->
+    		</div>
+        {{/unless}}
+
+        {{year-sealed model=session.year_obj}}
 
 		{{#if info}}
 			<div class="alert alert-info">{{info}}</div>

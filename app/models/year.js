@@ -5,4 +5,5 @@ export default DS.Model.extend( {
     year: DS.attr("string"),
     sum_points: DS.attr("number"),
     tasks_cnt: DS.attr("number"),
+    sealed: DS.attr("boolean")
 });

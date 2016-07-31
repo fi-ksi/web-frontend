@@ -14,14 +14,12 @@ export default SessionService.extend({
     year: null,
     years: [],
 
-    year_str: Ember.computed("year", "years", function(){
-        var yearId = this.get("year");
-        var yearObj = this.get("years").findBy("id", yearId);
-        if ((yearId) && (yearObj)) {
-            return yearObj.year;
-        } else {
-            return yearId;
-        }
+    year_obj: Ember.computed("year", "years", function(){
+        return this.get("years").findBy("id", this.get("year"));
+    }),
+
+    year_editable : Ember.computed("year_obj", "current_user", function(){
+        return (!this.get("year_obj.sealed")) || (this.get("current_user.admin"));
     }),
 
     init() {
