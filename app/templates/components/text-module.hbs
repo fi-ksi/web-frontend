@@ -1,22 +1,22 @@
 <div class="row" style="margin-left:0px; margin-right:10px">
-	{{{module.description}}}
+    {{{module.description}}}
 </div>
 <div style="margin-left:0px">
-	<form class="form-horizontal">
-	  <div class="form-group">
-	  	{{#each inputs as |val index|}}
-	    <div class="col-sm-12 row">
-		    	<label for="inputSolution" class="col-sm-2 control-label">Odpověď {{val}}: </label>
-	    	<div class="col-sm-10">
-	      		{{input type="text" class="form-control" id=(construct-id module.id index)}}
-	      	</div>
-	    </div>
-	    {{/each}}
-	  </div>
-	</form>
-	{{#if general_error}}
-		<div style="margin-top:20px">
-			{{warning-general text=general_error}}
-		</div>
-	{{/if}}
+    <form class="form-horizontal">
+      <div class="form-group">
+        {{#each inputs as |val index|}}
+        <div class="col-sm-12 row">
+                <label for="inputSolution" class="col-sm-2 control-label">Odpověď {{val}}: </label>
+            <div class="col-sm-10">
+                {{input type="text" class="form-control" id=(construct-id module.id index)}}
+            </div>
+        </div>
+        {{/each}}
+      </div>
+    </form>
+    {{#if general_error}}
+        <div style="margin-top:20px">
+            {{warning-general text=general_error}}
+        </div>
+    {{/if}}
 </div>

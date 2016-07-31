@@ -1,186 +1,186 @@
 {{log model}}
 <section id="profile" class="container content-section" style="text-align:justify">
-	<div class="row">
-		<div class="col-sm-12 col-md-3">
-			<div style="margin-top:30px">
-				<img src="{{model.profile_picture_r}}" style="border-radius: 25px; width:100%; max-width:250px;"/>
-			</div>
-			<div id="name" style="margin-top:30px; margin-left:5px">
-				<h3 style="text-align: left">{{model.full_name}}</h3>
-				<h4>{{model.role_str}}</h4>
-			</div>
-			<div id="name">
-				<p id="profile-text">{{model.short_info}}</p>
-			</div>
-			<!-- TODO: chceme sem odkaze na FB, Twitter, web? -->
-			{{#if model.participant}}
-				<div class="panel panel-profile" style="margin-top:30px">
-					<div class="panel-body">
-						{{#if model.email}}
-							<h6><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{model.email}}">{{model.email}}</a></h6>
-							<br>
-						{{/if}}
-						<h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
-						<br>
-						<h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{country}}</h6>
-					</div>
-				</div>
-			{{/if}}
-		</div>
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+            <div style="margin-top:30px">
+                <img src="{{model.profile_picture_r}}" style="border-radius: 25px; width:100%; max-width:250px;"/>
+            </div>
+            <div id="name" style="margin-top:30px; margin-left:5px">
+                <h3 style="text-align: left">{{model.full_name}}</h3>
+                <h4>{{model.role_str}}</h4>
+            </div>
+            <div id="name">
+                <p id="profile-text">{{model.short_info}}</p>
+            </div>
+            <!-- TODO: chceme sem odkaze na FB, Twitter, web? -->
+            {{#if model.participant}}
+                <div class="panel panel-profile" style="margin-top:30px">
+                    <div class="panel-body">
+                        {{#if model.email}}
+                            <h6><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{model.email}}">{{model.email}}</a></h6>
+                            <br>
+                        {{/if}}
+                        <h6><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{model.school_name}}</h6>
+                        <br>
+                        <h6><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{country}}</h6>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
 
-		<div class="col-sm-12 col-md-9">
-		{{#if model.show_solved}}
-			<div style="margin-top:30px">
-				<h5>Trofeje</h5>
-				<hr>
-			</div>
+        <div class="col-sm-12 col-md-9">
+        {{#if model.show_solved}}
+            <div style="margin-top:30px">
+                <h5>Trofeje</h5>
+                <hr>
+            </div>
 
-			<div class="panel panel-profile">
-				<div class="panel-body">
-					{{#each model.achievements as |achievement|}}
-					{{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
-					{{/each}}
-				</div>
-			</div>
+            <div class="panel panel-profile">
+                <div class="panel-body">
+                    {{#each model.achievements as |achievement|}}
+                    {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                    {{/each}}
+                </div>
+            </div>
 
-			<div style="margin-top:30px">
-				<h5>Statistiky</h5>
-				<hr>
-			</div>
+            <div style="margin-top:30px">
+                <h5>Statistiky</h5>
+                <hr>
+            </div>
 
-			<div class="row">
-				{{#if model.percentile}}
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Skóre: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
-					</div>
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Percentil: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
-					</div>
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Ročníky: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">
+            <div class="row">
+                {{#if model.percentile}}
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Skóre: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Percentil: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">{{model.percentile}}&nbsp;%</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Ročníky: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">
                             {{#each model.seasons as |year|}}
                                 {{year.id}}.,&nbsp;
                             {{/each}}
                         </div>
-					</div>
-				{{else}}
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Skóre: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
-					</div>
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Vyřešených úloh: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">{{model.tasks_num}}</div>
-					</div>
-					<div class="col-xs-4">
-						<div id="profile-points-text" class="inline">Ročníky: </div>
-						<div id="profile-points" class="inline" style="margin-left:10px">
+                    </div>
+                {{else}}
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Skóre: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">{{model.score}}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Vyřešených úloh: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">{{model.tasks_num}}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="profile-points-text" class="inline">Ročníky: </div>
+                        <div id="profile-points" class="inline" style="margin-left:10px">
                              {{#each model.seasons as |year|}}
                                 {{year.id}}.&nbsp;
                             {{/each}}
                         </div>
-					</div>
-				{{/if}}
-			</div>
+                    </div>
+                {{/if}}
+            </div>
 
-			<hr>
+            <hr>
 
-			{{#if model.successful}}
-				<p id="profile-points-text">
-					Úspěšný řešitel:
-				</p>
-				<div class="progress" style="margin-top:20px">
-					<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.successful}}%">
-						{{model.successful}}&nbsp;%
-					</div>
-				</div>
-			{{/if}}
+            {{#if model.successful}}
+                <p id="profile-points-text">
+                    Úspěšný řešitel:
+                </p>
+                <div class="progress" style="margin-top:20px">
+                    <div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.successful}}%">
+                        {{model.successful}}&nbsp;%
+                    </div>
+                </div>
+            {{/if}}
 
-			{{#if model.results}}
-				<div style="margin-top:30px">
-					<h5>Odevzdané úlohy</h5>
-					<hr>
-				</div>
+            {{#if model.results}}
+                <div style="margin-top:30px">
+                    <h5>Odevzdané úlohy</h5>
+                    <hr>
+                </div>
 
-				<div class="panel" style="box-shadow: none; margin-bottom: -10px;">
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-xs-1"></div>
-							<div class="col-xs-5">
-								<h5>Název</h5>
-							</div>
-							<div class="col-xs-2">
-								<h5>Trofeje</h5>
-							</div>
-							<div class="col-xs-2">
-								<h5>Body</h5>
-							</div>
-							<div class="col-xs-2">
-								<h5>Úspěšnost</h5>
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="panel" style="box-shadow: none; margin-bottom: -10px;">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-5">
+                                <h5>Název</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5>Trofeje</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5>Body</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5>Úspěšnost</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				{{#each model.results as |result|}}
-				<div class="panel panel-profile-assignment">
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-xs-6">
-								<img class="inline" src="{{result.task.picture}}" style="max-width: 45px">
-								<label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{{result.task.title}}}{{/link-to}}</label>
-							</div>
-							<div class="col-xs-2">
-								{{#each result.achievements as |achievement|}}
-									{{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
-								{{/each}}
-							</div>
-							<div class="col-xs-2">
-								{{#if result.score_published}}
-									<h5 style="margin-left: 10px">{{result.score}} / {{result.task.max_score}}</h5>
-								{{else}}
-									<h5 style="margin-left: 10px">&ndash;</h5>
-								{{/if}}
-							</div>
-							<div class="col-xs-2">
-								{{#if result.score_published}}
-									<h5 style="margin-left: 10px">{{result.percent}} %</h5>
-								{{else}}
-									<h5 style="margin-left: 10px">&ndash;</h5>
-								{{/if}}
-							</div>
-						</div>
-					</div>
-				</div>
-				{{/each}}
-			{{/if}}
+                {{#each model.results as |result|}}
+                <div class="panel panel-profile-assignment">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <img class="inline" src="{{result.task.picture}}" style="max-width: 45px">
+                                <label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{{result.task.title}}}{{/link-to}}</label>
+                            </div>
+                            <div class="col-xs-2">
+                                {{#each result.achievements as |achievement|}}
+                                    {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                                {{/each}}
+                            </div>
+                            <div class="col-xs-2">
+                                {{#if result.score_published}}
+                                    <h5 style="margin-left: 10px">{{result.score}} / {{result.task.max_score}}</h5>
+                                {{else}}
+                                    <h5 style="margin-left: 10px">&ndash;</h5>
+                                {{/if}}
+                            </div>
+                            <div class="col-xs-2">
+                                {{#if result.score_published}}
+                                    <h5 style="margin-left: 10px">{{result.percent}} %</h5>
+                                {{else}}
+                                    <h5 style="margin-left: 10px">&ndash;</h5>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            {{/if}}
 
-		{{/if}}
+        {{/if}}
 
         {{#if model.organisator}}
-			<div style="margin-top:40px">
-					<h4>{{tasks}}</h4>
-					<hr>
-				</div>
+            <div style="margin-top:40px">
+                    <h4>{{tasks}}</h4>
+                    <hr>
+                </div>
 
-				{{#each model.tasks as |task|}}
-				<div class="panel panel-profile-assignment">
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<img class="inline" src="{{task.picture}}" style="max-width: 45px">
-								<label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{{task.title}}}{{/link-to}}</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				{{else}}
-					<p>Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!</p>
-				{{/each}}
-		{{/if}}
+                {{#each model.tasks as |task|}}
+                <div class="panel panel-profile-assignment">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <img class="inline" src="{{task.picture}}" style="max-width: 45px">
+                                <label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{{task.title}}}{{/link-to}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                    <p>Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!</p>
+                {{/each}}
+        {{/if}}
         </div>
-	</div>
+    </div>
 </section>

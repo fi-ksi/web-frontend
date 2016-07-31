@@ -1,160 +1,160 @@
 <section class="container content-section" style="text-align:justify">
-	<!-- Sekcia -->
-	<div style="margin:40px;">
-		<h2>Obecná diskuse</h2>
+    <!-- Sekcia -->
+    <div style="margin:40px;">
+        <h2>Obecná diskuse</h2>
 
-		<div class="alert alert-info">
-			Diskuse na těchto stránkách slouží jako oficiální kanál pro veřejnou
-			komunikaci s organizátory i ostatními účastníky. Diskusi pravidelně
-			sledujeme a odpovídáme na dotazy nebo připomínky.
-			Chceš-li nás kontaktovat neveřejně, <a href="mailto:ksi@fi.muni.cz">napiš nám</a>.
-		</div>
+        <div class="alert alert-info">
+            Diskuse na těchto stránkách slouží jako oficiální kanál pro veřejnou
+            komunikaci s organizátory i ostatními účastníky. Diskusi pravidelně
+            sledujeme a odpovídáme na dotazy nebo připomínky.
+            Chceš-li nás kontaktovat neveřejně, <a href="mailto:ksi@fi.muni.cz">napiš nám</a>.
+        </div>
 
         {{#unless session.year_obj.sealed}}
             <div>
-    			<button class="btn btn-primary" {{action "new_thread"}}>
-    				{{#if new_thread}}
-    					Zrušit nové vlákno
-    				{{else}}
-    					Nové vlákno
-    				{{/if}}
-    			</button> <!-- otvori/skryje nasledujuci panel -->
-    		</div>
+                <button class="btn btn-primary" {{action "new_thread"}}>
+                    {{#if new_thread}}
+                        Zrušit nové vlákno
+                    {{else}}
+                        Nové vlákno
+                    {{/if}}
+                </button> <!-- otvori/skryje nasledujuci panel -->
+            </div>
         {{/unless}}
 
         {{year-sealed model=session.year_obj}}
 
-		{{#if info}}
-			<div class="alert alert-info">{{info}}</div>
-		{{/if}}
+        {{#if info}}
+            <div class="alert alert-info">{{info}}</div>
+        {{/if}}
 
-		{{#if new_thread}}
-			{{#unless session.isAuthenticated}}
-				{{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
-			{{else}}
-				<div style="margin-top:20px; margin-bottom:20px;">
-					<div class="panel panel-default">
-						<form class="form-horizontal" style="margin:30px">
-							<div class="controls form-inline">
-									{{#if thread_name_error}}
-										{{warning-general text=thread_name_error}}
-									{{/if}}
-									<label for="threadName">Název:</label>
-									{{input type="text" class="form-control full-width" id="threadName" value=thread_name}}
-							</div>
-							<div class="controls form-inline" style="margin-top:20px">
-									{{#if thread_content_error}}
-										{{warning-general text=thread_content_error}}
-									{{/if}}
-									<label for="threadName">Příspěvek:</label>
-									{{text-editor value=thread_content}}
-							</div>
-							<button class="btn btn-primary" style="margin-top:20px" {{action "post_thread"}}>Odeslat</button>
-						</form>
-					</div>
-				</div>
-			{{/unless}}
-		{{/if}}
+        {{#if new_thread}}
+            {{#unless session.isAuthenticated}}
+                {{warning-login text="Pro založení nového vlákna musíš být přihlášen."}}
+            {{else}}
+                <div style="margin-top:20px; margin-bottom:20px;">
+                    <div class="panel panel-default">
+                        <form class="form-horizontal" style="margin:30px">
+                            <div class="controls form-inline">
+                                    {{#if thread_name_error}}
+                                        {{warning-general text=thread_name_error}}
+                                    {{/if}}
+                                    <label for="threadName">Název:</label>
+                                    {{input type="text" class="form-control full-width" id="threadName" value=thread_name}}
+                            </div>
+                            <div class="controls form-inline" style="margin-top:20px">
+                                    {{#if thread_content_error}}
+                                        {{warning-general text=thread_content_error}}
+                                    {{/if}}
+                                    <label for="threadName">Příspěvek:</label>
+                                    {{text-editor value=thread_content}}
+                            </div>
+                            <button class="btn btn-primary" style="margin-top:20px" {{action "post_thread"}}>Odeslat</button>
+                        </form>
+                    </div>
+                </div>
+            {{/unless}}
+        {{/if}}
 
-		<table class="table table-striped table-hover-forum ">
-	    <thead>
-	      <tr style="height:45px">
-	        <th>Název vlákna</th>
-	        <th style="text-align: center;">Počet příspěvků</th>
-	        <th style="text-align: center;">Počet nečtených</th>
-					<!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> -->
-	      </tr>
-	    </thead>
-	    <tbody>
-	    	{{#each threads as |thread|}}
-			<tr>
-				<td>
-					<h5 class="caption-text">
-						{{#link-to "thread" thread}}{{thread.title}}{{/link-to}}<!-- meno vlakna/ulohy - link na vlakno -->
-					</h5>
-				</td>
-				<td style="text-align: center;"><span class="badge">{{#link-to "thread" thread class="white-link"}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
-				<td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread class="white-link"}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
-			</tr>
-			{{else}}
-			<p>Zatím tu nejsou žádná vlákna. Můžeš být první, kdo nějaké založí!</p>
-			{{/each}}
-	    </tbody>
-	  </table> <!-- zobrazovat max 10 vlakien? -->
+        <table class="table table-striped table-hover-forum ">
+        <thead>
+          <tr style="height:45px">
+            <th>Název vlákna</th>
+            <th style="text-align: center;">Počet příspěvků</th>
+            <th style="text-align: center;">Počet nečtených</th>
+                    <!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> -->
+          </tr>
+        </thead>
+        <tbody>
+            {{#each threads as |thread|}}
+            <tr>
+                <td>
+                    <h5 class="caption-text">
+                        {{#link-to "thread" thread}}{{thread.title}}{{/link-to}}<!-- meno vlakna/ulohy - link na vlakno -->
+                    </h5>
+                </td>
+                <td style="text-align: center;"><span class="badge">{{#link-to "thread" thread class="white-link"}}{{thread.posts_count}}{{/link-to}}</span></td> <!-- Počet příspěvků -->
+                <td style="text-align: center;"><span class="badge ksi-badge" >{{#link-to "thread" thread class="white-link"}}{{thread.unread}}{{/link-to}}</span></td> <!-- Počet nečtených -->
+            </tr>
+            {{else}}
+            <p>Zatím tu nejsou žádná vlákna. Můžeš být první, kdo nějaké založí!</p>
+            {{/each}}
+        </tbody>
+      </table> <!-- zobrazovat max 10 vlakien? -->
 
-	  	<!--
-		<div class="text-center"> <!-- TODO colors --!>
-			<ul class="pagination">
-			 <li><a href="#">&laquo;</a></li>
-			 <li class="active"><a href="#">1</a></li>
-			 <li><a href="#">2</a></li>
-			 <li><a href="#">3</a></li>
-			 <li><a href="#">4</a></li>
-			 <li><a href="#">5</a></li>
-			 <li><a href="#">&raquo;</a></li>
-			</ul>
-		</div>-->
+        <!--
+        <div class="text-center"> <!-- TODO colors --!>
+            <ul class="pagination">
+             <li><a href="#">&laquo;</a></li>
+             <li class="active"><a href="#">1</a></li>
+             <li><a href="#">2</a></li>
+             <li><a href="#">3</a></li>
+             <li><a href="#">4</a></li>
+             <li><a href="#">5</a></li>
+             <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>-->
 
-	</div>
+    </div>
 
-	<!-- Zatím pravděpodobně nepotřebujeme
-	<div style="margin:40px;">
-		<h2>Diskuse k úlohám</h2>
-		<table class="table table-striped table-hover-forum ">
-	    <thead>
-	      <tr style="height:45px">
-	        <th>Název vlákna</th>
-	        <th style="text-align: center;">Počet příspěvků</th>
-	        <th style="text-align: center;">Počet nečtených</th>
-					<!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> --!>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>
-						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
-							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
-						</h5>
-					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
-					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
-					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-						Jirka Jiží:  				<!- - Meno autora prispevku - ->
-						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> --!>
-	      </tr>
+    <!-- Zatím pravděpodobně nepotřebujeme
+    <div style="margin:40px;">
+        <h2>Diskuse k úlohám</h2>
+        <table class="table table-striped table-hover-forum ">
+        <thead>
+          <tr style="height:45px">
+            <th>Název vlákna</th>
+            <th style="text-align: center;">Počet příspěvků</th>
+            <th style="text-align: center;">Počet nečtených</th>
+                    <!-- TODO? <th style="text-align: center;">Posledný příspěvek</th> --!>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                        <h5 class="caption-text">
+                            <img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
+                            Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
+                        </h5>
+                    </td>
+            <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
+                    <td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
+                    <!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
+                        Jirka Jiží:                 <!- - Meno autora prispevku - ->
+                        Nemám tě rád!               <!- - Text prispevku max 2 riadky- ->
+                        <div id="date-text">00:00:00 1.1.2015</div>     <!- - Cas prispevku - ->
+                    </td> --!>
+          </tr>
 
-				<tr>
-	        <td>
-						<h5 class="caption-text">
-							<img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
-							Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
-						</h5>
-					</td>
-	        <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
-					<td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
-					<!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
-						Jirka Jiží:  				<!- - Meno autora prispevku - ->
-						Nemám tě rád!				<!- - Text prispevku max 2 riadky- ->
-						<div id="date-text">00:00:00 1.1.2015</div>		<!- - Cas prispevku - ->
-					</td> --!>
-	      </tr>
-	    </tbody>
-	  </table>	<!-- zobrazovat max 10 vlakien? --!>s
+                <tr>
+            <td>
+                        <h5 class="caption-text">
+                            <img src="http://placehold.it/35x35" style="margin-right: 15px"> <!-- obrazek ulohy --!>
+                            Moje první úloha v ksi <!-- meno vlakna/ulohy - link na vlakno --!>
+                        </h5>
+                    </td>
+            <td style="text-align: center;"><span class="badge">15</span></td> <!-- Počet příspěvků --!>
+                    <td style="text-align: center;"><span class="badge ksi-badge" >3</span></td> <!-- Počet nečtených -->
+                    <!-- <td style="text-align: center;"> <!- - Posledný príspevok - ->
+                        Jirka Jiží:                 <!- - Meno autora prispevku - ->
+                        Nemám tě rád!               <!- - Text prispevku max 2 riadky- ->
+                        <div id="date-text">00:00:00 1.1.2015</div>     <!- - Cas prispevku - ->
+                    </td> --!>
+          </tr>
+        </tbody>
+      </table>  <!-- zobrazovat max 10 vlakien? --!>s
 
-		<div class="text-center"> <!-- TODO colors --!>
-			<ul class="pagination">
-			 <li><a href="#">&laquo;</a></li>
-			 <li class="active"><a href="#">1</a></li>
-			 <li><a href="#">2</a></li>
-			 <li><a href="#">3</a></li>
-			 <li><a href="#">4</a></li>
-			 <li><a href="#">5</a></li>
-			 <li><a href="#">&raquo;</a></li>
-			</ul>
-		</div>
-	</div>-->
+        <div class="text-center"> <!-- TODO colors --!>
+            <ul class="pagination">
+             <li><a href="#">&laquo;</a></li>
+             <li class="active"><a href="#">1</a></li>
+             <li><a href="#">2</a></li>
+             <li><a href="#">3</a></li>
+             <li><a href="#">4</a></li>
+             <li><a href="#">5</a></li>
+             <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>-->
 
 </section>

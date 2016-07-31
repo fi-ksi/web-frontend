@@ -1,15 +1,15 @@
 import DS from "ember-data";
 
 export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
-	attrs: {
-	    prerequisities: { embedded: 'always' },
- 	},
- 	isNewSerializerAPI: true
+    attrs: {
+        prerequisities: { embedded: 'always' },
+    },
+    isNewSerializerAPI: true
 });
 
 /*export default DS.RESTSerializer.extend({
-	serializeHasMany: function(record, json, relationship) {
-		console.log("Here! Used!");
+    serializeHasMany: function(record, json, relationship) {
+        console.log("Here! Used!");
         var key = relationship.key,
             hasManyRecords = Ember.get(record, key);
          
@@ -26,14 +26,14 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
         }
     },
     serializeBelongsTo: function(record, json, relationship) {
-	    var key = relationship.key,
-	        belongsToRecord = Ember.get(record, key);
-	     
-	    if (relationship.options.embedded === "always") {
-	        json[key] = belongsToRecord.serialize();
-	    }
-	    else {
-	        return this._super(record, json, relationship);
-	    }
-	}
+        var key = relationship.key,
+            belongsToRecord = Ember.get(record, key);
+         
+        if (relationship.options.embedded === "always") {
+            json[key] = belongsToRecord.serialize();
+        }
+        else {
+            return this._super(record, json, relationship);
+        }
+    }
 });*/

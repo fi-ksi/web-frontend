@@ -10,7 +10,7 @@ You will need the following things properly installed on your computer.
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
+* [Ember CLI](http://www.ember-cli.com/) 1.13.15
 * [PhantomJS](http://phantomjs.org/)
 
 ## Installation
@@ -44,6 +44,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 * Run `./deploy-ksi.sh` to deploy at ksi.fi.muni.cz.
 * Run `./deploy-dev.sh` to deploy at kyzikos.fi.muni.cz.
+
+### Conventions
+
+* We do not use tabs.
+* Tab = 4 spaces.
 
 ## Further Reading / Useful Links
 

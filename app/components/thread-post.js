@@ -9,27 +9,27 @@ export default Ember.Component.extend({
             this.set("response_text", "");
         },
         send: function() {
-        	var self = this;
+            var self = this;
 
-        	if(!this.get("response_text")) {
-        		this.set("content_error", "Nelze odeslat prázdný příspěvek");
-        		return;
-        	}
-        	this.set("content_error", undefined);
-        	var post = this.get("store").createRecord("post", {
-        		body: self.get("response_text"),
+            if(!this.get("response_text")) {
+                this.set("content_error", "Nelze odeslat prázdný příspěvek");
+                return;
+            }
+            this.set("content_error", undefined);
+            var post = this.get("store").createRecord("post", {
+                body: self.get("response_text"),
                 parent: self.get("model"),
                 thread: self.get("model.thread")
-        	});
+            });
 
-        	post.save().then(function() {
-        		self.get("model.reaction").pushObject(post);
-        		self.get("model").save().then(function() {
-        			self.set("is_reacting", false);
-        		}, function() {
-        			self.set("content_error", "Nepodařilo se odeslat příspěvek");
-        		});
-        	});
+            post.save().then(function() {
+                self.get("model.reaction").pushObject(post);
+                self.get("model").save().then(function() {
+                    self.set("is_reacting", false);
+                }, function() {
+                    self.set("content_error", "Nepodařilo se odeslat příspěvek");
+                });
+            });
         },
         delete: function() {
             if (!confirm("Opravdu smazat příspěvek?")) {

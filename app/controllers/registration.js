@@ -16,7 +16,7 @@ export default Ember.Controller.extend(UserSettings, {
         }
     }.observes("model.password", "model.password2"),
     actions: {
-    	register: function() {
+        register: function() {
             var self = this;
             this.set("general_error", undefined);
             this.set("taken", false);

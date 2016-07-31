@@ -3,7 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Controller.extend( {
     actions: {
-    	send: function() {
+        send: function() {
             var self = this;
             this.set("general_error", undefined);
 
