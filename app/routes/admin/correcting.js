@@ -14,5 +14,11 @@ export default Ember.Route.extend(ResetScrollProtected, {
     },
     title: function(tokens) {
         return "KSI: " + tokens.pop();
+    },
+
+    actions: {
+        willTransition: function() {
+            this.controller.set("corrections", []);
+        }
     }
 });
