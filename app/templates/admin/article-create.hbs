@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label>Termín publikace:</label>
-        {{bs-datetimepicker date=time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut time_published)) forceDateOutput=true}}
+        {{bs-datetimepicker date=time_published updateDate=(action (mut time_published)) forceDateOutput=true locale='cs'}}
       </div>
 
       <div class="form-group">

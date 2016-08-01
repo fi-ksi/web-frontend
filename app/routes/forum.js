@@ -12,5 +12,5 @@ export default Ember.Route.extend(ResetScroll, {
         controller.set('model', model);
         controller.set('info', null);
         controller.set('new_thread', false);
-    
+    },
 });
