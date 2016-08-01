@@ -10,5 +10,11 @@ export default Ember.Route.extend(ResetScroll, {
     },
     title: function(tokens) {
         return "KSI: " + tokens.pop();
+    },
+
+    actions: {
+        willTransition: function() {
+            this.controller.mark_thread_as_read();
+        }
     }
 });

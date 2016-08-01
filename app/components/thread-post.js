@@ -2,9 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
+
+    mark_as_read: function() {
+        var post = this.get("model");
+        while (post) {
+            post.set("is_new", false);
+            post = post.get("parent");
+        }
+    },
+
     actions: {
         react: function() {
             this.set("is_reacting", !this.get("is_reacting"));
+            this.mark_as_read();
             this.set("content_error", undefined);
             this.set("response_text", "");
         },
@@ -36,7 +46,7 @@ export default Ember.Component.extend({
                 return;
             }
             this.get("model").deleteRecord();
-            this.get("model").save();         
+            this.get("model").save();
         },
         edit: function() {
             this.set("content_bak", this.get("model.body"));
