@@ -52,4 +52,14 @@ export default Ember.Controller.extend(UserSettings, {
         }
         return null;
     }),
+
+    no_tasks: Ember.computed("model.gender", function() {
+        if(this.get("model.gender") === "male") {
+            return "Tento organizátor ještě žádnou úlohu zatím nevytvořil, ale na nějaké určitě pracuje!";
+        } else if (this.get("model.gender") === "female") {
+            return "Tato organizátorka ještě žádnou úlohu zatím nevytvořila, ale na nějaké určitě pracuje!";
+        }
+        return null;
+    }),
+
 });
