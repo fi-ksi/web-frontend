@@ -10,7 +10,7 @@
 </thead>
 <tbody>
     {{#each model as |res|}}
-        <tr style="height:45px">
+        <tr class="{{if res.user.successful 'successful'}}" style="height:45px">
                 <td style="text-align: center;">{{res.num}}</td>
           <td>{{#link-to "user-profile" res.user}}{{res.user.full_name}}{{/link-to}}</td>
           <td>
