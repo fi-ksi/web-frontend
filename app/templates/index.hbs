@@ -72,9 +72,10 @@ V&nbsp;září se mohou úspěšní řešitelé těšit na týdenní soustředě
 
 <section id="organizatori" class="container content-section">
     <!-- Sekcia organizatoru -->
-    <div class="jumbotron" style="background-color: #fff; margin-bottom: 20px">
+    <div class="jumbotron" style="background-color: #fff; margin-bottom: -30px;">
         <div style="text-align: center; color: #39393a;"><h1>Organizátoři</h1></div>
         <hr>
-        {{orgs-list model=model.organisators}}
+        <div class="row">{{orgs-list model=model.organisators}}</div>
+        <div class="row">{{#link-to "orgs"}}Všichni organizátoři{{/link-to}}</div>
     </div>
 </section>
