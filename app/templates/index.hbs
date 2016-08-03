@@ -18,7 +18,9 @@
         <div class="caption-text" style="text-align: center;"><h1>Novinky</h1></div> <!--TODO: dorobit obrazky a datum u noviniek + predelovace -->
         <hr>
         {{articles-list model=model.articles}}
-        {{#link-to "articles"}}Další novinky{{/link-to}}
+        {{#if model.articles}}
+            {{#link-to "articles"}}Další novinky{{/link-to}}
+        {{/if}}
     </div>
 </section>
 
