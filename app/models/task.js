@@ -18,6 +18,8 @@ export default DS.Model.extend( {
     time_deadline: DS.attr("date"),
     time_published: DS.attr("date"),
 
+    wave: DS.belongsTo("wave", { async: true }),
+
     picture_base: DS.attr("string"),
     picture_suffix: DS.attr("string"),
 

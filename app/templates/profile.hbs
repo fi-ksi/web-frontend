@@ -99,65 +99,76 @@
                 </div>
             {{/if}}
 
-            {{#if model.results}}
-                <div style="margin-top:30px">
-                    <h5>Odevzdané úlohy</h5>
+            {{#if results}}
+                 <hr>
+                 {{#each results as |res_wave|}}
+                    <h5>Odevzdané úlohy &ndash; {{res_wave.wave.caption}}</h5>
+
+                    <div class="panel" style="box-shadow: none; margin-bottom: -10px;">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-5">
+                                    <h5>Název</h5>
+                                </div>
+                                <div class="col-xs-2">
+                                    <h5>Trofeje</h5>
+                                </div>
+                                <div class="col-xs-2">
+                                    <h5>Body</h5>
+                                </div>
+                                <div class="col-xs-2">
+                                    <h5>Úspěšnost</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{#each res_wave.tasks as |result|}}
+                        <div class="panel panel-profile-assignment">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <img class="inline" src="{{result.task.picture}}" style="max-width: 45px">
+                                        <label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{{result.task.title}}}{{/link-to}}</label>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {{#each result.achievements as |achievement|}}
+                                            {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                                        {{/each}}
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {{#if result.score_published}}
+                                            <h5 style="margin-left: 10px">{{result.score}} / {{result.task.max_score}}</h5>
+                                        {{else}}
+                                            <h5 style="margin-left: 10px">&ndash;</h5>
+                                        {{/if}}
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {{#if result.score_published}}
+                                            <h5 style="margin-left: 10px">{{result.percent}} %</h5>
+                                        {{else}}
+                                            <h5 style="margin-left: 10px">&ndash;</h5>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+
+                    <div class="row" style="margin-bottom: 20px; font-weight: bold;">
+                       <div class="col-xs-6">Skóre:</div>
+                       <div class="col-xs-2"></div>
+                       <div class="col-xs-2" title="body za odevzdané úlohy / maximum bodů za odevzdané úlohy / maximum bodů za všechny úlohy ve vlně">
+                           {{res_wave.score}} / {{res_wave.max_score}} / {{res_wave.wave.sum_points}}
+                       </div>
+                       <div class="col-xs-2" title="úspěšnost odevzdaných úloh / úspěšnost všech úloh ve vlně">
+                           {{res_wave.percentage_submitted}}&nbsp;% / {{res_wave.percentage_all}}&nbsp;%
+                       </div>
+                    </div>
                     <hr>
-                </div>
-
-                <div class="panel" style="box-shadow: none; margin-bottom: -10px;">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-5">
-                                <h5>Název</h5>
-                            </div>
-                            <div class="col-xs-2">
-                                <h5>Trofeje</h5>
-                            </div>
-                            <div class="col-xs-2">
-                                <h5>Body</h5>
-                            </div>
-                            <div class="col-xs-2">
-                                <h5>Úspěšnost</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{#each model.results as |result|}}
-                <div class="panel panel-profile-assignment">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <img class="inline" src="{{result.task.picture}}" style="max-width: 45px">
-                                <label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{{result.task.title}}}{{/link-to}}</label>
-                            </div>
-                            <div class="col-xs-2">
-                                {{#each result.achievements as |achievement|}}
-                                    {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
-                                {{/each}}
-                            </div>
-                            <div class="col-xs-2">
-                                {{#if result.score_published}}
-                                    <h5 style="margin-left: 10px">{{result.score}} / {{result.task.max_score}}</h5>
-                                {{else}}
-                                    <h5 style="margin-left: 10px">&ndash;</h5>
-                                {{/if}}
-                            </div>
-                            <div class="col-xs-2">
-                                {{#if result.score_published}}
-                                    <h5 style="margin-left: 10px">{{result.percent}} %</h5>
-                                {{else}}
-                                    <h5 style="margin-left: 10px">&ndash;</h5>
-                                {{/if}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {{/each}}
             {{/if}}
-
         {{/if}}
 
         {{#if model.organisator}}
