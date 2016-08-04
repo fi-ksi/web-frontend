@@ -64,6 +64,7 @@ export default Ember.Controller.extend({
                 request.open("GET", config.API_LOC + "/admin/user-export", true);
                 request.responseType = "blob";
                 request.setRequestHeader(header, content);
+                request.setRequestHeader('year', self.get("session.year"));
                 request.onload = function() {
                     self.set('export_loading', false);
                     if (this.status === 200) {
