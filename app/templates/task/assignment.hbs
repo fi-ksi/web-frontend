@@ -1,5 +1,6 @@
 <div style="margin-bottom:30px">
   <div style="margin:20px">
+     <h3 class="visible-print">Zadání</h3>
      {{{model.details.body}}}
   </div>
   <hr>
@@ -16,7 +17,7 @@
     {{/if}}
   </div>
   {{#if finished}}
-    <div class="text-center">
+    <div class="text-center hidden-print">
         {{#link-to "tasks" type="button" class="btn btn-primary btn-lg"}}
         <h3>Pokračovat dále</h3>
         {{/link-to}}

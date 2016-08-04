@@ -10,8 +10,16 @@ body > .ember-view {
     position: relative;
 }
 
-#content {
-    padding-bottom: 230px; /* Height of the footer element */
+@media print {
+    #content {
+        padding-bottom: 70px; /* Height of the footer element */
+    }
+}
+
+@media screen {
+    #content {
+        padding-bottom: 230px; /* Height of the footer element */
+    }
 }
 
 @media (max-width: 499px) {

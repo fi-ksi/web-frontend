@@ -1,4 +1,15 @@
 .code_editor { 
     width: 100%;
-    min-height: 250px;
+}
+
+@media screen {
+    .code_editor {
+        min-height: 250px;
+    }
+}
+
+@media print {
+    .code-editor {
+        min-height: 50px;
+    }
 }

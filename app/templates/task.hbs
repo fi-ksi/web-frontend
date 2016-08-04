@@ -1,6 +1,6 @@
 {{#if model.active}}
     <section class="container content-section">
-        <div class="row" style="margin-top: 30px; margin-left: 20px">
+        <div class="row task-title" style="margin-left: 20px">
             <h2 id="name" style="color: black">{{{model.title}}}</h2>
         </div>
         <!-- TODO: center name and image -->
@@ -19,7 +19,7 @@
           {{/if}}
         </div>
 
-        <div class="row" style="margin-top: 20px">
+        <div class="row hidden-print" style="margin-top: 20px">
             <nav class="navbar navbar-uloha" role="navigation">
                 <div class="navbar-header page-scroll">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-task-navbar-collapse">
