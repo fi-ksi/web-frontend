@@ -84,20 +84,22 @@ export default Ember.Controller.extend({
     },
     actions: {
         submit: function() {
-            //console.log(this.get("store").find("task-detail", this.get("model.details.id")));
-            //console.log(this.get("model.details"));
+            var self = this;
             this.get("model").reload().then(function(e) {
-                e.get("details").reload();
+                e.get("details").then(function(d) {
+                    d.reload().then(function(nd) {
+                        var res = true;
+                        var modules = nd.get('modules');
+                        if (!modules) {
+                            self.set("finished", false);
+                        }
+                        modules.forEach(function(x) {
+                            res &= x.get("is_correct");
+                        });
+                        self.set("finished", res);
+                    });
+                });
             });
-            var res = true;
-            var modules = this.get('model.details.modules');
-            if (!modules) {
-                this.set("finished", false);
-            }
-            modules.forEach(function(x) {
-                res &= x.get("is_correct");
-            });
-            this.set("finished", res);
-        }
+       }
     }
 });
