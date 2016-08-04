@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
     gender: "both",
     karlikSign: true,
     easteregg: false,
+    successful: false,
     error_status: "",
     send_status: "",
     years: Ember.computed("store", function() {
@@ -46,7 +47,8 @@ export default Ember.Controller.extend({
                             'Bcc': bcc,
                             'Gender': self.get("gender"),
                             'KarlikSign': self.get("karlikSign"),
-                            'Easteregg': self.get("easteregg")
+                            'Easteregg': self.get("easteregg"),
+                            'Successful': self.get("successful")
                         }
                     }),
                     contentType: "application/json",
