@@ -69,4 +69,12 @@ export default Ember.Controller.extend( {
     feedback_email: Ember.computed("session.current_user", function() {
         return this.get("session.current_user.email");
     }),
+
+    init: function() {
+        // Automaticcaly focus object in class "autofocus" when modal dialog is shown.
+        Ember.$(document).on('shown.bs.modal', function() {
+            Ember.$(this).find('.autofocus').focus();
+        });
+    },
+
 });

@@ -41,7 +41,7 @@
           {{#if feedback_error}}
             {{warning-general text=feedback_error}}
           {{/if}}
-          {{textarea class="form-control" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
+          {{textarea class="form-control autofocus" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
           <br>
           <p><b>Tvá e-mailová adresa - volitelně</b></p>
 
@@ -73,7 +73,7 @@
           {{info-general text="Přihlašuji"}}
         {{else}}
           <div>
-            {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true id="login-email" autofocus="autofocus"}}
+            {{input type="email" value=identification placeholder="e-mail" class="form-control autofocus" required=true id="login-email"}}
           </div>
           <div style="margin-top:5px">
             {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}
