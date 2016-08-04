@@ -6,12 +6,8 @@ export default Ember.Component.extend({
     didInsertElement: function() {
         this._super();
         this.set("error_message", undefined);
-        this.resizeBody();
-        var self = this;
-        Ember.$(window).on("window:resize", function() {
-            self.resizeBody();
-        });
     },
+
     actions: {
         logout: function() {
             var self = this;
@@ -38,14 +34,5 @@ export default Ember.Component.extend({
             this.get('session').changeYear(newyear);
             this._controller.send("reload");
         },
-
     },
-
-    resizeBody: function() {
-        Ember.$('body').css("padding-top", Ember.$("#navbar").outerHeight());
-    }.observes("session.current_user.organisator"),
-
-    bindResizeEvent: function() {
-       Ember.$("#navbar").on('resize', Ember.run.bind(this, this.resizeBody));
-    }.on('init')
 });

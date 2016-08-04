@@ -4,6 +4,16 @@ html,body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+// This is wrapper.
+body > .ember-view {
+    min-height: 100%;
+    position: relative;
+}
+
+#content {
+    padding-bottom: 230px; /* Height of the footer element */
+}
+
 @media (max-width: 499px) {
     .autojustify { text-align: left }
 }

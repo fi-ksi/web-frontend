@@ -6,6 +6,10 @@
     #navbar { padding: 15px 0; }
 }
 
+#navbar {
+    margin-bottom: 0px;
+}
+
 .dropdown-toggle:active, .open .dropdown-toggle {
   background-color: ksi-color('primary-orange') !important;
   color: ksi-color('text-light') !important;
