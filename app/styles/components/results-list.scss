@@ -1,3 +1,7 @@
+.logged-in {
+    background-color: ksi-color-level('primary-orange', 7) !important;
+}
+
 .successful:nth-child(even) {
     background-color: ksi-color-level('primary-orange', 9.5) !important;
 }
@@ -5,3 +9,5 @@
 .successful:nth-child(odd) {
     background-color: ksi-color-level('primary-orange', 9) !important;
 }
+
+
