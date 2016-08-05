@@ -14,13 +14,11 @@ export default Ember.Component.extend({
         });
     },
     actions: {
-        trigger: function() {
-            if (this.get("show")) {
-                this.get("module_logic").send("submit");
-            }
-            else {
-                this.set("is_editing", true);
-            }
+        submit: function() {
+            this.get("module_logic").send("submit");
+        },
+        show: function() {
+            this.set("is_editing", true);
         },
         submit_done: function() {
             this.set("is_editing", false);

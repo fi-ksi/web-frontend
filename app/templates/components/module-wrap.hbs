@@ -12,9 +12,16 @@
       {{#if module.is_incorrect}}
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       {{/if}}
+
+      {{#unless show}}
+      <div style="float: right; margin-top: -5px;">
+        <button class="btn btn-task btn-primary hidden-print" {{action "show"}}>Zkusit odevzdat znovu</button>
+      </div>
+      {{/unless}}
   </div>
+
+  {{#if show}}
   <div class="panel-body">
-    {{#if show}}
       {{#if module.is_programming}}
         {{code-module module=module store=store id=module.id submit_done="submit_done" actionReceiver=module_logic opened=opened}}
       {{/if}}
@@ -30,11 +37,9 @@
       {{#if module.is_text}}
         {{text-module module=module store=store submit_done="submit_done" actionReceiver=module_logic opened=opened}}
       {{/if}}
-    {{/if}}
-    {{#if opened}}
-    <button class="btn btn-task btn-primary hidden-print" style="margin-top:20px" {{action "trigger"}}>
-      {{#if show}} Odevzdat {{else}} Zkusit odevzdat znovu {{/if}}
-    </button>
-    {{/if}}
+      {{#if opened}}
+        <button class="btn btn-task btn-primary hidden-print" style="margin-top:20px" {{action "submit"}}>Odevzdat</button>
+      {{/if}}
   </div>
+  {{/if}}
 </div>
