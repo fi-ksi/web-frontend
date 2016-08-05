@@ -34,7 +34,7 @@ export default DS.Model.extend( {
     score: DS.attr("number"),
     percentile: DS.attr("number"),
     seasons: DS.hasMany("year", {async: true}),
-    successful: DS.attr("number"),
+    percent: DS.attr("number"),
     results: DS.hasMany("task-score", {defaultValue: []}),
     tasks_num: DS.attr("number"),
 
