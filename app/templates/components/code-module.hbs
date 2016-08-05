@@ -2,19 +2,19 @@
     <div class=row style="margin-left:0px; margin-right:10px">
         {{{module.description}}}
     </div>
-    <button class="btn btn-primary btn-task inline" style="margin-top:20px" {{action "toggle_info"}}>{{info_button_text}}</button>
+    <button class="btn btn-primary btn-task inline hidden-print" style="margin-top:20px" {{action "toggle_info"}}>{{info_button_text}}</button>
 
-    <div style="margin-top:20px">
+    <div class="hidden-print" style="margin-top:20px">
       {{#if show_info}}
           {{info-general text="<p>Před sebou máš náš editor kódu, ve kterém může být předvyplněna šablona kódu. Tvým úkolem je napsat program do této šablony dle zadání. Můžeš využívat téměř libovolných prostředků jazyka Python&nbsp;2.7.</p><p>Svůj kód si můžeš nechat vyhodnotit. Po úspěšném vyhodnocení se ti zobrazí textový výstup programu (i&nbsp;s&nbsp;případnými chybovými hláškami) a&nbsp;občas i&nbsp;grafickým znázorněním výstupu. Na čísla řádků v&nbsp;chybových řádků neber příliš ohled - z&nbsp;technických důvodů nebudou sedět s&nbsp;čísly řádků v&nbsp;editoru</p><p>Jakmile si myslíš, že tvůj kód funguje tak, jak má, můžeš jej odevzdat. Během odevzdání se provede sada automatických testů, které ověří jestli tvůj kód splňuje zadání.</p><p><strong>Pozor:</strong> Tvůj kód není ukládán! Pokud opustíš stránku, přijdeš o&nbsp;něj. Můžeš si jej však uložit k&nbsp;sobě na disk a&nbsp;případně jej později načíst, či si jej sám spustit v IDLE.</p>"}}
       {{/if}}
     </div>
 
     <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
-        <label for="threadName">Editor kódu</label>
+        <label>Editor kódu</label>
         {{code-editor content=module.code  id=(construct-id "editor_module" module.id)}}
     </div>
-    <div class="row" style="margin-left:0px; margin-right:20px">
+    <div class="row hidden-print" style="margin-left:0px; margin-right:20px">
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "run"}}>Spustit</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>

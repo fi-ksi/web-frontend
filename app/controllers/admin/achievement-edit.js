@@ -4,6 +4,10 @@ export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
 
+    can_save: Ember.computed("model.achievement.year.sealed", "session.current_user.admin", function(){
+        return !this.get("model.achievement.year.sealed") || this.get("session.current_user.admin");
+    }),
+
     actions: {
         'ach_select': function(ach_path) {
             this.set("model.achievement.picture", ach_path);

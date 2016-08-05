@@ -1,36 +1,38 @@
 {{#unless session.isAuthenticated}}
-	{{warning-login text="nejsi přihlášen. Aby byly tvé operace uloženy, musíš se přihlásit."}}
+    {{warning-login text="nejsi přihlášen. Aby byly tvé operace uloženy, musíš se přihlásit."}}
 {{/unless}}
 
-<section id="graph" class="container content-section" style="text-align:justify">
-		<div class="row flex-row-md stickycolumn-parent">
-			<!-- graf -->
-			<div class="col-sm-12 col-md-11 col-md-push-2">
-				{{tasks-graph model=model.tasks sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
-			</div>
+<h2 class="visible-print">Úlohy</h2>
 
-			<!-- vysvetlivky -->
-			<div class="col-sm-12 col-md-1 col-md-pull-11">
-				<div id="graph-info-panel" class="panel panel-ksi stickycolumn" style="width:220px">
-				  <div class="panel-heading panel-heading-ksi"><h4 align="center">Vysvětlivky</h4></div>
-				  <div class="panel-body">
-						<h5 align="center">Uzly</h5>
-						<img src="img/nodes/base/node-green.svg" class="node-info"/>Algoritmická úloha<br>
-						<img src="img/nodes/base/node-blue.svg" class="node-info"/>Programovací úloha<br>
-						<img src="img/nodes/base/node-red.svg" class="node-info"/>Speciální úloha<br>
-						<img src="img/nodes/base/node-orange.svg" class="node-info"/>Teoretická úloha<br>
-						<img src="img/nodes/base/node-bronze-unknown.svg" class="node-info"/>Úloha s překvapením<br>
-						<img src="img/nodes/base/node-orange-blue.svg" class="node-info"/>Smíšená úloha<br>
-						<img src="img/nodes/base/node-big.svg" class="node-info-big"/>Velká úloha<br>
-						<hr>
-						<img src="img/nodes/base/node-locked.svg" class="node-info"/>Uzamčená úloha<br>
-						<img src="img/nodes/base/node-done-icon.svg" class="node-info"/>Opravená úloha<br>
-						<img src="img/nodes/base/node-correcting-icon.svg" class="node-info"/>Neopravená úloha<br>
-						<hr>
-						<h5 align="center">Hrany</h5>
-						<p align="left">Pro odemčení úlohy musíte mít odemčené všechny hrany stejné barvy směrující do ní.</p>
-				  </div>
-				</div>
-			</div>
-		</div>
+<section id="graph" class="container content-section">
+        <div class="row flex-row-md stickycolumn-parent">
+            <!-- graf -->
+            <div class="col-sm-12 col-md-11 col-md-push-2">
+                {{tasks-graph model=model.tasks sub="sub" assign="assign" stat="stat" discuss="discuss" solution="solution" }}
+            </div>
+
+            <!-- vysvetlivky -->
+            <div class="col-sm-12 col-md-1 col-md-pull-11">
+                <div id="graph-info-panel" class="panel panel-ksi stickycolumn" style="width:220px">
+                  <div class="panel-heading panel-heading-ksi"><h4 align="center">Vysvětlivky</h4></div>
+                  <div class="panel-body">
+                        <h5 align="center">Uzly</h5>
+                        <img src="img/nodes/base/node-green.svg" class="node-info"/>Algoritmická úloha<br>
+                        <img src="img/nodes/base/node-blue.svg" class="node-info"/>Programovací úloha<br>
+                        <img src="img/nodes/base/node-red.svg" class="node-info"/>Speciální úloha<br>
+                        <img src="img/nodes/base/node-orange.svg" class="node-info"/>Teoretická úloha<br>
+                        <img src="img/nodes/base/node-bronze-unknown.svg" class="node-info"/>Úloha s&nbsp;překvapením<br>
+                        <img src="img/nodes/base/node-orange-blue.svg" class="node-info"/>Smíšená úloha<br>
+                        <img src="img/nodes/base/node-big.svg" class="node-info-big"/>Velká úloha<br>
+                        <hr>
+                        <img src="img/nodes/base/node-locked.svg" class="node-info"/>Uzamčená úloha<br>
+                        <img src="img/nodes/base/node-done-icon.svg" class="node-info"/>Opravená úloha<br>
+                        <img src="img/nodes/base/node-correcting-icon.svg" class="node-info"/>Neopravená úloha<br>
+                        <hr>
+                        <h5 align="center">Hrany</h5>
+                        <p align="left">Pro odemčení úlohy musíte mít odemčené všechny hrany stejné barvy směrující do ní.</p>
+                  </div>
+                </div>
+            </div>
+        </div>
 </section>

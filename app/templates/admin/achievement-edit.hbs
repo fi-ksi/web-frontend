@@ -1,5 +1,8 @@
-<section id="admin-achievement-edit" class="container content-section" style="text-align:justify">
+<section id="admin-achievement-edit" class="container content-section">
   <h2>Úprava trofeje</h2>
+
+  {{year-sealed model=model.achievement.year}}
+
   {{#link-to "admin/achievements"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
@@ -22,13 +25,15 @@
         {{content-component model=model.content type='gallery' selectable=true selected=model.achievement.picture on_select="ach_select"}}
       </div>
 
-      <div class="row" style="margin-left:0px; margin-top:20px">
-        {{#if saving}}
-            <button class="btn btn-primary inline disabled">Ukládám...</button>
-        {{else}}
-            <button class="btn btn-primary inline" {{action "save"}}>Uložit</button>
-        {{/if}}
-      </div>
+      {{#if can_save}}
+          <div class="row" style="margin-left:0px; margin-top:20px">
+            {{#if saving}}
+                <button class="btn btn-primary inline disabled">Ukládám...</button>
+            {{else}}
+                <button class="btn btn-primary inline" {{action "save"}}>Uložit</button>
+            {{/if}}
+          </div>
+      {{/if}}
 
       {{#if save_status}}
         <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>

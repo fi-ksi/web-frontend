@@ -30,6 +30,7 @@ Router.map(function() {
     this.route('password', { path: 'zmena-hesla'});
   });
   this.route('achievements',{ path: '/achievementy'});
+  this.route('orgs',{ path: '/orgove'});
   this.route('forgot-password',{ path: '/zapomenute-heslo'});
   this.route('login', { path: '/prihlaseni'});
   //admin

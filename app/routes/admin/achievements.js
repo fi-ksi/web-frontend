@@ -1,9 +1,9 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll';
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, {
-	model: function() {
-		return this.store.findAll("achievement");
-	},
-	title: "KSI: Správa trofejí"
+export default Ember.Route.extend(ResetScrollProtected, {
+    model: function() {
+        return this.store.findAll("achievement");
+    },
+    title: "KSI: Správa trofejí"
 });

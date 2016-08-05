@@ -1,7 +1,8 @@
 <div style="margin:20px">
-	{{#if model.details.solution}}
-  		{{{model.details.solution}}}
-  	{{else}}
-  		Úlohu je ještě možné řešit nebo nebyla ještě opravena.
-  	{{/if}}
+    <h3 class="visible-print">Řešení</h3>
+    {{#if model.details.solution}}
+        {{{model.details.solution}}}
+    {{else}}
+        Úlohu je ještě možné řešit nebo nebyla ještě opravena.
+    {{/if}}
 </div>

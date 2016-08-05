@@ -12,13 +12,15 @@
 </div>
 
 <!-- Page Content -->
-<section id="novinky" class="container content-section" style="text-align:justify">
+<section id="novinky" class="container content-section autojustify">
     <!-- Sekcia noviniek -->
     <div class="jumbotron" style="background-color: transparent">
         <div class="caption-text" style="text-align: center;"><h1>Novinky</h1></div> <!--TODO: dorobit obrazky a datum u noviniek + predelovace -->
         <hr>
         {{articles-list model=model.articles}}
-        {{#link-to "articles"}}Další novinky{{/link-to}}
+        {{#if model.articles}}
+            {{#link-to "articles"}}Další novinky{{/link-to}}
+        {{/if}}
     </div>
 </section>
 
@@ -37,7 +39,7 @@
             {{#link-to "tasks"}}
               <img src="img/info-ksi.svg" style="max-width:90%;"/>
             {{/link-to}}
-            <p class="about-paragraph" style="font-size:18px;" align="justify">
+            <p class="about-paragraph autojustify" style="font-size:18px;">
               KSI, neboli Korespondenční Seminář z&nbsp;Informatiky, je celoroční soutěž pro středoškoláky z&nbsp;České i&nbsp;Slovenské republiky organizovaná studenty Fakulty informatiky Masarykovy univerzity. Cílem semináře je seznámit řešitele se zajímavými oblastmi informatiky a&nbsp;procvičit programátorské, matematické a&nbsp;logické myšlení.
               Seminář je uzpůsoben jak pro úplné začátečníky, kteří si na jednoduchých příkladech procvičí danou problematiku, tak pro zkušenější řešitele, kteří se pokusí pokořit hlavní soutěžní úlohy.
             </p>
@@ -46,7 +48,7 @@
             <a href="http://kscuk.fi.muni.cz/">
               <img src="img/info-kscuk.svg" style="max-width:90%;"/>
             </a>
-            <p class="about-paragraph" style="font-size:18px;" align="justify">
+            <p class="about-paragraph autojustify" style="font-size:18px;">
               Při řešení našeho semináře nemusíš jen sedět doma za počítačem. Během roku pro všechny řešitele pravidelně pořádáme výlety (Ksílety), na kterých se můžeš seznámit s&nbsp;ostatními řešiteli, osobně poznat organizátory a&nbsp;zahrát si kupu zajímavých her.
 V&nbsp;září se mohou úspěšní řešitelé těšit na týdenní soustředění K-SCUK, které je společné pro KSI a&nbsp;ekologický seminář KEKS. Náplní soustředění je jak odborný program, díky kterému se opět naučíš něco nového z&nbsp;informatiky, tak bohatý doprovodný program.
             </p>
@@ -55,7 +57,7 @@ V&nbsp;září se mohou úspěšní řešitelé těšit na týdenní soustředě
             {{#link-to "achievements"}}
               <img src="img/info-achievement.svg" style="max-width:90%;"/>
             {{/link-to}}
-            <p class="about-paragraph" style="font-size:18px;" align="justify">
+            <p class="about-paragraph autojustify" style="font-size:18px;">
               Za každou vyřešenou úlohu dostáváš body. Pokud budeš mít na konci roku alespoň 60 % z&nbsp;celkového možného počtu bodů, staneš se úspěšným řešitelem.
               V&nbsp;průběhu řešení semináře můžeš navíc za překonávání milníků, odevzdávání zajímavých řešení nebo třeba za účast na KSI akcích obdržet nejrůznější odznáčky. Podaří se ti jich získat co nejvíc? Ulovíš i&nbsp;ty nejvzácnější? Soutěž s&nbsp;ostatními řešiteli a&nbsp;posbírej je všechny!
             </p>
@@ -70,9 +72,10 @@ V&nbsp;září se mohou úspěšní řešitelé těšit na týdenní soustředě
 
 <section id="organizatori" class="container content-section">
     <!-- Sekcia organizatoru -->
-    <div class="jumbotron" style="background-color: #fff; margin-bottom: 20px">
+    <div class="jumbotron" style="background-color: #fff; margin-bottom: -30px;">
         <div style="text-align: center; color: #39393a;"><h1>Organizátoři</h1></div>
         <hr>
-        {{orgs-list model=model.organisators}}
+        <div class="row">{{orgs-list model=model.organisators}}</div>
+        <div class="row">{{#link-to "orgs"}}Všichni organizátoři{{/link-to}}</div>
     </div>
 </section>

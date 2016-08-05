@@ -1,6 +1,6 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll'; // ToDo: Protected route
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScrollProtected, {
     title: "KSI: Správa uživatelů"
 });

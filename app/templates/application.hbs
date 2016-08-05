@@ -1,23 +1,22 @@
-<div id="wrapper">
-    <div id="header">
-        {{header-component}}
-        {{#if session.isAuthenticated}}
-            {{#if session.current_user.organisator}}
-              <div class="row" style="margin-right: 0px;">
-                {{header-admin}}
-              </div>
-            {{/if}}
+<!-- Wraper already inserted as view div. -->
+<div id="header">
+    {{header-component}}
+    {{#if session.isAuthenticated}}
+        {{#if session.current_user.organisator}}
+          <div class="row" style="margin-right: 0px;">
+            {{header-admin}}
+          </div>
         {{/if}}
-    </div>
+    {{/if}}
+</div>
 
-    <div id="content">
-        {{outlet}}
-    </div>
+<div id="content">
+    {{outlet}}
+</div>
 
-    <div id="footer">
-        {{render "footer"}}
-    </div>
-</div/>
+<div id="footer">
+    {{render "footer"}}
+</div>
 
 <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style hidden-xs" style="top:200px;">
     <button type="button" class="btn btn-default btn-vertical" style="margin-top:-50px" data-toggle="modal" data-target="#feedback-modal">
@@ -41,7 +40,7 @@
           {{#if feedback_error}}
             {{warning-general text=feedback_error}}
           {{/if}}
-          {{textarea class="form-control" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
+          {{textarea class="form-control autofocus" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
           <br>
           <p><b>Tvá e-mailová adresa - volitelně</b></p>
 
@@ -73,7 +72,7 @@
           {{info-general text="Přihlašuji"}}
         {{else}}
           <div>
-            {{input type="email" value=identification placeholder="e-mail" class="form-control" required=true id="login-email" autofocus="autofocus"}}
+            {{input type="email" value=identification placeholder="e-mail" class="form-control autofocus" required=true id="login-email"}}
           </div>
           <div style="margin-top:5px">
             {{input type="password" value=password placeholder="heslo" class="form-control" required=true}}

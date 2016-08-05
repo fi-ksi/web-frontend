@@ -1,5 +1,8 @@
-<section id="admin-correcting" class="container content-section" style="text-align:justify">
+<section id="admin-correcting" class="container content-section">
   <h2>Opravování</h2>
+
+  {{year-sealed model=session.year_obj}}
+
   <div class="panel panel-default">
 
     <div class="panel-heading">Zvolit omezení</div>
@@ -85,8 +88,10 @@
   {{#unless filter_in_progress}}
     {{#if corrections}}
       {{#if is_task_selected}}
+        {{#if session.year_editable}}
         <div class="panel panel-warning">
         <div class="panel-body">
+
 
           <div class="col-md-6">
             {{{task.title}}}:
@@ -133,6 +138,7 @@
 
         </div>
         </div>
+        {{/if}}
       {{/if}}
     {{/if}}
 

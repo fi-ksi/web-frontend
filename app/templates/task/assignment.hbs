@@ -1,9 +1,8 @@
 <div style="margin-bottom:30px">
   <div style="margin:20px">
-     {{{model.details.body}}}
-  </div>
-  <hr>
-  <div style="margin-left:20px">
+    <h3 class="visible-print">Zadání</h3>
+    {{{model.details.body}}}
+    <hr>
     {{#unless opened}}
       {{warning-general disable_warning=true text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}
     {{/unless}}
@@ -16,7 +15,7 @@
     {{/if}}
   </div>
   {{#if finished}}
-    <div class="text-center">
+    <div class="text-center hidden-print">
         {{#link-to "tasks" type="button" class="btn btn-primary btn-lg"}}
         <h3>Pokračovat dále</h3>
         {{/link-to}}

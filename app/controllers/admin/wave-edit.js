@@ -19,7 +19,7 @@ export default Ember.Controller.extend( {
      canSave: Ember.computed("model.wave", "session.current_user", function(){
         var user = this.get("session.current_user");
         if (user) {
-            return (user.get("admin")) || ((user.get("id") === this.get("model.wave.garant.id")) && (new Date() < this.get("model.wave.time_published")));
+            return (user.get("admin")) || ((user.get("id") === this.get("model.wave.garant.id")) && (new Date() < this.get("model.wave.time_published")) && (!this.get("session.year_obj.sealed")));
         } else {
             return false;
         }

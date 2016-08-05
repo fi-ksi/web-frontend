@@ -1,7 +1,7 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll'; // ToDo: Protected route
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScrollProtected, {
     model: function() {
         return Ember.RSVP.hash({
             'corr-info': this.get('store').findAll("corrections_info"),
@@ -14,5 +14,11 @@ export default Ember.Route.extend(ResetScroll, {
     },
     title: function(tokens) {
         return "KSI: " + tokens.pop();
+    },
+
+    actions: {
+        willTransition: function() {
+            this.controller.set("corrections", []);
+        }
     }
 });

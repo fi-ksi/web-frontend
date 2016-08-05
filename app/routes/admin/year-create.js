@@ -1,9 +1,12 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll';
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScrollProtected, {
     model: function() {
-        return this.store.findAll("year");
+        return Ember.RSVP.hash({
+            years: this.store.findAll("year"),
+            orgs: this.store.query("user", { filter: "orgs-all" })
+        });
     },
     title: "KSI: Nový ročník",
 });

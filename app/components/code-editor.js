@@ -10,6 +10,8 @@ export default Ember.Component.extend({
             this.editor = window.ace.edit(this.get("id"));
             this.editor.setTheme("ace/theme/monokai");
             this.editor.getSession().setMode("ace/mode/python");
-        }); 
+            this.editor.setAutoScrollEditorIntoView(true);
+            this.editor.setOption("maxLines", 50);
+        });
     }
 });

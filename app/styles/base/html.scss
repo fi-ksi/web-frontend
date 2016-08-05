@@ -3,3 +3,30 @@ html,body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+// This is wrapper.
+body > .ember-view {
+    min-height: 100%;
+    position: relative;
+}
+
+@media print {
+    #content {
+        padding-bottom: 50px; /* Height of the footer element */
+    }
+}
+
+@media screen {
+    #content {
+        padding-bottom: 175px; /* Height of the footer element */
+    }
+}
+
+@media (max-width: 499px) {
+    .autojustify { text-align: left }
+}
+
+@media (min-width: 500px) {
+    .autojustify { text-align: justify }
+}
+

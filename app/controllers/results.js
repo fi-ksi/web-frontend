@@ -3,10 +3,11 @@ import config from '../config/environment';
 
 export default Ember.Controller.extend({
     session: Ember.inject.service(),
-    results: Ember.computed("model", function() {
+
+    calc_score_list: function(data) {
         var groups = new Map();
         var score_list = [];
-        this.get("model").forEach(function(user) {
+        data.forEach(function(user) {
             var score = user.get("score");
             if(groups.has(score)) {
                 groups.get(score).push(user);
@@ -17,7 +18,7 @@ export default Ember.Controller.extend({
                 score_list.push(score);
             }
         });
-        
+
         var result = [];
         var position = 1;
         score_list.forEach(function(num) {
@@ -35,7 +36,6 @@ export default Ember.Controller.extend({
                 } else {
                     if (notused) {
                         o["num"] = position.toString() + "–" + (position + list.length - 1).toString() + ".";
-                        // notused = false;
                     } else {
                         o["num"] = "";
                     }
@@ -45,6 +45,14 @@ export default Ember.Controller.extend({
             position += list.length;
         });
         return result;
+    },
+
+    results_hs: Ember.computed("model.part_hs", function() {
+        return this.calc_score_list(this.get("model.part_hs"));
+    }),
+
+    results_other: Ember.computed("model.part_other", function() {
+        return this.calc_score_list(this.get("model.part_other"));
     }),
 
     actions: {
@@ -56,6 +64,7 @@ export default Ember.Controller.extend({
                 request.open("GET", config.API_LOC + "/admin/user-export", true);
                 request.responseType = "blob";
                 request.setRequestHeader(header, content);
+                request.setRequestHeader('year', self.get("session.year"));
                 request.onload = function() {
                     self.set('export_loading', false);
                     if (this.status === 200) {

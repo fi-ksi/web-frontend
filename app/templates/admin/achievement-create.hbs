@@ -1,5 +1,8 @@
-<section id="admin-achievement-create" class="container content-section" style="text-align:justify">
+<section id="admin-achievement-create" class="container content-section">
   <h2>Nová trofej</h2>
+
+  {{year-sealed model=session.year_obj}}
+
   {{#link-to "admin/achievements"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
     <div class="panel-body">
@@ -14,7 +17,7 @@
       </div>
 
       <div class="form-group">
-        {{input type="checkbox" checked=persistent}} Perzistentní
+        {{input type="checkbox" checked=persistent disabled=session.year_obj.sealed}} Perzistentní
       </div>
 
       <div class="form-group col-md-12">

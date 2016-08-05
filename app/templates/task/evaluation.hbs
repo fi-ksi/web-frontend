@@ -1,16 +1,17 @@
  {{#if session.isAuthenticated}}
   {{#if submitted}}
     <div style="margin:20px">
+      <h3 class="visible-print">Hodnocení</h3>
       <div style="margin-top:30px">
         <h5>Skóre:</h5>
         <hr>
       </div>
 
-    	<div class="progress" style="margin-top:20px">
-    		<div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style={{progress_width}}>
-    			<b>{{sum}}&nbsp;/{{model.max_score}}</b>
-    		</div>
-    	</div>
+        <div class="progress" style="margin-top:20px">
+            <div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style={{progress_width}}>
+                <b>{{sum}}&nbsp;/{{model.max_score}}</b>
+            </div>
+        </div>
 
       {{#if model.details.achievements}}
         <div style="margin-top:30px">

@@ -1,4 +1,4 @@
-<section id="admin-article-edit" class="container content-section" style="text-align:justify">
+<section id="admin-article-edit" class="container content-section">
   <h2>Úprava článku</h2>
   {{#link-to "admin/articles"}}zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label>Termín publikace:</label>
-        {{bs-datetimepicker date=model.time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut model.time_published)) forceDateOutput=true}}
+        {{bs-datetimepicker date=model.time_published updateDate=(action (mut model.time_published)) forceDateOutput=true locale='cs'}}
       </div>
 
       <div class="form-group">
@@ -35,14 +35,17 @@
         {{/if}}
       </div>
 
+      {{year-sealed model=model.year}}
 
-      <div class="row" style="margin-left:0px; margin-top:20px">
-        {{#if saving}}
-            <button class="btn btn-primary inline disbaled" id="save_disabled">Ukládám...</button>
-        {{else}}
-            <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
-        {{/if}}
-      </div>
+      {{#unless model.year.sealed}}
+          <div class="row" style="margin-left:0px; margin-top:20px">
+            {{#if saving}}
+                <button class="btn btn-primary inline disbaled" id="save_disabled">Ukládám...</button>
+            {{else}}
+                <button class="btn btn-primary inline" id="save" {{action "article-save"}}>Uložit</button>
+            {{/if}}
+          </div>
+      {{/unless}}
 
       {{#if error_status}}
         <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>

@@ -49,6 +49,9 @@ export default Ember.Component.extend(InboundActions, {
             this.set("module.submitted_files.files", this.get("module.submitted_files.files").filter(function(x) {
                 return x['id'] !== id;
             }));
+            if (this.get("module.submitted_files.files.length") === 0) {
+                this.set("module.state", "blank");
+            }
         }
     },
     module_service: Ember.inject.service("module-service"),

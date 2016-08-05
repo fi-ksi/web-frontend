@@ -1,4 +1,4 @@
-<section id="admin-task-edit" class="container content-section" style="text-align:justify">
+<section id="admin-year-create" class="container content-section">
   <h2>Nový ročník</h2>
   {{#link-to "admin/years"}}Zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
@@ -6,12 +6,29 @@
 
       <div class="form-group">
         <label>Index ročníku:</label>
-        {{input class="form-control" value=index}}
+        {{input type="number" min="1" max="1000" value=index class="form-control" required=true}}
       </div>
 
       <div class="form-group">
         <label>Ročník:</label>
-        {{input class="form-control" value=year}}
+        {{input class="form-control" value=year required=true}}
+      </div>
+
+      <div class="form-group">
+        <label>Bodová vycpávka:</label>
+        {{input type="number" min="0" max="1000" value=pad class="form-control" required=true}}
+      </div>
+
+      <div class="form-group">
+        <h3>Aktivní organizátoři</h3>
+        <ul>
+        {{#each orgs as |org|}}
+            <li>
+                {{input type="checkbox" checked=org.active}}
+                {{org.full_name}}
+            </li>
+        {{/each}}
+      </ul>
       </div>
 
       {{#if saving}}

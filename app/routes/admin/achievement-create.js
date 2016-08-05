@@ -1,7 +1,7 @@
 import Ember from "ember";
-import ResetScroll from '../../mixins/reset-scroll';
+import ResetScrollProtected from "../../mixins/reset-scroll-protected";
 
-export default Ember.Route.extend(ResetScroll, {
+export default Ember.Route.extend(ResetScrollProtected, {
     model: function() {
         return this.store.find("content", "achievements");
     },

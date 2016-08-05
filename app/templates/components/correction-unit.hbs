@@ -1,5 +1,5 @@
 <div class="panel panel-ksi {{if model.corrected "panel-module-correct"}}">
-	  <div class="panel-heading panel-heading-ksi {{if model.corrected "panel-heading-module-correct"}}" style="hight:400px">
+      <div class="panel-heading panel-heading-ksi {{if model.corrected "panel-heading-module-correct"}}" style="hight:400px">
       {{model.user.full_name}}
       <div style="float: right; margin-right: 50px;">
         {{{model.task_id.title}}}
@@ -8,14 +8,16 @@
         {{statemsg}}
       </div>
     </div>
-	  <div class="panel-body">
+      <div class="panel-body">
        {{#each model.modules as |module|}}
        <div class="form-group" style="margin-top:20px col-md-12">
           {{correction-module orgs=orgs module=module dirty="dirty"}}
        </div>
        {{/each}}
 
-       <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+       {{#if session.year_editable}}
+           <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+       {{/if}}
 
        <div class="form-group panel-body">
            <div class="col-md-6">
@@ -30,18 +32,21 @@
                {{/each}}
            </div>
 
-            <div class="col-md-4">
-                <select id="a_{{ident}}" class="form-control">
-                  <option value="">Vyber trofej pro přidání</option>
-                  {{#each achievements as |ach|}}
-                    <option value="{{ach.id}}">{{{ach.title}}}</option>
-                  {{/each}}
-                </select>
-            </div>
+            {{#if session.year_editable}}
+                <div class="col-md-4">
+                    <select id="a_{{ident}}" class="form-control">
+                      <option value="">Vyber trofej pro přidání</option>
+                      {{#each achievements as |ach|}}
+                        <option value="{{ach.id}}">{{{ach.title}}}</option>
+                      {{/each}}
+                    </select>
+                </div>
 
-            <div class="col-md-2">
-                <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
-            </div>
+                <div class="col-md-2">
+                    <button {{action "add_achievement"}} class="btn btn-primary">Přidat trofej</button>
+                </div>
+
+            {{/if}}
       </div>
 
        <div class="form-group">
@@ -49,15 +54,17 @@
          {{#if model.comment}}
           {{thread-view thread=model.comment mark_as_read=false}}
          {{else}}
-            <div>
-              <button class="btn btn-primary" {{action "new_thread"}}>
-                {{#if new_thread}}
-                  Zrušit komentář
-                {{else}}
-                  Nový komentář
-                {{/if}}
-              </button>
-            </div>
+            {{#if session.year_editable}}
+                <div>
+                  <button class="btn btn-primary" {{action "new_thread"}}>
+                    {{#if new_thread}}
+                      Zrušit komentář
+                    {{else}}
+                      Nový komentář
+                    {{/if}}
+                  </button>
+                </div>
+            {{/if}}
 
             {{#if info}}
               <div class="alert alert-info">{{info}}</div>
@@ -80,4 +87,4 @@
          {{/if}}
        </div>
     </div>
-	</div>
+</div>

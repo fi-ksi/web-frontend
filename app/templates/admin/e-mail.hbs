@@ -1,4 +1,4 @@
-<section id="admin-email" class="container content-section" style="text-align:justify">
+<section id="admin-email" class="container content-section">
   <h2>E-mail</h2>
   <div class="form-group">
     <label>Od:</label>
@@ -31,6 +31,10 @@
     <label>Slepá kopie:</label>
     <textarea class="form-control" style="min-width: 100%" rows="3" id="bcc"></textarea>
     (kopie bude vždy zaslána na <a href="mailto:ksi@fi.muni.cz">ksi@fi.muni.cz</a>, e-maily oddělujte čárkou anebo středníkem)
+  </div>
+  <div class="form-group">
+    {{input type="checkbox" checked=successful}}
+    <label>Pouze úspěšným řešitelům</label>
   </div>
   <div class="form-group">
     <label>Předmět:</label>

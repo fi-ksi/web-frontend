@@ -1,11 +1,11 @@
-<section id="thread" class="container content-section" style="text-align:justify">
-	{{#unless session.isAuthenticated}}
+<section id="thread" class="container content-section autojustify">
+    {{#unless session.isAuthenticated}}
           {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
     {{/unless}}
-	{{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
-	<!-- Sekcia -->
-	<div style="margin:40px;">
-		<h2>{{{model.title}}}!</h2>
-		{{thread-view thread=model store=store}}
-	</div>
+    {{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
+    <!-- Sekcia -->
+    <div style="margin:40px;">
+        <h2>{{{model.title}}}!</h2>
+        {{thread-view thread=model store=store}}
+    </div>
 </section>

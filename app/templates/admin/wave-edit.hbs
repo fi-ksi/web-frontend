@@ -1,4 +1,4 @@
-<section id="admin-task-edit" class="container content-section" style="text-align:justify">
+<section id="admin-wave-edit" class="container content-section">
   <h2>Úprava vlny</h2>
   {{#link-to "admin/waves"}}Zpět na přehled{{/link-to}}
   <div class="panel panel-ksi" style="margin-top:20px">
@@ -20,14 +20,16 @@
 
       <div class="form-group">
         <label>Čas zveřejnění:</label>
-        {{bs-datetimepicker date=model.wave.time_published format='DD.MM.YYYY HH:mm' updateDate=(action (mut model.wave.time_published)) forceDateOutput=true}}
+        {{bs-datetimepicker date=model.wave.time_published updateDate=(action (mut model.wave.time_published)) forceDateOutput=true locale='cs'}}
         <div class="alert alert-info" style="margin-top:20px">Po čase zveřejnění mohou vlnu upravovat pouze administrátoři!</div>
       </div>
 
       <div class="form-group">
         <label>Index v rámci ročníku:</label>
-        {{input class="form-control" value=model.wave.index}}
+        {{input type="number" min="1" max="10" value=model.wave.index class="form-control" required=true}}
       </div>
+
+      {{year-sealed model=session.year_obj}}
 
       {{#if canSave}}
         <div class="row" style="margin-left:0px; margin-top:20px">

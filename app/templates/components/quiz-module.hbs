@@ -1,29 +1,29 @@
 <div class="row" style="margin-left:0px; margin-right:10px">
-	<div style="margin-bottom: 20px">
-		{{{module.description}}}
-	</div>
+    <div style="margin-bottom: 20px">
+        {{{module.description}}}
+    </div>
 </div>
 
 <div class="controls" style="margin-left:0px">
-	<div class="panel panel-task">
-		<div class="panel-body">
-			{{#each module.questions.questions as |question index|}}
-						<div><p style="margin-left:15px; margin-right:15px;">{{{question.text}}}</p></div>
-						<div class="panel panel-ksi">
-						  <div class="panel-heading panel-heading-ksi">{{{question.question}}}</div>
-						  <div class="panel-body">
-								{{warning-general text="Položku je nutno vyplnit" id=(construct-id "w" module.id index) class="hide"}}
-								{{#each question.options as |option number|}}
-									<div>
-										<p>{{input type=question.type name=(construct-id "group" module.id index) id=(construct-id "id_q" module.id index number) class=(construct-id "group" module.id index)}} <label for={{construct-id "id_q" module.id index number}}>{{{option}}}</label></p>
-									</div>
-								{{/each}}
-						  </div>
-						</div>
-			{{/each}}
-		</div>
-	</div>
-	{{#if general_error}}
-		{{warning-general text=general_error}}
-	{{/if}}
+    <div class="panel panel-task">
+        <div class="panel-body">
+            {{#each module.questions.questions as |question index|}}
+                        <div><p style="margin-left:15px; margin-right:15px;">{{{question.text}}}</p></div>
+                        <div class="panel panel-ksi">
+                          <div class="panel-heading panel-heading-ksi">{{{question.question}}}</div>
+                          <div class="panel-body">
+                                {{warning-general text="Položku je nutno vyplnit" id=(construct-id "w" module.id index) class="hide"}}
+                                {{#each question.options as |option number|}}
+                                    <div>
+                                        <p>{{input type=question.type name=(construct-id "group" module.id index) id=(construct-id "id_q" module.id index number) class=(construct-id "group" module.id index)}} <label for={{construct-id "id_q" module.id index number}}>{{{option}}}</label></p>
+                                    </div>
+                                {{/each}}
+                          </div>
+                        </div>
+            {{/each}}
+        </div>
+    </div>
+    {{#if general_error}}
+        {{warning-general text=general_error}}
+    {{/if}}
 </div>
