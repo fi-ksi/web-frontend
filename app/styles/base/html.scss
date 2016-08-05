@@ -12,13 +12,13 @@ body > .ember-view {
 
 @media print {
     #content {
-        padding-bottom: 70px; /* Height of the footer element */
+        padding-bottom: 50px; /* Height of the footer element */
     }
 }
 
 @media screen {
     #content {
-        padding-bottom: 230px; /* Height of the footer element */
+        padding-bottom: 175px; /* Height of the footer element */
     }
 }
 
