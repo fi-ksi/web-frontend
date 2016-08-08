@@ -11,7 +11,7 @@
 
       <div class="form-group">
         <label>Garant:</label>
-          {{#x-select value=model.wave.garant.id class="form-control"}}
+          {{#x-select value=garant_id class="form-control"}}
             {{#each model.users as |user|}}
               {{#x-option value=user.id}}{{user.full_name}} (id {{user.id}}){{/x-option}}
             {{/each}}
