@@ -25,7 +25,7 @@
   border-width: 0;
 }
 
-.btn-vertical {
+#btn-feedback {
   padding:0px 0px 0px 0px;
   text-align: center;
   margin:0px;
@@ -42,10 +42,10 @@
   position: fixed;
   border-radius: 0px;
   left: 0px;
-  top: 250px;
+  top: 200px;
 }
 
-.btn-vertical:hover {
+#btn-feedback:hover {
   background-color: ksi-color('secondary-orange');
 }
 
