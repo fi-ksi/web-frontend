@@ -10,5 +10,9 @@ export default Ember.Route.extend(ResetScroll, {
     },
     title: function(tokens) {
         return "KSI: " + tokens.pop();
+    },
+    setupController: function(controller, model) {
+        controller.set('model', model);
+        controller.set("reload_status", null);
     }
 });

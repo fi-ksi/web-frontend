@@ -4,6 +4,8 @@ import config from '../../config/environment';
 export default Ember.Controller.extend( {
     store: Ember.inject.service(),
     session: Ember.inject.service(),
+    storage: Ember.inject.service(),
+
     deploy_status: "",
     deploy_log: "",
     error_status: "",
@@ -16,7 +18,6 @@ export default Ember.Controller.extend( {
             Ember.$("#myModal").modal();
 
             self.get('session').authorize('authorizer:oauth2', function(header, h) {
-                
                 Ember.$.ajax({
                     url: config.API_LOC + "/admin/atasks/"+task.get("id")+"/deploy",
                     type: 'POST',
@@ -61,6 +62,11 @@ export default Ember.Controller.extend( {
                                         clearInterval(watchingTask);
                                         self.set("deploy_status", "Server úspěšně dokončil deploy");
                                         task.reload();
+
+                                        // reload task in other tabs
+                                        self.set("storage.taskToReload", task.get("id"));
+                                        self.toggleProperty("storage.reloadTask");
+                                        console.log("sent!");
                                     }
                                     else if(data.deploy_status === 'error') {
                                         clearInterval(watchingTask);

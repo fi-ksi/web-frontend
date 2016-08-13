@@ -2,6 +2,8 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
     session: Ember.inject.service(),
+    storage: Ember.inject.service(),
+
     reload_status: null,
 
     mathObserver: function() {
@@ -14,6 +16,12 @@ export default Ember.Controller.extend({
         else if ((points === 2) || (points === 3) || (points === 4)) { return "body"; }
         else { return "bodů"; }
     }),
+
+    // Reload task when deployed in another browser window.
+    taskToReload: function() {
+        var task_id = this.get("storage.taskToReload");
+        if (task_id === this.get("model.id")) { this.send("updateTask"); }
+    }.observes("storage.reloadTask"),
 
     actions: {
         updateTask: function() {
@@ -28,5 +36,9 @@ export default Ember.Controller.extend({
         hideUpdate: function() {
             this.set("reload_status", null);
         },
+    },
+
+    init: function() {
+        this.set("storage.reloadTask", false);
     }
 });
