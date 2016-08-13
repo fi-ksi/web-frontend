@@ -16,11 +16,9 @@ body > .ember-view {
     }
 }
 
-@media screen {
-    #content {
-        padding-bottom: 175px; /* Height of the footer element */
-    }
-}
+@media screen and (max-width: 359px) { #content { padding-bottom: 318px; } }
+@media screen and (min-width: 360px) { #content { padding-bottom: 258px; } }
+@media screen and (min-width: 660px) { #content { padding-bottom: 178px; } }
 
 @media (max-width: 499px) {
     .autojustify { text-align: left }
