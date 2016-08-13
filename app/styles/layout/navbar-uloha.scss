@@ -1,6 +1,7 @@
 .navbar-uloha {
     background-color: ksi-color('text-light');
     border-color: ksi-color('primary-orange');
+    border-radius: 4px;
 }
 .navbar-uloha .navbar-brand {
     color: ksi-color('primary-dark');
@@ -13,6 +14,8 @@
 }
 .navbar-uloha .navbar-nav > li > a {
     color: ksi-color('primary-dark');
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .navbar-uloha .navbar-nav > li > a:hover, .navbar-uloha .navbar-nav > li > a:focus {
     color: ksi-color('primary-dark');
@@ -48,7 +51,6 @@
 .navbar-uloha .navbar-toggle .icon-bar {
     background-color: ksi-color('primary-dark');
 }
-.navbar-uloha .navbar-collapse,
 .navbar-uloha .navbar-form {
     border-color: ksi-color('primary-dark');
 }
@@ -57,6 +59,20 @@
 }
 .navbar-uloha .navbar-link:hover {
     color: ksi-color('primary-dark');
+}
+
+// Disable task-navbar collapse at certain sizes
+.navbar-uloha .navbar-nav {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.navbar-uloha li {
+    float: left !important;
+}
+
+.navbar-uloha .navbar-nav {
+    margin: 0px 0px !important;
 }
 
 @media (max-width: 767px) {
