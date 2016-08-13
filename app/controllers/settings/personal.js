@@ -13,6 +13,7 @@ export default Ember.Controller.extend(UserSettings, {
             var obj = {
                 first_name: this.get("model.first_name"),
                 last_name: this.get("model.last_name"),
+                nick_name: this.get("model.nick_name"),
                 email: this.get("model.email"),
                 gender: this.get("model.gender"),
                 addr_street: this.get("model.addr_street"),

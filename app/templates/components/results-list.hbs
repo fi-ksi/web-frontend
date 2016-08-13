@@ -13,7 +13,7 @@
     {{#each model as |res|}}
         <tr class="{{if (eq session.current_user.id res.user.id) 'logged-in' (if res.user.successful 'successful') }}" style="height:45px">
                 <td style="text-align: center;">{{res.num}}</td>
-          <td>{{#link-to "user-profile" res.user}}{{res.user.full_name}}{{/link-to}}</td>
+          <td>{{#link-to "user-profile" res.user}}{{res.user.first_name}} {{res.user.last_name}}{{/link-to}}</td>
           <td>
             {{#each res.user.achievements as |achievement|}}
                         {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}

@@ -11,11 +11,13 @@
             budete zařazeni, se odvíjí od roku maturity, proto jej prosím vyplňte
             pečlivě.
         </div>
-        <h2>Registrace</h2>
-           <div style="margin-top:30px">
-                <h4>Přihlašovací údaje</h4>
-                <hr>
-            </div>
+
+      <h2>Registrace</h2>
+
+      <div style="margin-top:30px">
+        <h4>Přihlašovací údaje</h4>
+        <hr>
+      </div>
 
       <div class="form-group">
         <label for="email">E-mail:</label>
@@ -38,10 +40,10 @@
         {{warning-general text="Hesla se neshodují"}}
       {{/if}}
 
-            <div style="margin-top:30px">
-                <h4>Osobní údaje</h4>
-                <hr>
-            </div>
+      <div style="margin-top:30px">
+        <h4>Osobní údaje</h4>
+        <hr>
+      </div>
 
       <div class="form-group">
         <label for="name">Jméno:</label>
@@ -53,7 +55,12 @@
         {{input value=model.last_name class="form-control" required=true placeholder="Novák"}}
       </div>
 
-            <div class="form-group">
+      <div class="form-group">
+        <label for="surname">Přezdívka (nepovinné):</label>
+        {{input value=model.nick_name class="form-control" required=false placeholder="nick"}}
+      </div>
+
+      <div class="form-group">
         <label for="gender">Pohlaví:</label>
         {{#x-select value=model.gender class="form-control" id="gender" required=true }}
           {{#x-option value=""}}Prosím vyber{{/x-option}}
