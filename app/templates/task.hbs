@@ -30,6 +30,20 @@
                             {{#link-to "task.evaluation" tagName="li"}}<a href="{{view.href}}">Hodnocení</a>{{/link-to}}
                             {{#link-to "task.solution" tagName="li"}}<a href="{{view.href}}">Řešení</a>{{/link-to}}
                         </ul>
+
+                        {{#if session.current_user.organisator}}
+                        <ul class="nav navbar-nav navbar-right">
+                            {{#if reload_status}}
+                                <li style="text-align: right;">
+                                    <a href="{{view.href}}" style="padding: 5px;" {{action 'hideUpdate'}}>
+                                    {{{reload_status}}}
+                                    </a>
+                               </li>
+                            {{/if}}
+
+                            <li><a href="{{view.href}}" {{action 'updateTask'}}>↻</a></li>
+                        </ul>
+                        {{/if}}
                     </div><!-- /.navbar -->
                 </div><!-- /.container-fluid -->
             </nav>

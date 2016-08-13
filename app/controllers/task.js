@@ -1,6 +1,9 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
+    session: Ember.inject.service(),
+    reload_status: null,
+
     mathObserver: function() {
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     }.observes("model.details.body"),
@@ -11,4 +14,19 @@ export default Ember.Controller.extend({
         else if ((points === 2) || (points === 3) || (points === 4)) { return "body"; }
         else { return "bodů"; }
     }),
+
+    actions: {
+        updateTask: function() {
+            var self = this;
+            this.set("reload_status", "Aktualizuji...");
+            this.get("model.details").then(function(details) {
+                details.reload();
+                self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleFormat('%H:%M:%S'));
+            });
+        },
+
+        hideUpdate: function() {
+            this.set("reload_status", null);
+        },
+    }
 });
