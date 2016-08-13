@@ -24,3 +24,8 @@ a.header-link:hover {
 a.header-link:active {
   outline: 0;
 }
+
+// Print to content text.
+.noContent[href]:after {
+    content: none !important;
+}

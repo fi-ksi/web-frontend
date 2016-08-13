@@ -1,9 +1,9 @@
 {{log model}}
 <section id="profile" class="container content-section">
     <div class="row">
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-12 col-md-3 col-print-4">
             <div style="margin-top:30px">
-                <img src="{{model.profile_picture_r}}" style="border-radius: 25px; width:100%; max-width:250px;"/>
+                <img src="{{model.profile_picture_r}}" id="profile-picture-profile" />
             </div>
             <div id="name" style="margin-top:30px; margin-left:5px">
                 <h3 style="text-align: left">{{model.full_name}}</h3>
@@ -28,7 +28,7 @@
             {{/if}}
         </div>
 
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-12 col-md-9 col-print-8">
         {{#if model.show_solved}}
             <div style="margin-top:30px">
                 <h5>Trofeje</h5>
@@ -36,9 +36,9 @@
             </div>
 
             <div class="panel panel-profile">
-                <div class="panel-body">
+                <div class="panel-body panel-profile-achievement">
                     {{#each model.achievements as |achievement|}}
-                    {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                    {{#link-to 'achievements' class='noContent'}}{{achievement-small model=achievement}}{{/link-to}}
                     {{/each}}
                 </div>
             </div>
@@ -91,14 +91,22 @@
             {{#if model.percent}}
                 <p id="profile-points-text">
                     Skóre:
+                    <span class="visible-print-inline">
+                        <span style="font-weight: bold;">{{model.percent}}&nbsp;%</span>
+                    </span>
+                    <span style="font-style: italic;">(úspěšný řešitel ⇔ skóre ≥ 60&nbsp;%)</span>
                 </p>
-                <div class="progress" style="margin-top:20px">
+                <div class="progress hidden-print" style="margin-top:10px">
                     <div class="progress-bar progress-bar-warning progress-bar-ksi" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{model.percent}}%">
                         {{model.percent}}&nbsp;%
                     </div>
                 </div>
             {{/if}}
+        {{/if}}
+        </div>
 
+        <div class="col-sm-12 col-md-9 col-print-12">
+        {{#if model.show_solved}}
             {{#if results}}
                  <hr>
                  {{#each results as |res_wave|}}
@@ -129,7 +137,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <img class="inline" src="{{result.task.picture}}" style="max-width: 45px">
+                                        <img class="inline" src="{{result.task.picture}}" class="profile-picture-task">
                                         <label class="inline" style="margin-left:10px">{{#link-to "task" result.task}}{{{result.task.title}}}{{/link-to}}</label>
                                     </div>
                                     <div class="col-xs-2">
@@ -157,7 +165,7 @@
                     {{/each}}
 
                     <div class="row" style="margin-bottom: 20px; font-weight: bold;">
-                       <div class="col-xs-6">Skóre:</div>
+                       <div class="col-xs-6">Skóre: <span style="font-weight:normal">(odevzdané / celkem odevzdané / celkem všechny)</span></div>
                        <div class="col-xs-2"></div>
                        <div class="col-xs-2" title="body za odevzdané úlohy / maximum bodů za odevzdané úlohy / maximum bodů za všechny úlohy ve vlně">
                            {{res_wave.score}} / {{res_wave.max_score}} / {{res_wave.wave.sum_points}}
@@ -182,7 +190,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <img class="inline" src="{{task.picture}}" style="max-width: 45px">
+                                <img class="inline" src="{{task.picture}}" class="profile-picture-task">
                                 <label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{{task.title}}}{{/link-to}}</label>
                             </div>
                         </div>
