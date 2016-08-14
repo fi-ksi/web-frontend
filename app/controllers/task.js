@@ -24,14 +24,23 @@ export default Ember.Controller.extend({
     }.observes("storage.reloadTask"),
 
     actions: {
+        // Aktualizovat ulohu, detaily a vsechny moduly.
         updateTask: function() {
             var self = this;
             this.set("reload_status", "Aktualizuji...");
-            this.get("model.details").then(function(details) {
-                details.reload();
-                self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleFormat('%H:%M:%S'));
-            });
-        },
+
+            this.get("model").reload().then(function(task) {
+                task.get("details").then(function(details) {
+                    details.reload().then(function(details) {
+                        details.get("modules").forEach(function(module) {
+                            module.reload();
+                        });
+                        self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleFormat('%H:%M:%S'));
+                    });
+
+                });
+            })
+       },
 
         hideUpdate: function() {
             this.set("reload_status", null);
