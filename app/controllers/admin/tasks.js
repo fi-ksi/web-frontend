@@ -66,7 +66,6 @@ export default Ember.Controller.extend( {
                                         // reload task in other tabs
                                         self.set("storage.taskToReload", task.get("id"));
                                         self.toggleProperty("storage.reloadTask");
-                                        console.log("sent!");
                                     }
                                     else if(data.deploy_status === 'error') {
                                         clearInterval(watchingTask);
