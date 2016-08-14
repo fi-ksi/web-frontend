@@ -2,6 +2,7 @@ import Ember from "ember";
 import UserSettings from "../mixins/user-settings";
 
 export default Ember.Controller.extend(UserSettings, {
+    session: Ember.inject.service(),
 
     // Split results into waves
     // Important: waves must be loaded when processing this property
@@ -60,6 +61,13 @@ export default Ember.Controller.extend(UserSettings, {
             return "Tato organizátorka ještě žádnou úlohu zatím nevytvořila, ale na nějaké určitě pracuje!";
         }
         return null;
+    }),
+
+    // Z nejakeho duvodu v sablone zlobi session.current_user.organisator
+    // (pravdepodobne diky pouzivani controlleru a sablony z vice rout)
+    // Toto reseni se zda byt funkcni.
+    is_current_user_org: Ember.computed("session.current_user.organisator", function(){
+        return this.get("session.current_user.organisator");
     }),
 
 });

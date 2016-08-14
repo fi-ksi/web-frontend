@@ -8,7 +8,6 @@ export default Ember.Route.extend(ResetScrollProtected, {
     },
 
     afterModel: function(model) {
-        this.set("session.current", model);
         var self = this;
         return this.store.findAll("wave").then(function(result) {
             self.set("waves", result);
@@ -18,6 +17,7 @@ export default Ember.Route.extend(ResetScrollProtected, {
     setupController: function(controller, model) {
         this._super(controller,model);
         controller.set('waves', this.get('waves'));
+        controller.set('fullProfile', true);
     },
 
     title: "KSI: Profil"

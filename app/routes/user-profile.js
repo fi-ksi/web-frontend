@@ -9,13 +9,12 @@ export default Ember.Route.extend(ResetScroll, {
         return model.get("full_name");
     },
     renderTemplate: function() {
-        this._super();
-        this.render("profile");
+        this.render("profile", { controller: 'profile' });
     },
     title: function(tokens) {
-        return "KSI: profil - " + tokens.pop();
+        return "KSI: profil – " + tokens.pop();
     },
     setupController: function(controller, model) {
-        this.controllerFor('profile').setProperties({content:model});
+        this.controllerFor('profile').setProperties({content:model, fullProfile: false});
     }
 });

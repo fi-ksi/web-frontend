@@ -8,8 +8,15 @@
             <div id="name" style="margin-top:30px; margin-left:5px">
                 <h3 style="text-align: left">{{model.full_name}}</h3>
                 <h4>{{model.role_str}}</h4>
+                {{#if fullProfile}}
+                    {{#link-to 'user-profile' model.id}}Veřejný profil{{/link-to}}
+                {{else}}
+                    {{#if is_current_user_org}}
+                        {{#link-to 'full-profile' model.id}}Úplný profil{{/link-to}}
+                    {{/if}}
+                {{/if}}
             </div>
-            <div id="name">
+            <div id="short-info">
                 <p id="profile-text">{{model.short_info}}</p>
             </div>
             <!-- TODO: chceme sem odkaze na FB, Twitter, web? -->

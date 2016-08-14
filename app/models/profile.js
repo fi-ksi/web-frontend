@@ -17,12 +17,14 @@ export default DS.Model.extend( {
     }),
 
     profile_picture: DS.attr("string"),
-    profile_picture_r: Ember.computed("profile_picture", function() {
+    profile_picture_r: Ember.computed("profile_picture", "gender", function() {
         var p = this.get("profile_picture");
-        if(p) {
-            return config.API_LOC + p;
+        if (p) { return config.API_LOC + p; }
+        if (this.get("gender") === "female") {
+            return "/img/avatar-default-woman.svg";
+        } else {
+            return "/img/avatar-default.svg";
         }
-        return "/img/avatar-default.svg";
     }),
     short_info: DS.attr("string"),
     email: DS.attr("string"),
