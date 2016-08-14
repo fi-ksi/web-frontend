@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
                     });
 
                 });
-            })
+            });
        },
 
         hideUpdate: function() {

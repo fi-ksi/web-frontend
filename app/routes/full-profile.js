@@ -17,7 +17,7 @@ export default Ember.Route.extend(ResetScroll, {
     title: function(tokens) {
         return "KSI: profil – " + tokens.pop();
     },
-    afterModel: function(model) {
+    afterModel: function() {
         var self = this;
         return this.store.findAll("wave").then(function(result) {
             self.set("waves", result);

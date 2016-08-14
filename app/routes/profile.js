@@ -7,7 +7,7 @@ export default Ember.Route.extend(ResetScrollProtected, {
         return this.store.find("profile", "");
     },
 
-    afterModel: function(model) {
+    afterModel: function() {
         var self = this;
         return this.store.findAll("wave").then(function(result) {
             self.set("waves", result);
