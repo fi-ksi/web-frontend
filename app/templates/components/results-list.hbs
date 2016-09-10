@@ -16,7 +16,7 @@
           <td>{{#link-to "user-profile" res.user}}{{res.user.first_name}} {{res.user.last_name}}{{/link-to}}</td>
           <td>
             {{#each res.user.achievements as |achievement|}}
-                        {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                        {{#link-to 'achievements' class='noContent'}}{{achievement-small model=achievement}}{{/link-to}}
             {{/each}}
                 </td>
           <td style="text-align: center;">{{res.user.score}}</td>
