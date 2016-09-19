@@ -6,25 +6,23 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "div",
     classNames: ["controls row"],
     session: Ember.inject.service(),
-    didInsertElement: function() {
+    didUpdate: function() {
         this._super();
-        Ember.run.scheduleOnce('afterRender', this, function(){
-            var self = this;
-            // Documentation: https://github.com/voidberg/html5sortable
-            var id = "#sortable" + this.get("module.id");
-            Ember.$(id + "a, " + id + "b").sortable({
-                connectWith: ".connect" + this.get("module.id")
-            }).bind('sortstop', function() {
-                if (self.get("general_error") && Ember.$(id + "b li").length !== 0) {
-                    self.set("general_error", "Musíš použít všechny řádky kódu!");
-                }
-                else {
-                    self.set("general_error", undefined);
-                }
-                self.update_indent();
-            });
-            this.update_indent();
+        var self = this;
+        // Documentation: https://github.com/voidberg/html5sortable
+        var id = "#sortable" + this.get("module.id");
+        sortable(id + "a, " + id + "b", {
+            connectWith: ".connect" + this.get("module.id")
+        })[0].addEventListener('sortstop', function() {
+            if (self.get("general_error") && Ember.$(id + "b li").length !== 0) {
+                self.set("general_error", "Musíš použít všechny řádky kódu!");
+            }
+            else {
+                self.set("general_error", undefined);
+            }
+            self.update_indent();
         });
+        this.update_indent();
     },
     mathObserver: Ember.computed("module", function() {
         Ember.run.later(this, function() {
