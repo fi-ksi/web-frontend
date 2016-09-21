@@ -4,6 +4,8 @@ import InboundActions from "ember-component-inbound-actions/inbound-actions";
 import config from '../config/environment';
 
 export default EmberUploader.FileField.extend(InboundActions, {
+    session: Ember.inject.service(),
+
     url: config["API_LOC"] + "/profile/picture",
     supported_ext: ["jpg", "jpeg", "png", "gif"],
     classNames: ["hide"],
@@ -20,9 +22,17 @@ export default EmberUploader.FileField.extend(InboundActions, {
                 return;
             }
         }
-        var uploader = EmberUploader.Uploader.create({
-            url: self.get("url")
-        });
+        var uploader = EmberUploader.Uploader.extend({
+            url: self.get("url"),
+            ajaxSettings: function() {
+              var settings = this._super.apply(this, arguments);
+              settings['headers'] = {};
+              self.get("session").authorize('authorizer:oauth2', (headerName, headerValue) => {
+                settings.headers[headerName] = headerValue;
+              });
+              return settings;
+            },
+        }).create();
 
         uploader.on("didUpload", function() {
             self.sendAction("upload_finished");
