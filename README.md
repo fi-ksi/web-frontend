@@ -20,6 +20,8 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 * `npm install --save-dev grunt-sass`
+* `git submodule init`
+* `git submodule update`
 
 ## Running / Development
 
