@@ -1,7 +1,9 @@
 <div style="margin-bottom:30px">
   <div style="margin:20px">
-    <h3 class="visible-print">Zadání</h3>
-    {{{model.details.body}}}
+    <div id="task-assignment">
+        <h3 class="visible-print">Zadání</h3>
+        {{{model.details.body}}}
+    </div>
     <hr>
     {{#unless opened}}
       {{warning-general disable_warning=true text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}

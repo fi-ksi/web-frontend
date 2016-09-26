@@ -3,3 +3,10 @@
         margin-top: 30px;
     }
 }
+
+@media print {
+    /* rozbalit collapse bloky pri tisku */
+    #task-assignment .collapse {
+        display: block !important;
+    }
+}
