@@ -11,7 +11,7 @@ export default Ember.Component.extend(InboundActions, {
         var self = this;
         // Documentation: https://github.com/voidberg/html5sortable
         var id = "#sortable" + this.get("module.id");
-        sortable(id + "a, " + id + "b", {
+        window.sortable(id + "a, " + id + "b", {
             connectWith: ".connect" + this.get("module.id")
         })[0].addEventListener('sortstop', function() {
             if (self.get("general_error") && Ember.$(id + "b li").length !== 0) {
