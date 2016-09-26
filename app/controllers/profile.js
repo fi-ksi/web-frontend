@@ -29,8 +29,17 @@ export default Ember.Controller.extend(UserSettings, {
 
         // calc percentages
         res.forEach(function(item) {
-            item.percentage_submitted = ((item.score / item.max_score) * 100).toFixed(0);
-            item.percentage_all = ((item.score / item.sum_points) * 100).toFixed(0);
+            if (item.max_score !== 0) {
+                item.percentage_submitted = ((item.score / item.max_score) * 100).toFixed(0);
+            } else {
+                item.percentage_submitted = 100;
+            }
+
+            if (item.sum_points !== 0) {
+                item.percentage_all = ((item.score / item.sum_points) * 100).toFixed(0);
+            } else {
+                item.percentage_all = 100;
+            }
         });
 
         return res;
