@@ -177,6 +177,15 @@ div#preload { display: none; }
    background-size: 50px 50px;
  }
 
+ #zverinec-logo {
+   background: url("/img/logos/zverinec.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #zverinec-logo:hover {
+   background: url("/img/logos/zverinec-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
 footer .footer-below a {
     color: white;
 }
