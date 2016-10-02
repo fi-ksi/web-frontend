@@ -186,6 +186,15 @@ div#preload { display: none; }
    background-size: 50px 50px;
  }
 
+ #kscuk-logo {
+   background: url("/img/logos/kscuk.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+ #kscuk-logo:hover {
+   background: url("/img/logos/kscuk-hover.svg") top left no-repeat;
+   background-size: 50px 50px;
+ }
+
 footer .footer-below a {
     color: white;
 }
