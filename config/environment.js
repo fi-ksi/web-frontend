@@ -15,7 +15,7 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
         'default-src': "",
-        'script-src':  "'self' http://cdnjs.cloudflare.com/ajax/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js 'unsafe-inline' 'unsafe-eval'",
+        'script-src':  "'self' http://cdn.mathjax.org/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js 'unsafe-inline' 'unsafe-eval'",
         'font-src':    "*",
         'connect-src': "'self'",
         'img-src':     "* data:",
