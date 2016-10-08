@@ -50,6 +50,7 @@ export default Ember.Component.extend(InboundActions, {
             var id = "#sortable" + self.get("module.id");
             if (Ember.$(id + "b li").length !== 0) {
                 self.set("general_error", "Musíš použít všechny řádky kódu!");
+                self.sendAction("submit_done");
                 return;
             }
             self.set("general_error", undefined);
@@ -81,15 +82,17 @@ export default Ember.Component.extend(InboundActions, {
                                 self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                             }
 
-                            if (data.result === "correct") { self.sendAction("submit_done");}
+                            if (data.result === "correct") { self.sendAction("submit_succ_done");}
 
                         }
                         else {
                             self.set("general_error", "Špatná odpověď serveru");
                         }
+                        self.sendAction("submit_done");
                     },
                     error: function() {
                         self.set("general_error", "Špatná odpověď ze serveru");
+                        self.sendAction("submit_done");
                     }
                 });
             });

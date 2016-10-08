@@ -22,6 +22,7 @@ export default Ember.Component.extend(InboundActions, {
             var self = this;
             var valid = true;
             var response = [];
+            this.set("general_error", undefined);
             this.get("module.questions.questions").forEach(function(question, index) {
                 var checked = Ember.$(".group_" + self.get("module.id") + "_" + index).filter(function() {
                     return Ember.$(this).is(":checked");
@@ -61,17 +62,21 @@ export default Ember.Component.extend(InboundActions, {
                                 } else {
                                     self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                                 }
-                                if (data.result === "correct") { self.sendAction("submit_done");}
+                                if (data.result === "correct") { self.sendAction("submit_succ_done");}
                             }
                             else {
                                 self.set("general_error", "Špatná odpověď serveru");
                             }
+                            self.sendAction("submit_done");
                         },
                         error: function() {
                             self.set("general_error", "Špatná odpověď ze serveru.");
+                            self.sendAction("submit_done");
                         }
                     });
                 });
+            } else {
+                self.sendAction("submit_done");
             }
         }
     }

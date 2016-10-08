@@ -24,6 +24,7 @@ export default Ember.Component.extend(InboundActions, {
     actions: {
         submit: function() {
             var self = this;
+            this.set("general_error", undefined);
             if (!this.get("text")) {
                 this.set("text", "");
             }
@@ -54,16 +55,18 @@ export default Ember.Component.extend(InboundActions, {
                                 } else {
                                     self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                                 }
-                                if (data.result === "correct") { self.sendAction("submit_done"); }
+                                if (data.result === "correct") { self.sendAction("submit_succ_done"); }
                             }
 
                         }
                         else {
                             self.set("general_error", "Špatná odpověď serveru");
                         }
+                        self.sendAction("submit_done");
                     },
                     error: function() {
                         self.set("general_error", "Špatná odpověď ze serveru.");
+                        self.sendAction("submit_done");
                     }
                 });
             });

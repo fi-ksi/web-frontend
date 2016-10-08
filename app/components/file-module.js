@@ -36,7 +36,7 @@ export default Ember.Component.extend(InboundActions, {
             this.get("module").reload().then(function() {
                 self.set("files", undefined);
             });
-            this.sendAction("submit_done");
+            this.sendAction("submit_succ_done");
         },
         upload_failed: function(text, err) {
             this.set("in_progress", false);

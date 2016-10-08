@@ -66,7 +66,7 @@ export default Ember.Component.extend(InboundActions, {
                                 } else if(data.result === "incorrect") {
                                     self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
                                 } else if(data.result === "correct") {
-                                    self.sendAction("submit_done");
+                                    self.sendAction("submit_succ_done");
                                 }
                                 if (data.score !== undefined) {
                                     if(!self.get("module.score")) {
