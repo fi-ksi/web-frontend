@@ -10,3 +10,8 @@
         display: block !important;
     }
 }
+
+:matches(#task-assignment #task-solution) img {
+    max-width: 100%;
+    height: auto;
+}

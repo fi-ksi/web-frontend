@@ -17,7 +17,9 @@
         {{/if}}
       </div> <!-- meno, status, cas-->
       {{#unless is_editing}}
-        {{{model.body}}}
+        <div class="discussion-body">
+            {{{model.body}}}
+        </div>
       {{else}}
         <div class="panel panel-default" style="border:none; box-shadow: none;">
           <div class="controls form-inline" style="margin-top:20px">
