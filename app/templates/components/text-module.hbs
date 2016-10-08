@@ -2,17 +2,13 @@
     {{{module.description}}}
 </div>
 <div style="margin-left:0px">
-    <form class="form-horizontal">
-      <div class="form-group">
-        {{#each inputs as |val index|}}
-        <div class="col-sm-12 row">
-                <label for="inputSolution" class="col-sm-2 control-label">Odpověď {{val}}: </label>
-            <div class="col-sm-10">
-                {{input type="text" class="form-control" id=(construct-id module.id index)}}
+    <form>
+        {{#each fields as |field|}}
+            <div class="form-group">
+                <label for={{construct-id "module_text" module.id field.index}}>{{{field.text}}}</label>
+                {{input type="text" class="form-control" id=(construct-id "module_text" module.id field.index)}}
             </div>
-        </div>
         {{/each}}
-      </div>
     </form>
     {{#if general_error}}
         <div style="margin-top:20px">

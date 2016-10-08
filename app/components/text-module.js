@@ -6,15 +6,18 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     session: Ember.inject.service(),
-    inputs: Ember.computed("module.fields", function() {
-        var l = this.get("module.fields");
-        var res = [];
-        for(var i = 1; i <= l; i++) {
-            res.push(i);
-        }
-        return res;
-        //return Array.apply(null, {length: this.get("module.fields")}).map(Number.call, Number);
+
+    fields: Ember.computed("module.fields", function() {
+        if (!this.get("module.fields")) { return []; }
+        var i = 0;
+        return this.get("module.fields").map(function(field) {
+            return Ember.Object.create({
+                'index': i++,
+                'text': field
+            });
+        });
     }),
+
     actions: {
         submit: function() {
             var self = this;
@@ -24,8 +27,8 @@ export default Ember.Component.extend(InboundActions, {
             }
 
             var data = [];
-            for(var i = 0; i < this.get("module.fields"); i++) {
-                data.push(Ember.$("#" + this.get("module.id") + "_" + i).val());
+            for(var i = 0; i < this.get("module.fields.length"); i++) {
+                data.push(Ember.$("#module_text_" + this.get("module.id") + "_" + i).val());
             }
             this.get('session').authorize('authorizer:oauth2', function(header, h) {
                 Ember.$.ajax({

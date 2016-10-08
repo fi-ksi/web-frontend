@@ -49,5 +49,5 @@ export default DS.Model.extend( {
     submitted_files: DS.attr("files-list"),
 
     // For text
-    fields: DS.attr("number")
+    fields: DS.attr("raw")
 });
