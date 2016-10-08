@@ -20,7 +20,8 @@ module.exports = function(environment) {
         'connect-src': "'self'",
         'img-src':     "* data:",
         'style-src':   "* 'unsafe-inline'",
-        'media-src':   "'self'"
+        'media-src':   "'self'",
+        'child-src':   "https://www.youtube.com https://youtube.com"
     },
 
     APP: {
@@ -58,6 +59,7 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["connect-src"] += " https://kyzikos.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
     ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://kyzikos.fi.muni.cz:3000/csp"
   }
 
   if (environment === 'prod_dev') {
@@ -68,6 +70,7 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
     ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
   }
 
   if (environment === 'development') {
@@ -95,6 +98,7 @@ module.exports = function(environment) {
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     }
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
   }
 
   ENV.i18n = {
