@@ -6,10 +6,6 @@ export default Ember.Controller.extend({
 
     reload_status: null,
 
-    mathObserver: function() {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-    }.observes("model.details.body"),
-
     points_text: Ember.computed("model.max_score", function(){
         var points = this.get("model.max_score");
         if (points === 1) { return "bod"; }

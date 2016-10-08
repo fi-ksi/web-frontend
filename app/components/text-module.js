@@ -6,12 +6,6 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     session: Ember.inject.service(),
-    didInsertElement: function() {
-        this._super();
-        Ember.run.scheduleOnce("afterRender", this, function(){
-            
-        }); 
-    },
     inputs: Ember.computed("module.fields", function() {
         var l = this.get("module.fields");
         var res = [];

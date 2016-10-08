@@ -9,11 +9,11 @@ export default Ember.Component.extend({
     show: function() {
         return this.get("is_editing") || !this.get("module.is_correct") || this.get("module.is_general");
     }.property("is_editing", "module.state"),
-    didInsertElement: function() {
-        this._super();
-        Ember.run.scheduleOnce("afterRender", this, function(){
-        });
+
+    didRender: function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     },
+
     actions: {
         submit: function() {
             this.set("submitting", true);

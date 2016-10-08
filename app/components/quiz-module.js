@@ -6,17 +6,7 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     session: Ember.inject.service(),
-    didInsertElement: function() {
-        this._super();
-        Ember.run.scheduleOnce("afterRender", this, function(){
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        }); 
-    },
-    mathObserver: Ember.computed("module", function() {
-        Ember.run.later(this, function() {
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        }, 500);
-    }),
+
     actions: {
         submit: function() {
             var self = this;

@@ -35,8 +35,10 @@ export default Ember.Component.extend({
             post.save().then(function() {
                 self.get("model.reaction").pushObject(post);
                 self.get("model").save().then(function() {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                     self.set("is_reacting", false);
                 }, function() {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                     self.set("content_error", "Nepodařilo se odeslat příspěvek");
                 });
             });
