@@ -2,6 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
+    depth: 0,   // hloubka vlakna v diskuzi
+    max_depth: 3,   // nejvetsi hloubka, ve ktere jeste zanorovat
+
+    depth_inc: Ember.computed("depth", function(){
+        return this.get("depth") + 1;
+    }),
+
+    // jestli byl presahnut limit zanorovani
+    depth_exceeded: Ember.computed("depth", "max_depth", function(){
+        return this.get("depth") >= this.get("max_depth");
+    }),
 
     mark_as_read: function() {
         var post = this.get("model");

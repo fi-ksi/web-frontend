@@ -62,9 +62,21 @@
             </div>
         {{/unless}}
       {{/if}}
-      <!-- vnorena reakcia -->
-      {{#each model.reaction as |react|}}
-          {{thread-post model=react store=store}}
-      {{/each}}
+
+      <!-- vnorena reakcia vnorene -->
+      {{#unless depth_exceeded}}
+          {{#each model.reaction as |react|}}
+              {{thread-post model=react store=store depth=depth_inc}}
+          {{/each}}
+      {{/unless}}
+
     </div>
+
+  <!-- vnorena reakcia nevnorene -->
+  {{#if depth_exceeded}}
+      {{#each model.reaction as |react|}}
+          {{thread-post model=react store=store depth=depth_inc}}
+      {{/each}}
+  {{/if}}
+
   </li>
