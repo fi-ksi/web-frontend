@@ -6,6 +6,6 @@ export default Ember.Route.extend(ResetScroll, {
         this._super(controller, model);
         Ember.run.later(this, function() {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-        }, 100);
+        }, 500);
     }
 });

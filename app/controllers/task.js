@@ -32,6 +32,7 @@ export default Ember.Controller.extend({
                             module.reload();
                         });
                         self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleFormat('%H:%M:%S'));
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                     });
 
                 });
