@@ -53,7 +53,7 @@
     "ember-simple-auth": "1.0.1",
     "ember-storage": "1.1.2",
     "ember-truth-helpers": "1.2.0",
-    "emberx-select": "2.0.2",
+    "emberx-select": "2.2.2",
     "eonasdan-bootstrap-datetimepicker-npm": "4.17.37",
     "grunt-sass": "^1.0.0",
     "html5sortable": "0.4.2",
