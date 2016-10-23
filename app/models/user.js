@@ -81,4 +81,7 @@ export default DS.Model.extend( {
         return ret;
     }),
 
+    // Musi tu byt pro spravnou funkci endpointu /profile.
+    signed_in: true,
+
 });
