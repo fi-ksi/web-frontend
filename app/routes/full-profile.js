@@ -24,8 +24,6 @@ export default Ember.Route.extend(ResetScroll, {
         });
     },
     setupController: function(controller, model) {
-        //this.register('session:current', App.Session, {singleton: true});
-        //this.inject('controller:profile', 'session', 'session:current');
         this.controllerFor('profile').setProperties({content:model, fullProfile: true, waves: this.get('waves')});
     }
 });

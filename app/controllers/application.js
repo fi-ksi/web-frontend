@@ -59,9 +59,6 @@ export default Ember.Controller.extend( {
         }
     },
 
-    //currentPathDidChange: function() {
-    //}.observes('currentPath'),
-
     currentRouteDidChange: function() {
         Configuration.routeAfterAuthentication = this.currentRouteName;
     }.observes('currentRouteName'),
