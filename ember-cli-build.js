@@ -8,7 +8,8 @@ module.exports = function(defaults) {
         // tinymce/skins/*.css must be excluded
         // Otherways, Ember adds filename hash in production but does not append the hash
         // to links, so the browser looks for non-existing file and tinyMCE fails to load.
-        exclude: ['tinymce/skins']
+        //exclude: ['tinymce/skins']
+        enabled: false
       }
 
       // Add options here
