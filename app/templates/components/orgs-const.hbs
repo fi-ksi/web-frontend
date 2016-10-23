@@ -1,0 +1,7 @@
+{{#each orgs as |org|}}
+    <div class="col-xs-6 col-md-3" style="text-align:center;">
+          <img src="/img/org/{{org.profile}}" class="org" alt="Organizátor {{org.name}}" title="Skóre orga: {{org.score}}"
+            >
+           <div class="org-index-name ">{{org.name}}</div>
+    </div>
+{{/each}}
