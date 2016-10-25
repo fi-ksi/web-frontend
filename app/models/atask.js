@@ -4,6 +4,7 @@ import Ember from "ember";
 export default DS.Model.extend({
     title: DS.attr("string"),
     author: DS.belongsTo("user", { async: true }),
+    co_author: DS.belongsTo("user", { async: true }),
 
     git_branch: DS.attr("string"),
     git_commit: DS.attr("string"),

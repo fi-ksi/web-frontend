@@ -61,7 +61,7 @@ export default DS.Model.extend( {
     }),
 
     // Relevant only when organisator
-    tasks: DS.hasMany("task", {async: true}),
+    tasks: DS.hasMany("task", { async: true, inverse: 'author' }),
     email: DS.attr("string"),
 
     role_str: Ember.computed("gender", "role", function() {
