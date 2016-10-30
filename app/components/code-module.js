@@ -77,18 +77,21 @@ export default Ember.Component.extend(InboundActions, {
                             if ("output" in data) {
                                 self.set("script_text_output", data.output.trim());
                             }
+                            self.sendAction("submit_done");
                         },
                         error: function() {
                             self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+                            self.sendAction("submit_done");
                         }
                     });
                 });
             } else {
                 if(content === this.get("module.default_code")) {
-                    this.set("general_error", "Neprovedl jsi žádné změny na kódu");
+                    this.set("general_error", "Neprovedl jsi žádné změny kódu");
                 } else {
                     this.set("general_error", "Nelze odevzdat prázdný kód!");
                 }
+                self.sendAction("submit_done");
             }
         },
         toggle_info: function() {
