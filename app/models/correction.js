@@ -3,11 +3,11 @@ import MF from 'model-fragments';
 import Ember from 'ember';
 
 export default DS.Model.extend( {
-    task_id: DS.belongsTo("task"),
+    task_id: DS.belongsTo("task", { async: true }),
     state: DS.attr("string"),
-    user: DS.belongsTo("user"),
-    comment: DS.belongsTo("thread", {async: true}),
-    achievements: DS.hasMany("achievement"),
+    user: DS.belongsTo("user", { async: true }),
+    comment: DS.belongsTo("thread", { async: true }),
+    achievements: DS.hasMany("achievement", { async: true }),
     modules: MF.fragmentArray('modulefragment'),
     
     corrected: Ember.computed("state", function() {

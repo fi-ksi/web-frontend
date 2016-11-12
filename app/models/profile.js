@@ -31,12 +31,12 @@ export default DS.Model.extend( {
     gender: DS.attr("string"),
 
     // Relevant only when not organisator or admin
-    achievements: DS.hasMany("achievement", {async: true, defaultValue: []}),
+    achievements: DS.hasMany("achievement", { async: true, defaultValue: [] }),
     score: DS.attr("number"),
     percentile: DS.attr("number"),
-    seasons: DS.hasMany("year", {async: true}),
+    seasons: DS.hasMany("year", { async: true }),
     percent: DS.attr("number"),
-    results: DS.hasMany("task-score", {defaultValue: []}),
+    results: DS.hasMany("task-score", { async:true, defaultValue: [] }),
     tasks_num: DS.attr("number"),
 
     addr_street: DS.attr("string"),
@@ -70,7 +70,7 @@ export default DS.Model.extend( {
     // (orgs public "user" does not show his solved tasks, private "profile" does it)
     show_solved: true,
 
-    tasks: DS.hasMany("task", {defaultValue: [], async: true}),
+    tasks: DS.hasMany("task", { defaultValue: [], async: true }),
 
     role_str: Ember.computed("gender", "role", function() {
         var ret = "";

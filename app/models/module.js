@@ -23,7 +23,7 @@ export default DS.Model.extend( {
     description: DS.attr("string"),
     state: DS.attr("string"),
     max_score: DS.attr("number"),
-    score: DS.belongsTo("module-score", {default: null}),
+    score: DS.belongsTo("module-score", { async: true, default: null }),
 
     is_blank: Ember.computed("state", function() {
         return this.get("state") === "blank";

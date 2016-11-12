@@ -3,11 +3,11 @@ import DS from "ember-data";
 export default DS.Model.extend( {
     body: DS.attr("string"),
     solution: DS.attr("string"),
-    thread: DS.belongsTo("thread"),
-    modules: DS.hasMany("module"),
+    thread: DS.belongsTo("thread", { async: true }),
+    modules: DS.hasMany("module", { async: true }),
 
-    best_scores: DS.hasMany("user-score"), // Top 5
+    best_scores: DS.hasMany("user-score", { async: true }), // Top 5
 
-    comment: DS.belongsTo("thread"),
+    comment: DS.belongsTo("thread", { async: true }),
     achievements: DS.hasMany("achievements", { async: true })
 });
