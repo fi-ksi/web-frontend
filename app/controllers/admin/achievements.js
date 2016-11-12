@@ -18,7 +18,7 @@ export default Ember.Controller.extend( {
         },
 
         'achievement-grant': function(achievement) {
-            this.transitionTo("admin/achievement-grant", {queryParams: {achievement: achievement.id}});
+            this.transitionToRoute("admin/achievement-grant", {queryParams: {achievement: achievement.id}});
         },
     },
 });

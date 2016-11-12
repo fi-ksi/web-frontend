@@ -77,11 +77,11 @@ export default Ember.Controller.extend({
                 return elem.get("id");
             });
 
-            this.transitionTo("admin/achievement-grant", {queryParams: {sel_users: selected}});
+            this.transitionToRoute("admin/achievement-grant", {queryParams: {sel_users: selected}});
         },
 
         'achievement-one': function(user) {
-            this.transitionTo("admin/achievement-grant", {queryParams: {sel_users: [ user.id ]}});
+            this.transitionToRoute("admin/achievement-grant", {queryParams: {sel_users: [ user.id ]}});
         },
 
         'sortBy': function(key) {

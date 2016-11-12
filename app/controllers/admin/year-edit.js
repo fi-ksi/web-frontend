@@ -26,7 +26,7 @@ export default Ember.Controller.extend( {
             this.get("model.year").save().then(function(){
                 self.set("save_status", "Ročník uložen");
                 self.set("saving", false);
-                self.transitionTo("admin/years");
+                self.transitionToRoute("admin/years");
             }, function(){
                 self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
                 self.set("saving", false);
