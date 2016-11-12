@@ -3,7 +3,7 @@ import Ember from "ember";
 
 export default DS.Model.extend( {
     title: DS.attr("string"),
-    wave: DS.belongsTo("wave", { async: true }),
+    wave: DS.belongsTo("wave", { async: false }),
     author: DS.belongsTo("user", { async: true }),
     corr_state: DS.attr("string"),
     solvers: DS.hasMany("user", { async: true }),

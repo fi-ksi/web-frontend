@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
     error_status: "",
     send_status: "",
     years: Ember.computed("store", function() {
-        return this.get("store").find("year");
+        return this.get("store").findAll("year");
     }),
     actions: {
         email: function() {

@@ -6,7 +6,7 @@ export default Ember.Route.extend(ResetScrollProtected, {
         return Ember.RSVP.hash({
             'corr-info': this.get('store').findAll("corrections_info"),
             'orgs': this.store.query("user", { filter: "organisators", sort: "score" } ),
-            'achievements': this.store.find("achievement"),
+            'achievements': this.store.findAll("achievement"),
         });
     },
     titleToken: function() {
