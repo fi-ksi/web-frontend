@@ -11,7 +11,8 @@
     }
 }
 
-:matches(#task-assignment #task-solution) img {
+#task-assignment img, #task-solution img {
     max-width: 100%;
     height: auto;
 }
+
