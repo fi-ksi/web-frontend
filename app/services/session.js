@@ -14,6 +14,12 @@ export default SessionService.extend({
     year: null,
     years: [],
 
+    years_sorted: Ember.computed.sort("years", function(a, b) {
+        if (a.index < b.index) { return 1; }
+        if (a.index > b.index) { return -1; }
+        return 0;
+    }),
+
     year_obj: Ember.computed("year", "years", function(){
         return this.get("years").findBy("id", this.get("year"));
     }),

@@ -38,7 +38,7 @@
               <li class="hidden-sm dropdown-menu-main">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.year_obj.year}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    {{#each session.years as |year|}}
+                    {{#each session.years_sorted as |year|}}
                         <li><a href="#" {{action "changeYear" year.id}}>{{year.year}}</a></li>
                     {{/each}}
                 </ul>
