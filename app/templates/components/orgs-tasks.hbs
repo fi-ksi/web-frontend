@@ -1,0 +1,12 @@
+{{#each model as |task|}}
+    <div class="panel panel-profile-assignment">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img class="inline" src="{{task.picture}}" class="profile-picture-task">
+                    <label class="inline" style="margin-left:10px">{{#link-to "task" task}}{{{task.title}}}{{/link-to}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}}

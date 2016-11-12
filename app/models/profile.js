@@ -70,7 +70,8 @@ export default DS.Model.extend( {
     // (orgs public "user" does not show his solved tasks, private "profile" does it)
     show_solved: true,
 
-    tasks: DS.hasMany("task", {defaultValue: [], async: true}),
+    // my submitted tasks
+    tasks: DS.hasMany("task", { defaultValue: [], async: true }),
 
     role_str: Ember.computed("gender", "role", function() {
         var ret = "";

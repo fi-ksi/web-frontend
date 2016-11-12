@@ -61,8 +61,13 @@ export default DS.Model.extend( {
     }),
 
     // Relevant only when organisator
-    tasks: DS.hasMany("task", { async: true, inverse: 'author' }),
+    tasks: DS.hasMany("task", { defaultValue: [], async: true, inverse: 'author' }),
+    co_tasks: DS.hasMany("task", { defaultValue: [], async: true, inverse: 'co_author' }),
     email: DS.attr("string"),
+
+    any_task: Ember.computed("tasks", "co_tasks", function() {
+        return (this.get("tasks.length") > 0) || (this.get("co_tasks.length") > 0);
+    }),
 
     role_str: Ember.computed("gender", "role", function() {
         var ret = "";
