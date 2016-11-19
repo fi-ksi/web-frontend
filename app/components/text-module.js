@@ -40,29 +40,31 @@ export default Ember.Component.extend(InboundActions, {
                         xhr.setRequestHeader(header, h);
                     },
                     success: function(data) {
-                        if("result" in data) {
+                        if ("result" in data) {
                             self.set("module.state", data.result);
-                            if("score" in data) {
-                                if(!self.get("module.score")) {
-                                    self.set("module.score", self.get("store").createRecord("module-score"));
-                                }
-
-                                if (data.score) {
-                                    self.set("module.score.score", data.score);
-                                } else {
-                                    self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
-                                }
-                                if (data.result === "correct") { self.sendAction("submit_succ_done"); }
+                            if(!self.get("module.score")) {
+                                self.set("module.score", self.get("store").createRecord("module-score"));
                             }
-
-                        }
-                        else {
-                            self.set("general_error", "Špatná odpověď serveru");
+                            if (data.score !== undefined) {
+                                self.set("module.score.score", data.score);
+                            }
+                            if ("error" in data) {
+                                self.set("general_error", data.error);
+                            }
+                            if (data.result === "correct") {
+                                self.sendAction("submit_succ_done");
+                            } else if (data.result === "incorrect") {
+                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                            } else if (!("error" in data)) {
+                                self.set("general_error", "Server odeslal neznámý result, kontaktuj organizátora.");
+                            }
+                        } else {
+                            self.set("general_error", "Server neposlal result, kontaktuj organizátora.");
                         }
                         self.sendAction("submit_done");
                     },
                     error: function() {
-                        self.set("general_error", "Špatná odpověď ze serveru.");
+                        self.set("general_error", "Server odpověděl chybovým kódem, kontaktuj organizátora.");
                         self.sendAction("submit_done");
                     }
                 });

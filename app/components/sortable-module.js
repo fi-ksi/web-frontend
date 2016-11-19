@@ -74,20 +74,23 @@ export default Ember.Component.extend(InboundActions, {
                             if (data.score !== undefined) {
                                 self.set("module.score.score", data.score);
                             }
-                            if (data.result === 'incorrect') {
-                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                            if ("error" in data) {
+                                self.set("general_error", data.error);
                             }
-
-                            if (data.result === "correct") { self.sendAction("submit_succ_done");}
-
-                        }
-                        else {
-                            self.set("general_error", "Špatná odpověď serveru");
+                            if (data.result === "correct") {
+                                self.sendAction("submit_succ_done");
+                            } else if (data.result === 'incorrect') {
+                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                            } else if (!("error" in data)) {
+                                self.set("general_error", "Server odeslal neznámý result, kontaktuj organizátora.");
+                            }
+                        } else {
+                            self.set("general_error", "Server neposlal result, kontaktuj organizátora.");
                         }
                         self.sendAction("submit_done");
                     },
                     error: function() {
-                        self.set("general_error", "Špatná odpověď ze serveru");
+                        self.set("general_error", "Server odpověděl chybovým kódem, kontaktuj organizátora.");
                         self.sendAction("submit_done");
                     }
                 });

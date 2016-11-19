@@ -54,10 +54,14 @@ export default Ember.Component.extend(InboundActions, {
                         },
                         success: function(data) {
                             self.set("general_info", null);
-                            if("result" in data) {
+                            if ("result" in data) {
                                 self.set("module.state", data.result);
-                                if(data.result === "error") {
-                                    self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                                if (data.result === "error") {
+                                    if ("error" in data) {
+                                        self.set("general_error", data.error);
+                                    } else {
+                                        self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                                    }
                                 } else if(data.result === "exec-error") {
                                     self.set("general_error", "Nastala chyba při vykonávání kódu, zkontroluj si syntaxi.");
                                 } else if(data.result === "incorrect") {
@@ -72,7 +76,7 @@ export default Ember.Component.extend(InboundActions, {
                                     self.set("module.score.score", data.score);
                                 }
                             } else {
-                                self.set("general_error", "Špatná odpověď serveru");
+                                self.set("general_error", "Server neposlal result, kontaktuj organizátora.");
                             }
                             if ("output" in data) {
                                 self.set("script_text_output", data.output.trim());
@@ -80,7 +84,7 @@ export default Ember.Component.extend(InboundActions, {
                             self.sendAction("submit_done");
                         },
                         error: function() {
-                            self.set("submission_info", "Špatná odpověď ze serveru. Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+                            self.set("submission_info", "Server odpověděl chybovým kódem, kontaktuj organizátora.");
                             self.sendAction("submit_done");
                         }
                     });
