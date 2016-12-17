@@ -63,7 +63,7 @@ export default Ember.Controller.extend( {
 
                         self.set("alertType", "danger");
                         self.set("saving", false);
-                        if (xhr.status == 401) {
+                        if (xhr.status === 401) {
                             self.set("alertMsg", "Staré heslo není platné!");
                         } else {
                             self.set("alertMsg", "Nastala chyba při měnění hesla. Zkus to za chvíli. Pokud problém přetrvá, kontaktuj oranizátora.");

@@ -63,14 +63,14 @@ export default Ember.Component.extend({
 
                 Ember.run.later(self, function() {
                     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                }, 500)
+                }, 500);
             }, function(resp) {
                 // fail
                 post.destroyRecord();
                 self.set("progress", false);
                 var e = "Nepodařilo se přidat příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
                 if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
-                self.set("error", e)
+                self.set("error", e);
             });
         }
     },

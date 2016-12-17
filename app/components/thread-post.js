@@ -61,14 +61,14 @@ export default Ember.Component.extend({
                 self.set("response_text", "");
                 Ember.run.later(self, function() {
                     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                }, 500)
+                }, 500);
             }, function(resp) {
                 // fail
                 post.destroyRecord();
                 self.set("react_progress", false);
                 var e = "Nepodařilo se uložit příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
                 if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
-                self.set("react_error", e)
+                self.set("react_error", e);
             });
         },
         delete: function() {
@@ -89,7 +89,7 @@ export default Ember.Component.extend({
             this.set("is_editing", false);
             Ember.run.later(this, function() {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            }, 500)
+            }, 500);
         },
         save: function() {
             var self = this;
@@ -101,13 +101,13 @@ export default Ember.Component.extend({
                     self.set("edit_progress", false);
                     Ember.run.later(self, function() {
                         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                    }, 500)
+                    }, 500);
                 },
                 function(resp) {
                     self.set("edit_progress", false);
                     var e = "Nepodařilo se uložit příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
                     if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
-                    self.set("edit_error", e)
+                    self.set("edit_error", e);
                 }
             );
         }

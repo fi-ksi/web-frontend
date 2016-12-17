@@ -62,7 +62,7 @@ export default Ember.Controller.extend( {
                     self.set("feedback_sending", false);
                     var e = "Už ani nahlásit chybu nejde, za to beztak může Los Karlos! Napiš nám na ksi@fi.muni.cz.<br>" + resp.message;
                     if ((resp.errors) && (resp.errors[0])) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
-                    self.set("feedback_error", e)
+                    self.set("feedback_error", e);
                 }
             });
         },
@@ -72,7 +72,7 @@ export default Ember.Controller.extend( {
             Ember.$('#feedback-modal').modal('hide');
             Ember.run.later(self, function() {
                 self.set("feedback_sent", false);
-            }, 1000)
+            }, 1000);
         }
 
     },

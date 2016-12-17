@@ -23,7 +23,7 @@ export default Ember.Controller.extend( {
                 error: function(xhr) {
                     self.set("sending", false);
 
-                    if (xhr.status == 400) {
+                    if (xhr.status === 400) {
                         self.set("general_error", "Tento e-mail nemáme v databázi!");
                     } else {
                         self.set("general_error", "Špatná odpověď serveru, kontaktuj organizátora!");
