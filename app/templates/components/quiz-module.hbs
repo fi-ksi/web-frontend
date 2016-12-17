@@ -12,7 +12,9 @@
                         <div class="panel panel-ksi">
                           <div class="panel-heading panel-heading-ksi">{{{question.question}}}</div>
                           <div class="panel-body">
-                                {{warning-general text="Položku je nutno vyplnit" id=(construct-id "w" module.id index) class="hide"}}
+                                <div id={{construct-id "w" module.id index}} class="hide">
+                                    {{ale-rt type="danger" text="Položku je nutno vyplnit"}}
+                                </div>
                                 {{#each question.options as |option number|}}
                                     <div>
                                         <p>{{input type=question.type name=(construct-id "group" module.id index) id=(construct-id "id_q" module.id index number) class=(construct-id "group" module.id index)}} <label style="display: inline" for={{construct-id "id_q" module.id index number}}>{{{option}}}</label></p>
@@ -23,7 +25,5 @@
             {{/each}}
         </div>
     </div>
-    {{#if general_error}}
-        {{warning-close-general text=general_error}}
-    {{/if}}
+    {{ale-rt type="danger" closeBtn=true text=general_error}}
 </div>

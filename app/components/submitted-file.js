@@ -8,15 +8,17 @@ export default Ember.Component.extend({
     didInsertElement: function() {
         this._super();
         this.set("active", true);
-        Ember.run.scheduleOnce("afterRender", this, function(){
-            
-        }); 
     },
     actions: {
         del: function() {
             if (!this.get("active")) {
                 return;
             }
+
+            if (!confirm("Opravdu odstranit soubor " + this.get("file.filename") + "?")) {
+                return;
+            }
+
             this.set("active", false);
             var self = this;
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
@@ -42,21 +44,6 @@ export default Ember.Component.extend({
         down: function() {
             var self = this;
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
-                /*Ember.$.ajax({
-                    url: self.get("file.filepath"),
-                    type: "GET",
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader(header, content);
-                    },
-                    processData: false,
-                    success: function (result, a, xhr) {
-                        var blob = new Blob([result], {type: xhr.getResponseHeader("content-type") || ""});
-                        saveAs(blob, self.get("file.filename"));
-                    },
-                    error: function (jqxhr, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
-                });*/
                 if(!self.get("file.filepath")) {
                     self.set("file.filepath", config.API_LOC + '/submFiles/' + self.get("file").id);
                 }
