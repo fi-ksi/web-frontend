@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Vyber úlohu</label>
+          <label style="margin-left:20px">Úloha</label>
           <select onchange={{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
@@ -60,14 +60,14 @@
         </div>
       </div>
 
-      {{#if wrong-filter}}
+      {{#if wrong_filter}}
          <div class="col-xs-12" style="margin-top: 20px">
-             {{warning-general text="Byl vybrán špatný filtr! Je třeba vybrat řešitele, úlohu nebo oboje!"}}
+             {{ale-rt type="warning" text="Je třeba vybrat řešitele, úlohu nebo oboje."}}
          </div>
       {{/if}}
 
       <div class="col-md-3">
-          <button class="btn btn-primary" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if filter_in_progress "false" "true"}}">
+          <button class="btn btn-primary {{if (or filter_in_progress wrong_filter) "disabled"}}" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if (or filter_in_progress wrong_filter) "false" "true"}}">
         {{if filter_in_progress "Načítám, vyčkej pár vteřin..." "Zobrazit"}}
           </button>
       </div>

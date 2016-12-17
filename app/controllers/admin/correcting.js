@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
 
     participant: "",
     task: "",           // objekt correction-info (nikoliv int id)
+    wrong_filter: true,
 
     queryParams: ["participant_", "task_"],
 
@@ -75,10 +76,10 @@ export default Ember.Controller.extend({
 
     set_filter_warning: function() {
         if (this.get("participant") === "" && this.get("task") === "") {
-            this.set("wrong-filter", true);
+            this.set("wrong_filter", true);
             return true;
         }
-        this.set("wrong-filter", false);
+        this.set("wrong_filter", false);
         return false;
     },
 

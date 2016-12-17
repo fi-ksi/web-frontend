@@ -1,8 +1,8 @@
 <section id="profile" class="container content-section">
  {{#unless model.signed_in}}
-     <!-- Sem se muze dostat pri neuspesne refreshi tokenu -->
+     <!-- Sem se muze dostat pri neuspesnem refreshi tokenu -->
      <div style="margin-top:30px">
-         {{warning-general text="Uživatel není přihlášen, proveďte odhlášení a opětovné přihlášení!"}}
+         {{ale-rt type="warning" text="Uživatel není přihlášen, proveďte odhlášení a opětovné přihlášení!"}}
      </div>
  {{else}}
 
