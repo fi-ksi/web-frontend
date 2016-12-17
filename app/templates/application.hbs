@@ -27,33 +27,37 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" {{action "close_feedback"}} aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Pošli nám odezvu na KSI web</h4>
       </div>
-      {{#validatable-form action="feedback"}}
-        <div class="modal-body">
-          {{ale-rt type="info" text="Prosíme, nepoužívej tento formulář na dotazy k úlohám, či k průběhu semináře. Na tyto dotazy slouží diskuze, nebo e-mail <a href='mailto:ksi@fi.muni.cz'>ksi@fi.muni.cz</a>. Děkujeme."}}
+      {{#if feedback_sent}}
+          {{ale-rt type="success" text="Tvá zpráva byla odeslána správcům webu, děkujeme!"}}
+      {{else}}
+          {{#validatable-form action="feedback"}}
+            <div class="modal-body">
+              {{ale-rt type="info" text="Prosíme, nepoužívej tento formulář na dotazy k úlohám, či k průběhu semináře. Na tyto dotazy slouží diskuze, nebo e-mail <a href='mailto:ksi@fi.muni.cz'>ksi@fi.muni.cz</a>. Děkujeme."}}
 
-          <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
+              <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
 
-          <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
+              <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
 
-          {{textarea class="form-control autofocus" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
-          <br>
-          <p><b>Tvá e-mailová adresa – volitelně</b></p>
+              {{textarea class="form-control autofocus" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
+              <br>
+              <p><b>Tvá e-mailová adresa – volitelně</b></p>
 
-          <p>Abychom se mohli doptat na detaily.</p>
+              <p>Abychom se mohli doptat na detaily.</p>
 
-          {{input type="email" class="form-control" id="zpetna-vazba-email" placeholder="e-mail" title="E-mailová adresa je neplatná" value=feedback_email}}
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary {{if feedback_sending "disabled"}}"
-            style="width: 200px">{{if feedback_sending "Odesílám..." "Odeslat"}}</button>
-          <div style="margin-top:20px">
-              {{ale-rt type="danger" closeBtn=true text=feedback_error}}
-          </div>
-        </div>
-      {{/validatable-form}}
+              {{input type="email" class="form-control" id="zpetna-vazba-email" placeholder="e-mail" title="E-mailová adresa je neplatná" value=feedback_email}}
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary {{if feedback_sending "disabled"}}"
+                style="width: 200px">{{if feedback_sending "Odesílám..." "Odeslat"}}</button>
+              <div style="margin-top:20px">
+                  {{ale-rt type="danger" closeBtn=true text=feedback_error}}
+              </div>
+            </div>
+          {{/validatable-form}}
+      {{/if}}
     </div>
   </div>
 </div>

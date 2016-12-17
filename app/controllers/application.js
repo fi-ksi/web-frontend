@@ -8,6 +8,7 @@ export default Ember.Controller.extend( {
     in_progress: false,
     feedback_error: "",
     feedback_sending: false,
+    feedback_sent: false,
 
     actions: {
         login: function() {
@@ -55,7 +56,7 @@ export default Ember.Controller.extend( {
                     self.set("feedback_email", "");
                     self.set("feedback_text", "");
                     self.set("feedback_sending", false);
-                    Ember.$('#feedback-modal').modal('hide');
+                    self.set("feedback_sent", true);
                 },
                 error: function(resp) {
                     self.set("feedback_sending", false);
@@ -64,7 +65,16 @@ export default Ember.Controller.extend( {
                     self.set("feedback_error", e)
                 }
             });
+        },
+
+        close_feedback: function() {
+            var self = this;
+            Ember.$('#feedback-modal').modal('hide');
+            Ember.run.later(self, function() {
+                self.set("feedback_sent", false);
+            }, 1000)
         }
+
     },
 
     currentRouteDidChange: function() {
