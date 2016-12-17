@@ -18,6 +18,8 @@ export default Ember.Component.extend({
     type: "info",      // Change this value to change dialog type.
                        // This type is exactly bootstrap type.
 
+    style: "",         // Change this value to change style of most outer div.
+
     textObserver: function() {
         if (this.get("reShow")) {
             this.set("show", true);
