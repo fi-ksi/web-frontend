@@ -1,0 +1,14 @@
+{{#if show}}
+{{#if text}}
+<div class="alert alert-{{type}} {{class}}" role="alert" id={{id}}>
+    {{#if closeBtn}}
+        <a href="#" class="close" aria-label="close" {{action "onClose"}}>&times;</a>
+    {{/if}}
+    <div style="text-align:center">
+        <p class="navbar-btn">
+            {{{text}}}
+         </p>
+    </div>
+</div>
+{{/if}}
+{{/if}}

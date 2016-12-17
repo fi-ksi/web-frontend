@@ -5,21 +5,16 @@ import config from '../../config/environment';
 export default Ember.Controller.extend(UserSettings, {
     session: Ember.inject.service(),
 
+    alertCloseBtn: false,
+    alertMsg: "",
+    alertType: "info",
+    saving: false,
+
     actions: {
-        onInfoClose: function() {
-            console.log("here!");
-            this.set("general_close_info", undefined);
-        },
-
-        onErrorClose: function() {
-            console.log("here!");
-            this.set("general_close_info", undefined);
-        },
-
         save: function() {
             var self = this;
-            this.set("general_close_info", "Ukládám nastavení...");
-            this.set("general_error", undefined);
+            this.set("alertMsg", "");
+            this.set("saving", true);
 
             var obj = {
                 first_name: this.get("model.first_name"),
@@ -53,11 +48,17 @@ export default Ember.Controller.extend(UserSettings, {
                         xhr.setRequestHeader(header, content);
                     },
                     success: function() {
-                        self.set("general_close_info", "Nastavení úspěšně uloženo");
+                        self.set("saving", false);
+                        self.set("alertType", "success");
+                        self.set("alertCloseBtn", true);
+                        self.set("alertMsg", "Nastavení úspěšně uloženo.");
                         self.get("session").setCurrentUser();
                     },
-                    error: function(j, e, error) {
-                        self.set("general_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
+                    error: function() {
+                        self.set("saving", false);
+                        self.set("alertType", "danger");
+                        self.set("alertCloseBtn", true);
+                        self.set("alertMsg", "Nepodařilo se uložit nastavení. Zkus to za chvíli znovu.");
                     }
                 });
             });
