@@ -67,7 +67,7 @@
       {{ale-rt type="danger" closeBtn=true text=login_error_message}}
       {{#validatable-form action="login"}}
         {{#if in_progress}}
-          {{info-general text="Přihlašuji"}}
+          {{ale-rt type="info" text="Přihlašuji"}}
         {{else}}
           <div>
             {{input type="email" value=identification placeholder="e-mail" class="form-control autofocus" required=true id="login-email"}}
