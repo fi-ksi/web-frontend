@@ -35,19 +35,21 @@
           <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
 
           <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
-          {{#if feedback_error}}
-            {{warning-general text=feedback_error}}
-          {{/if}}
+
           {{textarea class="form-control autofocus" rows="3" style="resize:none;" required=true title="Text je povinný" value=feedback_text id="feedback-textarea"}}
           <br>
-          <p><b>Tvá e-mailová adresa - volitelně</b></p>
+          <p><b>Tvá e-mailová adresa – volitelně</b></p>
 
           <p>Abychom se když tak mohli doptat na detaily.</p>
 
           {{input type="email" class="form-control" id="zpetna-vazba-email" placeholder="e-mail" title="E-mailová adresa je neplatná" value=feedback_email}}
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" style="width: 200px">Odeslat</button>
+          <button type="submit" class="btn btn-primary {{if feedback_sending "disabled"}}"
+            style="width: 200px">{{if feedback_sending "Odesílám..." "Odeslat"}}</button>
+          <div style="margin-top:20px">
+              {{ale-rt type="danger" closeBtn=true text=feedback_error}}
+          </div>
         </div>
       {{/validatable-form}}
     </div>
@@ -62,9 +64,7 @@
              <img src="img/karlik_color.png" style="max-width:200px; vertical-align: middle;"/>
      </div>
     <br>
-    {{#if login_error_message}}
-      {{warning-general text=login_error_message}}
-    {{/if}}
+      {{ale-rt type="danger" closeBtn=true text=login_error_message}}
       {{#validatable-form action="login"}}
         {{#if in_progress}}
           {{info-general text="Přihlašuji"}}

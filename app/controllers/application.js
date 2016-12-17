@@ -4,13 +4,16 @@ import Configuration from 'ember-simple-auth/configuration';
 
 export default Ember.Controller.extend( {
     session: Ember.inject.service(),
-    login_error_message: undefined, 
+    login_error_message: undefined,
     in_progress: false,
+    feedback_error: "",
+    feedback_sending: false,
 
     actions: {
         login: function() {
             var self = this;
             const { identification, password } = this.getProperties('identification', 'password');
+            this.set('login_error_message', "");
             this.set('password', "");
             this.set('in_progress', true);
             this.get('session').authenticate('authenticator:oauth2', identification, password).then(function() {
@@ -35,7 +38,8 @@ export default Ember.Controller.extend( {
 
         feedback: function() {
             var self = this;
-            this.set("feedback_error", undefined);
+            this.set("feedback_error", "");
+            this.set("feedback_sending", true);
 
             var obj = {
                 body: this.get("feedback_text"),
@@ -50,10 +54,14 @@ export default Ember.Controller.extend( {
                 success: function() {
                     self.set("feedback_email", "");
                     self.set("feedback_text", "");
+                    self.set("feedback_sending", false);
                     Ember.$('#feedback-modal').modal('hide');
                 },
-                error: function() {
-                    self.set("feedback_error", "Špatná odpověď ze serveru");
+                error: function(resp) {
+                    self.set("feedback_sending", false);
+                    var e = "Už ani nahlásit chybu nejde, za to beztak může Los Karlos! Napiš nám na ksi@fi.muni.cz.<br>" + resp.message;
+                    if ((resp.errors) && (resp.errors[0])) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
+                    self.set("feedback_error", e)
                 }
             });
         }

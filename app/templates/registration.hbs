@@ -26,7 +26,7 @@
         {{input value=model.email type="email" class="form-control" id="email" required=true placeholder="ksi@fi.muni.cz" autofocus="autofocus"}}
       </div>
       {{#if taken}}
-        {{warning-general text="Tato e-mailová adresa je již použita."}}
+        {{ale-rt type="danger" closeBtn=true text="Tato e-mailová adresa je již použita."}}
       {{/if}}
 
       <div class="form-group">
@@ -39,7 +39,7 @@
         {{input value=model.password2 type="password" pattern=".{6,}" class="form-control" id="password2" placeholder="silné, bezpečné a stejné heslo" required=true}}
       </div>
       {{#if password_error}}
-        {{warning-general text="Hesla se neshodují"}}
+        {{ale-rt type="danger" closeBtn=true text="Hesla se neshodují"}}
       {{/if}}
 
       <div style="margin-top:30px">
@@ -186,13 +186,12 @@
                 <button type="submit" class="btn btn-primary">
             <h2>Registruj se</h2>
           </button>
-        {{#if general_error}}
-                    <div style="margin-top: 20px;">
-              {{warning-general text=general_error}}
-                    </div>
-        {{/if}}
+
+
+        {{ale-rt type="danger" closeBtn=true text=general_error}}
+
         {{#if registration_in_progress}}
-          {{info-general text="Odesílám data."}}
+          {{ale-rt text="Odesílám data."}}
         {{/if}}
             </div>
         </div>

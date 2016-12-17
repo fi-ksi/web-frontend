@@ -67,16 +67,11 @@
                 <li>{{file}}</li>
             {{/each}}
         </ul>
-        <button class="btn btn-primary" {{action 'submit'}}>Nahrát soubory</button>
+        <button class="btn btn-primary {{if uploading "disabled"}}" {{action 'submit'}}>
+            {{if uploading "Nahrávám..." "Nahrát soubory"}}</button>
     {{/if}}
-    {{#if in_progress}}
-        <div style="margin-top:20px">
-            {{info-general text=progress_msg}}
-        </div>
-    {{/if}}
-    {{#if general_error}}
-        <div style="margin-top:20px">
-            {{warning-general text=general_error}}
-        </div>
-    {{/if}}
+
+    {{ale-rt type="info" text=progress_msg}}
+    {{ale-rt type="danger" show=show_error closeBtn=true text=general_error}}
+
 </div>

@@ -21,6 +21,9 @@ export default Ember.Component.extend({
     type_list: Ember.computed("type", function() { return (this.get("type") === 'list') || (this.get("type") === null); }),
     type_gallery: Ember.computed("type", function() { return this.get("type") === 'gallery'; }),
 
+    show_error: false,
+    uploading: false,
+
     endpoint: Ember.computed("model.id", function() {
         // endpoint must end with "/"
         return config.API_LOC + ("/content/" + this.get("model.id") + "/").replace("//", "/");
@@ -57,18 +60,21 @@ export default Ember.Component.extend({
             Ember.$("#c-upload_" + this.get("model.id").replace("/", "\\/")).trigger('click');
         },
         'submit': function() {
-            this.set("general_error", undefined);
-            this.set("in_progress", true);
-            this.set("progress_msg", "Nahrávám");
             if(this.get("valid")) {
+                this.set("general_error", "");
+                this.set("progress_msg", "Nahrávám...");
+                this.set("uploading", true);
                 this.get("f_input").send("upload");
             } else {
                 this.set("general_error", "Nejsou vybrány žádné soubory!");
+                this.set("show_error", "");
+                this.set("progress_msg", "");
             }
         },
         'upload_finished': function() {
+            this.set("uploading", false);
+            this.set("progress_msg", "");
             var self = this;
-            this.set("in_progress", false);
             this.get("store").find("content", this.get("model.id")).then(function(c) {
                 c.reload();
                 self.set("model", c);
@@ -76,7 +82,8 @@ export default Ember.Component.extend({
             });
         },
         'upload_failed': function(text, err) {
-            this.set("in_progress", false);
+            this.set("uploading", false);
+            this.set("progress_msg", "");
             this.set("general_error", text + ": " + err);
         },
         'progress': function(progress) {

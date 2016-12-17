@@ -74,9 +74,7 @@
                 <div style="margin-top:20px; margin-bottom:20px;">
                     <form class="form-horizontal" style="margin:30px">
                       <div class="controls form-inline" style="margin-top:20px">
-                          {{#if thread_content_error}}
-                            {{warning-general text=thread_content_error}}
-                          {{/if}}
+                          {{ale-rt type="danger" closeBtn=true text=thread_content_error}}
                           <label for="threadName">Komentář:</label>
                           {{text-editor value=thread_content}}
                       </div>

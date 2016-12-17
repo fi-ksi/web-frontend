@@ -63,9 +63,9 @@ export default EmberUploader.FileField.extend(InboundActions, {
 
                 uploader.on("didError", function(jqXHR, textStatus, errorThrown) {
                     //self.sendAction("upload_failed", JSON.parse(jqXHR.responseText)["error"], errorThrown);
-                    self.sendAction("upload_failed", "Nepodařilo se nahrát soubory - chyba spojení nebo příliš velké soubory", errorThrown);
+                    self.sendAction("upload_failed", "Nepodařilo se nahrát soubory – chyba spojení nebo příliš velké soubory", errorThrown);
                 });
-                
+
                 uploader.on("progress", function(e) {
                     self.sendAction("progress", e.percent);
                 });
