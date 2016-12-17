@@ -1,6 +1,6 @@
 <section id="thread" class="container content-section autojustify">
     {{#unless session.isAuthenticated}}
-          {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+          {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
     {{/unless}}
     {{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
     <!-- Sekcia -->

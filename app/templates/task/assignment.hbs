@@ -13,7 +13,7 @@
         {{module-wrap module=module store=store submit="submit" opened=opened}}
       {{/each}}
     {{else}}
-        {{warning-login text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
+        {{ale-rt type="danger" text="Úlohu nemůžeš odevzdat dokud se nepřihlásíš!"}}
     {{/if}}
   </div>
   {{#if finished}}
