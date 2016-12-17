@@ -6,7 +6,7 @@
     </div>
     <hr>
     {{#unless opened}}
-      {{warning-general disable_warning=true text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}
+      {{ale-rt type="danger" text="Tato úloha již byla uzavřena a není možné ji odevzdat. Navazující úlohy ti však byly automaticky odemčeny. Navíc se můžeš podívat na vzorové řešení úlohy."}}
     {{/unless}}
     {{#if session.isAuthenticated}}
       {{#each model.details.modules as |module index|}}

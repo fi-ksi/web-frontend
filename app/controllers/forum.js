@@ -57,6 +57,7 @@ export default Ember.Controller.extend({
                     self.set("thread_content", undefined);
                 }, function(resp) {
                     // post onFail
+                    post.destroyRecord();
                     self.set("saving", false);
                     var e = "Nepodařilo se vytvořit příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
                     if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
@@ -64,6 +65,7 @@ export default Ember.Controller.extend({
                 });
             }, function(resp) {
                 // thread onFail
+                thread.destroyRecord();
                 self.set("saving", false);
                 var e = "Nepodařilo se vytvořit vlákno! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
                 if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }

@@ -15,19 +15,18 @@
         {{#unless thread.year.sealed}}
             <button class="btn btn-primary" style="margin-left:10px" {{action "add_comment"}}>{{unless is_reacting "Přidat příspěvek" "Zrušit příspěvek"}}</button>
             {{#if is_reacting}}
-              {{#if content_error}}
-                {{warning-general text=content_error}}
-              {{/if}}
               <div class="panel panel-default" style="border:none; box-shadow: none;">
                   <div class="controls form-inline" style="margin-top:20px">
                       <label for="threadName">Příspěvek:</label>
                       {{text-editor value=response_text}}
                   </div>
-                        <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "send"}}>Odeslat</button>
-                </div>
+                  <button class="btn btn-sm btn-primary {{if progress "disabled"}}"
+                    style="margin-top:20px; margin-bottom: 20px" {{action "send"}}>{{if progress "Odesílám..." "Odeslat"}}</button>
+                  {{ale-rt type="danger" closeBtn=true show=error_show text=error}}
+              </div>
           {{/if}}
         {{/unless}}
     {{else}}
-        {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+        {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
     {{/if}}
 </div>

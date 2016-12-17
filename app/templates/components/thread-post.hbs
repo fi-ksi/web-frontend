@@ -1,3 +1,4 @@
+{{#unless model.temporary}}
 <li class="media media-thread {{if model.is_new 'new-post'}}"> <!-- pociatok prispevku -->
     <div class="media-left" >
         {{#link-to "user-profile" model.author}}
@@ -25,14 +26,18 @@
           <div class="controls form-inline" style="margin-top:20px">
               {{text-editor value=model.body}}
           </div>
-          <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "save"}}>Uložit</button>
-          <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "cancel"}}>Zrušit</button>
-          {{#if edit_error}}
-            {{warning-general text=edit_error}}
-          {{/if}}
+
+          <div style="margin-top:20px; margin-bottom:20px">
           {{#if edit_progress}}
-            {{info-general text=edit_progress}}
+              <button class="btn btn-sm btn-primary disabled">Ukládám...</button>
+              <button class="btn btn-sm btn-primary disabled">Zrušit</button>
+          {{else}}
+              <button class="btn btn-sm btn-primary" {{action "save"}}>Uložit</button>
+              <button class="btn btn-sm btn-primary" {{action "cancel"}}>Zrušit</button>
           {{/if}}
+          </div>
+
+          {{ale-rt type="danger" closeBtn=true text=edit_error}}
         </div>
       {{/unless}}
 
@@ -48,18 +53,17 @@
       <!-- button odkryje textareau: -->
       {{#if is_reacting}}
         {{#unless session.isAuthenticated}}
-          {{warning-login text="Pro přispívání do diskuse musíš být přihlášen."}}
+          {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
         {{else}}
-          {{#if content_error}}
-            {{warning-general text=content_error}}
-          {{/if}}
           <div class="panel panel-default" style="border:none; box-shadow: none; background-color: inherit;">
               <div class="controls form-inline" style="margin-top:20px">
                   <label for="threadName">Příspěvek:</label>
                   {{text-editor value=response_text}}
               </div>
-                    <button class="btn btn-sm btn-primary" style="margin-top:20px" {{action "send"}}>Odeslat</button>
-            </div>
+              <button class="btn btn-sm btn-primary {{if react_progress "disabled"}}"
+                style="margin-top:20px" {{action "send"}}>{{if react_progress "Odesílám..." "Odeslat"}}</button>
+          </div>
+          {{ale-rt type="danger" closeBtn=true show=react_error_show text=react_error}}
         {{/unless}}
       {{/if}}
 
@@ -80,3 +84,4 @@
   {{/if}}
 
   </li>
+{{/unless}}

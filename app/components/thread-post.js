@@ -5,6 +5,12 @@ export default Ember.Component.extend({
     depth: 0,   // hloubka vlakna v diskuzi
     max_depth: 3,   // nejvetsi hloubka, ve ktere jeste zanorovat
 
+    edit_progress: false,
+    edit_error: "",
+    react_progress: false,
+    react_error: "",
+    react_error_show: false,
+
     depth_inc: Ember.computed("depth", function(){
         return this.get("depth") + 1;
     }),
@@ -31,31 +37,42 @@ export default Ember.Component.extend({
         },
         send: function() {
             var self = this;
+            this.set("react_error", "");
 
             if(!this.get("response_text")) {
-                this.set("content_error", "Nelze odeslat prázdný příspěvek");
+                this.set("react_error", "Nelze odeslat prázdný příspěvek");
+                this.set("react_error_show", true);
                 return;
             }
-            this.set("content_error", undefined);
+
+            this.set("react_progress", true);
+
             var post = this.get("store").createRecord("post", {
                 body: self.get("response_text"),
                 parent: self.get("model"),
-                thread: self.get("model.thread")
+                thread: self.get("model.thread"),
+                temporary: true
             });
 
             post.save().then(function() {
-                self.get("model.reaction").pushObject(post);
-                self.get("model").save().then(function() {
+                post.set("temporary", false);
+                self.set("react_progress", false);
+                self.set("is_reacting", false);
+                self.set("response_text", "");
+                Ember.run.later(self, function() {
                     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                    self.set("is_reacting", false);
-                }, function() {
-                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                    self.set("content_error", "Nepodařilo se odeslat příspěvek");
-                });
+                }, 500)
+            }, function(resp) {
+                // fail
+                post.destroyRecord();
+                self.set("react_progress", false);
+                var e = "Nepodařilo se uložit příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
+                if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
+                self.set("react_error", e)
             });
         },
         delete: function() {
-            if (!confirm("Opravdu smazat příspěvek?")) {
+            if (!confirm("Opravdu smazat příspěvek a všechny reakce na něj?")) {
                 return;
             }
             this.get("model").deleteRecord();
@@ -70,15 +87,27 @@ export default Ember.Component.extend({
         cancel: function() {
             this.set("model.body", this.get("content_bak"));
             this.set("is_editing", false);
+            Ember.run.later(this, function() {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            }, 500)
         },
         save: function() {
             var self = this;
-            self.set("edit_progress", "Ukládám");
+            this.set("edit_progress", true);
+            this.set("edit_error", "");
+
             this.get("model").save().then(function() {
                     self.set("is_editing", false);
+                    self.set("edit_progress", false);
+                    Ember.run.later(self, function() {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                    }, 500)
                 },
-                function() {
-                    self.set("edit_error", "Nepodařilo se změnu příspěvku uložit");
+                function(resp) {
+                    self.set("edit_progress", false);
+                    var e = "Nepodařilo se uložit příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
+                    if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
+                    self.set("edit_error", e)
                 }
             );
         }

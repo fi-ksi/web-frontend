@@ -6,6 +6,10 @@ export default Ember.Component.extend({
     store: Ember.inject.service(),
     mark_as_read: true, // pokud je komponente predano mark_as_read=false, nemarkue se precteni
 
+    progress: false,
+    error: "",
+    error_show: false,
+
     thread_mark_as_read_observer: function(){
         var thread = this.get("thread");
         if(!thread || !this.get("mark_as_read")) {
@@ -31,21 +35,42 @@ export default Ember.Component.extend({
             this.set("content_error", undefined);
             this.set("response_text", "");
         },
+
         send: function() {
             var self = this;
+            this.set("error", "");
 
             if(!this.get("response_text")) {
-                this.set("content_error", "Nelze odeslat prázdný příspěvek");
+                this.set("error", "Nelze odeslat prázdný příspěvek");
+                this.set("error_show", true);
                 return;
             }
-            this.set("content_error", undefined);
+
+            this.set("progress", true);
+
             var post = this.get("store").createRecord("post", {
                 body: self.get("response_text"),
-                thread: self.get("thread")
+                thread: self.get("thread"),
+                temporary: true
             });
 
             post.save().then(function() {
+                // success
+                post.set("temporary", false);
                 self.get("thread.details.root_posts").pushObject(post);
+                self.set("progress", false);
+                self.set("is_reacting", false);
+
+                Ember.run.later(self, function() {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                }, 500)
+            }, function(resp) {
+                // fail
+                post.destroyRecord();
+                self.set("progress", false);
+                var e = "Nepodařilo se přidat příspěvek! Pokud si myslíš, že chyba není na tvé straně, kontaktuj organizátora.<br>" + resp.message;
+                if (resp.errors[0]) { e += "<br>" + resp.errors[0].status  + " : " + resp.errors[0].title; }
+                self.set("error", e)
             });
         }
     },
