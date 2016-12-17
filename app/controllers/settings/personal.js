@@ -4,10 +4,21 @@ import config from '../../config/environment';
 
 export default Ember.Controller.extend(UserSettings, {
     session: Ember.inject.service(),
+
     actions: {
+        onInfoClose: function() {
+            console.log("here!");
+            this.set("general_close_info", undefined);
+        },
+
+        onErrorClose: function() {
+            console.log("here!");
+            this.set("general_close_info", undefined);
+        },
+
         save: function() {
             var self = this;
-            this.set("general_info", "Ukládám nastavení");
+            this.set("general_close_info", "Ukládám nastavení...");
             this.set("general_error", undefined);
 
             var obj = {
@@ -42,14 +53,10 @@ export default Ember.Controller.extend(UserSettings, {
                         xhr.setRequestHeader(header, content);
                     },
                     success: function() {
-                        self.set("general_info", "Nastavení úspěšně uloženo");
-                        Ember.run.later((function() {
-                            self.set("general_info", undefined);
-                        }), 3000);
-                        // ToDo: Reload profile
+                        self.set("general_close_info", "Nastavení úspěšně uloženo");
+                        self.get("session").setCurrentUser();
                     },
                     error: function(j, e, error) {
-                        self.set("general_info", undefined);
                         self.set("general_error", "Nepodařilo se uložit nastavení. Zkuste to za chvíli znovu. " + error);
                     }
                 });

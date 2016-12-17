@@ -155,11 +155,12 @@
   </div>
 
   {{#if general_error}}
-    {{warning-general text=general_error}}
+    {{warning-close-general onClose="onErrorClose" text=general_error}}
   {{/if}}
-  {{#if general_info}}
-    {{info-general text=general_info}}
+  {{#if general_close_info}}
+    {{info-close-general onClose="onInfoClose" text=general_close_info}}
   {{/if}}
+
   <button type="submit" class="btn btn-primary" style="margin-top:20px; width:100%;">
     Ulož změny
   </button>
