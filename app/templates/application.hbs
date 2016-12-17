@@ -28,10 +28,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Pošli nám odezvu na nový ksi web</h4>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Pošli nám odezvu na KSI web</h4>
       </div>
       {{#validatable-form action="feedback"}}
         <div class="modal-body">
+          {{ale-rt type="info" text="Prosíme, nepoužívej tento formulář na dotazy k úlohám, či k průběhu semináře. Na tyto dotazy slouží diskuze, nebo e-mail <a href='mailto:ksi@fi.muni.cz'>ksi@fi.muni.cz</a>. Děkujeme."}}
+
           <p>Máš nějaký tip nebo nápad, co a jak zlepšit? Vyskočila na tebe nějaká chyba?</p>
 
           <p><b>Dej nám vědět, ať s tím můžeme něco dělat.</b></p>
@@ -40,7 +42,7 @@
           <br>
           <p><b>Tvá e-mailová adresa – volitelně</b></p>
 
-          <p>Abychom se když tak mohli doptat na detaily.</p>
+          <p>Abychom se mohli doptat na detaily.</p>
 
           {{input type="email" class="form-control" id="zpetna-vazba-email" placeholder="e-mail" title="E-mailová adresa je neplatná" value=feedback_email}}
         </div>
