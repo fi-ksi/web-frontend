@@ -20,9 +20,6 @@
             </ul>
         </div>
     </div>
-    {{#if general_error}}
-        <div style="margin-top:20px">
-            {{warning-close-general text=general_error}}
-        </div>
-    {{/if}}
+
+    {{ale-rt type="danger" closeBtn=true text=general_error show=show_error style="margin-top:20px"}}
 </div>

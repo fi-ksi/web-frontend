@@ -10,9 +10,6 @@
             </div>
         {{/each}}
     </form>
-    {{#if general_error}}
-        <div style="margin-top:20px">
-            {{warning-close-general text=general_error}}
-        </div>
-    {{/if}}
+
+    {{ale-rt type="danger" closeBtn=true text=general_error}}
 </div>

@@ -6,6 +6,10 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "div",
     classNames: ["controls row"],
     session: Ember.inject.service(),
+
+    general_error: "",
+    show_error: false,
+
     didUpdate: function() {
         this._super();
         var self = this;
@@ -18,7 +22,7 @@ export default Ember.Component.extend(InboundActions, {
                 self.set("general_error", "Musíš použít všechny řádky kódu!");
             }
             else {
-                self.set("general_error", undefined);
+                self.set("general_error", "");
             }
             self.update_indent();
         });
@@ -45,10 +49,11 @@ export default Ember.Component.extend(InboundActions, {
             var id = "#sortable" + self.get("module.id");
             if (Ember.$(id + "b li").length !== 0) {
                 self.set("general_error", "Musíš použít všechny řádky kódu!");
+                self.set("show_error", true);
                 self.sendAction("submit_done");
                 return;
             }
-            self.set("general_error", undefined);
+            self.set("general_error", "");
 
             // Collect the solution
             var result = [];
@@ -97,5 +102,4 @@ export default Ember.Component.extend(InboundActions, {
             });
         }
     },
-    general_error: undefined
 });

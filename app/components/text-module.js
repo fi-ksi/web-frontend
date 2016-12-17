@@ -6,6 +6,7 @@ export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     session: Ember.inject.service(),
+    general_error: "",
 
     fields: Ember.computed("module.fields", function() {
         if (!this.get("module.fields")) { return []; }
@@ -21,7 +22,7 @@ export default Ember.Component.extend(InboundActions, {
     actions: {
         submit: function() {
             var self = this;
-            this.set("general_error", undefined);
+            this.set("general_error", "");
             if (!this.get("text")) {
                 this.set("text", "");
             }

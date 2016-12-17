@@ -12,24 +12,19 @@
 
     <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
         <label>Editor kódu</label>
-        {{code-editor content=module.code  id=(construct-id "editor_module" module.id)}}
+        {{code-editor content=module.code id=(construct-id "editor_module" module.id)}}
     </div>
+
     <div class="row hidden-print" style="margin-left:0px; margin-right:20px">
-        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "run"}}>Spustit</button>
-        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
+        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "run"}}>{{if running "Spouštím..." "Spustit"}}</button>
+        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>
-        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
+        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
     </div>
-    {{#if general_info}}
-        {{info-general text=general_info}}
-    {{/if}}
-    {{#if general_error}}
-        {{warning-close-general text=general_error}}
-    {{/if}}
-    {{#if submission_info}}
-        {{info-general text=submission_info disable_warning=true}}
-    {{/if}}
+
+    {{ale-rt type="danger" show=show_error closeBtn=true text=general_error style="margin-top:20px"}}
+
     {{#if script_text_output}}
         <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
             <label>Výstup kódu</label>
