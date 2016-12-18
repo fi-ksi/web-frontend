@@ -60,8 +60,9 @@
                   <label for="threadName">Příspěvek:</label>
                   {{text-editor value=response_text}}
               </div>
+              {{ale-rt type="warning" style="margin-top:10px; font-size:87.5% !important;" text="Pokud chceš do příspěvku vložit obrázek, vlož jej odkazem. Načítání obrázků z&nbsp;externích zdrojů je na KSI webu zakázáno pomocí CSP."}}
               <button class="btn btn-sm btn-primary {{if react_progress "disabled"}}"
-                style="margin-top:20px" {{action "send"}}>{{if react_progress "Odesílám..." "Odeslat"}}</button>
+                {{action "send"}}>{{if react_progress "Odesílám..." "Odeslat"}}</button>
           </div>
           {{ale-rt type="danger" closeBtn=true show=react_error_show text=react_error}}
         {{/unless}}
