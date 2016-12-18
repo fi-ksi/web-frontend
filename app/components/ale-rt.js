@@ -20,6 +20,8 @@ export default Ember.Component.extend({
 
     style: "",         // Change this value to change style of most outer div.
 
+    text_align: "center", // Change this value to change text align
+
     textObserver: function() {
         if (this.get("reShow")) {
             this.set("show", true);
