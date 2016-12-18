@@ -39,7 +39,7 @@ export default Ember.Controller.extend( {
                 self.transitionToRoute('admin/achievements');
             }, function () {
                 self.set("saving", false);
-                alert("Špatná odpověď serveru! Kontaktuj administrátora.");
+                self.set("error_status", "Špatná odpověď serveru! Kontaktuj administrátora.");
             });
         }
     },

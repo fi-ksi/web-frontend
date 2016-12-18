@@ -51,12 +51,13 @@
     <label>Připojit do PS easteregg</label>
   </div>
   <div class="row" style="margin-bottom:20px; margin-left:0px">
-    <button class="btn btn-primary inline" id="send-email-button" {{action "email"}}>Odeslat</button>
-    {{#if send_status}}
-      <div class="alert alert-info" style="margin-top:20px">{{send_status}}</div>
+    {{#if sending}}
+        <button class="btn btn-primary inline disabled">Odesílám...</button>
+    {{else}}
+        <button class="btn btn-primary inline" id="send-email-button" {{action "email"}}>Odeslat</button>
     {{/if}}
-    {{#if error_status}}
-      <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
-    {{/if}}
+
+    {{ale-rt type="info" style="margin-top:20px;" closeBtn=true text=send_status}}
+    {{ale-rt type="danger" style="margin-top:20px;" show=error_show closeBtn=true text=error_status}}
   </div>
 </section>

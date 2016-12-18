@@ -15,6 +15,8 @@ export default Ember.Controller.extend({
     successful: false,
     error_status: "",
     send_status: "",
+    sending: false,
+    error_show: false,
     years: Ember.computed("store", function() {
         return this.get("store").find("year");
     }),
@@ -23,11 +25,14 @@ export default Ember.Controller.extend({
             var self = this;
 
             if(!self.get("to").length) {
-                self.set("error_status", "není vybraný žádný ročník");
+                self.set("error_status", "Není vybraný ročník!");
+                self.set("error_show", true);
                 return;
             } else {
                 self.set("error_status", "");
             }
+
+            self.set("sending", true);
 
             var bcc = [];
             if(Ember.$("#bcc").val()) {
@@ -58,13 +63,15 @@ export default Ember.Controller.extend({
                         self.set("send_status", "Odesílám zprávu");
                     },
                     success: function(data) {
+                        self.set("sending", false);
                         if("count" in data) {
-                            self.set("send_status", "Zpráva úspěšně odeslána "+data.count+" súťažiacim.");
+                            self.set("send_status", "Zpráva úspěšně odeslána "+data.count+" řešitelům.");
                         } else {
-                            self.set("error_status", "Špatná odpověď serveru!");
+                            self.set("error_status", "Server neposlal count, kontaktuj administrátora!");
                         }
                     },
                     error: function() {
+                        self.set("sending", false);
                         self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
                     }
                 });

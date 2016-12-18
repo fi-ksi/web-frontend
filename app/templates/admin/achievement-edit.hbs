@@ -35,9 +35,8 @@
           </div>
       {{/if}}
 
-      {{#if save_status}}
-        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
-      {{/if}}
+      {{ale-rt type="danger" style="margin-top:20px;" closeBtn=true text=error_status}}
+      {{ale-rt type="info" style="margin-top:20px;" closeBtn=true text=save_status}}
     </div>
   </div>
 </section>

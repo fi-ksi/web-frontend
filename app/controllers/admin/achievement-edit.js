@@ -16,13 +16,15 @@ export default Ember.Controller.extend( {
         'save': function() {
             var self = this;
             this.set("saving", true);
-            this.set("save_status", null);
+            this.set("save_status", "");
+            this.set("error_status", "");
+
             this.get("model.achievement").save().then(function() {
                 self.set("saving", false);
                 self.set("save_status", "Trofej uložena");
             }, function() {
                 self.set("saving", false);
-                alert("Špatná odpověď serveru! Kontaktuj administrátora");
+                self.set("error_status", "Špatná odpověď serveru! Kontaktuj administrátora.");
             });
         },
 

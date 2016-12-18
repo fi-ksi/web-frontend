@@ -79,11 +79,9 @@ export default Ember.Controller.extend( {
                             data: JSON.stringify(send_data, null, '\t'),
                             beforeSend: function(xhr) {
                                     xhr.setRequestHeader(header, h);
-                                    self.set("grant_status", "Odesílám požadavek ...");
                             },
                             success: function(data) {
                                     if (('errors' !== '') && ('errors' in data)) {
-                                        self.set("grant_status", "");
                                         self.set("grant_warning", data['errors'].reduce(function(prev, next) { return prev['title'] + "<br>" + next['title']; }, ""));
                                     } else {
                                         self.set("grant_status", "Trofej úspěšně přidělena.");

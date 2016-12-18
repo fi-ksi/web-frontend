@@ -4,6 +4,7 @@ export default Ember.Controller.extend( {
     session: Ember.inject.service(),
     save_status: "",
     error_status: "",
+    saving: false,
 
     garant_id: Ember.computed("model.wave.garant", function(){
         return this.get("model.wave.garant.id");
@@ -12,12 +13,19 @@ export default Ember.Controller.extend( {
     actions: {
         'wave-save': function() {
             var self = this;
+
+            this.set("saving", true);
+            this.set("save_status", "");
+            this.set("error_status", "");
+
             this.get("store").find("user", this.get("garant_id")).then(function(u){
                 self.set("model.wave.garant", u);
                 self.get("model.wave").save().then(function(){
+                    self.set("saving", false);
                     self.set("save_status", "Vlna uložena");
                 }, function(){
-                    self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj administrátora.");
+                    self.set("saving", false);
+                    self.set("error_status", "Chybová odpověď serveru! Kontaktuj administrátora.");
                 });
             });
         }

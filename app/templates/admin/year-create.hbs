@@ -37,9 +37,7 @@
         <button class="btn btn-primary inline" id="save" {{action "year-create"}}>Vytvořit nový ročník</button>
       {{/if}}
 
-      {{#if error_status}}
-        <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
-      {{/if}}
+      {{ale-rt type="danger" style="margin-top:20px;" closeBtn=true text=error_status}}
     </div>
   </div>
 </section>

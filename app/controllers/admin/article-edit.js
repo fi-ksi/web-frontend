@@ -15,7 +15,6 @@ export default Ember.Controller.extend( {
             this.get("model").save().then(function(){
                 self.set("saving", false);
                 self.set("save_status", "Článek uložen.");
-                setTimeout(function(){ self.set("save_status", ""); }, 5000);
             }, function(){
                 self.set("saving", false);
                 self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");

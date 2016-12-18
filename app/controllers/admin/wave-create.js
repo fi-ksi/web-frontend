@@ -29,7 +29,7 @@ export default Ember.Controller.extend( {
                 self.transitionToRoute('admin/waves');
             }, function () {
                 self.set("saving", false);
-                self.set("error_status", "Špatná odpověď ze serveru! Zkus to za chvíli znovu. Pokud problém přetrvává, kontaktuj organizátora.");
+                self.set("error_status", "Chybová odpověď serveru! Kontaktuj organizátora.");
             });
         }
     },

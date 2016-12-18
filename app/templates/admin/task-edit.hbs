@@ -33,17 +33,15 @@
 
       {{#if canSave}}
         <div class="row" style="margin-left:0px; margin-top:20px">
-          <button class="btn btn-primary inline" id="save" {{action "task-save"}}>Uložit</button>
+          <button class="btn btn-primary inline {{if saving "disabled"}}"
+            id="save" {{action "task-save"}}>{{if saving "Ukládám..." "Uložit"}}</button>
         </div>
       {{else}}
         <div class="alert alert-info" style="margin-top:20px">Úlohu může změnit pouze její autor, garant vlny nebo administrátor.</div>
       {{/if}}
-      {{#if error_status}}
-        <div class="alert alert-danger" style="margin-top:20px">{{error_status}}</div>
-      {{/if}}
-      {{#if save_status}}
-        <div class="alert alert-info" style="margin-top:20px">{{save_status}}</div>
-      {{/if}}
+
+      {{ale-rt type="danger" style="margin-top:20px;" closeBtn=true text=error_status}}
+      {{ale-rt type="info" style="margin-top:20px;" closeBtn=true text=save_status}}
     </div>
   </div>
 </section>
