@@ -5,5 +5,6 @@ export default Ember.Component.extend({
         {name:"Ondra Bouda", profile:"ondra-bouda.jpg"},
         {name:"Radek Pelánek", profile:"radek-pelanek.jpg"},
         {name:"Pavel Šimeček", profile:"pavel-simecek.jpg"},
+        {name:"Jana Tůmová", profile:"jana-tumova.jpg"},
     ]
 });
