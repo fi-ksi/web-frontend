@@ -17,7 +17,7 @@ module.exports = function(environment) {
         'default-src': "'self'",
         'script-src':  "'self' http://cdn.mathjax.org/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js",
         'style-src':   "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com",
-        'img-src':     "*",
+        'img-src':     "'self'",
         'font-src':    "'self' http://maxcdn.bootstrapcdn.com https://maxcdn.bootstrapcdn.com",
         'child-src':   "https://www.youtube.com https://youtube.com"
     },
@@ -60,6 +60,7 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["connect-src"] = "https://kyzikos.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
     ENV["contentSecurityPolicy"]["report-uri"] = "https://kyzikos.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://kyzikos.fi.muni.cz:3000"
   }
 
   if (environment === 'prod_dev') {
@@ -67,10 +68,11 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     };
     ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
+    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["connect-src"] = "https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
-    ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
   }
 
   if (environment === 'development') {
@@ -98,7 +100,10 @@ module.exports = function(environment) {
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     }
+    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["connect-src"] = "https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
   }
 
   ENV.i18n = {
