@@ -14,15 +14,15 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-        'default-src': "",
+        'default-src': "'self'",
         'script-src':  "'self' http://cdn.mathjax.org/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js",
-        'font-src':    "*",
-        'connect-src': "'self'",
-        'img-src':     "* data:",
-        'style-src':   "* 'unsafe-inline'",
-        'media-src':   "'self'",
+        'style-src':   "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com",
+        'img-src':     "*",
+        'font-src':    "'self' http://maxcdn.bootstrapcdn.com https://maxcdn.bootstrapcdn.com",
         'child-src':   "https://www.youtube.com https://youtube.com"
     },
+
+    contentSecurityPolicyHeader: "Content-Security-Policy",
 
     APP: {
       // Here you can pass flags/options to your application instance
@@ -56,9 +56,9 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'https://kyzikos.fi.muni.cz:3000/auth'
     };
     ENV["API_LOC"] = "https://kyzikos.fi.muni.cz:3000";
-    ENV["contentSecurityPolicy"]["connect-src"] += " https://kyzikos.fi.muni.cz:3000"
-    ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
-    ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
+    ENV["contentSecurityPolicy"]["default-src"] += " https://kyzikos.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["connect-src"] = "https://kyzikos.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
     ENV["contentSecurityPolicy"]["report-uri"] = "https://kyzikos.fi.muni.cz:3000/csp"
   }
 
@@ -67,8 +67,8 @@ module.exports = function(environment) {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     };
     ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
-    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
-    ENV["contentSecurityPolicy"]["script-src"] += " http://localhost:49152" // livereload
+    ENV["contentSecurityPolicy"]["connect-src"] = "https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
     ENV["contentSecurityPolicy"]["script-src"] += " http://0.0.0.0:49152" // livereload
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
   }
