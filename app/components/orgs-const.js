@@ -17,7 +17,7 @@ export default Ember.Component.extend({
         {name:"Maroš Klimovský", profile:"../avatar-default.svg"},
         {name:"Zuzka Petruchová", profile:"../avatar-default-woman.svg"},
         {name:"Andrej Pančík", profile:"../avatar-default.svg"},
-        {name:"Pavel Troubil", profile:"../avatar-default.svg"},
+        {name:"Pavel Troubil", profile:"pavel-troubil.jpg"},
         {name:"Pepa Pacula", profile:"../avatar-default.svg"},
         {name:"Martin Chmelík", profile:"../avatar-default.svg"},
         {name:"Matej Kollár", profile:"../avatar-default.svg"},
