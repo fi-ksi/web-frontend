@@ -17,7 +17,8 @@ module.exports = function(environment) {
         'default-src': "'self'",
         'script-src':  "'self' http://cdn.mathjax.org/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js",
         'style-src':   "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com",
-        'img-src':     "'self' https://www.google-analytics.com http://cdn.mathjax.org https://cdn.mathjax.org", // google uses images for analytics
+        'img-src':     "'self' https://www.google-analytics.com http://cdn.mathjax.org https://cdn.mathjax.org data:",
+            // google uses images for analytics, mathjax uses images for fonts, ace editor uses base64-encoded images
         'font-src':    "'self' http://maxcdn.bootstrapcdn.com https://maxcdn.bootstrapcdn.com http://cdn.mathjax.org https://cdn.mathjax.org",
         'child-src':   "https://www.youtube.com https://youtube.com"
     },
