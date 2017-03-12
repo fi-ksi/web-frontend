@@ -100,6 +100,11 @@ module.exports = function(environment) {
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
     }
+
+    // Warning: you need to deploy these CSP policies manually to Apache
+    // server. "ember csp-headers --environment production" command
+    // could help you.
+
     ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["connect-src"] = "https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
