@@ -13,14 +13,17 @@ module.exports = function(environment) {
       },
     },
 
+    /* google uses images for analytics
+       mathjax uses images for fonts
+       ace editor uses base64-encoded images
+     */
     contentSecurityPolicy: {
         'default-src': "'self'",
-        'script-src':  "'self' http://cdn.mathjax.org/ https://cdn.mathjax.org/ http://www.google-analytics.com/analytics.js",
-        'style-src':   "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com",
-        'img-src':     "'self' https://www.google-analytics.com http://cdn.mathjax.org https://cdn.mathjax.org data:",
-            // google uses images for analytics, mathjax uses images for fonts, ace editor uses base64-encoded images
-        'font-src':    "'self' http://maxcdn.bootstrapcdn.com https://maxcdn.bootstrapcdn.com http://cdn.mathjax.org https://cdn.mathjax.org",
-        'child-src':   "https://www.youtube.com https://youtube.com"
+        'script-src':  "'self' cdn.mathjax.org www.google-analytics.com",
+        'style-src':   "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com",
+        'img-src':     "'self' www.google-analytics.com cdn.mathjax.org data:",
+        'font-src':    "'self' maxcdn.bootstrapcdn.com cdn.mathjax.org",
+        'child-src':   "youtube.com www.youtube.com"
     },
 
     contentSecurityPolicyHeader: "Content-Security-Policy",
