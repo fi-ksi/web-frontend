@@ -19,11 +19,11 @@ module.exports = function(environment) {
      */
     contentSecurityPolicy: {
         'default-src': "'self'",
-        'connect-src': "cdn.mathjax.org",
-        'script-src':  "'self' cdn.mathjax.org www.google-analytics.com",
+        'connect-src': "cdnjs.cloudflare.com",
+        'script-src':  "'self' cdnjs.cloudflare.com www.google-analytics.com",
         'style-src':   "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com",
-        'img-src':     "'self' www.google-analytics.com cdn.mathjax.org data:",
-        'font-src':    "'self' maxcdn.bootstrapcdn.com cdn.mathjax.org",
+        'img-src':     "'self' www.google-analytics.com cdnjs.cloudflare.com data:",
+        'font-src':    "'self' maxcdn.bootstrapcdn.com cdnjs.cloudflare.com",
         'child-src':   "youtube.com www.youtube.com"
     },
 
