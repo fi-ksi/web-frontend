@@ -3,7 +3,7 @@
 }
 
 .table-hover-forum {
-  @extend table-hover;
+  @extend .table-hover;
 }
 
 .table-hover-forum tbody tr:hover td, .table-hover tbody tr:hover th {

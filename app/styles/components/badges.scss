@@ -3,7 +3,7 @@
 }
 
 .ksi-badge {
-  @extend badge;
+  @extend .badge;
   background-color: ksi-color('primary-orange');
 }
 
