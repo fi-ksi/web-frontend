@@ -14,7 +14,7 @@
       <td class="numbering" style="text-align: center;"></td>
       <td>{{#link-to "user-profile" score.user}}{{score.user.full_name}}{{/link-to}}</td>
       <td>
-        {{#each score.achievements as |achievement|}}
+        {{#each score.user.achievements as |achievement|}}
           {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
         {{/each}}
       </td>
