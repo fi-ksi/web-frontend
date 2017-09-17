@@ -15,6 +15,7 @@ export default Ember.Component.extend(InboundActions, {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
             var self = this;
+            Ember.$(document).on("keydown", self.disableF5);
             Ember.$("#load_input_" + this.get("module.id")).change(function(evt) {
                 var f = evt.target.files[0];
 
@@ -37,6 +38,17 @@ export default Ember.Component.extend(InboundActions, {
     },
     get_editor: function() {
         return window.ace.edit("editor_module_" + this.get("module.id"));
+    },
+    disableF5: function(e) { // TODO: use ember callAction instead of jQuery actually clicking th button
+        if ((e.which || e.keyCode) === 116){
+            if (Ember.$('.code_editor').length){
+                e.preventDefault();
+                var runBtn = Ember.$(document.activeElement).closest("div.controls").find(".btn-task").not(".hidden-print").first();
+                if (runBtn.text() === 'Spustit'){ // rather have advanced function disabled, then blindly clicking stuff
+                    runBtn.click();
+                }
+            }
+        }
     },
     actions: {
         submit: function() {
