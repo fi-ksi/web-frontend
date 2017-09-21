@@ -15,8 +15,6 @@ export default Ember.Component.extend(InboundActions, {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
             var self = this;
-            console.log("here");
-            console.log(this);
 
             // F5 to run code
             Ember.$(document).on("keydown", function(e) {
