@@ -1,11 +1,14 @@
 import Ember from "ember";
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 import config from '../config/environment';
+import moment from 'moment';
 
 export default Ember.Component.extend(InboundActions, {
     tagName: "",
     classNames: [],
     session: Ember.inject.service(),
+
+    general_error: undefined,
 
     actions: {
         submit: function() {
@@ -64,6 +67,15 @@ export default Ember.Component.extend(InboundActions, {
                             } else {
                                 self.set("general_error", "Server odeslal neznámý result, kontaktuj organizátora.");
                             }
+
+                            if ("next" in data) {
+                                self.set("general_error", self.get("general_error") + "<br>" +
+                                    "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");
+                            } else {
+                                self.set("general_error", self.get("general_error") + "<br>" +
+                                    "Další odevzdání možné ihned.");
+                            }
+
                             self.sendAction("submit_done");
                         },
                         error: function() {

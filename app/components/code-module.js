@@ -1,6 +1,7 @@
 import Ember from "ember";
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 import config from '../config/environment';
+import moment from 'moment';
 
 export default Ember.Component.extend(InboundActions, {
     session: Ember.inject.service(),
@@ -10,6 +11,12 @@ export default Ember.Component.extend(InboundActions, {
     running: false,
     submitting: false,
     show_error: false,
+
+    script_text_output: undefined,
+    script_graphics_output: undefined,
+    general_error: undefined,
+    info_button_text: "Zobrazit nápovědu",
+    show_info: false,
 
     didInsertElement: function() {
         this._super();
@@ -98,6 +105,13 @@ export default Ember.Component.extend(InboundActions, {
                         if ("output" in data) {
                             self.set("script_text_output", data.output.trim());
                         }
+                        if ("next" in data) {
+                            self.set("general_error", self.get("general_error") + "<br>" +
+                                "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");
+                        } else {
+                            self.set("general_error", self.get("general_error") + "<br>" +
+                                "Další odevzdání možné ihned.");
+                        }
                         self.set("submitting", false);
                         self.sendAction("submit_done");
                     },
@@ -175,9 +189,5 @@ export default Ember.Component.extend(InboundActions, {
             saveAs(blob, "source.py");
         }
     },
-    script_text_output: undefined,
-    script_graphics_output: undefined,
-    general_error: undefined,
-    info_button_text: "Zobrazit nápovědu",
-    show_info: false
+
 });
