@@ -15,6 +15,18 @@ export default Ember.Component.extend(InboundActions, {
         this._super();
         Ember.run.scheduleOnce("afterRender", this, function(){
             var self = this;
+
+            // F5 to run code
+            Ember.$(document).on("keydown", function(e) {
+                if ((e.which || e.keyCode) === 116) {
+                    if (Ember.$('.code_editor').length) {
+                        e.preventDefault();
+                        if (!self.get("running") && !self.get("submitting"))
+                            self.send("run");
+                    }
+                }
+            });
+
             Ember.$("#load_input_" + this.get("module.id")).change(function(evt) {
                 var f = evt.target.files[0];
 
@@ -35,9 +47,11 @@ export default Ember.Component.extend(InboundActions, {
             });
         });
     },
+
     get_editor: function() {
         return window.ace.edit("editor_module_" + this.get("module.id"));
     },
+
     actions: {
         submit: function() {
             var self = this;
