@@ -28,8 +28,9 @@ export default Ember.Component.extend(InboundActions, {
                 if ((e.which || e.keyCode) === 116) {
                     if (Ember.$('.code_editor').length) {
                         e.preventDefault();
-                        if (!self.get("running") && !self.get("submitting"))
+                        if (!self.get("running") && !self.get("submitting")){
                             self.send("run");
+                        }
                     }
                 }
             });
