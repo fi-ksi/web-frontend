@@ -64,7 +64,7 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["default-src"] += " https://kyzikos.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["connect-src"] += " https://kyzikos.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
-    ENV["contentSecurityPolicy"]["report-uri"] = "https://kyzikos.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
     ENV["contentSecurityPolicy"]["img-src"] += " https://kyzikos.fi.muni.cz:3000"
   }
 
@@ -76,7 +76,7 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
-    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
     ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
   }
 
@@ -112,7 +112,7 @@ module.exports = function(environment) {
 
     ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
     ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
-    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.fi.muni.cz:3000/csp"
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
     ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
   }
 
