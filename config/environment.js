@@ -23,7 +23,7 @@ module.exports = function(environment) {
         'script-src':  "'self' cdnjs.cloudflare.com www.google-analytics.com",
         'style-src':   "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com",
         'img-src':     "'self' www.google-analytics.com cdnjs.cloudflare.com data:",
-        'font-src':    "'self' maxcdn.bootstrapcdn.com cdnjs.cloudflare.com",
+        'font-src':    "'self' maxcdn.bootstrapcdn.com cdnjs.cloudflare.com data:",
         'child-src':   "youtube.com www.youtube.com"
     },
 
