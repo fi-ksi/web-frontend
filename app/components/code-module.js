@@ -11,8 +11,11 @@ export default Ember.Component.extend(InboundActions, {
     running: false,
     submitting: false,
     show_error: false,
+    show_message: false,
 
     script_text_output: undefined,
+    script_message_output: undefined,
+    script_message_mode: "danger",
     script_graphics_output: undefined,
     general_error: undefined,
     info_button_text: "Zobrazit nápovědu",
@@ -65,6 +68,7 @@ export default Ember.Component.extend(InboundActions, {
             var self = this;
             this.set("general_error", "");
             this.set("script_text_output", null);
+            this.set("script_message_output", null);
             this.set("script_graphics_output", null);
             var content = this.get_editor().getValue();
             this.set("submitting", true);
@@ -80,18 +84,21 @@ export default Ember.Component.extend(InboundActions, {
                     },
                     success: function(data) {
                         if ("result" in data) {
-                            self.set("module.state", data.result);
+                            self.set("script_message_mode", "danger");
                             if (data.result === "error") {
                                 if ("error" in data) {
                                     self.set("general_error", data.error);
                                 } else {
                                     self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
                                 }
-                            } else if(data.result === "exec-error") {
-                                self.set("general_error", "Nastala chyba při vykonávání kódu, zkontroluj si syntaxi.");
-                            } else if(data.result === "incorrect") {
+                            } else if(data.result === "nok") {
                                 self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
-                            } else if(data.result === "correct") {
+                            } else if(data.result === "ok") {
+                                self.set("script_message_mode", "success");
+                                if ("message" in data) {
+                                    self.set("module.state", "stop_for_message"); // stop_for_message is madeup state
+                                    self.set("script_message_output", "Správné řešení! A ještě k tomu zpráva navíc:<br><br>");
+                                }
                                 self.sendAction("submit_succ_done");
                             }
                             if (data.score !== undefined) {
@@ -103,15 +110,23 @@ export default Ember.Component.extend(InboundActions, {
                         } else {
                             self.set("general_error", "Server neposlal result, kontaktuj organizátora.");
                         }
-                        if ("output" in data) {
-                            self.set("script_text_output", data.output.trim());
+                        if ("stdout" in data) {
+                            self.set("script_text_output", data.stdout.trim());
                         }
-                        if ("next" in data) {
-                            self.set("general_error", self.get("general_error") + "<br>" +
-                                "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");
-                        } else {
-                            self.set("general_error", self.get("general_error") + "<br>" +
-                                "Další odevzdání možné ihned.");
+                        if ("message" in data) {
+                            if (self.get("script_message_output") === null){
+                                self.set("script_message_output", "");
+                            }
+                            self.set("script_message_output", self.get("script_message_output") + data.message.trim());
+                        }
+                        if ("result" in data && data.result !== "ok"){
+                            if ("next" in data) {
+                                self.set("general_error", self.get("general_error") + "<br>" +
+                                    "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");
+                            } else {
+                                self.set("general_error", self.get("general_error") + "<br>" +
+                                    "Další odevzdání možné ihned.");
+                            }
                         }
                         self.set("submitting", false);
                         self.sendAction("submit_done");
@@ -147,6 +162,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("running", true);
             var content = this.get_editor().getValue();
             this.set("script_text_output", null);
+            this.set("script_message_output", null);
             this.set("script_graphics_output", null);
             this.get_editor().focus();
 
@@ -160,17 +176,28 @@ export default Ember.Component.extend(InboundActions, {
                         xhr.setRequestHeader(header, h);
                     },
                     success: function(data) {
-                        if("output" in data ||  "image_output" in data) {
-                            if("output" in data && data.output) {
-                                self.set("script_text_output", data.output.trim());
+                        if("stdout" in data ||  "image_output" in data || "result" in data || "message" in data) {
+                            if("stdout" in data && data.stdout) {
+                                self.set("script_text_output", data.stdout.trim());
                             }
                             if("image_output" in data && data.image_output) {
                                 self.set("script_graphics_output", config.API_LOC + data.image_output);
+                            }
+                            if("message" in data && data.message) {
+                                self.set("script_message_output", data.message.trim());
+                                if("result" in data && data.result) {
+                                    if (data.result === "ok") {
+                                        self.set("script_message_mode", "success");
+                                    }else{
+                                        self.set("script_message_mode", "danger");
+                                    }
+                                }
                             }
                         }
                         else {
                             self.set("script_graphics_output", null);
                             self.set("script_text_output", null);
+                            self.set("script_message_output", null);
                             self.set("general_error", "Špatná odpověď serveru");
                         }
                         self.set("running", false);
