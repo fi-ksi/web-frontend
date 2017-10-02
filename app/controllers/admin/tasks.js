@@ -185,6 +185,7 @@ export default Ember.Controller.extend( {
             return this.get("model.tasks").sortBy("wave.id").map(function(task) {
                 var is_admin = user.get("role") === "admin";
                 var authorized = task.get("git_branch") && task.get("git_path") && (is_admin ||
+                    ((user.id === task.get("wave.garant.id")) && (!self.get("session.year_obj.sealed"))) ||
                     ((new Date() < task.get("wave").get("time_published")) &&
                      (user.id === task.get("author.id") || user.id === task.get("wave.garant.id") || user.id === task.get("co_author.id"))));
                 var can_merge = task.get("git_branch") && task.get("git_path") && (task.get("git_branch") !== 'master') &&
