@@ -85,6 +85,7 @@ export default Ember.Component.extend(InboundActions, {
                     success: function(data) {
                         if ("result" in data) {
                             self.set("script_message_mode", "danger");
+                            self.set("module.blockClosing", false);
                             if (data.result === "error") {
                                 if ("error" in data) {
                                     self.set("general_error", data.error);
@@ -92,12 +93,14 @@ export default Ember.Component.extend(InboundActions, {
                                     self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
                                 }
                             } else if(data.result === "nok") {
-                                self.set("general_error", "Tvé řešení není správné! Zkus to znovu.");
+                                if ( !("message" in data && data.message.trim() !== "") ) {
+                                    self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
+                                }
                             } else if(data.result === "ok") {
                                 self.set("script_message_mode", "success");
-                                if ("message" in data) {
-                                    self.set("module.state", "stop_for_message"); // stop_for_message is madeup state
-                                    self.set("script_message_output", "Správné řešení! A ještě k tomu zpráva navíc:<br><br>");
+                                self.set("module.state", "correct");
+                                if ("message" in data && data.message.trim() !== "") {
+                                    self.set("module.blockClosing", true);
                                 }
                                 self.sendAction("submit_succ_done");
                             }
@@ -113,18 +116,15 @@ export default Ember.Component.extend(InboundActions, {
                         if ("stdout" in data) {
                             self.set("script_text_output", data.stdout.trim());
                         }
-                        if ("message" in data) {
-                            if (self.get("script_message_output") === null){
-                                self.set("script_message_output", "");
-                            }
-                            self.set("script_message_output", self.get("script_message_output") + data.message.trim());
+                        if ("message" in data && data.message.trim() !== "") {
+                            self.set("script_message_output", data.message.trim());
                         }
-                        if ("result" in data && data.result !== "ok" && (!("message" in data) || data.message === "" )){
+                        if ("result" in data && data.result !== "ok"){
                             if ("next" in data) {
-                                self.set("general_error", self.get("general_error") + "<br>" +
+                                self.set("script_message_output", self.get("script_message_output") + "<br>" +
                                     "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");
                             } else {
-                                self.set("general_error", self.get("general_error") + "<br>" +
+                                self.set("script_message_output", self.get("script_message_output") + "<br>" +
                                     "Další odevzdání možné ihned.");
                             }
                         }

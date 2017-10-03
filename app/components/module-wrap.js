@@ -27,7 +27,10 @@ export default Ember.Component.extend({
         },
         submit_succ_done: function() {
             this.set("submitting", false);
-            this.set("is_editing", false);
+            console.log(this.get("module.blockClosing"));
+            if ( this.getWithDefault("module.blockClosing", false) === false ){
+                this.set("is_editing", false);
+            }
             this.sendAction("submit");
         }
     }
