@@ -66,6 +66,7 @@ export default Ember.Component.extend(InboundActions, {
                                 }
                                 self.sendAction("submit_succ_done");
                             } else if (data.result === "nok") {
+                                self.set("module.show_report", true);
                                 if ( !("message" in data && data.message.trim() !== "") ) {
                                     self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
                                 }
@@ -86,7 +87,10 @@ export default Ember.Component.extend(InboundActions, {
                         }
                         if ("message" in data && data.message.trim() !== "") {
                             self.set("script_message_output", data.message.trim());
-                        }                     
+                        }
+                        if ("report" in data && data.report.trim() !== "") {
+                                self.set("module.report_output", data.report.trim());
+                        }                        
                         self.sendAction("submit_done");
                     },
                     error: function() {

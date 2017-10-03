@@ -37,6 +37,17 @@
       {{#if module.is_text}}
         {{text-module module=module store=store submit_done="submit_done" submit_succ_done="submit_succ_done" actionReceiver=module_logic opened=opened}}
       {{/if}}
+      {{#if session.current_user.organisator}}
+        {{#if module.report_output}}
+            <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
+              <label>Orgovský report z vyhodnocení</label>
+              <button class="btn btn-primary btn-task inline hidden-print" style="margin-left:30px" {{action "toggle_report"}}>{{report_button_text}}</button>
+              {{#if module.show_report}}
+                  {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.report_output}}
+              {{/if}}
+            </div>
+        {{/if}}
+      {{/if}}
       {{#if opened}}
         {{#unless submitting}}
             <button class="btn btn-task btn-primary hidden-print" style="margin-top:20px" {{action "submit"}}>Odevzdat</button>

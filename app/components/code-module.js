@@ -87,12 +87,14 @@ export default Ember.Component.extend(InboundActions, {
                             self.set("script_message_mode", "danger");
                             self.set("module.blockClosing", false);
                             if (data.result === "error") {
+                                self.set("module.show_report", true);
                                 if ("error" in data) {
                                     self.set("general_error", data.error);
                                 } else {
                                     self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
                                 }
                             } else if(data.result === "nok") {
+                                self.set("module.show_report", true);
                                 if ( !("message" in data && data.message.trim() !== "") ) {
                                     self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
                                 }
@@ -118,6 +120,9 @@ export default Ember.Component.extend(InboundActions, {
                         }
                         if ("message" in data && data.message.trim() !== "") {
                             self.set("script_message_output", data.message.trim());
+                        }
+                        if ("report" in data && data.report.trim() !== "") {
+                            self.set("module.report_output", data.report.trim());
                         }
                         if ("result" in data && data.result !== "ok"){
                             if ("next" in data) {
@@ -176,7 +181,7 @@ export default Ember.Component.extend(InboundActions, {
                         xhr.setRequestHeader(header, h);
                     },
                     success: function(data) {
-                        if("stdout" in data ||  "image_output" in data || "result" in data || "message" in data) {
+                        if("stdout" in data ||  "image_output" in data || "result" in data || "message" in data || "report" in data) {
                             if("stdout" in data && data.stdout) {
                                 self.set("script_text_output", data.stdout.trim());
                             }
@@ -189,9 +194,13 @@ export default Ember.Component.extend(InboundActions, {
                                     if (data.result === "ok") {
                                         self.set("script_message_mode", "success");
                                     }else{
+                                        self.set("module.show_report", true);
                                         self.set("script_message_mode", "danger");
                                     }
                                 }
+                            }
+                            if ("report" in data && data.report.trim() !== "") {
+                                self.set("module.report_output", data.report.trim());
                             }
                         }
                         else {
