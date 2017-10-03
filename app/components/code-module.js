@@ -119,7 +119,7 @@ export default Ember.Component.extend(InboundActions, {
                             }
                             self.set("script_message_output", self.get("script_message_output") + data.message.trim());
                         }
-                        if ("result" in data && data.result !== "ok"){
+                        if ("result" in data && data.result !== "ok" && (!("message" in data) || data.message === "" )){
                             if ("next" in data) {
                                 self.set("general_error", self.get("general_error") + "<br>" +
                                     "Další odevzdání možné " + (moment.utc(data.next)).local().format('LLL') + ".");

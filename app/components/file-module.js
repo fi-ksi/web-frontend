@@ -12,6 +12,11 @@ export default Ember.Component.extend(InboundActions, {
     valid: false,
     files: undefined,
     show_error: false,
+    /* TODO
+    show_message: false,
+    script_message_output: undefined,
+    script_message_mode: "info",
+    */
 
     actions: {
         file_list: function(files) {
@@ -22,6 +27,7 @@ export default Ember.Component.extend(InboundActions, {
             Ember.$("#upload_" + this.get("module.id")).trigger('click');
         },
         submit: function() {
+//            this.set("script_message_output", null);
             if(this.get("valid")) {
                 this.set("general_error", "");
                 this.set("progress_msg", "Nahrávám...");
