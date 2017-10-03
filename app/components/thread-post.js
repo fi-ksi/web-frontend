@@ -113,8 +113,7 @@ export default Ember.Component.extend({
         }
     },
     allow_edit: Ember.computed("session.current_user", "model.author", "model.thread.year.sealed", function() {
-        return this.get("session.current_user.organisator") && this.get("model.author.id") === 
-            this.get("session.current_user").id && !this.get("model.thread.year.sealed");
+        return this.get("session.current_user.organisator") && !this.get("model.thread.year.sealed");
     }),
     allow_delete: Ember.computed("session.current_user", "model.thread.year.sealed", function() {
        return this.get("session.current_user.organisator") && !this.get("model.thread.year.sealed");
