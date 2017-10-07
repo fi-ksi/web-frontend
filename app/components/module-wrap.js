@@ -37,7 +37,6 @@ export default Ember.Component.extend({
             this.sendAction("submit");
         },
         set_report_button_text: function(){
-            console.log("#test");
             if(this.get("module.show_report")) {
                 this.set("report_button_text", "Skrýt orgovský report");
             } else {
