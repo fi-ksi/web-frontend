@@ -27,13 +27,13 @@
     {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output style="margin-top:20px"}}
 
     {{#if script_text_output}}
-        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
+        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:0px">
             <label>Výstup kódu</label>
             {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=script_text_output}}
         </div>
     {{/if}}
     {{#if script_graphics_output}}
-        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
+        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:0px">
             <label>Grafický výstup</label><br>
             <div style="align: center;">
                 <img src="{{script_graphics_output}}" style="display:block; margin: auto; border-radius: 5px; border:1px solid black; width:100%; max-width:800px;"/>

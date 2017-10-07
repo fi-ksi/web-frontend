@@ -6,7 +6,7 @@ export default Ember.Component.extend({
     is_editing: false,
     submitting: false,
     show_report: false,
-    report_button_text: "Zobrazit report",
+    report_button_text: "Zobrazit orgovský report",
 
     session: Ember.inject.service(),
     show: function() {
@@ -26,6 +26,7 @@ export default Ember.Component.extend({
             this.set("is_editing", true);
         },
         submit_done: function() {
+            this.send("set_report_button_text");
             this.set("submitting", false);
         },
         submit_succ_done: function() {
@@ -36,10 +37,11 @@ export default Ember.Component.extend({
             this.sendAction("submit");
         },
         set_report_button_text: function(){
+            console.log("#test");
             if(this.get("module.show_report")) {
-                this.set("report_button_text", "Skrýt report");
+                this.set("report_button_text", "Skrýt orgovský report");
             } else {
-                this.set("report_button_text", "Zobrazit report");
+                this.set("report_button_text", "Zobrazit orgovský report");
             }
         },
         toggle_report: function() {

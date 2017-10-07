@@ -69,6 +69,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("general_error", "");
             this.set("script_text_output", null);
             this.set("script_message_output", null);
+            this.set("module.show_report", false);
             this.set("script_graphics_output", null);
             var content = this.get_editor().getValue();
             this.set("submitting", true);
@@ -94,7 +95,9 @@ export default Ember.Component.extend(InboundActions, {
                                     self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
                                 }
                             } else if(data.result === "nok") {
-                                self.set("module.show_report", true);
+                                if (self.get("module.state") !== "correct"){
+                                    self.set("module.state", "incorrect");
+                                }
                                 if ( !("message" in data && data.message.trim() !== "") ) {
                                     self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
                                 }
@@ -194,7 +197,6 @@ export default Ember.Component.extend(InboundActions, {
                                     if (data.result === "ok") {
                                         self.set("script_message_mode", "success");
                                     }else{
-                                        self.set("module.show_report", true);
                                         self.set("script_message_mode", "danger");
                                     }
                                 }

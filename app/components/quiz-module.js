@@ -53,6 +53,7 @@ export default Ember.Component.extend(InboundActions, {
                             if ("result" in data) {
                                 self.set("script_message_mode", "danger");
                                 self.set("module.blockClosing", false);
+                                self.set("module.show_report", false);
                                 if (!self.get("module.score")) {
                                     self.set("module.score", self.get("store").createRecord("module-score"));
                                 }
@@ -70,11 +71,14 @@ export default Ember.Component.extend(InboundActions, {
                                     }
                                     self.sendAction("submit_succ_done");
                                 } else if (data.result === "nok") {
-                                    self.set("module.show_report", true);
+                                    if (self.get("module.state") !== "correct"){
+                                        self.set("module.state", "incorrect");
+                                    }
                                     if ( !("message" in data && data.message.trim() !== "") ) {
                                         self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
                                     }
                                 } else if (!("error" in data)) {
+                                    self.set("module.show_report", true);
                                     self.set("general_error", "Server odeslal neznámý result, kontaktuj organizátora.");
                                 }
                             } else {

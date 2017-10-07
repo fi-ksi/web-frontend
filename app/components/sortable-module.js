@@ -52,6 +52,7 @@ export default Ember.Component.extend(InboundActions, {
             var self = this;
             // Returns object with the solution or undefined if cannot submit
             var id = "#sortable" + self.get("module.id");
+            self.set("module.show_report", false);
             if (Ember.$(id + "b li").length !== 0) {
                 self.set("general_error", "Musíš použít všechny řádky kódu!");
                 self.set("show_error", true);
@@ -87,6 +88,7 @@ export default Ember.Component.extend(InboundActions, {
                                 self.set("module.score.score", data.score);
                             }
                             if ("error" in data) {
+                                self.set("module.show_report", true);
                                 self.set("general_error", data.error);
                             }
                             if (data.result === "ok") {
@@ -97,11 +99,14 @@ export default Ember.Component.extend(InboundActions, {
                                 }
                                 self.sendAction("submit_succ_done");
                             } else if (data.result === 'nok') {
-                                self.set("module.show_report", true);
+                                if (self.get("module.state") !== "correct"){
+                                    self.set("module.state", "incorrect");
+                                }
                                 if ( !("message" in data && data.message.trim() !== "") ) {
                                     self.set("script_message_output", "Tvé řešení není správné! Zkus to znovu.");
                                 }
                             } else if (!("error" in data)) {
+                                self.set("module.show_report", true);
                                 self.set("general_error", "Server odeslal neznámý result, kontaktuj organizátora.");
                             }
                         } else {
