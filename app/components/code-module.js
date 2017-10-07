@@ -61,7 +61,7 @@ export default Ember.Component.extend(InboundActions, {
             if (code_last_datetime > 0){
                 var code_source_text = "minule";
                 var code_source = self.getWithDefault("module.last_origin", false);
-                var code_last_datetime_text = moment.utc("2017-10-07 19:26:37").local().format('DD.MM.YYYY HH:mm');
+                var code_last_datetime_text = moment.utc(code_last_datetime).local().format('DD.MM.YYYY HH:mm');
                 if (code_source === "evaluation"){
                     code_source_text = "odevzdání";
                 }else if (code_source === "execution"){
