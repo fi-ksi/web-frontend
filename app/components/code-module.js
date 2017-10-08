@@ -108,7 +108,9 @@ export default Ember.Component.extend(InboundActions, {
                                 if ("error" in data) {
                                     self.set("general_error", data.error);
                                 } else {
-                                    self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                                    if ( !("message" in data && data.message.trim() !== "") ) {
+                                        self.set("general_error", "Nastala chyba při vykonávání kódu, kontaktuj organizátora.");
+                                    }
                                 }
                             } else if(data.result === "nok") {
                                 if (self.get("module.state") !== "correct"){
