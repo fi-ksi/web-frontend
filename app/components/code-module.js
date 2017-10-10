@@ -57,8 +57,8 @@ export default Ember.Component.extend(InboundActions, {
                 }
             });
             
-            var code_last_datetime = self.getWithDefault("module.last_datetime", 0);
-            if (code_last_datetime > 0){
+            var code_last_datetime = self.getWithDefault("module.last_datetime", "");
+            if (code_last_datetime !== ""){
                 var code_source_text = "minule";
                 var code_source = self.getWithDefault("module.last_origin", false);
                 var code_last_datetime_text = moment.utc(code_last_datetime).local().format('DD.MM.YYYY HH:mm');
