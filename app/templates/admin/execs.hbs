@@ -1,0 +1,89 @@
+<section id="admin-evals" class="container content-section">
+  <h2>Spuštění kódu</h2>
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Zvolit omezení</div>
+    <div class="panel-body">
+      {{#validatable-form action="filter"}}
+        <div class="clearfix">
+          <div class="col-md-6">
+            <label>ID modulu</label>
+            {{input type="number" class="form-control" value=module_id required=true}}
+          </div>
+
+          <div class="col-md-6">
+            <label>ID uživatele</label>
+            {{input type="number" class="form-control" value=user_id required=true}}
+          </div>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary {{if filter_in_progress 'disabled'}}" style="width: 250px; margin-left:0px; margin-top: 20px" enabled="{{if filter_in_progress 'false' 'true'}}">
+            {{if filter_in_progress "Načítám, vyčkej pár vteřin..." "Zobrazit"}}
+            </button>
+        </div>
+      {{/validatable-form}}
+    </div>
+  </div>
+
+
+  {{#unless filter_in_progress}}
+    {{#if execs_sorted}}
+
+      <table class="table table-striped">
+        <thead>
+          <tr style="height:45px">
+            <th>ID</th>
+            <th>Čas</th>
+            <th>Výsledek</th>
+            <th>Modul</th>
+            <th>Uživatel</th>
+            <th>Akce</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        {{#each execs_sorted as |exec|}}
+          <tr style="height:45px; background-color:
+            {{if exec.ok "#C0FFB0"}}
+            {{if exec.error "#FDD5E5"}}
+            {{if exec.nok "#FFEFD4"}}
+            ">
+            <td>{{exec.id}}</td>
+            <td>{{date-and-time exec.time 'cs'}}</td>
+            <td>{{exec.result}}</td>
+            <td>{{exec.module.name}}</td>
+            <td>{{#link-to "user-profile" exec.user}}{{exec.user.first_name}} {{exec.user.last_name}}{{/link-to}}</td>
+            <td>
+              <button class="btn btn-primary inline" {{action "code" exec}}>Kód</button>
+              <button class="btn btn-primary inline" {{action "report" exec}}>Report</button>
+            </td>
+          </tr>
+
+          {{#if exec.show_code}}
+            <tr><td colspan="6">
+              <label>Řešitelův kód</label>
+              {{code-editor content=exec.code id=(construct-id "exec_code" exec.id)}}
+            </td></tr>
+          {{/if}}
+
+          {{#if exec.show_report}}
+            <tr><td colspan="6">
+              <label>Orgovský report</label>
+              {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=exec.report}}
+            </td></tr>
+          {{/if}}
+        {{/each}}
+
+        </tbody>
+      </table>
+
+      <div class="alert alert-info"><strong>Upozornění:</strong> Zobrazeno nejvýše posledních 20
+      z celkových {{total}} spuštění.</div>
+
+    {{else}}
+      {{ale-rt type="warning" text="Zatím žádná spuštění."}}
+    {{/if}}
+   {{/unless}}
+</section>
