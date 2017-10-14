@@ -22,58 +22,58 @@
   {{/x-select}}
 
   <table class="table table-striped">
-	<thead>
-	  <tr style="height:45px">
-		<th>ID</th>
-		<th>Název</th>
-		<th>Autor</th>
-		<th>Max. bodů</th>
+    <thead>
+      <tr style="height:45px">
+        <th>ID</th>
+        <th>Název</th>
+        <th>Autor</th>
+        <th>Max. bodů</th>
         <th>GIT</th>
-		<th>Stav deploye</th>
-		<th>Poslední deploy</th>
-		<th>Akce</th>
-	  </tr>
-	</thead>
-	<tbody>
+        <th>Stav deploye</th>
+        <th>Poslední deploy</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
   {{#each tasks as |task|}}
-	  {{#if task.first_in_wave}}
-	    <tr style="background-color: white;"><td colspan="6">
-	    <h3>{{task.wave.caption}}</h3>
-	    <p>
-	    {{#if task.can_create}}
-	      {{#unless task.wave.public}}
-	         {{#link-to "admin/task-create" task.wave.id class="btn btn-primary inline"}}Nová úloha{{/link-to}}
-	      {{/unless}}
-	    {{/if}}
-
-        {{#if session.year_editable}}
-    	    {{#if task.wave.busy}}
-    	     <button class="btn btn-primary disabled inline">Diff</button>
-    	    {{else}}
-    	     <button class="btn btn-primary inline" {{action "wave-diff" task.wave}}>Diff</button>
-    	    {{/if}}
+      {{#if task.first_in_wave}}
+        <tr style="background-color: white;"><td colspan="6">
+        <h3>{{task.wave.caption}}</h3>
+        <p>
+        {{#if task.can_create}}
+          {{#unless task.wave.public}}
+             {{#link-to "admin/task-create" task.wave.id class="btn btn-primary inline"}}Nová úloha{{/link-to}}
+          {{/unless}}
         {{/if}}
 
-	    {{input type="checkbox" checked=task.wave.show_details}} Zobrazit detaily
+        {{#if session.year_editable}}
+            {{#if task.wave.busy}}
+             <button class="btn btn-primary disabled inline">Diff</button>
+            {{else}}
+             <button class="btn btn-primary inline" {{action "wave-diff" task.wave}}>Diff</button>
+            {{/if}}
+        {{/if}}
+
+        {{input type="checkbox" checked=task.wave.show_details}} Zobrazit detaily
 
         | Max. bodů: <strong>{{task.wave.sum_points}}</strong> (bez bonusových bodů)
         | <strong>{{task.wave.tasks_cnt}}</strong> úloh
 
-	    </p>
-	    </td></tr>
-	  {{/if}}
+        </p>
+        </td></tr>
+      {{/if}}
 
-		<tr style="height:45px; background-color:
-		  {{if task.deploy_status_default "white"}}
-		  {{if task.deploy_status_deploying "#CCE1E9"}}
-		  {{if task.deploy_status_done "#C0FFB0"}}
-		  {{if task.deploy_status_error "#FDD5E5"}}
-		  {{if task.deploy_status_diff "#FFEFD4"}}
-		  ">
-		  <td>{{#link-to "task" task target="_blank"}}{{task.id}}{{/link-to}}</td>
-		  <td>{{#link-to "task" task target="_blank"}}{{{task.title}}}{{/link-to}}</td>
-		  <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
-		  <td>{{task.max_score}}</td>
+        <tr style="height:45px; background-color:
+          {{if task.deploy_status_default "white"}}
+          {{if task.deploy_status_deploying "#CCE1E9"}}
+          {{if task.deploy_status_done "#C0FFB0"}}
+          {{if task.deploy_status_error "#FDD5E5"}}
+          {{if task.deploy_status_diff "#FFEFD4"}}
+          ">
+          <td>{{#link-to "task" task target="_blank"}}{{task.id}}{{/link-to}}</td>
+          <td>{{#link-to "task" task target="_blank"}}{{{task.title}}}{{/link-to}}</td>
+          <td>{{#link-to "user-profile" task.author}}{{task.author.full_name}}{{/link-to}}</td>
+          <td>{{task.max_score}}</td>
           <td>
             {{#if task.git_defined}}
                 <a href="{{task.github_path}}" target="_blank">GIT</a>
@@ -81,53 +81,53 @@
                 &ndash;
             {{/if}}
           </td>
-		  <td>{{task.deploy_status}}</td>
-		  <td>{{date-and-time task.deploy_date 'cs'}}</td>
-		  <td>
-			{{#if task.can_deploy}}
-			  <button class="btn btn-primary inline" {{action "task-deploy" task}}>Deploy</button>
-			{{else}}
-			  <button class="btn btn-primary disabled inline" title="Deploy úlohy může provádět pouze autor úlohy, garant vlny nebo administrátor.">Deploy</button>
-			{{/if}}
-			{{#if task.can_merge}}
-			  <button class="btn btn-primary inline" {{action "task-merge" task}}>&#8594; Master</button>
-			{{else}}
-			  <button class="btn btn-primary disabled inline" title="Merge může provádět pouze garant vlny nebo administrátor, úloha navíc nesmí být ve větvi master.">&#8594; Master</button>
-			{{/if}}
-			{{#link-to "admin/task-edit" task class="btn btn-primary inline"}}Detaily{{/link-to}}
-			{{#if task.deleting}}
-				<button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Mažu...</button>
-			{{else}}
-				{{#if task.can_delete}}
-				  <button class="btn btn-primary inline" {{action "task-delete" task}}>Smazat</button>
-				{{else}}
-				  <button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Smazat</button>
-				{{/if}}
-			{{/if}}
-		  </td>
-		</tr>
+          <td>{{task.deploy_status}}</td>
+          <td>{{date-and-time task.deploy_date 'cs'}}</td>
+          <td>
+            {{#if task.can_deploy}}
+              <button class="btn btn-primary inline" {{action "task-deploy" task}}>Deploy</button>
+            {{else}}
+              <button class="btn btn-primary disabled inline" title="Deploy úlohy může provádět pouze autor úlohy, garant vlny nebo administrátor.">Deploy</button>
+            {{/if}}
+            {{#if task.can_merge}}
+              <button class="btn btn-primary inline" {{action "task-merge" task}}>&#8594; Master</button>
+            {{else}}
+              <button class="btn btn-primary disabled inline" title="Merge může provádět pouze garant vlny nebo administrátor, úloha navíc nesmí být ve větvi master.">&#8594; Master</button>
+            {{/if}}
+            {{#link-to "admin/task-edit" task class="btn btn-primary inline"}}Detaily{{/link-to}}
+            {{#if task.deleting}}
+                <button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Mažu...</button>
+            {{else}}
+                {{#if task.can_delete}}
+                  <button class="btn btn-primary inline" {{action "task-delete" task}}>Smazat</button>
+                {{else}}
+                  <button class="btn btn-primary disabled inline" title="Úlohu může smazat pouze administrátor.">Smazat</button>
+                {{/if}}
+            {{/if}}
+          </td>
+        </tr>
 
-		{{#if task.wave.show_details}}
-			<tr style="height:10px; font-size: 80%; background-color:
-				{{if task.deploy_status_default "white"}}
-				{{if task.deploy_status_deploying "#CCE1F5"}}
-				{{if task.deploy_status_done "#EFFFFF"}}
-				{{if task.deploy_status_error "#FEDDE5"}}
-				{{if task.deploy_status_diff "#FFF4E5"}}
-			">
+        {{#if task.wave.show_details}}
+            <tr style="height:10px; font-size: 80%; background-color:
+                {{if task.deploy_status_default "white"}}
+                {{if task.deploy_status_deploying "#CCE1F5"}}
+                {{if task.deploy_status_done "#EFFFFF"}}
+                {{if task.deploy_status_error "#FEDDE5"}}
+                {{if task.deploy_status_diff "#FFF4E5"}}
+            ">
 
-				<td></td>
-				<td>{{task.git_branch}}</td>
-				<td colspan="4">{{task.git_path}}</td>
-				<td colspan="2">{{task.git_commit_short}}</td>
-			</tr>
-		{{/if}}
+                <td></td>
+                <td>{{task.git_branch}}</td>
+                <td colspan="4">{{task.git_path}}</td>
+                <td colspan="2">{{task.git_commit_short}}</td>
+            </tr>
+        {{/if}}
 
-	  {{else}}
-	  <p>V této vlně nejsou žádné úlohy.</p>
-	  {{/each}}
-	</tbody>
-	</table>
+      {{else}}
+      <p>V této vlně nejsou žádné úlohy.</p>
+      {{/each}}
+    </tbody>
+    </table>
 
     <div id="myModal" class="modal" role="dialog">
       <div class="modal-dialog modal-lg">
