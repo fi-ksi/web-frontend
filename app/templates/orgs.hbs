@@ -1,12 +1,12 @@
 <section id="orgove" class="container content-section">
-    <div class="row">
+    <div class="row orgs-row">
         <h2>Organizátoři ročníku {{session.year_obj.year}}</h2>
         {{orgs-list model=orgs_current}}
     </div>
 
     <hr>
 
-    <div class="row">
+    <div class="row orgs-row">
         <h2>Ostatní organizátoři</h2>
         {{orgs-list model=orgs_other}}
         {{orgs-const}}

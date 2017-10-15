@@ -20,6 +20,7 @@ export default Ember.Component.extend(InboundActions, {
     general_error: undefined,
     info_button_text: "Zobrazit nápovědu",
     show_info: false,
+    show_load_info: true,
 
     didInsertElement: function() {
         this._super();
@@ -57,21 +58,6 @@ export default Ember.Component.extend(InboundActions, {
                 }
             });
             
-            var code_last_datetime = self.getWithDefault("module.last_datetime", 0);
-            if (code_last_datetime > 0){
-                var code_source_text = "minule";
-                var code_source = self.getWithDefault("module.last_origin", false);
-                var code_last_datetime_text = moment.utc(code_last_datetime).local().format('DD.MM.YYYY HH:mm');
-                if (code_source === "evaluation"){
-                    code_source_text = "odevzdání";
-                }else if (code_source === "execution"){
-                    code_source_text = "spuštění";
-                }
-                self.set("script_message_mode", "info");
-                self.set("script_message_output", "Byl načten kód z "+ code_source_text +" ze " +
-                    code_last_datetime_text + ", pro obnovení původního kód stiskněte tlačítko Obnovit výchozí kód."
-                );
-            }
         });
     },
 
@@ -87,6 +73,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("script_message_output", null);
             this.set("module.show_report", false);
             this.set("script_graphics_output", null);
+            this.set("show_load_info", false);
             var content = this.get_editor().getValue();
             this.set("submitting", true);
 
@@ -190,6 +177,7 @@ export default Ember.Component.extend(InboundActions, {
             this.set("script_text_output", null);
             this.set("script_message_output", null);
             this.set("script_graphics_output", null);
+            this.set("show_load_info", false);
             this.get_editor().focus();
 
             this.get('session').authorize('authorizer:oauth2', function(header, h) {

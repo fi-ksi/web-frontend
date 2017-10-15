@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    tagName: "",
     orgs: [
         {name:"Ondra Bouda", profile:"ondra-bouda.jpg"},
         {name:"Radek Pelánek", profile:"radek-pelanek.jpg"},
