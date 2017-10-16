@@ -20,6 +20,14 @@
     (e-mail bude odeslán řešitelům vybraných ročníků)
   </div>
   <div class="form-group">
+    <label>Kategorie:</label>
+    {{#x-select value=category class="form-control"}}
+      {{#x-option value="both"}}Všichni{{/x-option}}
+      {{#x-option value="hs"}}Středoškoláci{{/x-option}}
+      {{#x-option value="other"}}Ostatní{{/x-option}}
+    {{/x-select}}
+  </div>
+  <div class="form-group">
     <label>Pohlaví:</label>
     {{#x-select value=gender class="form-control"}}
       {{#x-option value="both"}}Všichni{{/x-option}}
