@@ -79,8 +79,15 @@
         </tbody>
       </table>
 
-      <div class="alert alert-info"><strong>Upozornění:</strong> Zobrazeno nejvýše posledních 20
-      z celkových {{total}} spuštění.</div>
+      <div class="alert alert-info"><strong>Upozornění:</strong> zobrazeno nejvýše posledních 20
+      z celkových {{total}} spuštění.</div>
+
+      <div class="alert alert-info"><strong>Vysvětlení:</strong> stav <i>error</i> značí, že při
+      spouštění kódu došlo k chybě v některém z organizátorksých skriptů. Stav <i>ok</i> značí,
+      že k chybě nedošlo. Při spouštění se nespouští <i>eval</i> skript, takže
+      se nekontroluje, zda-li byl řešitelův program správně. Výsledek by tedy měl
+      být v hotovém modulu vždy <i>ok</i>.
+      </div>
 
     {{else}}
       {{ale-rt type="warning" text="Zatím žádná spuštění."}}
