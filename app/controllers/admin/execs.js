@@ -62,14 +62,6 @@ export default Ember.Controller.extend({
             this.load_execs();
         },
 
-        'select': function() {
-            console.log("here");
-            if (this.get("task_id") != null && this.get("module_id") != null) {
-                this.set("wrong_filter", false);
-                console.log("here");
-            }
-        },
-
         'code': function(exec) {
             exec.set("show_code", !exec.get("show_code"));
         },
