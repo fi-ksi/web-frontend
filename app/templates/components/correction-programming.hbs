@@ -31,15 +31,25 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <a href="javascript:void()" {{action "v_merge_stdout"}}><label>Stdout merge skriptu</label></a>
+            {{#if evaluation.code.merge_stdout}}
+                <a href="javascript:void()" {{action "v_merge_stdout"}}><label>Stdout merge skriptu</label></a>
+            {{else}}
+                <label>Stdout merge skriptu (prázdný)</label>
+            {{/if}}
             {{#if show_merge_stdout}}{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.merge_stdout}}{{/if}}
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-            <a href="javascript:void()" {{action "v_check_stdout"}}><label>Stdout check skriptu</label></a>
-            {{#if show_check_stdout}}{{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.check_stdout}}{{/if}}
+            {{#if evaluation.code.check_stdout}}
+                <a href="javascript:void()" {{action "v_check_stdout"}}><label>Stdout check skriptu</label></a>
+            {{else}}
+                <label>Stdout check skriptu (prázdný)</label>
+            {{/if}}
+            {{#if show_check_stdout}}
+                {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=evaluation.code.check_stdout}}
+            {{/if}}
         </div>
     </div>
 

@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
     sender: "",
     replyTo: "ksi@fi.muni.cz",
     to: [],
+    category:"both",
     gender: "both",
     karlikSign: true,
     easteregg: false,
@@ -51,6 +52,7 @@ export default Ember.Controller.extend({
                             'To': self.get("to"),
                             'Bcc': bcc,
                             'Gender': self.get("gender"),
+                            'Category': self.get("category"),
                             'KarlikSign': self.get("karlikSign"),
                             'Easteregg': self.get("easteregg"),
                             'Successful': self.get("successful")
