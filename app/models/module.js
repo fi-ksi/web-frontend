@@ -44,7 +44,7 @@ export default DS.Model.extend( {
     // For code
     code: DS.attr("string"),
     default_code: DS.attr("string"),
-    last_datetime: DS.attr("string"),
+    last_datetime: DS.attr("date"),
     last_origin: DS.attr("string"),
 
     last_origin_text: Ember.computed("last_origin", function() {
