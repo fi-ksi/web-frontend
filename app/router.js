@@ -68,6 +68,8 @@ Router.map(function() {
 
   this.route('admin/forum', { path: '/admin/forum'});
 
+  this.route('admin/execs', {path: '/admin/execs'});
+
   this.route('kscuk', { path: '/kscuk'});
 
   this.route('bad_url', { path: '/*badurl' }); // Catch everything else!
