@@ -41,12 +41,10 @@ module.exports = function(environment) {
         crossOriginWhitelist: [
           'http://localhost:3000',
           'https://localhost:3000',
-          'http://kyzikos.fi.muni.cz:3000',
           'https://kyzikos.fi.muni.cz:3000',
-          'https://ksi.fi.muni.cz',
-          'http://ksi.fi.muni.cz',
           'https://ksi.fi.muni.cz:3000',
-          'http://ksi.fi.muni.cz:3000']
+          'https://rest.ksi.fi.muni.cz',
+        ]
       }
 
   if (environment === 'local_dev' || environment === 'mockup_dev') {
@@ -70,14 +68,14 @@ module.exports = function(environment) {
 
   if (environment === 'prod_dev') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
+      serverTokenEndpoint: 'https://rest.ksi.fi.muni.cz/auth'
     };
-    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
-    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
-    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["API_LOC"] = "https://rest.ksi.fi.muni.cz";
+    ENV["contentSecurityPolicy"]["default-src"] += " https://rest.ksi.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["connect-src"] += " https://rest.ksi.fi.muni.cz"
     ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
-    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://rest.ksi.fi.muni.cz"
   }
 
   if (environment === 'development') {
@@ -101,19 +99,19 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV["API_LOC"] = "https://ksi.fi.muni.cz:3000";
+    ENV["API_LOC"] = "https://rest.ksi.fi.muni.cz";
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://ksi.fi.muni.cz:3000/auth'
+      serverTokenEndpoint: 'https://rest.ksi.fi.muni.cz/auth'
     }
 
     // Warning: you need to deploy these CSP policies manually to Apache
     // server. "ember csp-headers --environment production" command
     // could help you.
 
-    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000"
-    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000 https://rest.ksi.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000 https://rest.ksi.fi.muni.cz"
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
-    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000 https://rest.ksi.fi.muni.cz"
   }
 
   ENV.i18n = {
