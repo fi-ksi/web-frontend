@@ -26,6 +26,9 @@ export default DS.Model.extend( {
 
     picture: Ember.computed("picture_base", "picture_suffix", "active",
      "state", function() {
+        if(!this.get("picture_base")) {
+            return undefined;
+        }
         if(!this.get("active")) {
             return config.API_LOC + this.get("picture_base") + "locked" + this.get("picture_suffix");
         }
