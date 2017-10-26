@@ -9,7 +9,7 @@
     <div class="panel-body">
       <div class="form-group">
         <div class="col-md-3">
-          <label style="margin-left:20px">Vlna</label>
+          <label>Vlna</label>
           {{#x-select value=wave class="form-control"}}
             {{#x-option value=""}}Vyber vlnu{{/x-option}}
             {{#each waves as |w|}}
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Úloha</label>
+          <label>Úloha</label>
           <select onchange={{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Stav</label>
+          <label>Stav</label>
           {{#x-select value=state class="form-control"}}
             {{#x-option value="all"}}Všechny{{/x-option}}
             {{#x-option value="notcorrected"}}Neopravené{{/x-option}}
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Řešitel</label>
+          <label>Řešitel</label>
           <select onchange={{action "participant_select"}} class="form-control" id="par_sel">
             <option value="">Všichni řešitelé</option>
             {{#each participants as |p|}}
