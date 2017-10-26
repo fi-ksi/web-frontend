@@ -2,7 +2,7 @@
     {{year-sealed model=thread.year}}
 {{/if}}
 
-<ul class="media-list" style="margin:20px">
+<ul class="media-list">
   {{#each thread.details.root_posts as |post|}}
     {{thread-post model=post store=store}}
   {{else}}
