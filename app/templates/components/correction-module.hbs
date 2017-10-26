@@ -30,11 +30,11 @@
 </div>
 
 {{#if module.evaluation}}
-<div class="panel-body">
+<div class="panel-body" style="padding-left: 0px; padding-right: 0px;">
     <div class="{{module_class}}">
         {{#if module.evaluation.general}}
             {{correction-general evaluation=module.evaluation}}
-            <button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+            <button class="btn btn-primary" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
         {{/if}}
 
         {{#if module.evaluation.quiz}}
@@ -46,26 +46,24 @@
         {{/if}}
     </div>
 
-    <div class="{{module_class}}">
-        <div class="form-group {{points_class}}">
-            <label>Body</label>
-                {{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}
-        </div>
+    <div class="form-group col-md-6">
+        <label>Body</label>
+            {{input style="display: inline;" class="form-control" size="4" value=module.evaluation.points}}
+    </div>
 
-        <div class="form-group {{points_class}}">
-            <label>Opravil</label>
-            {{#x-select value=module.evaluation.corrected_by class="form-control"}}
-                {{#x-option value=null}}Nikdo{{/x-option}}
-                {{#each orgs as |org|}}
-                    {{#x-option value=org.id}}{{org.full_name}} ({{org.id}}){{/x-option}}
-                {{/each}}
-            {{/x-select}}
-        </div>
+    <div class="form-group col-md-6">
+        <label>Opravil</label>
+        {{#x-select value=module.evaluation.corrected_by class="form-control"}}
+            {{#x-option value=null}}Nikdo{{/x-option}}
+            {{#each orgs as |org|}}
+                {{#x-option value=org.id}}{{org.full_name}} ({{org.id}}){{/x-option}}
+            {{/each}}
+        {{/x-select}}
     </div>
 
     <div class="col-md-12">
         {{#unless module.evaluation.general}}
-            <button class="btn btn-primary" style="margin-bottom:10px" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
+            <button class="btn btn-primary" {{action "log"}}>{{if show_log "Skrýt log" "Zobrazit log"}}</button>
         {{/unless}}
         {{#if show_log}}
             {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=module.evaluation.full_report}}

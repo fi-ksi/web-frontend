@@ -55,14 +55,6 @@ export default Ember.Component.extend({
         }
     }),
 
-    points_class: Ember.computed("module.evaluation", function() {
-        if (this.get("module.evaluation.general")) {
-            return "";
-        } else {
-            return "col-md-6";
-        }
-    }),
-
     eval_observer: function() {
         this.set("eval", this.get("module.evaluation.eval_id"));
     }.observes("module.evaluation.eval_id"),

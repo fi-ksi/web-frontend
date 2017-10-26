@@ -10,16 +10,18 @@
     </div>
       <div class="panel-body">
        {{#each model.modules as |module|}}
-       <div class="form-group" style="margin-top:20px col-md-12">
+       <div class="form-group">
           {{correction-module orgs=orgs module=module dirty="dirty"}}
        </div>
        {{/each}}
 
        {{#if session.year_editable}}
-           <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+           <div class="form-group">
+               <button {{action "save"}} class="btn btn-primary">Uložit body</button>
+           </div>
        {{/if}}
 
-       <div class="form-group panel-body">
+       <div class="form-group row">
            <div class="col-md-6">
                <div style="float: left;"><label>Uživatelovy trofeje:</label></div>
                {{#each model.achievements as |ach|}}
@@ -49,7 +51,7 @@
             {{/if}}
       </div>
 
-       <div class="form-group">
+       <div>
          <label>Komentář:</label>
          {{#if model.comment}}
           {{thread-view thread=model.comment mark_as_read=false}}
@@ -72,7 +74,7 @@
 
             {{#if new_thread}}
                 <div style="margin-top:20px; margin-bottom:20px;">
-                    <form class="form-horizontal" style="margin:30px">
+                    <form class="form-horizontal">
                       <div class="controls form-inline" style="margin-top:20px">
                           {{ale-rt type="danger" closeBtn=true text=thread_content_error}}
                           <label for="threadName">Komentář:</label>

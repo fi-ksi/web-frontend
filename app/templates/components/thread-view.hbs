@@ -10,7 +10,7 @@
   {{/each}}
 </ul>
 
-<div class="row" style="margin-bottom: 20px;">
+<div class="row" style="margin-left: 0px; margin-right: 0px;">
     {{#if session.isAuthenticated}}
         {{#unless thread.year.sealed}}
             <button class="btn btn-primary" style="margin-left:10px" {{action "add_comment"}}>{{unless is_reacting "Přidat příspěvek" "Zrušit příspěvek"}}</button>
