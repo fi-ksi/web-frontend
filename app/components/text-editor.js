@@ -29,8 +29,8 @@ export default Ember.Component.extend({
       paste: '/tinymce/plugins/paste/plugin.min.js'
     },
     menubar: false,
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-},
+    toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code"
+  },
 
   didInsertElement: function() {
     var component = this;
