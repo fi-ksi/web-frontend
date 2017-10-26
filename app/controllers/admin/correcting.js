@@ -44,13 +44,11 @@ export default Ember.Controller.extend({
             }
         });
         return Array.from(set).sort(function(a, b) {
-            if(a.get("last_name") < b.get("last_name")) {
-                return -1;
+            var res = a.get("last_name").localeCompare(b.get("last_name"));
+            if (res === 0) {
+                res = a.get("first_name").localeCompare(b.get("first_name"));
             }
-            if (a.get("first_name") < b.get("first_name")) {
-                return -1;
-            }
-            return 0;
+            return res;
         });
     }),
 
