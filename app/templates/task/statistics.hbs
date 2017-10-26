@@ -1,4 +1,5 @@
 <h3 class="visible-print">Statistika</h3>
+<div style="margin: 20px;">
 <table class="table table-striped">
   <thead>
     <tr style="height:45px">
@@ -7,7 +8,7 @@
       <th>Trofeje</th>
       <th style="text-align: center;">Skóre</th>
     </tr>
-  </thead>  
+  </thead>
   <tbody>
     {{#each model.details.best_scores as |score|}}
     <tr style="height:45px">
@@ -25,3 +26,4 @@
     {{/each}}
   </tbody>
 </table>
+</div>
