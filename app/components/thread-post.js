@@ -20,18 +20,20 @@ export default Ember.Component.extend({
         return this.get("depth") >= this.get("max_depth");
     }),
 
-    mark_as_read: function() {
-        var post = this.get("model");
-        while (post) {
-            post.set("is_new", false);
-            post = post.get("parent");
-        }
+    mark_as_read: function(post) {
+        var self = this;
+        post.set("is_new", false);
+        post.get("parent").then(function(parent_post) {
+            if (parent_post) {
+                self.mark_as_read(parent_post);
+            }
+        });
     },
 
     actions: {
         react: function() {
             this.set("is_reacting", !this.get("is_reacting"));
-            this.mark_as_read();
+            this.mark_as_read(this.get("model"));
             this.set("content_error", undefined);
             this.set("response_text", "");
         },

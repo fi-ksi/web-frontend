@@ -7,9 +7,8 @@
 
     <div class="panel-heading">Zvolit omezení</div>
     <div class="panel-body">
-      <div class="form-group">
         <div class="col-md-3">
-          <label style="margin-left:20px">Vlna</label>
+          <label>Vlna</label>
           {{#x-select value=wave class="form-control"}}
             {{#x-option value=""}}Vyber vlnu{{/x-option}}
             {{#each waves as |w|}}
@@ -19,7 +18,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Úloha</label>
+          <label>Úloha</label>
           <select onchange={{action "task_select"}} class="form-control" id="task_sel">
             <option value="">Všechny úlohy</option>
             {{#each tasks as |t|}}
@@ -41,7 +40,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Stav</label>
+          <label>Stav</label>
           {{#x-select value=state class="form-control"}}
             {{#x-option value="all"}}Všechny{{/x-option}}
             {{#x-option value="notcorrected"}}Neopravené{{/x-option}}
@@ -50,7 +49,7 @@
         </div>
 
         <div class="col-md-3">
-          <label style="margin-left:20px">Řešitel</label>
+          <label>Řešitel</label>
           <select onchange={{action "participant_select"}} class="form-control" id="par_sel">
             <option value="">Všichni řešitelé</option>
             {{#each participants as |p|}}
@@ -58,16 +57,17 @@
             {{/each}}
           </select>
         </div>
-      </div>
+
+      <div class="col-xs-12" style="height:20px;"></div>
 
       {{#if wrong_filter}}
-         <div class="col-xs-12" style="margin-top: 20px">
+         <div class="col-xs-12">
              {{ale-rt type="warning" text="Je třeba vybrat řešitele, úlohu nebo oboje."}}
          </div>
       {{/if}}
 
       <div class="col-md-3">
-          <button class="btn btn-primary {{if (or filter_in_progress wrong_filter) "disabled"}}" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if (or filter_in_progress wrong_filter) "false" "true"}}">
+          <button class="btn btn-primary {{if (or filter_in_progress wrong_filter) "disabled"}}" style="width: 250px;" {{action "filter"}} enabled="{{if (or filter_in_progress wrong_filter) "false" "true"}}">
         {{if filter_in_progress "Načítám, vyčkej pár vteřin..." "Zobrazit"}}
           </button>
       </div>
@@ -75,7 +75,7 @@
       {{#unless filter_in_progress}}
         {{#if corrections}}
             <div class="col-md-9">
-                <div class="alert alert-info" style="margin-top: 20px; height: 32px !important; padding: 7px !important;">
+                <div class="alert alert-info" style="height: 32px !important; padding: 7px !important; margin-bottom: 0px;">
                     <strong>{{corrections.length}}</strong> opravení |
                     <a href="javascript:void()" {{action "all"}}>Stáhnout všechna v jednom ZIP souboru</a>
                 </div>
@@ -144,7 +144,6 @@
 
     {{#each corrections as |corr|}}
       {{correction-unit model=corr achievements=model.achievements orgs=model.orgs}}
-      <hr>
     {{else}}
       <div class="alert alert-warning" style="margin-top:20px; text-align: center;">
           Zatím žádná opravení.
