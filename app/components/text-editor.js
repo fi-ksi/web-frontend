@@ -15,22 +15,13 @@ export default Ember.Component.extend({
       advlist: '/tinymce/plugins/advlist/plugin.min.js',
       autolink: '/tinymce/plugins/autolink/plugin.min.js',
       lists: '/tinymce/plugins/lists/plugin.min.js',
-      charmap: '/tinymce/plugins/charmap/plugin.min.js',
-      print: '/tinymce/plugins/print/plugin.min.js',
-      preview: '/tinymce/plugins/preview/plugin.min.js',
-      anchor: '/tinymce/plugins/anchor/plugin.min.js',
-      searchreplace: '/tinymce/plugins/searchreplace/plugin.min.js',
-      visualblocks: '/tinymce/plugins/visualblocks/plugin.min.js',
       code: '/tinymce/plugins/code/plugin.min.js',
-      fullscreen: '/tinymce/plugins/fullscreen/plugin.min.js',
-      insertdatetime: '/tinymce/plugins/insertdatetime/plugin.min.js',
-      media: '/tinymce/plugins/media/plugin.min.js',
       contextmenu: '/tinymce/plugins/contextmenu/plugin.min.js',
       paste: '/tinymce/plugins/paste/plugin.min.js'
     },
     menubar: false,
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-},
+    toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code"
+  },
 
   didInsertElement: function() {
     var component = this;
