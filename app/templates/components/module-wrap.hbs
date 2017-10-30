@@ -49,10 +49,11 @@
       {{/if}}
       {{#if opened}}
         {{#unless submitting}}
-            <button class="btn btn-task btn-primary hidden-print" style="margin-top:20px" {{action "submit"}}>Odevzdat</button>
+            <button class="btn btn-task btn-primary hidden-print mtop20" {{action "submit"}}>Odevzdat</button>
         {{else}}
-            <button class="btn btn-task btn-primary hidden-print disabled" style="margin-top:20px">Odevzdávám...</button>
+            <button class="btn btn-task btn-primary hidden-print disabled mtop20">Odevzdávám...</button>
         {{/unless}}
+        {{#link-to "task.discussion" tagName="button" class="btn btn-task btn-primary hidden-print mtop20"}}Mám problém{{/link-to}}
       {{/if}}
   </div>
   {{/if}}
