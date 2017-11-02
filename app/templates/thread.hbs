@@ -1,9 +1,9 @@
 <section id="thread" class="container content-section autojustify">
-    {{#unless session.isAuthenticated}}
-          {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
-    {{/unless}}
-    <!-- Sekcia -->
     <div style="margin:40px;">
+        {{#unless session.isAuthenticated}}
+          {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
+        {{/unless}}
+
         <h2>{{{model.title}}}!</h2>
         {{thread-view thread=model store=store}}
     </div>
