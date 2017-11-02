@@ -2,7 +2,6 @@
     {{#unless session.isAuthenticated}}
           {{ale-rt type="danger" text="Pro přispívání do diskuse musíš být přihlášen."}}
     {{/unless}}
-    {{#link-to "forum"}}<button class="btn btn-primary">Zpět na diskusi</button>{{/link-to}}
     <!-- Sekcia -->
     <div style="margin:40px;">
         <h2>{{{model.title}}}!</h2>
