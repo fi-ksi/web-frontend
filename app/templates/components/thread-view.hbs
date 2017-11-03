@@ -4,7 +4,7 @@
 
 <ul class="media-list">
   {{#each thread.details.root_posts as |post|}}
-    {{thread-post model=post store=store}}
+    {{thread-post model=post store=store taskId=taskId}}
   {{else}}
     <p>Toto vlákno je zatím prázdné. Můžeš přidat první příspěvek!</p>
   {{/each}}

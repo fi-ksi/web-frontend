@@ -31,6 +31,12 @@ export default Ember.Component.extend({
     },
 
     actions: {
+        openUsersSubmission: function() {
+            var url = Ember.$(this.element).find("a.toSubmissions").last()[0].href;
+            if (url != undefined){
+                window.open(url, '_blank');
+            }
+        },
         react: function() {
             this.set("is_reacting", !this.get("is_reacting"));
             this.mark_as_read(this.get("model"));
@@ -114,8 +120,11 @@ export default Ember.Component.extend({
             );
         }
     },
-    allow_edit: Ember.computed("session.current_user", "model.author", "model.thread.year.sealed", function() {
+    allow_edit: Ember.computed("session.current_user", "model.thread.year.sealed", function() {
         return this.get("session.current_user.organisator") && !this.get("model.thread.year.sealed");
+    }),
+    isOrg: Ember.computed("session.current_user", function() {
+        return this.get("session.current_user.organisator");
     }),
     allow_delete: Ember.computed("session.current_user", "model.thread.year.sealed", function() {
        return this.get("session.current_user.organisator") && !this.get("model.thread.year.sealed");

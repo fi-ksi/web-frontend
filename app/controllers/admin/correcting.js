@@ -114,25 +114,41 @@ export default Ember.Controller.extend({
     paramsObserver: function() {
         var p = this.get("participant_");
         var t = this.get("task_");
-        var self = this;
 
         if (p) {
             this.set("participant", p);
+            Ember.run.scheduleOnce("afterRender", this, function(){
+                var clickSelectUser = function(userID){
+                    Ember.$("#par_sel").find("[value="+userID+"]").prop('selected', true);        
+                };
+                setTimeout(clickSelectUser, 300, p);
+            });
         }
         if (t) {
             this.store.find('corrections-info', t).then(function(data) {
-                self.set("wave", data.get("wave.id"));
-                //Ember.$("#task_sel").val(data.get("id"));     // TODO: this is not working
-                self.set("task", data);
-                self.load_corrections();
-
-                // if (p) { Ember.$("#par_sel").val(self.get("participant")); } // TODO: this is not working
+                Ember.run.scheduleOnce("afterRender", this, function(){
+                    // v pripade, ze uz mel org nacteny web a neotevrel do noveho tabu/okna, muze tahle funkce zacit moc brzo a je potreba reload
+                    var taskID = data.get("id");
+                    var waveID = data.get("wave.id");
+                    // vlna se muze nastavit okamzite
+                    Ember.$("#wave_sel").find("[value="+waveID+"]").prop('selected', true);
+                    var clickSelectTask = function(taskID){
+                        Ember.$("#task_sel").find("[value="+taskID+"]").prop('selected', true);
+                    };
+                    setTimeout(clickSelectTask, 350, taskID); // po nastaveni vlny musim pockat na obnovu DOM, nic se ale vzdalene nenacita -> temer okamzite
+                    
+                });
             });
         }
-
-        if (p && !t) {
-            this.load_corrections();
+        if (p !== undefined || t !== undefined){
+            Ember.run.scheduleOnce("afterRender", this, function(){
+                var forceLoadCorrections = function(){
+                    Ember.$("#load_corrections_button").click();
+                };
+                setTimeout(forceLoadCorrections, 500);
+            });
         }
+    
     }.observes("participant_", "task_"),
 
     is_task_selected: Ember.computed("task", "task_", function() {
