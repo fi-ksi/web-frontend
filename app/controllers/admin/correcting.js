@@ -114,6 +114,7 @@ export default Ember.Controller.extend({
     paramsObserver: function() {
         var p = this.get("participant_");
         var t = this.get("task_");
+        var self = this;
 
         if (p) {
             this.set("participant", p);
@@ -126,6 +127,8 @@ export default Ember.Controller.extend({
         }
         if (t) {
             this.store.find('corrections-info', t).then(function(data) {
+                self.set("wave", data.get("wave.id"));
+                self.set("task", data);
                 Ember.run.scheduleOnce("afterRender", this, function(){
                     // v pripade, ze uz mel org nacteny web a neotevrel do noveho tabu/okna, muze tahle funkce zacit moc brzo a je potreba reload
                     var taskID = data.get("id");
@@ -141,12 +144,7 @@ export default Ember.Controller.extend({
             });
         }
         if (p !== undefined || t !== undefined){
-            Ember.run.scheduleOnce("afterRender", this, function(){
-                var forceLoadCorrections = function(){
-                    Ember.$("#load_corrections_button").click();
-                };
-                setTimeout(forceLoadCorrections, 500);
-            });
+            this.load_corrections();
         }
     
     }.observes("participant_", "task_"),
