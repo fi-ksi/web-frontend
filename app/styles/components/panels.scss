@@ -62,6 +62,7 @@
 
 .panel-profile {
   background: ksi-color-level('primary-orange', 8);
+  min-width: 200px;
 }
 
 .panel-achievements {
@@ -77,3 +78,9 @@
 .panel-task {
   background: ksi-color-level('primary-orange', 8);
 }
+
+.panel-profile-achievement {
+    display:flex;
+    flex-wrap: wrap;
+}
+
