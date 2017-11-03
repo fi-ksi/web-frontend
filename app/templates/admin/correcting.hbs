@@ -10,7 +10,7 @@
       <div class="form-group">
         <div class="col-md-3">
           <label style="margin-left:20px">Vlna</label>
-          {{#x-select value=wave class="form-control"}}
+          {{#x-select value=wave class="form-control" id="wave_sel"}}
             {{#x-option value=""}}Vyber vlnu{{/x-option}}
             {{#each waves as |w|}}
               {{#x-option value=w.id}}{{w.caption}}{{/x-option}}
@@ -67,7 +67,7 @@
       {{/if}}
 
       <div class="col-md-3">
-          <button class="btn btn-primary {{if (or filter_in_progress wrong_filter) "disabled"}}" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if (or filter_in_progress wrong_filter) "false" "true"}}">
+          <button class="btn btn-primary {{if (or filter_in_progress wrong_filter) "disabled"}}" style="width: 250px; margin-left:0px; margin-top: 20px" {{action "filter"}} enabled="{{if (or filter_in_progress wrong_filter) "false" "true"}}" id="load_corrections_button">
         {{if filter_in_progress "Načítám, vyčkej pár vteřin..." "Zobrazit"}}
           </button>
       </div>
