@@ -49,12 +49,10 @@
                 <hr>
             </div>
 
-            <div class="panel panel-profile">
-                <div class="panel-body panel-profile-achievement">
-                    {{#each model.achievements as |achievement|}}
-                    {{#link-to 'achievements' class='noContent'}}{{achievement-small model=achievement}}{{/link-to}}
-                    {{/each}}
-                </div>
+            <div class="panel-body panel-profile-achievement">
+                {{#each model.achievements as |achievement|}}
+                    {{achievement-big model=achievement}}
+                {{/each}}
             </div>
 
             <div style="margin-top:30px">

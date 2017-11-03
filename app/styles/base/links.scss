@@ -29,3 +29,7 @@ a.header-link:active {
 .noContent[href]:after {
     content: none !important;
 }
+
+.noContent:hover {
+    text-decoration: none;
+}
