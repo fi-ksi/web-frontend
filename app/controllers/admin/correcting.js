@@ -120,7 +120,7 @@ export default Ember.Controller.extend({
             this.set("participant", p);
             Ember.run.scheduleOnce("afterRender", this, function(){
                 var clickSelectUser = function(userID){
-                    Ember.$("#par_sel").find("[value="+userID+"]").prop('selected', true);        
+                    Ember.$("#par_sel").find("[value="+userID+"]").prop('selected', true);
                 };
                 setTimeout(clickSelectUser, 300, p);
             });
@@ -129,22 +129,21 @@ export default Ember.Controller.extend({
             this.store.find('corrections-info', t).then(function(data) {
                 self.set("wave", data.get("wave.id"));
                 self.set("task", data);
+                self.load_corrections(); // this needs to be here (think of async)
                 Ember.run.scheduleOnce("afterRender", this, function(){
-                    // v pripade, ze uz mel org nacteny web a neotevrel do noveho tabu/okna, muze tahle funkce zacit moc brzo a je potreba reload
                     var taskID = data.get("id");
                     var waveID = data.get("wave.id");
-                    // vlna se muze nastavit okamzite
                     Ember.$("#wave_sel").find("[value="+waveID+"]").prop('selected', true);
                     var clickSelectTask = function(taskID){
                         Ember.$("#task_sel").find("[value="+taskID+"]").prop('selected', true);
                     };
-                    setTimeout(clickSelectTask, 350, taskID); // po nastaveni vlny musim pockat na obnovu DOM, nic se ale vzdalene nenacita -> temer okamzite
+                    setTimeout(clickSelectTask, 350, taskID);
                     
                 });
             });
         }
-        if (p !== undefined || t !== undefined){
-            this.load_corrections();
+        if (p !== undefined && t === undefined){ // this is here because of async: this.store.find('corrections-info', t).then(function(data) {
+            this.load_corrections(); 
         }
     
     }.observes("participant_", "task_"),
