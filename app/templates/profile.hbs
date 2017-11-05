@@ -48,11 +48,12 @@
                 <h5>Trofeje</h5>
                 <hr>
             </div>
-
-            <div class="panel-body panel-profile-achievement">
-                {{#each model.achievements as |achievement|}}
-                    {{achievement-big model=achievement}}
-                {{/each}}
+            <div class="panel panel-achievements">
+                <div class="panel-body">
+                    {{#each model.achievements as |achievement|}}
+                        {{#link-to 'achievements' class="noContent"}}{{achievement-small model=achievement}}{{/link-to}}
+                    {{/each}}
+                </div>
             </div>
 
             <div style="margin-top:30px">

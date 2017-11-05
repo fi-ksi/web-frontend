@@ -20,8 +20,8 @@
         <div class="panel panel-achievements">
           <div class="panel-body">
             {{#each model.details.achievements as |achievement|}}
-                  {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
-                {{/each}}
+              {{#link-to 'achievements' class='noContent'}}{{achievement-small model=achievement}}{{/link-to}}
+            {{/each}}
           </div>
         </div>
       {{/if}}

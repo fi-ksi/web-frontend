@@ -44,7 +44,7 @@
                     <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
                     <td>
                         {{#each user.achievements as |achievement|}}
-                            {{#link-to 'achievements'}}{{achievement-small model=achievement}}{{/link-to}}
+                            {{#link-to 'achievements' class='noContent'}}{{achievement-small model=achievement}}{{/link-to}}
                         {{/each}}
                     </td>
                     <td style="text-align: center;">{{user.score}}</td>

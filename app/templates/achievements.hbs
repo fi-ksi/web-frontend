@@ -1,14 +1,11 @@
 <section id="achievements" class="container content-section">
   <h2>Trofeje</h2>
     <hr>
-  <div class="row" style="margin-bottom:10px" align="center">
-    {{#each model as |trophy|}}
-      <div class="col-xs-12 col-sm-4 col-md-3"> <!--trofej -->
-        <img src="{{trophy.picture}}" width="200px;"/>
-        <p id="profile-text">{{{trophy.title}}}</p>
-      </div>
-    {{else}}
-        <p>V tomto ročníku KSI zatím nejsou žádné trofeje.</p>
-    {{/each}}
-  </div>
+    <div class="panel-body panel-profile-achievement">
+      {{#each model as |achievement|}}
+          {{achievement-big model=achievement}}
+      {{else}}
+          <p>V tomto ročníku KSI zatím nejsou žádné trofeje.</p>
+      {{/each}}
+    </div>
 </section>

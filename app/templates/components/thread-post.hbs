@@ -42,9 +42,11 @@
       {{/unless}}
       <div>
       {{#if isOrg}}
-          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "openUsersSubmission"}}>-> Řešitelovo odevzdání
-            {{#link-to "admin/correcting" (query-params task_=taskId participant_=model.author.id) style="visibility:none;" class="toSubmissions" }}{{/link-to}}
-          </button>
+          {{#if taskId}}
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "openUsersSubmission"}}>→ Řešitelovo odevzdání
+              {{#link-to "admin/correcting" (query-params task_=taskId participant_=model.author.id) style="visibility:none;" class="toSubmissions" }}{{/link-to}}
+            </button>
+          {{/if}}
       {{/if}}
       {{#unless model.thread.year.sealed}}
           <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
