@@ -79,8 +79,43 @@
   background: ksi-color-level('primary-orange', 8);
 }
 
-.panel-profile-achievement {
+.panel-achievement-list {
     display:flex;
     flex-wrap: wrap;
+}
+
+.single-list-achievement {
+    padding: 15px;
+//    width: 22%;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    min-width: 200px;
+}
+
+@media screen and (min-width: 500px) {
+    .single-list-achievement {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .single-list-achievement {
+        width: 31%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .single-list-achievement {
+        width: 22%;
+    }
+}
+
+h4.achievement-text-name {
+    text-align:center;
+}
+
+.achievement-text-description > p{
+    margin:0;
+    text-align:center;
 }
 

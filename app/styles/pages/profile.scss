@@ -4,23 +4,6 @@
     max-width:250px !important; /* Important when printing page */
 }
 
-.single-profile-achievement {
-    padding: 15px;
-    width: 22%;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    min-width: 130px;
-}
-
-h4.achievement-text-name {
-    text-align:center;
-}
-
-.achievement-text-description > p{
-    margin:0;
-    text-align:center;
-}
-
 @media screen {
     .profile-picture-task {
         max-width: 45px;
