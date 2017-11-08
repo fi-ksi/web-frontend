@@ -33,7 +33,7 @@ export default Ember.Component.extend({
     actions: {
         openUsersSubmission: function() {
             var url = Ember.$(this.element).find("a.toSubmissions").last()[0].href;
-            if (url != undefined){
+            if (url !== undefined){
                 window.open(url, '_blank');
             }
         },
