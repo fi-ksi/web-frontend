@@ -2,7 +2,7 @@
     {{{module.description}}}
 </div>
 <div style="margin-left:0px">
-    <form>
+    <form {{action 'submit' on='submit'}}>
         {{#each fields as |field|}}
             <div class="form-group">
                 <label for={{construct-id "module_text" module.id field.index}}>{{{field.text}}}</label>
