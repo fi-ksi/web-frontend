@@ -62,10 +62,13 @@
 
 .panel-profile {
   background: ksi-color-level('primary-orange', 8);
+  min-width: 200px;
 }
 
 .panel-achievements {
-  background: ksi-color-level('primary-orange', 8);
+    background: ksi-color-level('primary-orange', 8);
+    height: 100%;
+    padding: 15px;
 }
 
 .panel-profile-assignment {
@@ -77,3 +80,23 @@
 .panel-task {
   background: ksi-color-level('primary-orange', 8);
 }
+
+.panel-achievement-list {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.single-list-achievement {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+h4.achievement-text-name {
+    text-align:center;
+}
+
+.achievement-text-description > p{
+    margin:0;
+    text-align:center;
+}
+

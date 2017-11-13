@@ -118,21 +118,34 @@ export default Ember.Controller.extend({
 
         if (p) {
             this.set("participant", p);
+            Ember.run.scheduleOnce("afterRender", this, function(){
+                var clickSelectUser = function(userID){
+                    Ember.$("#par_sel").find("[value="+userID+"]").prop('selected', true);
+                };
+                setTimeout(clickSelectUser, 300, p);
+            });
         }
         if (t) {
             this.store.find('corrections-info', t).then(function(data) {
                 self.set("wave", data.get("wave.id"));
-                //Ember.$("#task_sel").val(data.get("id"));     // TODO: this is not working
                 self.set("task", data);
-                self.load_corrections();
-
-                // if (p) { Ember.$("#par_sel").val(self.get("participant")); } // TODO: this is not working
+                self.load_corrections(); // this needs to be here (think of async)
+                Ember.run.scheduleOnce("afterRender", this, function(){
+                    var taskID = data.get("id");
+                    var waveID = data.get("wave.id");
+                    Ember.$("#wave_sel").find("[value="+waveID+"]").prop('selected', true);
+                    var clickSelectTask = function(taskID){
+                        Ember.$("#task_sel").find("[value="+taskID+"]").prop('selected', true);
+                    };
+                    setTimeout(clickSelectTask, 350, taskID);
+                    
+                });
             });
         }
-
-        if (p && !t) {
-            this.load_corrections();
+        if (p !== undefined && t === undefined){ // this is here because of async: this.store.find('corrections-info', t).then(function(data) {
+            this.load_corrections(); 
         }
+    
     }.observes("participant_", "task_"),
 
     is_task_selected: Ember.computed("task", "task_", function() {

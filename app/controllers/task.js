@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
                         details.get("modules").forEach(function(module) {
                             module.reload();
                         });
-                        self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleFormat('%H:%M:%S'));
+                        self.set("reload_status", "Aktualizováno<br>"+(new Date()).toLocaleTimeString("cs"));
                         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                     });
 

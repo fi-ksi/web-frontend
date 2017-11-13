@@ -10,7 +10,7 @@
         {{#link-to "user-profile" model.author}}{{model.author.full_name}}{{/link-to}}, {{model.author.role_str}}, {{date-and-time model.published_at 'cs'}}{{if model.is_new ", nové"}}
         {{#if allow_edit}}
           {{#unless is_editing}}
-            <button class="btn-xs btn-primary"  style="border:none; margin-top: 10px;" {{action "edit"}}>Upravit</button>
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px;" {{action "edit"}}>Upravit</button>
           {{/unless}}
         {{/if}}
         {{#if allow_delete}}
@@ -40,15 +40,21 @@
           {{ale-rt type="danger" closeBtn=true text=edit_error}}
         </div>
       {{/unless}}
-
-      {{#unless model.thread.year.sealed}}
-          <div>
-            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
-              {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
+      <div>
+      {{#if isOrg}}
+          {{#if taskId}}
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "openUsersSubmission"}}>→ Řešitelovo odevzdání
+              {{#link-to "admin/correcting" (query-params task_=taskId participant_=model.author.id) style="visibility:none;" class="toSubmissions" }}{{/link-to}}
             </button>
-            <hr>
-          </div>
+          {{/if}}
+      {{/if}}
+      {{#unless model.thread.year.sealed}}
+          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "react"}}>
+            {{#if is_reacting}} Zrušit reakci {{else}} Reagovat {{/if}}
+          </button>
+          <hr>
       {{/unless}}
+      </div>
 
       <!-- button odkryje textareau: -->
       {{#if is_reacting}}
