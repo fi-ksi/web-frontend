@@ -12,6 +12,9 @@ export default DS.Model.extend( {
         }
         return this.get("first_name") + ' "' + this.get("nick_name") + '" ' + this.get("last_name");
     }),
+    surname_first_name: Ember.computed("first_name", "last_name", function() {
+        return this.get("last_name") + ' ' + this.get("first_name");
+    }),
     profile_picture: DS.attr("string"),
     profile_picture_r: Ember.computed("profile_picture", "gender", function() {
         var p = this.get("profile_picture");

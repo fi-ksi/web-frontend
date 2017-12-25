@@ -53,7 +53,7 @@
           <select onchange={{action "participant_select"}} class="form-control" id="par_sel">
             <option value="">Všichni řešitelé</option>
             {{#each participants as |p|}}
-                <option value="{{p.id}}">{{p.full_name}}</option>
+                <option value="{{p.id}}">{{p.surname_first_name}}</option>
             {{/each}}
           </select>
         </div>

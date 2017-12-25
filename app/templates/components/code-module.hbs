@@ -29,7 +29,7 @@
     {{ale-rt type="danger" show=show_error closeBtn=true text=general_error style="margin-top:20px"}}
     {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output style="margin-top:20px"}}
     {{#if show_load_info}}
-        {{ale-rt type="info" closeBtn=true text=(concat "Byl načten kód z posledního " module.last_origin_text " (" (date-and-time module.last_datetime 'cs') "), pro obnovení původního kód stiskněte tlačítko Obnovit výchozí kód.")}}
+        {{ale-rt type="info" closeBtn=true text=(concat "Byl načten kód z posledního " module.last_origin_text " (" (date-and-time module.last_datetime 'cs') "), pro obnovení původního kódu stiskni tlačítko Obnovit výchozí kód.")}}
     {{/if}}
 
     {{#if script_text_output}}
