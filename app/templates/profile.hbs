@@ -193,18 +193,21 @@
         {{/if}}
 
         {{#if model.organisator}}
-            <div style="margin-top:40px">
-                    <h4>{{tasks}}</h4>
-                    <hr>
-            </div>
+            {{#unless model.show_solved}} <!-- didn't work properly => got disabled -->
 
-            <!-- Org`s tasks -->
-            {{orgs-tasks model=model.tasks}}
+                <div style="margin-top:40px">
+                        <h4>{{tasks}}</h4>
+                        <hr>
+                </div>
 
-            <!-- Org`s co-tasks -->
-            {{orgs-tasks model=model.co_tasks}}
+                <!-- Org`s tasks -->
+                {{orgs-tasks model=model.tasks}}
 
-            {{#unless model.any_task}}<p>{{no_tasks}}</p>{{/unless}}
+                <!-- Org`s co-tasks -->
+                {{orgs-tasks model=model.co_tasks}}
+
+                {{#unless model.any_task}}<p>{{no_tasks}}</p>{{/unless}}
+            {{/unless}}
         {{/if}}
         </div>
       {{/unless}}
