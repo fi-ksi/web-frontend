@@ -14,12 +14,24 @@ export default Ember.Component.extend(InboundActions, {
     script_message_output: undefined,
     script_message_mode: "danger",
 
+    loaded_already: false,
+    sortable_list_internal: Ember.Object.create({'fixed':[], 'movable':[]}),
 
     didUpdate: function() {
         this._super();
         var self = this;
         // Documentation: https://github.com/voidberg/html5sortable
         var id = "#sortable" + this.get("module.id");
+
+        if (this.get("loaded_already") === false){
+            var ax = Ember.Object.create({
+                'fixed': this.get("module.sortable_list.fixed"),
+                'movable': this.get("module.sortable_list.movable")
+            });
+            this.set("loaded_already", true);
+            this.set("sortable_list_internal", ax);
+        }
+
         window.sortable(id + "a, " + id + "b", {
             connectWith: ".connect" + this.get("module.id")
         })[0].addEventListener('sortstop', function() {
