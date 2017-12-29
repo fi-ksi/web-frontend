@@ -53,7 +53,7 @@
             <td>{{exec.id}}</td>
             <td>{{date-and-time exec.time 'cs'}}</td>
             <td>{{exec.result}}</td>
-            <td>{{exec.module.name}}</td>
+            <td>{{{exec.module.name}}}</td>
             <td>{{#link-to "user-profile" exec.user}}{{exec.user.first_name}} {{exec.user.last_name}}{{/link-to}}</td>
             <td>
               <button class="btn btn-primary inline" {{action "code" exec}}>Kód</button>
