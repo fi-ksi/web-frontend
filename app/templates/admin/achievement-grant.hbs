@@ -28,8 +28,8 @@
 
             <label>Přidat uživatele:</label>
              {{#x-select value=add_user class="form-control"}}
-              {{#each model.users as |user|}}
-                {{#x-option value=user}}{{user.full_name}} (id {{user.id}}){{/x-option}}
+              {{#each sorted_users as |user|}}
+                {{#x-option value=user}}{{user.surname_first_name}} (id {{user.id}}){{/x-option}}
               {{/each}}
             {{/x-select}}
             <button class="btn btn-primary inline" {{action "add-user"}}>Přidat uživatele</button>

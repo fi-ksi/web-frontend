@@ -10,7 +10,7 @@ export default Ember.Component.extend({
         {name:"Jana Fabriková", profile:"jana-fabrikova.jpg"},
         {name:"Petr \"Burax\" Buršík", profile:"petr-bursik.jpg"},
         {name:"Mirek Klimoš", profile:"miroslav-klimos.jpg"},
-        {name:"Honza \"Papi\" Papoušek", profile:"../avatar-default.svg"},
+//        {name:"Honza \"Papi\" Papoušek", profile:"../avatar-default.svg"},
         {name:"Honza \"Sir\" Rygl", profile:"../avatar-default.svg"},
         {name:"Honza Rusnačko", profile:"../avatar-default.svg"},
         {name:"Tomáš Jadrný", profile:"../avatar-default.svg"},

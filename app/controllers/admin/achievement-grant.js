@@ -13,6 +13,8 @@ export default Ember.Controller.extend( {
     add_user: Ember.computed.alias('model.users.firstObject'),
     task: undefined,
     saving: false,
+    user_sorting_key:['last_name','first_name'],
+    sorted_users: Ember.computed.sort('model.users', 'user_sorting_key'),
 
     sel_user_param_observer: function() {
         var self = this;

@@ -25,10 +25,12 @@ export default Ember.Component.extend({
         add_achievement: function() {
             var self = this;
             var selected = Ember.$("#a_" + this.get("ident")).val();
-            this.get("store").find("achievement", selected).then(function(ach) {
-                self.get("model.achievements").pushObject(ach);
-                self.send("save");
-            });
+            if (selected !== ""){
+                this.get("store").find("achievement", selected).then(function(ach) {
+                    self.get("model.achievements").pushObject(ach);
+                    self.send("save");
+                });
+            }
         },
         ach_del: function(selected) {
             var self = this;
