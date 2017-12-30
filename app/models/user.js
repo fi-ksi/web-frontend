@@ -16,13 +16,19 @@ export default DS.Model.extend( {
         return this.get("last_name") + ' ' + this.get("first_name");
     }),
     profile_picture: DS.attr("string"),
-    profile_picture_r: Ember.computed("profile_picture", "gender", function() {
+    profile_picture_r: Ember.computed("profile_picture", "gender", "role", function() {
         var p = this.get("profile_picture");
         if (p) { return config.API_LOC + p; }
+
+        var origin = "default";
+        if ((this.get("role") === "org") || (this.get("role") === "admin")) {
+            origin = "org";
+        }
+
         if (this.get("gender") === "female") {
-            return "/img/avatar-default-woman.svg";
+            return "/img/avatar-" + origin + "-woman.svg";
         } else {
-            return "/img/avatar-default.svg";
+            return "/img/avatar-" + origin + ".svg";
         }
     }),
     short_info: DS.attr("string"),
