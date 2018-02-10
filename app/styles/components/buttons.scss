@@ -49,8 +49,10 @@
   background-color: ksi-color('secondary-orange');
 }
 
-.btn-task {
-  width: 200px;
+@media (min-width: 1200px) {
+  .btn-task {
+    width: 200px;
+  }
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
