@@ -12,14 +12,14 @@
     <label>Editor kódu</label>
     {{code-editor content=module.code id=(construct-id "editor_module" module.id)}}
 
-    <div class="hidden-print">
-        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "run"}}>{{if running "Spouštím..." "Spustit"}}</button>
-        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
-        <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>
-        <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "reset"}}>Obnovit výchozí kód</button>
+    <div class="hidden-print mtop15">
+        <button class="btn btn-primary btn-task inline mtop5 {{if (or running submitting) "disabled"}}" {{action "run"}}>{{if running "Spouštím..." "Spustit"}}</button>
+        <button class="btn btn-primary btn-task inline mtop5 {{if (or running submitting) "disabled"}}" {{action "load"}}>Nahrát soubor z disku</button>
+        <button class="btn btn-primary btn-task inline mtop5" {{action "save"}}>Uložit soubor na disk</button>
+        <button class="btn btn-primary btn-task inline mtop5 {{if (or running submitting) "disabled"}}" {{action "reset"}}>Obnovit výchozí kód</button>
         {{input type="file" class="hide" id=(construct-id "load_input" module.id) accept=".py"}}
         {{#if session.current_user.organisator}}
-            {{#link-to "admin/execs" (query-params module=module.id) class="btn btn-primary btn-task inline mtop20"}}→ Spuštění{{/link-to}}
+            {{#link-to "admin/execs" (query-params module=module.id) class="btn btn-primary btn-task inline mtop5"}}→ Spuštění{{/link-to}}
         {{/if}}
     </div>
 
