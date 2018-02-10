@@ -7,6 +7,8 @@ import Ember from 'ember';
  */
 
 export default Ember.Component.extend({
+    tagName: "",
+
     text: "",          // Change this value to display text.
 
     show: true,        // You can change this value from parent to show or hide
