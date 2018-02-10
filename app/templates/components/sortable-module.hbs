@@ -1,26 +1,27 @@
-<div class="row" style="margin-left:20px; margin-right:10px">
+<div class="controls">
     {{{module.description}}}
-</div>
-<div style="margin-left:20px; margin-right:20px">
-    <div class="row" style="margin-left:5px">
-        <div class="col-xs-12 col-sm-6">
-            <h5>Výsledek:</h5>
-            <ul class="sortable list" id="sortable{{module.id}}a" style="min-height: 100px; min-width:50%;">
-                {{#each sortable_list_internal.fixed as |line index|}}
-                    <li draggable="true" class="{{line.style}} static" id="a{{index}}" data-offset="{{line.offset}}">{{{line.content}}}</li>
-                {{/each}}
-            </ul>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <h5>Použij tyto řádky:</h5>
-            <ul class="sortable list" id="sortable{{module.id}}b" style="min-height: 100px; min-width:50%;">
-                {{#each sortable_list_internal.movable as |line index|}}
-                    <li draggable="true" class="{{line.style}} highlight" id="b{{index}}" data-offset="{{line.offset}}">{{{line.content}}}</li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
 
-    {{ale-rt type="danger" closeBtn=true text=general_error show=show_error style="margin-top:20px"}}
-    {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output style="margin-top:20px"}}
+    <div style="margin-left:20px; margin-right:20px">
+        <div class="row" style="margin-left:5px">
+            <div class="col-xs-12 col-sm-6">
+                <h5>Výsledek:</h5>
+                <ul class="sortable list" id="sortable{{module.id}}a" style="min-height: 100px; min-width:50%;">
+                    {{#each sortable_list_internal.fixed as |line index|}}
+                        <li draggable="true" class="{{line.style}} static" id="a{{index}}" data-offset="{{line.offset}}">{{{line.content}}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h5>Použij tyto řádky:</h5>
+                <ul class="sortable list" id="sortable{{module.id}}b" style="min-height: 100px; min-width:50%;">
+                    {{#each sortable_list_internal.movable as |line index|}}
+                        <li draggable="true" class="{{line.style}} highlight" id="b{{index}}" data-offset="{{line.offset}}">{{{line.content}}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+        {{ale-rt type="danger" closeBtn=true text=general_error show=show_error style="margin-top:20px"}}
+        {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output style="margin-top:20px"}}
+    </div>
 </div>
