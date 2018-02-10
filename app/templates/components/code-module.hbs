@@ -9,12 +9,10 @@
       {{/if}}
     </div>
 
-    <div class="row" style="margin-top:20px; margin-left:0px; margin-right:20px">
-        <label>Editor kódu</label>
-        {{code-editor content=module.code id=(construct-id "editor_module" module.id)}}
-    </div>
+    <label>Editor kódu</label>
+    {{code-editor content=module.code id=(construct-id "editor_module" module.id)}}
 
-    <div class="row hidden-print" style="margin-left:0px; margin-right:20px">
+    <div class="hidden-print">
         <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "run"}}>{{if running "Spouštím..." "Spustit"}}</button>
         <button class="btn btn-primary btn-task inline {{if (or running submitting) "disabled"}}" style="margin-top:20px;" {{action "load"}}>Nahrát soubor z disku</button>
         <button class="btn btn-primary btn-task inline" style="margin-top:20px;" {{action "save"}}>Uložit soubor na disk</button>
