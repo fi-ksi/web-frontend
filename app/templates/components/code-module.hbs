@@ -1,9 +1,9 @@
 <div class="controls">
     {{{module.description}}}
 
-    <button class="btn btn-primary btn-task inline hidden-print" style="margin-top:20px" {{action "toggle_info"}}>{{info_button_text}}</button>
+    <button class="btn btn-primary btn-task inline hidden-print mtop20" {{action "toggle_info"}}>{{info_button_text}}</button>
 
-    <div class="hidden-print" style="margin-top:20px">
+    <div class="hidden-print mtop20">
       {{#if show_info}}
           {{ale-rt type="info" text="<p>Před sebou máš náš editor kódu, ve kterém může být předvyplněna šablona kódu. Tvým úkolem je napsat program do této šablony dle zadání. Můžeš využívat téměř libovolných prostředků jazyka Python&nbsp;3.5.</p><p>Svůj kód si můžeš nechat vyhodnotit. Po úspěšném vyhodnocení se ti zobrazí textový výstup programu (i&nbsp;s&nbsp;případnými chybovými hláškami) a&nbsp;občas i&nbsp;grafickým znázorněním výstupu. Na čísla řádků v&nbsp;chybových řádků neber příliš ohled - z&nbsp;technických důvodů nebudou sedět s&nbsp;čísly řádků v&nbsp;editoru</p><p>Jakmile si myslíš, že tvůj kód funguje tak, jak má, můžeš jej odevzdat. Během odevzdání se provede sada automatických testů, které ověří jestli tvůj kód splňuje zadání.</p><p><strong>Pozor:</strong> Tvůj kód není ukládán! Pokud opustíš stránku, přijdeš o&nbsp;něj. Můžeš si jej však uložit k&nbsp;sobě na disk a&nbsp;případně jej později načíst, či si jej sám spustit v IDLE.</p><p>A pokud si nevíš rady či si myslíš, že je s vyhodnocováním něco špatně, napiš nám do diskuze. Nevkládej tam prosím kód, radši nám popiš, v čem je problém. Nechceš přeci zkazit zábavu ostatním.</p>"}}
       {{/if}}
@@ -23,22 +23,22 @@
         {{/if}}
     </div>
 
-    {{ale-rt type="danger" show=show_error closeBtn=true text=general_error style="margin-top:20px"}}
-    {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output style="margin-top:20px"}}
+    {{ale-rt type="danger" show=show_error closeBtn=true text=general_error class="mtop20"}}
+    {{ale-rt type=script_message_mode show=show_message closeBtn=true text=script_message_output class="mtop20"}}
     {{#if show_load_info}}
         {{#if module.last_datetime}}
-            {{ale-rt type="info" closeBtn=true style="margin-top:20px" text=(concat "Byl načten kód z posledního " module.last_origin_text " (" (date-and-time module.last_datetime 'cs') "), pro obnovení původního kódu stiskni tlačítko Obnovit výchozí kód.")}}
+            {{ale-rt type="info" closeBtn=true class="mtop20" text=(concat "Byl načten kód z posledního " module.last_origin_text " (" (date-and-time module.last_datetime 'cs') "), pro obnovení původního kódu stiskni tlačítko Obnovit výchozí kód.")}}
         {{/if}}
     {{/if}}
 
     {{#if script_text_output}}
-        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:0px">
+        <div class="mtop20">
             <label>Výstup kódu</label>
             {{textarea class="form-control" style="min-width: 100%;" rows="10" readonly="true" value=script_text_output}}
         </div>
     {{/if}}
     {{#if script_graphics_output}}
-        <div class="row" style="margin-top:20px; margin-left:0px; margin-right:0px">
+        <div class="mtop20">
             <label>Grafický výstup</label><br>
             <div style="align: center;">
                 <img src="{{script_graphics_output}}" style="display:block; margin: auto; border-radius: 5px; border:1px solid black; width:100%; max-width:800px;"/>
