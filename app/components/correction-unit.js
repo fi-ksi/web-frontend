@@ -81,9 +81,11 @@ export default Ember.Component.extend({
                     thread: thread,
                     private: true
                 });
-                self.set("model.comment", thread);
-                self.save();
-                return post.save();
+
+                post.save().then(function() {
+                    self.set("model.comment", thread);
+                    self.save();
+                });
             }).then(function() {
                 self.set("new_thread", false);
                 self.set("info", "Vlákno úspěšně založeno");
