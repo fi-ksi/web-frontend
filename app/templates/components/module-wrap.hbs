@@ -21,7 +21,7 @@
   </div>
 
   {{#if show}}
-  <div class="panel-body">
+  <div class="panel-body" id="task-module-body">
       {{#if module.is_programming}}
         {{code-module module=module store=store id=module.id submit_done="submit_done" submit_succ_done="submit_succ_done" actionReceiver=module_logic opened=opened}}
       {{/if}}

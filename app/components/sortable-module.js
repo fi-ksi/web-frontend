@@ -4,8 +4,7 @@ import config from '../config/environment';
 import moment from 'moment';
 
 export default Ember.Component.extend(InboundActions, {
-    tagName: "div",
-    classNames: ["controls row"],
+    tagName: "",
     session: Ember.inject.service(),
 
     general_error: "",
