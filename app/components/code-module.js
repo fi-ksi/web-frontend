@@ -18,7 +18,7 @@ export default Ember.Component.extend(InboundActions, {
     script_message_mode: "danger",
     script_graphics_output: undefined,
     general_error: undefined,
-    info_button_text: "Zobrazit nápovědu",
+    info_button_text: "Zobrazit nápovědu k editoru kódu",
     show_info: false,
     show_load_info: true,
 
@@ -158,7 +158,7 @@ export default Ember.Component.extend(InboundActions, {
             if(this.get("show_info")) {
                 this.set("info_button_text", "Skrýt nápovědu");
             } else {
-                this.set("info_button_text", "Zobrazit nápovědu");
+                this.set("info_button_text", "Zobrazit nápovědu k editoru kódu");
             }
         },
 
