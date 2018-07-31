@@ -27,6 +27,8 @@ export default Ember.Controller.extend( {
                 if ("error" in error) {
                     if(error.error === "unauthorized_client") {
                         self.set('login_error_message', "Neexistující uživatel nebo špatné heslo");
+                    } else if(error.error === "account_disabled") {
+                        self.set('login_error_message', "Tento účet je deaktivován, kontaktuj orgy");
                     } else {
                         console.log(error.error);
                         self.set('login_error_message', "Interní chyba přihlášení: " + error.error);
