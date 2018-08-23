@@ -1,4 +1,17 @@
 <h3 class="visible-print">Diskuze</h3>
+    {{#each model.feedbacks.categories as |test123|}}
+        <h3>{{test123.text}}</h3>   
+        {{#if (eq test123.type "stars") }}
+            *****
+        {{/if}}
+        {{#if (eq test123.type "line") }}
+            ---
+        {{/if}}
+        {{#if (eq test123.type "text_large") }}
+            <input type="text" name="{{test123.id}}"><br>
+        {{/if}}
+        <br>
+    {{/each}}
 <div style="margin: 20px;">
     {{thread-view thread=model.details.thread store=store taskId=model.id}}
 </div>
