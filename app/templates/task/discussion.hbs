@@ -1,14 +1,14 @@
 <h3 class="visible-print">Diskuze</h3>
     {{#each model.feedbacks.categories as |test123|}}
         <h3>{{test123.text}}</h3>   
-        {{#if (eq test123.type "stars") }}
+        {{#if (eq test123.testType "stars") }}
             *****
         {{/if}}
-        {{#if (eq test123.type "line") }}
+        {{#if (eq test123.testType "line") }}
             ---
         {{/if}}
-        {{#if (eq test123.type "text_large") }}
-            <input type="text" name="{{test123.id}}"><br>
+        {{#if (eq test123.testType "text_large") }}
+            {{input type="text" placeholder="Cokoliv, co tě napadá." value=test123.answer}}
         {{/if}}
         <br>
     {{/each}}

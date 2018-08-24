@@ -4,6 +4,6 @@ export default DS.Model.extend( {
     userId: DS.attr("number"),
     // id: DS.belongsTo("task"), // cannot be assigned
     filled: DS.attr("string"),
-    //categories: DS.belongsTo("feedback-categories", {async: true}),
-    categories: DS.attr(),
+    categories: DS.hasMany("feedback-category"),
+    //categories: DS.attr(),
 });
