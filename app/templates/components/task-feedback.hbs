@@ -1,16 +1,21 @@
-<h3>Feedback</h3>
+<h3>Feedback 3</h3>
 <div style="margin: 20px;">
-    {{#each feedbacks.categories as |singleFeedback|}}
-        <h4>{{singleFeedback.text}}</h4>   
-        {{#if (eq singleFeedback.testType "stars") }}
-            *****
-        {{/if}}
-        {{#if (eq singleFeedback.testType "line") }}
-            ---
-        {{/if}}
-        {{#if (eq singleFeedback.testType "text_large") }}
-            {{input type="text" placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer}}
-        {{/if}}
-        <br>
-    {{/each}}
+    {{#validatable-form action="saveTest" model=model}}
+        {{#each feedbacks.categories as |singleFeedback|}}
+            <label for="{{singleFeedback.id}}">{{singleFeedback.text}}</label>
+            {{#if (eq singleFeedback.testType "stars") }}
+                *****
+            {{/if}}
+            {{#if (eq singleFeedback.testType "line") }}
+                ---
+            {{/if}}
+            {{#if (eq singleFeedback.testType "text_large") }}
+                {{input type="text" placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer}}
+            {{/if}}
+            <br>
+        {{/each}}
+        <div class="form-group">
+            <button {{action "saveTest"}} class="btn btn-primary">Submit Feedback</button>
+        </div>
+    {{/validatable-form}}
 </div>
