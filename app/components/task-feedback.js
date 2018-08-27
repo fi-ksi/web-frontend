@@ -12,6 +12,9 @@ export default Ember.Component.extend({
         this._super();
         var self = this;
         var $ = Ember.$;
+        if (self.get("model.feedbacks.filled") === false){
+            self.set("show", true);
+        }
         if (Ember.$("[id^=task-feedback-answer-]").length === 0){
             return;
         }
