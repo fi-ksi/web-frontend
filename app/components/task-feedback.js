@@ -5,6 +5,9 @@ export default Ember.Component.extend({
     session: Ember.inject.service(),
     store: Ember.inject.service(),
 
+    show: false,
+    feedback_button_text: "Zobrazit feedback",
+    
     didRender: function() {
         this._super();
         var self = this;
@@ -132,5 +135,17 @@ export default Ember.Component.extend({
         sliderChanged: function(value, options) {
             Ember.$(options.evt.currentTarget).parent().siblings("input").val(value);
         },
+        show: function() {
+            this.set("show", !this.get("show"));
+            this.send("set_feedback_button_text");
+        },
+        set_feedback_button_text: function(){
+            if(this.get("show")) {
+                this.set("feedback_button_text", "Skrýt feedback");
+            } else {
+                this.set("feedback_button_text", "Zobrazit feedback");
+            }
+        },
+
     },
 });
