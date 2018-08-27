@@ -113,6 +113,7 @@ export default Ember.Component.extend({
                     xhr.setRequestHeader(header, h);
                 },
                 success: function() {
+                    self.set("save_status", "Díky!");
                 },
                 error: function(resp) {
                     var e = "Tvůj feedback se bohužel nepodařilo odeslat.<br>" + resp.message;
@@ -125,7 +126,7 @@ export default Ember.Component.extend({
 
     statemsg: "Uloženo",
     actions: {
-        saveTest: function() {
+        saveTaskFeedback: function() {
             this.save();
         },
         sliderChanged: function(value, options) {
