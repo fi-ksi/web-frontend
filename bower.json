@@ -33,6 +33,7 @@
   "devDependencies": {
     "dagre": "~0.7.4",
     "file-saver.js": "~1.20150507.2",
-    "qtip2": "~2.2.1"
+    "qtip2": "~2.2.1",
+    "seiyria-bootstrap-slider": "^10.2.0"
   }
 }

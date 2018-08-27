@@ -1,49 +1,55 @@
-<h3>Feedback 3</h3>
+<h3>Pomůžeš nám feedbackem?</h3>
 <div id="task-feedback" style="margin: 20px; width: 470px;">
     {{#each feedbacks.categories as |singleFeedback|}}
-        <label for="{{singleFeedback.id}}">{{singleFeedback.text}}</label>
-        {{#if (eq singleFeedback.ftype "stars") }}
-            <div class='rating-stars text-center'>
-                {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
-                <ul id='stars'>
-                    <li class='star' title='Špatná' data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Nic moc' data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='OK' data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Dobrá' data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Super' data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                </ul>
-            </div>
-        {{/if}}
-        {{#if (eq singleFeedback.ftype "line") }}
-            <div id="task-feedback-{{singleFeedback.id}}">
-                <div class="lineLegend">
-                    <span> Lehká </span>
-                    <span style="float: right;"> Těžká </span>
+        <div class="single_feedback_category">
+            <label for="{{singleFeedback.id}}">{{singleFeedback.text}}</label>
+            {{#if (eq singleFeedback.ftype "stars") }}
+                <div class='rating-stars text-center'>
+                    {{input class="task-feedback-stars-field" type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
+                    <ul id='stars'>
+                        <li class='star' title='Špatná' data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Nic moc' data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='OK' data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Dobrá' data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Super' data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                    </ul>
                 </div>
-                <div id="test-slider"></div>
-                {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
-            </div>
-        {{/if}}
-        {{#if (eq singleFeedback.ftype "text_large") }}
-
-            {{input type="text" id=(concat "task-feedback-answer-" singleFeedback.id) placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer}}
-        {{/if}}
-        <br>
+            {{/if}}
+            {{#if (eq singleFeedback.ftype "line") }}
+                <div id="task-feedback-{{singleFeedback.id}}">
+                    {{#if (eq singleFeedback.id "difficult") }}
+                        <div class="lineLegend">
+                            <span> Lehká </span>
+                            <span style="float: right;"> Těžká </span>
+                        </div>
+                    {{/if}}
+                    {{ui-slider
+                            tooltip='hide' 
+                            min=1 
+                            max=9
+                            changed='sliderChanged'
+                            defaultValue=singleFeedback.answer
+                            }}
+                    {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
+                </div>
+            {{/if}}
+            {{#if (eq singleFeedback.ftype "text_large") }}
+                {{textarea id=(concat "task-feedback-answer-" singleFeedback.id) placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer rows="4" cols="50" }}
+            {{/if}}
+            <br>
+        </div>
     {{/each}}
     <div class="form-group">
         <button {{action "saveTest"}} class="btn btn-primary">Submit Feedback</button>
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-<script src="js/test123.js"></script>

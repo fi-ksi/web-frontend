@@ -54,12 +54,6 @@ function displayStars(){ // https://codepen.io/depy/pen/vEWWdw?editors=1000
     
     
   }
-  
-  
-  function responseMessage(msg) {
-    $('.success-box').fadeIn(200);  
-    $('.success-box div.text-message').html("<span>" + msg + "</span>");
-  }
 
-setTimeout(displaySliders, 3000);
-setTimeout(displayStars, 3000);
+// setTimeout(displaySliders, 3000);
+// setTimeout(displayStars, 3000);
