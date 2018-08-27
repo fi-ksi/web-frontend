@@ -5,16 +5,19 @@ export default Ember.Component.extend({
     session: Ember.inject.service(),
     store: Ember.inject.service(),
 
-    show: false,
-    feedback_button_text: "Zobrazit feedback",
+    show: true,
+    feedback_button_text: "Skrýt feedback",
     
     didRender: function() {
         this._super();
         var self = this;
         var $ = Ember.$;
-        if (self.get("model.feedbacks.filled") === false){
+        /*
+        if (self.get("model.feedbacks.filled") === false){ // doesn't work, don't know why. setting show to True as default
             self.set("show", true);
+            this.send("set_feedback_button_text");
         }
+        */
         if (Ember.$("[id^=task-feedback-answer-]").length === 0){
             return;
         }
