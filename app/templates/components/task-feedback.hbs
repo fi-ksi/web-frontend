@@ -1,21 +1,49 @@
 <h3>Feedback 3</h3>
-<div style="margin: 20px;">
-    {{#validatable-form action="saveTest" model=model}}
-        {{#each feedbacks.categories as |singleFeedback|}}
-            <label for="{{singleFeedback.id}}">{{singleFeedback.text}}</label>
-            {{#if (eq singleFeedback.testType "stars") }}
-                *****
-            {{/if}}
-            {{#if (eq singleFeedback.testType "line") }}
-                ---
-            {{/if}}
-            {{#if (eq singleFeedback.testType "text_large") }}
-                {{input type="text" placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer}}
-            {{/if}}
-            <br>
-        {{/each}}
-        <div class="form-group">
-            <button {{action "saveTest"}} class="btn btn-primary">Submit Feedback</button>
-        </div>
-    {{/validatable-form}}
+<div id="task-feedback" style="margin: 20px; width: 470px;">
+    {{#each feedbacks.categories as |singleFeedback|}}
+        <label for="{{singleFeedback.id}}">{{singleFeedback.text}}</label>
+        {{#if (eq singleFeedback.ftype "stars") }}
+            <div class='rating-stars text-center'>
+                {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
+                <ul id='stars'>
+                    <li class='star' title='Špatná' data-value='1'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Nic moc' data-value='2'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='OK' data-value='3'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Dobrá' data-value='4'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Super' data-value='5'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                </ul>
+            </div>
+        {{/if}}
+        {{#if (eq singleFeedback.ftype "line") }}
+            <div id="task-feedback-{{singleFeedback.id}}">
+                <div class="lineLegend">
+                    <span> Lehká </span>
+                    <span style="float: right;"> Těžká </span>
+                </div>
+                <div id="test-slider"></div>
+                {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
+            </div>
+        {{/if}}
+        {{#if (eq singleFeedback.ftype "text_large") }}
+
+            {{input type="text" id=(concat "task-feedback-answer-" singleFeedback.id) placeholder="Cokoliv, co tě napadá." value=singleFeedback.answer}}
+        {{/if}}
+        <br>
+    {{/each}}
+    <div class="form-group">
+        <button {{action "saveTest"}} class="btn btn-primary">Submit Feedback</button>
+    </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script src="js/test123.js"></script>
