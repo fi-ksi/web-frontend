@@ -5,5 +5,4 @@ export default DS.Model.extend( {
     // id: DS.belongsTo("task"), // cannot be assigned
     filled: DS.attr("boolean"),
     categories: DS.attr(),
-    //categories: DS.attr(),
 });
