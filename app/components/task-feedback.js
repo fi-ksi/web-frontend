@@ -6,6 +6,7 @@ export default Ember.Component.extend({
     store: Ember.inject.service(),
 
     show: true,
+    stars_already_set: false,
     feedback_button_text: "Skrýt feedback",
     
     didRender: function() {
@@ -21,6 +22,10 @@ export default Ember.Component.extend({
         if (Ember.$("[id^=task-feedback-answer-]").length === 0){
             return;
         }
+        if (self.get("stars_already_set")){
+            return;
+        }
+        self.set("stars_already_set", true);
         self.displayStars();
         let starsFields = $(".task-feedback-stars-field");
         for (let i = 0; i < starsFields.length; i++){
