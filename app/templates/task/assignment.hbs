@@ -17,6 +17,7 @@
     {{/if}}
   </div>
   {{#if finished}}
+    {{task-feedback feedbacks=model.feedbacks model=model store=store}}
     <div class="text-center hidden-print">
         {{#link-to "tasks" type="button" class="btn btn-primary btn-lg"}}
         <h3>Pokračovat dále</h3>

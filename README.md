@@ -12,6 +12,7 @@ You will need the following things properly installed on your computer.
 * [Bower](http://bower.io/)
 * [Ember CLI](http://www.ember-cli.com/) 1.13.15
 * [PhantomJS](http://phantomjs.org/)
+* Python2?
 
 ## Installation
 
@@ -19,7 +20,6 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
-* `npm install --save-dev grunt-sass`
 * `git submodule init`
 * `git submodule update`
 

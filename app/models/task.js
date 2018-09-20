@@ -34,5 +34,6 @@ export default DS.Model.extend( {
         }
         return config.API_LOC + this.get("picture_base") + this.get("state") + this.get("picture_suffix");
     }),
-    details: DS.belongsTo("task-detail", {async: true})
+    details: DS.belongsTo("task-detail", {async: true}),
+    feedbacks: DS.belongsTo("feedback", {async: true}),
 });

@@ -21,7 +21,7 @@ module.exports = function(environment) {
         'default-src': "'self'",
         'connect-src': "cdnjs.cloudflare.com",
         'script-src':  "'self' cdnjs.cloudflare.com www.google-analytics.com",
-        'style-src':   "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com",
+        'style-src':   "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com cdnjs.cloudflare.com",
         'img-src':     "'self' www.google-analytics.com cdnjs.cloudflare.com data:",
         'font-src':    "'self' maxcdn.bootstrapcdn.com cdnjs.cloudflare.com data:",
         'child-src':   "youtube.com www.youtube.com"
@@ -65,6 +65,19 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
     ENV["contentSecurityPolicy"]["img-src"] += " https://kyzikos.fi.muni.cz:3000"
   }
+
+  if (environment === 'local_mitm') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://localhost:3002/auth'
+    };
+    ENV["API_LOC"] = "http://localhost:3002";
+    ENV["contentSecurityPolicy"]["default-src"] += " http://localhost:3002"
+    ENV["contentSecurityPolicy"]["connect-src"] += " http://localhost:3002"
+    ENV["contentSecurityPolicy"]["script-src"] += " 127.0.0.1" // livereload
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
+    ENV["contentSecurityPolicy"]["img-src"] += " http://localhost:3002"
+  }
+
 
   if (environment === 'prod_dev') {
     ENV['simple-auth-oauth2'] = {
