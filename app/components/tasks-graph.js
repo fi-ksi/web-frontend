@@ -1,6 +1,7 @@
 import Ember from "ember";
 
 export default Ember.Component.extend({
+    session: Ember.inject.service(),
     tagName: '',
     cy: undefined,
     root_node: undefined,
@@ -212,6 +213,7 @@ export default Ember.Component.extend({
         });
 
         this.get("cy").on('mouseover','node', function(event){
+            var isOrganizator = Ember.get("session.current_user.organisator");
             var target = event.cyTarget;
             var id = target.data("id");
             var name = "<p class='graph-qtip-header'>" + target.data("name") + "</p>";
@@ -220,6 +222,9 @@ export default Ember.Component.extend({
                 "<p class='graph-qtip-text-bold inline'>Max.body: </p> " + target.data("max_score") + "<br>";
             if(date) {
                 text += "<p class='graph-qtip-text-bold inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+            }
+            if (isOrganizator){
+                text += "<p class='graph-qtip-text-bold inline'>ID úlohy: </p> " + id + "<br>";
             }
 
             if(target.data("active")) {
