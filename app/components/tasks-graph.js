@@ -213,7 +213,7 @@ export default Ember.Component.extend({
         });
 
         this.get("cy").on('mouseover','node', function(event){
-            var isOrganizator = Ember.get("session.current_user.organisator");
+            var isOrganizator = self.get("session.current_user.organisator");
             var target = event.cyTarget;
             var id = target.data("id");
             var name = "<p class='graph-qtip-header'>" + target.data("name") + "</p>";
