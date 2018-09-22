@@ -1,7 +1,10 @@
 {{#if thread.year.sealed}}
     {{year-sealed model=thread.year}}
 {{/if}}
-
+ <div class="alert alert-info">
+            Pokud se chceš zeptat, proč ti nefunguje tvůj kód, pročti si prvně prosím příspěvky ostatních.
+            Ve většině případů se chyby mezi řešiteli opakují a na tvůj problém už možná někdo dostal odpověď.
+        </div>
 <ul class="media-list">
   {{#each thread.details.root_posts as |post|}}
     {{thread-post model=post store=store taskId=taskId}}
