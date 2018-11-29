@@ -168,8 +168,13 @@ export default Ember.Controller.extend( {
             }
 
             task.set("deleting", true);
-            task.destroyRecord(); // DELETE to /admin/atask/1
-            this.get("tasks").removeObject(task);
+            var self = this;
+            task.destroyRecord().then(function() {
+                self.get("tasks").removeObject(task);
+            }, function(error) {
+               task.set("deleting", false);
+               alert("Úlohu se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+            });
         },
     },
     tasks: Ember.computed("store", "wave", "model.tasks", "session.current_user", function(){

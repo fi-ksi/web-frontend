@@ -14,7 +14,10 @@ export default Ember.Controller.extend( {
             }
 
              achievement.set("deleting", true);
-             achievement.destroyRecord(); // DELETE to /admin/achievements/1
+             achievement.destroyRecord().then({}, function(error) {
+                achievement.set("deleting", false);
+                alert("Trofej se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+             });
         },
 
         'achievement-grant': function(achievement) {

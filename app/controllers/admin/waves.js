@@ -26,9 +26,15 @@ export default Ember.Controller.extend( {
                 return;
             }
 
+            var self = this;
             wave.set("deleting", true);
-            wave.destroyRecord();
-            this.get("waves").removeObject(wave);
+            wave.destroyRecord().then(function() {
+                self.get("waves").removeObject(wave);
+            }, function(error) {
+                wave.set("deleting", false);
+                alert("Vlnu se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+            });
+
         },
     },
 

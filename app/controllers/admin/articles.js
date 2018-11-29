@@ -13,8 +13,11 @@ export default Ember.Controller.extend( {
                 return;
             }
 
-             article.set("deleting", true);
-             article.destroyRecord(); // DELETE to /admin/atask/1
+            article.set("deleting", true);
+            article.destroyRecord().then({}, function(error) {
+                article.set("deleting", false);
+                alert("Článek se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+            });
         },
     },
 });
