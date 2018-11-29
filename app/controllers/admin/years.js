@@ -11,7 +11,10 @@ export default Ember.Controller.extend( {
             }
 
             year.set("deleting", true);
-            year.destroyRecord();
+            year.destroyRecord().then({}, function(error) {
+                year.set("deleting", false);
+                alert("Ročník se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+            });
         },
     },
 

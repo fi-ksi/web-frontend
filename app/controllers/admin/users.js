@@ -65,9 +65,14 @@ export default Ember.Controller.extend({
             }
 
             user.set("deleting", true);
-            this.get("users_plain").removeObject(user);
-            this.get("users").removeObject(user);
-            user.destroyRecord(); // DELETE to /users/1
+            var self = this;
+            user.destroyRecord().then(function() {
+                self.get("users_plain").removeObject(user);
+                self.get("users").removeObject(user);
+            }, function(error) {
+                user.set("deleting", false);
+                alert("Uživatele se nepodařilo odstranit, kontaktuj administrátora:\n" + error);
+            });
         },
 
         'achievement-multi': function() {
