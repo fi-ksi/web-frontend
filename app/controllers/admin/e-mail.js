@@ -33,6 +33,12 @@ export default Ember.Controller.extend({
                 self.set("error_status", "");
             }
 
+            if(self.get("type") === "") {
+                self.set("error_status", "Je třeba vybrat typ zprávy!");
+                self.set("error_show", true);
+                return;
+            }
+
             self.set("sending", true);
 
             var bcc = [];
@@ -55,7 +61,8 @@ export default Ember.Controller.extend({
                             'Category': self.get("category"),
                             'KarlikSign': self.get("karlikSign"),
                             'Easteregg': self.get("easteregg"),
-                            'Successful': self.get("successful")
+                            'Successful': self.get("successful"),
+                            'Type': self.get("type"),
                         }
                     }),
                     contentType: "application/json",
