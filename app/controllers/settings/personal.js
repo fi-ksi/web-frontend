@@ -35,7 +35,9 @@ export default Ember.Controller.extend(UserSettings, {
                 short_info: this.get("model.short_info"),
                 tshirt_size: this.get("model.tshirt_size"),
                 notify_eval: this.get("model.notify_eval"),
-                notify_response: this.get("model.notify_response")
+                notify_response: this.get("model.notify_response"),
+                notify_ksi: this.get("model.notify_ksi"),
+                notify_events: this.get("model.notify_events"),
             };
 
             this.get('session').authorize('authorizer:oauth2', function(header, content) {
