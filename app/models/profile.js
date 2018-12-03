@@ -30,6 +30,8 @@ export default basicProfile.extend( {
 
     notify_eval: DS.attr("boolean"),
     notify_response: DS.attr("boolean"),
+    notify_ksi: DS.attr("boolean"),
+    notify_events: DS.attr("boolean"),
 
     // my submitted tasks
     tasks: DS.hasMany("task", { defaultValue: [], async: true }),
