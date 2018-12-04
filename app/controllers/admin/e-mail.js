@@ -18,8 +18,13 @@ export default Ember.Controller.extend({
     send_status: "",
     sending: false,
     error_show: false,
-    years: Ember.computed("store", function() {
-        return this.get("store").find("year");
+    years_raw: Ember.computed("store", function() {
+        return this.get("store").findAll("year");
+    }),
+    years: Ember.computed.sort("years_raw", function(a, b) {
+        if (a.get("index") < b.get("index")) { return 1; }
+        if (a.get("index") > b.get("index")) { return -1; }
+        return 0;
     }),
     actions: {
         email: function() {
