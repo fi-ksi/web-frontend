@@ -70,7 +70,6 @@ export default Ember.Controller.extend({
                     type: 'POST',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader(header, h);
-                        self.set("send_status", "Odesílám zprávu");
                     },
                     success: function(data) {
                         self.set("sending", false);
