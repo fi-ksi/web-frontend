@@ -53,7 +53,6 @@ export default Ember.Controller.extend({
                         "e-mail": {
                             'Subject': self.get("subject"),
                             'Body': self.get("text"),
-                            'Sender': self.get("sender"),
                             'Reply-To': self.get("replyTo"),
                             'To': self.get("to"),
                             'Bcc': bcc,
