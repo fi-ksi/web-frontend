@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
     actions: {
         email: function() {
             var self = this;
+            self.set("send_status", "");
 
             if(!self.get("to").length) {
                 self.set("error_status", "Není vybraný ročník!");
@@ -43,6 +44,7 @@ export default Ember.Controller.extend({
             }
 
             self.set("sending", true);
+            self.set("error_show", false);
 
             var bcc = [];
             if(Ember.$("#bcc").val()) {
