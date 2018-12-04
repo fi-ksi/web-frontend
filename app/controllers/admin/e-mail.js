@@ -28,31 +28,34 @@ export default Ember.Controller.extend({
     actions: {
         email: function() {
             var self = this;
-            self.set("send_status", "");
+            this.set("send_status", "");
+            this.set("error_status", "");
 
-            if(!self.get("to").length) {
-                self.set("error_status", "Není vybraný ročník!");
-                self.set("error_show", true);
-                return;
-            } else {
-                self.set("error_status", "");
-            }
-
-            if(self.get("type") === "") {
-                self.set("error_status", "Je třeba vybrat typ zprávy!");
-                self.set("error_show", true);
+            if(!this.get("to").length) {
+                this.set("error_status", "Není vybraný ročník!");
+                this.set("error_show", true);
                 return;
             }
+            if(this.get("type") === "") {
+                this.set("error_status", "Je třeba vybrat typ zprávy!");
+                this.set("error_show", true);
+                return;
+            }
+            if(this.get("subject") === "[KSI]") {
+                this.set("error_status", "Zapomněl jsi vyplnit předmět zprávy!");
+                this.set("error_show", true);
+                return;
+            }
 
-            self.set("sending", true);
-            self.set("error_show", false);
+            this.set("sending", true);
+            this.set("error_show", false);
 
             var bcc = [];
             if(Ember.$("#bcc").val()) {
                 bcc = Ember.$("#bcc").val().match(/[^\s,;]+/g);
             }
 
-            self.get('session').authorize('authorizer:oauth2', function(header, h) {
+            this.get('session').authorize('authorizer:oauth2', function(header, h) {
                 Ember.$.ajax({
                     url: config.API_LOC + "/admin/e-mail/",
                     data: JSON.stringify({
