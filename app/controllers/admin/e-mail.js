@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
     successful: false,
     error_status: "",
     send_status: "",
+    type: "",
     sending: false,
     error_show: false,
     years_raw: Ember.computed("store", function() {
