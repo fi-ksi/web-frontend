@@ -6,61 +6,68 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     subject: "[KSI]",
     text: "",
-    sender: "",
     replyTo: "ksi@fi.muni.cz",
     to: [],
     category:"both",
     gender: "both",
     karlikSign: true,
-    easteregg: false,
     successful: false,
     error_status: "",
     send_status: "",
+    type: "",
     sending: false,
     error_show: false,
-    years: Ember.computed("store", function() {
-        return this.get("store").find("year");
+    years_raw: Ember.computed("store", function() {
+        return this.get("store").findAll("year");
+    }),
+    years: Ember.computed.sort("years_raw", function(a, b) {
+        if (a.get("index") < b.get("index")) { return 1; }
+        if (a.get("index") > b.get("index")) { return -1; }
+        return 0;
     }),
     actions: {
         email: function() {
             var self = this;
+            this.set("send_status", "");
+            this.set("error_status", "");
 
-            if(!self.get("to").length) {
-                self.set("error_status", "Není vybraný ročník!");
-                self.set("error_show", true);
-                return;
-            } else {
-                self.set("error_status", "");
-            }
-
-            if(self.get("type") === "") {
-                self.set("error_status", "Je třeba vybrat typ zprávy!");
-                self.set("error_show", true);
+            if(!this.get("to").length) {
+                this.set("error_status", "Není vybraný ročník!");
+                this.set("error_show", true);
                 return;
             }
+            if(this.get("type") === "") {
+                this.set("error_status", "Je třeba vybrat typ zprávy!");
+                this.set("error_show", true);
+                return;
+            }
+            if(this.get("subject") === "[KSI]") {
+                this.set("error_status", "Zapomněl jsi vyplnit předmět zprávy!");
+                this.set("error_show", true);
+                return;
+            }
 
-            self.set("sending", true);
+            this.set("sending", true);
+            this.set("error_show", false);
 
             var bcc = [];
             if(Ember.$("#bcc").val()) {
                 bcc = Ember.$("#bcc").val().match(/[^\s,;]+/g);
             }
 
-            self.get('session').authorize('authorizer:oauth2', function(header, h) {
+            this.get('session').authorize('authorizer:oauth2', function(header, h) {
                 Ember.$.ajax({
                     url: config.API_LOC + "/admin/e-mail/",
                     data: JSON.stringify({
                         "e-mail": {
                             'Subject': self.get("subject"),
                             'Body': self.get("text"),
-                            'Sender': self.get("sender"),
                             'Reply-To': self.get("replyTo"),
                             'To': self.get("to"),
                             'Bcc': bcc,
                             'Gender': self.get("gender"),
                             'Category': self.get("category"),
                             'KarlikSign': self.get("karlikSign"),
-                            'Easteregg': self.get("easteregg"),
                             'Successful': self.get("successful"),
                             'Type': self.get("type"),
                         }
@@ -69,7 +76,6 @@ export default Ember.Controller.extend({
                     type: 'POST',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader(header, h);
-                        self.set("send_status", "Odesílám zprávu");
                     },
                     success: function(data) {
                         self.set("sending", false);
