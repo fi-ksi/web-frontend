@@ -3,8 +3,8 @@
 RewriteEngine On
 RewriteRule (mode-python\.js) mode-python.js [L]
 RewriteRule (theme-monokai\.js) theme-monokai.js [L]
-RewriteRule (kscuk) https://kscuk.fi.muni.cz [R=301,NC,L]
-RewriteRule (nphra) https://drive.google.com/drive/folders/198hKou2JCvxbysA_JTAmvAl3fXowAYhb [R=302,NC,L]
+RewriteRule ^(kscuk)$ https://kscuk.fi.muni.cz [R=301,NC,L]
+RewriteRule ^(nphra)$ https://drive.google.com/drive/folders/198hKou2JCvxbysA_JTAmvAl3fXowAYhb [R=302,NC,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*) index.html [L]
