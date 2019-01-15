@@ -221,7 +221,7 @@ export default Ember.Component.extend({
             var text = "<div class='graph-qtip-text inline'>" + target.data("tooltip") + "</div></br>" +
                 "<p class='graph-qtip-text-bold inline'>Max.body: </p> " + target.data("max_score") + "<br>";
             if(date) {
-                text += "<p class='graph-qtip-text-bold inline'>Termím odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
+                text += "<p class='graph-qtip-text-bold inline'>Termín odevzdání: </p> " + date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear(); //ToDo: Time!
             }
             if (isOrganizator){
                 text += "<p class='graph-qtip-text-bold inline'>ID úlohy: </p> " + id + "<br>";
