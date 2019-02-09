@@ -26,7 +26,11 @@
 
         <label>Verze úlohy na webu odpovídá commitu:</label>
         {{input class="form-control" value=model.git_commit}}
+      </div>
 
+      <div class="form-group">
+        <label>Společný komentář k hodnocení:</label>
+        {{text-editor value=model.eval_comment}}
       </div>
 
       {{year-sealed model=model.wave.year}}
