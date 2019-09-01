@@ -17,6 +17,8 @@ export default DS.Model.extend({
     max_score: DS.attr("number"),
     wave: DS.belongsTo("wave", { async: true }),
 
+    eval_comment: DS.attr("string"),
+
     deploy_status_default: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "default"; }),
     deploy_status_deploying: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "deploying"; }),
     deploy_status_done: Ember.computed("deploy_status", function() { return this.get("deploy_status") === "done"; }),
