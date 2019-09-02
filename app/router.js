@@ -34,6 +34,7 @@ Router.map(function() {
   this.route('orgs',{ path: '/orgove'});
   this.route('forgot-password',{ path: '/zapomenute-heslo'});
   this.route('login', { path: '/prihlaseni'});
+  this.route('nabor', { path: '/nabor'});
   //admin
   this.route('admin/articles', {path: '/admin/articles'});
   this.route('admin/article-create', {path: '/admin/article-create'});
@@ -67,7 +68,6 @@ Router.map(function() {
   this.route('admin/achievement-create', {path: '/admin/achievement-create'});
 
   this.route('admin/forum', { path: '/admin/forum'});
-
   this.route('admin/execs', {path: '/admin/execs'});
 
   this.route('kscuk', { path: '/kscuk'});
