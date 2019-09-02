@@ -50,7 +50,7 @@
                                     min=1 
                                     max=5
                                     changed='sliderChanged'
-                                    defaultValue=singleFeedback.answer
+                                    defaultValue=(feedback-slider-default singleFeedback.answer)
                                     }}
                             {{input type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
                         </div>
