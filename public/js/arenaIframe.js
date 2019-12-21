@@ -1,26 +1,36 @@
-console.log("Arena-loadJS");
+arenaDebugLog("Arena-loadJS");
 
 $( document ).ready(function() {
-    console.log( "Arena-documentReady");
+    arenaDebugLog( "Arena-documentReady");
     setInterval(placeArenaIframeInDiv, 5*1000);
     // debugger;
 });
 
-
-function placeArenaIframeInDiv(){
-    var curPath = window.location.path;
-    console.log(curPath);
-    if (curPath != "/ulohy/137"){
+function arenaDebugLog(msg){
+    var debugEnabled = true;
+    if (!debugEnabled){
         return;
     }
-    console.log("Arena-rightPage");
-    if ($("#collapse1").find("iframe")[0] === undefined){
-        console.log("Arena-iframeMissing");
+    console.log(msg);
+}
+
+function placeArenaIframeInDiv(){
+    var curPath = window.location.pathname;
+    arenaDebugLog(curPath);
+    if (curPath != "/ulohy/137"){ // todo: change to arena id
+        return;
+    }
+    arenaDebugLog("Arena-rightPage");
+    var elementSearchString;
+    elementSearchString = ".alert-danger";
+    elementSearchString = "#arena-iframe-to-replace";
+    if ($(elementSearchString).find("iframe")[0] === undefined){
+        arenaDebugLog("Arena-iframeMissing");
         var userID = $("#id-of-logged-in-user").text().trim();
-        // $("#collapse1").first().html('<iframe src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>');
-        // $("#arena-iframe-to-replace").first().html('<iframe src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>');
+        var textPlacedWithin = '<iframe src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>';
+        $(elementSearchString).first().html(textPlacedWithin);
     } else{
-        console.log("Arena-iframeFound");
+        arenaDebugLog("Arena-iframeFound");
     }
 }
 
