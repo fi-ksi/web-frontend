@@ -52,6 +52,9 @@
                       <!--<div style="display:inline">
                           <img src="{{session.current_user.profile_pic}}" style="margin:0width:53px;"/>
                       </div>--><!-- foto nefunguje opravim ked pridem -->
+                      <div id="id-of-logged-in-user" style="display:none;">
+                        {{session.current_user.id}}
+                      </div>
                       <div id="header-text" style=" margin-left:10px; display:inline">
                         {{session.current_user.full_name}}
                       </div>
