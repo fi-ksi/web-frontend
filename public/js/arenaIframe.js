@@ -22,7 +22,7 @@ function placeArenaIframeInDiv(){
     }
     arenaDebugLog("Arena-rightPage");
     var elementSearchString;
-    elementSearchString = ".alert-danger";
+    // elementSearchString = ".alert-danger";
     elementSearchString = "#arena-iframe-to-replace";
     if ($(elementSearchString).find("iframe")[0] === undefined){
         arenaDebugLog("Arena-iframeMissing");
