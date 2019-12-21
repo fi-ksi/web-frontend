@@ -28,7 +28,7 @@ function placeArenaIframeInDiv(){
     if ($(divSelector).find("iframe")[0] === undefined){
         arenaDebugLog("Arena-iframeMissing");
         var userID = $(usedIDSelector).text().trim();
-        var textPlacedWithin = '<iframe id="'+iframeSelector+'" src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none; height: 600px;"></iframe>';
+        var textPlacedWithin = '<iframe id="'+iframeId+'" src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none; height: 600px;"></iframe>';
         $(divSelector).first().html(textPlacedWithin);
         /*
         $("#"+iframeSelector).on("load", function() {
