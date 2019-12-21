@@ -27,8 +27,11 @@ function placeArenaIframeInDiv(){
     if ($(elementSearchString).find("iframe")[0] === undefined){
         arenaDebugLog("Arena-iframeMissing");
         var userID = $("#id-of-logged-in-user").text().trim();
-        var textPlacedWithin = '<iframe src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>';
+        var textPlacedWithin = '<iframe id="arena-iframe-actual-iframe" src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>';
         $(elementSearchString).first().html(textPlacedWithin);
+        $('#arena-iframe-actual-iframe').on("load", function() {
+            this.style.height=this.contentDocument.body.scrollHeight +'px';
+        });
     } else{
         arenaDebugLog("Arena-iframeFound");
     }
