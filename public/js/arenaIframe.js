@@ -7,7 +7,7 @@ $( document ).ready(function() {
 });
 
 function arenaDebugLog(msg){
-    var debugEnabled = true;
+    var debugEnabled = false;
     if (!debugEnabled){
         return;
     }
@@ -21,17 +21,21 @@ function placeArenaIframeInDiv(){
         return;
     }
     arenaDebugLog("Arena-rightPage");
-    var elementSearchString;
-    // elementSearchString = ".alert-danger";
-    elementSearchString = "#arena-iframe-to-replace";
-    if ($(elementSearchString).find("iframe")[0] === undefined){
+    var divSelector = "#arena-iframe-to-replace";
+    var iframeId = "arena-iframe-actual-iframe"; // ! not the selector
+    var usedIDSelector = "#id-of-logged-in-user";
+
+    if ($(divSelector).find("iframe")[0] === undefined){
         arenaDebugLog("Arena-iframeMissing");
-        var userID = $("#id-of-logged-in-user").text().trim();
-        var textPlacedWithin = '<iframe id="arena-iframe-actual-iframe" src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none;"></iframe>';
-        $(elementSearchString).first().html(textPlacedWithin);
-        $('#arena-iframe-actual-iframe').on("load", function() {
-            this.style.height=this.contentDocument.body.scrollHeight +'px';
+        var userID = $(usedIDSelector).text().trim();
+        var textPlacedWithin = '<iframe id="'+iframeSelector+'" src="https://ksi-api-html.borysek.eu/logPage.html?userId='+userID+'" style="width:100%; border:none; height: 600px;"></iframe>';
+        $(divSelector).first().html(textPlacedWithin);
+        /*
+        $("#"+iframeSelector).on("load", function() {
+            this.style.height=this.contentDocument.body.scrollHeight +'px'; // this won't work as it's cross site
         });
+        */
+
     } else{
         arenaDebugLog("Arena-iframeFound");
     }
