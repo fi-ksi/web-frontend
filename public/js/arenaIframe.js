@@ -17,7 +17,7 @@ function arenaDebugLog(msg){
 function placeArenaIframeInDiv(){
     var curPath = window.location.pathname;
     arenaDebugLog(curPath);
-    if (curPath != "/ulohy/137"){ // todo: change to arena id
+    if (curPath != "/ulohy/305"){
         return;
     }
     arenaDebugLog("Arena-rightPage");
