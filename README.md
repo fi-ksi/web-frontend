@@ -3,9 +3,28 @@
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
-## Prerequisites
+## Dev environment
 
-You will need the following things properly installed on your computer.
+### Docker version
+
+Getting working dev environment used to be problematic, because parts of the web still rely on deprecated libraries. For that reason, `Dockerfile` and `docker-compose` file were created to make it incredibly easier. Now, all you have to do is have docker setup (which is really easy) and run:
+
+```sh
+git clone https://github.com/fi-ksi/web-frontend.git
+cd web-frontend
+git submodule init
+git submodule update
+docker-compose up -d --build
+```
+
+Profit!
+
+
+### Non-docker version
+
+#### Prerequisites
+
+You will need the following things properly installed on your computer. You also need compatible versions not only between those prerequisites, but also with libraries. We strongly recomend using the docker version, or at least looking to it's files to see which versions are used.
 
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
@@ -14,7 +33,7 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/)
 * Python2?
 
-## Installation
+#### Installation
 
 * `git clone <repository-url>` this repository
 * change into the new directory
