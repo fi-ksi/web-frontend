@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  ember:
+    # image: danlynn/ember-cli:1.13.15
+    build: .
+    
+    #stdin_open: true
+    #tty: true
+    
+    volumes:
+      - ./:/myapp
+      # - ./node_modules:/myapp/node_modules
+      - /myapp/node_modules
+      - /myapp/bower_components
+    tmpfs:
+      - /myapp/tmp
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+      - "7357:7357"
+    #entrypoint: tail -f /dev/null
+
+    #entrypoint: /bin/bash
+    #entrypoint: /bin/bash -c 'while true; do sleep 1; done;'
+    
+
+#volumes:
+#  node_modules:

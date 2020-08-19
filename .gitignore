@@ -19,3 +19,4 @@ testem.log
 .lvimrc
 .gitignore
 
+/.idea
