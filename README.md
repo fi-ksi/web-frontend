@@ -20,6 +20,10 @@ docker-compose up -d --build
 Profit!
 
 
+#### Docker on Windows - no auto rebuild 
+Just one small problem - on Docker for Windows notifications on shared drives/volumes are not fully implemented. That means watchman won't automatically rebuild. After every change you need to manually run the `docker-compose up -d --build` and do full build of the ember website. All docker things are cached, so only the website itself will rebuild.
+
+
 ### Non-docker version
 
 #### Prerequisites
