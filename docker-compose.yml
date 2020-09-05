@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  ember:
+    build: .    
+    volumes:
+      - ./:/myapp
+      - /myapp/node_modules
+      - /myapp/bower_components
+    tmpfs:
+      - /myapp/tmp
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+      - "7357:7357"
+
+    # If you want manual bash, do the following.
+    # 1. Uncomment the following line:
+    #entrypoint: tail -f /dev/null # Uncomment this if you want to start bash manually after the 
+    # 2. Do `docker-compose up -d --build`
+    # 3. After it finishes, run `docker exec -it web-frontend_ember_1 /bin/bash`
