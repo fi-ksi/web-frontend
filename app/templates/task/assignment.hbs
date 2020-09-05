@@ -20,7 +20,16 @@
 
     <hr>
 
-    {{ partial "task/solution" }}
+    <div class="hidden-print">
+      <div class="panel panel-module-blank" style="margin-left:0px">
+        <div class="panel-heading panel-heading-module-blank">
+          Řešení
+        </div>
+        <div class="panel-body" id="task-module-body">
+          {{ partial "task/solution" }}
+        </div>
+      </div>
+    </div>
 
     {{task-feedback feedbacks=model.feedbacks model=model store=store}}
     <div class="text-center hidden-print">
