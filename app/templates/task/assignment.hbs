@@ -17,6 +17,20 @@
     {{/if}}
   </div>
   {{#if finished}}
+
+    <hr>
+
+    <div class="hidden-print">
+      <div class="panel panel-module-blank" style="margin-left:0px">
+        <div class="panel-heading panel-heading-module-blank">
+          Autorské řešení
+        </div>
+        <div class="panel-body" id="task-module-body">
+          {{ partial "task/solution" }}
+        </div>
+      </div>
+    </div>
+
     {{task-feedback feedbacks=model.feedbacks model=model store=store}}
     <div class="text-center hidden-print">
         {{#link-to "tasks" type="button" class="btn btn-primary btn-lg"}}
