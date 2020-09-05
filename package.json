@@ -64,6 +64,6 @@
   "dependencies": {
     "ember-component-inbound-actions": "0.0.4",
     "json-server": "^0.7.25",
-    "node-sass": "^3.13.1"
+    "node-sass": "^4.13.1"
   }
 }
