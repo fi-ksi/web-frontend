@@ -50,6 +50,7 @@ You will need the following things properly installed on your computer. You also
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* If you want to be able to access content from backend on test server (kyzikos) you either need to be in MU network or on the MU VPN. Also, kyzikos has CORS, so make sure that you access your local frontend on `localhost:4200`, not on `127.0.0.1:4200`.
 
 ### Code Generators
 
