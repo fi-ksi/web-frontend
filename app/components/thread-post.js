@@ -80,7 +80,12 @@ export default Ember.Component.extend({
             });
         },
         delete: function() {
-            if (!confirm("Opravdu smazat příspěvek a všechny reakce na něj?")) {
+            if (this.get("model").reaction){
+                if (!confirm("!!! POZOR !!! Na tento příspěvek jsou navázané reakce. Když smažeš tento příspěvek, ze všech přímých potomků se stanou top level posty. Web sám reload nezvládne, udělej manuální refresh pomocí F5. !!!")) {
+                    return;
+                }    
+            }
+            if (!confirm("Opravdu smazat příspěvek?")) {
                 return;
             }
             this.get("model").deleteRecord();

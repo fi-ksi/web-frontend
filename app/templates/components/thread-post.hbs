@@ -14,7 +14,11 @@
           {{/unless}}
         {{/if}}
         {{#if allow_delete}}
-          <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "delete"}}>Smazat</button>
+          {{#if model.reaction}}
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px; background: #fbb04175;" {{action "delete"}}>Smazat</button>
+          {{else}}
+            <button class="btn-xs btn-primary" style="border:none; margin-top: 10px" {{action "delete"}}>Smazat</button>
+          {{/if}}
         {{/if}}
       </div> <!-- meno, status, cas-->
       {{#unless is_editing}}
