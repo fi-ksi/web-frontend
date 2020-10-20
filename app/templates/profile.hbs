@@ -194,6 +194,14 @@
         {{/if}}
 
         {{#if model.organisator}}
+            <div class="panel panel-achievements">
+                <div class="panel-body">
+                    {{#each model.achievements as |achievement|}}
+                        {{#link-to 'achievements' class="noContent"}}{{achievement-small model=achievement}}{{/link-to}}
+                    {{/each}}
+                </div>
+            </div>
+
             {{#unless model.show_solved}} <!-- didn't work properly => got disabled -->
 
                 <div style="margin-top:40px">
