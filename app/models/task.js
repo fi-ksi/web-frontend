@@ -11,8 +11,8 @@ export default DS.Model.extend( {
     }),
 
     title: DS.attr("string"),
-    author: DS.belongsTo("user", { async: true }),
-    co_author: DS.belongsTo("user", { async: true }),
+    author: DS.belongsTo("user", { async: true, inverse: null }),
+    co_author: DS.belongsTo("user", { async: true, inverse: null }),
     intro: DS.attr("string"),
     max_score: DS.attr("number"),
 
