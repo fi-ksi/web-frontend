@@ -24,7 +24,7 @@
     "qtip2": "~2.2.1",
     "qunit": "~1.17.1",
     "sticky-kit": "~1.1.2",
-    "tinymce": "~4.3.11",
+    "tinymce": "~4.9.11",
     "ember-data-model-fragments": "1.13.1",
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
