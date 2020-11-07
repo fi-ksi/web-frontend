@@ -19,3 +19,4 @@ services:
     #entrypoint: tail -f /dev/null # Uncomment this if you want to start bash manually after the 
     # 2. Do `docker-compose up -d --build`
     # 3. After it finishes, run `docker exec -it web-frontend_ember_1 /bin/bash`
+    #       Then just run a command `ember build --environment=production`.
