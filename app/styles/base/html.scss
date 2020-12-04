@@ -15,13 +15,25 @@ body > .ember-view {
         padding-bottom: 50px; /* Height of the footer element */
     }
 }
-
+/*
+// before MSMT dedication
 @media screen and (max-width: 299px) { #content { padding-bottom: 398px; } }
 @media screen and (min-width: 300px) { #content { padding-bottom: 337px; } }
 @media screen and (min-width: 315px) { #content { padding-bottom: 318px; } }
 @media screen and (min-width: 420px) { #content { padding-bottom: 258px; } }
 @media screen and (min-width: 603px) { #content { padding-bottom: 238px; } }
 @media screen and (min-width: 992px) { #content { padding-bottom: 178px; } }
+*/
+
+// after MSMT dedication
+@media screen and (max-width: 299px) { #content { padding-bottom: 500px; } }
+@media screen and (min-width: 300px) { #content { padding-bottom: 457px; } }
+@media screen and (min-width: 315px) { #content { padding-bottom: 400px; } }
+@media screen and (min-width: 420px) { #content { padding-bottom: 317px; } }
+@media screen and (min-width: 603px) { #content { padding-bottom: 297px; } }
+@media screen and (min-width: 992px) { #content { padding-bottom: 237px; } }
+
+
 
 @media (max-width: 499px) {
     .autojustify { text-align: left }
