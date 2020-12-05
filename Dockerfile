@@ -53,7 +53,7 @@ CMD ["server", "--environment=${environment_selector}"]
 
 
 # Run the following command to build remote_dev (i.e. kyzikos) and export to dist folder.
-# rm -r dist/ || DOCKER_BUILDKIT=1 ENVIRONMENT_SELECTOR=remote_dev docker build -f Dockerfile_build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .
+# rm -r dist/ || DOCKER_BUILDKIT=1 ENVIRONMENT_SELECTOR=remote_dev docker build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .
 
-# Run the following command to make frontend server that connects to remote_dev (i.e. kyzikos) and makes it available on port 4200.
-# DOCKER_BUILDKIT=1 ENVIRONMENT_SELECTOR=remote_dev docker build -f Dockerfile_build --target server_stage --build-arg environment_selector=$environment_selector -t ksi-frontend .
+# Run the following command to make and run frontend server that connects to remote_dev (i.e. kyzikos) and makes it available on port 4200.
+# COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up -d --build ember_server
