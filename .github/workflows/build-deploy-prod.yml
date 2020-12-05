@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  buildx:
+  InvokeBuildAndDeployForProduction:
     runs-on: ubuntu-latest
     steps:
       - name: Invoke KSI dev build and deploy
