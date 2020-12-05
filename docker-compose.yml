@@ -1,8 +1,12 @@
 version: '2'
 
 services:
-  ember:
-    build: .    
+  ember_server:
+    build:
+      context: .
+      target: server_stage
+      args:
+        - environment_selector=remote_dev
     volumes:
       - ./:/myapp
       - /myapp/node_modules
@@ -18,5 +22,5 @@ services:
     # 1. Uncomment the following line:
     #entrypoint: tail -f /dev/null # Uncomment this if you want to start bash manually after the 
     # 2. Do `docker-compose up -d --build`
-    # 3. After it finishes, run `docker exec -it web-frontend_ember_1 /bin/bash`
-    #       Then just run a command `ember build --environment=production`.
+    # 3. After it finishes, run `docker exec -it web-frontend_ember_server /bin/bash`
+
