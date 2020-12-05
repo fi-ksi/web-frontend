@@ -1,0 +1,19 @@
+name: Deploy to test server
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - integration
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke KSI dev build and deploy
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Deploy generic
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "host": "kyzikos", "host_path": "/var/www/ksi-dev", "environment_selector": "remote_dev" }'
+
