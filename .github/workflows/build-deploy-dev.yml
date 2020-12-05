@@ -7,7 +7,7 @@ on:
       - integration
 
 jobs:
-  buildx:
+  InvokeBuildAndDeployForDevServer:
     runs-on: ubuntu-latest
     steps:
       - name: Invoke KSI dev build and deploy
