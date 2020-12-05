@@ -1,0 +1,18 @@
+name: Deploy to test server by comment
+
+on: 
+  issue_comment:
+    types: [created]
+
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/deploy') 
+    steps:
+      - name: Invoke KSI dev build and deploy
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Deploy to test server
+          token: ${{ secrets.PERSONAL_TOKEN }}
+
