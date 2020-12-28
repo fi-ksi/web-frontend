@@ -49,3 +49,17 @@ jobs:
           host: aisa.fi.muni.cz
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
+
+      - name: Get commit hash and branch name
+        id: git-vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Send notification to Discord
+        uses: joelwmale/webhook-action@2.0.2
+        with:
+          url: ${{ secrets.DISCORD_DEPLOY_WEBHOOK }}
+          headers: '{"Content-Type": "application/json"}'
+          body: '{"content": "Deployment finished to `${{ github.event.inputs.host }}` of `${{ steps.git-vars.outputs.branch }}` (commit: `${{ steps.git-vars.outputs.sha_short }}` )"}'
