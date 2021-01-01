@@ -45,7 +45,7 @@ jobs:
       - name: Deploy via SSH from AIsa
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: rsync -avz --delete -r ksi/github-dist-${{ github.event.inputs.host }}/ ${{ github.event.inputs.host }}:${{ github.event.inputs.host_path }}
+          command: rsync -avz --delete --chown=www-data:www-data -r ksi/github-dist-${{ github.event.inputs.host }}/ ${{ github.event.inputs.host }}:${{ github.event.inputs.host_path }}
           host: aisa.fi.muni.cz
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
