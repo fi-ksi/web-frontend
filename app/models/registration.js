@@ -6,10 +6,12 @@ export default DS.Model.extend(ResetScrollUnauthenticated, {
     last_name: DS.attr("string"),
     nick_name: DS.attr("string"),
 
-    profile_pic: DS.attr("string"),
     short_info: DS.attr("string"),
     email: DS.attr("string"),
     gender: DS.attr("string"),
+
+    password: DS.attr("string"),
+    password2: DS.attr("string"),
 
     addr_street: DS.attr("string"),
     addr_city: DS.attr("string"),
@@ -23,5 +25,5 @@ export default DS.Model.extend(ResetScrollUnauthenticated, {
     school_country: DS.attr("string"),
     school_finish: DS.attr("number"),
 
-    tshirt_size: DS.attr("string"),
+    tshirt_size: DS.attr("string", {defaultValue: "M"}),
 });

@@ -5,6 +5,8 @@ import config from '../config/environment';
 export default Ember.Controller.extend(UserSettings, {
     registration_done: false,
     registration_in_progress: false,
+    privacyPolicyAccepted: false,
+    // referral: {},
     check: function() {
         if(this.get("model.password") && this.get("model.password2") &&
             this.get("model.password").length > 6 && this.get("model.password2").length > 6) {
@@ -20,6 +22,13 @@ export default Ember.Controller.extend(UserSettings, {
             var self = this;
             this.set("general_error", undefined);
             this.set("taken", false);
+            this.set("privacyPolicyError", undefined);
+
+            
+            if (this.get("privacyPolicyAccepted") !== true){
+                this.set("privacyPolicyError", true);
+                return;
+            }
 
             if(this.get("model.password") !== this.get("model.password2")) {
                 this.set("password_error", true);
@@ -64,6 +73,9 @@ export default Ember.Controller.extend(UserSettings, {
                     self.set("general_error", "Špatná odpověď ze serveru. Zkus to znovu za chvíli.");
                 }
             });
+        },
+        close_gdpr: function() {
+            Ember.$('#gdpr-modal').modal('hide');
         }
     }
 });

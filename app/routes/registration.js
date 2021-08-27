@@ -3,9 +3,8 @@ import ResetScrollUnauthenticated from "../mixins/reset-scroll-unauthenticated";
 
 export default Ember.Route.extend(ResetScrollUnauthenticated, {
     model: function() {
-        /*var profile = this.store.createRecord('profile');
-        return profile;*/
-        return {};
+        var profile = this.store.createRecord('registration');
+        return profile;
     },
     title: "KSI: Registrace",
     setupController: function(controller, model) {
