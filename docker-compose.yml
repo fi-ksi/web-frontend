@@ -4,9 +4,7 @@ services:
   ember_server:
     build:
       context: .
-      target: server_stage
-      args:
-        - environment_selector=remote_dev
+      target: build_environment_dynamic
     volumes:
       - ./:/myapp
       - /myapp/node_modules
@@ -17,6 +15,8 @@ services:
       - "4200:4200"
       - "7020:7020"
       - "7357:7357"
+
+    entrypoint: /usr/local/bin/ember server --environment=${environment_selector}
 
     # If you want manual bash, do the following.
     # 1. Uncomment the following line:

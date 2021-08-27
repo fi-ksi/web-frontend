@@ -41,19 +41,5 @@ RUN echo "$environment_selector" > /myapp/dist/build_for_environment.txt
 FROM scratch as build_dist_stage
 COPY --from=build_stage /myapp/dist ./
 
-
-# --------------
-FROM build_environment_dynamic as server_stage
-EXPOSE 4200 35729
-ARG environment_selector
-
-# run ember server on container start
-ENTRYPOINT ["/usr/local/bin/ember"]
-CMD ["server", "--environment=${environment_selector}"]
-
-
 # Run the following command to build remote_dev (i.e. kyzikos) and export to dist folder.
-# rm -r dist/ || DOCKER_BUILDKIT=1 ENVIRONMENT_SELECTOR=remote_dev docker build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .
-
-# Run the following command to make and run frontend server that connects to remote_dev (i.e. kyzikos) and makes it available on port 4200.
-# COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up -d --build ember_server
+# rm -r dist/ || DOCKER_BUILDKIT=1 environment_selector=remote_dev docker build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .

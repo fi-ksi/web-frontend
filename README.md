@@ -18,7 +18,7 @@ git submodule update
 
 To build and start server run the following line. The first run will take ~10 minutes to install everything thats needed, each following build should take about ~15 seconds.
 ```
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up -d --build ember_server
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 environment_selector=remote_dev docker-compose up -d --build ember_server
 # DOCKER_BUILDKIT is used for building to dist folder. If you also use it for server container, it will use the existing cache.
 # If you don't care about cache, the following should work just fine:
 # docker-compose up -d --build
@@ -26,7 +26,7 @@ COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up -d --build ember_
 
 To build the version for test server and place it in `dist` folder run the following line. If you want to build for production server, use `production` instead of `remote_dev`.
 ```
-rm -r dist/ || DOCKER_BUILDKIT=1 ENVIRONMENT_SELECTOR=remote_dev docker build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .
+DOCKER_BUILDKIT=1; environment_selector=remote_dev; rm -r dist/ || docker build --target build_dist_stage -o dist --build-arg environment_selector=$environment_selector .
 ```
 
 Profit!
