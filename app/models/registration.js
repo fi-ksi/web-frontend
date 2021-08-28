@@ -25,6 +25,6 @@ export default DS.Model.extend(ResetScrollUnauthenticated, {
     school_country: DS.attr("string"),
     school_finish: DS.attr("number"),
 
-    tshirt_size: DS.attr("string", {defaultValue: "M"}),
+    tshirt_size: DS.attr("string", {defaultValue: "NA"}),
     referral: DS.attr("string", {defaultValue: "{}"}),
 });
