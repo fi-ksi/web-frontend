@@ -22,7 +22,7 @@
                     {{#if (eq singleFeedback.ftype "stars") }}
                         <div class='rating-stars text-center'>
                             {{input class="task-feedback-stars-field" type="hidden" id=(concat "task-feedback-answer-" singleFeedback.id) value=singleFeedback.answer}}
-                            <ul id='stars'>
+                            <ul class='feedback-stars-list'>
                                 <li class='star' title='Špatná' data-value='1'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>

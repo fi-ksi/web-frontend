@@ -53,7 +53,7 @@ export default Ember.Component.extend({
           $(stars[i]).addClass('star-selected');
         }
         
-        var ratingValue = parseInt($('#stars li.star-selected').last().data('value'), 10);
+        var ratingValue = parseInt(stars.filter('li.star-selected').last().data('value'), 10);
         $(singleStar).parent().siblings("input").val(ratingValue);
     },
      
@@ -61,7 +61,7 @@ export default Ember.Component.extend({
         let $ = Ember.$;
         var self = this;
         /* 1. Visualizing things on Hover - See next part for action on click */
-          $('#stars li').on('mouseover', function(){
+          $('.feedback-stars-list li').on('mouseover', function(){
             var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
            
             // Now highlight all the stars that's not after the current hovered star
@@ -82,7 +82,7 @@ export default Ember.Component.extend({
           
           
           /* 2. Action to perform on click */
-          $('#stars li').on('click', function(){
+          $('.feedback-stars-list li').on('click', function(){
             var onStar = parseInt($(this).data('value'), 10); // The star currently selected
             
             self.highlightStars($(this), onStar);
