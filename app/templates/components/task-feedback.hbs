@@ -4,7 +4,11 @@
     <div class="panel-heading panel-heading-module-{{module-type module.state}}">
         Feedback
         <div style="float: right; margin-top: -5px;">
-            <button class="btn btn-task btn-primary hidden-print" {{action "show"}}>{{feedback_button_text}}</button>
+            {{#if show}}
+                <button class="btn btn-task btn-primary hidden-print" {{action "show"}}>{{feedback_button_text}}</button>
+            {{else}}
+                <p style="font-size: 12px;">Pokud chceš feedback upravit, refreshni si prosím tuto stránku.</p>
+            {{/if}}
         </div>
     </div>
 
