@@ -6,7 +6,6 @@ export default Ember.Controller.extend(UserSettings, {
     registration_done: false,
     registration_in_progress: false,
     privacyPolicyAccepted: false,
-    // referral: {},
     check: function() {
         if(this.get("model.password") && this.get("model.password2") &&
             this.get("model.password").length > 6 && this.get("model.password2").length > 6) {
@@ -20,11 +19,13 @@ export default Ember.Controller.extend(UserSettings, {
     getReferralString: function(){
         var referralString = "{";
         var checkboxes = document.getElementsByClassName("referralCheckboxes");
-
+        var customBox = document.getElementById("referral-other");
+    
         for (const singleCheckbox of checkboxes){
             console.log();
             referralString += `"${singleCheckbox.id}":${singleCheckbox.checked},`
         }
+        referralString += `"${customBox.id}": "${btoa(customBox.value)}"`
         referralString += "}"
         return referralString;
     },
@@ -55,6 +56,8 @@ export default Ember.Controller.extend(UserSettings, {
             if(!this.get("model.short_info")) {
                 this.set("model.short_info", "");
             }
+
+            this.set("model.referral", this.getReferralString());
 
             this.set("registration_in_progress", true);
             Ember.$.ajax({
