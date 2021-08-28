@@ -17,6 +17,17 @@ export default Ember.Controller.extend(UserSettings, {
             }
         }
     }.observes("model.password", "model.password2"),
+    getReferralString: function(){
+        var referralString = "{";
+        var checkboxes = document.getElementsByClassName("referralCheckboxes");
+
+        for (const singleCheckbox of checkboxes){
+            console.log();
+            referralString += `"${singleCheckbox.id}":${singleCheckbox.checked},`
+        }
+        referralString += "}"
+        return referralString;
+    },
     actions: {
         register: function() {
             var self = this;
