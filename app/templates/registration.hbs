@@ -197,14 +197,14 @@
       >
         {{input type="checkbox" checked=privacyPolicyAccepted}}
         Souhlasím
-      <a
+      <span
         data-toggle="modal"
         data-target="#gdpr-modal"
         style="text-decoration: underline; color: #fbb041;"
         href=""
       ><!-- Todo: Color should be assigned from scss-->
         se zpracováním svých osobních údajů
-      </a>
+      </span>
       </p>
       {{#if privacyPolicyError}}
         {{ale-rt type="danger" closeBtn=true text="Abychom Tě mohli zaregistrovat, potřebujeme Tvůj souhlas. Pokud ho nechceš dát, není technicky možné, aby ses zapojil do aktuálního ročníku. Předchozí ročníky jsou ale k dispozici i bez registrace."}}
