@@ -126,8 +126,8 @@
     <label for="tshirt">Velikost trička:</label>
     {{#x-select value=model.tshirt_size class="form-control" required=true}}
       {{#each tshirt_size key="@index" as |item|}}
-        {{#x-option value=item selected=(is-equal item model.tshirt_size)}}
-          {{item}}
+        {{#x-option value=item.short selected=(is-equal item.short model.tshirt_size)}}
+          {{item.name}}
         {{/x-option}}
       {{/each}}
     {{/x-select}}
