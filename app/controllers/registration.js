@@ -25,7 +25,11 @@ export default Ember.Controller.extend(UserSettings, {
             console.log();
             referralString += `"${singleCheckbox.id}":${singleCheckbox.checked},`
         }
-        referralString += `"${customBox.id}": "${btoa(customBox.value)}"`
+        try {
+            referralString += `"${customBox.id}": "${btoa(encodeURIComponent(customBox.value))}"`;
+        } catch(error){
+            referralString += `"${customBox.id}": "${btoa("JS ERROR: " + error.toString())}"`;
+        }
         referralString += "}"
         return referralString;
     },
