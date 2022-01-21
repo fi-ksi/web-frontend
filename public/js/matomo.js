@@ -3,7 +3,12 @@
   _paq.push(["setDomains", ["*.ksi.fi.muni.cz"]]);
   _paq.push(["setDoNotTrack", true]);
   _paq.push(["disableCookies"]);
-  _paq.push(['trackPageView']);
+
+  // Possible TODO
+  // We currently track initial page view, and then we log it again when the title changes on the content load.
+  // I decided to track it in order to have data about bounce rate, though it might not be neccesary.
+  _paq.push(['trackPageView']); 
+
   _paq.push(['enableLinkTracking']);
   (function() {
     var u="https://fadmin.fi.muni.cz/piwik/";
