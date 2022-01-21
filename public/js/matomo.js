@@ -29,10 +29,10 @@ function trackNewPage(){
     _paq.push(['trackPageView']);
 
     // make Matomo aware of newly added content
-    var content = document.getElementById('content');
+    // var content = document.getElementById('content');
     // _paq.push(['MediaAnalytics::scanForMedia', content]);
     // _paq.push(['FormAnalytics::scanForForms', content]);
-    _paq.push(['trackContentImpressionsWithinNode', content]);
+    // _paq.push(['trackContentImpressionsWithinNode', content]);
     _paq.push(['enableLinkTracking']);
 };
 
