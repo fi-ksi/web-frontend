@@ -127,6 +127,20 @@ module.exports = function(environment) {
     ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000 https://rest.ksi.fi.muni.cz"
   }
 
+  if (environment === 'prod_naskoc') {
+    ENV["API_LOC"] = "https://rest.naskoc.fi.muni.cz";
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'https://rest.naskoc.fi.muni.cz/auth'
+    }
+
+    // Warning: you need to deploy these CSP policies manually to Apache server.
+
+    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
+    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
+  }
+
   ENV.i18n = {
     defaultLocale: 'cs'
   };
