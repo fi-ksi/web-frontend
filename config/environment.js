@@ -135,10 +135,10 @@ module.exports = function(environment) {
 
     // Warning: you need to deploy these CSP policies manually to Apache server.
 
-    ENV["contentSecurityPolicy"]["default-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
-    ENV["contentSecurityPolicy"]["connect-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["default-src"] += " " + ENV["API_LOC"]
+    ENV["contentSecurityPolicy"]["connect-src"] += " " + ENV["API_LOC"]
     ENV["contentSecurityPolicy"]["report-uri"] = "https://ksi.report-uri.io/r/default/csp/enforce"
-    ENV["contentSecurityPolicy"]["img-src"] += " https://ksi.fi.muni.cz:3000 https://rest.naskoc.fi.muni.cz"
+    ENV["contentSecurityPolicy"]["img-src"] += " " + ENV["API_LOC"]
   }
 
   ENV.i18n = {
