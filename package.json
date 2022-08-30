@@ -58,7 +58,7 @@
     "grunt-sass": "^1.0.0",
     "html5sortable": "0.4.2",
     "moment": "^2.22.0",
-    "moment-timezone": "0.5.5",
+    "moment-timezone": "0.5.35",
     "ui-ember-slider": "^0.5.0"
   },
   "dependencies": {
