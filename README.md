@@ -1,3 +1,6 @@
+⚠️⚠️ **This repository is archived and read-only. As of 2022, it was replaced with the new [project](https://github.com/fi-ksi/web-frontend-angular).** ⚠️⚠️
+
+
 # Ksi
 
 This README outlines the details of collaborating on this Ember application.
